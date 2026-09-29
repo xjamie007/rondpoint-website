@@ -8,7 +8,7 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import ContactBar from '@/components/ContactBar.astro';
 import { useT } from '@/i18n';
-import { alternates as alts, HREFLANG, HTML_LANG, pathFor, type Lang, type Route } from '@/i18n/config';
+import { alternates as alts, HREFLANG, HTML_LANG, pathFor, withBase, type Lang, type Route } from '@/i18n/config';
 import { organization, SITE_ORIGIN } from '@/lib/jsonld';
 import { presentation } from '@/lib/site';
 
@@ -28,7 +28,7 @@ const { lang, route, title, description, noindex = false, ogImage, jsonld = [], 
 const t = useT(lang);
 const alternates = alts(route);
 const canonical = new URL(pathFor(lang, route), SITE_ORIGIN).toString();
-const og = ogImage ?? { src: presentation ? '/og/rondpoint-demo.png' : '/og/rondpoint.png', width: 1200, height: 630, alt: t.meta.ogAlt };
+const og = ogImage ?? { src: withBase(presentation ? '/og/rondpoint-demo.png' : '/og/rondpoint.png'), width: 1200, height: 630, alt: t.meta.ogAlt };
 const ogUrl = new URL(og.src, SITE_ORIGIN).toString();
 const OG_LOCALE: Record<Lang, string> = { fr: 'fr_LU', de: 'de_LU', lb: 'lb_LU', en: 'en_GB', pt: 'pt_PT' };
 const ld = [organization(), ...jsonld];
@@ -40,7 +40,7 @@ const ld = [organization(), ...jsonld];
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    {noindex && <meta name="robots" content="noindex, follow" />}
+    {(noindex || presentation) && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonical} />
     {
       !noindex &&
@@ -57,10 +57,10 @@ const ld = [organization(), ...jsonld];
         />
       )
     }
-    <link rel="preload" href="/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
-    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" href={withBase('/fonts/archivo-var.woff2')} as="font" type="font/woff2" crossorigin />
+    <link rel="icon" href={withBase('/favicon-32.png')} type="image/png" sizes="32x32" />
+    <link rel="icon" href={withBase('/favicon.ico')} sizes="16x16 32x32 48x48" />
+    <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
     <meta name="theme-color" content="#ffffff" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={t.meta.siteName} />

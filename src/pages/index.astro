@@ -1,16 +1,19 @@
 ---
 /** / leitet auf /fr/ weiter (D1). GitHub Pages kann keine 301, daher Meta-Refresh + Canonical. */
+import { path } from '@/i18n/config';
+import { SITE_ORIGIN } from '@/lib/jsonld';
+const fr = path('fr', 'home');
 ---
 <!doctype html>
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
     <title>Garage Um Rond Point</title>
-    <meta http-equiv="refresh" content="0; url=/fr/" />
-    <link rel="canonical" href="https://www.rondpoint.lu/fr/" />
+    <meta http-equiv="refresh" content={`0; url=${fr}`} />
+    <link rel="canonical" href={new URL(fr, SITE_ORIGIN).toString()} />
     <meta name="robots" content="noindex" />
   </head>
   <body>
-    <p><a href="/fr/">Garage Um Rond Point</a></p>
+    <p><a href={fr}>Garage Um Rond Point</a></p>
   </body>
 </html>

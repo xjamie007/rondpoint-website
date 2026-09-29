@@ -155,7 +155,24 @@ export type Route =
   | { page: 'rentalCategory'; category: RentalCategorySlugKey }
   | { page: 'car'; slug: string };
 
+/**
+ * Basis-Pfad der Website: '' auf der eigenen Domain, z. B. '/rondpoint-website' auf GitHub Pages.
+ * Außerhalb von Astro (Tests, Skripte) leer.
+ */
+export const BASE = ((import.meta as { env?: { BASE_URL?: string } }).env?.BASE_URL ?? '/').replace(/\/$/, '');
+
+/** Hängt den Basis-Pfad vor einen Pfad ab Wurzel ('/fonts/x.woff2' → '/rondpoint-website/fonts/x.woff2'). */
+export function withBase(p: string): string {
+  return BASE + p;
+}
+
+/** Link zu einer Seite, mit Basis-Pfad. */
 export function pathFor(lang: Lang, route: Route): string {
+  return withBase(routePath(lang, route));
+}
+
+/** Pfad einer Seite ab Wurzel ohne Basis-Pfad (für die Routen-Erzeugung). */
+export function routePath(lang: Lang, route: Route): string {
   if (route.page === 'rentalCategory') {
     return `/${lang}/${PAGE_SLUGS.rental[lang]}/${RENTAL_CATEGORY_SLUGS[route.category][lang]}/`;
   }

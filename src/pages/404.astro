@@ -6,7 +6,7 @@
 import '@/styles/global.css';
 import Logo from '@/components/Logo.astro';
 import { useT } from '@/i18n';
-import { HTML_LANG, LANGS, path } from '@/i18n/config';
+import { BASE, HTML_LANG, LANGS, path, withBase } from '@/i18n/config';
 import { site, telHref } from '@/lib/site';
 const fr = useT('fr');
 ---
@@ -17,11 +17,11 @@ const fr = useT('fr');
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{fr.pages.notFound.h1} | {site.name}</title>
     <meta name="robots" content="noindex" />
-    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
-    <link rel="preload" href="/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
-    <script is:inline>
+    <link rel="icon" href={withBase('/favicon-32.png')} type="image/png" sizes="32x32" />
+    <link rel="preload" href={withBase('/fonts/archivo-var.woff2')} as="font" type="font/woff2" crossorigin />
+    <script is:inline define:vars={{ base: BASE }}>
       (function () {
-        var m = location.pathname.match(/^\/(lb|de|fr|en|pt)(\/|$)/);
+        var m = location.pathname.slice(base.length).match(/^\/(lb|de|fr|en|pt)(\/|$)/);
         var l = m ? m[1] : 'fr';
         document.documentElement.setAttribute('data-lang', l);
         document.documentElement.lang = l === 'pt' ? 'pt-PT' : l;
@@ -37,7 +37,7 @@ const fr = useT('fr');
     </style>
   </head>
   <body>
-    <header class="wrap nf-head"><Logo href="/fr/" label={fr.nav.logoAria} /></header>
+    <header class="wrap nf-head"><Logo href={path('fr', 'home')} label={fr.nav.logoAria} /></header>
     <main class="wrap nf">
       {
         LANGS.map((l) => {

@@ -6,7 +6,11 @@ import { site, openingHoursSpecification } from './site.ts';
 import type { CarView } from './stock.ts';
 import type { FleetItem } from './fleet.ts';
 
-export const SITE_ORIGIN = 'https://www.rondpoint.lu';
+/** Herkunft der Website: aus astro.config (site), in Tests die eigene Domain */
+export const SITE_ORIGIN = (() => {
+  const s = (import.meta as { env?: { SITE?: string } }).env?.SITE;
+  return s ? new URL(s).origin : 'https://www.rondpoint.lu';
+})();
 export const ORG_ID = `${SITE_ORIGIN}/#garage`;
 
 const PAYMENT_LABEL: Record<string, string> = {

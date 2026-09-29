@@ -87,14 +87,19 @@ jobs:
           key: astro-images-${{ github.run_id }}
           restore-keys: astro-images-
 
+      # Adresse und Basis-Pfad kommen von GitHub Pages: ohne eigene Domain
+      # https://<konto>.github.io/<repo>/, mit eigener Domain die Wurzel.
+      - uses: actions/configure-pages@v5
+        id: pages
+        if: steps.sync.outcome != 'failure'
+
       - name: Build
         if: steps.sync.outcome != 'failure'
         env:
           PUBLIC_INQUIRY_URL: ${{ vars.PUBLIC_INQUIRY_URL }}
+          SITE_URL: ${{ steps.pages.outputs.origin }}
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
         run: npm run build
-
-      - uses: actions/configure-pages@v5
-        if: steps.sync.outcome != 'failure'
 
       - uses: actions/upload-pages-artifact@v3
         if: steps.sync.outcome != 'failure'

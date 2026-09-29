@@ -4,7 +4,7 @@
  * Kategorieseiten der Vermietung nur, wenn die Flotte ein aktives Fahrzeug dieser Kategorie hat.
  * Autoseiten für aktive und „nicht mehr verfügbare" Autos (T2.7).
  */
-import { LANGS, PAGE_SLUGS, RENTAL_CATEGORY_KEYS, pathFor, type Lang, type PageKey, type Route } from '@/i18n/config';
+import { LANGS, PAGE_SLUGS, RENTAL_CATEGORY_KEYS, routePath, type Lang, type PageKey, type Route } from '@/i18n/config';
 import { carPages } from '@/lib/stock';
 import { getFleet } from '@/lib/fleet.server';
 import Home from '@/views/Home.astro';
@@ -31,7 +31,7 @@ export async function getStaticPaths() {
     }
     for (const v of carPages) routes.push({ page: 'car', slug: v.slug });
     for (const route of routes) {
-      const rest = pathFor(lang, route).split('/').slice(2).filter(Boolean).join('/');
+      const rest = routePath(lang, route).split('/').slice(2).filter(Boolean).join('/');
       out.push({ params: { lang, path: rest || undefined }, props: { route } });
     }
   }

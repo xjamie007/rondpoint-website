@@ -235,3 +235,12 @@ Archivo stammt aus dem offiziellen Repository (github.com/Omnibus-Type/Archivo),
 - Formular nach dem Supabase-Setup echt abschicken, bis die Mail ankommt
 - Rich-Results-Test von Google
 - Lighthouse erneut messen, sobald echte Fotos und die Flotte da sind
+
+## Veröffentlichung auf GitHub Pages
+
+Der Workflow `.github/workflows/stock-sync.yml` baut die Website bei jedem Push auf `main` und jeden Morgen nach dem Bestand-Abgleich, dann veröffentlicht er sie auf GitHub Pages.
+
+- Ohne eigene Domain liegt die Website unter `https://<konto>.github.io/<repo>/`. Der Workflow übergibt dafür `SITE_URL` und `BASE_PATH` an den Build. Alle Links laufen über `pathFor()` bzw. `withBase()` aus `src/i18n/config.ts`.
+- Mit eigener Domain (Settings → Pages → Custom domain, z. B. `www.rondpoint.lu`) ist der Basis-Pfad leer. Der Workflow stellt das automatisch um.
+- Solange `presentation: true` gilt, tragen alle Seiten `noindex`, und `robots.txt` sperrt Suchmaschinen. Damit taucht die Demo mit den Stockfotos nicht bei Google auf.
+- Lokal den Build unter einem Unterpfad testen: `SITE_URL=https://example.github.io BASE_PATH=/rondpoint-website npm run build`.

@@ -3,8 +3,14 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 
+// Auf GitHub Pages setzt der Workflow SITE_URL und BASE_PATH (z. B. /rondpoint-website).
+// Ohne diese Variablen: eigene Domain, Website im Wurzelverzeichnis.
+const SITE_URL = process.env.SITE_URL || 'https://www.rondpoint.lu';
+const BASE_PATH = process.env.BASE_PATH || '/';
+
 export default defineConfig({
-  site: 'https://www.rondpoint.lu',
+  site: SITE_URL,
+  base: BASE_PATH,
   trailingSlash: 'always',
   build: {
     format: 'directory',
