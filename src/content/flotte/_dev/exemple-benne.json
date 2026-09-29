@@ -1,0 +1,31 @@
+{
+  "$comment": "BEISPIEL für Entwicklung und Kundenpräsentation (sample: true). Maße und Gewichte sind Beispielwerte, keine echten Flottendaten. Preise bewusst leer.",
+  "sample": true,
+  "category": "benne",
+  "name": {
+    "fr": "Benne basculante 750 kg (exemple)",
+    "de": "Kipper 750 kg (Beispiel)",
+    "lb": "Kipper 750 kg (Beispill)",
+    "en": "Tipper trailer 750 kg (example)",
+    "pt": "Atrelado basculante 750 kg (exemplo)"
+  },
+  "mmaKg": 750,
+  "emptyKg": 250,
+  "payloadKg": 500,
+  "braked": false,
+  "loadLengthM": 2.5,
+  "loadWidthM": 1.3,
+  "showPallets": true,
+  "socket": 13,
+  "suitableFor": [
+    "terre",
+    "materiel",
+    "meubles"
+  ],
+  "photo": "fleet-benne",
+  "brand": null,
+  "priceDay": null,
+  "priceWeekend": null,
+  "deposit": null,
+  "active": true
+}

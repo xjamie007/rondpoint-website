@@ -1,0 +1,313 @@
+---
+/**
+ * Galerie ohne Bibliothek (C6): CSS Scroll Snap, erstes Bild eager + fetchpriority high,
+ * Zähler „3 / 16" (aria-live), Buttons vor/zurück, Wischen. Ab 1024 px Miniaturen.
+ * Vollbild im <dialog> mit Pfeiltasten, Esc und Fokusfalle (showModal).
+ * Ohne JavaScript: Streifen zum Wischen, Miniaturen springen per Anker.
+ */
+import { Picture } from 'astro:assets';
+import Icon from '../Icon.astro';
+import { fmt, type Dict } from '@/i18n';
+import type { CarView } from '@/lib/stock';
+
+interface Props {
+  car: CarView;
+  t: Dict;
+  /** nur das erste Bild (verkaufte Autos) */
+  firstOnly?: boolean;
+}
+const { car: v, t, firstOnly = false } = Astro.props;
+const photos = firstOnly ? v.photos.slice(0, 1) : v.photos;
+const n = v.photos.length;
+const g = t.car.gallery;
+const alt = (i: number) => fmt(g.alt, { make: v.make, model: v.model, version: v.version, i, n });
+const label = fmt(g.label, { make: v.make, model: v.model });
+---
+{
+  photos.length === 0 ? (
+    <div class="nophoto" style={`view-transition-name: car-${v.stableId}`}>
+      <span>{t.cars.noPhoto}</span>
+    </div>
+  ) : (
+    <section class="gallery" aria-label={label} aria-roledescription="carousel" data-gallery>
+      <div class="track" data-track tabindex="0">
+        {photos.map((p, i) => (
+          <figure class="slide" id={`photo-${i + 1}`} data-slide aria-label={fmt(g.counter, { i: i + 1, n })}>
+            <Picture
+              src={p.url}
+              width={p.width ?? 2048}
+              height={p.height ?? 1536}
+              widths={[480, 800, 1200, 1600]}
+              sizes="(min-width: 1280px) 780px, (min-width: 1024px) 60vw, 100vw"
+              formats={['avif']}
+              fallbackFormat="webp"
+              alt={alt(i + 1)}
+              loading={i === 0 ? 'eager' : 'lazy'}
+              fetchpriority={i === 0 ? 'high' : 'auto'}
+              decoding={i === 0 ? 'sync' : 'async'}
+              style={i === 0 ? `view-transition-name: car-${v.stableId}` : undefined}
+            />
+          </figure>
+        ))}
+      </div>
+      {!firstOnly && photos.length > 1 && (
+        <div class="controls" data-controls hidden>
+          <button type="button" class="ctrl" data-prev aria-label={g.prev}>
+            <Icon name="prev" />
+          </button>
+          <p class="counter tnum" aria-live="polite" data-counter data-template={g.counter}>
+            {fmt(g.counter, { i: 1, n })}
+          </p>
+          <button type="button" class="ctrl" data-next aria-label={g.next}>
+            <Icon name="next" />
+          </button>
+          <button type="button" class="ctrl expand" data-open aria-label={g.open}>
+            <Icon name="expand" />
+          </button>
+        </div>
+      )}
+      {!firstOnly && photos.length > 1 && (
+        <nav class="thumbs" aria-label={g.thumbs}>
+          <ol>
+            {photos.map((p, i) => (
+              <li>
+                <a href={`#photo-${i + 1}`} data-thumb={i} aria-label={fmt(g.thumb, { i: i + 1 })}>
+                  <Picture
+                    src={p.url}
+                    width={p.width ?? 2048}
+                    height={p.height ?? 1536}
+                    widths={[480]}
+                    sizes="120px"
+                    formats={['avif']}
+                    fallbackFormat="webp"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
+      {!firstOnly && photos.length > 1 && (
+        <dialog class="lightbox" data-dialog aria-label={label}>
+          <div class="lb-track" data-lb-track></div>
+          <div class="lb-bar on-asphalt">
+            <button type="button" class="ctrl" data-lb-prev aria-label={g.prev}>
+              <Icon name="prev" />
+            </button>
+            <p class="counter tnum" aria-live="polite" data-lb-counter>{fmt(g.counter, { i: 1, n })}</p>
+            <button type="button" class="ctrl" data-lb-next aria-label={g.next}>
+              <Icon name="next" />
+            </button>
+            <button type="button" class="ctrl" data-lb-close aria-label={g.close}>
+              <Icon name="close" />
+            </button>
+          </div>
+        </dialog>
+      )}
+    </section>
+  )
+}
+
+<style>
+  .gallery { min-width: 0; }
+  .track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    background: var(--color-verzinkt);
+  }
+  .track::-webkit-scrollbar { display: none; }
+  .slide { margin: 0; scroll-snap-align: start; aspect-ratio: 4 / 3; overflow: hidden; }
+  .slide :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .nophoto { aspect-ratio: 4 / 3; display: grid; place-items: center; background: var(--color-verzinkt); }
+  .controls { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
+  .ctrl {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 2px solid var(--color-black);
+    border-radius: var(--radius-edge);
+    background: var(--color-white);
+    color: var(--color-black);
+    cursor: pointer;
+  }
+  .ctrl:disabled { opacity: 0.35; cursor: default; }
+  .counter { min-width: 5ch; text-align: center; margin: 0; font-weight: 600; }
+  .expand { margin-left: auto; }
+  .thumbs { display: none; }
+  @media (min-width: 64rem) {
+    .thumbs { display: block; margin-top: 12px; }
+    .thumbs ol { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 8px; list-style: none; margin: 0; padding: 0; }
+    .thumbs a { display: block; aspect-ratio: 4 / 3; overflow: hidden; outline-offset: 2px; }
+    .thumbs a[aria-current='true'] { outline: 3px solid var(--color-orange); }
+    .thumbs :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  }
+
+  .lightbox {
+    width: 100vw;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: var(--color-black);
+    color: var(--color-white);
+    opacity: 0;
+    transform: scale(0.98);
+    transition:
+      opacity 200ms var(--ease-out),
+      transform 200ms var(--ease-out),
+      overlay 200ms allow-discrete,
+      display 200ms allow-discrete;
+  }
+  .lightbox[open] { display: grid; grid-template-rows: 1fr auto; opacity: 1; transform: scale(1); }
+  @starting-style {
+    .lightbox[open] { opacity: 0; transform: scale(0.98); }
+  }
+  .lightbox::backdrop { background: rgb(0 0 0 / 0.9); }
+  .lb-track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    min-height: 0;
+  }
+  .lb-track :global(.lb-slide) { margin: 0; scroll-snap-align: start; display: grid; place-items: center; min-height: 0; }
+  .lb-track :global(img) { max-width: 100%; max-height: calc(100dvh - 80px); width: auto; height: auto; object-fit: contain; }
+  .lb-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom));
+    background: var(--color-asphalt);
+  }
+  .lb-bar .ctrl { background: var(--color-white); border-color: var(--color-white); }
+  .lb-bar [data-lb-close] { margin-left: 24px; }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-gallery]').forEach((gal) => {
+    const track = gal.querySelector<HTMLElement>('[data-track]')!;
+    const slides = [...gal.querySelectorAll<HTMLElement>('[data-slide]')];
+    const controls = gal.querySelector<HTMLElement>('[data-controls]');
+    if (!controls || slides.length < 2) return;
+    controls.hidden = false;
+    const counter = gal.querySelector<HTMLElement>('[data-counter]')!;
+    const tpl = counter.dataset.template!;
+    const prev = gal.querySelector<HTMLButtonElement>('[data-prev]')!;
+    const next = gal.querySelector<HTMLButtonElement>('[data-next]')!;
+    const thumbs = [...gal.querySelectorAll<HTMLAnchorElement>('[data-thumb]')];
+    const n = slides.length;
+    const label = (i: number) => tpl.replace('{i}', String(i + 1)).replace('{n}', String(n));
+
+    const setIndex = (i: number) => {
+      counter.textContent = label(i);
+      prev.disabled = i === 0;
+      next.disabled = i === n - 1;
+      thumbs.forEach((a, k) => a.setAttribute('aria-current', String(k === i)));
+    };
+    const go = (i: number, el = track) => {
+      const k = Math.max(0, Math.min(n - 1, i));
+      el.scrollTo({ left: k * el.clientWidth });
+    };
+    /** aktuelle Position aus dem Scrollstand, unabhängig vom IntersectionObserver */
+    const at = (el: HTMLElement) => Math.round(el.scrollLeft / Math.max(1, el.clientWidth));
+    setIndex(0);
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) if (e.isIntersecting) setIndex(slides.indexOf(e.target as HTMLElement));
+      },
+      { root: track, threshold: 0.6 },
+    );
+    slides.forEach((s) => io.observe(s));
+    prev.addEventListener('click', () => go(at(track) - 1));
+    next.addEventListener('click', () => go(at(track) + 1));
+    track.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(at(track) + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(at(track) - 1); }
+    });
+    thumbs.forEach((a, k) =>
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        go(k);
+      }),
+    );
+
+    // Vollbild
+    const dialog = gal.querySelector<HTMLDialogElement>('[data-dialog]');
+    const open = gal.querySelector<HTMLButtonElement>('[data-open]');
+    if (!dialog || !open) return;
+    const lbTrack = dialog.querySelector<HTMLElement>('[data-lb-track]')!;
+    // Vollbild nur mit JavaScript: Bilder beim ersten Öffnen aus der Galerie übernehmen
+    const lbSlides: HTMLElement[] = [];
+    const buildLightbox = () => {
+      if (lbSlides.length) return;
+      for (const slide of slides) {
+        const pic = slide.querySelector('picture')?.cloneNode(true) as HTMLElement | undefined;
+        if (!pic) continue;
+        pic.querySelectorAll('source, img').forEach((el) => el.setAttribute('sizes', '100vw'));
+        const img = pic.querySelector('img');
+        if (img) {
+          img.loading = 'lazy';
+          img.removeAttribute('fetchpriority');
+          img.style.removeProperty('view-transition-name');
+        }
+        const fig = document.createElement('figure');
+        fig.className = 'lb-slide';
+        fig.append(pic);
+        lbTrack.append(fig);
+        lbSlides.push(fig);
+      }
+      lbSlides.forEach((s) => lbIo.observe(s));
+    };
+    const lbCounter = dialog.querySelector<HTMLElement>('[data-lb-counter]')!;
+    const lbSet = (i: number) => {
+      lbCounter.textContent = label(i);
+    };
+    const lbIo = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) if (e.isIntersecting) lbSet(lbSlides.indexOf(e.target as HTMLElement));
+      },
+      { root: lbTrack, threshold: 0.6 },
+    );
+    open.addEventListener('click', () => {
+      buildLightbox();
+      dialog.showModal();
+      lbTrack.style.scrollBehavior = 'auto';
+      const cur = at(track);
+      lbTrack.scrollLeft = cur * lbTrack.clientWidth;
+      lbTrack.style.scrollBehavior = '';
+      lbSet(cur);
+      dialog.querySelector<HTMLButtonElement>('[data-lb-close]')!.focus();
+    });
+    dialog.querySelector('[data-lb-prev]')!.addEventListener('click', () => go(at(lbTrack) - 1, lbTrack));
+    dialog.querySelector('[data-lb-next]')!.addEventListener('click', () => go(at(lbTrack) + 1, lbTrack));
+    dialog.querySelector('[data-lb-close]')!.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(at(lbTrack) + 1, lbTrack); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(at(lbTrack) - 1, lbTrack); }
+    });
+    dialog.addEventListener('close', () => {
+      track.style.scrollBehavior = 'auto';
+      go(at(lbTrack));
+      track.style.scrollBehavior = '';
+      open.focus();
+    });
+  });
+</script>

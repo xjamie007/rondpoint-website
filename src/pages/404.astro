@@ -1,0 +1,69 @@
+---
+/**
+ * Eine 404.html für alle Sprachen (D1). Die Sprache kommt aus dem Pfadpräfix.
+ * Ohne JavaScript steht der Text kurz in allen fünf Sprachen.
+ */
+import '@/styles/global.css';
+import Logo from '@/components/Logo.astro';
+import { useT } from '@/i18n';
+import { HTML_LANG, LANGS, path } from '@/i18n/config';
+import { site, telHref } from '@/lib/site';
+const fr = useT('fr');
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{fr.pages.notFound.h1} | {site.name}</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="preload" href="/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
+    <script is:inline>
+      (function () {
+        var m = location.pathname.match(/^\/(lb|de|fr|en|pt)(\/|$)/);
+        var l = m ? m[1] : 'fr';
+        document.documentElement.setAttribute('data-lang', l);
+        document.documentElement.lang = l === 'pt' ? 'pt-PT' : l;
+      })();
+    </script>
+    <style is:inline>
+      html[data-lang] .nf-lang { display: none; }
+      html[data-lang='lb'] .nf-lang[data-l='lb'],
+      html[data-lang='de'] .nf-lang[data-l='de'],
+      html[data-lang='fr'] .nf-lang[data-l='fr'],
+      html[data-lang='en'] .nf-lang[data-l='en'],
+      html[data-lang='pt'] .nf-lang[data-l='pt'] { display: block; }
+    </style>
+  </head>
+  <body>
+    <header class="wrap nf-head"><Logo href="/fr/" label={fr.nav.logoAria} /></header>
+    <main class="wrap nf">
+      {
+        LANGS.map((l) => {
+          const t = useT(l);
+          return (
+            <section class="nf-lang" data-l={l} lang={HTML_LANG[l]}>
+              <h1>{t.pages.notFound.h1}</h1>
+              <p class="t-lead">{t.pages.notFound.text}</p>
+              <ul>
+                <li><a class="link" href={path(l, 'home')}>{t.nav.home}</a></li>
+                <li><a class="link" href={path(l, 'rental')}>{t.nav.rental}</a></li>
+                <li><a class="link" href={path(l, 'cars')}>{t.nav.cars}</a></li>
+                <li><a class="link" href={telHref}>{site.phone.display}</a></li>
+              </ul>
+            </section>
+          );
+        })
+      }
+    </main>
+    <style>
+      .nf-head { padding-block: 16px; }
+      .nf { display: grid; gap: 48px; padding-block: 48px 120px; }
+      .nf-lang h1 { margin: 0 0 16px; }
+      .nf-lang p { margin: 0 0 16px; max-width: 52ch; }
+      .nf-lang ul { display: flex; flex-wrap: wrap; gap: 8px 24px; list-style: none; padding: 0; margin: 0; }
+      .nf-lang li a { display: inline-flex; min-height: 44px; align-items: center; font-weight: 600; }
+    </style>
+  </body>
+</html>

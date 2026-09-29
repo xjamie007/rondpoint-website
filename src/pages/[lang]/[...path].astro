@@ -1,0 +1,57 @@
+---
+/**
+ * Ein Einstieg für alle Seiten in allen fünf Sprachen mit übersetzten Slugs (D1).
+ * Kategorieseiten der Vermietung nur, wenn die Flotte ein aktives Fahrzeug dieser Kategorie hat.
+ * Autoseiten für aktive und „nicht mehr verfügbare" Autos (T2.7).
+ */
+import { LANGS, PAGE_SLUGS, RENTAL_CATEGORY_KEYS, pathFor, type Lang, type PageKey, type Route } from '@/i18n/config';
+import { carPages } from '@/lib/stock';
+import { getFleet } from '@/lib/fleet.server';
+import Home from '@/views/Home.astro';
+import Rental from '@/views/Rental.astro';
+import RentalCategory from '@/views/RentalCategory.astro';
+import Cars from '@/views/Cars.astro';
+import Car from '@/views/Car.astro';
+import Workshop from '@/views/Workshop.astro';
+import Sodablast from '@/views/Sodablast.astro';
+import TrailersForSale from '@/views/TrailersForSale.astro';
+import Garden from '@/views/Garden.astro';
+import Contact from '@/views/Contact.astro';
+import Thanks from '@/views/Thanks.astro';
+import Legal from '@/views/Legal.astro';
+import Privacy from '@/views/Privacy.astro';
+
+export async function getStaticPaths() {
+  const out: { params: { lang: Lang; path: string | undefined }; props: { route: Route } }[] = [];
+  for (const lang of LANGS) {
+    const fleet = await getFleet(lang);
+    const routes: Route[] = (Object.keys(PAGE_SLUGS) as PageKey[]).map((page) => ({ page }));
+    for (const category of RENTAL_CATEGORY_KEYS) {
+      if (fleet.some((i) => i.category === category)) routes.push({ page: 'rentalCategory', category });
+    }
+    for (const v of carPages) routes.push({ page: 'car', slug: v.slug });
+    for (const route of routes) {
+      const rest = pathFor(lang, route).split('/').slice(2).filter(Boolean).join('/');
+      out.push({ params: { lang, path: rest || undefined }, props: { route } });
+    }
+  }
+  return out;
+}
+
+const lang = Astro.params.lang as Lang;
+const { route } = Astro.props as { route: Route };
+const car = route.page === 'car' ? carPages.find((c) => c.slug === route.slug)! : null;
+---
+{route.page === 'home' && <Home lang={lang} />}
+{route.page === 'rental' && <Rental lang={lang} />}
+{route.page === 'rentalCategory' && <RentalCategory lang={lang} category={route.category} />}
+{route.page === 'cars' && <Cars lang={lang} />}
+{route.page === 'car' && car && <Car lang={lang} car={car} />}
+{route.page === 'workshop' && <Workshop lang={lang} />}
+{route.page === 'sodablast' && <Sodablast lang={lang} />}
+{route.page === 'trailersForSale' && <TrailersForSale lang={lang} />}
+{route.page === 'garden' && <Garden lang={lang} />}
+{route.page === 'contact' && <Contact lang={lang} />}
+{route.page === 'thanks' && <Thanks lang={lang} />}
+{route.page === 'legal' && <Legal lang={lang} />}
+{route.page === 'privacy' && <Privacy lang={lang} />}

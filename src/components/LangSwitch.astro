@@ -1,0 +1,64 @@
+---
+/**
+ * Sprachumschalter (C3): fünf Links LB DE FR EN PT, bleibt auf derselben Seite,
+ * aria-current auf der aktiven Sprache, voller Sprachname lang-markiert für Screenreader.
+ * Keine Flaggen.
+ */
+import { HTML_LANG, LANG_NAME, type Lang } from '@/i18n/config';
+interface Props {
+  lang: Lang;
+  alternates: { lang: Lang; href: string }[];
+  label: string;
+  tone?: 'light' | 'dark';
+  uid: string;
+}
+const { lang, alternates, label, tone = 'light', uid } = Astro.props;
+const id = `lang-${uid}`;
+---
+<nav class:list={['langs', tone === 'dark' && 'on-asphalt']} aria-labelledby={id}>
+  <span id={id} class="langs-label">{label}</span>
+  <ul>
+    {
+      alternates.map((a) => (
+        <li>
+          <a
+            href={a.href}
+            hreflang={HTML_LANG[a.lang]}
+            aria-current={a.lang === lang ? 'page' : undefined}
+          >
+            {a.lang.toUpperCase()}
+            <span class="sr-only" lang={HTML_LANG[a.lang]}> {LANG_NAME[a.lang]}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .langs { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .langs-label { font-size: 0.9375rem; font-weight: 600; margin-right: 4px; }
+  ul { display: flex; gap: 2px; list-style: none; margin: 0; padding: 0; }
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 40px;
+    padding: 0 6px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    text-decoration: none;
+    border-radius: var(--radius-edge);
+    /* Unterstreichung wächst aus der Mitte */
+    background-image: linear-gradient(var(--u, currentColor), var(--u, currentColor));
+    background-repeat: no-repeat;
+    background-position: 50% calc(100% - 7px);
+    background-size: 0% 2px;
+    transition: background-size var(--dur-3) var(--ease-out), color var(--dur-2) var(--ease-out);
+  }
+  a:hover, a[aria-current='page'] { background-size: calc(100% - 12px) 2px; }
+  a[aria-current='page'] { color: var(--color-orange-text); }
+  .on-asphalt a { --u: var(--color-orange); }
+  .on-asphalt a[aria-current='page'] { color: var(--color-white); }
+</style>

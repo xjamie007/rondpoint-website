@@ -1,0 +1,31 @@
+{
+  "$comment": "BEISPIEL für Entwicklung und Kundenpräsentation (sample: true). Maße und Gewichte sind Beispielwerte, keine echten Flottendaten. Preise bewusst leer.",
+  "sample": true,
+  "category": "camionnette",
+  "name": {
+    "fr": "Camionnette 3,5 t (exemple)",
+    "de": "Transporter 3,5 t (Beispiel)",
+    "lb": "Camionnette 3,5 t (Beispill)",
+    "en": "Van 3.5 t (example)",
+    "pt": "Carrinha 3,5 t (exemplo)"
+  },
+  "mmaKg": 3500,
+  "emptyKg": 2150,
+  "payloadKg": 1350,
+  "braked": true,
+  "loadLengthM": 3.1,
+  "loadWidthM": 1.75,
+  "loadHeightM": 1.9,
+  "volumeM3": 10.8,
+  "showPallets": true,
+  "suitableFor": [
+    "meubles",
+    "materiel"
+  ],
+  "photo": "fleet-camionnette",
+  "brand": null,
+  "priceDay": null,
+  "priceWeekend": null,
+  "deposit": null,
+  "active": true
+}

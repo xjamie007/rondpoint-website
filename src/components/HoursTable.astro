@@ -1,0 +1,70 @@
+---
+/**
+ * Öffnungszeiten als echte Tabelle aus horaires.json (D2.7).
+ * Der heutige Tag wird im Browser fett und mit „aujourd'hui" markiert
+ * (im Build wäre „heute" am nächsten Tag falsch).
+ */
+import { rich, type Dict } from '@/i18n';
+import { DAY_KEYS, horaires, showOpenPoints } from '@/lib/site';
+
+interface Props {
+  t: Dict;
+  captionVisible?: boolean;
+  headingLevel?: 'h2' | 'h3';
+}
+const { t, captionVisible = false } = Astro.props;
+const fmtRange = ([a, b]: [string, string]) => `${a}–${b}`;
+---
+<div class="hours">
+  <table>
+    <caption class:list={[captionVisible ? 'cap' : 'sr-only']}>{t.hours.caption}</caption>
+    <thead class="sr-only">
+      <tr><th scope="col">{t.hours.day}</th><th scope="col">{t.hours.time}</th></tr>
+    </thead>
+    <tbody>
+      {
+        DAY_KEYS.map((d) => {
+          const iv = horaires.week[d];
+          return (
+            <tr data-day={d}>
+              <th scope="row">
+                {t.hours.days[d]}
+                <span class="today-mark" hidden> ({t.hours.today})</span>
+              </th>
+              <td class="tnum">
+                {iv.length
+                  ? iv.map((r, i) => (
+                      <>
+                        {i > 0 && ` ${t.hours.and} `}
+                        <span class="iv">{fmtRange(r)}</span>
+                      </>
+                    ))
+                  : t.hours.closed}
+              </td>
+            </tr>
+          );
+        })
+      }
+    </tbody>
+  </table>
+  {!horaires.holidaysConfirmed && showOpenPoints && <p class="t-small t-muted holidays" set:html={rich(t.hours.holidays)} />}
+</div>
+
+<style>
+  table { width: 100%; max-width: 30rem; }
+  .cap { text-align: left; font-weight: 700; margin-bottom: 8px; }
+  th, td { text-align: left; padding: 8px 0; border-bottom: 1px solid var(--color-verzinkt); vertical-align: top; }
+  th { font-weight: 400; padding-right: 16px; white-space: nowrap; }
+  .iv { white-space: nowrap; }
+  tr.is-today th, tr.is-today td { font-weight: 700; }
+  .holidays { margin-top: 12px; }
+</style>
+
+<script>
+  const wd = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Luxembourg', weekday: 'short' }).format(new Date());
+  const key = ({ Mon: 'mo', Tue: 'tu', Wed: 'we', Thu: 'th', Fri: 'fr', Sat: 'sa', Sun: 'su' } as Record<string, string>)[wd];
+  document.querySelectorAll<HTMLTableRowElement>(`.hours tr[data-day="${key}"]`).forEach((tr) => {
+    tr.classList.add('is-today');
+    tr.querySelector<HTMLElement>('.today-mark')?.removeAttribute('hidden');
+  });
+</script>

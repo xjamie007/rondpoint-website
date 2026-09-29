@@ -1,0 +1,199 @@
+---
+/**
+ * Orange Sektion über die volle Breite mit dem Finder (C5).
+ * compact: Startseite (höchstens drei Ergebnisse + „Voir toute la flotte").
+ */
+import Finder, { type FinderStrings } from './Finder.tsx';
+import { rich, type Dict } from '@/i18n';
+import { intlLocale, path, type Lang } from '@/i18n/config';
+import { getFleet } from '@/lib/fleet.server';
+import { cargoOptions } from '@/lib/fleet';
+import { fleetView, maxDiagramTotal } from '@/lib/fleet-view';
+import { withPhotos } from '@/lib/fleet-photos';
+import { presentation } from '@/lib/site';
+import './finder-static.css';
+
+interface Props {
+  lang: Lang;
+  t: Dict;
+  compact?: boolean;
+  id?: string;
+  headingTag?: 'h1' | 'h2';
+}
+const { lang, t, compact = false, id = 'quelle-remorque', headingTag = 'h2' } = Astro.props;
+const fleet = (await getFleet(lang)).filter((i) => i.category !== 'voiture');
+const items = await withPhotos(fleetView(fleet, lang, t));
+const s = t.finder;
+const strings: FinderStrings = {
+  cargoLegend: s.cargoLegend,
+  cargo: s.cargo,
+  licenceLegend: s.licenceLegend,
+  licence: s.licence,
+  exactSummary: s.exactSummary,
+  f2: s.f2,
+  o1: s.o1,
+  o2: s.o2,
+  kg: s.kg,
+  exactHint: s.exactHint,
+  fleetCount: s.fleetCount,
+  matchCount: s.matchCount,
+  none: s.none,
+  vansHeading: s.vansHeading,
+  vanStatement: s.vanStatement,
+  specs: s.specs,
+  verdict: s.verdict,
+  licenceShort: s.licenceShort,
+  priceMissing: s.priceMissing,
+  request: s.request,
+  requestVan: s.requestVan,
+  seeAll: s.seeAll,
+  finePrint: s.finePrint,
+  sourceLink: s.sourceLink,
+  empty: s.empty,
+  noJsRules: s.noJsRules,
+  photoAlt: t.photos.fleetAlt,
+};
+const H = headingTag;
+/** Nur auf Französisch verfügbar (geprüft 28.09.2026) */
+const sourceUrl = 'https://transports.public.lu/fr/conduire/conducteur-permis/categories/permis-b.html';
+---
+<section class="finder" id={id} aria-labelledby={`${id}-h`}>
+  <div class="wrap">
+    <div class="finder-head">
+      <H id={`${id}-h`} class="t-h2">{s.h2}</H>
+      <p class="t-lead finder-intro">{s.intro}</p>
+    </div>
+    {
+      items.length === 0 ? (
+        <p class="finder-empty" set:html={rich(s.empty)} />
+      ) : (
+      <Finder
+        client:visible
+        lang={lang}
+        intlLocale={intlLocale(lang)}
+        strings={strings}
+        items={items}
+        cargoOptions={cargoOptions(fleet)}
+        compact={compact}
+        requestBase={path(lang, 'rental')}
+        seeAllHref={`${path(lang, 'rental')}#flotte`}
+        maxTotalM={maxDiagramTotal(fleet)}
+        uid={id}
+        headingLevel={headingTag === 'h1' ? 2 : 3}
+      presentation={presentation}
+      />
+      )
+    }
+    <p class="t-small fine-print">
+      <span set:html={rich(s.finePrint)} />
+      <a href={sourceUrl} rel="noopener">{s.sourceLink}</a>
+    </p>
+  </div>
+</section>
+
+<style is:global>
+  .finder {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    /* Kreisel-Motiv: feine Ringe um die Ecke oben rechts, unten etwas dunkler */
+    background:
+      repeating-radial-gradient(circle at 100% 0%, transparent 0 54px, rgb(255 255 255 / 0.13) 54px 56px),
+      linear-gradient(to bottom, var(--color-orange), #dd560a);
+    color: var(--color-black);
+    padding-block: 64px;
+  }
+  @media (min-width: 64rem) { .finder { padding-block: 120px; } }
+  .finder-head { display: grid; gap: 16px; max-width: 66ch; margin-bottom: 40px; }
+  .finder-head > * { margin: 0; }
+  .finder :focus-visible { outline-color: var(--color-black); }
+  .finder a:not(.btn) { color: var(--color-black); }
+  .finder .link { color: var(--color-black); }
+  .finder-nojs { max-width: 66ch; margin: 0 0 40px; font-weight: 600; }
+  .finder-questions { display: grid; gap: 32px; margin-bottom: 40px; }
+  .finder-q { border: 0; margin: 0; padding: 0; min-width: 0; }
+  .finder-q legend {
+    font-family: var(--font-wide);
+    font-stretch: 112%;
+    font-weight: 700;
+    font-size: clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem);
+    line-height: 1.2;
+    margin-bottom: 16px;
+    padding: 0;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .finder-exact summary {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    cursor: pointer;
+  }
+  .finder-exact[open] summary { text-decoration-thickness: 2px; }
+  .finder-exact .t-small { margin: 8px 0 16px; max-width: 66ch; }
+  .exact-grid { display: grid; gap: 16px; }
+  @media (min-width: 48rem) { .exact-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .finder .field { border-color: var(--color-black); }
+  .unit-field { position: relative; }
+  .unit-field .field { padding-right: 44px; }
+  .unit-field span { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-weight: 600; }
+
+  .finder-count {
+    font-family: var(--font-wide);
+    font-stretch: 112%;
+    font-weight: 700;
+    font-size: clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem);
+    line-height: 1.25;
+    margin: 0 0 8px;
+    max-width: 50ch;
+  }
+  .result-list { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 16px; }
+  @media (min-width: 64rem) {
+    .result-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  }
+  .result {
+    background: var(--color-white);
+    border-radius: var(--radius-edge);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+    transition: transform var(--dur-3) var(--ease-out), box-shadow var(--dur-3) var(--ease-out);
+  }
+  @media (hover: hover) {
+    .result:hover { transform: translateY(-4px); box-shadow: 0 22px 40px -26px rgb(0 0 0 / 0.6); }
+  }
+  .result-name {
+    font-family: var(--font-wide);
+    font-stretch: 112%;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    margin: 0;
+  }
+  .result-cta { margin: auto 0 0; }
+  .result-cta .btn { width: 100%; }
+  .vans-h {
+    font-family: var(--font-wide);
+    font-stretch: 112%;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin: 40px 0 0;
+  }
+  .see-all { margin: 32px 0 0; }
+  .fine-print { margin: 40px 0 0; max-width: 66ch; }
+  .fine-print a { margin-left: 4px; }
+  .finder-empty { font-weight: 600; font-size: 1.1875rem; max-width: 50ch; margin: 0; }
+
+  /* Umordnen per View Transition (C7.2) */
+  html[data-vt='finder']::view-transition-old(root),
+  html[data-vt='finder']::view-transition-new(root) { animation: none; }
+  html[data-vt='finder']::view-transition-group(*) { animation-duration: 420ms; animation-timing-function: var(--ease-out); }
+  html[data-vt='finder']::view-transition-old(*):only-child { animation: vt-fade-out 180ms var(--ease-out) both; }
+  html[data-vt='finder']::view-transition-new(*):only-child { animation: vt-fade-in 180ms var(--ease-out) both; }
+  @keyframes vt-fade-out { to { opacity: 0; } }
+  @keyframes vt-fade-in { from { opacity: 0; } }
+</style>

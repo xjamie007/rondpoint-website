@@ -1,0 +1,30 @@
+{
+  "$comment": "BEISPIEL für Entwicklung und Kundenpräsentation (sample: true). Maße und Gewichte sind Beispielwerte, keine echten Flottendaten. Preise bewusst leer.",
+  "sample": true,
+  "category": "porte-voiture",
+  "name": {
+    "fr": "Porte-voiture 2,7 t (exemple)",
+    "de": "Autotransporter 2,7 t (Beispiel)",
+    "lb": "Autosunhänger 2,7 t (Beispill)",
+    "en": "Car trailer 2.7 t (example)",
+    "pt": "Atrelado porta-carros 2,7 t (exemplo)"
+  },
+  "mmaKg": 2700,
+  "emptyKg": 650,
+  "payloadKg": 2050,
+  "braked": true,
+  "loadLengthM": 4.0,
+  "loadWidthM": 2.0,
+  "showPallets": false,
+  "socket": 13,
+  "suitableFor": [
+    "voiture",
+    "materiel"
+  ],
+  "photo": "fleet-porte-voiture",
+  "brand": null,
+  "priceDay": null,
+  "priceWeekend": null,
+  "deposit": null,
+  "active": true
+}

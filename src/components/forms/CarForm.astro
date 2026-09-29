@@ -1,0 +1,59 @@
+---
+/** F2 Frage zu einem Auto (type=voiture). Das Auto steht als Text, dazu verstecktes Feld ref. */
+import FormShell from './FormShell.astro';
+import type { Dict } from '@/i18n';
+import type { Lang } from '@/i18n/config';
+
+interface Props {
+  lang: Lang;
+  t: Dict;
+  carLabel: string;
+  carTitle: string;
+  carRef: string;
+}
+const { lang, t, carLabel, carTitle, carRef } = Astro.props;
+const f = t.forms;
+const c = f.car;
+const id = 'demande';
+---
+<FormShell type="voiture" lang={lang} t={t} id={id} submit={c.submit}>
+  <input type="hidden" name="ref" value={carRef} />
+  <input type="hidden" name="car" value={carLabel} />
+  <input type="hidden" name="carTitle" value={carTitle} />
+  <p class="car-line"><span class="field-label">{c.carLabel}</span>{carLabel}</p>
+  <fieldset>
+    <legend>{c.wish}</legend>
+    <div class="radios">
+      <label class="radio"><input type="radio" name="wish" value="essai" required data-msg-required={f.errors.wish} />{c.wishTest}</label>
+      <label class="radio"><input type="radio" name="wish" value="info" />{c.wishInfo}</label>
+      <label class="radio"><input type="radio" name="wish" value="reprise" />{c.wishTradeIn}</label>
+    </div>
+  </fieldset>
+  <div class="trade" data-trade-in>
+    <p class="subh">{c.tradeInH}</p>
+    <div class="fg">
+      <label class="field-label" for={`${id}-trade-make`}>{c.tradeMake} <span class="opt">({f.optional})</span></label>
+      <input class="field" id={`${id}-trade-make`} name="tradeMake" type="text" maxlength="120" />
+    </div>
+    <div class="row pair">
+      <div class="fg">
+        <label class="field-label" for={`${id}-trade-year`}>{c.tradeYear} <span class="opt">({f.optional})</span></label>
+        <input class="field" id={`${id}-trade-year`} name="tradeYear" type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" />
+      </div>
+      <div class="fg">
+        <label class="field-label" for={`${id}-trade-km`}>{c.tradeKm} <span class="opt">({f.optional})</span></label>
+        <input class="field" id={`${id}-trade-km`} name="tradeKm" type="text" inputmode="numeric" maxlength="9" />
+      </div>
+    </div>
+  </div>
+  <div class="fg">
+    <label class="field-label" for={`${id}-message`}>{f.message} <span class="opt">({f.optional})</span></label>
+    <textarea class="field" id={`${id}-message`} name="message" rows="4" maxlength="3000"></textarea>
+  </div>
+</FormShell>
+
+<style>
+  .car-line { margin: 0; overflow-wrap: anywhere; }
+  .car-line .field-label { margin-bottom: 4px; }
+  .trade { display: grid; gap: 16px; }
+</style>

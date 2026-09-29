@@ -1,0 +1,29 @@
+{
+  "$comment": "BEISPIEL für Entwicklung und Kundenpräsentation (sample: true). Maße und Gewichte sind Beispielwerte, keine echten Flottendaten. Preise bewusst leer.",
+  "sample": true,
+  "category": "porte-moto",
+  "name": {
+    "fr": "Porte-moto 750 kg (exemple)",
+    "de": "Motorradanhänger 750 kg (Beispiel)",
+    "lb": "Motosunhänger 750 kg (Beispill)",
+    "en": "Motorbike trailer 750 kg (example)",
+    "pt": "Atrelado porta-motos 750 kg (exemplo)"
+  },
+  "mmaKg": 750,
+  "emptyKg": 220,
+  "payloadKg": 530,
+  "braked": false,
+  "loadLengthM": 2.2,
+  "loadWidthM": 1.25,
+  "showPallets": false,
+  "socket": 13,
+  "suitableFor": [
+    "moto"
+  ],
+  "photo": "fleet-porte-moto",
+  "brand": null,
+  "priceDay": null,
+  "priceWeekend": null,
+  "deposit": null,
+  "active": true
+}

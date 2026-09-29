@@ -1,0 +1,72 @@
+---
+/**
+ * Tabelle der ganzen Flotte (D3), immer im HTML.
+ * Auf dem Handy wird jede Zeile zur Karte (Beschriftung aus data-label); die
+ * expliziten ARIA-Rollen erhalten die Tabellen-Semantik trotz display:block.
+ */
+import { rich, type Dict } from '@/i18n';
+import type { FleetView } from '@/lib/fleet-view';
+import { presentation } from '@/lib/site';
+
+interface Props {
+  t: Dict;
+  items: FleetView[];
+}
+const { t, items } = Astro.props;
+const h = t.fleetTable;
+---
+{
+  items.length > 0 && (
+    <div class="table-scroll" role="region" aria-labelledby="fleet-caption" tabindex="0">
+      <table class="fleet-table" role="table">
+        <caption id="fleet-caption" class="sr-only">{h.caption}</caption>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th scope="col" role="columnheader">{h.kind}</th>
+            <th scope="col" role="columnheader">{h.payload}</th>
+            <th scope="col" role="columnheader">{h.mma}</th>
+            <th scope="col" role="columnheader">{h.surface}</th>
+            <th scope="col" role="columnheader">{h.licence}</th>
+            <th scope="col" role="columnheader">{h.day}</th>
+            <th scope="col" role="columnheader">{h.weekend}</th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          {items.map((i) => (
+            <tr role="row">
+              <th scope="row" role="rowheader">
+                {i.name}
+                <span class="cat t-small">{t.categories[i.category]}</span>
+              </th>
+              <td role="cell" data-label={h.payload} class="tnum">{i.display.payload}</td>
+              <td role="cell" data-label={h.mma} class="tnum">{i.display.mma}</td>
+              <td role="cell" data-label={h.surface} class="tnum">{i.display.surface ?? '—'}</td>
+              <td role="cell" data-label={h.licence}>{i.display.requiredShort}</td>
+              <td role="cell" data-label={h.day} class="tnum">{i.display.priceDay ?? (presentation ? '—' : <span set:html={rich('[FEHLT]')} />)}</td>
+              <td role="cell" data-label={h.weekend} class="tnum">{i.display.priceWeekend ?? (presentation ? '—' : <span set:html={rich('[FEHLT]')} />)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
+<style>
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .fleet-table { width: 100%; min-width: 720px; }
+  th, td { text-align: left; padding: 12px 16px 12px 0; border-bottom: 1px solid var(--color-verzinkt); vertical-align: top; }
+  thead th { font-size: 0.9375rem; font-weight: 600; color: var(--color-asphalt); border-bottom: 1.5px solid var(--color-black); }
+  tbody th { font-weight: 700; }
+  .cat { display: block; font-weight: 400; color: var(--color-asphalt); }
+  /* Handy: jede Remorque als Karte, Werte in zwei Spalten mit Beschriftung */
+  @media (max-width: 47.99rem) {
+    .fleet-table { min-width: 0; }
+    .fleet-table, .fleet-table tbody { display: block; }
+    .fleet-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    .fleet-table tr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px; padding: 20px; margin-bottom: 12px; background: var(--color-white); border: 1.5px solid var(--color-black); border-radius: var(--radius-edge); }
+    .fleet-table th, .fleet-table td { display: block; padding: 0; border: 0; min-width: 0; }
+    .fleet-table tbody th { grid-column: 1 / -1; font-family: var(--font-wide); font-stretch: 112%; font-size: 1.125rem; line-height: 1.25; padding-bottom: 12px; border-bottom: 1px solid var(--color-verzinkt); }
+    .fleet-table td::before { content: attr(data-label); display: block; font-size: 0.875rem; font-weight: 600; color: var(--color-asphalt); margin-bottom: 2px; }
+  }
+</style>

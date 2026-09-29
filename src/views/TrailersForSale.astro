@@ -1,0 +1,78 @@
+---
+/** Anhänger kaufen (D3): Marken als Text, Beratung Gewicht/Führerschein mit Link zum Finder, Lager (fehlt), Formular. */
+import Base from '@/layouts/Base.astro';
+import PageIntro from '@/components/PageIntro.astro';
+import InfoCards from '@/components/InfoCards.astro';
+import ContactForm from '@/components/forms/ContactForm.astro';
+import { rich, useT } from '@/i18n';
+import { path, type Lang } from '@/i18n/config';
+import { breadcrumbs } from '@/lib/jsonld';
+import { showOpenPoints, site } from '@/lib/site';
+import { photo } from '@/lib/photos';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useT(lang);
+const p = t.pages.trailersForSale;
+const d = t.details.trailers;
+const crumbs = [
+  { name: t.nav.home, href: path(lang, 'home') },
+  { name: t.nav.trailersForSale, href: path(lang, 'trailersForSale') },
+];
+---
+<Base
+  lang={lang}
+  route={{ page: 'trailersForSale' }}
+  title={t.seo.trailersForSale.title}
+  description={t.seo.trailersForSale.description}
+  jsonld={[breadcrumbs(crumbs.map((x) => ({ name: x.name, url: x.href })))]}
+>
+  <PageIntro crumbLabel={t.nav.breadcrumb} crumbs={crumbs} h1={p.h1} lead={p.lead} photo={photo('trailers-sale')} photoAlt={t.photos.trailersSale}>
+    {!site.confirmations.trailerDealerStatus && showOpenPoints && <p set:html={rich(p.dealerMissing)} />}
+  </PageIntro>
+  <section class="section block tone" aria-labelledby="choose-h">
+    <div class="wrap">
+      <h2 id="choose-h" class="h-bar reveal">{d.chooseH2}</h2>
+      <InfoCards
+        items={[
+          { h: d.masseH, p: d.masse },
+          { h: d.freinH, p: d.frein },
+          { h: d.chargeH, p: d.charge },
+          { h: d.usageH, p: d.usage },
+        ]}
+      />
+    </div>
+  </section>
+  <section class="section block" aria-labelledby="adv-h">
+    <div class="wrap">
+      <h2 id="adv-h">{p.adviceH2}</h2>
+      <p class="prose-w">{p.advice}</p>
+      <p><a class="link" href={`${path(lang, 'rental')}#flotte`}>{p.adviceLink}</a></p>
+      <p class="prose-w t-small">{t.faq.items.permis.a}</p>
+    </div>
+  </section>
+  {
+    showOpenPoints && (
+      <section class="section block" aria-labelledby="stock-h">
+        <div class="wrap">
+          <h2 id="stock-h">{p.stockH2}</h2>
+          <p set:html={rich(p.stockMissing)} />
+        </div>
+      </section>
+    )
+  }
+  <section class="section block" aria-labelledby="form-h">
+    <div class="wrap">
+      <h2 id="form-h">{p.formH2}</h2>
+      <ContactForm lang={lang} t={t} preselect="remorque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .block { border-top: 1.5px solid var(--color-black); }
+  h2 { margin: 0 0 24px; }
+  .block p { margin: 0 0 16px; }
+</style>

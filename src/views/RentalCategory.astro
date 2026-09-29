@@ -1,0 +1,145 @@
+---
+/**
+ * Kategorieseite der Vermietung (D3). Nur gebaut, wenn die Flotte ein aktives Fahrzeug
+ * dieser Kategorie hat. Fahrzeuge mit Zeichnung, Daten, Preis; Führerscheinhinweis;
+ * Bedingungen; Formular mit vorgewählter Kategorie; Service-JSON-LD.
+ */
+import Base from '@/layouts/Base.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import RentalForm from '@/components/forms/RentalForm.astro';
+import { LoadDiagram } from '@/components/finder/LoadDiagram';
+import { fmt, rich, useT } from '@/i18n';
+import { path, pathFor, type Lang, type RentalCategorySlugKey } from '@/i18n/config';
+import { getFleet } from '@/lib/fleet.server';
+import { fleetView, maxDiagramTotal } from '@/lib/fleet-view';
+import { requestHref } from '@/lib/fleet';
+import { breadcrumbs, rentalService } from '@/lib/jsonld';
+import '@/components/finder/finder-static.css';
+import Photo from '@/components/Photo.astro';
+import { fleetPhoto } from '@/lib/photos';
+import { presentation, showOpenPoints } from '@/lib/site';
+
+interface Props {
+  lang: Lang;
+  category: RentalCategorySlugKey;
+}
+const { lang, category } = Astro.props;
+const t = useT(lang);
+const c = t.pages.category;
+const fleet = await getFleet(lang);
+const mine = fleet.filter((i) => i.category === category);
+const items = fleetView(mine, lang, t);
+const maxM = maxDiagramTotal(fleet);
+const route = { page: 'rentalCategory' as const, category };
+const url = pathFor(lang, route);
+const crumbs = [
+  { name: t.nav.home, href: path(lang, 'home') },
+  { name: t.nav.rental, href: path(lang, 'rental') },
+  { name: t.categories[category], href: url },
+];
+const jsonld = [
+  breadcrumbs(crumbs.map((x) => ({ name: x.name, url: x.href }))),
+  rentalService({ name: c.h1[category], serviceType: t.categories[category], url, items: mine }),
+];
+const s = t.finder;
+---
+<Base lang={lang} route={route} title={t.seo.category.title[category]} description={t.seo.category.description[category]} jsonld={jsonld}>
+  <div class="wrap">
+    <Breadcrumb label={t.nav.breadcrumb} items={crumbs} />
+    <header class="intro">
+      <h1>{c.h1[category]}</h1>
+      <p class="t-lead prose-w">{c.intro[category]}</p>
+    </header>
+
+    <section aria-labelledby="veh-h" class="block">
+      <h2 id="veh-h">{c.vehiclesH2}</h2>
+      <ul class="static-results">
+        {
+          items.map((i) => (
+            <li class="static-result">
+              {fleetPhoto(i.photo) && (
+                <Photo
+                  photo={fleetPhoto(i.photo)!}
+                  alt={fmt(t.photos.fleetAlt, { name: i.name })}
+                  sizes="(min-width: 1024px) 560px, 100vw"
+                  ratio="16 / 10"
+                  class="static-photo"
+                />
+              )}
+              <h3>{i.name}</h3>
+              {i.loadLengthM != null && i.loadWidthM != null && i.display.diagramAria && (
+                <figure class="result-diagram">
+                  <LoadDiagram
+                    lengthM={i.loadLengthM}
+                    widthM={i.loadWidthM}
+                    showPallets={i.showPallets}
+                    maxTotalM={maxM}
+                    lengthLabel={i.display.lengthLabel!}
+                    widthLabel={i.display.widthLabel!}
+                    ariaLabel={i.display.diagramAria}
+                  />
+                  {(i.display.palletsText || i.display.volume || i.display.temp) && (
+                    <figcaption class="t-small">
+                      {[i.display.palletsText, i.display.volume, i.display.temp].filter(Boolean).join(', ')}
+                    </figcaption>
+                  )}
+                </figure>
+              )}
+              <dl class="specs result-specs">
+                <div><dt>{s.specs.payload}</dt><dd>{i.display.payload}</dd></div>
+                <div><dt>{s.specs.mma}</dt><dd>{i.display.mma}</dd></div>
+                {i.display.empty && <div><dt>{s.specs.empty}</dt><dd>{i.display.empty}</dd></div>}
+                {i.display.surface && <div><dt>{s.specs.surface}</dt><dd>{i.display.surface}</dd></div>}
+                {i.display.height && <div><dt>{s.specs.height}</dt><dd>{i.display.height}</dd></div>}
+                <div><dt>{s.specs.braked}</dt><dd>{i.display.braked}</dd></div>
+                {i.display.socket && <div><dt>{s.specs.socket}</dt><dd>{i.display.socket}</dd></div>}
+                {i.display.power && <div><dt>{s.specs.power}</dt><dd>{i.display.power}</dd></div>}
+                {i.display.deposit && <div><dt>{s.specs.deposit}</dt><dd>{i.display.deposit}</dd></div>}
+              </dl>
+              <p class="verdict"><span>{category === 'camionnette' ? s.vanStatement : i.display.requiredText}</span></p>
+              {i.notes && <p>{i.notes}</p>}
+              {(i.display.price || !presentation) && (
+                <p class="result-price" set:html={i.display.price ? rich(i.display.price) : rich(s.priceMissing)} />
+              )}
+              <p>
+                <a class="btn btn-primary" href={requestHref(path(lang, 'rental'), i.id, null, null)}>
+                  {category === 'camionnette' ? s.requestVan : s.request}
+                </a>
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    {
+      category !== 'camionnette' && (
+        <section class="block" aria-labelledby="lic-h">
+          <h2 id="lic-h">{c.licenceH2}</h2>
+          <p class="prose-w">{t.faq.items.permis.a}</p>
+          <p class="prose-w">{t.faq.items.carte.a}</p>
+        </section>
+      )
+    }
+
+    <section class="block" aria-labelledby="cond-h">
+      {showOpenPoints && <h2 id="cond-h">{t.pages.rental.conditionsH2}</h2>}
+      {showOpenPoints && <p class="prose-w" set:html={rich(t.pages.rental.conditionsMissing)} />}
+      <p><a class="link" href={`${path(lang, 'rental')}#flotte`}>{c.backToFinder}</a></p>
+    </section>
+
+    <section class="block" aria-labelledby="form-h">
+      <h2 id="form-h">{t.pages.rental.formH2}</h2>
+      <RentalForm lang={lang} t={t} fleet={fleet} preselect={mine[0]?.id} />
+    </section>
+  </div>
+</Base>
+
+<style>
+  .intro { display: grid; gap: 16px; padding: 8px 0 40px; }
+  .intro h1, .intro p { margin: 0; }
+  .block { padding-block: 40px; border-top: 1.5px solid var(--color-black); }
+  .block h2 { margin: 0 0 24px; }
+  .block > p { margin: 0 0 16px; }
+  .static-result :global(.static-photo) { margin: -24px -24px 0; }
+</style>

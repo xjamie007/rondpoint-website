@@ -1,0 +1,102 @@
+---
+/**
+ * Listeneintrag (C6): ohne Kasten, Foto 4:3 randlos, Titel-Link spannt per ::after
+ * die ganze Fläche auf. Daten als <dl> in drei Spalten, nie „A · B · C".
+ */
+import { Picture } from 'astro:assets';
+import { fmt, type Dict } from '@/i18n';
+import { pathFor, type Lang } from '@/i18n/config';
+import { eur, km, monthYear } from '@/lib/format';
+import { carYear, isFresh, type CarView } from '@/lib/stock';
+
+interface Props {
+  car: CarView;
+  lang: Lang;
+  t: Dict;
+  headingLevel?: 'h2' | 'h3';
+  eager?: boolean;
+}
+const { car: v, lang, t, headingLevel = 'h3', eager = false } = Astro.props;
+const H = headingLevel;
+const href = pathFor(lang, { page: 'car', slug: v.slug });
+const photo = v.photos[0];
+const year = v.firstRegistration ? monthYear(v.firstRegistration) : carYear(v);
+const title = `${v.make} ${v.model}`;
+const fresh = isFresh(v);
+---
+<article
+  class="car-card"
+  data-car
+  data-make={v.make}
+  data-fuel={v.fuel}
+  data-gearbox={v.transmission}
+  data-price={v.priceEur}
+  data-condition={v.condition}
+  data-km={v.mileageKm}
+  data-first-seen={v.firstSeen}
+  data-id={v.stableId}
+  style={`view-transition-name: card-${v.stableId}`}
+>
+  <div class="photo">
+    {
+      photo ? (
+        <Picture
+          src={photo.url}
+          width={photo.width ?? 2048}
+          height={photo.height ?? 1536}
+          widths={[480, 800]}
+          sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
+          formats={['avif']}
+          fallbackFormat="webp"
+          alt={fmt(t.car.gallery.alt, { make: v.make, model: v.model, version: v.version, i: 1, n: v.photos.length })}
+          loading={eager ? 'eager' : 'lazy'}
+          fetchpriority={eager ? 'high' : 'auto'}
+          decoding="async"
+          style={`view-transition-name: car-${v.stableId}`}
+        />
+      ) : (
+        <div class="nophoto" style={`view-transition-name: car-${v.stableId}`}>
+          <span>{t.cars.noPhoto}</span>
+        </div>
+      )
+    }
+  </div>
+  <div class="head">
+    <H class="title">
+      <a href={href} style={`view-transition-name: car-title-${v.stableId}`}>{title}</a>
+    </H>
+    <p class="t-price price"><span class="sr-only">{t.cars.price}: </span>{eur(lang, v.priceEur)}</p>
+  </div>
+  {v.version && <p class="version t-muted">{v.version}</p>}
+  <dl class="specs specs-3">
+    <div><dt>{t.cars.year}</dt><dd>{year ?? '—'}</dd></div>
+    <div><dt>{t.cars.km}</dt><dd>{km(lang, v.mileageKm).replace(/\s?km$/, '')}</dd></div>
+    <div><dt>{t.cars.fuel}</dt><dd>{t.enums.fuel[v.fuel]}</dd></div>
+  </dl>
+  {
+    (fresh || v.condition === 'new') && (
+      <ul class="tags">
+        {v.condition === 'new' && <li class="tag">{t.cars.tagNew}</li>}
+        {fresh && <li class="tag">{t.cars.tagFresh}</li>}
+      </ul>
+    )
+  }
+</article>
+
+<style>
+  .car-card { position: relative; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .photo { aspect-ratio: 4 / 3; background: var(--color-verzinkt); overflow: hidden; margin-bottom: 8px; }
+  .photo :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .nophoto { width: 100%; height: 100%; display: grid; place-items: center; color: var(--color-black); }
+  .head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .title { margin: 0; font-size: clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem); font-stretch: 112%; font-weight: 700; line-height: 1.2; letter-spacing: 0; }
+  .title a { text-decoration: none; }
+  .title a::after { content: ''; position: absolute; inset: 0; }
+  .car-card:hover .title a { text-decoration: underline; text-decoration-thickness: 2px; }
+  .title a:focus-visible { outline: none; }
+  .car-card:has(.title a:focus-visible) { outline: 3px solid var(--color-black); outline-offset: 4px; }
+  .price { margin: 0; }
+  .version { margin: -4px 0 4px; font-size: 0.9375rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .specs-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0; }
+  .tags { display: flex; gap: 8px; list-style: none; margin: 4px 0 0; padding: 0; }
+</style>

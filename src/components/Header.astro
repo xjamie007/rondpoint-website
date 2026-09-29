@@ -1,0 +1,236 @@
+---
+/**
+ * Header (C3): nicht sticky. Desktop: Servicezeile (Telefon, Sprache) und Hauptzeile
+ * (Logo, Navigation). Mobil: Logo, Telefon-Button, „Menu". Ohne JavaScript steht die
+ * Navigation offen unter dem Header.
+ */
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import LangSwitch from './LangSwitch.astro';
+import { path, type Lang, type PageKey } from '@/i18n/config';
+import type { Dict } from '@/i18n';
+import { site, telHref } from '@/lib/site';
+
+interface Props {
+  lang: Lang;
+  t: Dict;
+  alternates: { lang: Lang; href: string }[];
+  current?: PageKey | 'car' | 'rentalCategory';
+}
+const { lang, t, alternates, current } = Astro.props;
+const active = current === 'car' ? 'cars' : current === 'rentalCategory' ? 'rental' : current;
+const items: { key: PageKey; label: string }[] = [
+  { key: 'rental', label: t.nav.rental },
+  { key: 'cars', label: t.nav.cars },
+  { key: 'workshop', label: t.nav.workshop },
+  { key: 'trailersForSale', label: t.nav.trailersForSale },
+  { key: 'garden', label: t.nav.garden },
+  { key: 'contact', label: t.nav.contact },
+];
+---
+<header class="site-header" data-site-header>
+  <div class="utility wrap">
+    <a class="tel" href={telHref}>{site.phone.display}</a>
+    <LangSwitch lang={lang} alternates={alternates} label={t.nav.langLabel} uid="header" />
+  </div>
+  <div class="bar wrap">
+    <Logo href={path(lang, 'home')} label={t.nav.logoAria} />
+    <nav class="dnav" aria-label={t.nav.main}>
+      <ul>
+        {
+          items.map((i) => (
+            <li>
+              <a href={path(lang, i.key)} aria-current={active === i.key ? 'page' : undefined}>
+                {i.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <div class="mobile-actions">
+      <a class="icon-btn" href={telHref} aria-label={t.nav.callAria}>
+        <Icon name="phone" />
+      </a>
+      <button
+        class="icon-btn menu-btn"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        data-menu-button
+        hidden
+      >
+        <Icon name="menu" class="i-open" />
+        <Icon name="close" class="i-close" />
+        <span class="menu-label" data-label-open={t.nav.menu} data-label-close={t.nav.close}>{t.nav.menu}</span>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-nav" class="mnav" data-menu-panel>
+    <nav class="wrap" aria-label={t.nav.main}>
+      <ul>
+        {
+          items.map((i) => (
+            <li>
+              <a href={path(lang, i.key)} aria-current={active === i.key ? 'page' : undefined}>
+                {i.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mnav-tel"><a href={telHref}>{site.phone.display}</a></p>
+      <LangSwitch lang={lang} alternates={alternates} label={t.nav.langLabel} uid="mobile" />
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header { position: relative; z-index: 20; background: var(--color-white); }
+  .utility { display: none; }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 64px;
+  }
+  .dnav { display: none; }
+  .mobile-actions { display: flex; align-items: center; gap: 8px; }
+  .icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 48px;
+    min-height: 48px;
+    padding: 0 12px;
+    border: 2px solid var(--color-black);
+    border-radius: var(--radius-edge);
+    background: var(--color-white);
+    color: var(--color-black);
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .menu-btn :global(.i-close) { display: none; }
+  /* Sehr schmale Handys (bis 359 px): nur Symbol, das Wort bleibt für Screenreader */
+  @media (max-width: 22.4375rem) {
+    .bar { gap: 8px; }
+    .menu-btn { padding: 0; }
+    .menu-label {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+  }
+  .menu-btn[aria-expanded='true'] :global(.i-close) { display: block; }
+  .menu-btn[aria-expanded='true'] :global(.i-open) { display: none; }
+
+  .mnav { border-top: 1.5px solid var(--color-black); background: var(--color-white); }
+  .mnav ul { list-style: none; margin: 0; padding: 8px 0; }
+  .mnav li a {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    font-family: var(--font-wide);
+    font-stretch: 112%;
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-decoration: none;
+  }
+  .mnav li a[aria-current='page'] { color: var(--color-orange-text); text-decoration: underline; text-decoration-thickness: 2px; }
+  .mnav-tel { margin: 8px 0 16px; }
+  .mnav-tel a { font-weight: 600; font-size: 1.125rem; }
+  .mnav :global(.langs) { padding-bottom: 24px; }
+
+  :global(html.js) .menu-btn { display: inline-flex; }
+  :global(html.js) .mnav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    border-bottom: 1.5px solid var(--color-black);
+    transform: translateY(-8px);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      transform var(--dur-2) var(--ease-out),
+      opacity var(--dur-2) var(--ease-out),
+      visibility 0s linear var(--dur-2);
+  }
+  :global(html.js) .mnav.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    transition:
+      transform var(--dur-2) var(--ease-out),
+      opacity var(--dur-2) var(--ease-out),
+      visibility 0s;
+  }
+
+  @media (min-width: 64rem) {
+    .utility {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 24px;
+      min-height: 44px;
+      border-bottom: 1.5px solid var(--color-black);
+    }
+    .tel { font-weight: 600; }
+    .bar { min-height: 88px; }
+    .dnav { display: block; }
+    .dnav ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
+    .dnav a {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      min-height: 48px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    /* Unterstreichung wächst von links (C7.8) */
+    .dnav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 10px;
+      height: 3px;
+      background: var(--color-orange);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--dur-2) var(--ease-out);
+    }
+    .dnav a:hover::after, .dnav a[aria-current='page']::after { transform: scaleX(1); }
+    .dnav a[aria-current='page'] { color: var(--color-orange-text); }
+    .mobile-actions, .mnav, :global(html.js) .mnav { display: none; }
+  }
+</style>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('[data-menu-button]');
+  const panel = document.querySelector<HTMLElement>('[data-menu-panel]');
+  if (btn && panel) {
+    btn.hidden = false;
+    const label = btn.querySelector<HTMLElement>('.menu-label');
+    const setOpen = (open: boolean, returnFocus = false) => {
+      btn.setAttribute('aria-expanded', String(open));
+      panel.classList.toggle('open', open);
+      if (label) label.textContent = open ? label.dataset.labelClose! : label.dataset.labelOpen!;
+      if (open) panel.querySelector<HTMLElement>('a')?.focus();
+      else if (returnFocus) btn.focus();
+    };
+    btn.addEventListener('click', () => setOpen(btn.getAttribute('aria-expanded') !== 'true'));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') setOpen(false, true);
+    });
+    document.addEventListener('click', (e) => {
+      if (btn.getAttribute('aria-expanded') !== 'true') return;
+      const target = e.target as Node;
+      if (!panel.contains(target) && !btn.contains(target)) setOpen(false);
+    });
+    matchMedia('(min-width: 64rem)').addEventListener('change', (e) => {
+      if (e.matches) setOpen(false);
+    });
+  }
+</script>

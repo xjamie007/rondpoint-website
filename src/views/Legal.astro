@@ -1,0 +1,102 @@
+---
+/** Impressum (D3) mit den Daten aus B1. Fehlende Felder bleiben sichtbar [FEHLT]. Die Firma besteht seit 2025. */
+import Base from '@/layouts/Base.astro';
+import PageIntro from '@/components/PageIntro.astro';
+import { rich, useT } from '@/i18n';
+import { path, type Lang } from '@/i18n/config';
+import { dateLong } from '@/lib/format';
+import { breadcrumbs } from '@/lib/jsonld';
+import { site } from '@/lib/site';
+import { demoCredits } from '@/lib/photos';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useT(lang);
+const l = t.legal;
+const crumbs = [
+  { name: t.nav.home, href: path(lang, 'home') },
+  { name: l.h1, href: path(lang, 'legal') },
+];
+const credits = demoCredits();
+const rows: [string, string][] = [
+  [l.company, site.legalName],
+  [l.legalForm, site.legalForm],
+  [l.address, `${site.address.street}, ${site.address.postalCode} ${site.address.locality}, Luxembourg`],
+  [l.phone, site.phone.display],
+  [l.email, site.email],
+  [l.rcs, `${site.rcsCourt} ${site.rcs}`],
+  [l.vat, site.vat],
+  [l.registered, dateLong(lang, `${site.registered}T12:00:00Z`)],
+  [l.manager, site.manager.confirmed ? site.manager.value! : l.managerMissing],
+  [l.permit, site.businessPermit.value ?? l.permitMissing],
+  [l.capital, site.shareCapital.value ?? l.capitalMissing],
+];
+---
+<Base
+  lang={lang}
+  route={{ page: 'legal' }}
+  title={t.seo.legal.title}
+  description={t.seo.legal.description}
+  jsonld={[breadcrumbs(crumbs.map((x) => ({ name: x.name, url: x.href })))]}
+>
+  <PageIntro crumbLabel={t.nav.breadcrumb} crumbs={crumbs} h1={l.h1} />
+  <div class="wrap legal">
+    <section aria-labelledby="pub-h">
+      <h2 id="pub-h">{l.publisherH2}</h2>
+      <dl class="specs rows">
+        {
+          rows.map(([k, v]) => (
+            <div>
+              <dt>{k}</dt>
+              <dd set:html={rich(v, {}, { keepOpenPoints: true })} />
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+    <section aria-labelledby="host-h">
+      <h2 id="host-h">{l.hostingH2}</h2>
+      <p>{l.hosting}</p>
+    </section>
+    <section aria-labelledby="content-h">
+      <h2 id="content-h">{l.contentH2}</h2>
+      <p>{l.content}</p>
+    </section>
+    <section aria-labelledby="photos-h">
+      <h2 id="photos-h">{l.photosH2}</h2>
+      <p>{l.photos}</p>
+    </section>
+    {
+      credits.length > 0 && (
+        <section aria-labelledby="credits-h">
+          <h2 id="credits-h">{t.photos.creditsH2}</h2>
+          <p>{t.photos.credits}</p>
+          <ul class="credits">
+            {credits.map((c) => (
+              <li>
+                <a href={c.page} rel="noopener">{c.title}</a>, {c.author},{' '}
+                <a href={c.licenseUrl} rel="noopener license">{c.license}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+    <section aria-labelledby="font-h">
+      <h2 id="font-h">{l.fontH2}</h2>
+      <p>{l.font}</p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .legal { display: grid; gap: 48px; padding-bottom: 96px; }
+  h2 { font-size: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem); margin: 0 0 16px; }
+  p { margin: 0; max-width: 66ch; }
+  .credits { margin: 12px 0 0; padding-left: 1.2em; max-width: 66ch; }
+  .credits li { margin-bottom: 6px; overflow-wrap: anywhere; }
+  .rows { grid-template-columns: 1fr; gap: 16px; max-width: 52rem; }
+  @media (min-width: 48rem) { .rows > div { display: grid; grid-template-columns: 16rem 1fr; gap: 16px; } }
+</style>

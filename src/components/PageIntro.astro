@@ -1,0 +1,87 @@
+---
+/** Kopf einer Unterseite: Breadcrumb, h1, Einleitung, optional Foto rechts bis an den Rand. */
+import Breadcrumb from './Breadcrumb.astro';
+import Photo from './Photo.astro';
+import { rich } from '@/i18n';
+import type { Photo as PhotoData } from '@/lib/photos';
+
+interface Props {
+  crumbLabel: string;
+  crumbs: { name: string; href: string }[];
+  h1: string;
+  lead?: string;
+  photo?: PhotoData | null;
+  photoAlt?: string;
+}
+const { crumbLabel, crumbs, h1, lead, photo, photoAlt = '' } = Astro.props;
+---
+<div class:list={['page-intro', photo && 'with-photo']}>
+  <div class="wrap">
+    <Breadcrumb label={crumbLabel} items={crumbs} />
+    <div class="grid">
+      <header class="intro">
+        <h1 class="intro-h1">{h1}</h1>
+        {lead && <p class="t-lead prose-w intro-rise" set:html={rich(lead)} />}
+        <div class="intro-rise"><slot /></div>
+      </header>
+      {
+        photo && (
+          <div class="media">
+            <Photo photo={photo} alt={photoAlt} sizes="(min-width: 1024px) 45vw, 100vw" ratio="16 / 10" priority curtain accent />
+          </div>
+        )
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  .page-intro {
+    position: relative;
+    isolation: isolate;
+    overflow-x: clip;
+    background:
+      radial-gradient(40rem 22rem at 0% 0%, rgb(233 93 12 / 0.08), transparent 70%),
+      linear-gradient(to bottom, var(--color-white), var(--color-paper));
+  }
+  .page-intro::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: -200px;
+    left: -240px;
+    width: 560px;
+    height: 560px;
+    border-radius: 50%;
+    border: 64px solid rgb(233 93 12 / 0.055);
+    pointer-events: none;
+  }
+  .page-intro::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background-image: radial-gradient(rgb(0 0 0 / 0.07) 1px, transparent 1.4px);
+    background-size: 22px 22px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 35%, #000);
+    mask-image: linear-gradient(to bottom, transparent 35%, #000);
+    pointer-events: none;
+  }
+  .grid { display: grid; gap: 32px; padding: 8px 0 48px; }
+  .intro { display: grid; gap: 16px; align-content: start; }
+  .intro h1 { margin: 0; max-width: 20ch; }
+  .intro :global(p) { margin: 0; }
+  .intro-rise:empty { display: none; }
+  @media (max-width: 63.99rem) {
+    .media { margin-inline: calc(-1 * var(--gutter)); }
+  }
+  @media (min-width: 64rem) {
+    .with-photo .grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; align-items: center; padding-bottom: 72px; }
+    .media { margin-right: calc(-1 * (var(--gutter) + max(0px, (100vw - var(--container) - 2 * var(--gutter)) / 2))); }
+  }
+  @keyframes intro-rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: no-preference) {
+    /* h1 bleibt ruhig: sie ist oft das größte Element (LCP) */
+    .intro-rise { animation: intro-rise 420ms var(--ease-out) 160ms both; }
+  }
+</style>

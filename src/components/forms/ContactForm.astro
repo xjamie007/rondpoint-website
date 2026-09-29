@@ -1,0 +1,48 @@
+---
+/** F4 Allgemein (type=contact). */
+import FormShell from './FormShell.astro';
+import type { Dict } from '@/i18n';
+import type { Lang } from '@/i18n/config';
+
+interface Props {
+  lang: Lang;
+  t: Dict;
+  preselect?: 'question' | 'remorque' | 'depot' | 'autre';
+  id?: string;
+}
+const { lang, t, preselect, id = 'message' } = Astro.props;
+const f = t.forms;
+const c = f.contact;
+const subjects = [
+  ['question', c.subjectQuestion],
+  ['remorque', c.subjectTrailer],
+  ['depot', c.subjectDepot],
+  ['autre', c.subjectOther],
+] as const;
+---
+<FormShell type="contact" lang={lang} t={t} id={id} submit={c.submit}>
+  <fieldset>
+    <legend>{c.subject}</legend>
+    <div class="radios">
+      {
+        subjects.map(([value, label], i) => (
+          <label class="radio">
+            <input
+              type="radio"
+              name="subject"
+              value={value}
+              checked={preselect === value}
+              required={i === 0}
+              data-msg-required={f.errors.subject}
+            />
+            {label}
+          </label>
+        ))
+      }
+    </div>
+  </fieldset>
+  <div class="fg">
+    <label class="field-label" for={`${id}-message`}>{f.message}</label>
+    <textarea class="field" id={`${id}-message`} name="message" rows="5" required maxlength="3000" data-msg-required={f.errors.message}></textarea>
+  </div>
+</FormShell>

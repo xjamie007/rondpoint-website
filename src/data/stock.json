@@ -1,0 +1,2422 @@
+{
+  "vehicles": [
+    {
+      "stableId": "r122845",
+      "source": "luxauto",
+      "sourceId": "1809205",
+      "sourceUrl": "https://www.luxauto.lu/fr/voiture/dfsk-k01-essence-2026-1809205",
+      "make": "DFSK",
+      "model": "K01",
+      "version": "K01H ALU TRI BENNE BASCULANTE GRILLAGE",
+      "condition": "new",
+      "firstRegistration": null,
+      "modelYear": 2026,
+      "mileageKm": 10,
+      "fuel": "petrol",
+      "transmission": "manual",
+      "powerHp": 88,
+      "powerKw": 65,
+      "displacementCc": 1239,
+      "body": "pickup",
+      "seats": 2,
+      "colorExterior": "Blanc",
+      "colorInterior": "Noir",
+      "co2Gkm": null,
+      "wltpConsumption": null,
+      "euroNorm": null,
+      "priceEur": 13900,
+      "vatRecoverable": false,
+      "options": [
+        "ABS",
+        "Accoudoir central avant",
+        "Airbags",
+        "Alarme",
+        "Attelage remorque",
+        "Climatisation",
+        "Contrôle de traction",
+        "Direction assistée",
+        "Feux de jour",
+        "Garantie",
+        "Hayon arrière électrique",
+        "Pare-brise chauffant",
+        "Phares antibrouillard",
+        "Radio",
+        "Verrouillage centralisé",
+        "Vitres électriques",
+        "Xénon"
+      ],
+      "description": [
+        {
+          "kind": "p",
+          "text": "Options complémentaires / Additional options :"
+        },
+        {
+          "kind": "ul",
+          "items": [
+            "Garantie 12 mois",
+            "Isofix - Siège passager",
+            "Kit de réparation de pneus",
+            "Livré avec pneus été"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368829_yVEmNNdM7unJpfZi.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368830_MkMMkjy1ggnrtrLa.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368830_kcDPr3WmsZHo3RQn.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368830_gvmyYcJU6XCgAzq1.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368830_UylzJtbu5nKCg9Li.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368831_ejvfPWLBSRJV6cJI.jpg",
+          "width": 2048,
+          "height": 1536
+        }
+      ],
+      "garageRef": "122845",
+      "slug": "dfsk-k01-2026-r122845",
+      "firstSeen": "2026-09-28",
+      "lastSeen": "2026-09-28",
+      "lastChanged": "2026-09-28",
+      "status": "active",
+      "unavailableSince": null
+    },
+    {
+      "stableId": "r132129",
+      "source": "luxauto",
+      "sourceId": "1869981",
+      "sourceUrl": "https://www.luxauto.lu/fr/voiture/vw-t-roc-essence-2026-1869981",
+      "make": "VW",
+      "model": "T-Roc",
+      "version": "R-Line 2026 ACC+CAMERA+EHK+SHZ+18”LM+LED PLUS",
+      "condition": "new",
+      "firstRegistration": null,
+      "modelYear": 2026,
+      "mileageKm": 2,
+      "fuel": "petrol",
+      "transmission": "automatic",
+      "powerHp": 150,
+      "powerKw": 110,
+      "displacementCc": 1498,
+      "body": "city",
+      "seats": 5,
+      "colorExterior": "Blanc",
+      "colorInterior": "Noir",
+      "co2Gkm": null,
+      "wltpConsumption": null,
+      "euroNorm": null,
+      "priceEur": 42900,
+      "vatRecoverable": true,
+      "options": [
+        "ABS",
+        "Accès sans clé",
+        "Accoudoir central avant",
+        "Airbags",
+        "Alarme",
+        "Anti-carjacking",
+        "App Connect",
+        "Assistant de démarrage en côte",
+        "Bluetooth",
+        "Caméra 360°",
+        "Caméra de stationnement",
+        "Capteur de lumière",
+        "Capteur de pluie",
+        "Capteur de stationnement arrière",
+        "Capteur de stationnement avant",
+        "Capteurs d'angle mort",
+        "Capteurs de stationnement",
+        "Conduite semi-autonome",
+        "Contrôle de traction",
+        "Direction assistée",
+        "Feux de jour",
+        "Garantie",
+        "Hayon arrière électrique",
+        "Jantes alliage",
+        "Kit mains libres",
+        "Navigation",
+        "Ordinateur de bord",
+        "Pare-brise chauffant",
+        "Peinture métallisée",
+        "Phares antibrouillard",
+        "Phares directionnels",
+        "Phares LED",
+        "Radio",
+        "Reconnaissance des panneaux routiers",
+        "Régulateur de vitesse",
+        "Régulateur de vitesse adaptatif",
+        "Rétroviseurs électriques",
+        "Sièges chauffants",
+        "Start/Stop",
+        "Tableau de bord numérique",
+        "USB",
+        "Verrouillage centralisé",
+        "Vitres arrière surteintées",
+        "Vitres électriques",
+        "Vitres teintées",
+        "Volant chauffant",
+        "Volant en cuir",
+        "Volant multifonctions",
+        "WiFi"
+      ],
+      "description": [
+        {
+          "kind": "p",
+          "text": "Options complémentaires / Additional options :"
+        },
+        {
+          "kind": "ul",
+          "items": [
+            "Alerte de franchissement involontaire de lignes",
+            "Ambiance lumineuse d'intérieur",
+            "Assistant au freinage d'urgence",
+            "Assistant de vision nocturne",
+            "Assistant feux de route",
+            "Chargeur téléphone sans fil",
+            "Commande vocale",
+            "Feux de route non éblouissants",
+            "Frein de stationnement électronique",
+            "Garantie 4 ans",
+            "Isofix - Siège passager",
+            "Jantes alliage / alu - 19\"",
+            "Lecteur MP3",
+            "Limiteur de vitesse",
+            "Livré avec pneus été",
+            "Pack sport",
+            "Palettes de changement de vitesses",
+            "Phares de jour LED",
+            "Radio numérique (DAB)",
+            "Roue de secours",
+            "Rétroviseur intérieur anti-éblouissement auto.",
+            "Rétroviseurs latéraux rabattables",
+            "Streaming audio intégré",
+            "Système d'appel d'urgence",
+            "Système d'avertissement de distance",
+            "Système de contrôle de la pression pneus",
+            "Système de détection de la somnolence",
+            "Verrouillage centralisé avec télécommande",
+            "Écran tactile"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232057_nPL8VSXY9aPpPlyp.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232057_nKZQktpeT87l3x5E.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232058_lGGIPNUwr2e2vsWF.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232058_wY3HDxPpFjc912B3.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232058_pdJrmQk8qmFAzKam.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232058_c7nHGe9xPX4gFSTW.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232059_XPBOw5vccxvKbMys.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232059_HXW7EDbgKALZCMYE.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232059_WQERIxo42sKzJvLX.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232060_I0VNhhewazLF9Zfm.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232060_j4uqI9KLRmkoLdWB.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232060_Rw2mohqOhq1qe8pj.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232061_zABnRLVC1Z7kcucd.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232061_0pUooSi7KXIe30xD.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232061_v5Z4dlUIIYt8RbNO.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232063_Nc8XS4lUWw0KNewt.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232063_CahnPATsmNICqWed.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232063_DJ2F9ft6S5Q4vcdM.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232064_fq4pZBV18Ky8iKB1.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232064_GhC5In2Vd1MIpyXA.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232064_q199W7rPZjyGCTHq.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232064_iuQkdJX5CsTJubG9.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232065_xbjWiQI91kBUyOeG.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232065_U9ncDvn3qz5YK153.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232065_KxRbVoCkSSgwVx2C.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232066_fjDO3lP5BNVyR6TH.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232066_Ru64eSYpB2GvEGvS.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232067_9Deb1L5cBLGR3QGp.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232067_Ea1ZqeCbAtjO7c9y.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788232067_z1GDH8lE4NsmTEGq.jpg",
+          "width": 2048,
+          "height": 1536
+        }
+      ],
+      "garageRef": "132129",
+      "slug": "vw-t-roc-2026-r132129",
+      "firstSeen": "2026-09-28",
+      "lastSeen": "2026-09-28",
+      "lastChanged": "2026-09-28",
+      "status": "active",
+      "unavailableSince": null
+    },
+    {
+      "stableId": "r139035",
+      "source": "luxauto",
+      "sourceId": "1916354",
+      "sourceUrl": "https://www.luxauto.lu/fr/voiture/cupra-terramar-essence-2026-1916354",
+      "make": "Cupra",
+      "model": "Terramar",
+      "version": "VZ 2.0 TSI DSG 5J Gar. Sennheiser AHK Pano eSitze",
+      "condition": "new",
+      "firstRegistration": null,
+      "modelYear": 2026,
+      "mileageKm": 10,
+      "fuel": "petrol",
+      "transmission": "automatic",
+      "powerHp": 265,
+      "powerKw": 195,
+      "displacementCc": 1984,
+      "body": "suv",
+      "seats": 5,
+      "colorExterior": "Noir",
+      "colorInterior": "Noir",
+      "co2Gkm": null,
+      "wltpConsumption": null,
+      "euroNorm": null,
+      "priceEur": 42870,
+      "vatRecoverable": true,
+      "options": [
+        "4 roues motrices",
+        "ABS",
+        "Accès sans clé",
+        "Accoudoir central avant",
+        "Airbags",
+        "Alarme",
+        "Anti-carjacking",
+        "App Connect",
+        "Assistant de démarrage en côte",
+        "Attelage remorque",
+        "Bluetooth",
+        "Caméra de stationnement",
+        "Capteur de lumière",
+        "Capteur de pluie",
+        "Capteur de stationnement arrière",
+        "Capteur de stationnement avant",
+        "Capteurs d'angle mort",
+        "Climatisation",
+        "Conduite semi-autonome",
+        "Contrôle de traction",
+        "Direction assistée",
+        "Feux de jour",
+        "Filtre à particules",
+        "Hayon arrière électrique",
+        "ISOFIX",
+        "Jantes alliage",
+        "Kit mains libres",
+        "Navigation",
+        "Ordinateur de bord",
+        "Pare-brise chauffant",
+        "Peinture métallisée",
+        "Phares antibrouillard",
+        "Phares directionnels",
+        "Phares LED",
+        "Porte-bagages",
+        "Radio",
+        "Reconnaissance des panneaux routiers",
+        "Régulateur de vitesse",
+        "Régulateur de vitesse adaptatif",
+        "Rétroviseurs électriques",
+        "Sièges chauffants",
+        "Sièges électriques",
+        "Start/Stop",
+        "Suspension sport",
+        "Système audio",
+        "Tableau de bord numérique",
+        "Toit ouvrant électrique",
+        "Toit panoramique",
+        "USB",
+        "Verrouillage centralisé",
+        "Vitres arrière surteintées",
+        "Vitres électriques",
+        "Vitres teintées",
+        "Volant chauffant",
+        "Volant en cuir",
+        "Volant multifonctions",
+        "WiFi"
+      ],
+      "description": [
+        {
+          "kind": "p",
+          "text": "CUPRA TERRAMAR VZ 2.0 TSI 265 CH 4DRIVE DSG"
+        },
+        {
+          "kind": "p",
+          "text": "Véhicule avec garantie de 5 ans ou 100 000 km."
+        },
+        {
+          "kind": "p",
+          "text": "ÉQUIPEMENTS PRINCIPAUX"
+        },
+        {
+          "kind": "ul",
+          "items": [
+            "Boîte de vitesses automatique DSG",
+            "Transmission intégrale 4Drive",
+            "Suspension adaptative",
+            "Jantes en alliage 20 pouces noir/argent",
+            "Attelage escamotable avec déverrouillage électrique",
+            "Toit ouvrant panoramique en verre avec store électrique",
+            "Vitres arrière surteintées",
+            "Barres de toit noires",
+            "Antenne de toit noire type « aileron de requin »",
+            "Becquet arrière avec troisième feu stop"
+          ]
+        },
+        {
+          "kind": "p",
+          "text": "ÉCLAIRAGE ET STATIONNEMENT"
+        },
+        {
+          "kind": "ul",
+          "items": [
+            "Phares Matrix LED",
+            "Feux de jour, antibrouillards et feux arrière LED",
+            "Clignotants arrière dynamiques",
+            "Fonction d'éclairage Coming Home & Leaving Home",
+            "Radars de stationnement avant et arrière",
+            "Caméra de recul",
+            "Capteurs de luminosité et de pluie"
+          ]
+        },
+        {
+          "kind": "p",
+          "text": "SÉCURITÉ ET AIDES À LA CONDUITE"
+        },
+        {
+          "kind": "ul",
+          "items": [
+            "Régulateur de vitesse adaptatif",
+            "Limiteur de vitesse",
+            "Sélecteur de modes de conduite",
+            "Assistant de freinage d'urgence",
+            "Assistant de maintien dans la voie",
+            "Reconnaissance des panneaux de signalisation",
+            "Détection de fatigue et assistant d'attention",
+            "ABS, ASR, EBD et ESP",
+            "Surveillance de la pression des pneus",
+            "Système d'appel d'urgence eCall",
+            "Frein de stationnement électrique avec fonction Auto Hold"
+          ]
+        },
+        {
+          "kind": "p",
+          "text": "CONFORT ET INTÉRIEUR"
+        },
+        {
+          "kind": "ul",
+          "items": [
+            "Climatisation automatique à 3 zones",
+            "Sellerie noire en cuir partiel",
+            "Sièges sport CUPRA à l'avant",
+            "Sièges avant chauffants et réglables électriquement",
+            "Siège conducteur avec fonction mémoire et soutien lombaire",
+            "Volant sport multifonction CUPRA en cuir, chauffant et réglable en hauteur et en profondeur",
+            "Palettes de changement de vitesse au volant",
+            "Éclairage d'ambiance intelligent Smart Ambient Light",
+            "Ciel de toit noir",
+            "Seuils de porte CUPRA éclairés",
+            "Pédalier en aluminium",
+            "Rétroviseur intérieur à atténuation automatique",
+            "Rétroviseurs extérieurs chauffants, rabattables électriquement et avec fonction mémoire",
+            "Hayon électrique à ouverture mains libres",
+            "Accès et démarrage sans clé Smart Key",
+            "Bouton de démarrage du moteur",
+            "Système Start & Stop",
+            "Vitres électriques avant et arrière",
+            "Banquette arrière rabattable et fractionnable",
+            "Fixations ISOFIX à l'arrière et sur le siège passager avant",
+            "Accoudoirs centraux avant et arrière avec porte-gobelets",
+            "Éclairage intérieur et liseuses LED avant et arrière",
+            "Pare-soleil avec miroirs de courtoisie éclairés",
+            "Cache-bagages et éclairage du coffre"
+          ]
+        },
+        {
+          "kind": "p",
+          "text": "MULTIMÉDIA"
+        },
+        {
+          "kind": "ul",
+          "items": [
+            "Système audio Sennheiser",
+            "Écran tactile de 12,9 pouces avec navigation",
+            "Digital Cockpit",
+            "Radio, MP3 et DAB",
+            "Apple CarPlay et Android Auto",
+            "Connexion Bluetooth avec kit mains libres",
+            "Commande vocale",
+            "Recharge sans fil pour smartphone",
+            "Ports USB-C à l'avant et à l'arrière"
+          ]
+        },
+        {
+          "kind": "p",
+          "text": "FINANCEMENT ET DISPONIBILITÉ"
+        },
+        {
+          "kind": "p",
+          "text": "Financement possible directement sur place, avec une simulation personnalisée selon vos besoins et sous réserve d'acceptation du dossier."
+        },
+        {
+          "kind": "p",
+          "text": "Différentes couleurs et plusieurs modèles sont disponibles sur demande. Contactez-nous pour connaître les véhicules actuellement disponibles et recevoir votre offre personnalisée."
+        },
+        {
+          "kind": "p",
+          "text": "GARAGE UM ROND POINT S.À R.L."
+        },
+        {
+          "kind": "p",
+          "text": "1, rue du Viaduc"
+        },
+        {
+          "kind": "p",
+          "text": "L-9147 Erpeldange-sur-Sûre"
+        },
+        {
+          "kind": "p",
+          "text": "Téléphone : +352 81 05 41"
+        },
+        {
+          "kind": "p",
+          "text": "WhatsApp : +352 621 373 272"
+        },
+        {
+          "kind": "p",
+          "text": "Options complémentaires / Additional options :"
+        },
+        {
+          "kind": "ul",
+          "items": [
+            "Alerte de franchissement involontaire de lignes",
+            "Ambiance lumineuse d'intérieur",
+            "Assistant au freinage d'urgence",
+            "Assistant de vision nocturne",
+            "Assistant feux de route",
+            "Attache remorque - Pivotante",
+            "Climatisation automatique - 3 zones",
+            "Commande vocale",
+            "Contrôle dynamique du châssis",
+            "Feux de route non éblouissants",
+            "Frein de stationnement électronique",
+            "Isofix - Siège passager",
+            "Jantes alliage / alu - 20\"",
+            "Kit de réparation de pneus",
+            "Lecteur MP3",
+            "Limiteur de vitesse",
+            "Livré avec pneus été",
+            "Pack hiver",
+            "Pack sport",
+            "Palettes de changement de vitesses",
+            "Phares de jour LED",
+            "Radio numérique (DAB)",
+            "Rétroviseur intérieur anti-éblouissement auto.",
+            "Rétroviseurs latéraux rabattables",
+            "Siège à réglage lombaire",
+            "Sièges chauffants à l'arrière",
+            "Sièges sport",
+            "Sièges à mémoire de position",
+            "Sièges électriques à l'arrière",
+            "Streaming audio intégré",
+            "Système d'appel d'urgence",
+            "Système d'avertissement de distance",
+            "Système de contrôle de la pression pneus",
+            "Système de détection de la somnolence",
+            "Séparateur de coffre",
+            "Verrouillage centralisé avec télécommande",
+            "Écran tactile"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368817_4dgDbkkOl5Hl2FWv.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368818_rGdemRr1RrLmAOiD.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368818_ZUWjG0QylX7142lw.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368818_3XBJvPRhBRa2teY0.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368818_uSfNal92RalzG79f.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368819_VFfXY0Z9a0Wu0Lzb.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368819_j3OpGl264KSA6nHU.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368819_MN6HxqvBW7gkmOoc.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368819_8JRObGMXQnQQPWkJ.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368820_582cbFgAKev9c0HB.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368820_I4eq3S31t0hCywEJ.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368820_0KyHb29jdbhBYEvR.jpg",
+          "width": 2048,
+          "height": 1536
+        }
+      ],
+      "garageRef": "139035",
+      "slug": "cupra-terramar-2026-r139035",
+      "firstSeen": "2026-09-28",
+      "lastSeen": "2026-09-28",
+      "lastChanged": "2026-09-28",
+      "status": "active",
+      "unavailableSince": null
+    },
+    {
+      "stableId": "r139047",
+      "source": "luxauto",
+      "sourceId": "1916353",
+      "sourceUrl": "https://www.luxauto.lu/fr/voiture/vw-touareg-diesel-2026-1916353",
+      "make": "VW",
+      "model": "Touareg",
+      "version": "3.0 TDI 210 kW 4Motion R-Line Final Edition",
+      "condition": "new",
+      "firstRegistration": null,
+      "modelYear": 2026,
+      "mileageKm": 10,
+      "fuel": "diesel",
+      "transmission": "automatic",
+      "powerHp": 286,
+      "powerKw": 210,
+      "displacementCc": 2967,
+      "body": "suv",
+      "seats": 5,
+      "colorExterior": "Beige",
+      "colorInterior": "Noir",
+      "co2Gkm": null,
+      "wltpConsumption": null,
+      "euroNorm": null,
+      "priceEur": 81970,
+      "vatRecoverable": true,
+      "options": [
+        "4 roues motrices",
+        "ABS",
+        "Accès sans clé",
+        "Accoudoir central avant",
+        "Affichage tête haute",
+        "Airbags",
+        "Alarme",
+        "Anti-carjacking",
+        "App Connect",
+        "Assistant de démarrage en côte",
+        "Attelage remorque",
+        "Bluetooth",
+        "Caméra 360°",
+        "Caméra de stationnement",
+        "Capteur de lumière",
+        "Capteur de pluie",
+        "Capteur de stationnement arrière",
+        "Capteur de stationnement avant",
+        "Capteurs d'angle mort",
+        "Capteurs de stationnement",
+        "Chauffage auxiliaire",
+        "Climatisation",
+        "Contrôle de traction",
+        "Direction assistée",
+        "Feux de jour",
+        "Filtre à particules",
+        "Garantie",
+        "Hayon arrière électrique",
+        "ISOFIX",
+        "Jantes alliage",
+        "Kit mains libres",
+        "Navigation",
+        "Non-fumeur",
+        "Ordinateur de bord",
+        "Pare-brise chauffant",
+        "Peinture métallisée",
+        "Phares antibrouillard",
+        "Phares directionnels",
+        "Phares LED",
+        "Porte-bagages",
+        "Radio",
+        "Reconnaissance des panneaux routiers",
+        "Régulateur de vitesse",
+        "Régulateur de vitesse adaptatif",
+        "Rétroviseurs électriques",
+        "Sièges chauffants",
+        "Sièges électriques",
+        "Sièges en cuir",
+        "Sièges ventilés",
+        "Start/Stop",
+        "Suspension pneumatique",
+        "Tableau de bord numérique",
+        "Toit ouvrant électrique",
+        "Toit panoramique",
+        "TV",
+        "USB",
+        "Verrouillage centralisé",
+        "Vitres arrière surteintées",
+        "Vitres électriques",
+        "Vitres teintées",
+        "Volant chauffant",
+        "Volant en cuir",
+        "Volant multifonctions",
+        "WiFi"
+      ],
+      "description": [
+        {
+          "kind": "p",
+          "text": "VÉHICULE NEUF À VENDRE"
+        },
+        {
+          "kind": "p",
+          "text": "VOLKSWAGEN TOUAREG 3.0 V6 TDI 4MOTION R-LINE FINAL EDITION"
+        },
+        {
+          "kind": "p",
+          "text": "ÉQUIPEMENTS PRINCIPAUX"
+        },
+        {
+          "kind": "ul",
+          "items": [
+            "Jantes en alliage Braga 20 pouces gris/argent",
+            "Pack R-Line / Pack Sport",
+            "Transmission intégrale 4MOTION",
+            "Direction intégrale aux quatre roues",
+            "Suspension pneumatique avec correcteur d'assiette",
+            "Attache-remorque électrique escamotable",
+            "Assistant de manœuvre avec remorque",
+            "Toit panoramique électrique avec store électrique",
+            "Hayon arrière électrique",
+            "Réservoir de 90 litres",
+            "Vitres arrière surteintées",
+            "Barres de toit",
+            "Phares Matrix LED",
+            "Feux de jour et feux arrière LED",
+            "Assistant de feux de route",
+            "Phares directionnels dynamiques",
+            "Caméra 360°",
+            "Caméra de recul",
+            "Capteurs de stationnement avant et arrière",
+            "Système de stationnement automatique",
+            "Régulateur de vitesse adaptatif",
+            "Limiteur de vitesse",
+            "Assistant de maintien dans la voie",
+            "Assistant de changement de voie",
+            "Détecteur d'angle mort",
+            "Reconnaissance des panneaux de signalisation",
+            "Freinage d'urgence avec détection des piétons",
+            "Détecteur de fatigue",
+            "Sélecteur de modes de conduite",
+            "Climatisation automatique à 4 zones",
+            "Chauffage stationnaire",
+            "Accès et démarrage sans clé",
+            "Volant multifonction en cuir chauffant avec palettes",
+            "Sièges avant électriques",
+            "Sièges avant et arrière chauffants",
+            "Sièges avant ventilés",
+            "Siège conducteur avec fonction mémoire",
+            "Sellerie en cuir noir",
+            "Éclairage d'ambiance",
+            "Rétroviseurs électriques, chauffants et rabattables",
+            "Rétroviseur intérieur anti-éblouissement automatique",
+            "Virtual Cockpit numérique 12 pouces",
+            "Affichage tête haute Head-Up Display",
+            "Navigation Discovery Pro Max avec écran tactile 15 pouces",
+            "Apple CarPlay et Android Auto",
+            "Bluetooth, DAB, USB et commande vocale",
+            "Connexion Wi-Fi",
+            "Chargeur de téléphone sans fil par induction",
+            "Alarme",
+            "ISOFIX",
+            "ABS, ESP, ASR et contrôle de la pression des pneus",
+            "Système d'appel d'urgence eCall"
+          ]
+        },
+        {
+          "kind": "p",
+          "text": "Véhicule bénéficiant de la garantie constructeur selon les conditions du fabricant."
+        },
+        {
+          "kind": "p",
+          "text": "Financement possible directement sur place, sous réserve d'acceptation du dossier."
+        },
+        {
+          "kind": "p",
+          "text": "Reprise de votre véhicule actuel possible."
+        },
+        {
+          "kind": "p",
+          "text": "Différentes couleurs, motorisations et différents modèles sont également disponibles."
+        },
+        {
+          "kind": "p",
+          "text": "N'hésitez pas à nous contacter pour obtenir une offre personnalisée."
+        },
+        {
+          "kind": "p",
+          "text": "GARAGE UM ROND POINT"
+        },
+        {
+          "kind": "p",
+          "text": "1, rue du Viaduc"
+        },
+        {
+          "kind": "p",
+          "text": "L-9147 Erpeldange-sur-Sûre – Luxembourg"
+        },
+        {
+          "kind": "p",
+          "text": "Téléphone : +352 81 05 41"
+        },
+        {
+          "kind": "p",
+          "text": "WhatsApp : +352 621 373 272"
+        },
+        {
+          "kind": "p",
+          "text": "Options complémentaires / Additional options :"
+        },
+        {
+          "kind": "ul",
+          "items": [
+            "Alerte de franchissement involontaire de lignes",
+            "Ambiance lumineuse d'intérieur",
+            "Assistant au freinage d'urgence",
+            "Assistant feux de route",
+            "Attache remorque - Pivotante",
+            "Chargeur téléphone sans fil",
+            "Climatisation automatique - 4 zones",
+            "Commande vocale",
+            "Feux de route non éblouissants",
+            "Frein de stationnement électronique",
+            "Garantie 2 ans",
+            "Isofix - Siège passager",
+            "Jantes alliage / alu - 20\"",
+            "Kit de réparation de pneus",
+            "Lecteur MP3",
+            "Limiteur de vitesse",
+            "Livré avec pneus été",
+            "Pack hiver",
+            "Pack sport",
+            "Palettes de changement de vitesses",
+            "Phares de jour LED",
+            "Radio numérique (DAB)",
+            "Rétroviseur intérieur anti-éblouissement auto.",
+            "Rétroviseurs latéraux rabattables",
+            "Siège à réglage lombaire",
+            "Sièges arrières 1/3 - 2/3",
+            "Sièges chauffants à l'arrière",
+            "Sièges sport",
+            "Sièges à mémoire de position",
+            "Streaming audio intégré",
+            "Système d'appel d'urgence",
+            "Système d'avertissement de distance",
+            "Système de contrôle de la pression pneus",
+            "Système de détection de la somnolence",
+            "Système de nettoyage des phares",
+            "Séparateur de coffre",
+            "Verrouillage centralisé avec télécommande",
+            "Écran tactile"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368813_mE6hOMwgi0t5zcpF.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368814_mDaSFpayGfoHhha7.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368814_VJURbkWhEcxLqhuJ.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368814_9O8kHciRngvsnJIH.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368814_uT73DYtW8TV1CWcx.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368815_fUUkWRXDBLbYxMLp.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368815_a2yV9nDJwlf3yOho.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368815_rhlNnlzaXYWeDVqC.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368816_vIefvrMFUE0KVgFG.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368816_VPIBriP0LEEVJibU.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368816_xCCiEf7a7EEnjaGS.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368816_kf0x8aiMQ7dF3mMW.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368817_MOsacUGFmozmJngj.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368817_ALqXfdq2kwliQcA3.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1788368817_LH4Zv6xnL7uGaZXF.jpg",
+          "width": 2048,
+          "height": 1536
+        }
+      ],
+      "garageRef": "139047",
+      "slug": "vw-touareg-2026-r139047",
+      "firstSeen": "2026-09-28",
+      "lastSeen": "2026-09-28",
+      "lastChanged": "2026-09-28",
+      "status": "active",
+      "unavailableSince": null
+    },
+    {
+      "stableId": "r141210",
+      "source": "luxauto",
+      "sourceId": "1929401",
+      "sourceUrl": "https://www.luxauto.lu/fr/voiture/bmw-x7-hybride-2025-1929401",
+      "make": "BMW",
+      "model": "X7",
+      "version": "M60i FULL SKY LOUNGE, B&W, 23\" PPF, KRISTALL ICONIC GLOW",
+      "condition": "used",
+      "firstRegistration": "2025-06",
+      "modelYear": 2025,
+      "mileageKm": 8690,
+      "fuel": "hybrid",
+      "transmission": "automatic",
+      "powerHp": 530,
+      "powerKw": 390,
+      "displacementCc": 4395,
+      "body": "suv",
+      "seats": 7,
+      "colorExterior": "Noir",
+      "colorInterior": "Noir",
+      "co2Gkm": null,
+      "wltpConsumption": null,
+      "euroNorm": null,
+      "priceEur": 114900,
+      "vatRecoverable": true,
+      "options": [
+        "4 roues motrices",
+        "ABS",
+        "Accès sans clé",
+        "Accoudoir central avant",
+        "Affichage tête haute",
+        "Airbags",
+        "Alarme",
+        "Anti-carjacking",
+        "App Connect",
+        "Assistant de démarrage en côte",
+        "Attelage remorque",
+        "Bluetooth",
+        "Caméra 360°",
+        "Caméra de stationnement",
+        "Capteur de lumière",
+        "Capteur de pluie",
+        "Capteur de stationnement arrière",
+        "Capteur de stationnement avant",
+        "Capteurs d'angle mort",
+        "Capteurs de stationnement",
+        "Chauffage auxiliaire",
+        "Climatisation",
+        "Conduite semi-autonome",
+        "Contrôle de traction",
+        "Direction assistée",
+        "Feux de jour",
+        "Filtre à particules",
+        "Garantie",
+        "Hayon arrière électrique",
+        "ISOFIX",
+        "Jantes alliage",
+        "Kit mains libres",
+        "Navigation",
+        "Non-fumeur",
+        "Ordinateur de bord",
+        "Pare-brise chauffant",
+        "Peinture métallisée",
+        "Phares antibrouillard",
+        "Phares directionnels",
+        "Phares laser",
+        "Phares LED",
+        "Porte-bagages",
+        "Radio",
+        "Reconnaissance des panneaux routiers",
+        "Régulateur de vitesse",
+        "Régulateur de vitesse adaptatif",
+        "Rétroviseurs électriques",
+        "Sièges chauffants",
+        "Sièges électriques",
+        "Sièges en cuir",
+        "Sièges massants",
+        "Sièges ventilés",
+        "Start/Stop",
+        "Suspension pneumatique",
+        "Suspension sport",
+        "Système audio",
+        "Tableau de bord numérique",
+        "Toit ouvrant électrique",
+        "Toit panoramique",
+        "TV",
+        "USB",
+        "Verrouillage centralisé",
+        "Vitres arrière surteintées",
+        "Vitres électriques",
+        "Vitres teintées",
+        "Volant chauffant",
+        "Volant en cuir",
+        "Volant multifonctions",
+        "WiFi"
+      ],
+      "description": [
+        {
+          "kind": "p",
+          "text": "BMW X7 M60i xDrive – 530 ch – Full PPF – État exceptionnel"
+        },
+        {
+          "kind": "p",
+          "text": "À vendre, superbe BMW X7 M60i xDrive G07 LCI, équipé du moteur V8 4,4 litres"
+        },
+        {
+          "kind": "p",
+          "text": "Le véhicule se trouve dans un état exceptionnel, aussi bien à l'intérieur qu'à l'extérieur."
+        },
+        {
+          "kind": "p",
+          "text": "La carrosserie complète est protégée par un film transparent Full PPF, offrant une excellente protection contre les impacts de gravillons, les micro-rayures et les agressions extérieures."
+        },
+        {
+          "kind": "p",
+          "text": "Le véhicule bénéficie également du programme BMW Service Inclusive pendant 5 ans ou 100 000 km."
+        },
+        {
+          "kind": "p",
+          "text": "Les caractéristiques moteur, la couleur, la sellerie et la transmission sont confirmées par la fiche BMW du véhicule."
+        },
+        {
+          "kind": "p",
+          "text": "Liste complète des équipements avec leurs codes BMWÉquipements de série"
+        },
+        {
+          "kind": "ul",
+          "items": [
+            "01CE – Système de récupération d'énergie",
+            "01MA – Échappement M Sport",
+            "02T4 – Différentiel M Sport",
+            "02TB – Boîte de vitesses automatique sport",
+            "02VH – Direction active intégrale",
+            "02VS – Executive Drive Pro",
+            "0322 – Accès confort sans clé",
+            "03DN – Calandre BMW Iconic Glow éclairée",
+            "03MC – Barres de toit M Shadow Line",
+            "0418 – Pack compartiment à bagages",
+            "0423 – Tapis de sol en velours",
+            "04UR – Éclairage d'ambiance intérieur",
+            "0548 – Compteur kilométrique",
+            "05AC – Assistant de feux de route",
+            "05AL – Active Protection",
+            "0710 – Volant M en cuir",
+            "0715 – Pack aérodynamique M",
+            "0760 – Shadow Line brillant",
+            "0776 – Ciel de toit en Alcantara anthracite",
+            "0851 – Version linguistique allemande"
+          ]
+        },
+        {
+          "kind": "p",
+          "text": "Options et équipements supplémentaires"
+        },
+        {
+          "kind": "ul",
+          "items": [
+            "01CB – Équipement spécifique CO₂",
+            "01DF – Norme antipollution EU6 RDE II",
+            "01FN – Jantes BMW en alliage léger V-Spoke 914I avec pneus haute performance",
+            "0230 – Équipements complémentaires spécifiques à l'Union européenne",
+            "02PA – Antivol de roues",
+            "02VB – Contrôle de la pression des pneus",
+            "02VC – Kit de réparation des pneus",
+            "0302 – Système d'alarme",
+            "0323 – Fermeture assistée Soft-Close des portes",
+            "033B – Pack M Sport Pro",
+            "03AC – Attelage de remorque",
+            "03DM – Phares BMW Crystal Iconic Glow",
+            "03M3 – Freins M Sport noir brillant",
+            "0407 – Toit panoramique en verre Sky Lounge",
+            "0413 – Filet de séparation du coffre",
+            "0417 – Stores pare-soleil pour les portes arrière",
+            "0420 – Vitrage arrière teinté",
+            "0428 – Triangle de signalisation et trousse de premiers secours",
+            "044A – Porte-gobelets chauffants et réfrigérants",
+            "0453 – Sièges avant climatisés et ventilés",
+            "04A2 – Applications en cristal CraftedClarity",
+            "04FL – Travel & Comfort Rail System",
+            "04GQ – Ceintures de sécurité M",
+            "04HA – Sièges chauffants à l'avant et à l'arrière",
+            "04HB – Pack chaleur confort à l'avant",
+            "04M5 – Tableau de bord BMW Individual gainé de cuir",
+            "04MA – Sièges multifonctions M",
+            "04MC – Inserts décoratifs en fibre de carbone",
+            "04NN – Climatisation automatique à 5 zones",
+            "04T7 – Fonction massage pour le conducteur et le passager avant",
+            "0536 – Chauffage auxiliaire programmable",
+            "05AU – Driving Assistant Professional",
+            "05AV – Active Guard"
+          ]
+        },
+        {
+          "kind": "p",
+          "text": "Technologie, multimédia et assistance"
+        },
+        {
+          "kind": "ul",
+          "items": [
+            "05DW – Parking Assistant Professional",
+            "0654 – Radio numérique DAB",
+            "06AE – BMW Teleservices",
+            "06AF – Appel d'urgence intelligent",
+            "06AK – ConnectedDrive Services",
+            "06C4 – Connected Package Professional",
+            "06F1 – Système audio Bowers & Wilkins Diamond Surround Sound",
+            "06NX – Compartiment avec recharge sans fil pour smartphone",
+            "06PA – Personal eSIM",
+            "06U3 – BMW Live Cockpit Professional",
+            "07M9 – M Shadow Line avec éléments étendus",
+            "07RS – Pack Comfort",
+            "0879 – Documentation de bord en allemand",
+            "08KA – Intervalle de vidange : 24 mois ou 30 000 km",
+            "08R3 – Équipements complémentaires pour certificat de conformité COC",
+            "08R9 – Réfrigérant de climatisation R1234yf",
+            "08S3 – Verrouillage automatique au démarrage",
+            "08WM – Code de gestion BMW D",
+            "0925 – Code de gestion Dummy-SALAPA",
+            "09D8 – Pack Exclusif Allemagne"
+          ]
+        },
+        {
+          "kind": "p",
+          "text": "Points forts du véhicule"
+        },
+        {
+          "kind": "ul",
+          "items": [
+            "Moteur V8 4,4 litres de 530 ch",
+            "Transmission intégrale BMW xDrive",
+            "Boîte automatique sport à 8 rapports",
+            "Direction active intégrale",
+            "Executive Drive Pro",
+            "Différentiel M Sport",
+            "Échappement M Sport",
+            "Pack M Sport Pro",
+            "Toit panoramique Sky Lounge",
+            "Phares Crystal Iconic Glow",
+            "Calandre Iconic Glow",
+            "Bowers & Wilkins Diamond Surround Sound",
+            "Sièges ventilés, chauffants et massants",
+            "Climatisation à 5 zones",
+            "Chauffage auxiliaire",
+            "Driving Assistant Professional",
+            "Parking Assistant Professional",
+            "Attelage électrique",
+            "Full PPF sur toute la carrosserie",
+            "BMW Service Inclusive 5 ans / 100 000 km",
+            "État esthétique et mécanique exceptionnel"
+          ]
+        },
+        {
+          "kind": "p",
+          "text": "Le véhicule est vendu avec"
+        },
+        {
+          "kind": "ul",
+          "items": [
+            "Protection intégrale Full PPF",
+            "BMW Service Inclusive 5 ans ou 100 000 km",
+            "Garantie constructeur BMW",
+            "Historique et documents complets",
+            "Certificat de conformité européen",
+            "Deux clés"
+          ]
+        },
+        {
+          "kind": "p",
+          "text": "Financement sur mesure et reprise de votre ancien véhicule possibles."
+        },
+        {
+          "kind": "p",
+          "text": "Garage Um Rond Point"
+        },
+        {
+          "kind": "p",
+          "text": "1, rue du Viaduc"
+        },
+        {
+          "kind": "p",
+          "text": "L-9147 Erpeldange-sur-Sûre"
+        },
+        {
+          "kind": "p",
+          "text": "Options"
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165256_jeHwsPnR4gaekvR9.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165256_wDMhvcjWvlJKvhC4.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165256_UWY7OHy7JKKuyeLJ.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165257_ZvQTl4pXiVvSxzPX.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165257_XGi3Amy1m54v5r8E.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165257_JRb0OlUFJAXnhs48.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165258_gwUubbCOwGBMS72P.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165258_4Uzrg8dSTJZDSE2l.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165258_FOPdmiMJrig7AA1T.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165259_21PL2NrUH4OtfqUF.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165259_wnmiqaIscx2KNKva.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165259_vJNPLxydkK2q135H.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165260_aKTTMOtv1LijK3DD.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165260_SfN4Z3t3aiKUHSug.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165260_mQCQh6sTT2MNFKXI.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165260_vS6arzqP5uAyVYjL.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165261_dPo39YA5WShzq7w9.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165261_nvjrWVXfiJVu32kC.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165261_WVaV6Q9zyBDh9yVb.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165262_QH8hgJDxIISC4ggx.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165262_EZBsrdt5B2kLqZrs.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165262_MaXcZ9skjs8hCpTS.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165263_ISrc4xWzBfK9AtPr.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165263_So8EEav2azF5y5rp.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165263_lpKfk71sjhgL2Hv7.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165264_sFN2N1F4SJp7dRsK.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165264_iKMrQKtr30q9Ul54.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165264_DokhY96npAucPO1L.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165265_irppAiXLPkKDJ3bn.jpg",
+          "width": 2048,
+          "height": 1536
+        }
+      ],
+      "garageRef": "141210",
+      "slug": "bmw-x7-2025-r141210",
+      "firstSeen": "2026-09-28",
+      "lastSeen": "2026-09-28",
+      "lastChanged": "2026-09-28",
+      "status": "active",
+      "unavailableSince": null
+    },
+    {
+      "stableId": "r141213",
+      "source": "luxauto",
+      "sourceId": "1929400",
+      "sourceUrl": "https://www.luxauto.lu/fr/voiture/audi-tts-essence-2019-1929400",
+      "make": "Audi",
+      "model": "TTS",
+      "version": "QUATTRO",
+      "condition": "used",
+      "firstRegistration": "2019-10",
+      "modelYear": 2019,
+      "mileageKm": 108000,
+      "fuel": "petrol",
+      "transmission": "automatic",
+      "powerHp": 320,
+      "powerKw": 235,
+      "displacementCc": 1984,
+      "body": "coupe",
+      "seats": 4,
+      "colorExterior": "Bleu",
+      "colorInterior": "Noir",
+      "co2Gkm": null,
+      "wltpConsumption": null,
+      "euroNorm": null,
+      "priceEur": 29900,
+      "vatRecoverable": false,
+      "options": [
+        "4 roues motrices",
+        "ABS",
+        "Accoudoir central avant",
+        "Airbags",
+        "Alarme",
+        "Anti-carjacking",
+        "App Connect",
+        "Assistant de démarrage en côte",
+        "Bluetooth",
+        "Caméra de stationnement",
+        "Capteur de lumière",
+        "Capteur de pluie",
+        "Capteur de stationnement arrière",
+        "Capteur de stationnement avant",
+        "Capteurs d'angle mort",
+        "Capteurs de stationnement",
+        "Climatisation",
+        "Conduite semi-autonome",
+        "Contrôle de traction",
+        "Direction assistée",
+        "Feux de jour",
+        "Garantie",
+        "ISOFIX",
+        "Jantes alliage",
+        "Kit mains libres",
+        "Navigation",
+        "Ordinateur de bord",
+        "Phares antibrouillard",
+        "Phares directionnels",
+        "Phares LED",
+        "Radio",
+        "Reconnaissance des panneaux routiers",
+        "Régulateur de vitesse",
+        "Régulateur de vitesse adaptatif",
+        "Rétroviseurs électriques",
+        "Start/Stop",
+        "Tableau de bord numérique",
+        "USB",
+        "Verrouillage centralisé",
+        "Vitres électriques"
+      ],
+      "description": [
+        {
+          "kind": "p",
+          "text": "Options complémentaires / Additional options :"
+        },
+        {
+          "kind": "ul",
+          "items": [
+            "Alerte de franchissement involontaire de lignes",
+            "Assistant au freinage d'urgence",
+            "Assistant de vision nocturne",
+            "Assistant feux de route",
+            "Commande vocale",
+            "Feux de route non éblouissants",
+            "Frein de stationnement électronique",
+            "Garantie 12 mois",
+            "Lecteur MP3",
+            "Limiteur de vitesse",
+            "Livré avec pneus hiver",
+            "Livré avec pneus été",
+            "Pack sport",
+            "Palettes de changement de vitesses",
+            "Phares de jour LED",
+            "Radio numérique (DAB)",
+            "Rétroviseur intérieur anti-éblouissement auto.",
+            "Rétroviseurs latéraux rabattables",
+            "Siège à réglage lombaire",
+            "Sièges sport",
+            "Streaming audio intégré",
+            "Système d'appel d'urgence",
+            "Système d'avertissement de distance",
+            "Système de contrôle de la pression pneus",
+            "Système de détection de la somnolence",
+            "Système de nettoyage des phares",
+            "Verrouillage centralisé avec télécommande"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165253_I5ronHr7twu42PyE.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165253_gmSohVnws4pApYuJ.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165253_KLpML4MezzDUok59.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165254_kWlYMgp74p53YuCF.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165254_h3pJ3VUlCx6TFT1i.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165254_1XVL2zTdIynLgfpb.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165255_DRuMg9StuTMGs6S1.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165255_HPmWzOZchyIgD9RO.jpg",
+          "width": 2048,
+          "height": 1536
+        }
+      ],
+      "garageRef": "141213",
+      "slug": "audi-tts-2019-r141213",
+      "firstSeen": "2026-09-28",
+      "lastSeen": "2026-09-28",
+      "lastChanged": "2026-09-28",
+      "status": "active",
+      "unavailableSince": null
+    },
+    {
+      "stableId": "r141215",
+      "source": "luxauto",
+      "sourceId": "1929399",
+      "sourceUrl": "https://www.luxauto.lu/fr/voiture/bmw-118-essence-2019-1929399",
+      "make": "BMW",
+      "model": "118",
+      "version": "118i BUSINESS PACKAGE, TEMPOMAT, SIEGES CHAUFFANT",
+      "condition": "used",
+      "firstRegistration": "2019-11",
+      "modelYear": 2019,
+      "mileageKm": 105480,
+      "fuel": "petrol",
+      "transmission": "automatic",
+      "powerHp": 140,
+      "powerKw": 103,
+      "displacementCc": 1499,
+      "body": "city",
+      "seats": 5,
+      "colorExterior": "Noir",
+      "colorInterior": "Noir",
+      "co2Gkm": null,
+      "wltpConsumption": null,
+      "euroNorm": null,
+      "priceEur": 15900,
+      "vatRecoverable": false,
+      "options": [
+        "ABS",
+        "Accès sans clé",
+        "Accoudoir central avant",
+        "Airbags",
+        "Alarme",
+        "Anti-carjacking",
+        "App Connect",
+        "Assistant de démarrage en côte",
+        "Bluetooth",
+        "Capteur de lumière",
+        "Capteur de pluie",
+        "Capteur de stationnement arrière",
+        "Capteur de stationnement avant",
+        "Capteurs d'angle mort",
+        "Climatisation",
+        "Contrôle de traction",
+        "Direction assistée",
+        "Feux de jour",
+        "Garantie",
+        "ISOFIX",
+        "Jantes alliage",
+        "Kit mains libres",
+        "Navigation",
+        "Ordinateur de bord",
+        "Pare-brise chauffant",
+        "Peinture métallisée",
+        "Phares antibrouillard",
+        "Radio",
+        "Reconnaissance des panneaux routiers",
+        "Régulateur de vitesse",
+        "Régulateur de vitesse adaptatif",
+        "Rétroviseurs électriques",
+        "Sièges chauffants",
+        "Start/Stop",
+        "Tableau de bord numérique",
+        "USB",
+        "Verrouillage centralisé",
+        "Vitres arrière surteintées",
+        "Vitres électriques",
+        "Vitres teintées",
+        "Volant en cuir",
+        "Volant multifonctions",
+        "WiFi"
+      ],
+      "description": [
+        {
+          "kind": "p",
+          "text": "BMW 118i Advantage F40 – 140 ch – Boîte automatique"
+        },
+        {
+          "kind": "p",
+          "text": "BMW Série 1 118i équipée du moteur essence 1.5 de 140 ch et de la boîte automatique Steptronic à double embrayage."
+        },
+        {
+          "kind": "p",
+          "text": "Équipements principaux :"
+        },
+        {
+          "kind": "ul",
+          "items": [
+            "BMW Live Cockpit Plus",
+            "Sièges avant chauffants",
+            "Aide au stationnement PDC",
+            "Régulateur de vitesse avec fonction freinage",
+            "Active Guard Plus",
+            "Volant multifonction en cuir",
+            "Recharge sans fil pour smartphone",
+            "BMW ConnectedDrive",
+            "Hotspot Wi-Fi",
+            "Surveillance de la pression des pneus",
+            "Jantes en alliage BMW",
+            "Intérieur tissu Grid Anthracite",
+            "Pack Business",
+            "Finition Advantage",
+            "5 portes",
+            "Norme antipollution Euro 6"
+          ]
+        },
+        {
+          "kind": "p",
+          "text": "Inclus avec le véhicule :"
+        },
+        {
+          "kind": "ul",
+          "items": [
+            "Garantie de 12 mois",
+            "Un jeu de jantes avec pneus été",
+            "Un jeu de jantes avec pneus hiver"
+          ]
+        },
+        {
+          "kind": "p",
+          "text": "Financement possible directement sur place, avec ou sans apport, sous réserve d'acceptation du dossier."
+        },
+        {
+          "kind": "p",
+          "text": "GARAGE UM ROND POINT SÀRL"
+        },
+        {
+          "kind": "p",
+          "text": "1, rue du Viaduc"
+        },
+        {
+          "kind": "p",
+          "text": "L-9147 Erpeldange-sur-Sûre"
+        },
+        {
+          "kind": "p",
+          "text": "Téléphone : +352 81 05 41"
+        },
+        {
+          "kind": "p",
+          "text": "WhatsApp : +352 621 373 272"
+        },
+        {
+          "kind": "p",
+          "text": "E-mail :info@rondpoint.lu"
+        },
+        {
+          "kind": "p",
+          "text": "Contactez-nous pour obtenir davantage d'informations, recevoir une offre de financement personnalisée ou organiser un essai."
+        },
+        {
+          "kind": "p",
+          "text": "Options complémentaires / Additional options :"
+        },
+        {
+          "kind": "ul",
+          "items": [
+            "Alerte de franchissement involontaire de lignes",
+            "Assistant au freinage d'urgence",
+            "Assistant de vision nocturne",
+            "Assistant feux de route",
+            "Chargeur téléphone sans fil",
+            "Climatisation automatique - 2 zones",
+            "Commande vocale",
+            "Frein de stationnement électronique",
+            "Garantie 12 mois",
+            "Isofix - Siège passager",
+            "Lecteur MP3",
+            "Limiteur de vitesse",
+            "Livré avec pneus hiver",
+            "Livré avec pneus été",
+            "Pack hiver",
+            "Radio numérique (DAB)",
+            "Streaming audio intégré",
+            "Système d'appel d'urgence",
+            "Système d'avertissement de distance",
+            "Système de contrôle de la pression pneus",
+            "Système de détection de la somnolence",
+            "Verrouillage centralisé avec télécommande",
+            "Écran tactile"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165248_Ugow3SqPfqG99GdF.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165248_RuZObJZ8rX6UbvES.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165249_ACyYgtB8JN8CAHvf.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165249_pUZc1jkyfBkTVJMn.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165249_YQFm0G09kGMGXU6E.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165250_bjGg8G3ANjWeq51B.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165250_bifD8E4WTDjL8Ybd.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165250_okjhTPZkUtl24d6w.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165251_QJVfLLEYEdMn4LqB.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165251_RGlZkok8L4H1g7MF.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165251_mKAwqM305n2lcBs9.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165252_RlCwcPWyBoMPqi6I.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165252_nwib7OJhQb4a03a0.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165252_c62LeSIUSTlBNvhV.jpg",
+          "width": 2048,
+          "height": 1536
+        }
+      ],
+      "garageRef": "141215",
+      "slug": "bmw-118-2019-r141215",
+      "firstSeen": "2026-09-28",
+      "lastSeen": "2026-09-28",
+      "lastChanged": "2026-09-28",
+      "status": "active",
+      "unavailableSince": null
+    },
+    {
+      "stableId": "r141306",
+      "source": "luxauto",
+      "sourceId": "1930044",
+      "sourceUrl": "https://www.luxauto.lu/fr/voiture/audi-a4-diesel-2024-1930044",
+      "make": "Audi",
+      "model": "A4",
+      "version": "AVANT 2.0L TDI",
+      "condition": "used",
+      "firstRegistration": "2024-06",
+      "modelYear": 2024,
+      "mileageKm": 61370,
+      "fuel": "diesel",
+      "transmission": "automatic",
+      "powerHp": 163,
+      "powerKw": 120,
+      "displacementCc": 1968,
+      "body": "estate",
+      "seats": 5,
+      "colorExterior": "Gris",
+      "colorInterior": "Noir",
+      "co2Gkm": null,
+      "wltpConsumption": null,
+      "euroNorm": null,
+      "priceEur": 29280,
+      "vatRecoverable": false,
+      "options": [
+        "ABS",
+        "Accès sans clé",
+        "Accoudoir central avant",
+        "Airbags",
+        "Alarme",
+        "Anti-carjacking",
+        "App Connect",
+        "Assistant de démarrage en côte",
+        "Bluetooth",
+        "Capteur de lumière",
+        "Capteur de pluie",
+        "Capteurs d'angle mort",
+        "Conduite semi-autonome",
+        "Contrôle de traction",
+        "Direction assistée",
+        "Garantie",
+        "Hayon arrière électrique",
+        "ISOFIX",
+        "Jantes alliage",
+        "Kit mains libres",
+        "Navigation",
+        "Ordinateur de bord",
+        "Pare-brise chauffant",
+        "Peinture métallisée",
+        "Phares antibrouillard",
+        "Phares LED",
+        "Radio",
+        "Reconnaissance des panneaux routiers",
+        "Régulateur de vitesse",
+        "Régulateur de vitesse adaptatif",
+        "Rétroviseurs électriques",
+        "Sièges chauffants",
+        "Sièges en cuir",
+        "Start/Stop",
+        "Tableau de bord numérique",
+        "USB",
+        "Verrouillage centralisé",
+        "Vitres électriques",
+        "Volant en cuir",
+        "Volant multifonctions"
+      ],
+      "description": [
+        {
+          "kind": "p",
+          "text": "Options complémentaires / Additional options :"
+        },
+        {
+          "kind": "ul",
+          "items": [
+            "Alerte de franchissement involontaire de lignes",
+            "Assistant au freinage d'urgence",
+            "Assistant feux de route",
+            "Commande vocale",
+            "Frein de stationnement électronique",
+            "Garantie 12 mois",
+            "Isofix - Siège passager",
+            "Jantes alliage / alu - 16\"",
+            "Kit de réparation de pneus",
+            "Lecteur MP3",
+            "Limiteur de vitesse",
+            "Phares de jour LED",
+            "Radio numérique (DAB)",
+            "Sièges arrières 1/3 - 2/3",
+            "Système d'appel d'urgence",
+            "Système d'avertissement de distance",
+            "Système de contrôle de la pression pneus",
+            "Système de détection de la somnolence",
+            "Verrouillage centralisé avec télécommande",
+            "Écran tactile"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259029_0QpBcXvIfQVKKc1k.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259029_VhKM0s4z8NG0Jijl.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259029_OCw6sv2I9gAGGIgw.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259030_5dZrpoZxqkj2o32P.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259030_6RbV9IsCKAoS8Oyu.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259030_DZKr1jFKP3et37Mm.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259031_od4S80AMzPoFxQAG.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259031_xIzJIyY3UkaVZcex.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259031_DEp2LIh4KvOCK4Pf.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259032_QGjxG2rEKidjcy2U.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259032_RFAtFbitJSVrOPpd.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259032_loCtmCdkgpQO5wgf.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259033_droO1vv3wwf27xR2.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259033_k6EjhXcfJpdS8sLU.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259033_rapPU18mHkMguJz4.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259034_5beBZJNkllwpnvYk.jpg",
+          "width": 2048,
+          "height": 1536
+        }
+      ],
+      "garageRef": "141306",
+      "slug": "audi-a4-2024-r141306",
+      "firstSeen": "2026-09-28",
+      "lastSeen": "2026-09-28",
+      "lastChanged": "2026-09-28",
+      "status": "active",
+      "unavailableSince": null
+    },
+    {
+      "stableId": "r141314",
+      "source": "luxauto",
+      "sourceId": "1930043",
+      "sourceUrl": "https://www.luxauto.lu/fr/voiture/audi-a1-essence-2026-1930043",
+      "make": "Audi",
+      "model": "A1",
+      "version": "1.5L S line Black Edition",
+      "condition": "new",
+      "firstRegistration": null,
+      "modelYear": 2026,
+      "mileageKm": 10,
+      "fuel": "petrol",
+      "transmission": "automatic",
+      "powerHp": 150,
+      "powerKw": 110,
+      "displacementCc": 1498,
+      "body": "city",
+      "seats": 5,
+      "colorExterior": "Blanc",
+      "colorInterior": "Noir",
+      "co2Gkm": null,
+      "wltpConsumption": null,
+      "euroNorm": null,
+      "priceEur": 31980,
+      "vatRecoverable": false,
+      "options": [
+        "ABS",
+        "Accès sans clé",
+        "Accoudoir central avant",
+        "Airbags",
+        "Alarme",
+        "Anti-carjacking",
+        "App Connect",
+        "Assistant de démarrage en côte",
+        "Bluetooth",
+        "Caméra de stationnement",
+        "Capteur de lumière",
+        "Capteur de pluie",
+        "Capteur de stationnement arrière",
+        "Capteur de stationnement avant",
+        "Climatisation",
+        "Conduite semi-autonome",
+        "Contrôle de traction",
+        "Direction assistée",
+        "Feux de jour",
+        "Garantie",
+        "ISOFIX",
+        "Jantes alliage",
+        "Kit mains libres",
+        "Ordinateur de bord",
+        "Phares LED",
+        "Radio",
+        "Reconnaissance des panneaux routiers",
+        "Régulateur de vitesse",
+        "Start/Stop",
+        "Tableau de bord numérique",
+        "USB",
+        "Verrouillage centralisé",
+        "Vitres arrière surteintées",
+        "Vitres électriques",
+        "Volant en cuir",
+        "Volant multifonctions"
+      ],
+      "description": [
+        {
+          "kind": "p",
+          "text": "Options complémentaires / Additional options :"
+        },
+        {
+          "kind": "ul",
+          "items": [
+            "Alerte de franchissement involontaire de lignes",
+            "Assistant au freinage d'urgence",
+            "Assistant feux de route",
+            "Commande vocale",
+            "Kit de réparation de pneus",
+            "Limiteur de vitesse",
+            "Radio numérique (DAB)",
+            "Rétroviseurs latéraux rabattables",
+            "Siège à réglage lombaire",
+            "Sièges sport",
+            "Système d'appel d'urgence",
+            "Système de contrôle de la pression pneus",
+            "Système de détection de la somnolence",
+            "Écran tactile"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259022_jVIiXr9ynuzKQ5Yn.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259022_YvdVGuRp1lTdtbcc.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259023_vOWdqEoV92FBxquA.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259023_pUA5zfnfcNa0eBBt.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259023_TCHVEqslDYLfu561.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259023_1UT35WqDquaewj7V.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259024_M6QKsD0rQYAEsVdQ.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259024_lxXNvJxPL3QeYooc.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259024_IjLbShlWVCCe2khN.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259025_2lYs2ZVqJ3yh7LEv.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259025_XMOfJHnpRGrue2ft.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259025_ws7XZb8wCXDpoMBs.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259026_txE870QXogRUN5DD.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259026_AXUdKcXb4gTIT1ho.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259026_lhiSVN6YQX0Cg6PY.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259026_Lu4cQGxDh5FnlaSe.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259027_0GEwHdkmteJ0wEyI.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259027_iBVu5waHh3tyDdjK.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259027_CXW1WItsbswgIXvY.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259028_84I5Rif4ZI2Jxgi7.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259028_f5oUU1grxkXhW7LA.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790259028_eowtopPxVwN7qfNZ.jpg",
+          "width": 2048,
+          "height": 1536
+        }
+      ],
+      "garageRef": "141314",
+      "slug": "audi-a1-2026-r141314",
+      "firstSeen": "2026-09-28",
+      "lastSeen": "2026-09-28",
+      "lastChanged": "2026-09-28",
+      "status": "active",
+      "unavailableSince": null
+    },
+    {
+      "stableId": "r141522",
+      "source": "luxauto",
+      "sourceId": "1931062",
+      "sourceUrl": "https://www.luxauto.lu/fr/voiture/austin-healey-3000-essence-1966-1931062",
+      "make": "Austin-Healey",
+      "model": "3000",
+      "version": "MK III",
+      "condition": "used",
+      "firstRegistration": "1966-01",
+      "modelYear": 1966,
+      "mileageKm": 82264,
+      "fuel": "petrol",
+      "transmission": "manual",
+      "powerHp": null,
+      "powerKw": null,
+      "displacementCc": null,
+      "body": "convertible",
+      "seats": 4,
+      "colorExterior": "Rouge",
+      "colorInterior": "Noir",
+      "co2Gkm": null,
+      "wltpConsumption": null,
+      "euroNorm": null,
+      "priceEur": 34900,
+      "vatRecoverable": false,
+      "options": [
+        "Radio",
+        "Toit ouvrant électrique"
+      ],
+      "description": [
+        {
+          "kind": "p",
+          "text": "Options complémentaires / Additional options :"
+        },
+        {
+          "kind": "ul",
+          "items": [
+            "Livré avec pneus été",
+            "Pas de climatisation"
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790413660_hmizYJOMyKUYRFcp.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790413661_IggbImjKfx8flWzD.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790413661_Sf9qRHCs1JPsgKey.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790413661_tSQ7TAP38D233jd2.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790413661_vZMk6l6liIv014vC.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790413662_dscTIgbZpaNJrmMO.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790413662_gireJPmUrd0RPUql.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790413662_R57NkmSYdBPIL0lf.jpg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790413663_xF7a0YT3zCQNNXNw.jpg",
+          "width": 2048,
+          "height": 1536
+        }
+      ],
+      "garageRef": "141522",
+      "slug": "austin-healey-3000-1966-r141522",
+      "firstSeen": "2026-09-28",
+      "lastSeen": "2026-09-28",
+      "lastChanged": "2026-09-28",
+      "status": "active",
+      "unavailableSince": null
+    }
+  ]
+}

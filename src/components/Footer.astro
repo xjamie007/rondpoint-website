@@ -1,0 +1,131 @@
+---
+/**
+ * Footer (D2.8): asphalt, weiße Schrift. NAP exakt wie im JSON-LD.
+ */
+import LangSwitch from './LangSwitch.astro';
+import { fmt, rich, type Dict } from '@/i18n';
+import { path, type Lang } from '@/i18n/config';
+import { horaires, showOpenPoints, site, telHref, whatsappHref } from '@/lib/site';
+import Logo from './Logo.astro';
+
+interface Props {
+  lang: Lang;
+  t: Dict;
+  alternates: { lang: Lang; href: string }[];
+}
+const { lang, t, alternates } = Astro.props;
+const range = (iv: [string, string][]) => iv.map(([a, b]) => `${a}–${b}`).join(` ${t.hours.and} `);
+const hoursShort = fmt(t.hours.short, { weekday: range(horaires.week.mo), saturday: range(horaires.week.sa) });
+---
+<footer class="site-footer on-asphalt" data-site-footer>
+  <div class="wrap grid stagger">
+    <div class="nap reveal">
+      <Logo href={path(lang, 'home')} label={t.nav.logoAria} tone="light" class="footer-logo" />
+      <p class="name">{site.name}</p>
+      <p>
+        {site.address.street}<br />
+        {site.address.postalCode} {site.address.locality}
+      </p>
+      <p>
+        <a href={telHref}>{site.phone.display}</a><br />
+        WhatsApp <a href={whatsappHref(t.contactBar.whatsappText)} rel="noopener">{site.whatsapp.display}</a><br />
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+    </div>
+    <div class="reveal">
+      <p class="h">{t.footer.hoursH}</p>
+      <p class="tnum">{hoursShort}</p>
+      <p class="t-small">{t.status.everyMorning}</p>
+    </div>
+    <div class="reveal">
+      <p class="h">{t.footer.followH}</p>
+      <ul class="links">
+        <li><a href={site.social.facebook} rel="noopener">Facebook</a></li>
+        <li><a href={site.social.instagram} rel="noopener">Instagram</a></li>
+        {
+          site.social.tiktok.value ? (
+            <li><a href={site.social.tiktok.value} rel="noopener">TikTok</a></li>
+          ) : (
+            showOpenPoints && <li><span set:html={rich(t.footer.tiktokMissing)} /></li>
+          )
+        }
+      </ul>
+      <p
+        class="t-small portals"
+        set:html={rich(t.footer.portals, {
+          luxauto: `<a href="${site.portals.luxauto}" rel="noopener">LuxAuto</a>`,
+          autoscout: `<a href="${site.portals.autoscout24}" rel="noopener">AutoScout24</a>`,
+        })}
+      />
+    </div>
+    <div class="reveal">
+      <ul class="links">
+        <li><a href={path(lang, 'legal')}>{t.footer.legal}</a></li>
+        <li><a href={path(lang, 'privacy')}>{t.footer.privacy}</a></li>
+      </ul>
+      <LangSwitch lang={lang} alternates={alternates} label={t.nav.langLabel} tone="dark" uid="footer" />
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    background:
+      repeating-radial-gradient(circle at 100% 100%, transparent 0 58px, rgb(255 255 255 / 0.04) 58px 60px),
+      linear-gradient(160deg, #4b4e52, #2f3134);
+    color: var(--color-white);
+    padding-block: 64px calc(64px + var(--bar-h));
+  }
+  /* orange Kante oben, zeichnet sich beim Hineinscrollen */
+  .site-footer::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 4px;
+    background: var(--color-orange);
+    transform-origin: left;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .site-footer::before { animation: wipe-in linear both; animation-timeline: view(); animation-range: entry 0% entry 60%; }
+    }
+  }
+  @media (min-width: 64rem) {
+    .site-footer { padding-block: 88px; }
+  }
+  .grid { display: grid; gap: 40px; }
+  @media (min-width: 48rem) { .grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 64rem) { .grid { grid-template-columns: 1.3fr 1fr 1fr 1fr; } }
+  p { margin: 0 0 12px; }
+  .nap :global(.footer-logo) { margin: -8px 0 20px; }
+  .name { font-family: var(--font-wide); font-stretch: 112%; font-weight: 700; font-size: 1.25rem; }
+  /* Spaltentitel mit kurzem orangem Strich */
+  .h { font-weight: 700; display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .h::before { content: ''; width: 18px; height: 3px; background: var(--color-orange); flex: none; }
+  .links { list-style: none; margin: 0 0 16px; padding: 0; }
+  .links li { margin-bottom: 4px; }
+  .links a, .links span { display: inline-flex; min-height: 32px; align-items: center; }
+  .portals :global(a) { white-space: nowrap; }
+  .site-footer :global(.open-point) { color: var(--color-black); }
+
+  /* Hover: orange Unterstreichung wächst von links, Link rückt leicht nach rechts */
+  .site-footer a:not(.logo),
+  .portals :global(a) {
+    text-decoration: none;
+    /* zwei Linien: orange wächst beim Hover über einer feinen, immer sichtbaren (Link erkennbar auch ohne Maus) */
+    background-image: linear-gradient(var(--color-orange), var(--color-orange)), linear-gradient(rgb(255 255 255 / 0.35), rgb(255 255 255 / 0.35));
+    background-repeat: no-repeat;
+    background-position: 0 100%, 0 100%;
+    background-size: 0% 2px, 100% 1px;
+    padding-bottom: 2px;
+    transition: background-size var(--dur-3) var(--ease-out), color var(--dur-2) var(--ease-out), translate var(--dur-2) var(--ease-out);
+  }
+  .site-footer a:not(.logo):hover,
+  .site-footer a:not(.logo):focus-visible,
+  .portals :global(a:hover),
+  .portals :global(a:focus-visible) { background-size: 100% 2px, 100% 1px; }
+  .links a:hover { translate: 4px 0; }
+</style>

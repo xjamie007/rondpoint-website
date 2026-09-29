@@ -1,0 +1,80 @@
+---
+/**
+ * Foto mit festem Seitenverhältnis, AVIF/WebP in mehreren Breiten.
+ * reveal: blendet beim Hineinscrollen ein (CSS scroll-driven, ohne JavaScript)
+ * settle: Bild „setzt sich" beim Laden (Hero, Seitenkopf)
+ * Produktfotos mit transparentem Hintergrund (contain) werden nicht beschnitten.
+ */
+import { Picture } from 'astro:assets';
+import type { Photo } from '@/lib/photos';
+import { lqip } from '@/lib/lqip';
+
+interface Props {
+  photo: Photo;
+  alt: string;
+  sizes: string;
+  ratio?: string;
+  priority?: boolean;
+  reveal?: boolean;
+  settle?: boolean;
+  /** oranger Vorhang gibt das Foto beim Laden frei (das Bild selbst bleibt ruhig, LCP wartet nicht) */
+  curtain?: boolean;
+  position?: string;
+  accent?: boolean;
+  /** Bild bewegt sich beim Scrollen leicht langsamer als die Seite */
+  parallax?: boolean;
+  class?: string;
+}
+const {
+  photo,
+  alt,
+  sizes,
+  ratio = '3 / 2',
+  priority = false,
+  reveal = false,
+  settle = false,
+  curtain = false,
+  position = 'center',
+  accent = false,
+  parallax = false,
+  class: cls,
+} = Astro.props;
+const preview = photo.contain ? '' : await lqip(photo.file);
+---
+<figure
+  class:list={['ph', photo.contain && 'ph-contain', reveal && 'reveal-img', settle && 'settle', curtain && 'ph-curtain', accent && 'ph-accent', parallax && 'ph-parallax', cls]}
+  style={`aspect-ratio: ${ratio}`}
+>
+  {preview && <span class="ph-lqip" aria-hidden="true" style={`background-image: url(${preview}); background-position: ${position}`} />}
+  <Picture
+    src={photo.img}
+    widths={[480, 800, 1200, 1600].filter((w) => w <= photo.img.width)}
+    sizes={sizes}
+    formats={['avif']}
+    fallbackFormat="webp"
+    alt={alt}
+    loading={priority ? 'eager' : 'lazy'}
+    fetchpriority={priority ? 'high' : 'auto'}
+    decoding={priority ? 'sync' : 'async'}
+    style={`object-position: ${position}`}
+  />
+</figure>
+
+<style>
+  .ph { position: relative; margin: 0; overflow: hidden; background: var(--color-verzinkt); }
+  /* unscharfe Vorschau liegt unter dem Bild, bis es geladen ist */
+  .ph-lqip { position: absolute; inset: 0; background-size: cover; filter: blur(14px); transform: scale(1.15); }
+  .ph :global(picture) { position: relative; display: block; height: 100%; }
+  .ph :global(img) { width: 100%; height: 100%; object-fit: cover; transition: scale 700ms var(--ease-out); }
+  .ph-contain { background: #eef0f1; }
+  .ph-contain :global(img) { object-fit: contain; padding: 6%; }
+  .ph-accent::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 38%;
+    height: 8px;
+    background: var(--color-orange);
+  }
+</style>

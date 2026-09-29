@@ -1,0 +1,59 @@
+---
+/**
+ * Statuszeile zum Bestand (C4, E1): echte Information aus sync-status.json.
+ * Im HTML steht immer das echte Datum. Ein kleines Skript ersetzt es durch
+ * „aujourd'hui"/„hier", wenn der Abgleich höchstens 36 Stunden alt ist.
+ */
+import { plural, fmt, type Dict } from '@/i18n';
+import type { Lang } from '@/i18n/config';
+import { activeCars, syncStatus } from '@/lib/stock';
+import { dateLong, timeHM } from '@/lib/format';
+
+interface Props {
+  lang: Lang;
+  t: Dict;
+  class?: string;
+  withCount?: boolean;
+}
+const { lang, t, class: cls, withCount = true } = Astro.props;
+const iso = syncStatus.lastSuccess;
+const count = activeCars.length;
+const time = iso ? timeHM(lang, iso) : '';
+const date = iso ? dateLong(lang, iso) : '';
+---
+<p class:list={['stock-status t-small', cls]}>
+  {withCount && count > 0 && <span>{plural(lang, t.status.stock, count)} </span>}
+  {
+    iso ? (
+      <span
+        data-sync-time={iso}
+        data-today={t.status.updatedToday}
+        data-yesterday={t.status.updatedYesterday}
+        data-time={time}
+      >
+        <time datetime={iso}>{fmt(t.status.updatedOn, { date, time })}</time>
+      </span>
+    ) : (
+      <span>{t.status.never}</span>
+    )
+  }
+</p>
+
+<script>
+  const TZ = 'Europe/Luxembourg';
+  const day = (d: Date) => new Intl.DateTimeFormat('en-CA', { timeZone: TZ }).format(d);
+  document.querySelectorAll<HTMLElement>('[data-sync-time]').forEach((el) => {
+    const iso = el.dataset.syncTime!;
+    const then = new Date(iso);
+    const now = new Date();
+    const hours = (now.getTime() - then.getTime()) / 3_600_000;
+    if (!(hours >= 0 && hours <= 36)) return;
+    const yesterday = new Date(now.getTime() - 86_400_000);
+    let tpl: string | undefined;
+    if (day(then) === day(now)) tpl = el.dataset.today;
+    else if (day(then) === day(yesterday)) tpl = el.dataset.yesterday;
+    if (!tpl) return;
+    const time = el.querySelector('time');
+    if (time) time.textContent = tpl.replace('{time}', el.dataset.time ?? '');
+  });
+</script>

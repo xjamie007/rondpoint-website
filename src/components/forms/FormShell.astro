@@ -1,0 +1,149 @@
+---
+/**
+ * Gemeinsamer Rahmen der vier Formulare (F): normales POST an die Edge Function
+ * `inquiry`, funktioniert ohne JavaScript (303 auf die Danke-Seite).
+ * Versteckte Felder type + lang, Honeypot, Kontaktfelder, Einwilligung (Pflicht, nicht vorangekreuzt).
+ */
+import { rich, type Dict } from '@/i18n';
+import { path, type Lang } from '@/i18n/config';
+import { showOpenPoints } from '@/lib/site';
+
+interface Props {
+  type: 'location' | 'voiture' | 'atelier' | 'contact';
+  lang: Lang;
+  t: Dict;
+  id: string;
+  submit: string;
+}
+const { type, lang, t, id, submit } = Astro.props;
+const action = import.meta.env.PUBLIC_INQUIRY_URL as string | undefined;
+const f = t.forms;
+const privacyLink = `<a class="link" href="${path(lang, 'privacy')}">${f.consentLink}</a>`;
+---
+<form
+  class="inquiry"
+  id={id}
+  method="post"
+  action={action ?? '#'}
+  accept-charset="utf-8"
+  data-inquiry-form
+  data-msg-summary={f.errorSummary}
+  data-msg-send={f.errorSend}
+  data-msg-rate={f.errorRate}
+  data-msg-sending={f.sending}
+>
+  <input type="hidden" name="type" value={type} />
+  <input type="hidden" name="lang" value={lang} />
+  <div class="hp" aria-hidden="true">
+    <label>{f.honeypot}<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+  </div>
+
+  <p class="form-summary field-error" role="alert" data-form-summary hidden></p>
+
+  <div class="fields">
+    <slot />
+
+    <div class="row pair">
+      <div class="fg">
+        <label class="field-label" for={`${id}-name`}>{f.name}</label>
+        <input
+          class="field"
+          id={`${id}-name`}
+          name="name"
+          type="text"
+          autocomplete="name"
+          required
+          maxlength="120"
+          data-msg-required={f.errors.name}
+        />
+      </div>
+      <div class="fg">
+        <label class="field-label" for={`${id}-phone`}>{f.phone}</label>
+        <span class="field-hint" id={`${id}-phone-hint`}>{f.phoneHint}</span>
+        <input
+          class="field"
+          id={`${id}-phone`}
+          name="phone"
+          type="tel"
+          autocomplete="tel"
+          inputmode="tel"
+          required
+          maxlength="40"
+          aria-describedby={`${id}-phone-hint`}
+          data-msg-required={f.errors.phone}
+          data-msg-invalid={f.errors.phoneInvalid}
+          data-validate="phone"
+        />
+      </div>
+    </div>
+    <div class="fg">
+      <label class="field-label" for={`${id}-email`}>{f.email} <span class="opt">({f.optional})</span></label>
+      <input
+        class="field"
+        id={`${id}-email`}
+        name="email"
+        type="email"
+        autocomplete="email"
+        maxlength="160"
+        data-msg-invalid={f.errors.email}
+        data-validate="email"
+      />
+    </div>
+
+    <div class="fg">
+      <label class="check">
+        <input type="checkbox" name="consent" value="yes" required data-msg-required={f.errors.consent} />
+        <span set:html={rich(f.consent, { link: privacyLink })} />
+      </label>
+    </div>
+
+    <div class="submit-row">
+      <button class="btn btn-primary" type="submit" data-submit>{submit}</button>
+      {!action && showOpenPoints && <p class="t-small"><mark class="open-point">[FEHLT — PUBLIC_INQUIRY_URL: Adresse der Supabase Edge Function beim Build setzen]</mark></p>}
+    </div>
+    <slot name="after" />
+  </div>
+
+  <div class="success" data-form-success tabindex="-1" hidden>
+    <svg class="success-check" viewBox="0 0 52 52" width="52" height="52" aria-hidden="true">
+      <circle cx="26" cy="26" r="24" fill="none" stroke="currentColor" stroke-width="2" />
+      <path d="M15 27l7 7 15-15" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <div>
+      <p class="success-h">{f.successH}</p>
+      <p set:html={rich(f.successText)} />
+    </div>
+  </div>
+</form>
+
+<style>
+  .inquiry { max-width: 44rem; }
+  .fields { display: grid; gap: 24px; }
+  .inquiry :global(.row) { display: grid; gap: 24px; }
+  @media (min-width: 40rem) { .inquiry :global(.pair) { grid-template-columns: 1fr 1fr; } }
+  .inquiry :global(.fg) { min-width: 0; }
+  .inquiry :global(.opt) { font-weight: 400; color: var(--color-asphalt); }
+  .inquiry :global(fieldset) { border: 0; margin: 0; padding: 0; min-width: 0; }
+  .inquiry :global(legend) { font-size: 0.9375rem; font-weight: 600; margin-bottom: 8px; padding: 0; }
+  .inquiry :global(.radios) { display: grid; gap: 8px; }
+  .inquiry :global(.radio) { display: flex; gap: 12px; align-items: center; min-height: 40px; cursor: pointer; }
+  .inquiry :global(.radio input) { width: 22px; height: 22px; margin: 0; accent-color: var(--color-black); flex: none; }
+  .inquiry :global(.subh) { font-weight: 700; margin: 8px 0 0; }
+  .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+  .form-summary { margin-bottom: 24px; }
+  .submit-row { display: grid; gap: 12px; justify-items: start; }
+  .success { display: flex; gap: 16px; align-items: flex-start; padding: 24px 0; }
+  .success-check { flex: none; color: var(--color-black); }
+  .success-check path { stroke-dasharray: 30; stroke-dashoffset: 30; }
+  .success.play .success-check path { animation: check-draw 400ms var(--ease-out) forwards; }
+  .success.play > div { animation: fade-in 220ms var(--ease-out) 400ms both; }
+  .success-h { font-family: var(--font-wide); font-stretch: 112%; font-weight: 700; font-size: 1.25rem; margin: 8px 0 4px; }
+  @media (prefers-reduced-motion: reduce) {
+    .success-check path { stroke-dashoffset: 0; }
+  }
+</style>
+
+<script>
+  import { initInquiryForms } from '@/scripts/forms';
+  initInquiryForms();
+</script>

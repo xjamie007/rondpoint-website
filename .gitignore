@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+sync-report.md
+fonts-src/Archivo[wdth,wght].ttf
+fonts-src/archivo-sub.ttf
+.DS_Store
+.claude/
+deno.lock

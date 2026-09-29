@@ -1,0 +1,58 @@
+---
+/** Garten & Forst (D3): Verkauf und Reparatur, Honda und Stihl als Text, Werkstattformular. */
+import Base from '@/layouts/Base.astro';
+import PageIntro from '@/components/PageIntro.astro';
+import InfoCards from '@/components/InfoCards.astro';
+import WorkshopForm from '@/components/forms/WorkshopForm.astro';
+import { rich, useT } from '@/i18n';
+import { path, type Lang } from '@/i18n/config';
+import { breadcrumbs } from '@/lib/jsonld';
+import { showOpenPoints, site } from '@/lib/site';
+import { photo } from '@/lib/photos';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useT(lang);
+const p = t.pages.garden;
+const d = t.details.garden;
+const crumbs = [
+  { name: t.nav.home, href: path(lang, 'home') },
+  { name: t.nav.garden, href: path(lang, 'garden') },
+];
+---
+<Base
+  lang={lang}
+  route={{ page: 'garden' }}
+  title={t.seo.garden.title}
+  description={t.seo.garden.description}
+  jsonld={[breadcrumbs(crumbs.map((x) => ({ name: x.name, url: x.href })))]}
+>
+  <PageIntro crumbLabel={t.nav.breadcrumb} crumbs={crumbs} h1={p.h1} lead={p.lead} photo={photo('garden-page')} photoAlt={t.photos.gardenPage}>
+    {!site.confirmations.gardenDealerStatus && showOpenPoints && <p set:html={rich(p.dealerMissing)} />}
+  </PageIntro>
+  <section class="section block tone" aria-labelledby="what-h">
+    <div class="wrap">
+      <h2 id="what-h" class="h-bar reveal">{p.whatH2}</h2>
+      <InfoCards
+        items={[
+          { h: d.saleH2, p: d.sale },
+          { h: d.repairH2, p: d.repair },
+        ]}
+      />
+    </div>
+  </section>
+  <section class="section block" aria-labelledby="form-h">
+    <div class="wrap">
+      <h2 id="form-h">{p.formH2}</h2>
+      <WorkshopForm lang={lang} t={t} preselect="jardin" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .block { border-top: 1.5px solid var(--color-black); }
+  h2 { margin: 0 0 24px; }
+  .block p { margin: 0; }
+</style>

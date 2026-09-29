@@ -1,0 +1,60 @@
+---
+/** Autoliste (C6) mit Statuszeile, Filtern und Kommissionsverkauf (E4, Anker #depot-vente). */
+import Base from '@/layouts/Base.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import StockStatus from '@/components/StockStatus.astro';
+import CarList from '@/components/cars/CarList.astro';
+import { rich, useT } from '@/i18n';
+import { path, type Lang } from '@/i18n/config';
+import { activeCars } from '@/lib/stock';
+import { breadcrumbs } from '@/lib/jsonld';
+import { showOpenPoints } from '@/lib/site';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useT(lang);
+const crumbs = [
+  { name: t.nav.home, href: path(lang, 'home') },
+  { name: t.nav.cars, href: path(lang, 'cars') },
+];
+const depotHref = `${path(lang, 'contact')}?sujet=depot#message`;
+---
+<Base
+  lang={lang}
+  route={{ page: 'cars' }}
+  title={t.seo.cars.title}
+  description={t.seo.cars.description}
+  jsonld={[breadcrumbs(crumbs.map((c) => ({ name: c.name, url: c.href })))]}
+>
+  <div class="wrap">
+    <Breadcrumb label={t.nav.breadcrumb} items={crumbs} />
+    <header class="intro">
+      <h1>{t.cars.h1}</h1>
+      <p class="t-lead prose-w">{t.cars.lead}</p>
+      <StockStatus lang={lang} t={t} />
+    </header>
+    <CarList cars={activeCars} lang={lang} t={t} />
+  </div>
+
+  <section class="section depot" id="depot-vente" aria-labelledby="depot-h">
+    <div class="wrap">
+      <div class="depot-inner">
+        <h2 id="depot-h">{t.depot.h2}</h2>
+        <p class="prose-w">{t.depot.text}</p>
+        {showOpenPoints && <p class="prose-w" set:html={rich(t.depot.missing)} />}
+        <p><a class="btn btn-secondary" href={depotHref}>{t.depot.link}</a></p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .intro { display: grid; gap: 16px; padding: 8px 0 40px; }
+  .intro h1 { margin: 0; }
+  .intro p { margin: 0; }
+  .depot { border-top: 1.5px solid var(--color-black); margin-top: 64px; }
+  .depot-inner { display: grid; gap: 16px; max-width: 66ch; }
+  .depot-inner h2, .depot-inner p { margin: 0; }
+</style>

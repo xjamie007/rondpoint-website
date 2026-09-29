@@ -1,0 +1,113 @@
+# Bestand-Abgleich jeden Morgen, danach Build und Deploy auf GitHub Pages (T2.2).
+#
+# 04:17 UTC = 06:17 Luxemburger Sommerzeit, 05:17 Winterzeit. Die krumme Minute umgeht
+# die Staus zur vollen Stunde; GitHub kann den Start verzögern, das ist in Ordnung.
+#
+# Der tägliche Commit von sync-status.json ist Absicht: GitHub schaltet geplante Workflows
+# in öffentlichen Repositories nach 60 Tagen ohne Aktivität ab.
+name: Bestand-Sync und Deploy
+
+on:
+  schedule:
+    - cron: '17 4 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+concurrency:
+  group: stock-sync
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  issues: write
+
+jobs:
+  sync-build-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Bestand abgleichen (LuxAuto, Ersatz AutoScout24)
+        id: sync
+        if: github.event_name != 'push'
+        continue-on-error: true
+        run: npm run sync
+
+      - name: Tests
+        run: npm test
+
+      - name: Bestand und Status committen
+        if: github.event_name != 'push' && always()
+        run: |
+          git config user.name "rondpoint-stock-sync"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/sync-status.json src/data/stock.json
+          if git diff --cached --quiet; then
+            echo "Keine Änderung"
+          else
+            git commit -m "Bestand-Sync $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      - name: Issue „Bestand-Sync fehlgeschlagen" anlegen oder aktualisieren
+        if: steps.sync.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TITLE="Bestand-Sync fehlgeschlagen"
+          BODY_FILE=sync-report.md
+          [ -f "$BODY_FILE" ] || echo "Kein Bericht erzeugt. Siehe Log: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" > "$BODY_FILE"
+          echo -e "\n\nLauf: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> "$BODY_FILE"
+          NUM=$(gh issue list --state open --search "in:title \"$TITLE\"" --json number --jq '.[0].number')
+          if [ -n "$NUM" ]; then
+            gh issue comment "$NUM" --body-file "$BODY_FILE"
+          else
+            gh issue create --title "$TITLE" --body-file "$BODY_FILE"
+          fi
+
+      - name: Bild-Cache wiederherstellen
+        if: steps.sync.outcome != 'failure'
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.astro
+          key: astro-images-${{ github.run_id }}
+          restore-keys: astro-images-
+
+      - name: Build
+        if: steps.sync.outcome != 'failure'
+        env:
+          PUBLIC_INQUIRY_URL: ${{ vars.PUBLIC_INQUIRY_URL }}
+        run: npm run build
+
+      - uses: actions/configure-pages@v5
+        if: steps.sync.outcome != 'failure'
+
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.sync.outcome != 'failure'
+        with:
+          path: dist
+
+      - name: Deploy
+        id: deploy
+        if: steps.sync.outcome != 'failure'
+        uses: actions/deploy-pages@v4
+
+      - name: Abbruch melden
+        if: steps.sync.outcome == 'failure'
+        run: |
+          echo "::error::Bestand-Sync fehlgeschlagen. stock.json bleibt unverändert, die Website zeigt den letzten guten Stand."
+          exit 1

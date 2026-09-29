@@ -1,0 +1,81 @@
+---
+/** Werkstatt (D3). Stichworte aus B2 und der Transparenz-Satz nur nach Bestätigung. */
+import Base from '@/layouts/Base.astro';
+import PageIntro from '@/components/PageIntro.astro';
+import WorkshopForm from '@/components/forms/WorkshopForm.astro';
+import Faq from '@/components/Faq.astro';
+import InfoCards from '@/components/InfoCards.astro';
+import Steps from '@/components/Steps.astro';
+import Photo from '@/components/Photo.astro';
+import { rich, useT } from '@/i18n';
+import { path, type Lang } from '@/i18n/config';
+import { breadcrumbs } from '@/lib/jsonld';
+import { presentation, showOpenPoints, site } from '@/lib/site';
+import { photo } from '@/lib/photos';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useT(lang);
+const p = t.pages.workshop;
+const crumbs = [
+  { name: t.nav.home, href: path(lang, 'home') },
+  { name: t.nav.workshop, href: path(lang, 'workshop') },
+];
+const c = site.confirmations;
+const d = t.details.workshop;
+const paint = photo('paint');
+---
+<Base
+  lang={lang}
+  route={{ page: 'workshop' }}
+  title={t.seo.workshop.title}
+  description={t.seo.workshop.description}
+  jsonld={[breadcrumbs(crumbs.map((x) => ({ name: x.name, url: x.href })))]}
+>
+  <PageIntro crumbLabel={t.nav.breadcrumb} crumbs={crumbs} h1={p.h1} lead={p.lead} photo={photo('bodywork')} photoAlt={t.photos.bodywork} />
+  <section class="section block tone" aria-labelledby="what-h">
+    <div class="wrap">
+      <h2 id="what-h" class="h-bar reveal">{p.whatH2}</h2>
+      <InfoCards
+        items={[
+          { h: d.entretienH, p: d.entretien },
+          { h: d.diagnosticH, p: d.diagnostic },
+          { h: d.reparationH, p: d.reparation },
+          { h: d.carrosserieH, p: d.carrosserie },
+        ]}
+      />
+      {!c.workshopExtraKeywords && showOpenPoints && <p set:html={rich(p.extraMissing)} />}
+      {c.workshopTransparency ? <p class="t-lead prose-w">{p.transparency}</p> : showOpenPoints && <p class="prose-w" set:html={rich(`${p.transparency} ${p.transparencyMissing}`)} />}
+    </div>
+  </section>
+  <section class="section block" aria-labelledby="steps-h">
+    <div class:list={['wrap', 'split', paint && 'has-photo']}>
+      <div>
+        <h2 id="steps-h" class="h-bar reveal">{d.processH2}</h2>
+        <Steps steps={d.process} />
+        <p><a class="btn btn-primary btn-go" href="#rendez-vous-section">{p.formH2}</a></p>
+      </div>
+      {paint && <Photo photo={paint} alt={t.photos.paint} sizes="(min-width: 1024px) 440px, 100vw" ratio="1 / 1" reveal accent position="50% 40%" />}
+    </div>
+  </section>
+  {(!presentation || c.workshopAllBrands) && <Faq t={t} keys={['marques']} heading={t.faq.h2} id="faq-atelier" />}
+  <section class="section block" aria-labelledby="form-h" id="rendez-vous-section">
+    <div class="wrap">
+      <h2 id="form-h">{p.formH2}</h2>
+      <p class="prose-w">{p.formIntro}</p>
+      <WorkshopForm lang={lang} t={t} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .block { border-top: 1.5px solid var(--color-black); }
+  h2 { margin: 0 0 24px; }
+  .block p { margin: 0 0 24px; }
+  .block :global(.cards) { margin-bottom: 32px; }
+  .split { display: grid; gap: 40px; }
+  @media (max-width: 63.99rem) { .split :global(.ph) { margin-inline: calc(-1 * var(--gutter)); aspect-ratio: 4 / 3 !important; } }
+  @media (min-width: 64rem) { .split.has-photo { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 72px; align-items: center; } }
+</style>

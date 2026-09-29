@@ -1,0 +1,85 @@
+{
+  "$comment": "Stammdaten (B1). Werte mit confirmed:false sind noch beim Kunden zu bestätigen und erscheinen als sichtbarer Platzhalter. Siehe OFFENE-PUNKTE.md.",
+  "name": "Garage Um Rond Point",
+  "legalName": "GARAGE UM ROND POINT S.à r.l.",
+  "legalForm": "Société à responsabilité limitée (S.à r.l.)",
+  "rcs": "B296148",
+  "rcsCourt": "RCS Luxembourg",
+  "vat": "LU36559673",
+  "registered": "2025-05-12",
+  "nace": "47.810",
+  "manager": {
+    "value": "David Moreira",
+    "confirmed": false
+  },
+  "businessPermit": {
+    "value": null,
+    "confirmed": false
+  },
+  "shareCapital": {
+    "value": null,
+    "confirmed": false
+  },
+  "address": {
+    "street": "1, rue du Viaduc",
+    "postalCode": "L-9147",
+    "locality": "Erpeldange-sur-Sûre",
+    "country": "LU"
+  },
+  "geo": {
+    "lat": 49.8506756,
+    "lng": 6.11385,
+    "plusCode": "V427+7G"
+  },
+  "phone": {
+    "display": "+352 81 05 41",
+    "tel": "+352810541"
+  },
+  "whatsapp": {
+    "display": "+352 621 373 272",
+    "wa": "352621373272"
+  },
+  "email": "info@rondpoint.lu",
+  "url": "https://www.rondpoint.lu/fr/",
+  "mapsUrl": "https://maps.app.goo.gl/skUdfXVMJwHB6bFk7",
+  "googleProfileUrl": "https://maps.google.com/?cid=11059444227933455973",
+  "social": {
+    "facebook": "https://www.facebook.com/p/Garage-UM-ROND-POINT-61580787140341/",
+    "instagram": "https://www.instagram.com/garage_um_rond_point",
+    "tiktok": {
+      "value": null,
+      "confirmed": false
+    }
+  },
+  "portals": {
+    "luxauto": "https://www.luxauto.lu/fr/garage/garage-um-rond-point-450143",
+    "autoscout24": "https://www.autoscout24.lu/professional/um-rond-point"
+  },
+  "payment": {
+    "methods": [
+      "cash",
+      "visa",
+      "mastercard",
+      "vpay",
+      "payconiq",
+      "applepay",
+      "paypal",
+      "transfer"
+    ],
+    "confirmed": false
+  },
+  "confirmations": {
+    "$comment": "Nur wenn true, erscheinen diese Aussagen ohne Platzhalter.",
+    "workshopTransparency": false,
+    "workshopAllBrands": false,
+    "workshopExtraKeywords": false,
+    "rentalDurations": false,
+    "trailerDealerStatus": false,
+    "gardenDealerStatus": false,
+    "pricesInclVat": false
+  },
+  "reviews": [],
+  "showOpenPoints": true,
+  "presentation": true,
+  "$presentation": "Präsentationsversion für den Kunden: Stockfotos aus src/assets/demo (Lizenzen in credits.json), interne Platzhalter [FEHLT]/[UNBESTÄTIGT] ausgeblendet, unbestätigte Aussagen weggelassen. Vor Livegang auf false setzen und echte Fotos eintragen."
+}

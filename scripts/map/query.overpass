@@ -1,0 +1,11 @@
+[out:json][timeout:25];
+(
+  way(around:420,49.8506756,6.11385)["highway"~"^(motorway|trunk|primary|secondary|tertiary|unclassified|residential|service|trunk_link|primary_link|secondary_link)$"];
+  way(around:420,49.8506756,6.11385)["railway"="rail"];
+  way(around:600,49.8506756,6.11385)["waterway"="river"];
+  nwr(around:250,49.8506756,6.11385)["amenity"="fuel"];
+  nwr(around:120,49.8506756,6.11385)["building"];
+  nwr(around:150,49.8506756,6.11385)["shop"];
+  nwr(around:150,49.8506756,6.11385)["landuse"];
+);
+out geom tags;

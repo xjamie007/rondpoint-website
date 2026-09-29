@@ -1,0 +1,260 @@
+---
+/**
+ * Autoseite (C6). Aktiv: Galerie, Daten, Ausstattung, Beschreibung, Kontakt, ähnliche Autos.
+ * Nicht mehr verfügbar (T2.7): kein Preis, nur erstes Bild, Hinweis, ähnliche Autos, noindex.
+ */
+import Base from '@/layouts/Base.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import Gallery from '@/components/cars/Gallery.astro';
+import CarCard from '@/components/cars/CarCard.astro';
+import CarForm from '@/components/forms/CarForm.astro';
+import Icon from '@/components/Icon.astro';
+import { getImage } from 'astro:assets';
+import { fmt, frenchTypo, useT } from '@/i18n';
+import { path, pathFor, type Lang } from '@/i18n/config';
+import { eur, km, monthYear, num, power } from '@/lib/format';
+import { isClassic, isFresh, similarCars, type CarView } from '@/lib/stock';
+import { breadcrumbs, car as carLd } from '@/lib/jsonld';
+import { carDescription, carTitle, soldDescription, soldTitle } from '@/lib/seo';
+import { telHref, whatsappHref } from '@/lib/site';
+import { norm } from '@/lib/text-norm';
+
+interface Props {
+  lang: Lang;
+  car: CarView;
+}
+const { lang, car: v } = Astro.props;
+const t = useT(lang);
+const c = t.car;
+const sold = v.status === 'unavailable';
+const route = { page: 'car' as const, slug: v.slug };
+const url = pathFor(lang, route);
+const name = [v.make, v.model, v.version].filter(Boolean).join(' ');
+const shortName = `${v.make} ${v.model}`;
+const ref = v.garageRef ?? v.stableId;
+const color = (raw: string | null) => (raw ? ((t.enums.colors as Record<string, string>)[norm(raw)] ?? raw) : null);
+const pw = power(lang, v.powerKw, v.powerHp, c.powerUnit);
+const wltp =
+  v.wltpConsumption || v.co2Gkm != null
+    ? [v.wltpConsumption, v.co2Gkm != null ? `${num(lang, v.co2Gkm)} g CO₂/km` : null].filter(Boolean).join(', ')
+    : v.condition === 'new'
+      ? c.wltpMissing
+      : null;
+
+const specs: [string, string | null][] = [
+  [c.firstReg, v.firstRegistration ? monthYear(v.firstRegistration) : v.condition === 'new' ? '—' : null],
+  [c.mileage, km(lang, v.mileageKm)],
+  [c.fuel, t.enums.fuel[v.fuel]],
+  [c.gearbox, t.enums.transmission[v.transmission]],
+  [c.power, pw],
+  [c.displacement, v.displacementCc ? `${num(lang, v.displacementCc)} cm³` : null],
+  [c.body, v.body !== 'other' ? t.enums.body[v.body] : (v.bodyRaw ?? null)],
+  [c.seats, v.seats ? String(v.seats) : null],
+  [c.colorExt, color(v.colorExterior)],
+  [c.colorInt, color(v.colorInterior)],
+  [c.euro, v.euroNorm],
+  [c.wltp, wltp],
+  [c.ref, ref],
+];
+const shownSpecs = specs.filter(([, val]) => val != null) as [string, string][];
+const firstOptions = v.options.slice(0, 12);
+const moreOptions = v.options.slice(12);
+const similar = similarCars(v);
+const whatsappText = fmt(c.whatsappText, { make: v.make, model: v.model, id: ref });
+
+const title = sold ? soldTitle(v, t) : carTitle(v, lang, t);
+const description = sold ? soldDescription(v, t) : carDescription(v, lang, t);
+
+const imgs = await Promise.all(
+  v.photos.slice(0, 3).map((p) => getImage({ src: p.url, width: 1200, height: Math.round((1200 * (p.height ?? 1536)) / (p.width ?? 2048)), format: 'webp' })),
+);
+const og = imgs[0]
+  ? { src: imgs[0].src, width: 1200, height: Math.round((1200 * (v.photos[0].height ?? 1536)) / (v.photos[0].width ?? 2048)), alt: fmt(c.gallery.alt, { make: v.make, model: v.model, version: v.version, i: 1, n: v.photos.length }) }
+  : undefined;
+const crumbs = [
+  { name: t.nav.home, href: path(lang, 'home') },
+  { name: t.nav.cars, href: path(lang, 'cars') },
+  { name: shortName, href: url },
+];
+const jsonld = [
+  breadcrumbs(crumbs.map((x) => ({ name: x.name, url: x.href }))),
+  ...(sold
+    ? []
+    : [
+        carLd(v, {
+          url,
+          images: imgs.map((i) => i.src),
+          bodyLabel: v.body !== 'other' ? t.enums.body[v.body] : (v.bodyRaw ?? ''),
+          transmissionLabel: t.enums.transmission[v.transmission],
+        }),
+      ]),
+];
+---
+<Base
+  lang={lang}
+  route={route}
+  title={title}
+  description={description}
+  noindex={sold}
+  ogImage={og}
+  jsonld={jsonld}
+  contactBar={sold ? {} : { askHref: '#demande', whatsappText }}
+>
+  <div class="wrap">
+    <Breadcrumb label={t.nav.breadcrumb} items={crumbs} />
+    <div class="top">
+      <div class="summary">
+        <h1 class="car-h1" style={`view-transition-name: car-title-${v.stableId}`}>{name}</h1>
+        {
+          sold ? (
+            <p class="t-lead sold">{c.sold}</p>
+          ) : (
+            <>
+              <p class="t-price big-price">{eur(lang, v.priceEur)}</p>
+              {v.vatRecoverable && <p class="t-small t-muted vat">{c.vatRecoverable}</p>}
+              <ul class="tags">
+                <li class="tag">{t.enums.condition[v.condition]}</li>
+                {isFresh(v) && <li class="tag">{t.cars.tagFresh}</li>}
+              </ul>
+              <div class="actions">
+                <a class="btn btn-primary" href={telHref}>
+                  <Icon name="phone" size={20} />
+                  {t.contactBar.call}
+                </a>
+                <a class="btn btn-secondary" href={whatsappHref(whatsappText)} rel="noopener">
+                  <Icon name="whatsapp" size={20} />
+                  WhatsApp
+                </a>
+                <a class="btn btn-secondary" href="#demande">{t.forms.car.title}</a>
+              </div>
+            </>
+          )
+        }
+      </div>
+      <div class="media">
+        <Gallery car={v} t={t} firstOnly={sold} />
+      </div>
+    </div>
+
+    {
+      sold ? (
+        <p class="back"><a class="link" href={path(lang, 'cars')}>{c.backToList}</a></p>
+      ) : (
+        <>
+          <section class="block" aria-labelledby="specs-h">
+            <h2 id="specs-h">{c.specsH2}</h2>
+            <dl class="specs car-specs">
+              {shownSpecs.map(([k, val]) => (
+                <div>
+                  <dt>{k}</dt>
+                  <dd>{val}</dd>
+                </div>
+              ))}
+            </dl>
+            {isClassic(v) && (
+              <p class="classic">
+                <a class="link" href={path(lang, 'sodablast')}>{c.sodablast}</a>
+              </p>
+            )}
+          </section>
+
+          {v.options.length > 0 && (
+            <section class="block" aria-labelledby="equip-h">
+              <h2 id="equip-h">{c.equipmentH2}</h2>
+              {lang !== 'fr' && <p class="t-small t-muted">{c.originalListNote}</p>}
+              <ul class="options" lang="fr">
+                {firstOptions.map((o) => <li>{o}</li>)}
+              </ul>
+              {moreOptions.length > 0 && (
+                <details class="more">
+                  <summary class="btn btn-secondary">{fmt(c.equipmentMore, { n: v.options.length })}</summary>
+                  <ul class="options" lang="fr">
+                    {moreOptions.map((o) => <li>{o}</li>)}
+                  </ul>
+                </details>
+              )}
+            </section>
+          )}
+
+          {v.description.length > 0 && (
+            <section class="block" aria-labelledby="desc-h">
+              <h2 id="desc-h">{c.descriptionH2}</h2>
+              {lang !== 'fr' && <p class="t-small t-muted">{c.originalNote}</p>}
+              <div class="desc prose-w" lang="fr">
+                {v.description.map((b) =>
+                  b.kind === 'p' ? (
+                    <p>{frenchTypo(b.text)}</p>
+                  ) : (
+                    <ul>
+                      {b.items.map((i) => (
+                        <li>{frenchTypo(i)}</li>
+                      ))}
+                    </ul>
+                  ),
+                )}
+              </div>
+            </section>
+          )}
+
+          <section class="block contact" aria-labelledby="contact-h" id="contact-voiture">
+            <h2 id="contact-h">{c.contactH2}</h2>
+            <p class="prose-w">{c.contactText}</p>
+            <CarForm lang={lang} t={t} carLabel={`${name}, ${eur(lang, v.priceEur)}`} carTitle={name} carRef={ref} />
+          </section>
+        </>
+      )
+    }
+
+    {
+      similar.length > 0 && (
+        <section class="block" aria-labelledby="similar-h">
+          <h2 id="similar-h">{c.similarH2}</h2>
+          <div class="similar">
+            {similar.map((s) => (
+              <CarCard car={s} lang={lang} t={t} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+  </div>
+</Base>
+
+<style>
+  .top { display: grid; gap: 24px; padding-bottom: 40px; }
+  .summary { display: grid; gap: 12px; align-content: start; }
+  .car-h1 { font-size: clamp(2rem, 1.4rem + 2.4vw, 3.25rem); margin: 0; }
+  .big-price { font-size: clamp(1.75rem, 1.5rem + 1vw, 2.25rem); margin: 8px 0 0; }
+  .vat { margin: 0; }
+  .tags { display: flex; gap: 8px; list-style: none; margin: 0; padding: 0; }
+  .actions { display: grid; gap: 12px; margin-top: 12px; }
+  @media (min-width: 40rem) { .actions { grid-template-columns: repeat(3, auto); justify-content: start; } }
+  @media (min-width: 64rem) {
+    .top { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 40px; }
+    .media { grid-column: 1; grid-row: 1; }
+    .summary { grid-column: 2; grid-row: 1; }
+    .actions { grid-template-columns: 1fr; }
+  }
+  .block { padding-block: 40px; border-top: 1.5px solid var(--color-black); }
+  .block h2 { margin: 0 0 24px; }
+  .car-specs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (min-width: 48rem) { .car-specs { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (min-width: 64rem) { .car-specs { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .classic { margin: 24px 0 0; }
+  .options { columns: 1; column-gap: 40px; padding-left: 1.2em; margin: 0; }
+  @media (min-width: 40rem) { .options { columns: 2; } }
+  @media (min-width: 64rem) { .options { columns: 3; } }
+  .options li { break-inside: avoid; margin-bottom: 6px; }
+  .more { margin-top: 16px; }
+  .more summary { list-style: none; cursor: pointer; }
+  .more summary::-webkit-details-marker { display: none; }
+  .more[open] summary { display: none; }
+  .desc p { margin: 0 0 12px; }
+  .desc ul { padding-left: 1.2em; margin: 0 0 16px; }
+  .desc li { margin-bottom: 4px; }
+  .similar { display: grid; gap: 48px 24px; }
+  @media (min-width: 40rem) { .similar { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 64rem) { .similar { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; } }
+  .sold { margin: 8px 0 0; }
+  .back { padding-bottom: 40px; }
+</style>

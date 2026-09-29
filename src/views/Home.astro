@@ -1,0 +1,485 @@
+---
+/**
+ * Startseite (D2): Hero, Finder kompakt, Autos, weitere Leistungen, Avis Google,
+ * FAQ, Anfahrt. Ein choreografierter Lade-Moment (C7.1): Logo-„O" dreht sich,
+ * h1 wird freigelegt, Text steigt auf, das Foto setzt sich. Einblendungen beim Scrollen.
+ */
+import Base from '@/layouts/Base.astro';
+import StockStatus from '@/components/StockStatus.astro';
+import FinderSection from '@/components/finder/FinderSection.astro';
+import CarCard from '@/components/cars/CarCard.astro';
+import RoundaboutMap from '@/components/RoundaboutMap.astro';
+import Photo from '@/components/Photo.astro';
+import Icon from '@/components/Icon.astro';
+import Faq, { type FaqKey } from '@/components/Faq.astro';
+import AccessSection from '@/components/AccessSection.astro';
+import { hasContent, isUnconfirmed, plural, rich, stripOpenPoints, hasOpenPoint, useT } from '@/i18n';
+import { path, type Lang, type PageKey } from '@/i18n/config';
+import { activeCars } from '@/lib/stock';
+import { faqPage } from '@/lib/jsonld';
+import { presentation, showOpenPoints, site } from '@/lib/site';
+import { photo, type PhotoKey } from '@/lib/photos';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useT(lang);
+const latest = activeCars.slice(0, 3);
+const faqKeys: FaqKey[] = ['permis', 'carte', 'dispo', 'depot', 'langues'];
+const faqLd = faqPage(
+  faqKeys
+    .map((k) => t.faq.items[k])
+    .filter((it) => !hasOpenPoint(it.a))
+    .map((it) => ({ q: it.q, a: stripOpenPoints(it.a) })),
+);
+const services: {
+  key: 'workshop' | 'sodablast' | 'garden' | 'trailers';
+  page: PageKey;
+  photo: PhotoKey;
+  alt: string;
+}[] = [
+  { key: 'workshop', page: 'workshop', photo: 'workshop', alt: t.photos.workshop },
+  { key: 'sodablast', page: 'sodablast', photo: 'sodablast', alt: t.photos.sodablast },
+  { key: 'garden', page: 'garden', photo: 'garden', alt: t.photos.garden },
+  { key: 'trailers', page: 'trailersForSale', photo: 'trailers-sale', alt: t.photos.trailersSale },
+];
+const reviews = site.reviews as { quote: string; name: string; date: string }[];
+const hero = photo('hero-workshop');
+const aboutPhoto = photo('about');
+/** Leiste im Startbildschirm: jede Leistung mit Symbol, Titel und einer Zeile */
+const offer: { page: PageKey; icon: 'trailer' | 'car' | 'wrench' | 'tag' | 'mower' | 'spray'; title: string; sub: string }[] = [
+  { page: 'rental', icon: 'trailer', title: t.nav.rental, sub: t.offer.sub.rental },
+  { page: 'cars', icon: 'car', title: t.nav.cars, sub: t.offer.sub.cars },
+  { page: 'workshop', icon: 'wrench', title: t.nav.workshop, sub: t.offer.sub.workshop },
+  { page: 'trailersForSale', icon: 'tag', title: t.nav.trailersForSale, sub: t.offer.sub.trailers },
+  { page: 'garden', icon: 'mower', title: t.nav.garden, sub: t.offer.sub.garden },
+  { page: 'sodablast', icon: 'spray', title: t.services.sodablast.h3, sub: t.offer.sub.sodablast },
+];
+const visibleFaq = presentation ? faqKeys.filter((k) => !isUnconfirmed(t.faq.items[k].a) && hasContent(t.faq.items[k].a)) : faqKeys;
+---
+<Base lang={lang} route={{ page: 'home' }} title={t.seo.home.title} description={t.seo.home.description} jsonld={[faqLd]} isHome>
+  <section class="hero" data-hero aria-labelledby="hero-h">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <h1 id="hero-h" class="hero-h1">{t.hero.h1}</h1>
+        <p class="t-lead hero-rise">{t.hero.sub}</p>
+        <div class="hero-ctas hero-rise">
+          <a class="btn btn-primary btn-go" href="#quelle-remorque">{t.hero.ctaFinder}</a>
+          <a class="btn btn-secondary btn-go" href={path(lang, 'cars')}>{t.hero.ctaCars}</a>
+        </div>
+        <StockStatus lang={lang} t={t} class="hero-rise" />
+      </div>
+      <div class="hero-media">
+        {
+          hero ? (
+            <Photo
+              photo={hero}
+              alt={t.photos.heroWorkshop}
+              sizes="(min-width: 1280px) 560px, (min-width: 1024px) 45vw, 100vw"
+              ratio="4 / 3"
+              priority
+              curtain
+              accent
+              position="40% 55%"
+            />
+          ) : (
+            <>
+              <RoundaboutMap t={t} ratio={1.6} label={t.hero.drawingAlt} attribution={false} />
+              {showOpenPoints && (
+                <p class="t-small">
+                  <mark class="open-point">[FEHLT — Foto: Gelände am Kreisel bei Tageslicht, 16:10]</mark>
+                </p>
+              )}
+            </>
+          )
+        }
+      </div>
+      <nav class="offer" aria-label={t.offer.label}>
+        <ul role="list">
+          {
+            offer.map((o, i) => (
+              <li style={`--i: ${i}`}>
+                <a href={path(lang, o.page)}>
+                  <span class="offer-ic">
+                    <Icon name={o.icon} size={26} />
+                  </span>
+                  <span class="offer-txt">
+                    <span class="offer-t">{o.title}</span>
+                    <span class="offer-s">{o.sub}</span>
+                  </span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+  <FinderSection lang={lang} t={t} compact />
+
+  <section class="section" aria-labelledby="cars-h">
+    <div class="wrap">
+      <div class="sec-head reveal-soft">
+        <h2 id="cars-h" class="h-bar">{t.cars.homeH2}</h2>
+        <StockStatus lang={lang} t={t} />
+      </div>
+      {
+        latest.length ? (
+          <div class="cars3 stagger">
+            {latest.map((c) => (
+              <div class="reveal">
+                <CarCard car={c} lang={lang} t={t} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p>{t.cars.empty}</p>
+        )
+      }
+      {
+        activeCars.length > 0 && (
+          <p class="more">
+            <a class="btn btn-secondary btn-go" href={path(lang, 'cars')}>
+              {plural(lang, t.cars.seeAll, activeCars.length)}
+            </a>
+          </p>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="section services tone" aria-labelledby="services-h">
+    <div class="wrap">
+      <h2 id="services-h" class="h-bar reveal">{t.services.h2}</h2>
+      <ul class="svc-grid stagger" role="list">
+        {
+          services.map(({ key, page, photo: pk, alt }, i) => {
+            const ph = photo(pk);
+            return (
+              <li class="svc reveal">
+                <div class="svc-media">
+                  {ph ? (
+                    <Photo photo={ph} alt={alt} sizes="(min-width: 1280px) 600px, (min-width: 768px) 50vw, 100vw" ratio="16 / 10" />
+                  ) : (
+                    showOpenPoints && (
+                      <p class="svc-note t-small">
+                        <mark class="open-point">{t.services.photoMissing}</mark>
+                      </p>
+                    )
+                  )}
+                  <span class="svc-num" aria-hidden="true">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                </div>
+                <div class="svc-body">
+                  <h3>
+                    <a class="svc-link" href={path(lang, page)}>
+                      {t.services[key].h3}
+                    </a>
+                  </h3>
+                  <ul class="plain svc-points">
+                    {t.details.points[key].map((pt) => (
+                      <li>{pt}</li>
+                    ))}
+                  </ul>
+                  <span class="svc-more" aria-hidden="true">
+                    {t.services[key].link}
+                    <Icon name="arrow" size={20} />
+                  </span>
+                </div>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section about on-asphalt" aria-labelledby="about-h">
+    <div class="wrap about-grid">
+      <div class="about-text">
+        <h2 id="about-h" class="h-bar reveal">{t.about.h2}</h2>
+        <p class="t-lead reveal-soft">{t.about.text}</p>
+        <p class="reveal">
+          <a class="btn btn-light btn-go" href="#access-h">{t.about.link}</a>
+        </p>
+      </div>
+      {
+        aboutPhoto && (
+          <div class="about-media reveal-fade">
+            <Photo photo={aboutPhoto} alt={t.about.photoAlt} sizes="(min-width: 1024px) 480px, 100vw" ratio="4 / 5" reveal parallax position="62% 50%" />
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  {
+    (reviews.length > 0 || showOpenPoints) && (
+      <section class="section reviews" aria-labelledby="reviews-h">
+        <div class="wrap">
+          <h2 id="reviews-h">{t.reviews.h2}</h2>
+          {reviews.length > 0 ? (
+            <div class="quotes">
+              {reviews.map((r) => (
+                <figure>
+                  <blockquote lang="fr">
+                    <p>{r.quote}</p>
+                  </blockquote>
+                  <figcaption>
+                    <cite>
+                      {r.name}, {r.date}
+                    </cite>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          ) : (
+            <p set:html={rich(t.reviews.missing)} />
+          )}
+          <p>
+            <a class="link" href={site.googleProfileUrl} rel="noopener">
+              {t.reviews.link}
+            </a>
+          </p>
+        </div>
+      </section>
+    )
+  }
+
+  <Faq t={t} keys={visibleFaq} heading={t.faq.h2} id="faq" />
+
+  <AccessSection t={t} />
+</Base>
+
+<style>
+  /* Startbildschirm: Text | Foto, darunter die Leistungs-Leiste */
+  .hero {
+    position: relative;
+    isolation: isolate;
+    padding-block: 16px 56px;
+    overflow-x: clip;
+    background:
+      radial-gradient(48rem 28rem at 8% 0%, rgb(233 93 12 / 0.09), transparent 70%),
+      linear-gradient(to bottom, var(--color-white), var(--color-paper));
+  }
+  /* Kreisel-Ring (wie das „O“ im Logo), ganz leise hinter der Überschrift */
+  .hero::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: -180px;
+    left: -220px;
+    width: 640px;
+    height: 640px;
+    border-radius: 50%;
+    border: 72px solid rgb(233 93 12 / 0.06);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background-image: radial-gradient(rgb(0 0 0 / 0.07) 1px, transparent 1.4px);
+    background-size: 22px 22px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 30%, #000);
+    mask-image: linear-gradient(to bottom, transparent 30%, #000);
+    pointer-events: none;
+  }
+  .hero-grid { display: grid; gap: 32px; grid-template-areas: 'text' 'offer' 'media'; }
+  .hero-text { grid-area: text; display: grid; gap: 24px; align-content: start; }
+  .hero-media { grid-area: media; }
+  .offer { grid-area: offer; }
+  .hero-text > * { margin: 0; }
+  .hero-h1 { max-width: 14ch; }
+  .hero-text .t-lead { max-width: 52ch; }
+  .hero-ctas { display: grid; gap: 12px; }
+  @media (min-width: 40rem) { .hero-ctas { grid-template-columns: repeat(2, max-content); } }
+  .hero-media .t-small { margin: 8px 0 0; }
+  @media (max-width: 63.99rem) {
+    /* mobil: Foto randlos über die volle Breite */
+    .hero-media { margin-inline: calc(-1 * var(--gutter)); }
+  }
+  @media (min-width: 64rem) {
+    .hero { padding-block: 48px 72px; }
+    .hero-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); grid-template-areas: 'text media' 'offer offer'; gap: 40px 56px; align-items: stretch; }
+    .hero-text { align-content: center; }
+    /* Bild über 5 Spalten bis an den rechten Rand, so hoch wie der Text */
+    .hero-media { margin-right: calc(-1 * (var(--gutter) + max(0px, (100vw - var(--container) - 2 * var(--gutter)) / 2))); }
+    .hero-media :global(.ph) { aspect-ratio: auto !important; height: 100%; min-height: 440px; }
+    .hero-media :global(svg) { border-right: 0; }
+  }
+
+  /* Leistungs-Leiste: auf einen Blick, was die Garage macht */
+  .offer ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5px; background: var(--color-asphalt); border: 1.5px solid var(--color-black); border-radius: var(--radius-edge); overflow: hidden; }
+  @media (min-width: 48rem) { .offer ul { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (min-width: 80rem) { .offer ul { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+  .offer li { min-width: 0; background: var(--color-black); }
+  .offer a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 100%;
+    min-height: 76px;
+    padding: 14px 14px 16px;
+    color: var(--color-white);
+    text-decoration: none;
+    transition: background-color var(--dur-3) var(--ease-out);
+  }
+  .offer a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4px;
+    background: var(--color-orange);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--dur-3) var(--ease-out);
+  }
+  .offer a:hover { background: #1c1d1f; }
+  .offer a:hover::after, .offer a:focus-visible::after { transform: scaleX(1); }
+  .offer a:focus-visible { outline-color: var(--color-orange); outline-offset: -4px; }
+  .offer-ic {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgb(233 93 12 / 0.16);
+    color: var(--color-orange);
+    transition: background-color var(--dur-3) var(--ease-out), color var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out);
+  }
+  .offer a:hover .offer-ic { background: var(--color-orange); color: var(--color-black); transform: rotate(-8deg) scale(1.06); }
+  .offer-txt { display: grid; gap: 2px; min-width: 0; }
+  .offer-t { font-family: var(--font-wide); font-stretch: 112%; font-weight: 700; font-size: 1rem; line-height: 1.2; overflow-wrap: break-word; hyphens: auto; }
+  .offer-s { font-size: 0.8125rem; line-height: 1.3; color: #c9cccf; }
+  @media (max-width: 23.99rem) { .offer-ic { width: 36px; height: 36px; } .offer a { gap: 10px; padding-inline: 10px; } }
+
+  .sec-head { display: grid; gap: 8px; margin-bottom: 40px; }
+  .sec-head h2 { margin: 0; }
+  .cars3 { display: grid; gap: 48px 24px; }
+  .cars3 > * { min-width: 0; }
+  @media (min-width: 40rem) { .cars3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 64rem) { .cars3 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; } }
+  .more { margin: 40px 0 0; }
+
+  .services { border-top: 1.5px solid var(--color-black); }
+  .services h2 { margin: 0 0 40px; }
+  .svc-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 24px; }
+  @media (min-width: 48rem) { .svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; } }
+  .svc {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background: var(--color-white);
+    border: 1.5px solid var(--color-black);
+    border-radius: var(--radius-edge);
+    overflow: hidden;
+    transition: transform var(--dur-3) var(--ease-out), box-shadow var(--dur-3) var(--ease-out);
+  }
+  .svc-media { position: relative; }
+  .svc-media::after {
+    /* Verlauf von unten: Foto geht weich in die Karte über */
+    content: '';
+    position: absolute;
+    inset: 40% 0 0;
+    background: linear-gradient(to top, rgb(0 0 0 / 0.62), transparent);
+    opacity: 0.9;
+    transition: opacity var(--dur-3) var(--ease-out);
+    pointer-events: none;
+  }
+  .svc-num {
+    position: absolute;
+    left: 20px;
+    bottom: 14px;
+    z-index: 1;
+    font-family: var(--font-wide);
+    font-stretch: 125%;
+    font-weight: 800;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--color-white);
+    text-shadow: 0 2px 16px rgb(0 0 0 / 0.35);
+  }
+  .svc-note { margin: 0; padding: 20px 24px 0; }
+  .svc-body { position: relative; display: grid; gap: 14px; align-content: start; flex: 1; padding: 24px 24px 28px; }
+  .svc-body::before {
+    content: '';
+    position: absolute;
+    top: -1.5px;
+    left: 0;
+    width: 64px;
+    height: 5px;
+    background: var(--color-orange);
+    transition: width var(--dur-4) var(--ease-out);
+  }
+  .svc h3 { margin: 0; font-size: clamp(1.5rem, 1.25rem + 0.9vw, 2rem); font-stretch: 118%; }
+  .svc-link { text-decoration: none; }
+  /* ganze Karte klickbar */
+  .svc-link::after { content: ''; position: absolute; inset: 0; z-index: 2; }
+  .svc-link:focus-visible { outline: none; }
+  .svc:has(.svc-link:focus-visible) { outline: 3px solid var(--color-black); outline-offset: 4px; }
+  .svc-points { grid-template-columns: none !important; gap: 8px; max-width: none; }
+  .svc-points li { font-size: 1.0625rem; }
+  .svc-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 6px;
+    font-weight: 700;
+    color: var(--color-orange-text);
+  }
+  .svc-more :global(svg) { transition: transform var(--dur-3) var(--ease-out); }
+  @media (hover: hover) {
+    .svc:hover { transform: translateY(-6px); box-shadow: 0 24px 48px -28px rgb(0 0 0 / 0.55); }
+    .svc:hover .svc-body::before { width: 100%; }
+    .svc:hover .svc-media::after { opacity: 1; }
+    .svc:hover .svc-more :global(svg) { transform: translateX(6px); }
+    .svc:hover :global(.ph img) { scale: 1.06; }
+  }
+
+  .about {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    background:
+      radial-gradient(60rem 30rem at 0% 100%, rgb(233 93 12 / 0.22), transparent 60%),
+      repeating-radial-gradient(circle at 100% 0%, transparent 0 58px, rgb(255 255 255 / 0.045) 58px 60px),
+      var(--color-black);
+    color: var(--color-white);
+  }
+  .about-grid { display: grid; gap: 40px; }
+  .about-text > * { margin: 0 0 24px; }
+  .about-text > :last-child { margin-bottom: 0; }
+  .about-text .t-lead { max-width: 56ch; color: #e6e7e8; }
+  .about-media { position: relative; }
+  /* oranger Rahmen versetzt hinter dem Foto */
+  .about-media::before {
+    content: '';
+    position: absolute;
+    inset: 20px -14px -14px 20px;
+    border: 2px solid var(--color-orange);
+    border-radius: var(--radius-edge);
+    z-index: -1;
+  }
+  @media (max-width: 63.99rem) { .about-media { margin-right: 14px; } }
+  @media (min-width: 64rem) {
+    .about-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 80px; align-items: center; }
+  }
+
+  .reviews { border-top: 1.5px solid var(--color-black); }
+  .reviews h2 { margin: 0 0 24px; }
+  .quotes { display: grid; gap: 40px; margin-bottom: 24px; }
+  @media (min-width: 64rem) { .quotes { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  blockquote { margin: 0; font-size: 1.1875rem; line-height: 1.5; }
+  cite { font-style: normal; color: var(--color-asphalt); }
+</style>

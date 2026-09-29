@@ -1,0 +1,70 @@
+---
+/** F3 Werkstatt (type=atelier). Fotos laufen nicht über das Formular, sondern über WhatsApp. */
+import FormShell from './FormShell.astro';
+import { rich, type Dict } from '@/i18n';
+import type { Lang } from '@/i18n/config';
+import { site, whatsappHref } from '@/lib/site';
+
+interface Props {
+  lang: Lang;
+  t: Dict;
+  preselect?: 'entretien' | 'panne' | 'carrosserie' | 'sodablast' | 'jardin';
+}
+const { lang, t, preselect } = Astro.props;
+const f = t.forms;
+const w = f.workshop;
+const id = 'rendez-vous';
+const reasons = [
+  ['entretien', w.reasonMaintenance],
+  ['panne', w.reasonRepair],
+  ['carrosserie', w.reasonBody],
+  ['sodablast', w.reasonSodablast],
+  ['jardin', w.reasonGarden],
+] as const;
+const waLink = `<a class="link" href="${whatsappHref(t.pages.sodablast.whatsappText)}" rel="noopener">${site.whatsapp.display}</a>`;
+---
+<FormShell type="atelier" lang={lang} t={t} id={id} submit={w.submit}>
+  <fieldset>
+    <legend>{w.reason}</legend>
+    <div class="radios">
+      {
+        reasons.map(([value, label], i) => (
+          <label class="radio">
+            <input
+              type="radio"
+              name="reason"
+              value={value}
+              checked={preselect === value}
+              required={i === 0}
+              data-msg-required={f.errors.reason}
+            />
+            {label}
+          </label>
+        ))
+      }
+    </div>
+  </fieldset>
+  <div class="fg">
+    <label class="field-label" for={`${id}-machine`}>{w.machine}</label>
+    <span class="field-hint" id={`${id}-machine-hint`}>{w.machineHint}</span>
+    <input
+      class="field"
+      id={`${id}-machine`}
+      name="machine"
+      type="text"
+      required
+      maxlength="160"
+      aria-describedby={`${id}-machine-hint`}
+      data-msg-required={f.errors.machine}
+    />
+  </div>
+  <div class="fg">
+    <label class="field-label" for={`${id}-work`}>{w.work}</label>
+    <textarea class="field" id={`${id}-work`} name="work" rows="4" required maxlength="3000" data-msg-required={f.errors.work}></textarea>
+  </div>
+  <div class="fg">
+    <label class="field-label" for={`${id}-date`}>{w.date} <span class="opt">({f.optional})</span></label>
+    <input class="field" id={`${id}-date`} name="date" type="date" data-not-past data-msg-past={f.errors.past} />
+  </div>
+  <p class="t-small" slot="after" set:html={rich(w.photos.replace(site.whatsapp.display, '{wa}'), { wa: waLink })} />
+</FormShell>

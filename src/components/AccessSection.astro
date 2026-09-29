@@ -1,0 +1,50 @@
+---
+/** Anfahrt (D2.7): Adresse, Öffnungszeiten als Tabelle, Sprachen, Link zu Google Maps, Kreisel-Zeichnung. */
+import HoursTable from './HoursTable.astro';
+import RoundaboutMap from './RoundaboutMap.astro';
+import type { Dict } from '@/i18n';
+import { site } from '@/lib/site';
+
+interface Props {
+  t: Dict;
+  headingTag?: 'h2' | 'h3';
+}
+const { t, headingTag = 'h2' } = Astro.props;
+const H = headingTag;
+---
+<section class="section access tone" aria-labelledby="access-h">
+  <div class="wrap grid">
+    <div class="info">
+      <H id="access-h">{t.access.h2}</H>
+      <address>
+        <strong>{site.name}</strong><br />
+        {site.address.street}<br />
+        {site.address.postalCode} {site.address.locality}
+      </address>
+      <p>{t.access.landmark}</p>
+      <p>
+        <a class="link" href={site.mapsUrl} rel="noopener">{t.access.mapLink}</a>
+        <span class="t-small t-muted"> {t.access.external}</span>
+      </p>
+      <h3 class="h4">{t.access.hoursH3}</h3>
+      <HoursTable t={t} />
+      <h3 class="h4">{t.access.languagesH3}</h3>
+      <p>{t.access.languages}</p>
+    </div>
+    <div class="map">
+      <RoundaboutMap t={t} label={t.hero.drawingAlt} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid { display: grid; gap: 40px; }
+  @media (min-width: 64rem) {
+    .grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px; align-items: start; }
+  }
+  .info > :first-child { margin-top: 0; }
+  h2 { margin: 0 0 24px; }
+  address { font-style: normal; margin-bottom: 16px; }
+  .info p { margin: 0 0 16px; max-width: 46ch; }
+  .h4 { font-size: 1.125rem; margin: 32px 0 12px; }
+</style>

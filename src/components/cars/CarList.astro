@@ -1,0 +1,183 @@
+---
+/**
+ * Autoliste mit Filtern (C6). Die Liste ist im Build gerendert (neueste zuerst).
+ * Filter nur mit JavaScript: kleines Vanilla-Script, Umordnen per View Transition.
+ */
+import CarCard from './CarCard.astro';
+import { plural, fmt, type Dict } from '@/i18n';
+import type { Lang } from '@/i18n/config';
+import { eur } from '@/lib/format';
+import type { CarView } from '@/lib/stock';
+
+interface Props {
+  cars: CarView[];
+  lang: Lang;
+  t: Dict;
+  /** h2 auf der Listenseite (direkt unter der h1) */
+  headingLevel?: 'h2' | 'h3';
+}
+const { cars, lang, t, headingLevel = 'h2' } = Astro.props;
+const f = t.cars.filter;
+const makes = [...new Set(cars.map((c) => c.make))].sort((a, b) => a.localeCompare(b));
+const fuels = [...new Set(cars.map((c) => c.fuel))];
+const gearboxes = [...new Set(cars.map((c) => c.transmission))];
+const STEPS = [10_000, 15_000, 20_000, 25_000, 30_000, 40_000, 50_000, 75_000, 100_000, 150_000, 200_000];
+const maxPrice = Math.max(0, ...cars.map((c) => c.priceEur));
+const minPrice = Math.min(...cars.map((c) => c.priceEur));
+const priceSteps = STEPS.filter((s) => s > minPrice && s < maxPrice);
+---
+{
+  cars.length === 0 ? (
+    <p class="t-lead">{t.cars.empty}</p>
+  ) : (
+    <div class="car-list" data-car-root data-count-one={f.count.one} data-count-other={f.count.other} data-summary={f.summary}>
+      <details class="filters" data-car-filter-wrap hidden>
+        <summary class="btn btn-secondary">
+          <span data-filter-summary>{fmt(f.summary, { n: cars.length })}</span>
+        </summary>
+        <form class="filter-form" data-car-filter aria-label={f.legend}>
+          <div class="fgroup">
+            <label class="field-label" for="f-make">{f.make}</label>
+            <select class="field" id="f-make" name="make">
+              <option value="">{f.all}</option>
+              {makes.map((m) => <option value={m}>{m}</option>)}
+            </select>
+          </div>
+          <div class="fgroup">
+            <label class="field-label" for="f-fuel">{f.fuel}</label>
+            <select class="field" id="f-fuel" name="fuel">
+              <option value="">{f.any}</option>
+              {fuels.map((x) => <option value={x}>{t.enums.fuel[x]}</option>)}
+            </select>
+          </div>
+          <div class="fgroup">
+            <label class="field-label" for="f-gearbox">{f.gearbox}</label>
+            <select class="field" id="f-gearbox" name="gearbox">
+              <option value="">{f.all}</option>
+              {gearboxes.map((x) => <option value={x}>{t.enums.transmission[x]}</option>)}
+            </select>
+          </div>
+          <div class="fgroup">
+            <label class="field-label" for="f-price">{f.maxPrice}</label>
+            <select class="field" id="f-price" name="price">
+              <option value="">{f.any}</option>
+              {priceSteps.map((s) => <option value={s}>{fmt(f.upTo, { price: eur(lang, s) })}</option>)}
+            </select>
+          </div>
+          <div class="fgroup">
+            <label class="field-label" for="f-condition">{f.condition}</label>
+            <select class="field" id="f-condition" name="condition">
+              <option value="">{f.all}</option>
+              <option value="new">{f.conditionNew}</option>
+              <option value="used">{f.conditionUsed}</option>
+            </select>
+          </div>
+          <div class="fgroup">
+            <label class="field-label" for="f-sort">{f.sort}</label>
+            <select class="field" id="f-sort" name="sort">
+              <option value="recent">{f.sortRecent}</option>
+              <option value="price-asc">{f.sortPriceAsc}</option>
+              <option value="price-desc">{f.sortPriceDesc}</option>
+              <option value="km-asc">{f.sortKmAsc}</option>
+            </select>
+          </div>
+        </form>
+      </details>
+      <p class="count t-small" aria-live="polite" data-filter-count hidden>
+        {plural(lang, f.count, cars.length)}
+      </p>
+      <div class="grid" data-car-list>
+        {cars.map((c, i) => <CarCard car={c} lang={lang} t={t} eager={i < 1} headingLevel={headingLevel} />)}
+      </div>
+      <div class="empty" data-filter-empty hidden>
+        <p>{f.empty}</p>
+        <button type="button" class="btn btn-secondary" data-filter-reset>{f.reset}</button>
+      </div>
+    </div>
+  )
+}
+
+<style>
+  .grid { display: grid; gap: 48px 24px; grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 40rem) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 64rem) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 64px 40px; } }
+  .filters { margin-bottom: 24px; }
+  .filters summary { list-style: none; }
+  .filters summary::-webkit-details-marker { display: none; }
+  .filter-form { display: grid; gap: 16px; margin-top: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (min-width: 64rem) {
+    .filters summary { display: none; }
+    .filter-form { margin-top: 0; grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  }
+  .count { margin: 0 0 24px; color: var(--color-asphalt); }
+  .empty { display: grid; gap: 16px; justify-items: start; padding-block: 24px; }
+</style>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-car-root]');
+  if (root) {
+    const wrap = root.querySelector<HTMLDetailsElement>('[data-car-filter-wrap]')!;
+    const form = root.querySelector<HTMLFormElement>('[data-car-filter]')!;
+    const list = root.querySelector<HTMLElement>('[data-car-list]')!;
+    const countEl = root.querySelector<HTMLElement>('[data-filter-count]')!;
+    const summaryEl = root.querySelector<HTMLElement>('[data-filter-summary]')!;
+    const empty = root.querySelector<HTMLElement>('[data-filter-empty]')!;
+    const cards = [...list.querySelectorAll<HTMLElement>('[data-car]')];
+    const pr = new Intl.PluralRules(document.documentElement.lang);
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+    wrap.hidden = false;
+    countEl.hidden = false;
+    const desktop = matchMedia('(min-width: 64rem)');
+    const syncOpen = () => {
+      if (desktop.matches) wrap.open = true;
+    };
+    syncOpen();
+    desktop.addEventListener('change', syncOpen);
+
+    const apply = () => {
+      const d = new FormData(form);
+      const make = String(d.get('make') ?? '');
+      const fuel = String(d.get('fuel') ?? '');
+      const gearbox = String(d.get('gearbox') ?? '');
+      const price = Number(d.get('price') || 0);
+      const condition = String(d.get('condition') ?? '');
+      const sort = String(d.get('sort') ?? 'recent');
+      const visible = cards.filter(
+        (c) =>
+          (!make || c.dataset.make === make) &&
+          (!fuel || c.dataset.fuel === fuel) &&
+          (!gearbox || c.dataset.gearbox === gearbox) &&
+          (!price || Number(c.dataset.price) <= price) &&
+          (!condition || c.dataset.condition === condition),
+      );
+      const num = (c: HTMLElement, k: string) => Number(c.dataset[k]);
+      const order = [...cards].sort((a, b) => {
+        if (sort === 'price-asc') return num(a, 'price') - num(b, 'price');
+        if (sort === 'price-desc') return num(b, 'price') - num(a, 'price');
+        if (sort === 'km-asc') return num(a, 'km') - num(b, 'km');
+        return cards.indexOf(a) - cards.indexOf(b);
+      });
+      const n = visible.length;
+      const text = (pr.select(n) === 'one' ? root.dataset.countOne! : root.dataset.countOther!).replace('{n}', String(n));
+      const run = () => {
+        for (const c of order) {
+          c.hidden = !visible.includes(c);
+          list.append(c);
+        }
+        empty.hidden = n > 0;
+      };
+      countEl.textContent = text;
+      summaryEl.textContent = root.dataset.summary!.replace('{n}', String(n));
+      if (document.startViewTransition && !reduce.matches) {
+        document.documentElement.dataset.vt = 'filter';
+        document.startViewTransition(run).finished.finally(() => delete document.documentElement.dataset.vt);
+      } else run();
+    };
+    form.addEventListener('change', apply);
+    root.querySelector('[data-filter-reset]')!.addEventListener('click', () => {
+      form.reset();
+      apply();
+      form.querySelector<HTMLElement>('select')?.focus();
+    });
+  }
+</script>

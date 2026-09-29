@@ -1,0 +1,562 @@
+@import "tailwindcss" source("../");
+
+/* ------------------------------------------------------------------
+   Schrift: Archivo variabel (OFL 1.1), selbst gehostet, Subset Latin.
+   Achsen im Subset: wght 400–800, wdth 100–125.
+   Fallbacks mit size-adjust gegen Arial gemessen (siehe README).
+------------------------------------------------------------------- */
+@font-face {
+  font-family: "Archivo";
+  src: url("/fonts/archivo-var.woff2") format("woff2");
+  font-weight: 400 800;
+  font-stretch: 100% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Archivo Fallback";
+  src: local("Arial"), local("ArialMT"), local("Helvetica");
+  size-adjust: 98.92%;
+  ascent-override: 88.76%;
+  descent-override: 21.23%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Archivo Wide Fallback";
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Helvetica Bold");
+  font-weight: 700;
+  size-adjust: 129.24%;
+  ascent-override: 67.94%;
+  descent-override: 16.25%;
+  line-gap-override: 0%;
+}
+
+@theme {
+  --color-*: initial;
+  --color-orange: #e95d0c;
+  --color-orange-hover: #d2530b;
+  --color-orange-text: #b5480a;
+  --color-black: #000000;
+  --color-asphalt: #45484b;
+  --color-verzinkt: #aeb2b5;
+  --color-white: #ffffff;
+  --color-paper: #f5f3ef;
+
+  --font-*: initial;
+  --font-sans: "Archivo", "Archivo Fallback", Arial, sans-serif;
+  --font-wide: "Archivo", "Archivo Wide Fallback", Arial, sans-serif;
+
+  --radius-*: initial;
+  --radius-edge: 2px;
+
+  --shadow-*: initial;
+
+  --breakpoint-*: initial;
+  --breakpoint-sm: 40rem;   /* 640 */
+  --breakpoint-md: 48rem;   /* 768 */
+  --breakpoint-lg: 64rem;   /* 1024 */
+  --breakpoint-xl: 80rem;   /* 1280 */
+
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+:root {
+  --dur-1: 120ms;
+  --dur-2: 220ms;
+  --dur-3: 420ms;
+  --dur-4: 900ms;
+  --gutter: 16px;
+  --container: 1240px;
+  --bar-h: 56px;
+}
+@media (min-width: 48rem) { :root { --gutter: 24px; } }
+@media (min-width: 64rem) { :root { --gutter: 40px; } }
+
+@view-transition { navigation: auto; }
+
+/* Von der Liste zum Auto (C7.3): Foto und Titel wachsen an ihren Platz, der Rest überblendet in 200 ms */
+::view-transition-old(root),
+::view-transition-new(root) { animation-duration: 200ms; animation-timing-function: var(--ease-out); }
+::view-transition-group(*) { animation-duration: 320ms; animation-timing-function: var(--ease-out); }
+/* Filter in der Autoliste (C7.4): Umordnen in 220 ms */
+html[data-vt='filter']::view-transition-group(*) { animation-duration: var(--dur-2); }
+html[data-vt='filter']::view-transition-old(root),
+html[data-vt='filter']::view-transition-new(root) { animation: none; }
+
+/* ------------------------------------------------------------------ */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    background: var(--color-white);
+    color: var(--color-black);
+    scroll-padding-top: 16px;
+  }
+  body {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    font-weight: 400;
+    font-stretch: 100%;
+    background: var(--color-white);
+    color: var(--color-black);
+    font-feature-settings: "kern" 1;
+  }
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+    hyphens: auto;
+    overflow-wrap: break-word;
+    /* in Grid/Flex darf die Überschrift schmaler als ihr längstes Wort werden, dann greift overflow-wrap */
+    min-width: 0;
+  }
+  dt, dd, legend, label { min-width: 0; overflow-wrap: break-word; hyphens: auto; }
+  h1, .t-h1 {
+    font-family: var(--font-wide);
+    font-stretch: 125%;
+    font-weight: 800;
+    font-size: clamp(2.25rem, 1.5rem + 3.2vw, 4.25rem);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+  }
+  h2, .t-h2 {
+    font-family: var(--font-wide);
+    font-stretch: 125%;
+    font-weight: 760;
+    font-size: clamp(1.75rem, 1.3rem + 1.8vw, 2.625rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+  h3, .t-h3 {
+    font-family: var(--font-wide);
+    font-stretch: 112%;
+    font-weight: 700;
+    font-size: clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem);
+    line-height: 1.2;
+  }
+  p, li, dd, dt, td, th, label, legend, summary, blockquote { hyphens: manual; }
+  a {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+    transition: text-decoration-thickness var(--dur-1) var(--ease-out);
+  }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible {
+    outline: 3px solid var(--color-black);
+    outline-offset: 2px;
+  }
+  .on-asphalt :focus-visible,
+  .on-asphalt:focus-visible { outline-color: var(--color-white); }
+  ::selection { background: var(--color-black); color: var(--color-orange); }
+  img, svg { display: block; max-width: 100%; }
+  [hidden] { display: none !important; }
+  table { border-collapse: collapse; }
+  input, select, textarea, button { font: inherit; color: inherit; }
+}
+
+/* ------------------------------------------------------------------ */
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: calc(var(--container) + 2 * var(--gutter));
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+  .section { padding-block: 64px; }
+  @media (min-width: 64rem) { .section { padding-block: 120px; } }
+
+  .prose-w { max-width: 66ch; }
+  .t-body { font-size: 1.0625rem; line-height: 1.55; }
+  .t-lead { font-size: 1.1875rem; line-height: 1.5; }
+  .t-small { font-size: 0.9375rem; line-height: 1.45; }
+  .t-label { font-size: 0.9375rem; line-height: 1.4; font-weight: 600; }
+  .t-muted { color: var(--color-asphalt); }
+  .t-price {
+    font-family: var(--font-wide);
+    font-stretch: 110%;
+    font-weight: 760;
+    font-size: 1.5rem;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums lining-nums;
+    white-space: nowrap;
+  }
+  .tnum { font-variant-numeric: tabular-nums lining-nums; }
+  .link { color: var(--color-orange-text); }
+  .on-asphalt .link, .on-asphalt a:not(.btn) { color: var(--color-white); }
+
+  /* Buttons: Farbe wischt beim Hover von links herein, Button hebt sich leicht an.
+     Text bleibt immer lesbar (nie Schwarz auf Schwarz). */
+  .btn {
+    --btn-fill: var(--color-orange);
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 12px 24px;
+    border-radius: var(--radius-edge);
+    font-family: var(--font-wide);
+    font-stretch: 110%;
+    font-weight: 650;
+    font-size: 1.0625rem;
+    line-height: 1.2;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition:
+      color var(--dur-2) var(--ease-out),
+      border-color var(--dur-2) var(--ease-out),
+      box-shadow var(--dur-3) var(--ease-out),
+      transform var(--dur-2) var(--ease-out);
+  }
+  .btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--btn-fill);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 420ms var(--ease-out);
+  }
+  .btn:hover::before { transform: scaleX(1); transform-origin: left; }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 24px -14px rgb(0 0 0 / 0.5); }
+  .btn:active { transform: translateY(0); box-shadow: none; }
+  .btn svg { width: 20px; height: 20px; flex: none; transition: transform var(--dur-3) var(--ease-out); }
+  /* Pfeil am Ende, rückt beim Hover nach rechts */
+  .btn-go::after {
+    content: '';
+    flex: none;
+    width: 18px;
+    height: 18px;
+    background: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h16M14 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h16M14 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+    transition: transform var(--dur-3) var(--ease-out);
+  }
+  .btn-go:hover::after { transform: translateX(4px); }
+
+  /* Orange: wird beim Hover heller-wärmer, mit orangem Schein */
+  .btn-primary { --btn-fill: #ff7a2e; background: var(--color-orange); color: var(--color-black); border-color: var(--color-orange); }
+  .btn-primary:hover { border-color: #ff7a2e; box-shadow: 0 14px 28px -14px rgb(233 93 12 / 0.8); }
+  /* Weiß mit Rahmen: Orange wischt herein, Schrift bleibt schwarz */
+  .btn-secondary { background: var(--color-white); color: var(--color-black); border-color: var(--color-black); }
+  .btn-secondary:hover { border-color: var(--color-orange); }
+  /* auf dunklen Flächen */
+  .btn-light, .on-asphalt a.btn-light { background: var(--color-white); color: var(--color-black); border-color: var(--color-white); }
+  .btn-light:hover, .on-asphalt a.btn-light:hover { border-color: var(--color-orange); box-shadow: 0 14px 28px -14px rgb(233 93 12 / 0.7); }
+  /* auf Orange (Finder): helles Creme statt Orange auf Orange */
+  .finder .btn-secondary { --btn-fill: #fff1e6; }
+  .finder .btn-secondary:hover { border-color: var(--color-black); }
+
+  /* Flächen mit Struktur statt reinem Weiß */
+  .tone {
+    background-color: var(--color-paper);
+    background-image: radial-gradient(rgb(0 0 0 / 0.075) 1px, transparent 1.4px);
+    background-size: 22px 22px;
+  }
+
+  /* Formularfelder */
+  .field-label { display: block; font-size: 0.9375rem; line-height: 1.4; font-weight: 600; margin-bottom: 8px; }
+  .field-hint { display: block; font-size: 0.9375rem; line-height: 1.45; color: var(--color-asphalt); margin-top: -4px; margin-bottom: 8px; }
+  .field {
+    display: block;
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 12px;
+    background: var(--color-white);
+    border: 1.5px solid var(--color-asphalt);
+    border-radius: var(--radius-edge);
+    font-size: 1.0625rem;
+    line-height: 1.4;
+  }
+  textarea.field { min-height: 128px; resize: vertical; }
+  select.field {
+    appearance: none;
+    padding-right: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M3 6l5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+  }
+  .field[aria-invalid="true"] { border-color: var(--color-orange-text); border-width: 2px; }
+  .field-error {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    margin-top: 8px;
+    color: var(--color-orange-text);
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+  .field-error svg { flex: none; width: 18px; height: 18px; margin-top: 1px; }
+  .check {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    min-height: 24px;
+  }
+  .check input { flex: none; width: 24px; height: 24px; margin: 0; accent-color: var(--color-black); }
+
+  /* Chips (Finder) */
+  .chip {
+    position: relative;
+    display: inline-flex;
+  }
+  .chip input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+  .chip span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 10px 16px;
+    border: 2px solid var(--color-black);
+    border-radius: var(--radius-edge);
+    color: var(--color-black);
+    font-weight: 600;
+    line-height: 1.25;
+    cursor: pointer;
+    transition: background-color var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out);
+  }
+  .chip span svg { display: none; width: 18px; height: 18px; flex: none; }
+  .chip input:checked + span { background: var(--color-black); color: var(--color-orange); }
+  .chip input:checked + span svg { display: block; }
+  .chip input:focus-visible + span { outline: 3px solid var(--color-black); outline-offset: 2px; }
+  .chip span { transition: background-color var(--dur-2) var(--ease-out), color var(--dur-2) var(--ease-out), transform var(--dur-2) var(--ease-out); }
+  .chip:hover span { background: rgb(255 255 255 / 0.4); transform: translateY(-1px); }
+  .chip:hover input:checked + span { background: var(--color-black); }
+
+  /* Datenlisten (dl) */
+  .specs { display: grid; gap: 16px 24px; }
+  .specs dt { font-size: 0.9375rem; line-height: 1.4; font-weight: 600; color: var(--color-asphalt); }
+  .specs dd { margin: 0; font-variant-numeric: tabular-nums lining-nums; }
+  .specs > div { min-width: 0; }
+
+  /* Stichpunkt-Listen mit orangem Quadrat (Unterseiten) */
+  .plain { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+  .plain li { position: relative; padding-left: 28px; font-size: 1.125rem; line-height: 1.45; }
+  .plain li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.42em;
+    width: 12px;
+    height: 12px;
+    border-radius: var(--radius-edge);
+    background: var(--color-orange);
+  }
+  @media (min-width: 48rem) { .plain { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 40px; max-width: 52rem; } }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 2px 8px;
+    border: 1.5px solid var(--color-black);
+    border-radius: var(--radius-edge);
+    font-size: 0.9375rem;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+
+  /* Sichtbarer Platzhalter für fehlende oder unbestätigte Angaben */
+  .open-point {
+    background: #fff3b0;
+    color: var(--color-black);
+    outline: 1.5px dashed var(--color-black);
+    outline-offset: 1px;
+    padding: 0 4px;
+    font-weight: 600;
+    font-size: 0.9375em;
+    font-stretch: 100%;
+    font-family: var(--font-sans);
+    letter-spacing: 0;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 8px;
+    top: -100px;
+    z-index: 100;
+    padding: 12px 16px;
+    background: var(--color-black);
+    color: var(--color-white);
+    border-radius: var(--radius-edge);
+  }
+  .skip-link:focus { top: 8px; outline-color: var(--color-orange); }
+
+  .sr-only-focusable:not(:focus):not(:focus-within) {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+
+  /* FAQ */
+  .faq details { border-top: 1.5px solid var(--color-black); }
+  .faq details:last-child { border-bottom: 1.5px solid var(--color-black); }
+  .faq summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    min-height: 56px;
+    padding-block: 16px;
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--font-wide);
+    font-stretch: 112%;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.3;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq .pm { position: relative; flex: none; width: 20px; height: 20px; }
+  .faq .pm::before, .faq .pm::after {
+    content: ""; position: absolute; left: 0; top: 9px; width: 20px; height: 2px; background: currentColor;
+    transition: transform var(--dur-2) var(--ease-out);
+  }
+  .faq .pm::after { transform: rotate(90deg); }
+  .faq details[open] .pm::after { transform: rotate(0deg); }
+  .faq .answer { padding-bottom: 24px; max-width: 66ch; }
+
+  @supports (interpolate-size: allow-keywords) {
+    .faq { interpolate-size: allow-keywords; }
+    .faq details::details-content {
+      block-size: 0;
+      overflow-y: clip;
+      transition: block-size var(--dur-2) var(--ease-out), content-visibility var(--dur-2) allow-discrete;
+    }
+    .faq details[open]::details-content { block-size: auto; }
+  }
+}
+
+/* ------------------------------------------------------------------
+   Lade-Moment der Startseite (C7.1) – reines CSS, einmal pro Sitzung.
+------------------------------------------------------------------- */
+@keyframes reveal-h1 {
+  from { clip-path: inset(0 0 100% 0); transform: translateY(0.15em); }
+  to { clip-path: inset(0); transform: translateY(0); }
+}
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin-o { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+html:not([data-seen]) .hero-h1 { animation: reveal-h1 520ms var(--ease-out) both; }
+html:not([data-seen]) .hero-rise { animation: rise-in 300ms var(--ease-out) 200ms both; }
+html:not([data-seen]) .logo-o { animation: spin-o var(--dur-4) var(--ease-in-out) both; transform-box: fill-box; transform-origin: center; }
+
+/* Strich unter Überschriften (steht immer; wächst nur mit Scroll-Animation) */
+.h-bar::after { content: ''; display: block; width: 56px; height: 5px; margin-top: 14px; background: var(--color-orange); }
+/* Fortschrittsbalken nur mit scroll-driven animations und ohne reduzierte Bewegung */
+.scroll-progress { display: none; }
+
+/* ------------------------------------------------------------------
+   Einblendungen beim Scrollen (CSS scroll-driven, ohne JavaScript).
+   Ohne Unterstützung oder mit reduzierter Bewegung: alles steht sofort da.
+------------------------------------------------------------------- */
+@keyframes reveal-up { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+@keyframes reveal-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes reveal-soft { from { opacity: 0; filter: blur(8px); transform: translateY(16px); } to { opacity: 1; filter: none; transform: none; } }
+@keyframes reveal-left { from { opacity: 0; transform: translateX(-32px); } to { opacity: 1; transform: none; } }
+@keyframes reveal-right { from { opacity: 0; transform: translateX(32px); } to { opacity: 1; transform: none; } }
+@keyframes reveal-clip { from { clip-path: inset(14% 0 0 0); } to { clip-path: inset(0); } }
+@keyframes reveal-zoom { from { transform: scale(1.14); } to { transform: scale(1); } }
+@keyframes settle { from { transform: scale(1.1); } to { transform: scale(1); } }
+@keyframes wipe-in { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes drift { from { translate: 0 -5%; } to { translate: 0 5%; } }
+@keyframes hero-drift { from { scale: 1; translate: 0 0; } to { scale: 1.08; translate: 0 3%; } }
+@keyframes curtain { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal { animation: reveal-up linear both; animation-timeline: view(); animation-range: entry 5% entry 70%; }
+    .reveal-fade { animation: reveal-fade linear both; animation-timeline: view(); animation-range: entry 0% entry 80%; }
+    .reveal-soft { animation: reveal-soft linear both; animation-timeline: view(); animation-range: entry 0% entry 75%; }
+    .reveal-left { animation: reveal-left linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
+    .reveal-right { animation: reveal-right linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
+    .reveal-img { animation: reveal-clip linear both; animation-timeline: view(); animation-range: entry 0% cover 40%; }
+    .reveal-img img { animation: reveal-zoom linear both; animation-timeline: view(); animation-range: entry 0% cover 55%; }
+
+    /* Fortschrittsbalken oben: wächst mit dem Scrollen der Seite */
+    .scroll-progress {
+      display: block;
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 60;
+      height: 3px;
+      background: var(--color-orange);
+      transform-origin: left;
+      pointer-events: none;
+      animation: wipe-in linear both;
+      animation-timeline: scroll(root block);
+    }
+
+    /* Listen erscheinen nacheinander (Stichpunkte, Kacheln, Schritte, Autos) */
+    .stagger > :nth-child(2) { animation-range: entry 12% entry 78%; }
+    .stagger > :nth-child(3) { animation-range: entry 19% entry 86%; }
+    .stagger > :nth-child(4) { animation-range: entry 26% entry 94%; }
+    .stagger > :nth-child(n + 5) { animation-range: entry 33% cover 30%; }
+
+    /* Überschrift: kurzer oranger Strich zeichnet sich darunter */
+    .h-bar::after {
+      transform-origin: left;
+      animation: wipe-in linear both;
+      animation-timeline: view();
+      animation-range: entry 40% cover 35%;
+    }
+
+    /* Parallaxe: Foto gleitet im Rahmen langsamer als die Seite */
+    figure.ph.ph-parallax img { position: absolute; top: -7%; left: 0; width: 100%; height: 114%; }
+    figure.ph.ph-parallax picture { animation: drift linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; display: block; position: absolute; inset: 0; }
+
+    /* Hero-Foto: beim Wegscrollen leicht heranzoomen */
+    [data-hero] .ph img { animation: hero-drift linear both; animation-timeline: view(); animation-range: exit 0% exit 100%; }
+  }
+  .settle img { animation: settle 1.8s var(--ease-out) both; }
+  /* Vorhang: auf Unterseiten bei jedem Laden, auf der Startseite einmal pro Sitzung */
+  .ph-curtain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: var(--color-orange);
+    transform-origin: right;
+    animation: curtain 560ms var(--ease-in-out) both;
+    pointer-events: none;
+  }
+  html[data-seen] [data-hero] .ph-curtain::before { animation: none; transform: scaleX(0); }
+  .ph-accent::after { transform-origin: left; animation: wipe-in 900ms var(--ease-out) 350ms both; }
+  a:hover .ph img, .ph-link:hover img { scale: 1.035; }
+}
+
+@keyframes check-draw { from { stroke-dashoffset: 30; } to { stroke-dashoffset: 0; } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* ------------------------------------------------------------------
+   Reduzierte Bewegung: alles aus, alle Inhalte sofort sichtbar.
+------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+  html:not([data-seen]) .hero-h1,
+  html:not([data-seen]) .hero-rise,
+  html:not([data-seen]) .logo-o { animation: none !important; }
+  .ph-curtain::before { display: none; }
+}

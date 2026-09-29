@@ -1,0 +1,82 @@
+---
+/** Kontakt & Anfahrt (D3): alle Kontaktwege, Öffnungszeiten, Kreisel-Zeichnung, Zahlungsmittel, Sprachen, Formular F4. */
+import Base from '@/layouts/Base.astro';
+import PageIntro from '@/components/PageIntro.astro';
+import AccessSection from '@/components/AccessSection.astro';
+import ContactForm from '@/components/forms/ContactForm.astro';
+import Icon from '@/components/Icon.astro';
+import { rich, useT } from '@/i18n';
+import { path, type Lang } from '@/i18n/config';
+import { breadcrumbs } from '@/lib/jsonld';
+import { showOpenPoints, site, telHref, whatsappHref } from '@/lib/site';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useT(lang);
+const p = t.pages.contact;
+const crumbs = [
+  { name: t.nav.home, href: path(lang, 'home') },
+  { name: t.nav.contact, href: path(lang, 'contact') },
+];
+---
+<Base
+  lang={lang}
+  route={{ page: 'contact' }}
+  title={t.seo.contact.title}
+  description={t.seo.contact.description}
+  jsonld={[breadcrumbs(crumbs.map((x) => ({ name: x.name, url: x.href })))]}
+>
+  <PageIntro crumbLabel={t.nav.breadcrumb} crumbs={crumbs} h1={p.h1} lead={p.lead} />
+  <section class="section block tone" aria-labelledby="ways-h">
+    <div class="wrap">
+      <h2 id="ways-h">{p.waysH2}</h2>
+      <dl class="specs ways">
+        <div>
+          <dt>{p.phone}</dt>
+          <dd><a class="big" href={telHref}>{site.phone.display}</a></dd>
+        </div>
+        <div>
+          <dt>{p.whatsapp}</dt>
+          <dd><a class="big" href={whatsappHref(t.contactBar.whatsappText)} rel="noopener">{site.whatsapp.display}</a></dd>
+        </div>
+        <div>
+          <dt>{p.email}</dt>
+          <dd><a class="big" href={`mailto:${site.email}`}>{site.email}</a></dd>
+        </div>
+      </dl>
+      <div class="ctas">
+        <a class="btn btn-primary" href={telHref}><Icon name="phone" size={20} />{t.contactBar.call}</a>
+        <a class="btn btn-secondary" href={whatsappHref(t.contactBar.whatsappText)} rel="noopener"><Icon name="whatsapp" size={20} />WhatsApp</a>
+      </div>
+    </div>
+  </section>
+  <AccessSection t={t} />
+  {
+    (site.payment.confirmed || showOpenPoints) && (
+      <section class="section block" aria-labelledby="pay-h">
+        <div class="wrap">
+          <h2 id="pay-h">{p.paymentH2}</h2>
+          <p class="prose-w" set:html={rich(site.payment.confirmed ? p.payment : `${p.payment} ${p.paymentMissing}`)} />
+        </div>
+      </section>
+    )
+  }
+  <section class="section block" aria-labelledby="form-h">
+    <div class="wrap">
+      <h2 id="form-h">{p.formH2}</h2>
+      <ContactForm lang={lang} t={t} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .block { border-top: 1.5px solid var(--color-black); }
+  h2 { margin: 0 0 24px; }
+  .ways { grid-template-columns: 1fr; gap: 24px; margin: 0 0 32px; }
+  @media (min-width: 48rem) { .ways { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .big { font-family: var(--font-wide); font-stretch: 110%; font-weight: 700; font-size: 1.25rem; overflow-wrap: anywhere; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+  .block p { margin: 0; }
+</style>

@@ -1,0 +1,30 @@
+# Core crawlers
+User-agent: *
+Disallow: /fr/authentification
+Disallow: /fr/financement
+Disallow: /fr/mon-compte
+Disallow: /en/authentication
+Disallow: /en/financing
+Disallow: /en/my-account
+Disallow: /de/authentifizierung
+Disallow: /de/finanzierung
+Disallow: /de/mein-konto
+Disallow: /pt/autenticacao
+Disallow: /pt/financiamento
+Disallow: /pt/minha-conta
+
+# Block crawlers (policy choice)
+User-agent: trovitBot
+Disallow: /
+
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+# Sitemaps
+Sitemap: https://www.luxauto.lu/sitemap.xml

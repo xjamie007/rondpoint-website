@@ -1,0 +1,6 @@
+# Supabase-Projekt der Website. Region beim Anlegen: EU (z. B. Frankfurt).
+project_id = "rondpoint"
+
+[functions.inquiry]
+# Die Formulare senden ohne Schlüssel (keine Schlüssel im Frontend).
+verify_jwt = false

@@ -1,0 +1,89 @@
+---
+/**
+ * Mobile Kontaktleiste (C3): fest unten, asphalt, 56 px + safe area.
+ * Erscheint, wenn der Hero (oder der Header) aus dem Bild ist, verschwindet beim Footer
+ * und solange ein Formularfeld den Fokus hat. Ab 1024 px gibt es sie nicht.
+ * Ohne JavaScript wird sie nicht gezeigt (Telefon steht im Header).
+ */
+import Icon from './Icon.astro';
+import type { Dict } from '@/i18n';
+import { telHref, whatsappHref } from '@/lib/site';
+
+interface Props {
+  t: Dict;
+  /** Auf Autoseiten wird der rechte Button zu „Demander" und springt zum Formular. */
+  askHref?: string;
+  whatsappText?: string;
+}
+const { t, askHref, whatsappText } = Astro.props;
+---
+<div class="cbar on-asphalt" data-contact-bar aria-label={t.contactBar.label} role="region" hidden>
+  <a class="btn btn-light" href={telHref}><Icon name="phone" size={20} />{t.contactBar.call}</a>
+  {
+    askHref ? (
+      <a class="btn btn-light" href={askHref}>{t.contactBar.ask}</a>
+    ) : (
+      <a class="btn btn-light" href={whatsappHref(whatsappText ?? t.contactBar.whatsappText)} rel="noopener">
+        <Icon name="whatsapp" size={20} />
+        {t.contactBar.whatsapp}
+      </a>
+    )
+  }
+</div>
+
+<style>
+  .cbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 8px;
+    padding: 4px var(--gutter) calc(4px + env(safe-area-inset-bottom));
+    min-height: calc(var(--bar-h) + env(safe-area-inset-bottom));
+    background: var(--color-asphalt);
+    transform: translateY(110%);
+    transition: transform var(--dur-2) var(--ease-out);
+  }
+  .cbar.show { transform: translateY(0); }
+  .cbar .btn { min-height: 48px; min-width: 0; padding: 8px; gap: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  @media (min-width: 64rem) {
+    .cbar { display: none !important; }
+  }
+</style>
+
+<script>
+  const bar = document.querySelector<HTMLElement>('[data-contact-bar]');
+  if (bar && !matchMedia('(min-width: 64rem)').matches) {
+    bar.hidden = false;
+    const sentinel = document.querySelector('[data-hero]') ?? document.querySelector('[data-site-header]');
+    const footer = document.querySelector('[data-site-footer]');
+    let pastHero = false;
+    let footerVisible = false;
+    let fieldFocus = false;
+    const update = () => bar.classList.toggle('show', pastHero && !footerVisible && !fieldFocus);
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.target === sentinel) pastHero = !e.isIntersecting;
+        if (e.target === footer) footerVisible = e.isIntersecting;
+      }
+      update();
+    });
+    if (sentinel) io.observe(sentinel);
+    if (footer) io.observe(footer);
+    const isField = (el: EventTarget | null) =>
+      el instanceof HTMLElement && el.matches('input, select, textarea') && !el.matches('[type=checkbox], [type=radio]');
+    document.addEventListener('focusin', (e) => {
+      fieldFocus = isField(e.target);
+      update();
+    });
+    document.addEventListener('focusout', () => {
+      setTimeout(() => {
+        fieldFocus = isField(document.activeElement);
+        update();
+      }, 0);
+    });
+  }
+</script>

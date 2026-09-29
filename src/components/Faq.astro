@@ -1,0 +1,39 @@
+---
+/** FAQ als <details> (E6, C7.5). Platzhalter bleiben sichtbar markiert. */
+import { rich, type Dict } from '@/i18n';
+
+export type FaqKey = keyof Dict['faq']['items'];
+interface Props {
+  t: Dict;
+  keys: FaqKey[];
+  heading: string;
+  id: string;
+}
+const { t, keys, heading, id } = Astro.props;
+---
+<section class="section" aria-labelledby={`${id}-h`}>
+  <div class="wrap">
+    <h2 id={`${id}-h`}>{heading}</h2>
+    <div class="faq">
+      {
+        keys.map((k) => (
+          <details>
+            <summary>
+              <span>{t.faq.items[k].q}</span>
+              <span class="pm" aria-hidden="true" />
+            </summary>
+            <div class="answer">
+              <p set:html={rich(t.faq.items[k].a)} />
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  h2 { margin: 0 0 32px; }
+  .faq { max-width: 52rem; }
+  .answer p { margin: 0; }
+</style>

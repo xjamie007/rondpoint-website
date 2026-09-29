@@ -1,0 +1,57 @@
+---
+/** Datenschutz (D3, F): Hoster GitHub Pages, Supabase (EU), Mailanbieter, Speicherdauer, WhatsApp/Meta, CNPD. */
+import Base from '@/layouts/Base.astro';
+import PageIntro from '@/components/PageIntro.astro';
+import { fmt, rich, useT } from '@/i18n';
+import { path, type Lang } from '@/i18n/config';
+import { dateLong } from '@/lib/format';
+import { breadcrumbs } from '@/lib/jsonld';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useT(lang);
+const p = t.privacy;
+const crumbs = [
+  { name: t.nav.home, href: path(lang, 'home') },
+  { name: p.h1, href: path(lang, 'privacy') },
+];
+/** Datum der letzten inhaltlichen Änderung dieser Erklärung */
+const UPDATED = '2026-09-28T12:00:00Z';
+const sections: [string, string[]][] = [
+  [p.controllerH2, [p.controller]],
+  [p.formsH2, [p.forms, p.legalBasis, p.storage, p.abuse]],
+  [p.hostingH2, [p.hosting]],
+  [p.linksH2, [p.links]],
+  [p.rightsH2, [p.rights]],
+];
+---
+<Base
+  lang={lang}
+  route={{ page: 'privacy' }}
+  title={t.seo.privacy.title}
+  description={t.seo.privacy.description}
+  jsonld={[breadcrumbs(crumbs.map((x) => ({ name: x.name, url: x.href })))]}
+>
+  <PageIntro crumbLabel={t.nav.breadcrumb} crumbs={crumbs} h1={p.h1} lead={p.intro} />
+  <div class="wrap legal">
+    {
+      sections.map(([h, paras], i) => (
+        <section aria-labelledby={`p-${i}`}>
+          <h2 id={`p-${i}`}>{h}</h2>
+          {paras.map((x) => (
+            <p set:html={rich(x, {}, { keepOpenPoints: true })} />
+          ))}
+        </section>
+      ))
+    }
+    <p class="t-small t-muted">{fmt(p.updated, { date: dateLong(lang, UPDATED) })}</p>
+  </div>
+</Base>
+
+<style>
+  .legal { display: grid; gap: 48px; padding-bottom: 96px; }
+  h2 { font-size: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem); margin: 0 0 16px; }
+  p { margin: 0 0 16px; max-width: 66ch; }
+</style>
