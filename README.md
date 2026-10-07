@@ -244,3 +244,62 @@ Der Workflow `.github/workflows/stock-sync.yml` baut die Website bei jedem Push 
 - Mit eigener Domain (Settings → Pages → Custom domain, z. B. `www.rondpoint.lu`) ist der Basis-Pfad leer. Der Workflow stellt das automatisch um.
 - Solange `presentation: true` gilt, tragen alle Seiten `noindex`, und `robots.txt` sperrt Suchmaschinen. Damit taucht die Demo mit den Stockfotos nicht bei Google auf.
 - Lokal den Build unter einem Unterpfad testen: `SITE_URL=https://example.github.io BASE_PATH=/rondpoint-website npm run build`.
+
+## Admin-Dashboard (`/admin/`)
+
+Die Garage pflegt ihre Website selbst, im Browser auf Handy oder Computer. Erreichbar ist es über den Link „Login“ unten im Footer oder direkt unter `/admin/`. Die Oberfläche gibt es auf Deutsch und Französisch.
+
+**Was man ändern kann**
+- **Öffnungszeiten:** zwei Zeitfenster pro Tag. Website, Footer, FAQ-Antworten und Google-Daten übernehmen sie automatisch.
+- **Hinweis oben auf der Website:** z. B. „Fermé le 1er novembre“, in allen fünf Sprachen, ein- und ausschaltbar.
+- **Anhänger und Transporter zur Miete:** anlegen, ändern, ausblenden und löschen, mit Preisen, Maßen und Foto. Die Prüfregeln entsprechen `src/content.config.ts`, damit der Build nie an einer Eingabe scheitert.
+- **Fotos der Seiten:** aus der Galerie wählen oder mit der Kamera aufnehmen. Das Foto wird im Browser auf 2400 px verkleinert und landet in `src/assets/photos/<platz>.jpg`. Eigene Fotos haben Vorrang vor den Beispielfotos.
+- **Texte:** alle Texte in allen fünf Sprachen, nach Seiten gegliedert und durchsuchbar. Änderungen stehen in `src/content/texts.json` und gehen den Grundtexten in `src/i18n/*.ts` vor.
+- **Google:** Titel und Beschreibung jeder Seite in jeder Sprache, mit Zeichenzähler und Vorschau des Suchergebnisses.
+- **Google-Bewertungen** für die Startseite, nur freigegebene.
+- **Einstellungen:** Kontaktdaten, soziale Netzwerke, Freigabe unbestätigter Aussagen (`confirmations`), Präsentationsmodus.
+
+**So funktioniert das Speichern**
+
+„Speichern & veröffentlichen“ schreibt alle Änderungen als einen Commit über die GitHub-API auf `main`. Danach baut der Workflow `stock-sync.yml` die Seite neu und veröffentlicht sie, meist in 2–4 Minuten. Das Dashboard zeigt den Fortschritt an. Hat der tägliche Bestand-Abgleich gleichzeitig gespeichert, setzt das Dashboard auf dem neuen Stand neu auf. Einen Server braucht es nicht.
+
+**Zugangsschlüssel für die Garage erstellen** (macht Nave, einmal pro Person):
+1. Als Inhaber des Repositorys auf GitHub: *Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token*.
+2. Name z. B. „Dashboard Garage“. Ablaufdatum wählen, z. B. 1 Jahr, und im Kalender eintragen.
+3. *Repository access:* „Only select repositories“, dann `rondpoint-website`.
+4. *Permissions → Repository permissions:* **Contents: Read and write**, **Actions: Read-only**. „Metadata: Read-only“ setzt GitHub selbst.
+5. Den Schlüssel (`github_pat_…`) der Garage geben. Er wird einmal pro Gerät eingegeben und dort gespeichert. Alternativ ein persönlicher Link: `https://…/admin/#key=github_pat_…`. Er meldet einmal an und entfernt den Schlüssel sofort aus der Adresszeile. Den Link nur direkt und vertraulich weitergeben.
+6. Bei Verlust oder Personalwechsel den Schlüssel auf GitHub löschen. Damit ist der Zugang sofort gesperrt.
+
+Ohne Schlüssel kann niemand speichern. Die Seite `/admin/` ist für Suchmaschinen gesperrt (`noindex`, `robots.txt`), und ihre Content-Security-Policy erlaubt Anfragen nur an die eigene Seite und an `api.github.com`.
+
+**Demo:** „Demo ansehen“ auf der Anmeldeseite zeigt alles mit den Daten des letzten Builds. Änderungen bleiben in diesem Browser, für Präsentationen beim Kunden.
+
+## Formulare ohne Supabase
+
+Solange `PUBLIC_INQUIRY_URL` fehlt, erscheinen nach dem Absenden zwei Knöpfe: „Envoyer par WhatsApp“ und „Envoyer par e-mail“. Beide enthalten die Anfrage fertig formuliert, mit allen ausgefüllten Feldern. Damit funktionieren alle Formulare auch ohne Server. Ist die Edge Function eingerichtet, läuft der normale Versand und diese Knöpfe verschwinden.
+
+## Luxemburgische Texte prüfen
+
+```bash
+npm run lb:export
+```
+
+Schreibt nach `LB-TEXTE/`:
+- **`lb-pruefen.txt`:** nur die luxemburgischen Texte, nummeriert, zum Einfügen in spellchecker.lu.
+- **`lb-texte.txt`:** dieselben Texte mit Kennung. Hier werden die Korrekturen eingetragen.
+
+```bash
+npm run lb:import
+```
+
+Übernimmt geänderte Texte aus `LB-TEXTE/lb-texte.txt` nach `src/content/texts.json`. Texte mit veränderten Platzhaltern (`{address}`, `{phone}` …) werden übersprungen und gemeldet. Einzelne Texte lassen sich auch im Dashboard unter *Texte → LB* ändern.
+
+## Ausführliche Seitentexte (SEO)
+
+Jede Leistungsseite hat unter `t.content.<seite>` Abschnitte und eine eigene FAQ mit `FAQPage`-JSON-LD (`src/components/ContentSections.astro`, `src/components/FaqList.astro`, `src/lib/content.ts`). In den Texten gelten diese Platzhalter:
+- `{address}`, `{phone}`, `{whatsapp}`, `{email}`: kommen aus `site.json`.
+- `{hours}`: kommt aus `horaires.json`, gleiche Tage werden zusammengefasst.
+- Interne Links schreibt man so: `[Text](page:workshop)` oder `[Text](cat:benne)`.
+
+Inhaltlich stehen dort nur bestätigte Angaben aus dem Briefing und allgemeines Fachwissen (Führerscheinregeln, Ladetipps, Materialgewichte). Es gibt keine Preise, keine Erfahrungsjahre und kein „alle Marken“.

@@ -16,6 +16,7 @@ import { requestHref } from '@/lib/fleet';
 import { breadcrumbs, rentalService } from '@/lib/jsonld';
 import '@/components/finder/finder-static.css';
 import Photo from '@/components/Photo.astro';
+import ContentSections from '@/components/ContentSections.astro';
 import { fleetPhoto } from '@/lib/photos';
 import { presentation, showOpenPoints } from '@/lib/site';
 
@@ -121,6 +122,8 @@ const s = t.finder;
         </section>
       )
     }
+
+    <ContentSections t={t} lang={lang} sections={t.content.category[category]?.sections} inline id="guide" />
 
     <section class="block" aria-labelledby="cond-h">
       {showOpenPoints && <h2 id="cond-h">{t.pages.rental.conditionsH2}</h2>}

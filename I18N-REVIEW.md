@@ -32,7 +32,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 - **Uhrzeit:** „às {time}" ist zwischen 1:00 und 1:59 falsch („à")
 - **SEO:** Die Descriptions sind auf die Länge gebracht und klingen teils knapp; „stand automóvel Ettelbruck" kommt nicht vor.
 
-## Lëtzebuergesch: 609 Texte offen
+## Lëtzebuergesch: 782 Texte offen
 
 | Schlüssel | Französisch | LB |
 |---|---|---|
@@ -188,6 +188,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `cars.filter.count.other` | {n} voitures | {n} Autoen |
 | `cars.filter.empty` | Aucune voiture ne correspond. | Keen Auto passt zu dëse Filteren. |
 | `cars.filter.reset` | Réinitialiser les filtres | Filteren zrécksetzen |
+| `cars.filter.apply` | Voir les résultats | Resultater weisen |
 | `cars.filter.upTo` | jusqu’à {price} | bis {price} |
 | `enums.fuel.petrol` | Essence | Bensin |
 | `enums.fuel.diesel` | Diesel | Diesel |
@@ -451,6 +452,13 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `forms.errorSummary` | Vérifiez les champs signalés. | Iwwerpréift déi markéiert Felder. |
 | `forms.errorSend` | L’envoi n’a pas fonctionné. Réessayez ou appelez-nous au +352 81 05 41. | D’Ufro gouf net geschéckt. Probéiert et nach eng Kéier oder rufft eis un op +352 81 05 41. |
 | `forms.errorRate` | Vous avez envoyé beaucoup de demandes aujourd’hui. Appelez-nous au +352 81 05 41. | Dir hutt haut scho vill Ufroe geschéckt. Rufft eis un op +352 81 05 41. |
+| `forms.fallbackH` | Dernière étape : envoyez votre demande | Leschte Schrëtt: Är Ufro schécken |
+| `forms.fallbackText` | Choisissez comment nous la transmettre. Votre message est déjà rédigé, il suffit de l’envoyer. | Wielt, wéi Dir eis d’Ufro schéckt. Äre Message ass scho fäerdeg geschriwwen, Dir musst en just nach schécken. |
+| `forms.fallbackWhatsapp` | Envoyer par WhatsApp | Iwwer WhatsApp schécken |
+| `forms.fallbackMail` | Envoyer par e-mail | Per E-Mail schécken |
+| `forms.fallbackEdit` | Modifier la demande | Ufro änneren |
+| `forms.fallbackSubject` | Demande depuis le site | Ufro iwwer de Site |
+| `forms.fallbackIntro` | Bonjour, voici ma demande : | Moien, hei ass meng Ufro: |
 | `forms.errors.name` | Indiquez votre nom. | Gitt Ären Numm un. |
 | `forms.errors.phone` | Indiquez un numéro de téléphone pour que nous puissions vous rappeler. | Gitt eng Telefonsnummer un, fir datt mir Iech zréckruffe kënnen. |
 | `forms.errors.phoneInvalid` | Ce numéro semble incomplet. Indiquez-le avec l’indicatif, par exemple +352 621 123 456. | Dës Nummer schéngt net komplett ze sinn. Gitt se mat der Landesvirwiel un, zum Beispill +352 621 123 456. |
@@ -645,8 +653,173 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `details.trailers.charge` | Votre voiture ne peut pas tracter plus que la valeur du champ O.1 (remorque freinée) ou O.2 (non freinée) du certificat d’immatriculation. | Ären Auto dierf net méi zéie wéi am Feld O.1 (gebremst) oder O.2 (ongebremst) vun der Carte grise steet. |
 | `details.trailers.usageH` | Forme et dimensions | Bauaart a Moossen |
 | `details.trailers.usage` | Plateau, benne, porte-voiture ou fourgon : la bonne remorque dépend de ce que vous transportez le plus souvent et de la place pour la ranger. | Plateau, Kipper, Autosunhänger oder Kofferunhänger: De passenden Unhänger hänkt dovun of, wat Dir am meeschte transportéiert a wou Dir en ofstellt. |
+| `content.workshop.sections.s1.h` | Votre garage de proximité entre Ettelbruck et Diekirch | Är Garage no bei Iech, tëscht Ettelbréck an Dikrech |
+| `content.workshop.sections.s1.p[0]` | Le Garage Um Rond Point se trouve au {address}, directement au rond-point d’Erpeldange, à côté de la station Aral. Pour les habitants d’Erpeldange-sur-Sûre, d’Ettelbruck, de Diekirch et de toute la Nordstad, l’atelier est à quelques minutes de chez vous. | D’Garage Um Rond Point ass um {address}, direkt um Rond-point zu Ierpeldeng, nieft der Aral-Tankstell. Wann Dir zu Ierpeldeng, Ettelbréck, Dikrech oder soss iergendwou an der Nordstad wunnt, ass eisen Atelier just e puer Minutten ewech. |
+| `content.workshop.sections.s1.p[1]` | Nous parlons luxembourgeois, français, allemand, anglais et portugais. Vous pouvez donc nous expliquer le problème de votre voiture dans la langue qui vous convient le mieux. | Mir schwätze Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch. Dir kënnt eis de Problem mat Ärem Auto also an der Sprooch erklären, déi Iech am léifsten ass. |
+| `content.workshop.sections.s2.h` | Entretien : pourquoi suivre le plan du constructeur | Entretien: firwat de Plang vum Hiersteller wichteg ass |
+| `content.workshop.sections.s2.p[0]` | Chaque constructeur fixe un plan d’entretien, selon le kilométrage ou le temps écoulé depuis le dernier passage. Vous le trouvez dans le carnet d’entretien ou sur l’écran de bord de votre voiture. | All Hiersteller leet en Entretiensplang fest, nom Kilometerstand oder no der Zäit zënter dem leschte Besuch an der Garage. Dir fannt en am Carnet d’entretien oder um Écran vun Ärem Auto. |
+| `content.workshop.sections.s2.p[1]` | Respecter ces échéances limite l’usure, évite des pannes coûteuses et aide à garder la valeur de la voiture à la revente. Selon le plan, un entretien comprend par exemple la vidange, les filtres, le contrôle des freins et des niveaux, l’éclairage et les essuie-glaces. | Wann Dir Iech un dëse Plang haalt, gëtt Ären Auto manner ofgenotzt, Dir vermeit deier Pannen an den Auto behält beim Verkaf besser säi Wäert. Wat zu engem Entretien gehéiert, hänkt vum Plang of. Dozou gehéieren zum Beispill den Uelegwiessel, d’Filteren, d’Kontroll vun de Bremsen an den Niveauen, d’Luuchten an d’Scheiwewëscher. |
+| `content.workshop.sections.s3.h` | Les signes qui doivent vous faire venir à l’atelier | Bei dësen Zeeche sollt Dir an den Atelier kommen |
+| `content.workshop.sections.s3.items[0]` | Un voyant reste allumé au tableau de bord. | Eng Warnluucht am Cockpit geet net méi aus. |
+| `content.workshop.sections.s3.items[1]` | Le freinage grince, vibre ou tire d’un côté. | D’Bremse jäizen, vibréieren oder zéien op eng Säit. |
+| `content.workshop.sections.s3.items[2]` | Le moteur manque de puissance ou démarre mal. | De Motor huet ze wéineg Kraaft oder spréngt schlecht un. |
+| `content.workshop.sections.s3.items[3]` | Une odeur de brûlé, une fuite ou une fumée inhabituelle. | Et richt verbrannt, eppes leeft aus oder et kënnt ongewéinlechen Damp. |
+| `content.workshop.sections.s3.items[4]` | Un bruit nouveau en roulant ou en tournant le volant. | En neie Geräisch beim Fueren oder wann Dir d’Steierrad dréit. |
+| `content.workshop.sections.s3.p[0]` | Plus tôt un défaut est trouvé, plus la réparation reste simple. Décrivez dans le formulaire ce que vous remarquez et depuis quand : c’est la meilleure base pour le diagnostic. | Gëtt e Feeler fréi fonnt, bleift d’Reparatur méi einfach. Beschreift am Formulaire, wat Dir mierkt a zënter wéini: Dat ass déi bescht Basis fir d’Diagnos. |
+| `content.workshop.sections.s4.h` | Carrosserie et peinture après un accrochage | Karosserie a Lack no engem klengen Accident |
+| `content.workshop.sections.s4.p[0]` | Rayure, bosse ou pare-chocs abîmé : envoyez-nous des photos des dégâts sur WhatsApp au {whatsapp}. Vous recevez un premier avis avant même de venir. Ensuite, nous réparons la carrosserie et repeignons les éléments abîmés dans notre atelier. | Ass d’Karosserie verkraazt oder agedréckt, oder ass de Pare-choc beschiedegt? Da schéckt eis Fotoe vum Schued iwwer WhatsApp op {whatsapp}. Dir kritt eng éischt Aschätzung, nach ier Dir bei eis kommt. Duerno reparéiere mir an eisem Atelier d’Karosserie a lackéieren déi beschiedegt Deeler nei. |
+| `content.workshop.sections.s4.p[1]` | Si un autre véhicule est en cause, remplissez le constat amiable sur place et prenez vous-même des photos de l’accident. Ces documents sont utiles pour votre assurance. | Wann en anert Gefier bedeelegt ass, fëllt de Constat amiable op der Plaz aus a maacht selwer Fotoe vum Accident. Dës Dokumenter sinn nëtzlech fir Är Versécherung. |
+| `content.workshop.sections.s5.h` | Voitures et camionnettes | Autoen a Camionnetten |
+| `content.workshop.sections.s5.p[0]` | L’atelier s’occupe des voitures et des camionnettes. Pour une tondeuse, une tronçonneuse ou une autre machine, voyez notre page [Jardin & forêt](page:garden). Pour mettre une carrosserie ou une pièce à nu, découvrez le [décapage sodablast](page:sodablast). | Eisen Atelier këmmert sech ëm Autoen a Camionnetten. Fir e Rasemeeër, eng Motorsee oder eng aner Maschinn kuckt op eiser Säit [Gaart & Bësch](page:garden). Fir eng Karosserie oder en Deel bis op d’Metall ofzebeizen, entdeckt eist [Ofbeize mat Sodablast](page:sodablast). |
+| `content.workshop.faqH` | Questions sur l’atelier | Froen zum Atelier |
+| `content.workshop.faq.q1.q` | Comment prendre rendez-vous à l’atelier ? | Wéi maachen ech e Rendez-vous am Atelier aus? |
+| `content.workshop.faq.q1.a` | Décrivez votre véhicule et ce qu’il faut faire dans le formulaire de cette page, par téléphone au {phone} ou sur WhatsApp au {whatsapp}. Nous vous rappelons pour fixer le rendez-vous. | Beschreift Äert Gefier a wat ze maachen ass: am Formulaire op dëser Säit, um Telefon op {phone} oder iwwer WhatsApp op {whatsapp}. Mir ruffen Iech zréck, fir de Rendez-vous auszemaachen. |
+| `content.workshop.faq.q2.q` | Quand le garage est-il ouvert ? | Wéini ass d’Garage op? |
+| `content.workshop.faq.q2.a` | {hours} | {hours} |
+| `content.workshop.faq.q3.q` | Puis-je envoyer des photos avant de venir ? | Kann ech Fotoe schécken, ier ech kommen? |
+| `content.workshop.faq.q3.a` | Oui. Pour la carrosserie ou le sodablast, envoyez-nous des photos sur WhatsApp au {whatsapp} : vous recevez un premier avis. | Jo. Fir Karosserie oder Sodablast schéckt eis Fotoen iwwer WhatsApp op {whatsapp}: Dir kritt eng éischt Aschätzung. |
+| `content.workshop.faq.q4.q` | Où se trouve l’atelier ? | Wou ass den Atelier? |
+| `content.workshop.faq.q4.a` | Au {address}, au rond-point d’Erpeldange, à côté de la station Aral, entre Ettelbruck et Diekirch. | Um {address}, um Rond-point zu Ierpeldeng, nieft der Aral-Tankstell, tëscht Ettelbréck an Dikrech. |
+| `content.workshop.faq.q5.q` | Dans quelles langues puis-je expliquer le problème ? | A wéi enge Sprooche kann ech de Problem erklären? |
+| `content.workshop.faq.q5.a` | En luxembourgeois, en français, en allemand, en anglais ou en portugais. | Op Lëtzebuergesch, Franséisch, Däitsch, Englesch oder Portugisesch. |
+| `content.sodablast.sections.s1.h` | Sodablast ou sablage : quelle différence ? | Sodablast oder Sandstralen: wat ass den Ënnerscheed? |
+| `content.sodablast.sections.s1.p[0]` | Le sablage classique projette un abrasif dur, comme le sable ou le corindon. Il décape vite, mais il attaque aussi le métal et peut chauffer et déformer les tôles fines. | Beim klassesche Sandstrale gëtt en haart Material wéi Sand oder Korund op d’Uewerfläch gestraalt. Dat beizt séier of, mä et gräift och d’Metall un a kann dënn Blecher erhëtzen an deforméieren. |
+| `content.sodablast.sections.s1.p[1]` | Le bicarbonate de soude est beaucoup plus tendre que le métal. Il enlève la peinture, la graisse et la saleté sans creuser la surface et sans la chauffer. C’est pourquoi le sodablast convient aux pièces fragiles et aux carrosseries anciennes. | Natron ass vill méi mëll wéi Metall. Et hëlt Lack, Fett an Dreck ewech, ouni d’Uewerfläch ofzedroen an ouni se z’erhëtzen. Dofir passt Sodablast gutt fir empfindlech Deeler an al Karosserien. |
+| `content.sodablast.sections.s2.h` | Pour quels projets ? | Fir wéi eng Projeten? |
+| `content.sodablast.sections.s2.items[0]` | Restauration d’une voiture ancienne : mettre la carrosserie à nu avant la réparation et la peinture. | Restauratioun vun engem alen Auto: d’Karosserie bis op d’Metall fräileeën, ier se reparéiert a lackéiert gëtt. |
+| `content.sodablast.sections.s2.items[1]` | Jantes : enlever l’ancienne peinture et la saleté incrustée avant une remise en peinture. | Felgen: den ale Lack an de festsëtzenden Dreck ewechmaachen, ier se nei lackéiert ginn. |
+| `content.sodablast.sections.s2.items[2]` | Pièces mécaniques : nettoyer un carter, un bloc ou une culasse avant le contrôle ou le remontage. | Mechanesch Deeler: e Carter, e Motorblock oder en Zylinderkapp botzen, ier se kontrolléiert oder erëm zesummegebaut ginn. |
+| `content.sodablast.sections.s2.p[0]` | Vous ne savez pas si votre pièce s’y prête ? Envoyez une photo sur WhatsApp au {whatsapp}, nous vous le disons. | Dir wësst net, ob Ären Deel sech dofir eegent? Schéckt eis eng Foto iwwer WhatsApp op {whatsapp}, mir soen Iech et. |
+| `content.sodablast.sections.s3.h` | Après le décapage : protéger le métal | Nom Ofbeizen: d’Metall schützen |
+| `content.sodablast.sections.s3.p[0]` | Une surface décapée est du métal nu. Au contact de l’air et de l’humidité, elle s’oxyde vite. Prévoyez donc l’étape suivante dès le départ : apprêt, réparation ou peinture. Les résidus de bicarbonate se rincent à l’eau avant la mise en peinture. | Eng ofgebeizt Uewerfläch ass blankt Metall. Am Kontakt mat Loft a Fiichtegkeet oxydéiert se séier. Plangt dofir den nächste Schrëtt vun Ufank un: Grondéierung, Reparatur oder Lack. D’Natronreschter gi virum Lackéiere mat Waasser ofgespullt. |
+| `content.sodablast.sections.s3.p[1]` | Pour une voiture, notre atelier peut ensuite réparer la carrosserie et la repeindre : voyez [mécanique et carrosserie](page:workshop). | Bei engem Auto kann eisen Atelier duerno d’Karosserie reparéieren an nei lackéieren: Kuckt [Mechanik a Karosserie](page:workshop). |
+| `content.sodablast.sections.s4.h` | Sodablast au Luxembourg, à Erpeldange | Sodablast zu Lëtzebuerg, zu Ierpeldeng |
+| `content.sodablast.sections.s4.p[0]` | Notre atelier se trouve au rond-point d’Erpeldange-sur-Sûre, entre Ettelbruck et Diekirch, facile d’accès depuis tout le nord du Luxembourg. Pour une pièce comme pour une voiture complète, nous fixons ensemble un rendez-vous au garage. | Eisen Atelier ass um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech, an aus dem ganzen Norde vu Lëtzebuerg einfach z’erreechen. Ob fir en eenzelnen Deel oder fir e ganzen Auto: Mir maachen zesummen e Rendez-vous an der Garage aus. |
+| `content.sodablast.faqH` | Questions sur le sodablast | Froen zum Sodablast |
+| `content.sodablast.faq.q1.q` | Le sodablast abîme-t-il le métal ? | Beschiedegt Sodablast d’Metall? |
+| `content.sodablast.faq.q1.a` | Non. Le bicarbonate de soude est plus tendre que le métal : il enlève la peinture, la graisse et la saleté sans creuser la surface. C’est ce qui le distingue du sablage. | Nee. Natron ass méi mëll wéi Metall: Et hëlt Lack, Fett an Dreck ewech, ouni d’Uewerfläch ofzedroen. Dat ass den Ënnerscheed zum Sandstralen. |
+| `content.sodablast.faq.q2.q` | Combien coûte un décapage sodablast ? | Wat kascht d’Ofbeize mat Sodablast? |
+| `content.sodablast.faq.q2.a` | Cela dépend de la taille de la pièce et des couches à enlever. Envoyez des photos sur WhatsApp au {whatsapp} : vous recevez un premier avis. | Dat hänkt dovun of, wéi grouss den Deel ass a wéi vill Schichten ewech mussen. Schéckt eis Fotoen iwwer WhatsApp op {whatsapp}: Dir kritt eng éischt Aschätzung. |
+| `content.sodablast.faq.q3.q` | Faut-il traiter la pièce après le décapage ? | Muss den Deel nom Ofbeize behandelt ginn? |
+| `content.sodablast.faq.q3.a` | Oui. Le métal mis à nu doit être protégé rapidement par un apprêt ou une peinture, sinon il s’oxyde. | Jo. Dat blankt Metall muss séier mat enger Grondéierung oder engem Lack geschützt ginn, soss oxydéiert et. |
+| `content.sodablast.faq.q4.q` | Peut-on décaper des jantes au sodablast ? | Kann een och Felge mat Sodablast ofbeizen? |
+| `content.sodablast.faq.q4.a` | Oui, les jantes font partie des pièces que nous décapons au sodablast, comme les carrosseries anciennes et les pièces mécaniques. | Jo, Felge gehéieren zu den Deeler, déi mir mat Sodablast ofbeizen, sou wéi al Karosserien a mechanesch Deeler. |
+| `content.garden.sections.s1.h` | Machines de jardin et de forêt dans la Nordstad | Gaart- a Bëschmaschinnen an der Nordstad |
+| `content.garden.sections.s1.p[0]` | Pour entretenir votre jardin, votre terrain ou votre bois, vous trouvez au Garage Um Rond Point des machines principalement des marques Honda et Stihl, et un atelier pour les réparer. Le garage se trouve au rond-point d’Erpeldange, entre Ettelbruck et Diekirch. | Fir Äre Gaart, Ären Terrain oder Äre Bësch ze fleegen, fannt Dir an der Garage Um Rond Point Maschinnen, virun allem vun de Marken Honda a Stihl, an en Atelier, fir se ze reparéieren. D’Garage ass um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech. |
+| `content.garden.sections.s2.h` | Bien choisir sa machine | Déi richteg Maschinn wielen |
+| `content.garden.sections.s2.items[0]` | Tondeuse : la surface de la pelouse, la pente et les obstacles décident de la largeur de coupe et du type d’entraînement. | Rasemeeër: D’Gréisst vum Rasen, d’Steigung an d’Hindernisser bestëmmen d’Schnëttbreet an d’Aart vum Undriff. |
+| `content.garden.sections.s2.items[1]` | Débroussailleuse : pour les bordures, les talus et l’herbe haute que la tondeuse n’atteint pas. | Fräischneider: fir Kanten, Häng an héicht Gras, wou de Rasemeeër net hikënnt. |
+| `content.garden.sections.s2.items[2]` | Tronçonneuse : la longueur du guide dépend du diamètre du bois que vous coupez le plus souvent. | Motorsee: D’Längt vum Schwäert hänkt vum Duerchmiesser vum Holz of, dat Dir am meeschte schneit. |
+| `content.garden.sections.s2.items[3]` | Taille-haie : la longueur de la lame et le poids comptent si vous taillez longtemps ou en hauteur. | Heckeschéier: D’Längt vum Messer an d’Gewiicht zielen, wann Dir laang oder an der Héicht schneit. |
+| `content.garden.sections.s2.p[0]` | Thermique ou à batterie ? Une machine à batterie est plus silencieuse et démarre sans effort. Une machine thermique garde son autonomie sur les grands terrains. Dites-nous comment vous l’utilisez, nous vous conseillons. | Bensin oder Akku? Eng Maschinn mat Akku ass méi roueg a spréngt ouni Méi un. Eng Maschinn mat Bensinsmotor hält och op grousse Flächen duer. Sot eis, wéi Dir se benotzt, mir beroden Iech. |
+| `content.garden.sections.s3.h` | Réparation : quand apporter votre machine | Reparatur: wéini Dir Är Maschinn brénge sollt |
+| `content.garden.sections.s3.items[0]` | Le moteur ne démarre plus ou cale. | De Motor spréngt net méi un oder geet aus. |
+| `content.garden.sections.s3.items[1]` | La machine perd de la puissance ou fume. | D’Maschinn verléiert Kraaft oder fëmmt. |
+| `content.garden.sections.s3.items[2]` | La chaîne ou la lame coupe mal. | D’Kett oder d’Messer schneit schlecht. |
+| `content.garden.sections.s3.items[3]` | Des bruits ou des vibrations inhabituels apparaissent. | Dir héiert ongewéinlech Geräischer oder spiert Vibratiounen. |
+| `content.garden.sections.s3.p[0]` | Décrivez la panne dans le formulaire ou appelez-nous au {phone}. Indiquez la marque et le modèle de la machine : nous savons tout de suite de quoi il s’agit. | Beschreift d’Pann am Formulaire oder rufft eis un op {phone}. Gitt d’Mark an de Modell vun der Maschinn un: Da wësse mir direkt, ëm wat et geet. |
+| `content.garden.sections.s4.h` | Conseils pour passer l’hiver | Esou kënnt Är Maschinn gutt duerch de Wanter |
+| `content.garden.sections.s4.p[0]` | Avant de ranger une machine thermique pour l’hiver, nettoyez-la, videz le réservoir ou laissez le moteur tourner jusqu’à l’arrêt, puis rangez-la au sec. Une machine bien rangée redémarre plus facilement au printemps. | Ier Dir eng Maschinn mat Bensinsmotor fir de Wanter ewechstellt, botzt se, maacht den Tank eidel oder loosst de Motor lafen, bis hien ausgeet. Stellt se duerno am Dréchenen of. Esou spréngt d’Maschinn am Fréijoer méi einfach erëm un. |
+| `content.garden.sections.s4.p[1]` | Les batteries se stockent à l’abri du gel, de préférence à moitié chargées. | Den Akku gehéiert op eng frostfräi Plaz, am beschten hallef gelueden. |
+| `content.garden.faqH` | Questions sur les machines de jardin | Froen zu de Gaartmaschinnen |
+| `content.garden.faq.q1.q` | Quelles marques de machines vendez-vous ? | Vu wéi enge Marke verkaaft Dir Maschinnen? |
+| `content.garden.faq.q1.a` | Principalement des machines Honda et Stihl. | Virun allem Maschinne vun Honda a Stihl. |
+| `content.garden.faq.q2.q` | Comment faire réparer ma tondeuse ou ma tronçonneuse ? | Wéi loossen ech mäi Rasemeeër oder meng Motorsee reparéieren? |
+| `content.garden.faq.q2.a` | Apportez la machine à l’atelier ou décrivez la panne dans le formulaire de cette page. Nous vous rappelons. | Bréngt d’Maschinn an den Atelier oder beschreift d’Pann am Formulaire op dëser Säit. Mir ruffen Iech zréck. |
+| `content.garden.faq.q3.q` | Quand puis-je passer au garage ? | Wéini kann ech an der Garage laanschtkommen? |
+| `content.garden.faq.q3.a` | {hours} | {hours} |
+| `content.garden.faq.q4.q` | Où se trouve le garage ? | Wou ass d’Garage? |
+| `content.garden.faq.q4.a` | Au {address}, au rond-point d’Erpeldange, à côté de la station Aral. | Um {address}, um Rond-point zu Ierpeldeng, nieft der Aral-Tankstell. |
+| `content.trailersForSale.sections.s1.h` | Saris, Humbaur et WM Meyer à Erpeldange | Saris, Humbaur a WM Meyer zu Ierpeldeng |
+| `content.trailersForSale.sections.s1.p[0]` | Nous vendons des remorques des marques Saris, Humbaur et WM Meyer, pour les particuliers comme pour les professionnels. Dites-nous ce que vous transportez : nous vous aidons à trouver le modèle qui convient à votre voiture et à votre permis. | Mir verkafen Unhänger vu Saris, Humbaur a WM Meyer, fir Privatleit a fir Betriber. Sot eis, wat Dir transportéiert: Mir hëllefen Iech, de Modell ze fannen, deen zu Ärem Auto an zu Ärem Führerschäin passt. |
+| `content.trailersForSale.sections.s1.p[1]` | Le garage se trouve au rond-point d’Erpeldange-sur-Sûre, entre Ettelbruck et Diekirch. | D’Garage ass um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech. |
+| `content.trailersForSale.sections.s2.h` | Les bonnes questions avant d’acheter | Déi richteg Froe virum Kaf |
+| `content.trailersForSale.sections.s2.items[0]` | Qu’est-ce que je transporte le plus souvent, et quel poids ? | Wat transportéieren ech am meeschten, a wéi vill weit et? |
+| `content.trailersForSale.sections.s2.items[1]` | Quelle longueur et quelle largeur de plateau me faut-il ? | Wéi laang a wéi breet muss d’Luedfläch sinn? |
+| `content.trailersForSale.sections.s2.items[2]` | Ma voiture peut-elle tracter cette remorque (champs O.1 et O.2 du certificat d’immatriculation) ? | Ka mäin Auto dësen Unhänger zéien (Felder O.1 an O.2 vun der Carte grise)? |
+| `content.trailersForSale.sections.s2.items[3]` | Mon permis suffit-il : B, B avec le code 96 ou BE ? | Geet mäi Führerschäin duer: B, B mam Code 96 oder BE? |
+| `content.trailersForSale.sections.s2.items[4]` | Où vais-je garer la remorque quand je ne m’en sers pas ? | Wou stellen ech den Unhänger of, wann ech en net brauch? |
+| `content.trailersForSale.sections.s3.h` | Particuliers et professionnels | Privatleit a Betriber |
+| `content.trailersForSale.sections.s3.p[0]` | Pour un particulier, la remorque sert au jardin, au déménagement ou au transport d’un véhicule de loisir. Pour un artisan ou une entreprise, elle transporte chaque jour du matériel et des machines : la charge utile, la robustesse du plateau et les points d’arrimage comptent alors davantage. | Privatleit brauchen den Unhänger fir de Gaart, fir ze plënneren oder fir e Fräizäitgefier ze transportéieren. En Handwierker oder e Betrib transportéiert domat all Dag Material a Maschinnen: Do zielen d’Notzlaascht, eng robust Luedfläch an d’Befestegungspunkten nach méi. |
+| `content.trailersForSale.sections.s4.h` | Acheter ou louer ? | Kafen oder lounen? |
+| `content.trailersForSale.sections.s4.p[0]` | Si vous n’avez besoin d’une remorque que de temps en temps, la [location](page:rental) peut suffire. Notre guide vous montre aussi quelle remorque votre permis autorise. | Wann Dir nëmmen heiansdo en Unhänger braucht, kann et duergoen, een ze [lounen](page:rental). Eis Unhängersich weist Iech och, wéi en Unhänger Dir mat Ärem Führerschäin zéien dierft. |
+| `content.trailersForSale.faqH` | Questions sur l’achat d’une remorque | Froen zum Kaf vun engem Unhänger |
+| `content.trailersForSale.faq.q1.q` | Quelles marques de remorques vendez-vous ? | Vu wéi enge Marke verkaaft Dir Unhänger? |
+| `content.trailersForSale.faq.q1.a` | Saris, Humbaur et WM Meyer. | Saris, Humbaur a WM Meyer. |
+| `content.trailersForSale.faq.q2.q` | Vendez-vous aussi aux professionnels ? | Verkaaft Dir och u Betriber? |
+| `content.trailersForSale.faq.q2.a` | Oui, nous vendons des remorques aux particuliers et aux professionnels. | Jo, mir verkafen Unhänger u Privatleit an u Betriber. |
+| `content.cars.sections.s1.h` | Acheter une voiture au Garage Um Rond Point | En Auto kafen an der Garage Um Rond Point |
+| `content.cars.sections.s1.p[0]` | Toutes les voitures de cette page sont en stock chez nous, au rond-point d’Erpeldange. La liste est mise à jour chaque matin à partir de nos annonces : vous voyez le prix, le kilométrage, l’année et les photos de chaque voiture. | All d’Autoen op dëser Säit si bei eis am Stock, um Rond-point zu Ierpeldeng. D’Lëscht gëtt all Moien op Basis vun eisen Annoncen aktualiséiert: Dir gesitt de Präis, de Kilometerstand, d’Joer an d’Fotoe vun all Auto. |
+| `content.cars.sections.s1.items[0]` | Choisissez une voiture dans la liste et ouvrez sa fiche. | Wielt en Auto aus der Lëscht a maacht seng Detailsäit op. |
+| `content.cars.sections.s1.items[1]` | Appelez-nous ou écrivez-nous sur WhatsApp pour vérifier qu’elle est encore disponible. | Rufft eis un oder schreift eis op WhatsApp, fir nozefroen, ob en nach disponibel ass. |
+| `content.cars.sections.s1.items[2]` | Venez la voir au garage et faites un essai sur rendez-vous. | Kommt den Auto an der Garage kucken a maacht eng Probefahrt op Rendez-vous. |
+| `content.cars.sections.s2.h` | Voitures neuves et d’occasion près d’Ettelbruck et de Diekirch | Nei Autoen an Occasiounen no bei Ettelbréck an Dikrech |
+| `content.cars.sections.s2.p[0]` | Le stock comprend des voitures neuves et des voitures d’occasion. Il change souvent : la liste vous montre chaque jour l’état du matin. Nos annonces sont aussi publiées sur LuxAuto et AutoScout24. | Am Stock sinn nei Autoen an Occasiounen. De Stock ännert sech dacks: D’Lëscht weist Iech all Dag de Stand vum Moien. Dir fannt eis Annoncen och op LuxAuto an AutoScout24. |
+| `content.cars.sections.s3.h` | Et votre voiture actuelle ? | Wat ass mat Ärem aktuellen Auto? |
+| `content.cars.sections.s3.p[0]` | Vous souhaitez faire reprendre votre voiture ? Indiquez-le dans le formulaire de la voiture qui vous intéresse. Vous préférez vendre sans vous en occuper ? Découvrez notre service de dépôt-vente plus bas sur cette page. | Wëllt Dir Ären Auto a Reprise ginn? Sot et eis am Formulaire vum Auto, deen Iech interesséiert. Wëllt Dir léiwer verkafen, ouni Iech selwer drëm ze këmmeren? Entdeckt eise Kommissiounsverkaf méi ënnen op dëser Säit. |
+| `content.cars.faqH` | Questions sur nos voitures | Froen zu eisen Autoen |
+| `content.cars.faq.q1.q` | Puis-je essayer une voiture ? | Kann ech eng Probefahrt maachen? |
+| `content.cars.faq.q1.a` | Oui, sur rendez-vous. Appelez-nous au {phone} ou écrivez-nous sur WhatsApp au {whatsapp}. | Jo, op Rendez-vous. Rufft eis un op {phone} oder schreift eis iwwer WhatsApp op {whatsapp}. |
+| `content.cars.faq.q2.q` | Où puis-je voir les voitures ? | Wou kann ech d’Autoe kucken? |
+| `content.cars.faq.q2.a` | Au garage, au {address}, au rond-point d’Erpeldange. {hours} | An der Garage, um {address}, um Rond-point zu Ierpeldeng. {hours} |
+| `content.cars.faq.q3.q` | Vos voitures sont-elles aussi sur LuxAuto et AutoScout24 ? | Sinn Är Autoen och op LuxAuto an AutoScout24? |
+| `content.cars.faq.q3.a` | Oui, nos annonces sont aussi publiées sur LuxAuto et AutoScout24. Ici, vous voyez tout notre stock au même endroit. | Jo, Dir fannt eis Annoncen och op LuxAuto an AutoScout24. Hei gesitt Dir eise ganze Stock op enger Plaz. |
+| `content.contact.sections.s1.h` | Quel moyen choisir ? | Wéi erreecht Dir eis am beschten? |
+| `content.contact.sections.s1.items[0]` | Une question rapide ou des photos à nous montrer : WhatsApp au {whatsapp}. | Eng kuerz Fro oder Fotoen, déi Dir eis weise wëllt: WhatsApp op {whatsapp}. |
+| `content.contact.sections.s1.items[1]` | Un rendez-vous ou une réponse tout de suite : téléphone au {phone}. | E Rendez-vous oder eng direkt Äntwert: Telefon op {phone}. |
+| `content.contact.sections.s1.items[2]` | Une demande détaillée : le formulaire ci-dessous ou un e-mail à {email}. | Eng detailléiert Ufro: de Formulaire hei ënnen oder eng E-Mail un {email}. |
+| `content.contact.sections.s2.h` | Venir au garage | De Wee bei eis an d’Garage |
+| `content.contact.sections.s2.p[0]` | Le garage se trouve au {address}, au rond-point d’Erpeldange-sur-Sûre, à côté de la station Aral. Vous venez d’Ettelbruck ou de Diekirch ? Le rond-point est sur votre route. Pour l’itinéraire exact, ouvrez Google Maps depuis cette page. | D’Garage ass um {address}, um Rond-point zu Ierpeldeng, nieft der Aral-Tankstell. Kommt Dir vun Ettelbréck oder vun Dikrech? Da läit de Rond-point op Ärem Wee. Fir déi genee Route maacht Google Maps iwwer dës Säit op. |
+| `content.contact.faqH` | Questions pratiques | Praktesch Froen |
+| `content.contact.faq.q1.q` | Quand le garage est-il ouvert ? | Wéini ass d’Garage op? |
+| `content.contact.faq.q1.a` | {hours} | {hours} |
+| `content.contact.faq.q2.q` | Quelles langues parlez-vous ? | Wéi eng Sprooche schwätzt Dir? |
+| `content.contact.faq.q2.a` | Nous parlons luxembourgeois, français, allemand, anglais et portugais. | Mir schwätze Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch. |
+| `content.rental.sections.s1.h` | Location de remorques dans la Nordstad | Unhänger lounen an der Nordstad |
+| `content.rental.sections.s1.p[0]` | Au rond-point d’Erpeldange, entre Ettelbruck et Diekirch, vous louez une remorque ou une camionnette tout près de chez vous. Notre guide ci-dessus vous montre en quelques clics quelle remorque convient à ce que vous transportez et si votre permis suffit. | Um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech, lount Dir en Unhänger oder eng Camionnette ganz no bei Iech doheem. Eis Unhängersich hei uewe weist Iech mat e puer Klicks, wéi en Unhänger zu deem passt, wat Dir transportéiert, an ob Äre Führerschäin duergeet. |
+| `content.rental.sections.s2.h` | Conseils pour bien charger | Tipps fir richteg ze lueden |
+| `content.rental.sections.s2.items[0]` | Ne dépassez jamais la masse maximale de la remorque, ni la charge remorquable de votre voiture. | Iwwerschreit ni dat zulässegt Gesamtgewiicht vum Unhänger an och net d’Unhängelaascht vun Ärem Auto. |
+| `content.rental.sections.s2.items[1]` | Répartissez la charge : les objets lourds au-dessus de l’essieu, un peu de poids sur la flèche, comme l’indique la notice. | Verdeelt d’Luedung: schwéier Saachen iwwer d’Achs, e bësse Gewiicht op d’Kupplung, sou wéi et an der Uleedung steet. |
+| `content.rental.sections.s2.items[2]` | Arrimez le chargement avec des sangles et couvrez le vrac avec une bâche ou un filet. | Sécheert d’Luedung mat Spannrimmen an deckt alles, wat lass ass, mat enger Bâche oder engem Netz of. |
+| `content.rental.sections.s2.items[3]` | Avant de partir, vérifiez l’attelage, les feux et la pression des pneus. | Ier Dir lassfuert, kontrolléiert d’Kupplung, d’Luuchten an den Drock vun de Pneuen. |
+| `content.rental.sections.s2.items[4]` | Roulez plus doucement qu’à vide : l’ensemble freine moins bien et prend plus de place dans les virages. | Fuert méi lues wéi ouni Luedung: Auto an Unhänger bremse manner gutt a brauche méi Plaz an de Kéieren. |
+| `content.category.porte-voiture.sections.s1.h` | Quand louer un porte-voiture ? | Wéini en Autosunhänger lounen? |
+| `content.category.porte-voiture.sections.s1.p[0]` | Pour ramener une voiture qui ne roule plus, transporter une voiture de collection sans ajouter de kilomètres, ou aller chercher une voiture achetée loin de chez vous. Le porte-voiture évite de faire rouler la voiture transportée. | Fir en Auto heemzebréngen, deen net méi fiert, fir en Oldtimer ze transportéieren, ouni Kilometer dobäizefueren, oder fir en Auto ofzehuelen, deen Dir wäit vun doheem kaaft hutt. Mam Autosunhänger muss den transportéierten Auto net selwer fueren. |
+| `content.category.porte-voiture.sections.s2.h` | Charger une voiture en sécurité | En Auto sécher lueden |
+| `content.category.porte-voiture.sections.s2.items[0]` | Vérifiez que la voiture transportée ne dépasse pas la charge utile de la remorque. | Kontrolléiert, datt den Auto net méi weit wéi d’Notzlaascht vum Unhänger. |
+| `content.category.porte-voiture.sections.s2.items[1]` | Montez lentement, bien dans l’axe des rampes, avec quelqu’un qui vous guide. | Fuert lues a riicht op d’Rampen erop, mat engem, deen Iech aweist. |
+| `content.category.porte-voiture.sections.s2.items[2]` | Placez la voiture pour qu’un peu de poids repose sur l’avant de la remorque, comme l’indique la notice. | Stellt den Auto esou, datt e bësse Gewiicht op de viischten Deel vum Unhänger läit, sou wéi et an der Uleedung steet. |
+| `content.category.porte-voiture.sections.s2.items[3]` | Arrimez chaque roue avec des sangles adaptées et contrôlez-les après les premiers kilomètres. | Sécheert all Rad mat passende Spannrimmen a kontrolléiert se no den éischte Kilometer. |
+| `content.category.porte-moto.sections.s1.h` | Transporter une moto | Eng Moto transportéieren |
+| `content.category.porte-moto.sections.s1.p[0]` | Pour aller sur un circuit, faire réparer une moto ou la ramener après un achat, la remorque porte-moto est plus simple qu’une camionnette : la moto monte par la rampe et se cale dans le support de roue. | Fir op eng Rennstreck ze fueren, eng Moto reparéieren ze loossen oder se nom Kaf heemzebréngen, ass de Motosunhänger méi einfach wéi eng Camionnette: D’Moto kënnt iwwer d’Ramp erop a steet da fest am Radhalter. |
+| `content.category.porte-moto.sections.s2.h` | Bien attacher une moto | D’Moto richteg festmaachen |
+| `content.category.porte-moto.sections.s2.items[0]` | Calez la roue avant dans le support. | Setzt d’Viischtrad fest an de Radhalter. |
+| `content.category.porte-moto.sections.s2.items[1]` | Utilisez quatre sangles, deux à l’avant et deux à l’arrière, sur des points solides du cadre. | Benotzt véier Spannrimmen, zwee vir an zwee hannen, u stabile Punkte vum Rumm. |
+| `content.category.porte-moto.sections.s2.items[2]` | Comprimez légèrement la suspension, sans l’écraser. | Dréckt d’Fiederung e bëssen zesummen, awer net ze vill. |
+| `content.category.porte-moto.sections.s2.items[3]` | Contrôlez la tension des sangles après les premiers kilomètres. | Kontrolléiert no den éischte Kilometer, ob d’Spannrimmen nach fest sinn. |
+| `content.category.benne.sections.s1.h` | Attention au poids des matériaux | Opgepasst mam Gewiicht vum Material |
+| `content.category.benne.sections.s1.p[0]` | Les matériaux en vrac sont lourds. Un mètre cube de terre humide pèse environ 1,5 à 1,8 tonne, un mètre cube de gravier environ 1,5 tonne. Une benne remplie à ras bord dépasse donc vite sa charge utile. | Material, dat lass gelueden ass, weit vill. E Kubikmeter fiicht Äerd weit ongeféier 1,5 bis 1,8 Tonnen, e Kubikmeter Kis ongeféier 1,5 Tonnen. E Kipper, dee bis un de Rand voll ass, iwwerschreit also séier seng Notzlaascht. |
+| `content.category.benne.sections.s1.p[1]` | Regardez la charge utile dans la fiche de la remorque et remplissez en conséquence : mieux vaut deux trajets qu’une remorque surchargée. | Kuckt d’Notzlaascht an den Detailer vum Unhänger no a luet deementspriechend: Léiwer zweemol fueren, wéi den Unhänger z’iwwerlueden. |
+| `content.category.benne.sections.s2.h` | Chantier, jardin, parc à conteneurs | Chantier, Gaart, Recyclingszenter |
+| `content.category.benne.sections.s2.items[0]` | Couvrez le chargement avec une bâche ou un filet pour que rien ne tombe sur la route. | Deckt d’Luedung mat enger Bâche oder engem Netz of, fir datt näischt op d’Strooss fält. |
+| `content.category.benne.sections.s2.items[1]` | Triez les déchets avant de partir : au parc à conteneurs, vous gagnez du temps. | Sortéiert den Offall, ier Dir lassfuert: Am Recyclingszenter spuert Dir esou Zäit. |
+| `content.category.benne.sections.s2.items[2]` | Basculez uniquement sur un sol plat et stable, la remorque attelée. | Kippt nëmmen op flaachem, festem Buedem of, wann den Unhänger ugekuppelt ass. |
+| `content.category.frigorifique.sections.s1.h` | Pour quelles occasions ? | Fir wéi eng Geleeënheeten? |
+| `content.category.frigorifique.sections.s1.p[0]` | Fête de famille, mariage, anniversaire, kermesse, marché ou fête d’association : la remorque frigorifique garde les boissons et les plats au frais sur place, pendant toute la durée de l’événement. | Familljefest, Hochzäit, Gebuertsdag, Kiermes, Maart oder Veräinsfest: De Killunhänger hält Gedrénks an Iessen op der Plaz frësch, während der ganzer Dauer vum Evenement. |
+| `content.category.frigorifique.sections.s2.h` | Conseils d’utilisation | Esou benotzt Dir de Killunhänger |
+| `content.category.frigorifique.sections.s2.items[0]` | Branchez la remorque quelques heures avant de la charger pour qu’elle soit froide. | Schléisst den Unhänger e puer Stonne virum Lueden un, fir datt e scho kal ass. |
+| `content.category.frigorifique.sections.s2.items[1]` | Chargez de préférence des produits déjà froids : refroidir un grand volume de boissons tièdes prend du temps. | Luet am beschte Produiten, déi scho kal sinn: Et brauch Zäit, fir vill lauwarmt Gedrénks ofzekillen. |
+| `content.category.frigorifique.sections.s2.items[2]` | Laissez l’air circuler entre les caisses. | Loosst tëscht de Keesse Plaz, fir datt d’Loft zirkuléiere kann. |
+| `content.category.frigorifique.sections.s2.items[3]` | Prévoyez un branchement électrique adapté près de l’emplacement de la remorque. | Suergt fir e passende Stroumuschloss no bei der Plaz, wou den Unhänger steet. |
+| `content.category.camionnette.sections.s1.h` | Déménagement, meubles, matériel | Plënneren, Miwwelen, Material |
+| `content.category.camionnette.sections.s1.p[0]` | Une camionnette convient pour un déménagement, des meubles, de l’électroménager ou du matériel encombrant, sans avoir à atteler une remorque. Le chargement reste à l’abri de la pluie. | Eng Camionnette passt fir ze plënneren, fir Miwwelen, Haushaltsapparater oder voluminéist Material, ouni datt Dir en Unhänger ukuppele musst. D’Luedung bleift och bei Reen dréchen. |
+| `content.category.camionnette.sections.s2.h` | Conseils pour votre transport | Tipps fir Ären Transport |
+| `content.category.camionnette.sections.s2.items[0]` | Mesurez les gros meubles avant de réserver. | Moosst grouss Miwwelen, ier Dir reservéiert. |
+| `content.category.camionnette.sections.s2.items[1]` | Placez les objets lourds au fond, contre la cloison, et sanglez le chargement. | Stellt schwéier Saache ganz no bannen, géint d’Trennwand, a sécheert d’Luedung mat Spannrimmen. |
+| `content.category.camionnette.sections.s2.items[2]` | Protégez les meubles avec des couvertures pour éviter les rayures. | Schützt d’Miwwele mat Decken, fir datt se net verkraazt ginn. |
+| `content.category.camionnette.sections.s2.items[3]` | Pensez à la hauteur du véhicule avant d’entrer dans un parking souterrain. | Denkt un d’Héicht vum Gefier, ier Dir an en ënnerierdesche Parking fuert. |
 
-## Português (pt-PT): 609 Texte offen
+## Português (pt-PT): 782 Texte offen
 
 | Schlüssel | Französisch | PT |
 |---|---|---|
@@ -802,6 +975,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `cars.filter.count.other` | {n} voitures | {n} carros |
 | `cars.filter.empty` | Aucune voiture ne correspond. | Nenhum carro corresponde aos filtros. |
 | `cars.filter.reset` | Réinitialiser les filtres | Repor filtros |
+| `cars.filter.apply` | Voir les résultats | Ver resultados |
 | `cars.filter.upTo` | jusqu’à {price} | até {price} |
 | `enums.fuel.petrol` | Essence | Gasolina |
 | `enums.fuel.diesel` | Diesel | Diesel |
@@ -1065,6 +1239,13 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `forms.errorSummary` | Vérifiez les champs signalés. | Verifique os campos assinalados. |
 | `forms.errorSend` | L’envoi n’a pas fonctionné. Réessayez ou appelez-nous au +352 81 05 41. | O envio não funcionou. Tente novamente ou ligue para o +352 81 05 41. |
 | `forms.errorRate` | Vous avez envoyé beaucoup de demandes aujourd’hui. Appelez-nous au +352 81 05 41. | Já enviou muitos pedidos hoje. Ligue para o +352 81 05 41. |
+| `forms.fallbackH` | Dernière étape : envoyez votre demande | Último passo: envie o seu pedido |
+| `forms.fallbackText` | Choisissez comment nous la transmettre. Votre message est déjà rédigé, il suffit de l’envoyer. | Escolha como nos quer enviar o pedido. A mensagem já está escrita, só precisa de a enviar. |
+| `forms.fallbackWhatsapp` | Envoyer par WhatsApp | Enviar pelo WhatsApp |
+| `forms.fallbackMail` | Envoyer par e-mail | Enviar por e-mail |
+| `forms.fallbackEdit` | Modifier la demande | Alterar o pedido |
+| `forms.fallbackSubject` | Demande depuis le site | Pedido através do site |
+| `forms.fallbackIntro` | Bonjour, voici ma demande : | Olá, aqui está o meu pedido: |
 | `forms.errors.name` | Indiquez votre nom. | Indique o seu nome. |
 | `forms.errors.phone` | Indiquez un numéro de téléphone pour que nous puissions vous rappeler. | Indique um número de telefone para podermos ligar-lhe de volta. |
 | `forms.errors.phoneInvalid` | Ce numéro semble incomplet. Indiquez-le avec l’indicatif, par exemple +352 621 123 456. | Este número parece incompleto. Indique-o com o indicativo, por exemplo +352 621 123 456. |
@@ -1259,4 +1440,169 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `details.trailers.charge` | Votre voiture ne peut pas tracter plus que la valeur du champ O.1 (remorque freinée) ou O.2 (non freinée) du certificat d’immatriculation. | O seu carro não pode rebocar mais do que o valor do campo O.1 (atrelado com travões) ou O.2 (sem travões) do certificado de matrícula. |
 | `details.trailers.usageH` | Forme et dimensions | Tipo e dimensões |
 | `details.trailers.usage` | Plateau, benne, porte-voiture ou fourgon : la bonne remorque dépend de ce que vous transportez le plus souvent et de la place pour la ranger. | Plataforma, basculante, porta-carros ou fechado: o atrelado certo depende do que transporta com mais frequência e de onde o vai guardar. |
+| `content.workshop.sections.s1.h` | Votre garage de proximité entre Ettelbruck et Diekirch | A sua garagem de proximidade entre Ettelbruck e Diekirch |
+| `content.workshop.sections.s1.p[0]` | Le Garage Um Rond Point se trouve au {address}, directement au rond-point d’Erpeldange, à côté de la station Aral. Pour les habitants d’Erpeldange-sur-Sûre, d’Ettelbruck, de Diekirch et de toute la Nordstad, l’atelier est à quelques minutes de chez vous. | A Garage Um Rond Point fica no {address}, mesmo na rotunda de Erpeldange, ao lado do posto Aral. Para quem vive em Erpeldange-sur-Sûre, Ettelbruck, Diekirch e em toda a Nordstad, a oficina fica a poucos minutos de casa. |
+| `content.workshop.sections.s1.p[1]` | Nous parlons luxembourgeois, français, allemand, anglais et portugais. Vous pouvez donc nous expliquer le problème de votre voiture dans la langue qui vous convient le mieux. | Falamos luxemburguês, francês, alemão, inglês e português. Assim, pode explicar-nos o problema do seu carro na língua em que se sente mais à vontade. |
+| `content.workshop.sections.s2.h` | Entretien : pourquoi suivre le plan du constructeur | Manutenção: porque deve seguir o plano do fabricante |
+| `content.workshop.sections.s2.p[0]` | Chaque constructeur fixe un plan d’entretien, selon le kilométrage ou le temps écoulé depuis le dernier passage. Vous le trouvez dans le carnet d’entretien ou sur l’écran de bord de votre voiture. | Cada fabricante define um plano de manutenção, consoante os quilómetros percorridos ou o tempo decorrido desde a última revisão. Encontra-o no livro de revisões ou no ecrã do painel de instrumentos do seu carro. |
+| `content.workshop.sections.s2.p[1]` | Respecter ces échéances limite l’usure, évite des pannes coûteuses et aide à garder la valeur de la voiture à la revente. Selon le plan, un entretien comprend par exemple la vidange, les filtres, le contrôle des freins et des niveaux, l’éclairage et les essuie-glaces. | Cumprir estes prazos reduz o desgaste, evita avarias dispendiosas e ajuda a manter o valor do carro na revenda. Consoante o plano, uma manutenção inclui, por exemplo, a mudança de óleo, os filtros, a verificação dos travões e dos níveis, as luzes e as escovas do limpa-para-brisas. |
+| `content.workshop.sections.s3.h` | Les signes qui doivent vous faire venir à l’atelier | Sinais de que está na hora de vir à oficina |
+| `content.workshop.sections.s3.items[0]` | Un voyant reste allumé au tableau de bord. | Uma luz de aviso continua acesa no painel de instrumentos. |
+| `content.workshop.sections.s3.items[1]` | Le freinage grince, vibre ou tire d’un côté. | Os travões chiam, vibram ou puxam para um lado. |
+| `content.workshop.sections.s3.items[2]` | Le moteur manque de puissance ou démarre mal. | O motor tem falta de potência ou custa a pegar. |
+| `content.workshop.sections.s3.items[3]` | Une odeur de brûlé, une fuite ou une fumée inhabituelle. | Um cheiro a queimado, uma fuga ou fumo fora do normal. |
+| `content.workshop.sections.s3.items[4]` | Un bruit nouveau en roulant ou en tournant le volant. | Um ruído novo ao conduzir ou ao virar o volante. |
+| `content.workshop.sections.s3.p[0]` | Plus tôt un défaut est trouvé, plus la réparation reste simple. Décrivez dans le formulaire ce que vous remarquez et depuis quand : c’est la meilleure base pour le diagnostic. | Quanto mais cedo um problema for detetado, mais simples é a reparação. Descreva no formulário o que nota e desde quando: é a melhor base para o diagnóstico. |
+| `content.workshop.sections.s4.h` | Carrosserie et peinture après un accrochage | Chaparia e pintura depois de um pequeno toque |
+| `content.workshop.sections.s4.p[0]` | Rayure, bosse ou pare-chocs abîmé : envoyez-nous des photos des dégâts sur WhatsApp au {whatsapp}. Vous recevez un premier avis avant même de venir. Ensuite, nous réparons la carrosserie et repeignons les éléments abîmés dans notre atelier. | Um risco, uma amolgadela ou um para-choques danificado: envie-nos fotos dos danos pelo WhatsApp, para o {whatsapp}. Recebe uma primeira opinião antes mesmo de vir. Depois, reparamos a carroçaria e voltamos a pintar as peças danificadas na nossa oficina. |
+| `content.workshop.sections.s4.p[1]` | Si un autre véhicule est en cause, remplissez le constat amiable sur place et prenez vous-même des photos de l’accident. Ces documents sont utiles pour votre assurance. | Se houver outro veículo envolvido, preencha a declaração amigável no local e tire as suas próprias fotos do acidente. Estes documentos são úteis para o seu seguro. |
+| `content.workshop.sections.s5.h` | Voitures et camionnettes | Carros e carrinhas |
+| `content.workshop.sections.s5.p[0]` | L’atelier s’occupe des voitures et des camionnettes. Pour une tondeuse, une tronçonneuse ou une autre machine, voyez notre page [Jardin & forêt](page:garden). Pour mettre une carrosserie ou une pièce à nu, découvrez le [décapage sodablast](page:sodablast). | A oficina trata de carros e carrinhas. Para um corta-relva, uma motosserra ou outra máquina, veja a nossa página [Jardim e floresta](page:garden). Para decapar uma carroçaria ou uma peça até ao metal nu, conheça a [decapagem com sodablast](page:sodablast). |
+| `content.workshop.faqH` | Questions sur l’atelier | Perguntas sobre a oficina |
+| `content.workshop.faq.q1.q` | Comment prendre rendez-vous à l’atelier ? | Como faço uma marcação na oficina? |
+| `content.workshop.faq.q1.a` | Décrivez votre véhicule et ce qu’il faut faire dans le formulaire de cette page, par téléphone au {phone} ou sur WhatsApp au {whatsapp}. Nous vous rappelons pour fixer le rendez-vous. | Descreva o seu veículo e o que é preciso fazer no formulário desta página, por telefone, para o {phone}, ou pelo WhatsApp, para o {whatsapp}. Ligamos-lhe de volta para combinar a marcação. |
+| `content.workshop.faq.q2.q` | Quand le garage est-il ouvert ? | Quando é que a garagem está aberta? |
+| `content.workshop.faq.q2.a` | {hours} | {hours} |
+| `content.workshop.faq.q3.q` | Puis-je envoyer des photos avant de venir ? | Posso enviar fotos antes de vir? |
+| `content.workshop.faq.q3.a` | Oui. Pour la carrosserie ou le sodablast, envoyez-nous des photos sur WhatsApp au {whatsapp} : vous recevez un premier avis. | Sim. Para chaparia ou sodablast, envie-nos fotos pelo WhatsApp, para o {whatsapp}: recebe uma primeira opinião. |
+| `content.workshop.faq.q4.q` | Où se trouve l’atelier ? | Onde fica a oficina? |
+| `content.workshop.faq.q4.a` | Au {address}, au rond-point d’Erpeldange, à côté de la station Aral, entre Ettelbruck et Diekirch. | No {address}, na rotunda de Erpeldange, ao lado do posto Aral, entre Ettelbruck e Diekirch. |
+| `content.workshop.faq.q5.q` | Dans quelles langues puis-je expliquer le problème ? | Em que línguas posso explicar o problema? |
+| `content.workshop.faq.q5.a` | En luxembourgeois, en français, en allemand, en anglais ou en portugais. | Em luxemburguês, francês, alemão, inglês ou português. |
+| `content.sodablast.sections.s1.h` | Sodablast ou sablage : quelle différence ? | Sodablast ou jato de areia: qual é a diferença? |
+| `content.sodablast.sections.s1.p[0]` | Le sablage classique projette un abrasif dur, comme le sable ou le corindon. Il décape vite, mais il attaque aussi le métal et peut chauffer et déformer les tôles fines. | A decapagem clássica com jato de areia projeta um abrasivo duro, como areia ou corindo. Decapa depressa, mas também ataca o metal e pode aquecer e deformar as chapas finas. |
+| `content.sodablast.sections.s1.p[1]` | Le bicarbonate de soude est beaucoup plus tendre que le métal. Il enlève la peinture, la graisse et la saleté sans creuser la surface et sans la chauffer. C’est pourquoi le sodablast convient aux pièces fragiles et aux carrosseries anciennes. | O bicarbonato de sódio é muito mais macio do que o metal. Remove tinta, gordura e sujidade sem desgastar a superfície e sem a aquecer. É por isso que o sodablast é indicado para peças delicadas e carroçarias antigas. |
+| `content.sodablast.sections.s2.h` | Pour quels projets ? | Para que projetos? |
+| `content.sodablast.sections.s2.items[0]` | Restauration d’une voiture ancienne : mettre la carrosserie à nu avant la réparation et la peinture. | Restauro de um carro antigo: decapar a carroçaria até ao metal nu antes da reparação e da pintura. |
+| `content.sodablast.sections.s2.items[1]` | Jantes : enlever l’ancienne peinture et la saleté incrustée avant une remise en peinture. | Jantes: remover a tinta antiga e a sujidade incrustada antes de voltar a pintar. |
+| `content.sodablast.sections.s2.items[2]` | Pièces mécaniques : nettoyer un carter, un bloc ou une culasse avant le contrôle ou le remontage. | Peças mecânicas: limpar um cárter, um bloco ou uma cabeça do motor antes da verificação ou da remontagem. |
+| `content.sodablast.sections.s2.p[0]` | Vous ne savez pas si votre pièce s’y prête ? Envoyez une photo sur WhatsApp au {whatsapp}, nous vous le disons. | Não sabe se a sua peça é adequada? Envie uma foto pelo WhatsApp, para o {whatsapp}, e nós dizemos-lhe. |
+| `content.sodablast.sections.s3.h` | Après le décapage : protéger le métal | Depois da decapagem: proteger o metal |
+| `content.sodablast.sections.s3.p[0]` | Une surface décapée est du métal nu. Au contact de l’air et de l’humidité, elle s’oxyde vite. Prévoyez donc l’étape suivante dès le départ : apprêt, réparation ou peinture. Les résidus de bicarbonate se rincent à l’eau avant la mise en peinture. | Uma superfície decapada é metal nu. Em contacto com o ar e a humidade, oxida depressa. Por isso, preveja o passo seguinte logo desde o início: primário, reparação ou pintura. Antes da pintura, os resíduos de bicarbonato retiram-se com água. |
+| `content.sodablast.sections.s3.p[1]` | Pour une voiture, notre atelier peut ensuite réparer la carrosserie et la repeindre : voyez [mécanique et carrosserie](page:workshop). | No caso de um carro, a nossa oficina pode depois reparar a carroçaria e voltar a pintá-la: veja [mecânica e carroçaria](page:workshop). |
+| `content.sodablast.sections.s4.h` | Sodablast au Luxembourg, à Erpeldange | Sodablast no Luxemburgo, em Erpeldange |
+| `content.sodablast.sections.s4.p[0]` | Notre atelier se trouve au rond-point d’Erpeldange-sur-Sûre, entre Ettelbruck et Diekirch, facile d’accès depuis tout le nord du Luxembourg. Pour une pièce comme pour une voiture complète, nous fixons ensemble un rendez-vous au garage. | A nossa oficina fica na rotunda de Erpeldange-sur-Sûre, entre Ettelbruck e Diekirch, com acesso fácil a partir de todo o norte do Luxemburgo. Seja para uma peça ou para um carro completo, marcamos juntos uma data na garagem. |
+| `content.sodablast.faqH` | Questions sur le sodablast | Perguntas sobre o sodablast |
+| `content.sodablast.faq.q1.q` | Le sodablast abîme-t-il le métal ? | O sodablast danifica o metal? |
+| `content.sodablast.faq.q1.a` | Non. Le bicarbonate de soude est plus tendre que le métal : il enlève la peinture, la graisse et la saleté sans creuser la surface. C’est ce qui le distingue du sablage. | Não. O bicarbonato de sódio é mais macio do que o metal: remove tinta, gordura e sujidade sem desgastar a superfície. É isso que o distingue da decapagem com jato de areia. |
+| `content.sodablast.faq.q2.q` | Combien coûte un décapage sodablast ? | Quanto custa uma decapagem com sodablast? |
+| `content.sodablast.faq.q2.a` | Cela dépend de la taille de la pièce et des couches à enlever. Envoyez des photos sur WhatsApp au {whatsapp} : vous recevez un premier avis. | Depende do tamanho da peça e das camadas a remover. Envie fotos pelo WhatsApp, para o {whatsapp}: recebe uma primeira opinião. |
+| `content.sodablast.faq.q3.q` | Faut-il traiter la pièce après le décapage ? | É preciso tratar a peça depois da decapagem? |
+| `content.sodablast.faq.q3.a` | Oui. Le métal mis à nu doit être protégé rapidement par un apprêt ou une peinture, sinon il s’oxyde. | Sim. O metal a nu tem de ser protegido rapidamente com primário ou tinta; caso contrário, oxida. |
+| `content.sodablast.faq.q4.q` | Peut-on décaper des jantes au sodablast ? | É possível decapar jantes com sodablast? |
+| `content.sodablast.faq.q4.a` | Oui, les jantes font partie des pièces que nous décapons au sodablast, comme les carrosseries anciennes et les pièces mécaniques. | Sim, as jantes fazem parte das peças que decapamos com sodablast, tal como as carroçarias antigas e as peças mecânicas. |
+| `content.garden.sections.s1.h` | Machines de jardin et de forêt dans la Nordstad | Máquinas de jardim e floresta na Nordstad |
+| `content.garden.sections.s1.p[0]` | Pour entretenir votre jardin, votre terrain ou votre bois, vous trouvez au Garage Um Rond Point des machines principalement des marques Honda et Stihl, et un atelier pour les réparer. Le garage se trouve au rond-point d’Erpeldange, entre Ettelbruck et Diekirch. | Para cuidar do seu jardim, do seu terreno ou da sua mata, encontra na Garage Um Rond Point máquinas sobretudo das marcas Honda e Stihl, e uma oficina para as reparar. A garagem fica na rotunda de Erpeldange, entre Ettelbruck e Diekirch. |
+| `content.garden.sections.s2.h` | Bien choisir sa machine | Escolher bem a sua máquina |
+| `content.garden.sections.s2.items[0]` | Tondeuse : la surface de la pelouse, la pente et les obstacles décident de la largeur de coupe et du type d’entraînement. | Corta-relva: a área do relvado, a inclinação e os obstáculos determinam a largura de corte e o tipo de tração. |
+| `content.garden.sections.s2.items[1]` | Débroussailleuse : pour les bordures, les talus et l’herbe haute que la tondeuse n’atteint pas. | Roçadora: para as bordas, os taludes e a erva alta onde o corta-relva não chega. |
+| `content.garden.sections.s2.items[2]` | Tronçonneuse : la longueur du guide dépend du diamètre du bois que vous coupez le plus souvent. | Motosserra: o comprimento do sabre depende do diâmetro da madeira que corta com mais frequência. |
+| `content.garden.sections.s2.items[3]` | Taille-haie : la longueur de la lame et le poids comptent si vous taillez longtemps ou en hauteur. | Corta-sebes: o comprimento da lâmina e o peso contam se cortar durante muito tempo ou em altura. |
+| `content.garden.sections.s2.p[0]` | Thermique ou à batterie ? Une machine à batterie est plus silencieuse et démarre sans effort. Une machine thermique garde son autonomie sur les grands terrains. Dites-nous comment vous l’utilisez, nous vous conseillons. | Motor de combustão ou bateria? Uma máquina a bateria é mais silenciosa e arranca sem esforço. Uma máquina com motor de combustão não perde autonomia em terrenos grandes. Diga-nos como a vai usar e nós aconselhamos. |
+| `content.garden.sections.s3.h` | Réparation : quand apporter votre machine | Reparação: quando trazer a sua máquina |
+| `content.garden.sections.s3.items[0]` | Le moteur ne démarre plus ou cale. | O motor já não pega ou vai abaixo. |
+| `content.garden.sections.s3.items[1]` | La machine perd de la puissance ou fume. | A máquina perde força ou deita fumo. |
+| `content.garden.sections.s3.items[2]` | La chaîne ou la lame coupe mal. | A corrente ou a lâmina corta mal. |
+| `content.garden.sections.s3.items[3]` | Des bruits ou des vibrations inhabituels apparaissent. | Surgem ruídos ou vibrações fora do normal. |
+| `content.garden.sections.s3.p[0]` | Décrivez la panne dans le formulaire ou appelez-nous au {phone}. Indiquez la marque et le modèle de la machine : nous savons tout de suite de quoi il s’agit. | Descreva a avaria no formulário ou ligue-nos para o {phone}. Indique a marca e o modelo da máquina: assim sabemos logo do que se trata. |
+| `content.garden.sections.s4.h` | Conseils pour passer l’hiver | Conselhos para guardar a máquina no inverno |
+| `content.garden.sections.s4.p[0]` | Avant de ranger une machine thermique pour l’hiver, nettoyez-la, videz le réservoir ou laissez le moteur tourner jusqu’à l’arrêt, puis rangez-la au sec. Une machine bien rangée redémarre plus facilement au printemps. | Antes de guardar uma máquina com motor de combustão durante o inverno, limpe-a, esvazie o depósito ou deixe o motor trabalhar até parar e guarde-a num local seco. Uma máquina bem guardada volta a pegar mais facilmente na primavera. |
+| `content.garden.sections.s4.p[1]` | Les batteries se stockent à l’abri du gel, de préférence à moitié chargées. | As baterias devem ser guardadas num local protegido do gelo, de preferência com meia carga. |
+| `content.garden.faqH` | Questions sur les machines de jardin | Perguntas sobre máquinas de jardim |
+| `content.garden.faq.q1.q` | Quelles marques de machines vendez-vous ? | Que marcas de máquinas vendem? |
+| `content.garden.faq.q1.a` | Principalement des machines Honda et Stihl. | Sobretudo máquinas Honda e Stihl. |
+| `content.garden.faq.q2.q` | Comment faire réparer ma tondeuse ou ma tronçonneuse ? | Como posso mandar reparar o meu corta-relva ou a minha motosserra? |
+| `content.garden.faq.q2.a` | Apportez la machine à l’atelier ou décrivez la panne dans le formulaire de cette page. Nous vous rappelons. | Traga a máquina à oficina ou descreva a avaria no formulário desta página. Nós ligamos-lhe de volta. |
+| `content.garden.faq.q3.q` | Quand puis-je passer au garage ? | Quando posso passar pela garagem? |
+| `content.garden.faq.q3.a` | {hours} | {hours} |
+| `content.garden.faq.q4.q` | Où se trouve le garage ? | Onde fica a garagem? |
+| `content.garden.faq.q4.a` | Au {address}, au rond-point d’Erpeldange, à côté de la station Aral. | No {address}, na rotunda de Erpeldange, ao lado do posto Aral. |
+| `content.trailersForSale.sections.s1.h` | Saris, Humbaur et WM Meyer à Erpeldange | Saris, Humbaur e WM Meyer em Erpeldange |
+| `content.trailersForSale.sections.s1.p[0]` | Nous vendons des remorques des marques Saris, Humbaur et WM Meyer, pour les particuliers comme pour les professionnels. Dites-nous ce que vous transportez : nous vous aidons à trouver le modèle qui convient à votre voiture et à votre permis. | Vendemos atrelados das marcas Saris, Humbaur e WM Meyer, tanto para particulares como para profissionais. Diga-nos o que transporta: ajudamos a encontrar o modelo adequado ao seu carro e à sua carta de condução. |
+| `content.trailersForSale.sections.s1.p[1]` | Le garage se trouve au rond-point d’Erpeldange-sur-Sûre, entre Ettelbruck et Diekirch. | A garagem fica na rotunda de Erpeldange-sur-Sûre, entre Ettelbruck e Diekirch. |
+| `content.trailersForSale.sections.s2.h` | Les bonnes questions avant d’acheter | As perguntas certas antes de comprar |
+| `content.trailersForSale.sections.s2.items[0]` | Qu’est-ce que je transporte le plus souvent, et quel poids ? | O que transporto com mais frequência, e com que peso? |
+| `content.trailersForSale.sections.s2.items[1]` | Quelle longueur et quelle largeur de plateau me faut-il ? | De que comprimento e largura de plataforma preciso? |
+| `content.trailersForSale.sections.s2.items[2]` | Ma voiture peut-elle tracter cette remorque (champs O.1 et O.2 du certificat d’immatriculation) ? | O meu carro pode rebocar este atrelado (campos O.1 e O.2 do certificado de matrícula)? |
+| `content.trailersForSale.sections.s2.items[3]` | Mon permis suffit-il : B, B avec le code 96 ou BE ? | A minha carta é suficiente: B, B com o código 96 ou BE? |
+| `content.trailersForSale.sections.s2.items[4]` | Où vais-je garer la remorque quand je ne m’en sers pas ? | Onde vou guardar o atrelado quando não o estiver a usar? |
+| `content.trailersForSale.sections.s3.h` | Particuliers et professionnels | Particulares e profissionais |
+| `content.trailersForSale.sections.s3.p[0]` | Pour un particulier, la remorque sert au jardin, au déménagement ou au transport d’un véhicule de loisir. Pour un artisan ou une entreprise, elle transporte chaque jour du matériel et des machines : la charge utile, la robustesse du plateau et les points d’arrimage comptent alors davantage. | Para um particular, o atrelado serve para o jardim, para mudanças de casa ou para transportar um veículo de lazer. Para um profissional independente ou uma empresa, transporta todos os dias material e máquinas: aí, a carga útil, a robustez da plataforma e os pontos de amarração contam ainda mais. |
+| `content.trailersForSale.sections.s4.h` | Acheter ou louer ? | Comprar ou alugar? |
+| `content.trailersForSale.sections.s4.p[0]` | Si vous n’avez besoin d’une remorque que de temps en temps, la [location](page:rental) peut suffire. Notre guide vous montre aussi quelle remorque votre permis autorise. | Se só precisa de um atrelado de vez em quando, o [aluguer](page:rental) pode bastar. O nosso guia também lhe mostra que atrelado a sua carta de condução permite. |
+| `content.trailersForSale.faqH` | Questions sur l’achat d’une remorque | Perguntas sobre a compra de um atrelado |
+| `content.trailersForSale.faq.q1.q` | Quelles marques de remorques vendez-vous ? | Que marcas de atrelados vendem? |
+| `content.trailersForSale.faq.q1.a` | Saris, Humbaur et WM Meyer. | Saris, Humbaur e WM Meyer. |
+| `content.trailersForSale.faq.q2.q` | Vendez-vous aussi aux professionnels ? | Também vendem a profissionais? |
+| `content.trailersForSale.faq.q2.a` | Oui, nous vendons des remorques aux particuliers et aux professionnels. | Sim, vendemos atrelados a particulares e a profissionais. |
+| `content.cars.sections.s1.h` | Acheter une voiture au Garage Um Rond Point | Comprar um carro na Garage Um Rond Point |
+| `content.cars.sections.s1.p[0]` | Toutes les voitures de cette page sont en stock chez nous, au rond-point d’Erpeldange. La liste est mise à jour chaque matin à partir de nos annonces : vous voyez le prix, le kilométrage, l’année et les photos de chaque voiture. | Todos os carros desta página estão em stock na nossa garagem, na rotunda de Erpeldange. A lista é atualizada todas as manhãs a partir dos nossos anúncios: vê o preço, os quilómetros, o ano e as fotos de cada carro. |
+| `content.cars.sections.s1.items[0]` | Choisissez une voiture dans la liste et ouvrez sa fiche. | Escolha um carro na lista e abra a respetiva ficha. |
+| `content.cars.sections.s1.items[1]` | Appelez-nous ou écrivez-nous sur WhatsApp pour vérifier qu’elle est encore disponible. | Ligue-nos ou escreva-nos pelo WhatsApp para confirmar se ainda está disponível. |
+| `content.cars.sections.s1.items[2]` | Venez la voir au garage et faites un essai sur rendez-vous. | Venha vê-lo à garagem e faça um test drive por marcação. |
+| `content.cars.sections.s2.h` | Voitures neuves et d’occasion près d’Ettelbruck et de Diekirch | Carros novos e usados perto de Ettelbruck e Diekirch |
+| `content.cars.sections.s2.p[0]` | Le stock comprend des voitures neuves et des voitures d’occasion. Il change souvent : la liste vous montre chaque jour l’état du matin. Nos annonces sont aussi publiées sur LuxAuto et AutoScout24. | O stock inclui carros novos e carros usados. Muda com frequência: a lista mostra-lhe, todos os dias, o stock dessa manhã. Os nossos anúncios também estão publicados no LuxAuto e no AutoScout24. |
+| `content.cars.sections.s3.h` | Et votre voiture actuelle ? | E o seu carro atual? |
+| `content.cars.sections.s3.p[0]` | Vous souhaitez faire reprendre votre voiture ? Indiquez-le dans le formulaire de la voiture qui vous intéresse. Vous préférez vendre sans vous en occuper ? Découvrez notre service de dépôt-vente plus bas sur cette page. | Quer dar o seu carro para retoma? Indique-o no formulário do carro que lhe interessa. Prefere vender sem ter de se preocupar com nada? Conheça o nosso serviço de venda à consignação mais abaixo nesta página. |
+| `content.cars.faqH` | Questions sur nos voitures | Perguntas sobre os nossos carros |
+| `content.cars.faq.q1.q` | Puis-je essayer une voiture ? | Posso fazer um test drive? |
+| `content.cars.faq.q1.a` | Oui, sur rendez-vous. Appelez-nous au {phone} ou écrivez-nous sur WhatsApp au {whatsapp}. | Sim, por marcação. Ligue-nos para o {phone} ou escreva-nos pelo WhatsApp, para o {whatsapp}. |
+| `content.cars.faq.q2.q` | Où puis-je voir les voitures ? | Onde posso ver os carros? |
+| `content.cars.faq.q2.a` | Au garage, au {address}, au rond-point d’Erpeldange. {hours} | Na garagem, no {address}, na rotunda de Erpeldange. {hours} |
+| `content.cars.faq.q3.q` | Vos voitures sont-elles aussi sur LuxAuto et AutoScout24 ? | Os vossos carros também estão no LuxAuto e no AutoScout24? |
+| `content.cars.faq.q3.a` | Oui, nos annonces sont aussi publiées sur LuxAuto et AutoScout24. Ici, vous voyez tout notre stock au même endroit. | Sim, os nossos anúncios também estão publicados no LuxAuto e no AutoScout24. Aqui vê todo o nosso stock num só lugar. |
+| `content.contact.sections.s1.h` | Quel moyen choisir ? | Que meio de contacto escolher? |
+| `content.contact.sections.s1.items[0]` | Une question rapide ou des photos à nous montrer : WhatsApp au {whatsapp}. | Uma pergunta rápida ou fotos para nos mostrar: pelo WhatsApp, para o {whatsapp}. |
+| `content.contact.sections.s1.items[1]` | Un rendez-vous ou une réponse tout de suite : téléphone au {phone}. | Uma marcação ou uma resposta imediata: por telefone, para o {phone}. |
+| `content.contact.sections.s1.items[2]` | Une demande détaillée : le formulaire ci-dessous ou un e-mail à {email}. | Um pedido detalhado: o formulário abaixo ou um e-mail para {email}. |
+| `content.contact.sections.s2.h` | Venir au garage | Como chegar à garagem |
+| `content.contact.sections.s2.p[0]` | Le garage se trouve au {address}, au rond-point d’Erpeldange-sur-Sûre, à côté de la station Aral. Vous venez d’Ettelbruck ou de Diekirch ? Le rond-point est sur votre route. Pour l’itinéraire exact, ouvrez Google Maps depuis cette page. | A garagem fica no {address}, na rotunda de Erpeldange-sur-Sûre, ao lado do posto Aral. Vem de Ettelbruck ou de Diekirch? A rotunda fica no seu caminho. Para o itinerário exato, abra o Google Maps a partir desta página. |
+| `content.contact.faqH` | Questions pratiques | Perguntas práticas |
+| `content.contact.faq.q1.q` | Quand le garage est-il ouvert ? | Quando é que a garagem está aberta? |
+| `content.contact.faq.q1.a` | {hours} | {hours} |
+| `content.contact.faq.q2.q` | Quelles langues parlez-vous ? | Que línguas falam? |
+| `content.contact.faq.q2.a` | Nous parlons luxembourgeois, français, allemand, anglais et portugais. | Falamos luxemburguês, francês, alemão, inglês e português. |
+| `content.rental.sections.s1.h` | Location de remorques dans la Nordstad | Aluguer de atrelados na Nordstad |
+| `content.rental.sections.s1.p[0]` | Au rond-point d’Erpeldange, entre Ettelbruck et Diekirch, vous louez une remorque ou une camionnette tout près de chez vous. Notre guide ci-dessus vous montre en quelques clics quelle remorque convient à ce que vous transportez et si votre permis suffit. | Na rotunda de Erpeldange, entre Ettelbruck e Diekirch, aluga um atrelado ou uma carrinha muito perto de casa. O nosso guia, mais acima, mostra-lhe em poucos cliques que atrelado serve para o que vai transportar e se a sua carta é suficiente. |
+| `content.rental.sections.s2.h` | Conseils pour bien charger | Conselhos para carregar corretamente |
+| `content.rental.sections.s2.items[0]` | Ne dépassez jamais la masse maximale de la remorque, ni la charge remorquable de votre voiture. | Nunca ultrapasse a massa máxima autorizada do atrelado, nem a carga rebocável do seu carro. |
+| `content.rental.sections.s2.items[1]` | Répartissez la charge : les objets lourds au-dessus de l’essieu, un peu de poids sur la flèche, comme l’indique la notice. | Distribua a carga: os objetos pesados por cima do eixo e um pouco de peso sobre a lança, como indica o manual. |
+| `content.rental.sections.s2.items[2]` | Arrimez le chargement avec des sangles et couvrez le vrac avec une bâche ou un filet. | Prenda a carga com cintas e cubra os materiais a granel com uma lona ou uma rede. |
+| `content.rental.sections.s2.items[3]` | Avant de partir, vérifiez l’attelage, les feux et la pression des pneus. | Antes de partir, verifique o engate, as luzes e a pressão dos pneus. |
+| `content.rental.sections.s2.items[4]` | Roulez plus doucement qu’à vide : l’ensemble freine moins bien et prend plus de place dans les virages. | Conduza mais devagar do que sem carga: o conjunto trava pior e ocupa mais espaço nas curvas. |
+| `content.category.porte-voiture.sections.s1.h` | Quand louer un porte-voiture ? | Quando alugar um atrelado porta-carros? |
+| `content.category.porte-voiture.sections.s1.p[0]` | Pour ramener une voiture qui ne roule plus, transporter une voiture de collection sans ajouter de kilomètres, ou aller chercher une voiture achetée loin de chez vous. Le porte-voiture évite de faire rouler la voiture transportée. | Para trazer de volta um carro que já não anda, transportar um carro de coleção sem lhe somar quilómetros ou ir buscar um carro comprado longe de casa. O porta-carros evita que o carro transportado tenha de circular. |
+| `content.category.porte-voiture.sections.s2.h` | Charger une voiture en sécurité | Carregar um carro em segurança |
+| `content.category.porte-voiture.sections.s2.items[0]` | Vérifiez que la voiture transportée ne dépasse pas la charge utile de la remorque. | Confirme que o carro transportado não ultrapassa a carga útil do atrelado. |
+| `content.category.porte-voiture.sections.s2.items[1]` | Montez lentement, bien dans l’axe des rampes, avec quelqu’un qui vous guide. | Suba devagar, bem alinhado com as rampas, com alguém a orientá-lo. |
+| `content.category.porte-voiture.sections.s2.items[2]` | Placez la voiture pour qu’un peu de poids repose sur l’avant de la remorque, comme l’indique la notice. | Posicione o carro de modo a que um pouco de peso assente na parte da frente do atrelado, como indica o manual. |
+| `content.category.porte-voiture.sections.s2.items[3]` | Arrimez chaque roue avec des sangles adaptées et contrôlez-les après les premiers kilomètres. | Prenda cada roda com cintas adequadas e verifique-as após os primeiros quilómetros. |
+| `content.category.porte-moto.sections.s1.h` | Transporter une moto | Transportar uma mota |
+| `content.category.porte-moto.sections.s1.p[0]` | Pour aller sur un circuit, faire réparer une moto ou la ramener après un achat, la remorque porte-moto est plus simple qu’une camionnette : la moto monte par la rampe et se cale dans le support de roue. | Para ir a um circuito, levar uma mota à reparação ou trazê-la depois de uma compra, o atrelado porta-motos é mais simples do que uma carrinha: a mota sobe pela rampa e fica encaixada no suporte da roda. |
+| `content.category.porte-moto.sections.s2.h` | Bien attacher une moto | Prender bem uma mota |
+| `content.category.porte-moto.sections.s2.items[0]` | Calez la roue avant dans le support. | Encaixe a roda da frente no suporte. |
+| `content.category.porte-moto.sections.s2.items[1]` | Utilisez quatre sangles, deux à l’avant et deux à l’arrière, sur des points solides du cadre. | Use quatro cintas, duas à frente e duas atrás, em pontos sólidos do quadro. |
+| `content.category.porte-moto.sections.s2.items[2]` | Comprimez légèrement la suspension, sans l’écraser. | Baixe ligeiramente a suspensão, sem a comprimir por completo. |
+| `content.category.porte-moto.sections.s2.items[3]` | Contrôlez la tension des sangles après les premiers kilomètres. | Verifique a tensão das cintas após os primeiros quilómetros. |
+| `content.category.benne.sections.s1.h` | Attention au poids des matériaux | Atenção ao peso dos materiais |
+| `content.category.benne.sections.s1.p[0]` | Les matériaux en vrac sont lourds. Un mètre cube de terre humide pèse environ 1,5 à 1,8 tonne, un mètre cube de gravier environ 1,5 tonne. Une benne remplie à ras bord dépasse donc vite sa charge utile. | Os materiais a granel são pesados. Um metro cúbico de terra húmida pesa cerca de 1,5 a 1,8 toneladas, um metro cúbico de gravilha cerca de 1,5 toneladas. Um atrelado basculante cheio até à borda ultrapassa, por isso, rapidamente a sua carga útil. |
+| `content.category.benne.sections.s1.p[1]` | Regardez la charge utile dans la fiche de la remorque et remplissez en conséquence : mieux vaut deux trajets qu’une remorque surchargée. | Consulte a carga útil na ficha do atrelado e encha-o em conformidade: mais vale fazer duas viagens do que levar um atrelado sobrecarregado. |
+| `content.category.benne.sections.s2.h` | Chantier, jardin, parc à conteneurs | Obras, jardim, ecocentro |
+| `content.category.benne.sections.s2.items[0]` | Couvrez le chargement avec une bâche ou un filet pour que rien ne tombe sur la route. | Cubra a carga com uma lona ou uma rede para que nada caia na estrada. |
+| `content.category.benne.sections.s2.items[1]` | Triez les déchets avant de partir : au parc à conteneurs, vous gagnez du temps. | Separe os resíduos antes de sair: no ecocentro, poupa tempo. |
+| `content.category.benne.sections.s2.items[2]` | Basculez uniquement sur un sol plat et stable, la remorque attelée. | Faça o basculamento só em piso plano e estável, com o atrelado engatado. |
+| `content.category.frigorifique.sections.s1.h` | Pour quelles occasions ? | Para que ocasiões? |
+| `content.category.frigorifique.sections.s1.p[0]` | Fête de famille, mariage, anniversaire, kermesse, marché ou fête d’association : la remorque frigorifique garde les boissons et les plats au frais sur place, pendant toute la durée de l’événement. | Festa de família, casamento, aniversário, quermesse, mercado ou festa de associação: o atrelado frigorífico mantém as bebidas e a comida frescas no local, durante todo o evento. |
+| `content.category.frigorifique.sections.s2.h` | Conseils d’utilisation | Conselhos de utilização |
+| `content.category.frigorifique.sections.s2.items[0]` | Branchez la remorque quelques heures avant de la charger pour qu’elle soit froide. | Ligue o atrelado à corrente algumas horas antes de o carregar, para que já esteja frio. |
+| `content.category.frigorifique.sections.s2.items[1]` | Chargez de préférence des produits déjà froids : refroidir un grand volume de boissons tièdes prend du temps. | Carregue de preferência produtos já frios: arrefecer um grande volume de bebidas mornas leva tempo. |
+| `content.category.frigorifique.sections.s2.items[2]` | Laissez l’air circuler entre les caisses. | Deixe o ar circular entre as caixas. |
+| `content.category.frigorifique.sections.s2.items[3]` | Prévoyez un branchement électrique adapté près de l’emplacement de la remorque. | Preveja uma ligação elétrica adequada perto do local onde o atrelado vai ficar. |
+| `content.category.camionnette.sections.s1.h` | Déménagement, meubles, matériel | Mudanças, móveis, material |
+| `content.category.camionnette.sections.s1.p[0]` | Une camionnette convient pour un déménagement, des meubles, de l’électroménager ou du matériel encombrant, sans avoir à atteler une remorque. Le chargement reste à l’abri de la pluie. | Uma carrinha é indicada para uma mudança de casa, móveis, eletrodomésticos ou material volumoso, sem ter de engatar um atrelado. A carga fica protegida da chuva. |
+| `content.category.camionnette.sections.s2.h` | Conseils pour votre transport | Conselhos para o seu transporte |
+| `content.category.camionnette.sections.s2.items[0]` | Mesurez les gros meubles avant de réserver. | Meça os móveis grandes antes de reservar. |
+| `content.category.camionnette.sections.s2.items[1]` | Placez les objets lourds au fond, contre la cloison, et sanglez le chargement. | Coloque os objetos pesados ao fundo, encostados à divisória, e prenda a carga com cintas. |
+| `content.category.camionnette.sections.s2.items[2]` | Protégez les meubles avec des couvertures pour éviter les rayures. | Proteja os móveis com mantas para evitar riscos. |
+| `content.category.camionnette.sections.s2.items[3]` | Pensez à la hauteur du véhicule avant d’entrer dans un parking souterrain. | Tenha em conta a altura do veículo antes de entrar num parque de estacionamento subterrâneo. |
 

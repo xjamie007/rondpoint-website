@@ -167,7 +167,10 @@ export function initInquiryForms() {
         return;
       }
       summary.hidden = true;
-      if (form.getAttribute('action') === '#') return;
+      if (form.getAttribute('action') === '#') {
+        showFallback(form);
+        return;
+      }
 
       const btn = form.querySelector<HTMLButtonElement>('[data-submit]')!;
       const label = btn.textContent;
@@ -209,4 +212,55 @@ export function initInquiryForms() {
       }
     });
   });
+}
+
+/** Text der Anfrage aus den ausgefüllten Feldern: „Beschriftung: Wert“ je Zeile */
+function requestText(form: HTMLFormElement): string {
+  const lines = [form.dataset.intro ?? '', ''];
+  const seen = new Set<string>();
+  for (const el of form.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('input, select, textarea')) {
+    const name = el.name;
+    if (!name || ['type', 'lang', 'website', 'consent'].includes(name) || el.closest('.hp')) continue;
+    if (el instanceof HTMLInputElement && (el.type === 'hidden' || ((el.type === 'radio' || el.type === 'checkbox') && !el.checked))) continue;
+    let value = el.value.trim();
+    if (!value) continue;
+    let label = '';
+    if (el instanceof HTMLInputElement && (el.type === 'radio' || el.type === 'checkbox')) {
+      label = el.closest('fieldset')?.querySelector('legend')?.textContent ?? '';
+      value = el.closest('label')?.textContent?.trim() || value;
+    } else {
+      label = (el.id && form.querySelector(`label[for="${el.id}"]`)?.textContent) || '';
+      if (el instanceof HTMLSelectElement) value = el.selectedOptions[0]?.textContent?.trim() || value;
+      if (el instanceof HTMLInputElement && el.type === 'date') value = new Date(`${value}T12:00`).toLocaleDateString(document.documentElement.lang);
+    }
+    label = label.replace(/\s*\([^)]*\)\s*$/, '').replace(/\s+/g, ' ').trim();
+    const key = `${label}|${value}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    lines.push(label ? `${label}: ${value}` : value);
+  }
+  return lines.join('\n').trim();
+}
+
+/** Ohne Formular-Schnittstelle: WhatsApp- und E-Mail-Knopf mit fertigem Text zeigen */
+function showFallback(form: HTMLFormElement) {
+  const box = form.querySelector<HTMLElement>('[data-form-fallback]');
+  if (!box) return;
+  const text = requestText(form);
+  box.querySelector<HTMLAnchorElement>('[data-fallback-wa]')!.href = `https://wa.me/${form.dataset.wa}?text=${encodeURIComponent(text)}`;
+  box.querySelector<HTMLAnchorElement>('[data-fallback-mail]')!.href =
+    `mailto:${form.dataset.mail}?subject=${encodeURIComponent(form.dataset.subject ?? '')}&body=${encodeURIComponent(text)}`;
+  const fields = form.querySelector<HTMLElement>('.fields')!;
+  fields.hidden = true;
+  box.hidden = false;
+  box.focus();
+  box.querySelector('[data-fallback-edit]')!.addEventListener(
+    'click',
+    () => {
+      box.hidden = true;
+      fields.hidden = false;
+      fields.querySelector<HTMLElement>('input:not([type=hidden]), select, textarea')?.focus();
+    },
+    { once: true },
+  );
 }

@@ -10,6 +10,7 @@ import { hasContent, hasOpenPoint, isUnconfirmed, rich, stripOpenPoints, useT } 
 import { path, type Lang } from '@/i18n/config';
 import { getFleet } from '@/lib/fleet.server';
 import { fleetView } from '@/lib/fleet-view';
+import ContentSections from '@/components/ContentSections.astro';
 import { breadcrumbs, faqPage, rentalService } from '@/lib/jsonld';
 import { presentation, showOpenPoints, site } from '@/lib/site';
 import { photo } from '@/lib/photos';
@@ -57,6 +58,8 @@ const jsonld = [
       {items.length ? <FleetTable t={t} items={items} /> : <p set:html={rich(t.finder.empty)} />}
     </div>
   </section>
+
+  <ContentSections t={t} lang={lang} sections={t.content.rental.sections} />
 
   {
     showOpenPoints && (

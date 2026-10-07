@@ -21,6 +21,12 @@ Für den Kundentermin ist `presentation: true` in `src/content/site.json` gesetz
 - Die Vektordatei des Logos besorgen.
 - Die Kunden-Freigabe für das Logo auf der Website einholen, falls nötig.
 
+## Stand 07.10.2026: Dashboard, Texte, Formulare
+
+- **Admin-Dashboard** unter `/admin/` (Link „Login“ im Footer). Für den echten Betrieb braucht die Garage einen Zugangsschlüssel. Nave erstellt ihn, die Anleitung steht im README unter „Admin-Dashboard“. Ohne Schlüssel läuft nur die Demo.
+- **Formulare** funktionieren ohne Supabase über WhatsApp und E-Mail mit fertig formuliertem Text (siehe README). Punkt 6 bleibt für den Versand direkt aus der Website offen.
+- **Seitentexte:** Alle Leistungs- und Kategorieseiten haben ausführliche Texte und eigene FAQs in fünf Sprachen. **LB und PT** von Muttersprachlern prüfen lassen: `npm run lb:export`, dann `LB-TEXTE/lb-pruefen.txt`.
+
 ## Blockiert den Livegang
 
 | # | Thema | Was fehlt | Wo eintragen |

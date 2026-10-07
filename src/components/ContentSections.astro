@@ -1,0 +1,65 @@
+---
+/**
+ * Ausführliche Seitentexte (SEO) im Redaktions-Layout: Überschrift links, Text rechts.
+ * Inhalte aus t.content.<seite>.sections, siehe src/lib/content.ts.
+ */
+import type { Dict } from '@/i18n';
+import type { Lang } from '@/i18n/config';
+import { blocks, contentHtml, type Block } from '@/lib/content';
+
+interface Props {
+  t: Dict;
+  lang: Lang;
+  sections: Record<string, Block> | undefined;
+  /** ohne eigenen Abschnitt und Innenabstand (z. B. innerhalb eines .wrap) */
+  inline?: boolean;
+  tone?: boolean;
+  id?: string;
+}
+const { t, lang, sections, inline = false, tone = false, id = 'mehr' } = Astro.props;
+const list = blocks(sections);
+const html = (s: string) => contentHtml(s, t, lang);
+---
+{
+  list.length > 0 && (
+    <section class:list={[!inline && 'section block', tone && 'tone', 'cs']} id={id}>
+      <div class:list={[!inline && 'wrap']}>
+        {list.map((b, i) => (
+          <div class="cs-row">
+            <h2 class="cs-h reveal" id={`${id}-${i + 1}`}>{b.h}</h2>
+            <div class="cs-body">
+              {Object.entries(b)
+                .filter(([k]) => k !== 'h')
+                .map(([k, v]) =>
+                  k === 'items' ? (
+                    <ul class="plain one stagger">
+                      {(v as string[]).map((it) => (
+                        <li class="reveal" set:html={html(it)} />
+                      ))}
+                    </ul>
+                  ) : (
+                    (v as string[]).map((p) => <p class="reveal-soft" set:html={html(p)} />)
+                  ),
+                )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .cs-row { display: grid; gap: 16px; padding-block: 32px; border-top: 1px solid var(--color-verzinkt); }
+  .cs-row:first-child { border-top: 0; padding-top: 0; }
+  .cs-row:last-child { padding-bottom: 0; }
+  .cs-h { margin: 0; font-size: clamp(1.375rem, 1.2rem + 0.8vw, 1.875rem); line-height: 1.15; max-width: 22ch; }
+  .cs-body { display: grid; gap: 16px; max-width: 66ch; }
+  .cs-body p { margin: 0; font-size: 1.0625rem; line-height: 1.65; }
+  .cs-body .one { grid-template-columns: none; gap: 10px; max-width: none; }
+  .cs-body .one li { font-size: 1.0625rem; line-height: 1.55; }
+  @media (min-width: 64rem) {
+    .cs-row { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 56px; padding-block: 48px; }
+    .cs-h { position: sticky; top: 24px; align-self: start; }
+  }
+</style>

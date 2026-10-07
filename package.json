@@ -17,7 +17,9 @@
     "sync": "node --experimental-strip-types scripts/sync/index.ts",
     "fixtures": "node --experimental-strip-types scripts/sync/fetch-fixtures.ts",
     "open-points": "node --experimental-strip-types scripts/open-points.ts",
-    "i18n:review": "node --experimental-strip-types scripts/i18n-review.ts"
+    "i18n:review": "node --experimental-strip-types scripts/i18n-review.ts",
+    "lb:export": "node --experimental-strip-types scripts/lb-texts.ts export",
+    "lb:import": "node --experimental-strip-types scripts/lb-texts.ts import"
   },
   "dependencies": {
     "@astrojs/react": "^7.0.0",

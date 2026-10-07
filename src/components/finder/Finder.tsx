@@ -241,6 +241,7 @@ export default function Finder(props: FinderProps) {
                   <input
                     className="field"
                     id={`${key}-${uid}`}
+                    type="text"
                     inputMode="numeric"
                     autoComplete="off"
                     value={value}

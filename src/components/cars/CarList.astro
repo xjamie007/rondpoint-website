@@ -81,6 +81,7 @@ const priceSteps = STEPS.filter((s) => s > minPrice && s < maxPrice);
               <option value="km-asc">{f.sortKmAsc}</option>
             </select>
           </div>
+                  <button type="submit" class="btn btn-primary apply" data-filter-apply>{f.apply}</button>
         </form>
       </details>
       <p class="count t-small" aria-live="polite" data-filter-count hidden>
@@ -109,6 +110,8 @@ const priceSteps = STEPS.filter((s) => s > minPrice && s < maxPrice);
     .filters summary { display: none; }
     .filter-form { margin-top: 0; grid-template-columns: repeat(6, minmax(0, 1fr)); }
   }
+  .apply { grid-column: 1 / -1; }
+  @media (min-width: 64rem) { .apply { display: none; } }
   .count { margin: 0 0 24px; color: var(--color-asphalt); }
   .empty { display: grid; gap: 16px; justify-items: start; padding-block: 24px; }
 </style>
@@ -174,6 +177,15 @@ const priceSteps = STEPS.filter((s) => s > minPrice && s < maxPrice);
       } else run();
     };
     form.addEventListener('change', apply);
+    // Handy: „Ergebnisse anzeigen“ schließt das Filterfeld und springt zur Liste
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      apply();
+      if (!desktop.matches) {
+        wrap.open = false;
+        countEl.scrollIntoView({ block: 'start', behavior: reduce.matches ? 'auto' : 'smooth' });
+      }
+    });
     root.querySelector('[data-filter-reset]')!.addEventListener('click', () => {
       form.reset();
       apply();

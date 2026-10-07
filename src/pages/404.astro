@@ -7,7 +7,7 @@ import '@/styles/global.css';
 import Logo from '@/components/Logo.astro';
 import { useT } from '@/i18n';
 import { BASE, HTML_LANG, LANGS, path, withBase } from '@/i18n/config';
-import { site, telHref } from '@/lib/site';
+import { site, telHref, phoneText } from '@/lib/site';
 const fr = useT('fr');
 ---
 <!doctype html>
@@ -50,7 +50,7 @@ const fr = useT('fr');
                 <li><a class="link" href={path(l, 'home')}>{t.nav.home}</a></li>
                 <li><a class="link" href={path(l, 'rental')}>{t.nav.rental}</a></li>
                 <li><a class="link" href={path(l, 'cars')}>{t.nav.cars}</a></li>
-                <li><a class="link" href={telHref}>{site.phone.display}</a></li>
+                <li><a class="link" href={telHref}>{phoneText}</a></li>
               </ul>
             </section>
           );

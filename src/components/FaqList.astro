@@ -1,0 +1,47 @@
+---
+/**
+ * FAQ einer Seite aus t.content.<seite>.faq (gleiches Aussehen wie Faq.astro).
+ * Das passende FAQPage-JSON-LD baut die Seite mit faqJsonLd().
+ */
+import type { Dict } from '@/i18n';
+import type { Lang } from '@/i18n/config';
+import { contentHtml, type FaqItem } from '@/lib/content';
+
+interface Props {
+  t: Dict;
+  lang: Lang;
+  items: FaqItem[];
+  heading: string;
+  id: string;
+}
+const { t, lang, items, heading, id } = Astro.props;
+---
+{
+  items.length > 0 && (
+    <section class="section block" aria-labelledby={`${id}-h`}>
+      <div class="wrap">
+        <h2 id={`${id}-h`} class="h-bar reveal">{heading}</h2>
+        <div class="faq">
+          {items.map((it) => (
+            <details>
+              <summary>
+                <span>{it.q}</span>
+                <span class="pm" aria-hidden="true" />
+              </summary>
+              <div class="answer">
+                <p set:html={contentHtml(it.a, t, lang)} />
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  h2 { margin: 0 0 32px; }
+  .faq { max-width: 52rem; }
+  .answer p { margin: 0; }
+  .block { border-top: 1.5px solid var(--color-black); }
+</style>

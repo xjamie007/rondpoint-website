@@ -9,7 +9,10 @@ import Steps from '@/components/Steps.astro';
 import Photo from '@/components/Photo.astro';
 import { rich, useT } from '@/i18n';
 import { path, type Lang } from '@/i18n/config';
-import { breadcrumbs } from '@/lib/jsonld';
+import ContentSections from '@/components/ContentSections.astro';
+import FaqList from '@/components/FaqList.astro';
+import { contentPlain, faqItems } from '@/lib/content';
+import { breadcrumbs, faqPage } from '@/lib/jsonld';
 import { presentation, showOpenPoints, site } from '@/lib/site';
 import { photo } from '@/lib/photos';
 
@@ -24,6 +27,10 @@ const crumbs = [
   { name: t.nav.workshop, href: path(lang, 'workshop') },
 ];
 const c = site.confirmations;
+const cx = t.content.workshop;
+const faq = faqItems(cx.faq);
+const faqLd = faq.length ? [faqPage(faq.map((it) => ({ q: it.q, a: contentPlain(it.a, t, lang) })))] : [];
+
 const d = t.details.workshop;
 const paint = photo('paint');
 ---
@@ -32,7 +39,7 @@ const paint = photo('paint');
   route={{ page: 'workshop' }}
   title={t.seo.workshop.title}
   description={t.seo.workshop.description}
-  jsonld={[breadcrumbs(crumbs.map((x) => ({ name: x.name, url: x.href })))]}
+  jsonld={[breadcrumbs(crumbs.map((x) => ({ name: x.name, url: x.href }))), ...faqLd]}
 >
   <PageIntro crumbLabel={t.nav.breadcrumb} crumbs={crumbs} h1={p.h1} lead={p.lead} photo={photo('bodywork')} photoAlt={t.photos.bodywork} />
   <section class="section block tone" aria-labelledby="what-h">
@@ -60,6 +67,8 @@ const paint = photo('paint');
       {paint && <Photo photo={paint} alt={t.photos.paint} sizes="(min-width: 1024px) 440px, 100vw" ratio="1 / 1" reveal accent position="50% 40%" />}
     </div>
   </section>
+  <ContentSections t={t} lang={lang} sections={cx.sections} />
+  <FaqList t={t} lang={lang} items={faq} heading={cx.faqH} id="faq-page" />
   {(!presentation || c.workshopAllBrands) && <Faq t={t} keys={['marques']} heading={t.faq.h2} id="faq-atelier" />}
   <section class="section block" aria-labelledby="form-h" id="rendez-vous-section">
     <div class="wrap">

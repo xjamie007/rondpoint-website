@@ -7,7 +7,10 @@ import Icon from '@/components/Icon.astro';
 import Steps from '@/components/Steps.astro';
 import { rich, useT } from '@/i18n';
 import { path, type Lang } from '@/i18n/config';
-import { breadcrumbs } from '@/lib/jsonld';
+import ContentSections from '@/components/ContentSections.astro';
+import FaqList from '@/components/FaqList.astro';
+import { contentPlain, faqItems } from '@/lib/content';
+import { breadcrumbs, faqPage } from '@/lib/jsonld';
 import { showOpenPoints, whatsappHref } from '@/lib/site';
 import { photo } from '@/lib/photos';
 
@@ -18,6 +21,10 @@ const { lang } = Astro.props;
 const t = useT(lang);
 const p = t.pages.sodablast;
 const d = t.details.sodablast;
+const cx = t.content.sodablast;
+const faq = faqItems(cx.faq);
+const faqLd = faq.length ? [faqPage(faq.map((it) => ({ q: it.q, a: contentPlain(it.a, t, lang) })))] : [];
+
 const crumbs = [
   { name: t.nav.home, href: path(lang, 'home') },
   { name: t.services.sodablast.h3, href: path(lang, 'sodablast') },
@@ -28,7 +35,7 @@ const crumbs = [
   route={{ page: 'sodablast' }}
   title={t.seo.sodablast.title}
   description={t.seo.sodablast.description}
-  jsonld={[breadcrumbs(crumbs.map((x) => ({ name: x.name, url: x.href })))]}
+  jsonld={[breadcrumbs(crumbs.map((x) => ({ name: x.name, url: x.href }))), ...faqLd]}
 >
   <PageIntro crumbLabel={t.nav.breadcrumb} crumbs={crumbs} h1={p.h1} lead={p.lead} photo={photo('sodablast')} photoAlt={t.photos.sodablast} />
   <section class="section block" aria-labelledby="explain-h">
@@ -58,6 +65,9 @@ const crumbs = [
       </p>
     </div>
   </section>
+  <ContentSections t={t} lang={lang} sections={cx.sections} />
+  <FaqList t={t} lang={lang} items={faq} heading={cx.faqH} id="faq-page" />
+
   {
     showOpenPoints && (
       <section class="section block" aria-labelledby="photos-h">

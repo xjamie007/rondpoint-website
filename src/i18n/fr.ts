@@ -188,6 +188,7 @@ const fr = {
       count: { one: '{n} voiture', other: '{n} voitures' },
       empty: 'Aucune voiture ne correspond.',
       reset: 'Réinitialiser les filtres',
+      apply: 'Voir les résultats',
       upTo: 'jusqu’à {price}',
     },
   },
@@ -561,6 +562,13 @@ const fr = {
     errorSummary: 'Vérifiez les champs signalés.',
     errorSend: 'L’envoi n’a pas fonctionné. Réessayez ou appelez-nous au +352 81 05 41.',
     errorRate: 'Vous avez envoyé beaucoup de demandes aujourd’hui. Appelez-nous au +352 81 05 41.',
+    fallbackH: 'Dernière étape : envoyez votre demande',
+    fallbackText: 'Choisissez comment nous la transmettre. Votre message est déjà rédigé, il suffit de l’envoyer.',
+    fallbackWhatsapp: 'Envoyer par WhatsApp',
+    fallbackMail: 'Envoyer par e-mail',
+    fallbackEdit: 'Modifier la demande',
+    fallbackSubject: 'Demande depuis le site',
+    fallbackIntro: 'Bonjour, voici ma demande :',
     errors: {
       name: 'Indiquez votre nom.',
       phone: 'Indiquez un numéro de téléphone pour que nous puissions vous rappeler.',
@@ -861,6 +869,422 @@ const fr = {
       charge: 'Votre voiture ne peut pas tracter plus que la valeur du champ O.1 (remorque freinée) ou O.2 (non freinée) du certificat d’immatriculation.',
       usageH: 'Forme et dimensions',
       usage: 'Plateau, benne, porte-voiture ou fourgon : la bonne remorque dépend de ce que vous transportez le plus souvent et de la place pour la ranger.',
+    },
+  },
+  /** Ausführliche Seitentexte (SEO): Abschnitte und FAQ je Seite, siehe src/lib/content.ts */
+  content: {
+    workshop: {
+      sections: {
+        s1: {
+          h: 'Votre garage de proximité entre Ettelbruck et Diekirch',
+          p: [
+            'Le Garage Um Rond Point se trouve au {address}, directement au rond-point d’Erpeldange, à côté de la station Aral. Pour les habitants d’Erpeldange-sur-Sûre, d’Ettelbruck, de Diekirch et de toute la Nordstad, l’atelier est à quelques minutes de chez vous.',
+            'Nous parlons luxembourgeois, français, allemand, anglais et portugais. Vous pouvez donc nous expliquer le problème de votre voiture dans la langue qui vous convient le mieux.',
+          ],
+        },
+        s2: {
+          h: 'Entretien : pourquoi suivre le plan du constructeur',
+          p: [
+            'Chaque constructeur fixe un plan d’entretien, selon le kilométrage ou le temps écoulé depuis le dernier passage. Vous le trouvez dans le carnet d’entretien ou sur l’écran de bord de votre voiture.',
+            'Respecter ces échéances limite l’usure, évite des pannes coûteuses et aide à garder la valeur de la voiture à la revente. Selon le plan, un entretien comprend par exemple la vidange, les filtres, le contrôle des freins et des niveaux, l’éclairage et les essuie-glaces.',
+          ],
+        },
+        s3: {
+          h: 'Les signes qui doivent vous faire venir à l’atelier',
+          items: [
+            'Un voyant reste allumé au tableau de bord.',
+            'Le freinage grince, vibre ou tire d’un côté.',
+            'Le moteur manque de puissance ou démarre mal.',
+            'Une odeur de brûlé, une fuite ou une fumée inhabituelle.',
+            'Un bruit nouveau en roulant ou en tournant le volant.',
+          ],
+          p: [
+            'Plus tôt un défaut est trouvé, plus la réparation reste simple. Décrivez dans le formulaire ce que vous remarquez et depuis quand : c’est la meilleure base pour le diagnostic.',
+          ],
+        },
+        s4: {
+          h: 'Carrosserie et peinture après un accrochage',
+          p: [
+            'Rayure, bosse ou pare-chocs abîmé : envoyez-nous des photos des dégâts sur WhatsApp au {whatsapp}. Vous recevez un premier avis avant même de venir. Ensuite, nous réparons la carrosserie et repeignons les éléments abîmés dans notre atelier.',
+            'Si un autre véhicule est en cause, remplissez le constat amiable sur place et prenez vous-même des photos de l’accident. Ces documents sont utiles pour votre assurance.',
+          ],
+        },
+        s5: {
+          h: 'Voitures et camionnettes',
+          p: [
+            'L’atelier s’occupe des voitures et des camionnettes. Pour une tondeuse, une tronçonneuse ou une autre machine, voyez notre page [Jardin & forêt](page:garden). Pour mettre une carrosserie ou une pièce à nu, découvrez le [décapage sodablast](page:sodablast).',
+          ],
+        },
+      },
+      faqH: 'Questions sur l’atelier',
+      faq: {
+        q1: {
+          q: 'Comment prendre rendez-vous à l’atelier ?',
+          a: 'Décrivez votre véhicule et ce qu’il faut faire dans le formulaire de cette page, par téléphone au {phone} ou sur WhatsApp au {whatsapp}. Nous vous rappelons pour fixer le rendez-vous.',
+        },
+        q2: {
+          q: 'Quand le garage est-il ouvert ?',
+          a: '{hours}',
+        },
+        q3: {
+          q: 'Puis-je envoyer des photos avant de venir ?',
+          a: 'Oui. Pour la carrosserie ou le sodablast, envoyez-nous des photos sur WhatsApp au {whatsapp} : vous recevez un premier avis.',
+        },
+        q4: {
+          q: 'Où se trouve l’atelier ?',
+          a: 'Au {address}, au rond-point d’Erpeldange, à côté de la station Aral, entre Ettelbruck et Diekirch.',
+        },
+        q5: {
+          q: 'Dans quelles langues puis-je expliquer le problème ?',
+          a: 'En luxembourgeois, en français, en allemand, en anglais ou en portugais.',
+        },
+      },
+    },
+    sodablast: {
+      sections: {
+        s1: {
+          h: 'Sodablast ou sablage : quelle différence ?',
+          p: [
+            'Le sablage classique projette un abrasif dur, comme le sable ou le corindon. Il décape vite, mais il attaque aussi le métal et peut chauffer et déformer les tôles fines.',
+            'Le bicarbonate de soude est beaucoup plus tendre que le métal. Il enlève la peinture, la graisse et la saleté sans creuser la surface et sans la chauffer. C’est pourquoi le sodablast convient aux pièces fragiles et aux carrosseries anciennes.',
+          ],
+        },
+        s2: {
+          h: 'Pour quels projets ?',
+          items: [
+            'Restauration d’une voiture ancienne : mettre la carrosserie à nu avant la réparation et la peinture.',
+            'Jantes : enlever l’ancienne peinture et la saleté incrustée avant une remise en peinture.',
+            'Pièces mécaniques : nettoyer un carter, un bloc ou une culasse avant le contrôle ou le remontage.',
+          ],
+          p: [
+            'Vous ne savez pas si votre pièce s’y prête ? Envoyez une photo sur WhatsApp au {whatsapp}, nous vous le disons.',
+          ],
+        },
+        s3: {
+          h: 'Après le décapage : protéger le métal',
+          p: [
+            'Une surface décapée est du métal nu. Au contact de l’air et de l’humidité, elle s’oxyde vite. Prévoyez donc l’étape suivante dès le départ : apprêt, réparation ou peinture. Les résidus de bicarbonate se rincent à l’eau avant la mise en peinture.',
+            'Pour une voiture, notre atelier peut ensuite réparer la carrosserie et la repeindre : voyez [mécanique et carrosserie](page:workshop).',
+          ],
+        },
+        s4: {
+          h: 'Sodablast au Luxembourg, à Erpeldange',
+          p: [
+            'Notre atelier se trouve au rond-point d’Erpeldange-sur-Sûre, entre Ettelbruck et Diekirch, facile d’accès depuis tout le nord du Luxembourg. Pour une pièce comme pour une voiture complète, nous fixons ensemble un rendez-vous au garage.',
+          ],
+        },
+      },
+      faqH: 'Questions sur le sodablast',
+      faq: {
+        q1: {
+          q: 'Le sodablast abîme-t-il le métal ?',
+          a: 'Non. Le bicarbonate de soude est plus tendre que le métal : il enlève la peinture, la graisse et la saleté sans creuser la surface. C’est ce qui le distingue du sablage.',
+        },
+        q2: {
+          q: 'Combien coûte un décapage sodablast ?',
+          a: 'Cela dépend de la taille de la pièce et des couches à enlever. Envoyez des photos sur WhatsApp au {whatsapp} : vous recevez un premier avis.',
+        },
+        q3: {
+          q: 'Faut-il traiter la pièce après le décapage ?',
+          a: 'Oui. Le métal mis à nu doit être protégé rapidement par un apprêt ou une peinture, sinon il s’oxyde.',
+        },
+        q4: {
+          q: 'Peut-on décaper des jantes au sodablast ?',
+          a: 'Oui, les jantes font partie des pièces que nous décapons au sodablast, comme les carrosseries anciennes et les pièces mécaniques.',
+        },
+      },
+    },
+    garden: {
+      sections: {
+        s1: {
+          h: 'Machines de jardin et de forêt dans la Nordstad',
+          p: [
+            'Pour entretenir votre jardin, votre terrain ou votre bois, vous trouvez au Garage Um Rond Point des machines principalement des marques Honda et Stihl, et un atelier pour les réparer. Le garage se trouve au rond-point d’Erpeldange, entre Ettelbruck et Diekirch.',
+          ],
+        },
+        s2: {
+          h: 'Bien choisir sa machine',
+          items: [
+            'Tondeuse : la surface de la pelouse, la pente et les obstacles décident de la largeur de coupe et du type d’entraînement.',
+            'Débroussailleuse : pour les bordures, les talus et l’herbe haute que la tondeuse n’atteint pas.',
+            'Tronçonneuse : la longueur du guide dépend du diamètre du bois que vous coupez le plus souvent.',
+            'Taille-haie : la longueur de la lame et le poids comptent si vous taillez longtemps ou en hauteur.',
+          ],
+          p: [
+            'Thermique ou à batterie ? Une machine à batterie est plus silencieuse et démarre sans effort. Une machine thermique garde son autonomie sur les grands terrains. Dites-nous comment vous l’utilisez, nous vous conseillons.',
+          ],
+        },
+        s3: {
+          h: 'Réparation : quand apporter votre machine',
+          items: [
+            'Le moteur ne démarre plus ou cale.',
+            'La machine perd de la puissance ou fume.',
+            'La chaîne ou la lame coupe mal.',
+            'Des bruits ou des vibrations inhabituels apparaissent.',
+          ],
+          p: [
+            'Décrivez la panne dans le formulaire ou appelez-nous au {phone}. Indiquez la marque et le modèle de la machine : nous savons tout de suite de quoi il s’agit.',
+          ],
+        },
+        s4: {
+          h: 'Conseils pour passer l’hiver',
+          p: [
+            'Avant de ranger une machine thermique pour l’hiver, nettoyez-la, videz le réservoir ou laissez le moteur tourner jusqu’à l’arrêt, puis rangez-la au sec. Une machine bien rangée redémarre plus facilement au printemps.',
+            'Les batteries se stockent à l’abri du gel, de préférence à moitié chargées.',
+          ],
+        },
+      },
+      faqH: 'Questions sur les machines de jardin',
+      faq: {
+        q1: {
+          q: 'Quelles marques de machines vendez-vous ?',
+          a: 'Principalement des machines Honda et Stihl.',
+        },
+        q2: {
+          q: 'Comment faire réparer ma tondeuse ou ma tronçonneuse ?',
+          a: 'Apportez la machine à l’atelier ou décrivez la panne dans le formulaire de cette page. Nous vous rappelons.',
+        },
+        q3: {
+          q: 'Quand puis-je passer au garage ?',
+          a: '{hours}',
+        },
+        q4: {
+          q: 'Où se trouve le garage ?',
+          a: 'Au {address}, au rond-point d’Erpeldange, à côté de la station Aral.',
+        },
+      },
+    },
+    trailersForSale: {
+      sections: {
+        s1: {
+          h: 'Saris, Humbaur et WM Meyer à Erpeldange',
+          p: [
+            'Nous vendons des remorques des marques Saris, Humbaur et WM Meyer, pour les particuliers comme pour les professionnels. Dites-nous ce que vous transportez : nous vous aidons à trouver le modèle qui convient à votre voiture et à votre permis.',
+            'Le garage se trouve au rond-point d’Erpeldange-sur-Sûre, entre Ettelbruck et Diekirch.',
+          ],
+        },
+        s2: {
+          h: 'Les bonnes questions avant d’acheter',
+          items: [
+            'Qu’est-ce que je transporte le plus souvent, et quel poids ?',
+            'Quelle longueur et quelle largeur de plateau me faut-il ?',
+            'Ma voiture peut-elle tracter cette remorque (champs O.1 et O.2 du certificat d’immatriculation) ?',
+            'Mon permis suffit-il : B, B avec le code 96 ou BE ?',
+            'Où vais-je garer la remorque quand je ne m’en sers pas ?',
+          ],
+        },
+        s3: {
+          h: 'Particuliers et professionnels',
+          p: [
+            'Pour un particulier, la remorque sert au jardin, au déménagement ou au transport d’un véhicule de loisir. Pour un artisan ou une entreprise, elle transporte chaque jour du matériel et des machines : la charge utile, la robustesse du plateau et les points d’arrimage comptent alors davantage.',
+          ],
+        },
+        s4: {
+          h: 'Acheter ou louer ?',
+          p: [
+            'Si vous n’avez besoin d’une remorque que de temps en temps, la [location](page:rental) peut suffire. Notre guide vous montre aussi quelle remorque votre permis autorise.',
+          ],
+        },
+      },
+      faqH: 'Questions sur l’achat d’une remorque',
+      faq: {
+        q1: {
+          q: 'Quelles marques de remorques vendez-vous ?',
+          a: 'Saris, Humbaur et WM Meyer.',
+        },
+        q2: {
+          q: 'Vendez-vous aussi aux professionnels ?',
+          a: 'Oui, nous vendons des remorques aux particuliers et aux professionnels.',
+        },
+      },
+    },
+    cars: {
+      sections: {
+        s1: {
+          h: 'Acheter une voiture au Garage Um Rond Point',
+          p: [
+            'Toutes les voitures de cette page sont en stock chez nous, au rond-point d’Erpeldange. La liste est mise à jour chaque matin à partir de nos annonces : vous voyez le prix, le kilométrage, l’année et les photos de chaque voiture.',
+          ],
+          items: [
+            'Choisissez une voiture dans la liste et ouvrez sa fiche.',
+            'Appelez-nous ou écrivez-nous sur WhatsApp pour vérifier qu’elle est encore disponible.',
+            'Venez la voir au garage et faites un essai sur rendez-vous.',
+          ],
+        },
+        s2: {
+          h: 'Voitures neuves et d’occasion près d’Ettelbruck et de Diekirch',
+          p: [
+            'Le stock comprend des voitures neuves et des voitures d’occasion. Il change souvent : la liste vous montre chaque jour l’état du matin. Nos annonces sont aussi publiées sur LuxAuto et AutoScout24.',
+          ],
+        },
+        s3: {
+          h: 'Et votre voiture actuelle ?',
+          p: [
+            'Vous souhaitez faire reprendre votre voiture ? Indiquez-le dans le formulaire de la voiture qui vous intéresse. Vous préférez vendre sans vous en occuper ? Découvrez notre service de dépôt-vente plus bas sur cette page.',
+          ],
+        },
+      },
+      faqH: 'Questions sur nos voitures',
+      faq: {
+        q1: {
+          q: 'Puis-je essayer une voiture ?',
+          a: 'Oui, sur rendez-vous. Appelez-nous au {phone} ou écrivez-nous sur WhatsApp au {whatsapp}.',
+        },
+        q2: {
+          q: 'Où puis-je voir les voitures ?',
+          a: 'Au garage, au {address}, au rond-point d’Erpeldange. {hours}',
+        },
+        q3: {
+          q: 'Vos voitures sont-elles aussi sur LuxAuto et AutoScout24 ?',
+          a: 'Oui, nos annonces sont aussi publiées sur LuxAuto et AutoScout24. Ici, vous voyez tout notre stock au même endroit.',
+        },
+      },
+    },
+    contact: {
+      sections: {
+        s1: {
+          h: 'Quel moyen choisir ?',
+          items: [
+            'Une question rapide ou des photos à nous montrer : WhatsApp au {whatsapp}.',
+            'Un rendez-vous ou une réponse tout de suite : téléphone au {phone}.',
+            'Une demande détaillée : le formulaire ci-dessous ou un e-mail à {email}.',
+          ],
+        },
+        s2: {
+          h: 'Venir au garage',
+          p: [
+            'Le garage se trouve au {address}, au rond-point d’Erpeldange-sur-Sûre, à côté de la station Aral. Vous venez d’Ettelbruck ou de Diekirch ? Le rond-point est sur votre route. Pour l’itinéraire exact, ouvrez Google Maps depuis cette page.',
+          ],
+        },
+      },
+      faqH: 'Questions pratiques',
+      faq: {
+        q1: {
+          q: 'Quand le garage est-il ouvert ?',
+          a: '{hours}',
+        },
+        q2: {
+          q: 'Quelles langues parlez-vous ?',
+          a: 'Nous parlons luxembourgeois, français, allemand, anglais et portugais.',
+        },
+      },
+    },
+    rental: {
+      sections: {
+        s1: {
+          h: 'Location de remorques dans la Nordstad',
+          p: [
+            'Au rond-point d’Erpeldange, entre Ettelbruck et Diekirch, vous louez une remorque ou une camionnette tout près de chez vous. Notre guide ci-dessus vous montre en quelques clics quelle remorque convient à ce que vous transportez et si votre permis suffit.',
+          ],
+        },
+        s2: {
+          h: 'Conseils pour bien charger',
+          items: [
+            'Ne dépassez jamais la masse maximale de la remorque, ni la charge remorquable de votre voiture.',
+            'Répartissez la charge : les objets lourds au-dessus de l’essieu, un peu de poids sur la flèche, comme l’indique la notice.',
+            'Arrimez le chargement avec des sangles et couvrez le vrac avec une bâche ou un filet.',
+            'Avant de partir, vérifiez l’attelage, les feux et la pression des pneus.',
+            'Roulez plus doucement qu’à vide : l’ensemble freine moins bien et prend plus de place dans les virages.',
+          ],
+        },
+      },
+    },
+    category: {
+      'porte-voiture': {
+        sections: {
+          s1: {
+            h: 'Quand louer un porte-voiture ?',
+            p: [
+              'Pour ramener une voiture qui ne roule plus, transporter une voiture de collection sans ajouter de kilomètres, ou aller chercher une voiture achetée loin de chez vous. Le porte-voiture évite de faire rouler la voiture transportée.',
+            ],
+          },
+          s2: {
+            h: 'Charger une voiture en sécurité',
+            items: [
+              'Vérifiez que la voiture transportée ne dépasse pas la charge utile de la remorque.',
+              'Montez lentement, bien dans l’axe des rampes, avec quelqu’un qui vous guide.',
+              'Placez la voiture pour qu’un peu de poids repose sur l’avant de la remorque, comme l’indique la notice.',
+              'Arrimez chaque roue avec des sangles adaptées et contrôlez-les après les premiers kilomètres.',
+            ],
+          },
+        },
+      },
+      'porte-moto': {
+        sections: {
+          s1: {
+            h: 'Transporter une moto',
+            p: [
+              'Pour aller sur un circuit, faire réparer une moto ou la ramener après un achat, la remorque porte-moto est plus simple qu’une camionnette : la moto monte par la rampe et se cale dans le support de roue.',
+            ],
+          },
+          s2: {
+            h: 'Bien attacher une moto',
+            items: [
+              'Calez la roue avant dans le support.',
+              'Utilisez quatre sangles, deux à l’avant et deux à l’arrière, sur des points solides du cadre.',
+              'Comprimez légèrement la suspension, sans l’écraser.',
+              'Contrôlez la tension des sangles après les premiers kilomètres.',
+            ],
+          },
+        },
+      },
+      benne: {
+        sections: {
+          s1: {
+            h: 'Attention au poids des matériaux',
+            p: [
+              'Les matériaux en vrac sont lourds. Un mètre cube de terre humide pèse environ 1,5 à 1,8 tonne, un mètre cube de gravier environ 1,5 tonne. Une benne remplie à ras bord dépasse donc vite sa charge utile.',
+              'Regardez la charge utile dans la fiche de la remorque et remplissez en conséquence : mieux vaut deux trajets qu’une remorque surchargée.',
+            ],
+          },
+          s2: {
+            h: 'Chantier, jardin, parc à conteneurs',
+            items: [
+              'Couvrez le chargement avec une bâche ou un filet pour que rien ne tombe sur la route.',
+              'Triez les déchets avant de partir : au parc à conteneurs, vous gagnez du temps.',
+              'Basculez uniquement sur un sol plat et stable, la remorque attelée.',
+            ],
+          },
+        },
+      },
+      frigorifique: {
+        sections: {
+          s1: {
+            h: 'Pour quelles occasions ?',
+            p: [
+              'Fête de famille, mariage, anniversaire, kermesse, marché ou fête d’association : la remorque frigorifique garde les boissons et les plats au frais sur place, pendant toute la durée de l’événement.',
+            ],
+          },
+          s2: {
+            h: 'Conseils d’utilisation',
+            items: [
+              'Branchez la remorque quelques heures avant de la charger pour qu’elle soit froide.',
+              'Chargez de préférence des produits déjà froids : refroidir un grand volume de boissons tièdes prend du temps.',
+              'Laissez l’air circuler entre les caisses.',
+              'Prévoyez un branchement électrique adapté près de l’emplacement de la remorque.',
+            ],
+          },
+        },
+      },
+      camionnette: {
+        sections: {
+          s1: {
+            h: 'Déménagement, meubles, matériel',
+            p: [
+              'Une camionnette convient pour un déménagement, des meubles, de l’électroménager ou du matériel encombrant, sans avoir à atteler une remorque. Le chargement reste à l’abri de la pluie.',
+            ],
+          },
+          s2: {
+            h: 'Conseils pour votre transport',
+            items: [
+              'Mesurez les gros meubles avant de réserver.',
+              'Placez les objets lourds au fond, contre la cloison, et sanglez le chargement.',
+              'Protégez les meubles avec des couvertures pour éviter les rayures.',
+              'Pensez à la hauteur du véhicule avant d’entrer dans un parking souterrain.',
+            ],
+          },
+        },
+      },
     },
   },
 };

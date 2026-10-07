@@ -185,6 +185,7 @@ const de: Dict = {
       count: { one: '{n} Auto', other: '{n} Autos' },
       empty: 'Kein Auto passt zu diesen Filtern.',
       reset: 'Filter zurücksetzen',
+      apply: 'Ergebnisse anzeigen',
       upTo: 'bis {price}',
     },
   },
@@ -559,6 +560,13 @@ const de: Dict = {
     errorSummary: 'Prüfen Sie die markierten Felder.',
     errorSend: 'Die Anfrage wurde nicht gesendet. Versuchen Sie es noch einmal oder rufen Sie uns unter +352 81 05 41 an.',
     errorRate: 'Sie haben heute schon viele Anfragen gesendet. Rufen Sie uns unter +352 81 05 41 an.',
+    fallbackH: 'Letzter Schritt: Anfrage abschicken',
+    fallbackText: 'Wählen Sie, wie Sie uns die Anfrage schicken. Ihre Nachricht ist schon fertig formuliert, Sie müssen sie nur noch senden.',
+    fallbackWhatsapp: 'Per WhatsApp senden',
+    fallbackMail: 'Per E-Mail senden',
+    fallbackEdit: 'Anfrage ändern',
+    fallbackSubject: 'Anfrage über die Website',
+    fallbackIntro: 'Guten Tag, hier ist meine Anfrage:',
     errors: {
       name: 'Geben Sie Ihren Namen ein.',
       phone: 'Geben Sie eine Telefonnummer ein, damit wir Sie zurückrufen können.',
@@ -862,6 +870,422 @@ const de: Dict = {
       charge: 'Ihr Auto darf nicht mehr ziehen als im Feld O.1 (gebremst) oder O.2 (ungebremst) der Zulassungsbescheinigung steht.',
       usageH: 'Bauart und Maße',
       usage: 'Hochlader, Kipper, Autotransporter oder Kofferanhänger: Der passende Anhänger hängt davon ab, was Sie am häufigsten transportieren und wo Sie ihn abstellen.',
+    },
+  },
+  /** Ausführliche Seitentexte (SEO): Abschnitte und FAQ je Seite, siehe src/lib/content.ts */
+  content: {
+    workshop: {
+      sections: {
+        s1: {
+          h: 'Ihre Autowerkstatt zwischen Ettelbruck und Diekirch',
+          p: [
+            'Die Garage Um Rond Point, {address}, liegt direkt am Kreisel in Erpeldange, neben der Aral-Tankstelle. Für alle aus Erpeldange-sur-Sûre, Ettelbruck, Diekirch und der ganzen Nordstad ist die Werkstatt nur wenige Minuten entfernt.',
+            'Wir sprechen Luxemburgisch, Französisch, Deutsch, Englisch und Portugiesisch. So können Sie uns das Problem mit Ihrem Auto in der Sprache erklären, die Ihnen am besten liegt.',
+          ],
+        },
+        s2: {
+          h: 'Wartung: warum Sie den Herstellerplan einhalten sollten',
+          p: [
+            'Jeder Hersteller legt einen Wartungsplan fest, je nach Kilometerstand oder Zeit seit der letzten Wartung. Sie finden ihn im Serviceheft oder auf dem Display im Cockpit Ihres Autos.',
+            'Wer diese Termine einhält, verringert den Verschleiß, vermeidet teure Pannen und erhält den Wiederverkaufswert des Autos. Je nach Plan gehören zur Wartung zum Beispiel Ölwechsel, Filter, die Kontrolle von Bremsen und Füllständen, Beleuchtung und Scheibenwischer.',
+          ],
+        },
+        s3: {
+          h: 'Bei diesen Anzeichen sollten Sie in die Werkstatt',
+          items: [
+            'Eine Warnleuchte im Armaturenbrett geht nicht mehr aus.',
+            'Die Bremsen quietschen oder vibrieren, oder das Auto zieht beim Bremsen zur Seite.',
+            'Der Motor hat zu wenig Leistung oder springt schlecht an.',
+            'Brandgeruch, ein Leck oder ungewöhnlicher Rauch.',
+            'Ein neues Geräusch beim Fahren oder beim Lenken.',
+          ],
+          p: [
+            'Je früher ein Defekt entdeckt wird, desto einfacher bleibt die Reparatur. Beschreiben Sie im Formular, was Ihnen auffällt und seit wann: Das ist die beste Grundlage für die Diagnose.',
+          ],
+        },
+        s4: {
+          h: 'Karosserie und Lack nach einem Blechschaden',
+          p: [
+            'Kratzer, Delle oder beschädigte Stoßstange: Schicken Sie uns Fotos der Schäden per WhatsApp an {whatsapp}. So erhalten Sie eine erste Einschätzung, noch bevor Sie vorbeikommen. Danach reparieren wir die Karosserie und lackieren die beschädigten Teile in unserer Werkstatt neu.',
+            'Ist ein anderes Fahrzeug beteiligt, füllen Sie den Europäischen Unfallbericht direkt vor Ort aus und machen Sie selbst Fotos vom Unfall. Diese Unterlagen helfen Ihnen bei Ihrer Versicherung.',
+          ],
+        },
+        s5: {
+          h: 'Autos und Transporter',
+          p: [
+            'Unsere Werkstatt kümmert sich um Autos und Transporter. Für einen Rasenmäher, eine Motorsäge oder ein anderes Gerät besuchen Sie unsere Seite [Garten & Forst](page:garden). Wenn Sie eine Karosserie oder ein Teil bis aufs blanke Metall entlacken möchten, lesen Sie mehr über das [Sodastrahlen (Sodablast)](page:sodablast).',
+          ],
+        },
+      },
+      faqH: 'Fragen zur Werkstatt',
+      faq: {
+        q1: {
+          q: 'Wie bekomme ich einen Termin in der Werkstatt?',
+          a: 'Beschreiben Sie Ihr Fahrzeug und was zu tun ist – im Formular auf dieser Seite, telefonisch unter {phone} oder per WhatsApp unter {whatsapp}. Wir rufen Sie zurück und vereinbaren den Termin.',
+        },
+        q2: {
+          q: 'Wann ist die Garage geöffnet?',
+          a: '{hours}',
+        },
+        q3: {
+          q: 'Kann ich vorab Fotos schicken?',
+          a: 'Ja. Für Karosseriearbeiten oder Sodastrahlen schicken Sie uns Fotos per WhatsApp an {whatsapp}: Sie erhalten eine erste Einschätzung.',
+        },
+        q4: {
+          q: 'Wo befindet sich die Werkstatt?',
+          a: '{address}, am Kreisel in Erpeldange, neben der Aral-Tankstelle, zwischen Ettelbruck und Diekirch.',
+        },
+        q5: {
+          q: 'In welchen Sprachen kann ich das Problem erklären?',
+          a: 'Auf Luxemburgisch, Französisch, Deutsch, Englisch oder Portugiesisch.',
+        },
+      },
+    },
+    sodablast: {
+      sections: {
+        s1: {
+          h: 'Sodastrahlen oder Sandstrahlen: Was ist der Unterschied?',
+          p: [
+            'Beim klassischen Sandstrahlen wird ein hartes Strahlmittel wie Sand oder Korund auf die Oberfläche gestrahlt. Das geht schnell, greift aber auch das Metall an und kann dünne Bleche erhitzen und verformen.',
+            'Natron ist viel weicher als Metall. Es entfernt Lack, Fett und Schmutz, ohne die Oberfläche abzutragen und ohne sie zu erhitzen. Deshalb eignet sich Sodastrahlen für empfindliche Teile und alte Karosserien.',
+          ],
+        },
+        s2: {
+          h: 'Für welche Projekte eignet sich Sodastrahlen?',
+          items: [
+            'Restaurierung eines Oldtimers: die Karosserie vor Reparatur und Lackierung bis aufs blanke Metall entlacken.',
+            'Felgen: alten Lack und festsitzenden Schmutz vor einer neuen Lackierung entfernen.',
+            'Mechanische Teile: ein Gehäuse, einen Motorblock oder einen Zylinderkopf vor der Prüfung oder dem Zusammenbau reinigen.',
+          ],
+          p: [
+            'Sie wissen nicht, ob sich Ihr Teil dafür eignet? Schicken Sie ein Foto per WhatsApp an {whatsapp}, wir sagen es Ihnen.',
+          ],
+        },
+        s3: {
+          h: 'Nach dem Entlacken: das Metall schützen',
+          p: [
+            'Eine entlackte Oberfläche ist blankes Metall. Mit Luft und Feuchtigkeit oxidiert sie schnell. Planen Sie den nächsten Schritt deshalb von Anfang an ein: Grundierung, Reparatur oder Lackierung. Natronreste werden vor dem Lackieren mit Wasser abgespült.',
+            'Bei einem Auto kann unsere Werkstatt anschließend die Karosserie reparieren und neu lackieren: siehe [Mechanik und Karosserie](page:workshop).',
+          ],
+        },
+        s4: {
+          h: 'Sodastrahlen in Luxemburg, in Erpeldange',
+          p: [
+            'Unsere Werkstatt liegt am Kreisel in Erpeldange-sur-Sûre, zwischen Ettelbruck und Diekirch, und ist aus dem ganzen Norden Luxemburgs gut erreichbar. Ob einzelnes Teil oder komplettes Auto: Wir vereinbaren gemeinsam einen Termin in der Garage.',
+          ],
+        },
+      },
+      faqH: 'Fragen zum Sodastrahlen',
+      faq: {
+        q1: {
+          q: 'Beschädigt Sodastrahlen das Metall?',
+          a: 'Nein. Natron ist weicher als Metall: Es entfernt Lack, Fett und Schmutz, ohne die Oberfläche abzutragen. Das unterscheidet es vom Sandstrahlen.',
+        },
+        q2: {
+          q: 'Was kostet Sodastrahlen?',
+          a: 'Das hängt von der Größe des Teils und von den Schichten ab, die entfernt werden müssen. Schicken Sie Fotos per WhatsApp an {whatsapp}: Sie erhalten eine erste Einschätzung.',
+        },
+        q3: {
+          q: 'Muss das Teil nach dem Entlacken behandelt werden?',
+          a: 'Ja. Das freigelegte Metall muss schnell mit einer Grundierung oder einem Lack geschützt werden, sonst oxidiert es.',
+        },
+        q4: {
+          q: 'Kann man Felgen mit Sodastrahlen entlacken?',
+          a: 'Ja, Felgen gehören wie alte Karosserien und mechanische Teile zu den Teilen, die wir mit Sodastrahlen bearbeiten.',
+        },
+      },
+    },
+    garden: {
+      sections: {
+        s1: {
+          h: 'Garten- und Forstgeräte in der Nordstad',
+          p: [
+            'Für die Pflege Ihres Gartens, Ihres Grundstücks oder Ihres Waldstücks finden Sie in der Garage Um Rond Point Geräte vor allem der Marken Honda und Stihl – und eine Werkstatt, die sie repariert. Die Garage liegt am Kreisel in Erpeldange, zwischen Ettelbruck und Diekirch.',
+          ],
+        },
+        s2: {
+          h: 'Das richtige Gerät wählen',
+          items: [
+            'Rasenmäher: Rasenfläche, Hanglage und Hindernisse bestimmen die Schnittbreite und die Antriebsart.',
+            'Freischneider: für Ränder, Böschungen und hohes Gras, an das der Rasenmäher nicht herankommt.',
+            'Motorsäge: Die Schwertlänge richtet sich nach dem Durchmesser des Holzes, das Sie am häufigsten schneiden.',
+            'Heckenschere: Messerlänge und Gewicht zählen, wenn Sie lange oder in der Höhe schneiden.',
+          ],
+          p: [
+            'Benzin oder Akku? Ein Akkugerät ist leiser und startet ohne Kraftaufwand. Ein Benzingerät hält auch auf großen Grundstücken lange durch. Sagen Sie uns, wie Sie es nutzen, wir beraten Sie.',
+          ],
+        },
+        s3: {
+          h: 'Reparatur: wann Sie Ihr Gerät vorbeibringen sollten',
+          items: [
+            'Der Motor springt nicht mehr an oder geht aus.',
+            'Das Gerät verliert Leistung oder raucht.',
+            'Die Kette oder das Messer schneidet schlecht.',
+            'Ungewohnte Geräusche oder Vibrationen treten auf.',
+          ],
+          p: [
+            'Beschreiben Sie die Störung im Formular oder rufen Sie uns unter {phone} an. Nennen Sie Marke und Modell des Geräts: So wissen wir sofort, worum es geht.',
+          ],
+        },
+        s4: {
+          h: 'Tipps zum Überwintern Ihrer Geräte',
+          p: [
+            'Bevor Sie ein Benzingerät über den Winter einlagern, reinigen Sie es, leeren Sie den Tank oder lassen Sie den Motor laufen, bis er ausgeht, und lagern Sie es dann trocken. Ein gut eingelagertes Gerät springt im Frühling leichter wieder an.',
+            'Akkus lagern Sie frostfrei, am besten halb geladen.',
+          ],
+        },
+      },
+      faqH: 'Fragen zu Gartengeräten',
+      faq: {
+        q1: {
+          q: 'Welche Gerätemarken verkaufen Sie?',
+          a: 'Vor allem Geräte von Honda und Stihl.',
+        },
+        q2: {
+          q: 'Wie lasse ich meinen Rasenmäher oder meine Motorsäge reparieren?',
+          a: 'Bringen Sie das Gerät in die Werkstatt oder beschreiben Sie die Störung im Formular auf dieser Seite. Wir rufen Sie zurück.',
+        },
+        q3: {
+          q: 'Wann kann ich in der Garage vorbeikommen?',
+          a: '{hours}',
+        },
+        q4: {
+          q: 'Wo befindet sich die Garage?',
+          a: '{address}, am Kreisel in Erpeldange, neben der Aral-Tankstelle.',
+        },
+      },
+    },
+    trailersForSale: {
+      sections: {
+        s1: {
+          h: 'Saris, Humbaur und WM Meyer in Erpeldange',
+          p: [
+            'Wir verkaufen Anhänger der Marken Saris, Humbaur und WM Meyer, für Privat- und Geschäftskunden. Sagen Sie uns, was Sie transportieren: Wir helfen Ihnen, das Modell zu finden, das zu Ihrem Auto und Ihrem Führerschein passt.',
+            'Die Garage liegt am Kreisel in Erpeldange-sur-Sûre, zwischen Ettelbruck und Diekirch.',
+          ],
+        },
+        s2: {
+          h: 'Die richtigen Fragen vor dem Kauf',
+          items: [
+            'Was transportiere ich am häufigsten, und wie schwer ist es?',
+            'Welche Länge und Breite der Ladefläche brauche ich?',
+            'Darf mein Auto diesen Anhänger ziehen (Felder O.1 und O.2 der Zulassungsbescheinigung)?',
+            'Reicht mein Führerschein: B, B mit Code 96 oder BE?',
+            'Wo stelle ich den Anhänger ab, wenn ich ihn nicht brauche?',
+          ],
+        },
+        s3: {
+          h: 'Privat- und Geschäftskunden',
+          p: [
+            'Privatleute nutzen den Anhänger für den Garten, den Umzug oder den Transport eines Freizeitfahrzeugs. Für Handwerker und Unternehmen transportiert er jeden Tag Material und Maschinen: Dann zählen Nutzlast, eine robuste Ladefläche und die Zurrpunkte umso mehr.',
+          ],
+        },
+        s4: {
+          h: 'Kaufen oder mieten?',
+          p: [
+            'Brauchen Sie nur ab und zu einen Anhänger, reicht vielleicht die [Anhängermiete](page:rental). Unsere Anhängersuche zeigt Ihnen auch, welchen Anhänger Sie mit Ihrem Führerschein ziehen dürfen.',
+          ],
+        },
+      },
+      faqH: 'Fragen zum Anhängerkauf',
+      faq: {
+        q1: {
+          q: 'Welche Anhängermarken verkaufen Sie?',
+          a: 'Saris, Humbaur und WM Meyer.',
+        },
+        q2: {
+          q: 'Verkaufen Sie auch an Geschäftskunden?',
+          a: 'Ja, wir verkaufen Anhänger an Privat- und Geschäftskunden.',
+        },
+      },
+    },
+    cars: {
+      sections: {
+        s1: {
+          h: 'Ein Auto kaufen bei der Garage Um Rond Point',
+          p: [
+            'Alle Autos auf dieser Seite stehen bei uns am Kreisel in Erpeldange im Bestand. Die Liste wird jeden Morgen anhand unserer Anzeigen aktualisiert: Sie sehen Preis, Kilometerstand, Jahr und Fotos jedes Autos.',
+          ],
+          items: [
+            'Wählen Sie ein Auto in der Liste und öffnen Sie die Detailseite.',
+            'Rufen Sie uns an oder schreiben Sie uns auf WhatsApp, um zu prüfen, ob es noch verfügbar ist.',
+            'Sehen Sie sich das Auto in der Garage an und machen Sie nach Vereinbarung eine Probefahrt.',
+          ],
+        },
+        s2: {
+          h: 'Neu- und Gebrauchtwagen bei Ettelbruck und Diekirch',
+          p: [
+            'Unser Bestand umfasst Neuwagen und Gebrauchtwagen. Er ändert sich oft: Die Liste zeigt Ihnen jeden Tag den Stand vom Morgen. Unsere Anzeigen erscheinen auch auf LuxAuto und AutoScout24.',
+          ],
+        },
+        s3: {
+          h: 'Und Ihr jetziges Auto?',
+          p: [
+            'Möchten Sie Ihr Auto in Zahlung geben? Geben Sie das im Formular des Autos an, das Sie interessiert. Möchten Sie lieber verkaufen, ohne sich selbst darum zu kümmern? Weiter unten auf dieser Seite erfahren Sie mehr über unseren Kommissionsverkauf.',
+          ],
+        },
+      },
+      faqH: 'Fragen zu unseren Autos',
+      faq: {
+        q1: {
+          q: 'Kann ich eine Probefahrt machen?',
+          a: 'Ja, nach Vereinbarung. Rufen Sie uns unter {phone} an oder schreiben Sie uns auf WhatsApp unter {whatsapp}.',
+        },
+        q2: {
+          q: 'Wo kann ich mir die Autos ansehen?',
+          a: 'In der Garage, {address}, am Kreisel in Erpeldange. {hours}',
+        },
+        q3: {
+          q: 'Stehen Ihre Autos auch auf LuxAuto und AutoScout24?',
+          a: 'Ja, unsere Anzeigen erscheinen auch auf LuxAuto und AutoScout24. Hier sehen Sie unseren ganzen Bestand an einem Ort.',
+        },
+      },
+    },
+    contact: {
+      sections: {
+        s1: {
+          h: 'Wie erreichen Sie uns am besten?',
+          items: [
+            'Eine kurze Frage oder Fotos, die Sie uns zeigen möchten: WhatsApp unter {whatsapp}.',
+            'Ein Termin oder eine sofortige Antwort: Telefon unter {phone}.',
+            'Eine ausführliche Anfrage: das Formular unten oder eine E-Mail an {email}.',
+          ],
+        },
+        s2: {
+          h: 'Anfahrt zur Garage',
+          p: [
+            'Die Garage, {address}, liegt am Kreisel in Erpeldange-sur-Sûre, neben der Aral-Tankstelle. Sie kommen aus Ettelbruck oder Diekirch? Dann liegt der Kreisel auf Ihrem Weg. Für die genaue Route öffnen Sie Google Maps über diese Seite.',
+          ],
+        },
+      },
+      faqH: 'Praktische Fragen',
+      faq: {
+        q1: {
+          q: 'Wann ist die Garage geöffnet?',
+          a: '{hours}',
+        },
+        q2: {
+          q: 'Welche Sprachen sprechen Sie?',
+          a: 'Wir sprechen Luxemburgisch, Französisch, Deutsch, Englisch und Portugiesisch.',
+        },
+      },
+    },
+    rental: {
+      sections: {
+        s1: {
+          h: 'Anhänger mieten in der Nordstad',
+          p: [
+            'Am Kreisel in Erpeldange, zwischen Ettelbruck und Diekirch, mieten Sie einen Anhänger oder Transporter ganz in Ihrer Nähe. Unsere Anhängersuche oben zeigt Ihnen mit wenigen Klicks, welcher Anhänger zu Ihrer Ladung passt und ob Ihr Führerschein reicht.',
+          ],
+        },
+        s2: {
+          h: 'Tipps zum richtigen Beladen',
+          items: [
+            'Überschreiten Sie nie die zulässige Gesamtmasse des Anhängers und nie die Anhängelast Ihres Autos.',
+            'Verteilen Sie die Ladung: Schweres über die Achse, etwas Gewicht auf die Deichsel, wie in der Anleitung angegeben.',
+            'Sichern Sie die Ladung mit Spanngurten und decken Sie loses Schüttgut mit einer Plane oder einem Netz ab.',
+            'Prüfen Sie vor der Abfahrt die Anhängerkupplung, die Beleuchtung und den Reifendruck.',
+            'Fahren Sie langsamer als ohne Ladung: Das Gespann bremst schlechter und braucht in Kurven mehr Platz.',
+          ],
+        },
+      },
+    },
+    category: {
+      'porte-voiture': {
+        sections: {
+          s1: {
+            h: 'Wann einen Autotransporter mieten?',
+            p: [
+              'Zum Beispiel, um ein Auto zurückzuholen, das nicht mehr fährt, einen Oldtimer ohne zusätzliche Kilometer zu transportieren oder ein Auto abzuholen, das Sie weit weg gekauft haben. Mit dem Autotransporter muss das transportierte Auto nicht selbst fahren.',
+            ],
+          },
+          s2: {
+            h: 'Ein Auto sicher verladen',
+            items: [
+              'Achten Sie darauf, dass das transportierte Auto die Nutzlast des Anhängers nicht überschreitet.',
+              'Fahren Sie langsam und gerade über die Rampen auf, mit einer Person, die Sie einweist.',
+              'Stellen Sie das Auto so ab, dass etwas Gewicht auf dem vorderen Teil des Anhängers liegt, wie in der Anleitung angegeben.',
+              'Sichern Sie jedes Rad mit passenden Gurten und kontrollieren Sie diese nach den ersten Kilometern.',
+            ],
+          },
+        },
+      },
+      'porte-moto': {
+        sections: {
+          s1: {
+            h: 'Ein Motorrad transportieren',
+            p: [
+              'Für die Fahrt zur Rennstrecke, zur Reparatur oder nach dem Kauf nach Hause ist der Motorradanhänger einfacher als ein Transporter: Das Motorrad kommt über die Rampe auf den Anhänger und steht fest in der Radhalterung.',
+            ],
+          },
+          s2: {
+            h: 'Ein Motorrad richtig festzurren',
+            items: [
+              'Stellen Sie das Vorderrad fest in die Radhalterung.',
+              'Verwenden Sie vier Gurte, zwei vorne und zwei hinten, an stabilen Punkten des Rahmens.',
+              'Drücken Sie die Federung leicht zusammen, aber nicht bis zum Anschlag.',
+              'Kontrollieren Sie die Spannung der Gurte nach den ersten Kilometern.',
+            ],
+          },
+        },
+      },
+      benne: {
+        sections: {
+          s1: {
+            h: 'Achten Sie auf das Gewicht des Materials',
+            p: [
+              'Schüttgut ist schwer. Ein Kubikmeter feuchte Erde wiegt etwa 1,5 bis 1,8 Tonnen, ein Kubikmeter Kies etwa 1,5 Tonnen. Ein randvoll beladener Kipper überschreitet deshalb schnell seine Nutzlast.',
+              'Sehen Sie in den Angaben zum Anhänger nach, wie hoch die Nutzlast ist, und beladen Sie ihn entsprechend: Lieber zweimal fahren als mit einem überladenen Anhänger.',
+            ],
+          },
+          s2: {
+            h: 'Baustelle, Garten, Recyclingcenter',
+            items: [
+              'Decken Sie die Ladung mit einer Plane oder einem Netz ab, damit nichts auf die Straße fällt.',
+              'Trennen Sie die Abfälle schon vor der Abfahrt: So sparen Sie im Recyclingcenter Zeit.',
+              'Kippen Sie nur auf ebenem, festem Boden und bei angekuppeltem Anhänger.',
+            ],
+          },
+        },
+      },
+      frigorifique: {
+        sections: {
+          s1: {
+            h: 'Für welche Anlässe?',
+            p: [
+              'Familienfeier, Hochzeit, Geburtstag, Kirmes, Markt oder Vereinsfest: Der Kühlanhänger hält Getränke und Speisen direkt vor Ort kühl, während der ganzen Veranstaltung.',
+            ],
+          },
+          s2: {
+            h: 'Tipps zur Nutzung',
+            items: [
+              'Schließen Sie den Anhänger einige Stunden vor dem Beladen an, damit er schon kalt ist.',
+              'Laden Sie möglichst bereits gekühlte Ware ein: Eine große Menge lauwarmer Getränke herunterzukühlen dauert.',
+              'Lassen Sie zwischen den Kisten Platz, damit die Luft zirkulieren kann.',
+              'Sorgen Sie für einen passenden Stromanschluss in der Nähe des Stellplatzes.',
+            ],
+          },
+        },
+      },
+      camionnette: {
+        sections: {
+          s1: {
+            h: 'Umzug, Möbel, Material',
+            p: [
+              'Ein Transporter eignet sich für einen Umzug, für Möbel, Haushaltsgeräte oder sperriges Material, ohne dass Sie einen Anhänger ankuppeln müssen. Die Ladung bleibt vor Regen geschützt.',
+            ],
+          },
+          s2: {
+            h: 'Tipps für Ihren Transport',
+            items: [
+              'Messen Sie große Möbel aus, bevor Sie reservieren.',
+              'Stellen Sie schwere Gegenstände ganz nach vorne an die Trennwand und sichern Sie die Ladung mit Gurten.',
+              'Schützen Sie die Möbel mit Decken vor Kratzern.',
+              'Denken Sie an die Höhe des Fahrzeugs, bevor Sie in eine Tiefgarage fahren.',
+            ],
+          },
+        },
+      },
     },
   },
 };

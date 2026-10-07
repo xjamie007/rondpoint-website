@@ -14,7 +14,7 @@ import Icon from '@/components/Icon.astro';
 import Faq, { type FaqKey } from '@/components/Faq.astro';
 import AccessSection from '@/components/AccessSection.astro';
 import { hasContent, isUnconfirmed, plural, rich, stripOpenPoints, hasOpenPoint, useT } from '@/i18n';
-import { path, type Lang, type PageKey } from '@/i18n/config';
+import { HTML_LANG, path, type Lang, type PageKey } from '@/i18n/config';
 import { activeCars } from '@/lib/stock';
 import { faqPage } from '@/lib/jsonld';
 import { presentation, showOpenPoints, site } from '@/lib/site';
@@ -44,7 +44,7 @@ const services: {
   { key: 'garden', page: 'garden', photo: 'garden', alt: t.photos.garden },
   { key: 'trailers', page: 'trailersForSale', photo: 'trailers-sale', alt: t.photos.trailersSale },
 ];
-const reviews = site.reviews as { quote: string; name: string; date: string }[];
+const reviews = (site.reviews as { quote: string; name: string; date: string; lang?: Lang }[]).filter((r) => r.quote?.trim());
 const hero = photo('hero-workshop');
 const aboutPhoto = photo('about');
 /** Leiste im Startbildschirm: jede Leistung mit Symbol, Titel und einer Zeile */
@@ -225,7 +225,7 @@ const visibleFaq = presentation ? faqKeys.filter((k) => !isUnconfirmed(t.faq.ite
             <div class="quotes">
               {reviews.map((r) => (
                 <figure>
-                  <blockquote lang="fr">
+                  <blockquote lang={HTML_LANG[r.lang ?? 'fr']}>
                     <p>{r.quote}</p>
                   </blockquote>
                   <figcaption>

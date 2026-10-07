@@ -255,6 +255,10 @@ html[data-vt='filter']::view-transition-new(root) { animation: none; }
   .finder .btn-secondary { --btn-fill: #fff1e6; }
   .finder .btn-secondary:hover { border-color: var(--color-black); }
 
+  /* Hinweis-Banner oben (Dashboard) */
+  .site-notice { margin: 0; padding: 10px var(--gutter); background: var(--color-black); color: var(--color-white); text-align: center; font-weight: 600; font-size: 0.9375rem; line-height: 1.4; }
+  .site-notice::before { content: ''; display: inline-block; width: 8px; height: 8px; margin-right: 10px; border-radius: 50%; background: var(--color-orange); vertical-align: 1px; }
+
   /* Flächen mit Struktur statt reinem Weiß */
   .tone {
     background-color: var(--color-paper);

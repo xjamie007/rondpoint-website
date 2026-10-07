@@ -185,6 +185,7 @@ const lb: Dict = {
       count: { one: '{n} Auto', other: '{n} Autoen' },
       empty: 'Keen Auto passt zu dëse Filteren.',
       reset: 'Filteren zrécksetzen',
+      apply: 'Resultater weisen',
       upTo: 'bis {price}',
     },
   },
@@ -559,6 +560,13 @@ const lb: Dict = {
     errorSummary: 'Iwwerpréift déi markéiert Felder.',
     errorSend: 'D’Ufro gouf net geschéckt. Probéiert et nach eng Kéier oder rufft eis un op +352 81 05 41.',
     errorRate: 'Dir hutt haut scho vill Ufroe geschéckt. Rufft eis un op +352 81 05 41.',
+    fallbackH: 'Leschte Schrëtt: Är Ufro schécken',
+    fallbackText: 'Wielt, wéi Dir eis d’Ufro schéckt. Äre Message ass scho fäerdeg geschriwwen, Dir musst en just nach schécken.',
+    fallbackWhatsapp: 'Iwwer WhatsApp schécken',
+    fallbackMail: 'Per E-Mail schécken',
+    fallbackEdit: 'Ufro änneren',
+    fallbackSubject: 'Ufro iwwer de Site',
+    fallbackIntro: 'Moien, hei ass meng Ufro:',
     errors: {
       name: 'Gitt Ären Numm un.',
       phone: 'Gitt eng Telefonsnummer un, fir datt mir Iech zréckruffe kënnen.',
@@ -862,6 +870,422 @@ const lb: Dict = {
       charge: 'Ären Auto dierf net méi zéie wéi am Feld O.1 (gebremst) oder O.2 (ongebremst) vun der Carte grise steet.',
       usageH: 'Bauaart a Moossen',
       usage: 'Plateau, Kipper, Autosunhänger oder Kofferunhänger: De passenden Unhänger hänkt dovun of, wat Dir am meeschte transportéiert a wou Dir en ofstellt.',
+    },
+  },
+  /** Ausführliche Seitentexte (SEO): Abschnitte und FAQ je Seite, siehe src/lib/content.ts */
+  content: {
+    workshop: {
+      sections: {
+        s1: {
+          h: 'Är Garage no bei Iech, tëscht Ettelbréck an Dikrech',
+          p: [
+            'D’Garage Um Rond Point ass um {address}, direkt um Rond-point zu Ierpeldeng, nieft der Aral-Tankstell. Wann Dir zu Ierpeldeng, Ettelbréck, Dikrech oder soss iergendwou an der Nordstad wunnt, ass eisen Atelier just e puer Minutten ewech.',
+            'Mir schwätze Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch. Dir kënnt eis de Problem mat Ärem Auto also an der Sprooch erklären, déi Iech am léifsten ass.',
+          ],
+        },
+        s2: {
+          h: 'Entretien: firwat de Plang vum Hiersteller wichteg ass',
+          p: [
+            'All Hiersteller leet en Entretiensplang fest, nom Kilometerstand oder no der Zäit zënter dem leschte Besuch an der Garage. Dir fannt en am Carnet d’entretien oder um Écran vun Ärem Auto.',
+            'Wann Dir Iech un dëse Plang haalt, gëtt Ären Auto manner ofgenotzt, Dir vermeit deier Pannen an den Auto behält beim Verkaf besser säi Wäert. Wat zu engem Entretien gehéiert, hänkt vum Plang of. Dozou gehéieren zum Beispill den Uelegwiessel, d’Filteren, d’Kontroll vun de Bremsen an den Niveauen, d’Luuchten an d’Scheiwewëscher.',
+          ],
+        },
+        s3: {
+          h: 'Bei dësen Zeeche sollt Dir an den Atelier kommen',
+          items: [
+            'Eng Warnluucht am Cockpit geet net méi aus.',
+            'D’Bremse jäizen, vibréieren oder zéien op eng Säit.',
+            'De Motor huet ze wéineg Kraaft oder spréngt schlecht un.',
+            'Et richt verbrannt, eppes leeft aus oder et kënnt ongewéinlechen Damp.',
+            'En neie Geräisch beim Fueren oder wann Dir d’Steierrad dréit.',
+          ],
+          p: [
+            'Gëtt e Feeler fréi fonnt, bleift d’Reparatur méi einfach. Beschreift am Formulaire, wat Dir mierkt a zënter wéini: Dat ass déi bescht Basis fir d’Diagnos.',
+          ],
+        },
+        s4: {
+          h: 'Karosserie a Lack no engem klengen Accident',
+          p: [
+            'Ass d’Karosserie verkraazt oder agedréckt, oder ass de Pare-choc beschiedegt? Da schéckt eis Fotoe vum Schued iwwer WhatsApp op {whatsapp}. Dir kritt eng éischt Aschätzung, nach ier Dir bei eis kommt. Duerno reparéiere mir an eisem Atelier d’Karosserie a lackéieren déi beschiedegt Deeler nei.',
+            'Wann en anert Gefier bedeelegt ass, fëllt de Constat amiable op der Plaz aus a maacht selwer Fotoe vum Accident. Dës Dokumenter sinn nëtzlech fir Är Versécherung.',
+          ],
+        },
+        s5: {
+          h: 'Autoen a Camionnetten',
+          p: [
+            'Eisen Atelier këmmert sech ëm Autoen a Camionnetten. Fir e Rasemeeër, eng Motorsee oder eng aner Maschinn kuckt op eiser Säit [Gaart & Bësch](page:garden). Fir eng Karosserie oder en Deel bis op d’Metall ofzebeizen, entdeckt eist [Ofbeize mat Sodablast](page:sodablast).',
+          ],
+        },
+      },
+      faqH: 'Froen zum Atelier',
+      faq: {
+        q1: {
+          q: 'Wéi maachen ech e Rendez-vous am Atelier aus?',
+          a: 'Beschreift Äert Gefier a wat ze maachen ass: am Formulaire op dëser Säit, um Telefon op {phone} oder iwwer WhatsApp op {whatsapp}. Mir ruffen Iech zréck, fir de Rendez-vous auszemaachen.',
+        },
+        q2: {
+          q: 'Wéini ass d’Garage op?',
+          a: '{hours}',
+        },
+        q3: {
+          q: 'Kann ech Fotoe schécken, ier ech kommen?',
+          a: 'Jo. Fir Karosserie oder Sodablast schéckt eis Fotoen iwwer WhatsApp op {whatsapp}: Dir kritt eng éischt Aschätzung.',
+        },
+        q4: {
+          q: 'Wou ass den Atelier?',
+          a: 'Um {address}, um Rond-point zu Ierpeldeng, nieft der Aral-Tankstell, tëscht Ettelbréck an Dikrech.',
+        },
+        q5: {
+          q: 'A wéi enge Sprooche kann ech de Problem erklären?',
+          a: 'Op Lëtzebuergesch, Franséisch, Däitsch, Englesch oder Portugisesch.',
+        },
+      },
+    },
+    sodablast: {
+      sections: {
+        s1: {
+          h: 'Sodablast oder Sandstralen: wat ass den Ënnerscheed?',
+          p: [
+            'Beim klassesche Sandstrale gëtt en haart Material wéi Sand oder Korund op d’Uewerfläch gestraalt. Dat beizt séier of, mä et gräift och d’Metall un a kann dënn Blecher erhëtzen an deforméieren.',
+            'Natron ass vill méi mëll wéi Metall. Et hëlt Lack, Fett an Dreck ewech, ouni d’Uewerfläch ofzedroen an ouni se z’erhëtzen. Dofir passt Sodablast gutt fir empfindlech Deeler an al Karosserien.',
+          ],
+        },
+        s2: {
+          h: 'Fir wéi eng Projeten?',
+          items: [
+            'Restauratioun vun engem alen Auto: d’Karosserie bis op d’Metall fräileeën, ier se reparéiert a lackéiert gëtt.',
+            'Felgen: den ale Lack an de festsëtzenden Dreck ewechmaachen, ier se nei lackéiert ginn.',
+            'Mechanesch Deeler: e Carter, e Motorblock oder en Zylinderkapp botzen, ier se kontrolléiert oder erëm zesummegebaut ginn.',
+          ],
+          p: [
+            'Dir wësst net, ob Ären Deel sech dofir eegent? Schéckt eis eng Foto iwwer WhatsApp op {whatsapp}, mir soen Iech et.',
+          ],
+        },
+        s3: {
+          h: 'Nom Ofbeizen: d’Metall schützen',
+          p: [
+            'Eng ofgebeizt Uewerfläch ass blankt Metall. Am Kontakt mat Loft a Fiichtegkeet oxydéiert se séier. Plangt dofir den nächste Schrëtt vun Ufank un: Grondéierung, Reparatur oder Lack. D’Natronreschter gi virum Lackéiere mat Waasser ofgespullt.',
+            'Bei engem Auto kann eisen Atelier duerno d’Karosserie reparéieren an nei lackéieren: Kuckt [Mechanik a Karosserie](page:workshop).',
+          ],
+        },
+        s4: {
+          h: 'Sodablast zu Lëtzebuerg, zu Ierpeldeng',
+          p: [
+            'Eisen Atelier ass um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech, an aus dem ganzen Norde vu Lëtzebuerg einfach z’erreechen. Ob fir en eenzelnen Deel oder fir e ganzen Auto: Mir maachen zesummen e Rendez-vous an der Garage aus.',
+          ],
+        },
+      },
+      faqH: 'Froen zum Sodablast',
+      faq: {
+        q1: {
+          q: 'Beschiedegt Sodablast d’Metall?',
+          a: 'Nee. Natron ass méi mëll wéi Metall: Et hëlt Lack, Fett an Dreck ewech, ouni d’Uewerfläch ofzedroen. Dat ass den Ënnerscheed zum Sandstralen.',
+        },
+        q2: {
+          q: 'Wat kascht d’Ofbeize mat Sodablast?',
+          a: 'Dat hänkt dovun of, wéi grouss den Deel ass a wéi vill Schichten ewech mussen. Schéckt eis Fotoen iwwer WhatsApp op {whatsapp}: Dir kritt eng éischt Aschätzung.',
+        },
+        q3: {
+          q: 'Muss den Deel nom Ofbeize behandelt ginn?',
+          a: 'Jo. Dat blankt Metall muss séier mat enger Grondéierung oder engem Lack geschützt ginn, soss oxydéiert et.',
+        },
+        q4: {
+          q: 'Kann een och Felge mat Sodablast ofbeizen?',
+          a: 'Jo, Felge gehéieren zu den Deeler, déi mir mat Sodablast ofbeizen, sou wéi al Karosserien a mechanesch Deeler.',
+        },
+      },
+    },
+    garden: {
+      sections: {
+        s1: {
+          h: 'Gaart- a Bëschmaschinnen an der Nordstad',
+          p: [
+            'Fir Äre Gaart, Ären Terrain oder Äre Bësch ze fleegen, fannt Dir an der Garage Um Rond Point Maschinnen, virun allem vun de Marken Honda a Stihl, an en Atelier, fir se ze reparéieren. D’Garage ass um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech.',
+          ],
+        },
+        s2: {
+          h: 'Déi richteg Maschinn wielen',
+          items: [
+            'Rasemeeër: D’Gréisst vum Rasen, d’Steigung an d’Hindernisser bestëmmen d’Schnëttbreet an d’Aart vum Undriff.',
+            'Fräischneider: fir Kanten, Häng an héicht Gras, wou de Rasemeeër net hikënnt.',
+            'Motorsee: D’Längt vum Schwäert hänkt vum Duerchmiesser vum Holz of, dat Dir am meeschte schneit.',
+            'Heckeschéier: D’Längt vum Messer an d’Gewiicht zielen, wann Dir laang oder an der Héicht schneit.',
+          ],
+          p: [
+            'Bensin oder Akku? Eng Maschinn mat Akku ass méi roueg a spréngt ouni Méi un. Eng Maschinn mat Bensinsmotor hält och op grousse Flächen duer. Sot eis, wéi Dir se benotzt, mir beroden Iech.',
+          ],
+        },
+        s3: {
+          h: 'Reparatur: wéini Dir Är Maschinn brénge sollt',
+          items: [
+            'De Motor spréngt net méi un oder geet aus.',
+            'D’Maschinn verléiert Kraaft oder fëmmt.',
+            'D’Kett oder d’Messer schneit schlecht.',
+            'Dir héiert ongewéinlech Geräischer oder spiert Vibratiounen.',
+          ],
+          p: [
+            'Beschreift d’Pann am Formulaire oder rufft eis un op {phone}. Gitt d’Mark an de Modell vun der Maschinn un: Da wësse mir direkt, ëm wat et geet.',
+          ],
+        },
+        s4: {
+          h: 'Esou kënnt Är Maschinn gutt duerch de Wanter',
+          p: [
+            'Ier Dir eng Maschinn mat Bensinsmotor fir de Wanter ewechstellt, botzt se, maacht den Tank eidel oder loosst de Motor lafen, bis hien ausgeet. Stellt se duerno am Dréchenen of. Esou spréngt d’Maschinn am Fréijoer méi einfach erëm un.',
+            'Den Akku gehéiert op eng frostfräi Plaz, am beschten hallef gelueden.',
+          ],
+        },
+      },
+      faqH: 'Froen zu de Gaartmaschinnen',
+      faq: {
+        q1: {
+          q: 'Vu wéi enge Marke verkaaft Dir Maschinnen?',
+          a: 'Virun allem Maschinne vun Honda a Stihl.',
+        },
+        q2: {
+          q: 'Wéi loossen ech mäi Rasemeeër oder meng Motorsee reparéieren?',
+          a: 'Bréngt d’Maschinn an den Atelier oder beschreift d’Pann am Formulaire op dëser Säit. Mir ruffen Iech zréck.',
+        },
+        q3: {
+          q: 'Wéini kann ech an der Garage laanschtkommen?',
+          a: '{hours}',
+        },
+        q4: {
+          q: 'Wou ass d’Garage?',
+          a: 'Um {address}, um Rond-point zu Ierpeldeng, nieft der Aral-Tankstell.',
+        },
+      },
+    },
+    trailersForSale: {
+      sections: {
+        s1: {
+          h: 'Saris, Humbaur a WM Meyer zu Ierpeldeng',
+          p: [
+            'Mir verkafen Unhänger vu Saris, Humbaur a WM Meyer, fir Privatleit a fir Betriber. Sot eis, wat Dir transportéiert: Mir hëllefen Iech, de Modell ze fannen, deen zu Ärem Auto an zu Ärem Führerschäin passt.',
+            'D’Garage ass um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech.',
+          ],
+        },
+        s2: {
+          h: 'Déi richteg Froe virum Kaf',
+          items: [
+            'Wat transportéieren ech am meeschten, a wéi vill weit et?',
+            'Wéi laang a wéi breet muss d’Luedfläch sinn?',
+            'Ka mäin Auto dësen Unhänger zéien (Felder O.1 an O.2 vun der Carte grise)?',
+            'Geet mäi Führerschäin duer: B, B mam Code 96 oder BE?',
+            'Wou stellen ech den Unhänger of, wann ech en net brauch?',
+          ],
+        },
+        s3: {
+          h: 'Privatleit a Betriber',
+          p: [
+            'Privatleit brauchen den Unhänger fir de Gaart, fir ze plënneren oder fir e Fräizäitgefier ze transportéieren. En Handwierker oder e Betrib transportéiert domat all Dag Material a Maschinnen: Do zielen d’Notzlaascht, eng robust Luedfläch an d’Befestegungspunkten nach méi.',
+          ],
+        },
+        s4: {
+          h: 'Kafen oder lounen?',
+          p: [
+            'Wann Dir nëmmen heiansdo en Unhänger braucht, kann et duergoen, een ze [lounen](page:rental). Eis Unhängersich weist Iech och, wéi en Unhänger Dir mat Ärem Führerschäin zéien dierft.',
+          ],
+        },
+      },
+      faqH: 'Froen zum Kaf vun engem Unhänger',
+      faq: {
+        q1: {
+          q: 'Vu wéi enge Marke verkaaft Dir Unhänger?',
+          a: 'Saris, Humbaur a WM Meyer.',
+        },
+        q2: {
+          q: 'Verkaaft Dir och u Betriber?',
+          a: 'Jo, mir verkafen Unhänger u Privatleit an u Betriber.',
+        },
+      },
+    },
+    cars: {
+      sections: {
+        s1: {
+          h: 'En Auto kafen an der Garage Um Rond Point',
+          p: [
+            'All d’Autoen op dëser Säit si bei eis am Stock, um Rond-point zu Ierpeldeng. D’Lëscht gëtt all Moien op Basis vun eisen Annoncen aktualiséiert: Dir gesitt de Präis, de Kilometerstand, d’Joer an d’Fotoe vun all Auto.',
+          ],
+          items: [
+            'Wielt en Auto aus der Lëscht a maacht seng Detailsäit op.',
+            'Rufft eis un oder schreift eis op WhatsApp, fir nozefroen, ob en nach disponibel ass.',
+            'Kommt den Auto an der Garage kucken a maacht eng Probefahrt op Rendez-vous.',
+          ],
+        },
+        s2: {
+          h: 'Nei Autoen an Occasiounen no bei Ettelbréck an Dikrech',
+          p: [
+            'Am Stock sinn nei Autoen an Occasiounen. De Stock ännert sech dacks: D’Lëscht weist Iech all Dag de Stand vum Moien. Dir fannt eis Annoncen och op LuxAuto an AutoScout24.',
+          ],
+        },
+        s3: {
+          h: 'Wat ass mat Ärem aktuellen Auto?',
+          p: [
+            'Wëllt Dir Ären Auto a Reprise ginn? Sot et eis am Formulaire vum Auto, deen Iech interesséiert. Wëllt Dir léiwer verkafen, ouni Iech selwer drëm ze këmmeren? Entdeckt eise Kommissiounsverkaf méi ënnen op dëser Säit.',
+          ],
+        },
+      },
+      faqH: 'Froen zu eisen Autoen',
+      faq: {
+        q1: {
+          q: 'Kann ech eng Probefahrt maachen?',
+          a: 'Jo, op Rendez-vous. Rufft eis un op {phone} oder schreift eis iwwer WhatsApp op {whatsapp}.',
+        },
+        q2: {
+          q: 'Wou kann ech d’Autoe kucken?',
+          a: 'An der Garage, um {address}, um Rond-point zu Ierpeldeng. {hours}',
+        },
+        q3: {
+          q: 'Sinn Är Autoen och op LuxAuto an AutoScout24?',
+          a: 'Jo, Dir fannt eis Annoncen och op LuxAuto an AutoScout24. Hei gesitt Dir eise ganze Stock op enger Plaz.',
+        },
+      },
+    },
+    contact: {
+      sections: {
+        s1: {
+          h: 'Wéi erreecht Dir eis am beschten?',
+          items: [
+            'Eng kuerz Fro oder Fotoen, déi Dir eis weise wëllt: WhatsApp op {whatsapp}.',
+            'E Rendez-vous oder eng direkt Äntwert: Telefon op {phone}.',
+            'Eng detailléiert Ufro: de Formulaire hei ënnen oder eng E-Mail un {email}.',
+          ],
+        },
+        s2: {
+          h: 'De Wee bei eis an d’Garage',
+          p: [
+            'D’Garage ass um {address}, um Rond-point zu Ierpeldeng, nieft der Aral-Tankstell. Kommt Dir vun Ettelbréck oder vun Dikrech? Da läit de Rond-point op Ärem Wee. Fir déi genee Route maacht Google Maps iwwer dës Säit op.',
+          ],
+        },
+      },
+      faqH: 'Praktesch Froen',
+      faq: {
+        q1: {
+          q: 'Wéini ass d’Garage op?',
+          a: '{hours}',
+        },
+        q2: {
+          q: 'Wéi eng Sprooche schwätzt Dir?',
+          a: 'Mir schwätze Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch.',
+        },
+      },
+    },
+    rental: {
+      sections: {
+        s1: {
+          h: 'Unhänger lounen an der Nordstad',
+          p: [
+            'Um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech, lount Dir en Unhänger oder eng Camionnette ganz no bei Iech doheem. Eis Unhängersich hei uewe weist Iech mat e puer Klicks, wéi en Unhänger zu deem passt, wat Dir transportéiert, an ob Äre Führerschäin duergeet.',
+          ],
+        },
+        s2: {
+          h: 'Tipps fir richteg ze lueden',
+          items: [
+            'Iwwerschreit ni dat zulässegt Gesamtgewiicht vum Unhänger an och net d’Unhängelaascht vun Ärem Auto.',
+            'Verdeelt d’Luedung: schwéier Saachen iwwer d’Achs, e bësse Gewiicht op d’Kupplung, sou wéi et an der Uleedung steet.',
+            'Sécheert d’Luedung mat Spannrimmen an deckt alles, wat lass ass, mat enger Bâche oder engem Netz of.',
+            'Ier Dir lassfuert, kontrolléiert d’Kupplung, d’Luuchten an den Drock vun de Pneuen.',
+            'Fuert méi lues wéi ouni Luedung: Auto an Unhänger bremse manner gutt a brauche méi Plaz an de Kéieren.',
+          ],
+        },
+      },
+    },
+    category: {
+      'porte-voiture': {
+        sections: {
+          s1: {
+            h: 'Wéini en Autosunhänger lounen?',
+            p: [
+              'Fir en Auto heemzebréngen, deen net méi fiert, fir en Oldtimer ze transportéieren, ouni Kilometer dobäizefueren, oder fir en Auto ofzehuelen, deen Dir wäit vun doheem kaaft hutt. Mam Autosunhänger muss den transportéierten Auto net selwer fueren.',
+            ],
+          },
+          s2: {
+            h: 'En Auto sécher lueden',
+            items: [
+              'Kontrolléiert, datt den Auto net méi weit wéi d’Notzlaascht vum Unhänger.',
+              'Fuert lues a riicht op d’Rampen erop, mat engem, deen Iech aweist.',
+              'Stellt den Auto esou, datt e bësse Gewiicht op de viischten Deel vum Unhänger läit, sou wéi et an der Uleedung steet.',
+              'Sécheert all Rad mat passende Spannrimmen a kontrolléiert se no den éischte Kilometer.',
+            ],
+          },
+        },
+      },
+      'porte-moto': {
+        sections: {
+          s1: {
+            h: 'Eng Moto transportéieren',
+            p: [
+              'Fir op eng Rennstreck ze fueren, eng Moto reparéieren ze loossen oder se nom Kaf heemzebréngen, ass de Motosunhänger méi einfach wéi eng Camionnette: D’Moto kënnt iwwer d’Ramp erop a steet da fest am Radhalter.',
+            ],
+          },
+          s2: {
+            h: 'D’Moto richteg festmaachen',
+            items: [
+              'Setzt d’Viischtrad fest an de Radhalter.',
+              'Benotzt véier Spannrimmen, zwee vir an zwee hannen, u stabile Punkte vum Rumm.',
+              'Dréckt d’Fiederung e bëssen zesummen, awer net ze vill.',
+              'Kontrolléiert no den éischte Kilometer, ob d’Spannrimmen nach fest sinn.',
+            ],
+          },
+        },
+      },
+      benne: {
+        sections: {
+          s1: {
+            h: 'Opgepasst mam Gewiicht vum Material',
+            p: [
+              'Material, dat lass gelueden ass, weit vill. E Kubikmeter fiicht Äerd weit ongeféier 1,5 bis 1,8 Tonnen, e Kubikmeter Kis ongeféier 1,5 Tonnen. E Kipper, dee bis un de Rand voll ass, iwwerschreit also séier seng Notzlaascht.',
+              'Kuckt d’Notzlaascht an den Detailer vum Unhänger no a luet deementspriechend: Léiwer zweemol fueren, wéi den Unhänger z’iwwerlueden.',
+            ],
+          },
+          s2: {
+            h: 'Chantier, Gaart, Recyclingszenter',
+            items: [
+              'Deckt d’Luedung mat enger Bâche oder engem Netz of, fir datt näischt op d’Strooss fält.',
+              'Sortéiert den Offall, ier Dir lassfuert: Am Recyclingszenter spuert Dir esou Zäit.',
+              'Kippt nëmmen op flaachem, festem Buedem of, wann den Unhänger ugekuppelt ass.',
+            ],
+          },
+        },
+      },
+      frigorifique: {
+        sections: {
+          s1: {
+            h: 'Fir wéi eng Geleeënheeten?',
+            p: [
+              'Familljefest, Hochzäit, Gebuertsdag, Kiermes, Maart oder Veräinsfest: De Killunhänger hält Gedrénks an Iessen op der Plaz frësch, während der ganzer Dauer vum Evenement.',
+            ],
+          },
+          s2: {
+            h: 'Esou benotzt Dir de Killunhänger',
+            items: [
+              'Schléisst den Unhänger e puer Stonne virum Lueden un, fir datt e scho kal ass.',
+              'Luet am beschte Produiten, déi scho kal sinn: Et brauch Zäit, fir vill lauwarmt Gedrénks ofzekillen.',
+              'Loosst tëscht de Keesse Plaz, fir datt d’Loft zirkuléiere kann.',
+              'Suergt fir e passende Stroumuschloss no bei der Plaz, wou den Unhänger steet.',
+            ],
+          },
+        },
+      },
+      camionnette: {
+        sections: {
+          s1: {
+            h: 'Plënneren, Miwwelen, Material',
+            p: [
+              'Eng Camionnette passt fir ze plënneren, fir Miwwelen, Haushaltsapparater oder voluminéist Material, ouni datt Dir en Unhänger ukuppele musst. D’Luedung bleift och bei Reen dréchen.',
+            ],
+          },
+          s2: {
+            h: 'Tipps fir Ären Transport',
+            items: [
+              'Moosst grouss Miwwelen, ier Dir reservéiert.',
+              'Stellt schwéier Saache ganz no bannen, géint d’Trennwand, a sécheert d’Luedung mat Spannrimmen.',
+              'Schützt d’Miwwele mat Decken, fir datt se net verkraazt ginn.',
+              'Denkt un d’Héicht vum Gefier, ier Dir an en ënnerierdesche Parking fuert.',
+            ],
+          },
+        },
+      },
     },
   },
 };

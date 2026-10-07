@@ -51,6 +51,9 @@ export function dayKeyInLuxembourg(date = new Date()): DayKey {
 }
 
 export const telHref = `tel:${site.phone.tel}`;
+/** Nummern ohne Zeilenumbruch in der Mitte (geschützte Leerzeichen) */
+export const phoneText = site.phone.display.replace(/ /g, '\u00a0');
+export const whatsappText = site.whatsapp.display.replace(/ /g, '\u00a0');
 export const whatsappHref = (text: string) => `https://wa.me/${site.whatsapp.wa}?text=${encodeURIComponent(text)}`;
 
 /**

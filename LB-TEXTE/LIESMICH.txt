@@ -1,0 +1,16 @@
+Luxemburgische Texte prüfen
+===========================
+
+lb-pruefen.txt  – 782 Texte, rund 6237 Wörter, nur Luxemburgisch.
+                  Abschnittsweise in spellchecker.lu (oder einen anderen Checker) einfügen.
+                  Jeder Text hat eine Nummer (z. B. „57.“).
+
+lb-texte.txt    – dieselben Texte mit Nummer und Kennung (@@ 57 hero.h1).
+                  Korrekturen hier unter der passenden Nummer eintragen.
+                  Platzhalter wie {address} oder {phone} stehen lassen.
+
+Übernehmen:     npm run lb:import
+                → schreibt nur geänderte Texte nach src/content/texts.json
+                  (gleicher Speicherort wie Änderungen aus dem Dashboard).
+
+Alternativ einzelne Texte direkt im Dashboard ändern: /admin/ → Texte → LB.

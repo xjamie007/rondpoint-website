@@ -11,11 +11,14 @@ interface Props {
   label: string;
   tone?: 'light' | 'dark';
   uid: string;
+  /** eigene Navigations-Landmarke? Nur einmal pro Seite (Kopf), sonst Gruppe */
+  landmark?: boolean;
 }
-const { lang, alternates, label, tone = 'light', uid } = Astro.props;
+const { lang, alternates, label, tone = 'light', uid, landmark = false } = Astro.props;
 const id = `lang-${uid}`;
+const Tag = landmark ? 'nav' : 'div';
 ---
-<nav class:list={['langs', tone === 'dark' && 'on-asphalt']} aria-labelledby={id}>
+<Tag class:list={['langs', tone === 'dark' && 'on-asphalt']} aria-labelledby={id} role={landmark ? undefined : 'group'}>
   <span id={id} class="langs-label">{label}</span>
   <ul>
     {
@@ -33,7 +36,7 @@ const id = `lang-${uid}`;
       ))
     }
   </ul>
-</nav>
+</Tag>
 
 <style>
   .langs { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }

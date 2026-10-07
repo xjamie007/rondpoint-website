@@ -9,6 +9,7 @@ export const GET: APIRoute = () =>
     [
       'User-agent: *',
       presentation ? 'Disallow: /' : 'Allow: /',
+      `Disallow: ${withBase('/admin/')}`,
       '',
       `Sitemap: ${new URL(withBase('/sitemap.xml'), SITE_ORIGIN).toString()}`,
       '',

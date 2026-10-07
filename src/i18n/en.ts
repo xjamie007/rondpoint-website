@@ -185,6 +185,7 @@ const en: Dict = {
       count: { one: '{n} car', other: '{n} cars' },
       empty: 'No cars match your filters.',
       reset: 'Reset filters',
+      apply: 'Show results',
       upTo: 'up to {price}',
     },
   },
@@ -558,6 +559,13 @@ const en: Dict = {
     errorSummary: 'Check the highlighted fields.',
     errorSend: 'Your request was not sent. Try again or call us on +352 81 05 41.',
     errorRate: 'You have sent a lot of requests today. Call us on +352 81 05 41.',
+    fallbackH: 'Last step: send your request',
+    fallbackText: 'Choose how to send it to us. Your message is already written, you just need to send it.',
+    fallbackWhatsapp: 'Send via WhatsApp',
+    fallbackMail: 'Send by email',
+    fallbackEdit: 'Edit request',
+    fallbackSubject: 'Request from the website',
+    fallbackIntro: 'Hello, here is my request:',
     errors: {
       name: 'Enter your name.',
       phone: 'Enter a phone number so that we can call you back.',
@@ -858,6 +866,422 @@ const en: Dict = {
       charge: 'Your car may not tow more than the value in field O.1 (braked trailer) or O.2 (unbraked) of the registration certificate.',
       usageH: 'Type and size',
       usage: 'Flatbed, tipper, car trailer or box trailer: the right one depends on what you carry most often and where you will park it.',
+    },
+  },
+  /** Ausführliche Seitentexte (SEO): Abschnitte und FAQ je Seite, siehe src/lib/content.ts */
+  content: {
+    workshop: {
+      sections: {
+        s1: {
+          h: 'Your local car garage between Ettelbruck and Diekirch',
+          p: [
+            'Garage Um Rond Point is at {address}, right at the Erpeldange roundabout, next to the Aral station. If you live in Erpeldange-sur-Sûre, Ettelbruck, Diekirch or anywhere in the Nordstad, the workshop is just a few minutes from home.',
+            'We speak Luxembourgish, French, German, English and Portuguese, so you can explain the problem with your car in whichever language suits you best.',
+          ],
+        },
+        s2: {
+          h: 'Car servicing: why follow the manufacturer’s schedule',
+          p: [
+            'Every manufacturer sets a service schedule, based on mileage or on the time since the last service. You will find it in the service book or on your car’s dashboard display.',
+            'Sticking to these intervals limits wear, prevents costly breakdowns and helps your car hold its resale value. Depending on the schedule, a service includes, for example, the oil change, filters, a check of the brakes and fluid levels, the lights and the wipers.',
+          ],
+        },
+        s3: {
+          h: 'Signs it’s time to bring your car to the workshop',
+          items: [
+            'A warning light stays lit on the dashboard.',
+            'The brakes squeal, vibrate or pull to one side.',
+            'The engine lacks power or is hard to start.',
+            'A burning smell, a leak or unusual smoke.',
+            'A new noise when driving or turning the steering wheel.',
+          ],
+          p: [
+            'The sooner a fault is found, the simpler the repair. Describe in the form what you have noticed and since when: that is the best starting point for the diagnosis.',
+          ],
+        },
+        s4: {
+          h: 'Bodywork and paint after a minor collision',
+          p: [
+            'Scratch, dent or damaged bumper: send us photos of the damage on WhatsApp at {whatsapp}. You get a first opinion before you even come in. We then repair the bodywork and repaint the damaged parts in our workshop.',
+            'If another vehicle is involved, fill in the European accident statement (constat amiable) at the scene and take your own photos of the accident. These documents are useful for your insurer.',
+          ],
+        },
+        s5: {
+          h: 'Cars and vans',
+          p: [
+            'The workshop looks after cars and vans. For a lawn mower, a chainsaw or another machine, see our [Garden & forestry](page:garden) page. To strip a car body or a part back to bare metal, find out about [soda blasting](page:sodablast).',
+          ],
+        },
+      },
+      faqH: 'Questions about the workshop',
+      faq: {
+        q1: {
+          q: 'How do I book an appointment at the workshop?',
+          a: 'Describe your vehicle and what needs doing in the form on this page, by phone on {phone} or on WhatsApp at {whatsapp}. We will call you back to arrange the appointment.',
+        },
+        q2: {
+          q: 'When is the garage open?',
+          a: '{hours}',
+        },
+        q3: {
+          q: 'Can I send photos before I come in?',
+          a: 'Yes. For bodywork or soda blasting, send us photos on WhatsApp at {whatsapp} and you will get a first opinion.',
+        },
+        q4: {
+          q: 'Where is the workshop?',
+          a: 'At {address}, at the Erpeldange roundabout, next to the Aral station, between Ettelbruck and Diekirch.',
+        },
+        q5: {
+          q: 'Which languages can I explain the problem in?',
+          a: 'In Luxembourgish, French, German, English or Portuguese.',
+        },
+      },
+    },
+    sodablast: {
+      sections: {
+        s1: {
+          h: 'Soda blasting or sandblasting: what’s the difference?',
+          p: [
+            'Traditional sandblasting fires a hard abrasive, such as sand or corundum. It strips quickly, but it also attacks the metal and can heat up and warp thin sheet metal.',
+            'Bicarbonate of soda is much softer than metal. It removes paint, grease and dirt without eating into the surface and without heating it. That is why soda blasting is suitable for delicate parts and classic car bodies.',
+          ],
+        },
+        s2: {
+          h: 'Which projects is soda blasting for?',
+          items: [
+            'Classic car restoration: strip the body back to bare metal before repair and painting.',
+            'Wheel rims: remove old paint and ingrained dirt before repainting.',
+            'Mechanical parts: clean a casing, an engine block or a cylinder head before inspection or reassembly.',
+          ],
+          p: [
+            'Not sure whether your part is suitable? Send a photo on WhatsApp at {whatsapp} and we will tell you.',
+          ],
+        },
+        s3: {
+          h: 'After stripping: protect the metal',
+          p: [
+            'A stripped surface is bare metal. In contact with air and moisture, it oxidises quickly. So plan the next step from the start: primer, repair or paint. Bicarbonate residue rinses off with water before painting.',
+            'For a car, our workshop can then repair and repaint the bodywork: see [mechanical and body repairs](page:workshop).',
+          ],
+        },
+        s4: {
+          h: 'Soda blasting in Erpeldange, Luxembourg',
+          p: [
+            'Our workshop is at the Erpeldange-sur-Sûre roundabout, between Ettelbruck and Diekirch, easy to reach from anywhere in the north of Luxembourg. Whether it is a single part or a complete car, we arrange an appointment at the garage together.',
+          ],
+        },
+      },
+      faqH: 'Questions about soda blasting',
+      faq: {
+        q1: {
+          q: 'Does soda blasting damage the metal?',
+          a: 'No. Bicarbonate of soda is softer than metal: it removes paint, grease and dirt without eating into the surface. That is what sets it apart from sandblasting.',
+        },
+        q2: {
+          q: 'How much does soda blasting cost?',
+          a: 'It depends on the size of the part and the layers to be removed. Send photos on WhatsApp at {whatsapp} and you will get a first opinion.',
+        },
+        q3: {
+          q: 'Does the part need treating after stripping?',
+          a: 'Yes. Bare metal must be protected quickly with primer or paint, otherwise it oxidises.',
+        },
+        q4: {
+          q: 'Can wheel rims be soda blasted?',
+          a: 'Yes, wheel rims are among the parts we soda blast, along with classic car bodies and mechanical parts.',
+        },
+      },
+    },
+    garden: {
+      sections: {
+        s1: {
+          h: 'Garden and forestry machinery in the Nordstad',
+          p: [
+            'To look after your garden, your land or your woodland, you will find machines at Garage Um Rond Point, mainly from Honda and Stihl, plus a workshop to repair them. The garage is at the Erpeldange roundabout, between Ettelbruck and Diekirch.',
+          ],
+        },
+        s2: {
+          h: 'Choosing the right machine',
+          items: [
+            'Lawn mower: the size of the lawn, the slope and any obstacles decide the cutting width and the type of drive.',
+            'Brush cutter: for edges, banks and long grass that the mower cannot reach.',
+            'Chainsaw: the guide bar length depends on the diameter of the wood you cut most often.',
+            'Hedge trimmer: blade length and weight matter if you trim for long periods or at height.',
+          ],
+          p: [
+            'Petrol or battery? A battery machine is quieter and starts effortlessly. A petrol machine keeps going on large plots. Tell us how you will use it and we will advise you.',
+          ],
+        },
+        s3: {
+          h: 'Repairs: when to bring your machine in',
+          items: [
+            'The engine won’t start or it stalls.',
+            'The machine is losing power or smoking.',
+            'The chain or blade cuts badly.',
+            'You notice unusual noises or vibrations.',
+          ],
+          p: [
+            'Describe the fault in the form or call us on {phone}. Give us the make and model of the machine: that way we know straight away what we are dealing with.',
+          ],
+        },
+        s4: {
+          h: 'Tips for winter storage',
+          p: [
+            'Before putting a petrol machine away for the winter, clean it, empty the tank or let the engine run until it stops, then store it somewhere dry. A machine that has been stored properly starts more easily in spring.',
+            'Store batteries somewhere frost-free, ideally half charged.',
+          ],
+        },
+      },
+      faqH: 'Questions about garden machinery',
+      faq: {
+        q1: {
+          q: 'Which brands of machinery do you sell?',
+          a: 'Mainly Honda and Stihl machines.',
+        },
+        q2: {
+          q: 'How do I get my lawn mower or chainsaw repaired?',
+          a: 'Bring the machine to the workshop or describe the fault in the form on this page. We will call you back.',
+        },
+        q3: {
+          q: 'When can I come to the garage?',
+          a: '{hours}',
+        },
+        q4: {
+          q: 'Where is the garage?',
+          a: 'At {address}, at the Erpeldange roundabout, next to the Aral station.',
+        },
+      },
+    },
+    trailersForSale: {
+      sections: {
+        s1: {
+          h: 'Saris, Humbaur and WM Meyer trailers in Erpeldange',
+          p: [
+            'We sell Saris, Humbaur and WM Meyer trailers to private and business customers. Tell us what you carry and we will help you find the model that suits your car and your licence.',
+            'The garage is at the Erpeldange-sur-Sûre roundabout, between Ettelbruck and Diekirch.',
+          ],
+        },
+        s2: {
+          h: 'The right questions to ask before you buy',
+          items: [
+            'What do I carry most often, and how heavy is it?',
+            'What length and width of load area do I need?',
+            'Can my car tow this trailer (fields O.1 and O.2 on the registration certificate)?',
+            'Is my licence enough: B, B with code 96, or BE?',
+            'Where will I park the trailer when I am not using it?',
+          ],
+        },
+        s3: {
+          h: 'Private and business customers',
+          p: [
+            'For a private customer, a trailer is used for the garden, for moving house or for transporting a leisure vehicle. For a tradesperson or a business, it carries equipment and machinery every day, so the payload, a sturdy load bed and the tie-down points matter more.',
+          ],
+        },
+        s4: {
+          h: 'Buy or hire?',
+          p: [
+            'If you only need a trailer now and then, [hiring one](page:rental) may be enough. Our guide also shows you which trailer your licence allows.',
+          ],
+        },
+      },
+      faqH: 'Questions about buying a trailer',
+      faq: {
+        q1: {
+          q: 'Which trailer brands do you sell?',
+          a: 'Saris, Humbaur and WM Meyer.',
+        },
+        q2: {
+          q: 'Do you also sell to businesses?',
+          a: 'Yes, we sell trailers to private and business customers.',
+        },
+      },
+    },
+    cars: {
+      sections: {
+        s1: {
+          h: 'Buying a car at Garage Um Rond Point',
+          p: [
+            'All the cars on this page are in stock with us, at the Erpeldange roundabout. The list is updated every morning from our listings: you can see the price, mileage, year and photos of each car.',
+          ],
+          items: [
+            'Choose a car from the list and open its details page.',
+            'Call us or message us on WhatsApp to check that it is still available.',
+            'Come and see it at the garage and take a test drive by appointment.',
+          ],
+        },
+        s2: {
+          h: 'New and used cars near Ettelbruck and Diekirch',
+          p: [
+            'Our stock includes new and used cars. It changes often: each day, the list shows what was in stock that morning. Our listings are also published on LuxAuto and AutoScout24.',
+          ],
+        },
+        s3: {
+          h: 'What about your current car?',
+          p: [
+            'Would you like to part-exchange your car? Mention it in the form for the car you are interested in. Would you rather sell without having to deal with it yourself? Find out about our consignment sale service further down this page.',
+          ],
+        },
+      },
+      faqH: 'Questions about our cars',
+      faq: {
+        q1: {
+          q: 'Can I test drive a car?',
+          a: 'Yes, by appointment. Call us on {phone} or message us on WhatsApp at {whatsapp}.',
+        },
+        q2: {
+          q: 'Where can I see the cars?',
+          a: 'At the garage, {address}, at the Erpeldange roundabout. {hours}',
+        },
+        q3: {
+          q: 'Are your cars also on LuxAuto and AutoScout24?',
+          a: 'Yes, our listings are also published on LuxAuto and AutoScout24. Here, you can see all our stock in one place.',
+        },
+      },
+    },
+    contact: {
+      sections: {
+        s1: {
+          h: 'Which way to contact us?',
+          items: [
+            'A quick question or photos to show us: WhatsApp at {whatsapp}.',
+            'An appointment or an immediate answer: phone us on {phone}.',
+            'A detailed request: the form below or an email to {email}.',
+          ],
+        },
+        s2: {
+          h: 'Getting to the garage',
+          p: [
+            'The garage is at {address}, at the Erpeldange-sur-Sûre roundabout, next to the Aral station. Coming from Ettelbruck or Diekirch? The roundabout is on your way. For exact directions, open Google Maps from this page.',
+          ],
+        },
+      },
+      faqH: 'Practical questions',
+      faq: {
+        q1: {
+          q: 'When is the garage open?',
+          a: '{hours}',
+        },
+        q2: {
+          q: 'Which languages do you speak?',
+          a: 'We speak Luxembourgish, French, German, English and Portuguese.',
+        },
+      },
+    },
+    rental: {
+      sections: {
+        s1: {
+          h: 'Trailer hire in the Nordstad',
+          p: [
+            'At the Erpeldange roundabout, between Ettelbruck and Diekirch, you can hire a trailer or a van close to home. Our guide above shows you in a few clicks which trailer suits what you are carrying and whether your licence is enough.',
+          ],
+        },
+        s2: {
+          h: 'Tips for loading correctly',
+          items: [
+            'Never exceed the trailer’s maximum authorised mass or your car’s towing capacity.',
+            'Spread the load: heavy items over the axle and a little weight on the drawbar, as stated in the instructions.',
+            'Secure the load with straps and cover loose material with a tarpaulin or a net.',
+            'Before setting off, check the coupling, the lights and the tyre pressures.',
+            'Drive more slowly than when empty: the combination does not brake as well and needs more room on bends.',
+          ],
+        },
+      },
+    },
+    category: {
+      'porte-voiture': {
+        sections: {
+          s1: {
+            h: 'When should you hire a car trailer?',
+            p: [
+              'To bring back a car that no longer runs, to transport a classic car without adding kilometres, or to collect a car you have bought far from home. With a car trailer, the car being transported does not have to be driven.',
+            ],
+          },
+          s2: {
+            h: 'Loading a car safely',
+            items: [
+              'Check that the car being transported does not exceed the trailer’s payload.',
+              'Drive up slowly, keeping straight in line with the ramps, with someone guiding you.',
+              'Position the car so that a little weight rests on the front of the trailer, as stated in the instructions.',
+              'Strap down each wheel with suitable straps and check them after the first few kilometres.',
+            ],
+          },
+        },
+      },
+      'porte-moto': {
+        sections: {
+          s1: {
+            h: 'Transporting a motorbike',
+            p: [
+              'Whether you are heading to a race track, taking a motorbike in for repair or bringing it home after buying it, a motorbike trailer is simpler than a van: the bike goes up the ramp and sits firmly in the wheel chock.',
+            ],
+          },
+          s2: {
+            h: 'Securing a motorbike properly',
+            items: [
+              'Wedge the front wheel in the wheel chock.',
+              'Use four straps, two at the front and two at the back, on solid points of the frame.',
+              'Compress the suspension slightly, but not all the way.',
+              'Check the strap tension after the first few kilometres.',
+            ],
+          },
+        },
+      },
+      benne: {
+        sections: {
+          s1: {
+            h: 'Watch the weight of bulk materials',
+            p: [
+              'Loose materials are heavy. One cubic metre of damp soil weighs around 1.5 to 1.8 tonnes, and one cubic metre of gravel around 1.5 tonnes. A tipper filled to the brim can therefore quickly exceed its payload.',
+              'Check the payload on the trailer’s details page and load accordingly: two trips are better than one overloaded trailer.',
+            ],
+          },
+          s2: {
+            h: 'Building site, garden, recycling centre',
+            items: [
+              'Cover the load with a tarpaulin or a net so that nothing falls onto the road.',
+              'Sort your waste before you set off: you will save time at the recycling centre.',
+              'Only tip on flat, firm ground, with the trailer still hitched to the car.',
+            ],
+          },
+        },
+      },
+      frigorifique: {
+        sections: {
+          s1: {
+            h: 'Which occasions is it for?',
+            p: [
+              'Family celebration, wedding, birthday, village fête, market or club party: a refrigerated trailer keeps drinks and food cool on site for the whole event.',
+            ],
+          },
+          s2: {
+            h: 'Tips for using the trailer',
+            items: [
+              'Plug the trailer in a few hours before you load it, so that it is cold.',
+              'Ideally, load products that are already cold: chilling a large quantity of lukewarm drinks takes time.',
+              'Leave room for air to circulate between the crates.',
+              'Make sure there is a suitable power connection close to where the trailer will stand.',
+            ],
+          },
+        },
+      },
+      camionnette: {
+        sections: {
+          s1: {
+            h: 'Moving house, furniture, equipment',
+            p: [
+              'A van is suitable for moving house, furniture, household appliances or bulky equipment, without having to hitch up a trailer. Your load stays protected from the rain.',
+            ],
+          },
+          s2: {
+            h: 'Tips for transporting your load',
+            items: [
+              'Measure large furniture before you book.',
+              'Place heavy items at the far end, against the bulkhead, and strap the load down.',
+              'Protect furniture with blankets to avoid scratches.',
+              'Remember the height of the vehicle before driving into an underground car park.',
+            ],
+          },
+        },
+      },
     },
   },
 };

@@ -6,7 +6,8 @@
  */
 import { rich, type Dict } from '@/i18n';
 import { path, type Lang } from '@/i18n/config';
-import { showOpenPoints } from '@/lib/site';
+import { showOpenPoints, site } from '@/lib/site';
+import Icon from '@/components/Icon.astro';
 
 interface Props {
   type: 'location' | 'voiture' | 'atelier' | 'contact';
@@ -31,6 +32,10 @@ const privacyLink = `<a class="link" href="${path(lang, 'privacy')}">${f.consent
   data-msg-send={f.errorSend}
   data-msg-rate={f.errorRate}
   data-msg-sending={f.sending}
+  data-wa={site.whatsapp.wa}
+  data-mail={site.email}
+  data-subject={f.fallbackSubject}
+  data-intro={f.fallbackIntro}
 >
   <input type="hidden" name="type" value={type} />
   <input type="hidden" name="lang" value={lang} />
@@ -104,6 +109,23 @@ const privacyLink = `<a class="link" href="${path(lang, 'privacy')}">${f.consent
     <slot name="after" />
   </div>
 
+  {
+    !action && (
+      <div class="fallback" data-form-fallback tabindex="-1" hidden>
+        <p class="success-h">{f.fallbackH}</p>
+        <p>{f.fallbackText}</p>
+        <div class="fallback-btns">
+          <a class="btn btn-primary" data-fallback-wa href={`https://wa.me/${site.whatsapp.wa}`} rel="noopener">
+            <Icon name="whatsapp" size={20} />
+            {f.fallbackWhatsapp}
+          </a>
+          <a class="btn btn-secondary" data-fallback-mail href={`mailto:${site.email}`}>{f.fallbackMail}</a>
+        </div>
+        <button type="button" class="edit" data-fallback-edit>{f.fallbackEdit}</button>
+      </div>
+    )
+  }
+
   <div class="success" data-form-success tabindex="-1" hidden>
     <svg class="success-check" viewBox="0 0 52 52" width="52" height="52" aria-hidden="true">
       <circle cx="26" cy="26" r="24" fill="none" stroke="currentColor" stroke-width="2" />
@@ -132,6 +154,11 @@ const privacyLink = `<a class="link" href="${path(lang, 'privacy')}">${f.consent
   .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
   .form-summary { margin-bottom: 24px; }
   .submit-row { display: grid; gap: 12px; justify-items: start; }
+  /* Ohne Formular-Schnittstelle: fertig formulierte Anfrage per WhatsApp oder E-Mail */
+  .fallback { display: grid; gap: 12px; padding: 24px; border: 2px solid var(--color-black); border-radius: var(--radius-edge); background: var(--color-paper); }
+  .fallback > p { margin: 0; }
+  .fallback-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
+  .edit { justify-self: start; min-height: 44px; padding: 0; border: 0; background: none; font-weight: 600; text-decoration: underline; text-underline-offset: 0.2em; cursor: pointer; }
   .success { display: flex; gap: 16px; align-items: flex-start; padding: 24px 0; }
   .success-check { flex: none; color: var(--color-black); }
   .success-check path { stroke-dasharray: 30; stroke-dashoffset: 30; }

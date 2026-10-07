@@ -3,9 +3,10 @@
  * Footer (D2.8): asphalt, weiße Schrift. NAP exakt wie im JSON-LD.
  */
 import LangSwitch from './LangSwitch.astro';
-import { fmt, rich, type Dict } from '@/i18n';
-import { path, type Lang } from '@/i18n/config';
-import { horaires, showOpenPoints, site, telHref, whatsappHref } from '@/lib/site';
+import { rich, type Dict } from '@/i18n';
+import { path, withBase, type Lang } from '@/i18n/config';
+import { showOpenPoints, site, telHref, whatsappHref, phoneText, whatsappText } from '@/lib/site';
+import { hoursSummary } from '@/lib/content';
 import Logo from './Logo.astro';
 
 interface Props {
@@ -14,8 +15,8 @@ interface Props {
   alternates: { lang: Lang; href: string }[];
 }
 const { lang, t, alternates } = Astro.props;
-const range = (iv: [string, string][]) => iv.map(([a, b]) => `${a}–${b}`).join(` ${t.hours.and} `);
-const hoursShort = fmt(t.hours.short, { weekday: range(horaires.week.mo), saturday: range(horaires.week.sa) });
+// gleiche Tage werden zusammengefasst, stimmt auch nach Änderungen im Dashboard
+const hoursShort = hoursSummary(t, lang);
 ---
 <footer class="site-footer on-asphalt" data-site-footer>
   <div class="wrap grid stagger">
@@ -27,14 +28,14 @@ const hoursShort = fmt(t.hours.short, { weekday: range(horaires.week.mo), saturd
         {site.address.postalCode} {site.address.locality}
       </p>
       <p>
-        <a href={telHref}>{site.phone.display}</a><br />
-        WhatsApp <a href={whatsappHref(t.contactBar.whatsappText)} rel="noopener">{site.whatsapp.display}</a><br />
+        <a href={telHref}>{phoneText}</a><br />
+        WhatsApp <a href={whatsappHref(t.contactBar.whatsappText)} rel="noopener">{whatsappText}</a><br />
         <a href={`mailto:${site.email}`}>{site.email}</a>
       </p>
     </div>
     <div class="reveal">
       <p class="h">{t.footer.hoursH}</p>
-      <p class="tnum">{hoursShort}</p>
+      <p class="tnum hours-sum">{hoursShort.split(' · ').map((l) => <span>{l}</span>)}</p>
       <p class="t-small">{t.status.everyMorning}</p>
     </div>
     <div class="reveal">
@@ -62,6 +63,7 @@ const hoursShort = fmt(t.hours.short, { weekday: range(horaires.week.mo), saturd
       <ul class="links">
         <li><a href={path(lang, 'legal')}>{t.footer.legal}</a></li>
         <li><a href={path(lang, 'privacy')}>{t.footer.privacy}</a></li>
+        <li><a class="login" href={withBase('/admin/')} rel="nofollow">Login</a></li>
       </ul>
       <LangSwitch lang={lang} alternates={alternates} label={t.nav.langLabel} tone="dark" uid="footer" />
     </div>
@@ -109,6 +111,9 @@ const hoursShort = fmt(t.hours.short, { weekday: range(horaires.week.mo), saturd
   .links li { margin-bottom: 4px; }
   .links a, .links span { display: inline-flex; min-height: 32px; align-items: center; }
   .portals :global(a) { white-space: nowrap; }
+  .links .login { opacity: 0.55; font-size: 0.875rem; }
+  .links .login:hover, .links .login:focus-visible { opacity: 1; }
+  .hours-sum span { display: block; }
   .site-footer :global(.open-point) { color: var(--color-black); }
 
   /* Hover: orange Unterstreichung wächst von links, Link rückt leicht nach rechts */

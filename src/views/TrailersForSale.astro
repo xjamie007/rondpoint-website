@@ -6,7 +6,10 @@ import InfoCards from '@/components/InfoCards.astro';
 import ContactForm from '@/components/forms/ContactForm.astro';
 import { rich, useT } from '@/i18n';
 import { path, type Lang } from '@/i18n/config';
-import { breadcrumbs } from '@/lib/jsonld';
+import ContentSections from '@/components/ContentSections.astro';
+import FaqList from '@/components/FaqList.astro';
+import { contentPlain, faqItems } from '@/lib/content';
+import { breadcrumbs, faqPage } from '@/lib/jsonld';
 import { showOpenPoints, site } from '@/lib/site';
 import { photo } from '@/lib/photos';
 
@@ -17,6 +20,10 @@ const { lang } = Astro.props;
 const t = useT(lang);
 const p = t.pages.trailersForSale;
 const d = t.details.trailers;
+const cx = t.content.trailersForSale;
+const faq = faqItems(cx.faq);
+const faqLd = faq.length ? [faqPage(faq.map((it) => ({ q: it.q, a: contentPlain(it.a, t, lang) })))] : [];
+
 const crumbs = [
   { name: t.nav.home, href: path(lang, 'home') },
   { name: t.nav.trailersForSale, href: path(lang, 'trailersForSale') },
@@ -27,7 +34,7 @@ const crumbs = [
   route={{ page: 'trailersForSale' }}
   title={t.seo.trailersForSale.title}
   description={t.seo.trailersForSale.description}
-  jsonld={[breadcrumbs(crumbs.map((x) => ({ name: x.name, url: x.href })))]}
+  jsonld={[breadcrumbs(crumbs.map((x) => ({ name: x.name, url: x.href }))), ...faqLd]}
 >
   <PageIntro crumbLabel={t.nav.breadcrumb} crumbs={crumbs} h1={p.h1} lead={p.lead} photo={photo('trailers-sale')} photoAlt={t.photos.trailersSale}>
     {!site.confirmations.trailerDealerStatus && showOpenPoints && <p set:html={rich(p.dealerMissing)} />}
@@ -53,6 +60,9 @@ const crumbs = [
       <p class="prose-w t-small">{t.faq.items.permis.a}</p>
     </div>
   </section>
+  <ContentSections t={t} lang={lang} sections={cx.sections} />
+  <FaqList t={t} lang={lang} items={faq} heading={cx.faqH} id="faq-page" />
+
   {
     showOpenPoints && (
       <section class="section block" aria-labelledby="stock-h">

@@ -1,0 +1,8 @@
+{
+  "$comment": "Textänderungen aus dem Admin-Dashboard (und aus dem LB-Import). Schlüssel wie in src/i18n/fr.ts, mit Punkten: \"pages.workshop.lead\". Hat Vorrang vor den Grundtexten in src/i18n/*.ts.",
+  "fr": {},
+  "de": {},
+  "lb": {},
+  "en": {},
+  "pt": {}
+}

@@ -79,6 +79,18 @@
     "pricesInclVat": false
   },
   "reviews": [],
+  "notice": {
+    "active": false,
+    "fr": "",
+    "de": "",
+    "lb": "",
+    "en": "",
+    "pt": ""
+  },
+  "admin": {
+    "repo": "xjamie007/rondpoint-website",
+    "branch": "main"
+  },
   "showOpenPoints": true,
   "presentation": true,
   "$presentation": "Präsentationsversion für den Kunden: Stockfotos aus src/assets/demo (Lizenzen in credits.json), interne Platzhalter [FEHLT]/[UNBESTÄTIGT] ausgeblendet, unbestätigte Aussagen weggelassen. Vor Livegang auf false setzen und echte Fotos eintragen."

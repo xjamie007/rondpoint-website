@@ -5,6 +5,7 @@ import en from './en.ts';
 import pt from './pt.ts';
 import { intlLocale, type Lang } from './config.ts';
 import siteJson from '../content/site.json';
+import textsJson from '../content/texts.json';
 
 /** Präsentationsversion: interne Platzhalter nicht anzeigen (siehe src/lib/site.ts) */
 const PRESENTATION = (siteJson as { presentation?: boolean }).presentation === true;
@@ -57,7 +58,44 @@ function fillMissing(base: Deep, over: Deep | undefined): Deep {
 
 export type DeepPartial<T> = { [K in keyof T]?: T[K] extends string ? string : T[K] extends string[] ? string[] : DeepPartial<T[K]> };
 
-const raw: Record<Lang, DeepPartial<Dict>> = { fr, de, lb, en, pt };
+/* ------------------------------------------------------------------
+   Textänderungen aus dem Dashboard (src/content/texts.json)
+   Flache Schlüssel mit Punkten, z. B. "pages.workshop.lead" oder "details.points.workshop.0".
+   Nur Pfade, die es im französischen Grundtext gibt, werden übernommen.
+------------------------------------------------------------------- */
+const OVERRIDES = textsJson as unknown as Partial<Record<Lang, Record<string, string>>>;
+
+function getPath(o: unknown, parts: string[]): unknown {
+  return parts.reduce<unknown>((acc, k) => (acc && typeof acc === 'object' ? (acc as Record<string, unknown>)[k] : undefined), o);
+}
+
+/** Wendet die Änderungen einer Sprache auf eine Kopie ihres Wörterbuchs an */
+export function applyOverrides<T>(dict: T, over: Record<string, string> | undefined): T {
+  if (!over || !Object.keys(over).length) return dict;
+  const out = structuredClone(dict) as Record<string, unknown>;
+  for (const [key, value] of Object.entries(over)) {
+    if (typeof value !== 'string' || !value.trim()) continue;
+    const parts = key.split('.');
+    if (typeof getPath(fr, parts) !== 'string') continue;
+    let node = out as Record<string, unknown>;
+    let base = fr as unknown as Record<string, unknown>;
+    for (const k of parts.slice(0, -1)) {
+      base = base[k] as Record<string, unknown>;
+      if (node[k] === undefined || typeof node[k] !== 'object') node[k] = Array.isArray(base) ? [...(base as unknown[])] : {};
+      node = node[k] as Record<string, unknown>;
+    }
+    node[parts.at(-1)!] = value;
+  }
+  return out as T;
+}
+
+const raw: Record<Lang, DeepPartial<Dict>> = {
+  fr: applyOverrides(fr, OVERRIDES.fr),
+  de: applyOverrides(de, OVERRIDES.de),
+  lb: applyOverrides(lb, OVERRIDES.lb),
+  en: applyOverrides(en, OVERRIDES.en),
+  pt: applyOverrides(pt, OVERRIDES.pt),
+};
 
 /**
  * Weiche Trennstriche an Wortfugen langer Komposita. Browser haben kein luxemburgisches
@@ -94,7 +132,7 @@ const cache = new Map<Lang, Dict>();
 export function useT(lang: Lang): Dict {
   let d = cache.get(lang);
   if (!d) {
-    const filled = lang === 'fr' ? (fr as unknown as Deep) : fillMissing(fr as unknown as Deep, raw[lang] as Deep);
+    const filled = lang === 'fr' ? (raw.fr as unknown as Deep) : fillMissing(raw.fr as unknown as Deep, raw[lang] as Deep);
     d = softHyphenate(mapDeep(filled, lang === 'fr' ? frenchTypo : unitTypo), lang) as unknown as Dict;
     cache.set(lang, d);
   }

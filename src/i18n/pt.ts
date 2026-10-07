@@ -185,6 +185,7 @@ const pt: Dict = {
       count: { one: '{n} carro', other: '{n} carros' },
       empty: 'Nenhum carro corresponde aos filtros.',
       reset: 'Repor filtros',
+      apply: 'Ver resultados',
       upTo: 'até {price}',
     },
   },
@@ -558,6 +559,13 @@ const pt: Dict = {
     errorSummary: 'Verifique os campos assinalados.',
     errorSend: 'O envio não funcionou. Tente novamente ou ligue para o +352 81 05 41.',
     errorRate: 'Já enviou muitos pedidos hoje. Ligue para o +352 81 05 41.',
+    fallbackH: 'Último passo: envie o seu pedido',
+    fallbackText: 'Escolha como nos quer enviar o pedido. A mensagem já está escrita, só precisa de a enviar.',
+    fallbackWhatsapp: 'Enviar pelo WhatsApp',
+    fallbackMail: 'Enviar por e-mail',
+    fallbackEdit: 'Alterar o pedido',
+    fallbackSubject: 'Pedido através do site',
+    fallbackIntro: 'Olá, aqui está o meu pedido:',
     errors: {
       name: 'Indique o seu nome.',
       phone: 'Indique um número de telefone para podermos ligar-lhe de volta.',
@@ -858,6 +866,422 @@ const pt: Dict = {
       charge: 'O seu carro não pode rebocar mais do que o valor do campo O.1 (atrelado com travões) ou O.2 (sem travões) do certificado de matrícula.',
       usageH: 'Tipo e dimensões',
       usage: 'Plataforma, basculante, porta-carros ou fechado: o atrelado certo depende do que transporta com mais frequência e de onde o vai guardar.',
+    },
+  },
+  /** Ausführliche Seitentexte (SEO): Abschnitte und FAQ je Seite, siehe src/lib/content.ts */
+  content: {
+    workshop: {
+      sections: {
+        s1: {
+          h: 'A sua garagem de proximidade entre Ettelbruck e Diekirch',
+          p: [
+            'A Garage Um Rond Point fica no {address}, mesmo na rotunda de Erpeldange, ao lado do posto Aral. Para quem vive em Erpeldange-sur-Sûre, Ettelbruck, Diekirch e em toda a Nordstad, a oficina fica a poucos minutos de casa.',
+            'Falamos luxemburguês, francês, alemão, inglês e português. Assim, pode explicar-nos o problema do seu carro na língua em que se sente mais à vontade.',
+          ],
+        },
+        s2: {
+          h: 'Manutenção: porque deve seguir o plano do fabricante',
+          p: [
+            'Cada fabricante define um plano de manutenção, consoante os quilómetros percorridos ou o tempo decorrido desde a última revisão. Encontra-o no livro de revisões ou no ecrã do painel de instrumentos do seu carro.',
+            'Cumprir estes prazos reduz o desgaste, evita avarias dispendiosas e ajuda a manter o valor do carro na revenda. Consoante o plano, uma manutenção inclui, por exemplo, a mudança de óleo, os filtros, a verificação dos travões e dos níveis, as luzes e as escovas do limpa-para-brisas.',
+          ],
+        },
+        s3: {
+          h: 'Sinais de que está na hora de vir à oficina',
+          items: [
+            'Uma luz de aviso continua acesa no painel de instrumentos.',
+            'Os travões chiam, vibram ou puxam para um lado.',
+            'O motor tem falta de potência ou custa a pegar.',
+            'Um cheiro a queimado, uma fuga ou fumo fora do normal.',
+            'Um ruído novo ao conduzir ou ao virar o volante.',
+          ],
+          p: [
+            'Quanto mais cedo um problema for detetado, mais simples é a reparação. Descreva no formulário o que nota e desde quando: é a melhor base para o diagnóstico.',
+          ],
+        },
+        s4: {
+          h: 'Chaparia e pintura depois de um pequeno toque',
+          p: [
+            'Um risco, uma amolgadela ou um para-choques danificado: envie-nos fotos dos danos pelo WhatsApp, para o {whatsapp}. Recebe uma primeira opinião antes mesmo de vir. Depois, reparamos a carroçaria e voltamos a pintar as peças danificadas na nossa oficina.',
+            'Se houver outro veículo envolvido, preencha a declaração amigável no local e tire as suas próprias fotos do acidente. Estes documentos são úteis para o seu seguro.',
+          ],
+        },
+        s5: {
+          h: 'Carros e carrinhas',
+          p: [
+            'A oficina trata de carros e carrinhas. Para um corta-relva, uma motosserra ou outra máquina, veja a nossa página [Jardim e floresta](page:garden). Para decapar uma carroçaria ou uma peça até ao metal nu, conheça a [decapagem com sodablast](page:sodablast).',
+          ],
+        },
+      },
+      faqH: 'Perguntas sobre a oficina',
+      faq: {
+        q1: {
+          q: 'Como faço uma marcação na oficina?',
+          a: 'Descreva o seu veículo e o que é preciso fazer no formulário desta página, por telefone, para o {phone}, ou pelo WhatsApp, para o {whatsapp}. Ligamos-lhe de volta para combinar a marcação.',
+        },
+        q2: {
+          q: 'Quando é que a garagem está aberta?',
+          a: '{hours}',
+        },
+        q3: {
+          q: 'Posso enviar fotos antes de vir?',
+          a: 'Sim. Para chaparia ou sodablast, envie-nos fotos pelo WhatsApp, para o {whatsapp}: recebe uma primeira opinião.',
+        },
+        q4: {
+          q: 'Onde fica a oficina?',
+          a: 'No {address}, na rotunda de Erpeldange, ao lado do posto Aral, entre Ettelbruck e Diekirch.',
+        },
+        q5: {
+          q: 'Em que línguas posso explicar o problema?',
+          a: 'Em luxemburguês, francês, alemão, inglês ou português.',
+        },
+      },
+    },
+    sodablast: {
+      sections: {
+        s1: {
+          h: 'Sodablast ou jato de areia: qual é a diferença?',
+          p: [
+            'A decapagem clássica com jato de areia projeta um abrasivo duro, como areia ou corindo. Decapa depressa, mas também ataca o metal e pode aquecer e deformar as chapas finas.',
+            'O bicarbonato de sódio é muito mais macio do que o metal. Remove tinta, gordura e sujidade sem desgastar a superfície e sem a aquecer. É por isso que o sodablast é indicado para peças delicadas e carroçarias antigas.',
+          ],
+        },
+        s2: {
+          h: 'Para que projetos?',
+          items: [
+            'Restauro de um carro antigo: decapar a carroçaria até ao metal nu antes da reparação e da pintura.',
+            'Jantes: remover a tinta antiga e a sujidade incrustada antes de voltar a pintar.',
+            'Peças mecânicas: limpar um cárter, um bloco ou uma cabeça do motor antes da verificação ou da remontagem.',
+          ],
+          p: [
+            'Não sabe se a sua peça é adequada? Envie uma foto pelo WhatsApp, para o {whatsapp}, e nós dizemos-lhe.',
+          ],
+        },
+        s3: {
+          h: 'Depois da decapagem: proteger o metal',
+          p: [
+            'Uma superfície decapada é metal nu. Em contacto com o ar e a humidade, oxida depressa. Por isso, preveja o passo seguinte logo desde o início: primário, reparação ou pintura. Antes da pintura, os resíduos de bicarbonato retiram-se com água.',
+            'No caso de um carro, a nossa oficina pode depois reparar a carroçaria e voltar a pintá-la: veja [mecânica e carroçaria](page:workshop).',
+          ],
+        },
+        s4: {
+          h: 'Sodablast no Luxemburgo, em Erpeldange',
+          p: [
+            'A nossa oficina fica na rotunda de Erpeldange-sur-Sûre, entre Ettelbruck e Diekirch, com acesso fácil a partir de todo o norte do Luxemburgo. Seja para uma peça ou para um carro completo, marcamos juntos uma data na garagem.',
+          ],
+        },
+      },
+      faqH: 'Perguntas sobre o sodablast',
+      faq: {
+        q1: {
+          q: 'O sodablast danifica o metal?',
+          a: 'Não. O bicarbonato de sódio é mais macio do que o metal: remove tinta, gordura e sujidade sem desgastar a superfície. É isso que o distingue da decapagem com jato de areia.',
+        },
+        q2: {
+          q: 'Quanto custa uma decapagem com sodablast?',
+          a: 'Depende do tamanho da peça e das camadas a remover. Envie fotos pelo WhatsApp, para o {whatsapp}: recebe uma primeira opinião.',
+        },
+        q3: {
+          q: 'É preciso tratar a peça depois da decapagem?',
+          a: 'Sim. O metal a nu tem de ser protegido rapidamente com primário ou tinta; caso contrário, oxida.',
+        },
+        q4: {
+          q: 'É possível decapar jantes com sodablast?',
+          a: 'Sim, as jantes fazem parte das peças que decapamos com sodablast, tal como as carroçarias antigas e as peças mecânicas.',
+        },
+      },
+    },
+    garden: {
+      sections: {
+        s1: {
+          h: 'Máquinas de jardim e floresta na Nordstad',
+          p: [
+            'Para cuidar do seu jardim, do seu terreno ou da sua mata, encontra na Garage Um Rond Point máquinas sobretudo das marcas Honda e Stihl, e uma oficina para as reparar. A garagem fica na rotunda de Erpeldange, entre Ettelbruck e Diekirch.',
+          ],
+        },
+        s2: {
+          h: 'Escolher bem a sua máquina',
+          items: [
+            'Corta-relva: a área do relvado, a inclinação e os obstáculos determinam a largura de corte e o tipo de tração.',
+            'Roçadora: para as bordas, os taludes e a erva alta onde o corta-relva não chega.',
+            'Motosserra: o comprimento do sabre depende do diâmetro da madeira que corta com mais frequência.',
+            'Corta-sebes: o comprimento da lâmina e o peso contam se cortar durante muito tempo ou em altura.',
+          ],
+          p: [
+            'Motor de combustão ou bateria? Uma máquina a bateria é mais silenciosa e arranca sem esforço. Uma máquina com motor de combustão não perde autonomia em terrenos grandes. Diga-nos como a vai usar e nós aconselhamos.',
+          ],
+        },
+        s3: {
+          h: 'Reparação: quando trazer a sua máquina',
+          items: [
+            'O motor já não pega ou vai abaixo.',
+            'A máquina perde força ou deita fumo.',
+            'A corrente ou a lâmina corta mal.',
+            'Surgem ruídos ou vibrações fora do normal.',
+          ],
+          p: [
+            'Descreva a avaria no formulário ou ligue-nos para o {phone}. Indique a marca e o modelo da máquina: assim sabemos logo do que se trata.',
+          ],
+        },
+        s4: {
+          h: 'Conselhos para guardar a máquina no inverno',
+          p: [
+            'Antes de guardar uma máquina com motor de combustão durante o inverno, limpe-a, esvazie o depósito ou deixe o motor trabalhar até parar e guarde-a num local seco. Uma máquina bem guardada volta a pegar mais facilmente na primavera.',
+            'As baterias devem ser guardadas num local protegido do gelo, de preferência com meia carga.',
+          ],
+        },
+      },
+      faqH: 'Perguntas sobre máquinas de jardim',
+      faq: {
+        q1: {
+          q: 'Que marcas de máquinas vendem?',
+          a: 'Sobretudo máquinas Honda e Stihl.',
+        },
+        q2: {
+          q: 'Como posso mandar reparar o meu corta-relva ou a minha motosserra?',
+          a: 'Traga a máquina à oficina ou descreva a avaria no formulário desta página. Nós ligamos-lhe de volta.',
+        },
+        q3: {
+          q: 'Quando posso passar pela garagem?',
+          a: '{hours}',
+        },
+        q4: {
+          q: 'Onde fica a garagem?',
+          a: 'No {address}, na rotunda de Erpeldange, ao lado do posto Aral.',
+        },
+      },
+    },
+    trailersForSale: {
+      sections: {
+        s1: {
+          h: 'Saris, Humbaur e WM Meyer em Erpeldange',
+          p: [
+            'Vendemos atrelados das marcas Saris, Humbaur e WM Meyer, tanto para particulares como para profissionais. Diga-nos o que transporta: ajudamos a encontrar o modelo adequado ao seu carro e à sua carta de condução.',
+            'A garagem fica na rotunda de Erpeldange-sur-Sûre, entre Ettelbruck e Diekirch.',
+          ],
+        },
+        s2: {
+          h: 'As perguntas certas antes de comprar',
+          items: [
+            'O que transporto com mais frequência, e com que peso?',
+            'De que comprimento e largura de plataforma preciso?',
+            'O meu carro pode rebocar este atrelado (campos O.1 e O.2 do certificado de matrícula)?',
+            'A minha carta é suficiente: B, B com o código 96 ou BE?',
+            'Onde vou guardar o atrelado quando não o estiver a usar?',
+          ],
+        },
+        s3: {
+          h: 'Particulares e profissionais',
+          p: [
+            'Para um particular, o atrelado serve para o jardim, para mudanças de casa ou para transportar um veículo de lazer. Para um profissional independente ou uma empresa, transporta todos os dias material e máquinas: aí, a carga útil, a robustez da plataforma e os pontos de amarração contam ainda mais.',
+          ],
+        },
+        s4: {
+          h: 'Comprar ou alugar?',
+          p: [
+            'Se só precisa de um atrelado de vez em quando, o [aluguer](page:rental) pode bastar. O nosso guia também lhe mostra que atrelado a sua carta de condução permite.',
+          ],
+        },
+      },
+      faqH: 'Perguntas sobre a compra de um atrelado',
+      faq: {
+        q1: {
+          q: 'Que marcas de atrelados vendem?',
+          a: 'Saris, Humbaur e WM Meyer.',
+        },
+        q2: {
+          q: 'Também vendem a profissionais?',
+          a: 'Sim, vendemos atrelados a particulares e a profissionais.',
+        },
+      },
+    },
+    cars: {
+      sections: {
+        s1: {
+          h: 'Comprar um carro na Garage Um Rond Point',
+          p: [
+            'Todos os carros desta página estão em stock na nossa garagem, na rotunda de Erpeldange. A lista é atualizada todas as manhãs a partir dos nossos anúncios: vê o preço, os quilómetros, o ano e as fotos de cada carro.',
+          ],
+          items: [
+            'Escolha um carro na lista e abra a respetiva ficha.',
+            'Ligue-nos ou escreva-nos pelo WhatsApp para confirmar se ainda está disponível.',
+            'Venha vê-lo à garagem e faça um test drive por marcação.',
+          ],
+        },
+        s2: {
+          h: 'Carros novos e usados perto de Ettelbruck e Diekirch',
+          p: [
+            'O stock inclui carros novos e carros usados. Muda com frequência: a lista mostra-lhe, todos os dias, o stock dessa manhã. Os nossos anúncios também estão publicados no LuxAuto e no AutoScout24.',
+          ],
+        },
+        s3: {
+          h: 'E o seu carro atual?',
+          p: [
+            'Quer dar o seu carro para retoma? Indique-o no formulário do carro que lhe interessa. Prefere vender sem ter de se preocupar com nada? Conheça o nosso serviço de venda à consignação mais abaixo nesta página.',
+          ],
+        },
+      },
+      faqH: 'Perguntas sobre os nossos carros',
+      faq: {
+        q1: {
+          q: 'Posso fazer um test drive?',
+          a: 'Sim, por marcação. Ligue-nos para o {phone} ou escreva-nos pelo WhatsApp, para o {whatsapp}.',
+        },
+        q2: {
+          q: 'Onde posso ver os carros?',
+          a: 'Na garagem, no {address}, na rotunda de Erpeldange. {hours}',
+        },
+        q3: {
+          q: 'Os vossos carros também estão no LuxAuto e no AutoScout24?',
+          a: 'Sim, os nossos anúncios também estão publicados no LuxAuto e no AutoScout24. Aqui vê todo o nosso stock num só lugar.',
+        },
+      },
+    },
+    contact: {
+      sections: {
+        s1: {
+          h: 'Que meio de contacto escolher?',
+          items: [
+            'Uma pergunta rápida ou fotos para nos mostrar: pelo WhatsApp, para o {whatsapp}.',
+            'Uma marcação ou uma resposta imediata: por telefone, para o {phone}.',
+            'Um pedido detalhado: o formulário abaixo ou um e-mail para {email}.',
+          ],
+        },
+        s2: {
+          h: 'Como chegar à garagem',
+          p: [
+            'A garagem fica no {address}, na rotunda de Erpeldange-sur-Sûre, ao lado do posto Aral. Vem de Ettelbruck ou de Diekirch? A rotunda fica no seu caminho. Para o itinerário exato, abra o Google Maps a partir desta página.',
+          ],
+        },
+      },
+      faqH: 'Perguntas práticas',
+      faq: {
+        q1: {
+          q: 'Quando é que a garagem está aberta?',
+          a: '{hours}',
+        },
+        q2: {
+          q: 'Que línguas falam?',
+          a: 'Falamos luxemburguês, francês, alemão, inglês e português.',
+        },
+      },
+    },
+    rental: {
+      sections: {
+        s1: {
+          h: 'Aluguer de atrelados na Nordstad',
+          p: [
+            'Na rotunda de Erpeldange, entre Ettelbruck e Diekirch, aluga um atrelado ou uma carrinha muito perto de casa. O nosso guia, mais acima, mostra-lhe em poucos cliques que atrelado serve para o que vai transportar e se a sua carta é suficiente.',
+          ],
+        },
+        s2: {
+          h: 'Conselhos para carregar corretamente',
+          items: [
+            'Nunca ultrapasse a massa máxima autorizada do atrelado, nem a carga rebocável do seu carro.',
+            'Distribua a carga: os objetos pesados por cima do eixo e um pouco de peso sobre a lança, como indica o manual.',
+            'Prenda a carga com cintas e cubra os materiais a granel com uma lona ou uma rede.',
+            'Antes de partir, verifique o engate, as luzes e a pressão dos pneus.',
+            'Conduza mais devagar do que sem carga: o conjunto trava pior e ocupa mais espaço nas curvas.',
+          ],
+        },
+      },
+    },
+    category: {
+      'porte-voiture': {
+        sections: {
+          s1: {
+            h: 'Quando alugar um atrelado porta-carros?',
+            p: [
+              'Para trazer de volta um carro que já não anda, transportar um carro de coleção sem lhe somar quilómetros ou ir buscar um carro comprado longe de casa. O porta-carros evita que o carro transportado tenha de circular.',
+            ],
+          },
+          s2: {
+            h: 'Carregar um carro em segurança',
+            items: [
+              'Confirme que o carro transportado não ultrapassa a carga útil do atrelado.',
+              'Suba devagar, bem alinhado com as rampas, com alguém a orientá-lo.',
+              'Posicione o carro de modo a que um pouco de peso assente na parte da frente do atrelado, como indica o manual.',
+              'Prenda cada roda com cintas adequadas e verifique-as após os primeiros quilómetros.',
+            ],
+          },
+        },
+      },
+      'porte-moto': {
+        sections: {
+          s1: {
+            h: 'Transportar uma mota',
+            p: [
+              'Para ir a um circuito, levar uma mota à reparação ou trazê-la depois de uma compra, o atrelado porta-motos é mais simples do que uma carrinha: a mota sobe pela rampa e fica encaixada no suporte da roda.',
+            ],
+          },
+          s2: {
+            h: 'Prender bem uma mota',
+            items: [
+              'Encaixe a roda da frente no suporte.',
+              'Use quatro cintas, duas à frente e duas atrás, em pontos sólidos do quadro.',
+              'Baixe ligeiramente a suspensão, sem a comprimir por completo.',
+              'Verifique a tensão das cintas após os primeiros quilómetros.',
+            ],
+          },
+        },
+      },
+      benne: {
+        sections: {
+          s1: {
+            h: 'Atenção ao peso dos materiais',
+            p: [
+              'Os materiais a granel são pesados. Um metro cúbico de terra húmida pesa cerca de 1,5 a 1,8 toneladas, um metro cúbico de gravilha cerca de 1,5 toneladas. Um atrelado basculante cheio até à borda ultrapassa, por isso, rapidamente a sua carga útil.',
+              'Consulte a carga útil na ficha do atrelado e encha-o em conformidade: mais vale fazer duas viagens do que levar um atrelado sobrecarregado.',
+            ],
+          },
+          s2: {
+            h: 'Obras, jardim, ecocentro',
+            items: [
+              'Cubra a carga com uma lona ou uma rede para que nada caia na estrada.',
+              'Separe os resíduos antes de sair: no ecocentro, poupa tempo.',
+              'Faça o basculamento só em piso plano e estável, com o atrelado engatado.',
+            ],
+          },
+        },
+      },
+      frigorifique: {
+        sections: {
+          s1: {
+            h: 'Para que ocasiões?',
+            p: [
+              'Festa de família, casamento, aniversário, quermesse, mercado ou festa de associação: o atrelado frigorífico mantém as bebidas e a comida frescas no local, durante todo o evento.',
+            ],
+          },
+          s2: {
+            h: 'Conselhos de utilização',
+            items: [
+              'Ligue o atrelado à corrente algumas horas antes de o carregar, para que já esteja frio.',
+              'Carregue de preferência produtos já frios: arrefecer um grande volume de bebidas mornas leva tempo.',
+              'Deixe o ar circular entre as caixas.',
+              'Preveja uma ligação elétrica adequada perto do local onde o atrelado vai ficar.',
+            ],
+          },
+        },
+      },
+      camionnette: {
+        sections: {
+          s1: {
+            h: 'Mudanças, móveis, material',
+            p: [
+              'Uma carrinha é indicada para uma mudança de casa, móveis, eletrodomésticos ou material volumoso, sem ter de engatar um atrelado. A carga fica protegida da chuva.',
+            ],
+          },
+          s2: {
+            h: 'Conselhos para o seu transporte',
+            items: [
+              'Meça os móveis grandes antes de reservar.',
+              'Coloque os objetos pesados ao fundo, encostados à divisória, e prenda a carga com cintas.',
+              'Proteja os móveis com mantas para evitar riscos.',
+              'Tenha em conta a altura do veículo antes de entrar num parque de estacionamento subterrâneo.',
+            ],
+          },
+        },
+      },
     },
   },
 };

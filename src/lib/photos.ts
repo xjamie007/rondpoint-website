@@ -11,7 +11,8 @@ const demo = import.meta.glob<{ default: ImageMetadata }>('/src/assets/demo/*.{j
 const real = import.meta.glob<{ default: ImageMetadata }>('/src/assets/photos/*.{jpg,png,webp}', { eager: true });
 const fleet = import.meta.glob<{ default: ImageMetadata }>('/src/assets/flotte/*.{jpg,png,webp}', { eager: true });
 
-export type PhotoKey = 'hero-workshop' | 'workshop' | 'sodablast' | 'bodywork' | 'garden' | 'garden-page' | 'paint' | 'rental' | 'trailers-sale' | 'about';
+export const PHOTO_KEYS = ['hero-workshop', 'workshop', 'bodywork', 'paint', 'sodablast', 'garden', 'garden-page', 'rental', 'trailers-sale', 'about'] as const;
+export type PhotoKey = (typeof PHOTO_KEYS)[number];
 
 export interface Photo {
   img: ImageMetadata;

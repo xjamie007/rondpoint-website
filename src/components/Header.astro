@@ -9,7 +9,7 @@ import Icon from './Icon.astro';
 import LangSwitch from './LangSwitch.astro';
 import { path, type Lang, type PageKey } from '@/i18n/config';
 import type { Dict } from '@/i18n';
-import { site, telHref } from '@/lib/site';
+import { site, telHref, phoneText } from '@/lib/site';
 
 interface Props {
   lang: Lang;
@@ -30,8 +30,8 @@ const items: { key: PageKey; label: string }[] = [
 ---
 <header class="site-header" data-site-header>
   <div class="utility wrap">
-    <a class="tel" href={telHref}>{site.phone.display}</a>
-    <LangSwitch lang={lang} alternates={alternates} label={t.nav.langLabel} uid="header" />
+    <a class="tel" href={telHref}>{phoneText}</a>
+    <LangSwitch lang={lang} alternates={alternates} label={t.nav.langLabel} uid="header" landmark />
   </div>
   <div class="bar wrap">
     <Logo href={path(lang, 'home')} label={t.nav.logoAria} />
@@ -67,7 +67,7 @@ const items: { key: PageKey; label: string }[] = [
     </div>
   </div>
   <div id="mobile-nav" class="mnav" data-menu-panel>
-    <nav class="wrap" aria-label={t.nav.main}>
+    <nav class="wrap" aria-label={t.nav.menu}>
       <ul>
         {
           items.map((i) => (
@@ -79,7 +79,7 @@ const items: { key: PageKey; label: string }[] = [
           ))
         }
       </ul>
-      <p class="mnav-tel"><a href={telHref}>{site.phone.display}</a></p>
+      <p class="mnav-tel"><a href={telHref}>{phoneText}</a></p>
       <LangSwitch lang={lang} alternates={alternates} label={t.nav.langLabel} uid="mobile" />
     </nav>
   </div>

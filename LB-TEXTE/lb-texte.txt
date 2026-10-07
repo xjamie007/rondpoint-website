@@ -1,0 +1,2386 @@
+# Luxemburgische Texte der Website Garage Um Rond Point
+# Korrekturen direkt unter der jeweiligen @@-Zeile eintragen, Zeilen mit @@ nicht ändern.
+# {address}, {phone}, {n} usw. sind Platzhalter: stehen lassen. [FEHLT …]/[UNBESTÄTIGT …] sind interne Notizen.
+# Danach: npm run lb:import
+
+
+######## Startseite ########
+
+@@ 1 hero.h1
+D’Garage um Rond-point zu Ierpeldeng
+
+@@ 2 hero.sub
+Lount en Unhänger oder eng Camionnette, fannt Ären nächsten Auto a loosst Ären eegenen entretenéieren a reparéieren. Um 1, rue du Viaduc, nieft der Aral-Tankstell, tëscht Ettelbréck an Dikrech.
+
+@@ 3 hero.ctaFinder
+Unhänger fannen
+
+@@ 4 hero.ctaCars
+Autoe kucken
+
+@@ 5 hero.drawingAlt
+Plang vum Rond-point zu Ierpeldeng mat der Plaz vun der Garage nieft der Aral-Tankstell
+
+@@ 6 services.h2
+Eis aner Servicer
+
+@@ 7 services.workshop.h3
+Atelier
+
+@@ 8 services.workshop.text
+Entretien, Diagnos a Reparatur vun Ärem Auto oder Ärer Camionnette. No engem klengen Accident reparéiere mir Äert Gefier a lackéieren et nei.
+
+@@ 9 services.workshop.link
+Mechanik a Karosserie
+
+@@ 10 services.sodablast.h3
+Sodablast
+
+@@ 11 services.sodablast.text
+Beim Sodablast sprëtze mir Natron op d’Uewerfläch a maachen esou Lack, Fett an Dreck ewech. Dës mëll Method beschiedegt keng empfindlech Uewerflächen: al Karosserien, Felgen, mechanesch Deeler.
+
+@@ 12 services.sodablast.link
+Méi iwwer Sodablast
+
+@@ 13 services.garden.h3
+Gaart & Bësch
+
+@@ 14 services.garden.text
+Mir verkafen a reparéieren Gaart- a Bëschmaschinnen, virun allem vun de Marken Honda a Stihl.
+
+@@ 15 services.garden.link
+Gaart- a Bëschmaschinnen
+
+@@ 16 services.trailers.h3
+Unhänger kafen
+
+@@ 17 services.trailers.text
+Mir verkafen Unhänger vu Saris, Humbaur a WM Meyer, fir Privatleit a Betriber. Mir hëllefen Iech, en Unhänger ze wielen, deen Ären Auto zéie kann an deen Dir mat Ärem Führerschäin fueren dierft.
+
+@@ 18 services.trailers.link
+Eis Unhänger zum Verkaf
+
+@@ 19 services.photoMissing
+[FEHLT — Foto]
+
+@@ 20 reviews.h2
+Google-Bewäertungen
+
+@@ 21 reviews.link
+All Bewäertungen op Google liesen
+
+@@ 22 reviews.missing
+[FEHLT — 2–3 vom Kunden freigegebene Zitate aus dem Google-Profil, mit Vorname + Initiale und Monat/Jahr]
+
+@@ 23 faq.h2
+Heefeg Froen
+
+@@ 24 faq.rentalH2
+Froen zum Lounen
+
+@@ 25 faq.items.permis.q
+Wat fir e Führerschäin brauch ech, fir en Unhänger ze zéien?
+
+@@ 26 faq.items.permis.a
+Mam Führerschäin B dierft Dir en Unhänger bis 750 kg zulässegt Gesamtgewiicht zéien. E méi schwéieren Unhänger ass erlaabt, wann Auto an Unhänger zesummen net méi wéi 3.500 kg weien. Mam Code 96 op Ärem Führerschäin B dierfen Auto an Unhänger zesumme bis zu 4.250 kg weien. Doriwwer braucht Dir de Führerschäin BE. Domat dierft Dir en Unhänger bis 3.500 kg zéien.
+
+@@ 27 faq.items.carte.q
+Wou gesinn ech, wat mäin Auto zéien däerf?
+
+@@ 28 faq.items.carte.a
+Op der Carte grise: D’Feld O.1 weist d’Unhängelaascht mat Bremsen, d’Feld O.2 d’Unhängelaascht ouni Bremsen. Dat zulässegt Gesamtgewiicht vun Ärem Auto steet am Feld F.2.
+
+@@ 29 faq.items.prix.q
+Wat kascht et, en Unhänger ze lounen?
+
+@@ 30 faq.items.prix.a
+De Präis pro Dag a pro Weekend steet bei all Unhänger an eiser Unhängersich. [FEHLT — Preise der Flotte]
+
+@@ 31 faq.items.louer.q
+Wat brauch ech, fir ze lounen?
+
+@@ 32 faq.items.louer.a
+[FEHLT — Mietbedingungen: Ausweis, Führerschein, Kaution, Stecker 7- oder 13-polig]
+
+@@ 33 faq.items.reserver.q
+Muss ech am Viraus reservéieren?
+
+@@ 34 faq.items.reserver.a
+[FEHLT — Reservierung, Abhol- und Rückgabezeiten]
+
+@@ 35 faq.items.dispo.q
+Sinn d’Autoen op der Lëscht nach disponibel?
+
+@@ 36 faq.items.dispo.a
+Mir aktualiséieren d’Lëscht all Moien. En Auto, deen am Laf vum Dag verkaaft gëtt, kann nach bis den Dag drop op der Lëscht stoen. Rufft eis un oder schreift eis op WhatsApp, ier Dir laanschtkommt.
+
+@@ 37 faq.items.marques.q
+Reparéiert Dir all Marken?
+
+@@ 38 faq.items.marques.a
+Jo, eisen Atelier mécht den Entretien an d’Reparatur vun Autoen a Camionnetten, egal vu wéi enger Mark. [UNBESTÄTIGT — Werden alle Marken repariert?]
+
+@@ 39 faq.items.depot.q
+Kënnt Dir mäin Auto fir mech verkafen?
+
+@@ 40 faq.items.depot.a
+Jo, am Kommissiounsverkaf: Mir bidden Ären Auto zum Verkaf un a bréngen Iech mat Keefer a Kontakt. Schwätzt mat eis iwwer d’Konditiounen, an der Garage oder um Telefon.
+
+@@ 41 faq.items.langues.q
+Wéi eng Sprooche schwätzt Dir?
+
+@@ 42 faq.items.langues.a
+Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch.
+
+@@ 43 faq.items.paiement.q
+Wéi kann ech bezuelen?
+
+@@ 44 faq.items.paiement.a
+Bar, mat Kaart (Visa, Mastercard oder V PAY), mat Payconiq, Apple Pay oder PayPal oder per Iwwerweisung. [UNBESTÄTIGT — Zahlungsmittel]
+
+@@ 45 offer.label
+Eis Servicer op ee Bléck
+
+@@ 46 offer.sub.rental
+Unhänger a Camionnetten
+
+@@ 47 offer.sub.cars
+All Moien aktualiséiert
+
+@@ 48 offer.sub.workshop
+Mechanik a Karosserie
+
+@@ 49 offer.sub.trailers
+Saris, Humbaur, WM Meyer
+
+@@ 50 offer.sub.garden
+Honda a Stihl
+
+@@ 51 offer.sub.sodablast
+Schounend ofbeizen
+
+@@ 52 about.h2
+Iwwer eis
+
+@@ 53 about.text
+D’Garage Um Rond Point ass Är Garage um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech. Unhänger a Camionnetten lounen, Autoen an Unhänger kafen, Atelier a Gaartmaschinnen: alles op enger Adress. Kommt laanscht – mir schwätzen Är Sprooch.
+
+@@ 54 about.link
+Esou fannt Dir eis
+
+@@ 55 about.photoAlt
+Mecanicien reecht en Autosschlëssel
+
+@@ 56 details.points.workshop.0
+Entretien a Revisioun
+
+@@ 57 details.points.workshop.1
+Feelerdiagnos
+
+@@ 58 details.points.workshop.2
+Mechanesch Reparatur
+
+@@ 59 details.points.workshop.3
+Karosserie a Lack
+
+@@ 60 details.points.sodablast.0
+Schounend Ofbeizen mat Natron
+
+@@ 61 details.points.sodablast.1
+Al Karosserien, Felgen, mechanesch Deeler
+
+@@ 62 details.points.sodablast.2
+Éischt Aschätzung per Foto iwwer WhatsApp
+
+@@ 63 details.points.garden.0
+Verkaf vu Gaart- a Bëschmaschinnen
+
+@@ 64 details.points.garden.1
+Reparatur vun Äre Maschinnen
+
+@@ 65 details.points.garden.2
+Virun allem Honda a Stihl
+
+@@ 66 details.points.trailers.0
+Unhänger vu Saris, Humbaur a WM Meyer
+
+@@ 67 details.points.trailers.1
+Fir Privatleit a Betriber
+
+@@ 68 details.points.trailers.2
+Berodung zu Gewiicht a Führerschäin
+
+
+######## Vermietung ########
+
+@@ 69 finder.h2
+Wat fir en Unhänger braucht Dir?
+
+@@ 70 finder.intro
+Sot eis, wat Dir transportéiert a wat fir e Führerschäin Dir hutt. Dir gesitt direkt, wéi eng Unhänger passen, wat se kaschten an ob Äre Führerschäin duergeet.
+
+@@ 71 finder.cargoLegend
+Wat transportéiert Dir?
+
+@@ 72 finder.cargo.voiture
+En Auto
+
+@@ 73 finder.cargo.moto
+Eng Moto
+
+@@ 74 finder.cargo.terre
+Äerd, Bauschutt oder Gréngschnëtt
+
+@@ 75 finder.cargo.fete
+Gedrénks an Iessen fir e Fest
+
+@@ 76 finder.cargo.meubles
+Miwwelen oder Kartongen
+
+@@ 77 finder.cargo.materiel
+Material oder Maschinnen
+
+@@ 78 finder.licenceLegend
+Wat fir e Führerschäin hutt Dir?
+
+@@ 79 finder.licence.B
+Führerschäin B
+
+@@ 80 finder.licence.B96
+Führerschäin B mam Code 96
+
+@@ 81 finder.licence.BE
+Führerschäin BE
+
+@@ 82 finder.licence.unknown
+Ech weess et net
+
+@@ 83 finder.exactSummary
+Genee fir Ären Auto ausrechnen (fakultativ)
+
+@@ 84 finder.f2
+Zulässegt Gesamtgewiicht vun Ärem Auto (Feld F.2)
+
+@@ 85 finder.o1
+Unhängelaascht gebremst (Feld O.1)
+
+@@ 86 finder.o2
+Unhängelaascht ongebremst (Feld O.2)
+
+@@ 87 finder.kg
+kg
+
+@@ 88 finder.exactHint
+Dës Zuele fannt Dir op der Carte grise vun Ärem Auto.
+
+@@ 89 finder.fleetCount.one
+{n} Unhänger an eiser Flott
+
+@@ 90 finder.fleetCount.other
+{n} Unhänger an eiser Flott
+
+@@ 91 finder.matchCount.one
+{n} Unhänger passt
+
+@@ 92 finder.matchCount.other
+{n} Unhänger passen
+
+@@ 93 finder.none
+Fir dës Kombinatioun passt keen Unhänger. Rufft eis un op +352 81 05 41, mir beroden Iech.
+
+@@ 94 finder.vansHeading
+Camionnetten
+
+@@ 95 finder.vanStatement
+Eng Camionnette bis 3.500 kg zulässegt Gesamtgewiicht fuert Dir mam Führerschäin B.
+
+@@ 96 finder.specs.payload
+Notzlaascht
+
+@@ 97 finder.specs.mma
+Zulässegt Gesamtgewiicht
+
+@@ 98 finder.specs.empty
+Eidelgewiicht
+
+@@ 99 finder.specs.surface
+Luedfläch
+
+@@ 100 finder.specs.height
+Luedhéicht
+
+@@ 101 finder.specs.braked
+Gebremst
+
+@@ 102 finder.specs.yes
+jo
+
+@@ 103 finder.specs.no
+nee
+
+@@ 104 finder.specs.socket
+Stecker
+
+@@ 105 finder.specs.socketValue
+{n}-poleg
+
+@@ 106 finder.specs.deposit
+Kautioun
+
+@@ 107 finder.specs.volume
+Bannevolumen
+
+@@ 108 finder.specs.temp
+Temperatur
+
+@@ 109 finder.specs.power
+Stroumversuergung
+
+@@ 110 finder.pallets.one
+{n} Europalett
+
+@@ 111 finder.pallets.other
+{n} Europaletten
+
+@@ 112 finder.volumeText
+Bannevolumen {m3} m³
+
+@@ 113 finder.diagramLabel
+Luedfläch {l} × {w} m
+
+@@ 114 finder.diagramPallets
+{n} Europaletten
+
+@@ 115 finder.verdict.ok
+Äre Führerschäin geet duer.
+
+@@ 116 finder.verdict.needB96orBE
+Dir braucht de Code 96 oder de Führerschäin BE.
+
+@@ 117 finder.verdict.needBE
+Dir braucht de Führerschäin BE.
+
+@@ 118 finder.verdict.dependsB
+Mam Führerschäin B dierfen Auto an Unhänger zesummen net méi wéi 3.500 kg weien. Gitt d’Gewiicht vun Ärem Auto (F.2) un, da wësst Dir et.
+
+@@ 119 finder.verdict.dependsB96
+Mam Code 96 dierfen Auto an Unhänger zesummen net méi wéi 4.250 kg weien. Gitt d’Gewiicht vun Ärem Auto (F.2) un, da wësst Dir et.
+
+@@ 120 finder.verdict.required
+Néidege Führerschäin: {licence}
+
+@@ 121 finder.verdict.requiredDepends
+Néidege Führerschäin: je no Auto B, B96 oder BE
+
+@@ 122 finder.verdict.towLimit
+Voll gelueden ass dësen Unhänger méi schwéier, wéi Ären Auto zéien däerf ({limite} kg).
+
+@@ 123 finder.licenceShort.B
+B
+
+@@ 124 finder.licenceShort.B96
+B mam Code 96
+
+@@ 125 finder.licenceShort.BE
+BE
+
+@@ 126 finder.price
+{day} pro Dag, {weekend} pro Weekend
+
+@@ 127 finder.priceMissing
+[FEHLT — Preis pro Tag und Wochenende]
+
+@@ 128 finder.request
+Dësen Unhänger ufroen
+
+@@ 129 finder.requestVan
+Dës Camionnette ufroen
+
+@@ 130 finder.seeAll
+Déi ganz Flott kucken
+
+@@ 131 finder.finePrint
+Dës Angab baséiert op de Führerschäinreegelen zu Lëtzebuerg (transports.public.lu). Wann Dir net sécher sidd, frot eis, ier Dir lassfuert.
+
+@@ 132 finder.sourceLink
+Führerschäinreegelen op transports.public.lu
+
+@@ 133 finder.empty
+D’Lëscht mat eisen Unhänger kënnt geschwënn. Rufft eis un op +352 81 05 41.
+
+@@ 134 finder.noJsRules
+Mam Führerschäin B dierft Dir en Unhänger bis 750 kg zulässegt Gesamtgewiicht zéien, oder e méi schwéieren Unhänger, wann Auto an Unhänger zesummen net méi wéi 3.500 kg weien. Mam Code 96 sinn zesumme bis zu 4.250 kg erlaabt. Doriwwer braucht Dir de Führerschäin BE.
+
+@@ 135 fleetTable.h2
+Eis ganz Flott
+
+@@ 136 fleetTable.caption
+Eis Unhänger a Camionnetten fir ze lounen
+
+@@ 137 fleetTable.kind
+Typ
+
+@@ 138 fleetTable.payload
+Notzlaascht
+
+@@ 139 fleetTable.mma
+Zulässegt Gesamtgewiicht
+
+@@ 140 fleetTable.surface
+Luedfläch
+
+@@ 141 fleetTable.licence
+Néidege Führerschäin
+
+@@ 142 fleetTable.day
+Präis pro Dag
+
+@@ 143 fleetTable.weekend
+Präis pro Weekend
+
+@@ 144 fleetTable.licenceDepends
+je no Auto
+
+@@ 145 categories.porte-voiture
+Autosunhänger
+
+@@ 146 categories.porte-moto
+Motosunhänger
+
+@@ 147 categories.benne
+Kipper
+
+@@ 148 categories.frigorifique
+Killunhänger
+
+@@ 149 categories.plateau
+Plattformunhänger
+
+@@ 150 categories.fourgon
+Kofferunhänger
+
+@@ 151 categories.camionnette
+Camionnette
+
+@@ 152 categories.voiture
+Auto
+
+@@ 153 pages.rental.h1
+Unhänger a Camionnetten zu Ierpeldeng lounen
+
+@@ 154 pages.rental.lead
+Autos- a Motosunhänger, Kipper, Killunhänger fir Äert Fest, Camionnetten. Fir een Dag oder fir de Weekend.
+
+@@ 155 pages.rental.durationsMissing
+[UNBESTÄTIGT — Mietdauern Tag / Wochenende]
+
+@@ 156 pages.rental.conditionsH2
+Lounbedéngungen
+
+@@ 157 pages.rental.conditionsMissing
+[FEHLT — Mietbedingungen: Ausweis, Führerschein, Kaution, Abhol- und Rückgabezeiten, Reservierung]
+
+@@ 158 pages.rental.formH2
+Lounufro
+
+@@ 159 pages.rental.formIntro
+Wielt den Unhänger an d’Datumer. Mir ruffen Iech zréck, fir ze bestätegen.
+
+@@ 160 pages.category.h1.porte-voiture
+Autosunhänger lounen zu Ierpeldeng
+
+@@ 161 pages.category.h1.porte-moto
+Motosunhänger lounen zu Ierpeldeng
+
+@@ 162 pages.category.h1.benne
+Kipper lounen zu Ierpeldeng
+
+@@ 163 pages.category.h1.frigorifique
+Killunhänger lounen zu Ierpeldeng
+
+@@ 164 pages.category.h1.camionnette
+Camionnette lounen zu Ierpeldeng
+
+@@ 165 pages.category.intro.porte-voiture
+Mam Autosunhänger transportéiert Dir e futtisen Auto, en Oldtimer oder en Auto, deen Dir grad kaaft hutt. Kuckt, ier Dir lassfuert, ob Ären Auto den Unhänger mat der Luedung zéien däerf an ob Äre Führerschäin duergeet.
+
+@@ 166 pages.category.intro.porte-moto
+Mam Motosunhänger bréngt Dir eng Moto, e Scooter oder e Quad an den Atelier, an d’Vakanz oder op d’Rennstreck. Fir en ze zéien, geet en normalen Auto duer.
+
+@@ 167 pages.category.intro.benne
+Mam Kipper transportéiert Dir Äerd, Bauschutt, Sand oder Gréngschnëtt a kippt d’Luedung of. Fir e Chantier, fir de Gaart oder fir an de Recyclingcenter.
+
+@@ 168 pages.category.intro.frigorifique
+De Killunhänger hält Gedrénks an Iessen während engem Fest, enger Hochzäit oder engem Festival frësch. Dir stellt de Killunhänger fir d’Dauer vum Fest op der Plaz of.
+
+@@ 169 pages.category.intro.camionnette
+Mat der Camionnette plënnert Dir oder transportéiert Miwwelen oder Material. Bis 3.500 kg zulässegt Gesamtgewiicht fuert Dir se mam Führerschäin B.
+
+@@ 170 pages.category.vehiclesH2
+Eis Gefierer
+
+@@ 171 pages.category.licenceH2
+Wat fir e Führerschäin?
+
+@@ 172 pages.category.backToFinder
+Mat all eisen Unhänger vergläichen
+
+@@ 173 content.rental.sections.s1.h
+Unhänger lounen an der Nordstad
+
+@@ 174 content.rental.sections.s1.p.0
+Um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech, lount Dir en Unhänger oder eng Camionnette ganz no bei Iech doheem. Eis Unhängersich hei uewe weist Iech mat e puer Klicks, wéi en Unhänger zu deem passt, wat Dir transportéiert, an ob Äre Führerschäin duergeet.
+
+@@ 175 content.rental.sections.s2.h
+Tipps fir richteg ze lueden
+
+@@ 176 content.rental.sections.s2.items.0
+Iwwerschreit ni dat zulässegt Gesamtgewiicht vum Unhänger an och net d’Unhängelaascht vun Ärem Auto.
+
+@@ 177 content.rental.sections.s2.items.1
+Verdeelt d’Luedung: schwéier Saachen iwwer d’Achs, e bësse Gewiicht op d’Kupplung, sou wéi et an der Uleedung steet.
+
+@@ 178 content.rental.sections.s2.items.2
+Sécheert d’Luedung mat Spannrimmen an deckt alles, wat lass ass, mat enger Bâche oder engem Netz of.
+
+@@ 179 content.rental.sections.s2.items.3
+Ier Dir lassfuert, kontrolléiert d’Kupplung, d’Luuchten an den Drock vun de Pneuen.
+
+@@ 180 content.rental.sections.s2.items.4
+Fuert méi lues wéi ouni Luedung: Auto an Unhänger bremse manner gutt a brauche méi Plaz an de Kéieren.
+
+@@ 181 content.category.porte-voiture.sections.s1.h
+Wéini en Autosunhänger lounen?
+
+@@ 182 content.category.porte-voiture.sections.s1.p.0
+Fir en Auto heemzebréngen, deen net méi fiert, fir en Oldtimer ze transportéieren, ouni Kilometer dobäizefueren, oder fir en Auto ofzehuelen, deen Dir wäit vun doheem kaaft hutt. Mam Autosunhänger muss den transportéierten Auto net selwer fueren.
+
+@@ 183 content.category.porte-voiture.sections.s2.h
+En Auto sécher lueden
+
+@@ 184 content.category.porte-voiture.sections.s2.items.0
+Kontrolléiert, datt den Auto net méi weit wéi d’Notzlaascht vum Unhänger.
+
+@@ 185 content.category.porte-voiture.sections.s2.items.1
+Fuert lues a riicht op d’Rampen erop, mat engem, deen Iech aweist.
+
+@@ 186 content.category.porte-voiture.sections.s2.items.2
+Stellt den Auto esou, datt e bësse Gewiicht op de viischten Deel vum Unhänger läit, sou wéi et an der Uleedung steet.
+
+@@ 187 content.category.porte-voiture.sections.s2.items.3
+Sécheert all Rad mat passende Spannrimmen a kontrolléiert se no den éischte Kilometer.
+
+@@ 188 content.category.porte-moto.sections.s1.h
+Eng Moto transportéieren
+
+@@ 189 content.category.porte-moto.sections.s1.p.0
+Fir op eng Rennstreck ze fueren, eng Moto reparéieren ze loossen oder se nom Kaf heemzebréngen, ass de Motosunhänger méi einfach wéi eng Camionnette: D’Moto kënnt iwwer d’Ramp erop a steet da fest am Radhalter.
+
+@@ 190 content.category.porte-moto.sections.s2.h
+D’Moto richteg festmaachen
+
+@@ 191 content.category.porte-moto.sections.s2.items.0
+Setzt d’Viischtrad fest an de Radhalter.
+
+@@ 192 content.category.porte-moto.sections.s2.items.1
+Benotzt véier Spannrimmen, zwee vir an zwee hannen, u stabile Punkte vum Rumm.
+
+@@ 193 content.category.porte-moto.sections.s2.items.2
+Dréckt d’Fiederung e bëssen zesummen, awer net ze vill.
+
+@@ 194 content.category.porte-moto.sections.s2.items.3
+Kontrolléiert no den éischte Kilometer, ob d’Spannrimmen nach fest sinn.
+
+@@ 195 content.category.benne.sections.s1.h
+Opgepasst mam Gewiicht vum Material
+
+@@ 196 content.category.benne.sections.s1.p.0
+Material, dat lass gelueden ass, weit vill. E Kubikmeter fiicht Äerd weit ongeféier 1,5 bis 1,8 Tonnen, e Kubikmeter Kis ongeféier 1,5 Tonnen. E Kipper, dee bis un de Rand voll ass, iwwerschreit also séier seng Notzlaascht.
+
+@@ 197 content.category.benne.sections.s1.p.1
+Kuckt d’Notzlaascht an den Detailer vum Unhänger no a luet deementspriechend: Léiwer zweemol fueren, wéi den Unhänger z’iwwerlueden.
+
+@@ 198 content.category.benne.sections.s2.h
+Chantier, Gaart, Recyclingszenter
+
+@@ 199 content.category.benne.sections.s2.items.0
+Deckt d’Luedung mat enger Bâche oder engem Netz of, fir datt näischt op d’Strooss fält.
+
+@@ 200 content.category.benne.sections.s2.items.1
+Sortéiert den Offall, ier Dir lassfuert: Am Recyclingszenter spuert Dir esou Zäit.
+
+@@ 201 content.category.benne.sections.s2.items.2
+Kippt nëmmen op flaachem, festem Buedem of, wann den Unhänger ugekuppelt ass.
+
+@@ 202 content.category.frigorifique.sections.s1.h
+Fir wéi eng Geleeënheeten?
+
+@@ 203 content.category.frigorifique.sections.s1.p.0
+Familljefest, Hochzäit, Gebuertsdag, Kiermes, Maart oder Veräinsfest: De Killunhänger hält Gedrénks an Iessen op der Plaz frësch, während der ganzer Dauer vum Evenement.
+
+@@ 204 content.category.frigorifique.sections.s2.h
+Esou benotzt Dir de Killunhänger
+
+@@ 205 content.category.frigorifique.sections.s2.items.0
+Schléisst den Unhänger e puer Stonne virum Lueden un, fir datt e scho kal ass.
+
+@@ 206 content.category.frigorifique.sections.s2.items.1
+Luet am beschte Produiten, déi scho kal sinn: Et brauch Zäit, fir vill lauwarmt Gedrénks ofzekillen.
+
+@@ 207 content.category.frigorifique.sections.s2.items.2
+Loosst tëscht de Keesse Plaz, fir datt d’Loft zirkuléiere kann.
+
+@@ 208 content.category.frigorifique.sections.s2.items.3
+Suergt fir e passende Stroumuschloss no bei der Plaz, wou den Unhänger steet.
+
+@@ 209 content.category.camionnette.sections.s1.h
+Plënneren, Miwwelen, Material
+
+@@ 210 content.category.camionnette.sections.s1.p.0
+Eng Camionnette passt fir ze plënneren, fir Miwwelen, Haushaltsapparater oder voluminéist Material, ouni datt Dir en Unhänger ukuppele musst. D’Luedung bleift och bei Reen dréchen.
+
+@@ 211 content.category.camionnette.sections.s2.h
+Tipps fir Ären Transport
+
+@@ 212 content.category.camionnette.sections.s2.items.0
+Moosst grouss Miwwelen, ier Dir reservéiert.
+
+@@ 213 content.category.camionnette.sections.s2.items.1
+Stellt schwéier Saache ganz no bannen, géint d’Trennwand, a sécheert d’Luedung mat Spannrimmen.
+
+@@ 214 content.category.camionnette.sections.s2.items.2
+Schützt d’Miwwele mat Decken, fir datt se net verkraazt ginn.
+
+@@ 215 content.category.camionnette.sections.s2.items.3
+Denkt un d’Héicht vum Gefier, ier Dir an en ënnerierdesche Parking fuert.
+
+
+######## Autos ########
+
+@@ 216 cars.homeH2
+Eis Autoen am Stock
+
+@@ 217 cars.h1
+Nei Autoen an Occasiounen
+
+@@ 218 cars.lead
+All d’Autoen am Stock vun der Garage Um Rond Point, um Rond-point zu Ierpeldeng. Rufft eis un oder schreift eis op WhatsApp, ier Dir laanschtkommt. Probefahrten op Rendez-vous.
+
+@@ 219 cars.seeAll.one
+Den Auto kucken
+
+@@ 220 cars.seeAll.other
+All {n} Autoe kucken
+
+@@ 221 cars.year
+Joer
+
+@@ 222 cars.km
+Kilometer
+
+@@ 223 cars.fuel
+Brennstoff
+
+@@ 224 cars.tagFresh
+Nei am Stock
+
+@@ 225 cars.tagNew
+Neiwon
+
+@@ 226 cars.price
+Präis
+
+@@ 227 cars.noPhoto
+Foto kënnt nach
+
+@@ 228 cars.empty
+Am Moment ass keen Auto am Stock. Rufft eis un op +352 81 05 41.
+
+@@ 229 cars.filter.summary
+Filter ({n})
+
+@@ 230 cars.filter.legend
+Autoe filteren
+
+@@ 231 cars.filter.make
+Mark
+
+@@ 232 cars.filter.fuel
+Brennstoff
+
+@@ 233 cars.filter.gearbox
+Schaltung
+
+@@ 234 cars.filter.maxPrice
+Maximalpräis
+
+@@ 235 cars.filter.condition
+Zoustand
+
+@@ 236 cars.filter.sort
+Sortéierung
+
+@@ 237 cars.filter.all
+All
+
+@@ 238 cars.filter.any
+All
+
+@@ 239 cars.filter.conditionNew
+Nei
+
+@@ 240 cars.filter.conditionUsed
+Occasioun
+
+@@ 241 cars.filter.sortRecent
+Neiste fir d’éischt
+
+@@ 242 cars.filter.sortPriceAsc
+Präis: bëllegst fir d’éischt
+
+@@ 243 cars.filter.sortPriceDesc
+Präis: deierst fir d’éischt
+
+@@ 244 cars.filter.sortKmAsc
+Kilometer: mannst fir d’éischt
+
+@@ 245 cars.filter.count.one
+{n} Auto
+
+@@ 246 cars.filter.count.other
+{n} Autoen
+
+@@ 247 cars.filter.empty
+Keen Auto passt zu dëse Filteren.
+
+@@ 248 cars.filter.reset
+Filteren zrécksetzen
+
+@@ 249 cars.filter.apply
+Resultater weisen
+
+@@ 250 cars.filter.upTo
+bis {price}
+
+@@ 251 enums.fuel.petrol
+Bensin
+
+@@ 252 enums.fuel.diesel
+Diesel
+
+@@ 253 enums.fuel.hybrid
+Hybrid
+
+@@ 254 enums.fuel.plugin_hybrid
+Plug-in-Hybrid
+
+@@ 255 enums.fuel.electric
+Elektresch
+
+@@ 256 enums.fuel.lpg
+Autogas
+
+@@ 257 enums.fuel.other
+Aner
+
+@@ 258 enums.transmission.automatic
+Automatesch
+
+@@ 259 enums.transmission.manual
+Manuell
+
+@@ 260 enums.transmission.other
+Aner
+
+@@ 261 enums.body.estate
+Break
+
+@@ 262 enums.body.saloon
+Limousine
+
+@@ 263 enums.body.suv
+SUV / 4x4
+
+@@ 264 enums.body.city
+Klengwon
+
+@@ 265 enums.body.coupe
+Coupé
+
+@@ 266 enums.body.convertible
+Cabriolet
+
+@@ 267 enums.body.mpv
+Monospace
+
+@@ 268 enums.body.van
+Notzfuerzeug
+
+@@ 269 enums.body.pickup
+Pick-up
+
+@@ 270 enums.body.other
+Aner
+
+@@ 271 enums.condition.new
+Nei
+
+@@ 272 enums.condition.used
+Occasioun
+
+@@ 273 enums.colors.noir
+Schwaarz
+
+@@ 274 enums.colors.blanc
+Wäiss
+
+@@ 275 enums.colors.gris
+Gro
+
+@@ 276 enums.colors.argent
+Sëlwer
+
+@@ 277 enums.colors.bleu
+Blo
+
+@@ 278 enums.colors.rouge
+Rout
+
+@@ 279 enums.colors.vert
+Gréng
+
+@@ 280 enums.colors.jaune
+Giel
+
+@@ 281 enums.colors.orange
+Orange
+
+@@ 282 enums.colors.marron
+Brong
+
+@@ 283 enums.colors.brun
+Brong
+
+@@ 284 enums.colors.beige
+Beige
+
+@@ 285 enums.colors.bordeaux
+Bordeaux
+
+@@ 286 enums.colors.violet
+Mof
+
+@@ 287 enums.colors.or
+Gold
+
+@@ 288 enums.colors.anthracite
+Anthrazit
+
+@@ 289 car.specsH2
+Technesch Donnéeën
+
+@@ 290 car.firstReg
+Éischt Zouloossung
+
+@@ 291 car.mileage
+Kilometerstand
+
+@@ 292 car.fuel
+Brennstoff
+
+@@ 293 car.gearbox
+Schaltung
+
+@@ 294 car.power
+Leeschtung
+
+@@ 295 car.powerUnit
+PS
+
+@@ 296 car.displacement
+Hubraum
+
+@@ 297 car.body
+Karosserie
+
+@@ 298 car.seats
+Sëtzplazen
+
+@@ 299 car.colorExt
+Faarf baussen
+
+@@ 300 car.colorInt
+Faarf bannen
+
+@@ 301 car.euro
+Euro-Norm
+
+@@ 302 car.wltp
+Verbrauch an CO₂ (WLTP)
+
+@@ 303 car.wltpMissing
+Informatiounen an der Garage
+
+@@ 304 car.ref
+Ref.
+
+@@ 305 car.notSpecified
+net uginn
+
+@@ 306 car.condition
+Zoustand
+
+@@ 307 car.vatRecoverable
+TVA ofsetzbar
+
+@@ 308 car.equipmentH2
+Ausstattung
+
+@@ 309 car.equipmentMore
+Ganz Ausstattung kucken ({n})
+
+@@ 310 car.descriptionH2
+Beschreiwung
+
+@@ 311 car.originalNote
+Original-Beschreiwung op Franséisch
+
+@@ 312 car.originalListNote
+Original-Lëscht op Franséisch
+
+@@ 313 car.contactH2
+Interesséiert Dir Iech fir dësen Auto?
+
+@@ 314 car.contactText
+Rufft eis un, schreift eis op WhatsApp oder schéckt eis Är Ufro.
+
+@@ 315 car.whatsappText
+Moien, ass dësen Auto nach disponibel: {make} {model} (Ref. {id})?
+
+@@ 316 car.similarH2
+Ähnlech Autoen
+
+@@ 317 car.sodablast
+Fir en alen Auto bidde mir och Sodablast un.
+
+@@ 318 car.sold
+Dësen Auto ass verkaaft oder net méi am Stock.
+
+@@ 319 car.backToList
+All eis Autoe kucken
+
+@@ 320 car.gallery.label
+Fotoen: {make} {model}
+
+@@ 321 car.gallery.counter
+{i} / {n}
+
+@@ 322 car.gallery.prev
+Vireg Foto
+
+@@ 323 car.gallery.next
+Nächst Foto
+
+@@ 324 car.gallery.open
+Fotoe grouss weisen
+
+@@ 325 car.gallery.close
+Zoumaachen
+
+@@ 326 car.gallery.thumbs
+Miniaturen
+
+@@ 327 car.gallery.thumb
+Foto {i}
+
+@@ 328 car.gallery.alt
+{make} {model} {version}, Foto {i} vun {n}
+
+@@ 329 depot.h2
+Wëllt Dir Ären Auto verkafen?
+
+@@ 330 depot.text
+Am Kommissiounsverkaf bidde mir Ären Auto zum Verkaf un a bréngen Iech mat Keefer a Kontakt. Erzielt eis vun Ärem Auto, mir erklären Iech d’Konditiounen.
+
+@@ 331 depot.missing
+[FEHLT — Konditionen Kommissionsverkauf]
+
+@@ 332 depot.link
+Mäin Auto ubidden
+
+@@ 333 content.cars.sections.s1.h
+En Auto kafen an der Garage Um Rond Point
+
+@@ 334 content.cars.sections.s1.p.0
+All d’Autoen op dëser Säit si bei eis am Stock, um Rond-point zu Ierpeldeng. D’Lëscht gëtt all Moien op Basis vun eisen Annoncen aktualiséiert: Dir gesitt de Präis, de Kilometerstand, d’Joer an d’Fotoe vun all Auto.
+
+@@ 335 content.cars.sections.s1.items.0
+Wielt en Auto aus der Lëscht a maacht seng Detailsäit op.
+
+@@ 336 content.cars.sections.s1.items.1
+Rufft eis un oder schreift eis op WhatsApp, fir nozefroen, ob en nach disponibel ass.
+
+@@ 337 content.cars.sections.s1.items.2
+Kommt den Auto an der Garage kucken a maacht eng Probefahrt op Rendez-vous.
+
+@@ 338 content.cars.sections.s2.h
+Nei Autoen an Occasiounen no bei Ettelbréck an Dikrech
+
+@@ 339 content.cars.sections.s2.p.0
+Am Stock sinn nei Autoen an Occasiounen. De Stock ännert sech dacks: D’Lëscht weist Iech all Dag de Stand vum Moien. Dir fannt eis Annoncen och op LuxAuto an AutoScout24.
+
+@@ 340 content.cars.sections.s3.h
+Wat ass mat Ärem aktuellen Auto?
+
+@@ 341 content.cars.sections.s3.p.0
+Wëllt Dir Ären Auto a Reprise ginn? Sot et eis am Formulaire vum Auto, deen Iech interesséiert. Wëllt Dir léiwer verkafen, ouni Iech selwer drëm ze këmmeren? Entdeckt eise Kommissiounsverkaf méi ënnen op dëser Säit.
+
+@@ 342 content.cars.faqH
+Froen zu eisen Autoen
+
+@@ 343 content.cars.faq.q1.q
+Kann ech eng Probefahrt maachen?
+
+@@ 344 content.cars.faq.q1.a
+Jo, op Rendez-vous. Rufft eis un op {phone} oder schreift eis iwwer WhatsApp op {whatsapp}.
+
+@@ 345 content.cars.faq.q2.q
+Wou kann ech d’Autoe kucken?
+
+@@ 346 content.cars.faq.q2.a
+An der Garage, um {address}, um Rond-point zu Ierpeldeng. {hours}
+
+@@ 347 content.cars.faq.q3.q
+Sinn Är Autoen och op LuxAuto an AutoScout24?
+
+@@ 348 content.cars.faq.q3.a
+Jo, Dir fannt eis Annoncen och op LuxAuto an AutoScout24. Hei gesitt Dir eise ganze Stock op enger Plaz.
+
+
+######## Atelier ########
+
+@@ 349 pages.workshop.h1
+Mechanik a Karosserie zu Ierpeldeng
+
+@@ 350 pages.workshop.lead
+Entretien, Diagnos a Reparatur vun Ärem Auto oder Ärer Camionnette. No engem klengen Accident reparéiere mir Äert Gefier a lackéieren et nei.
+
+@@ 351 pages.workshop.whatH2
+Dat mécht eisen Atelier
+
+@@ 352 pages.workshop.items.entretien
+Entretien a Revisioun
+
+@@ 353 pages.workshop.items.diagnostic
+Feelerdiagnos
+
+@@ 354 pages.workshop.items.reparation
+Mechanesch Reparaturen
+
+@@ 355 pages.workshop.items.carrosserie
+Karosserie a Lack
+
+@@ 356 pages.workshop.extraMissing
+[UNBESTÄTIGT — weitere Leistungen laut Editus: Richtbank, Smart Repair, Ausbeulen, Turbo, 4x4, Restaurierung alter Autos; erst nach Bestätigung zeigen]
+
+@@ 357 pages.workshop.transparency
+Virun all Aarbecht erkläre mir Iech, wat mir maachen. Dir kritt eng detailléiert Rechnung.
+
+@@ 358 pages.workshop.transparencyMissing
+[UNBESTÄTIGT — Kostenvoranschlag vorher, detaillierte Rechnung?]
+
+@@ 359 pages.workshop.formH2
+Rendez-vous ufroen
+
+@@ 360 pages.workshop.formIntro
+Sot eis, ëm wat fir e Gefier et geet a wat ze maachen ass. Mir ruffen Iech zréck, fir e Rendez-vous auszemaachen.
+
+@@ 361 details.workshop.entretienH
+Entretien a Revisioun
+
+@@ 362 details.workshop.entretien
+E reegelméissegen Entretien hält Ären Auto zouverlässeg a sécher: Uelegwiessel, Filteren, Bremsen, Niveauen an allgemeng Kontroll. Sot eis an Ärer Ufro de Kilometerstand an den Datum vum leschten Entretien.
+
+@@ 363 details.workshop.diagnosticH
+Feelerdiagnos
+
+@@ 364 details.workshop.diagnostic
+Eng Warnlut geet un, en ongewinnte Geräisch, den Auto spréngt schlecht un: Beschreift, wat Dir mierkt a zënter wéini. D’Diagnos fënnt d’Ursaach, ier reparéiert gëtt.
+
+@@ 365 details.workshop.reparationH
+Mechanesch Reparatur
+
+@@ 366 details.workshop.reparation
+No der Diagnos reparéiere mir Ären Auto oder Är Camionnette an eisem Atelier um Rond-point zu Ierpeldeng.
+
+@@ 367 details.workshop.carrosserieH
+Karosserie a Lack
+
+@@ 368 details.workshop.carrosserie
+No engem klengen Accident reparéiere mir d’Karosserie a lackéieren déi beschiedegt Deeler nei. Schéckt eis Fotoe vum Schued iwwer WhatsApp fir eng éischt Aschätzung.
+
+@@ 369 details.workshop.processH2
+Esou kritt Dir e Rendez-vous
+
+@@ 370 details.workshop.process.0
+Beschreift Äert Gefier a wat ze maachen ass – am Formulaire, um Telefon oder iwwer WhatsApp.
+
+@@ 371 details.workshop.process.1
+Mir ruffen Iech zréck fir den Datum ofzemaachen.
+
+@@ 372 details.workshop.process.2
+Dir bréngt Äert Gefier an d’Garage, 1, rue du Viaduc.
+
+@@ 373 content.workshop.sections.s1.h
+Är Garage no bei Iech, tëscht Ettelbréck an Dikrech
+
+@@ 374 content.workshop.sections.s1.p.0
+D’Garage Um Rond Point ass um {address}, direkt um Rond-point zu Ierpeldeng, nieft der Aral-Tankstell. Wann Dir zu Ierpeldeng, Ettelbréck, Dikrech oder soss iergendwou an der Nordstad wunnt, ass eisen Atelier just e puer Minutten ewech.
+
+@@ 375 content.workshop.sections.s1.p.1
+Mir schwätze Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch. Dir kënnt eis de Problem mat Ärem Auto also an der Sprooch erklären, déi Iech am léifsten ass.
+
+@@ 376 content.workshop.sections.s2.h
+Entretien: firwat de Plang vum Hiersteller wichteg ass
+
+@@ 377 content.workshop.sections.s2.p.0
+All Hiersteller leet en Entretiensplang fest, nom Kilometerstand oder no der Zäit zënter dem leschte Besuch an der Garage. Dir fannt en am Carnet d’entretien oder um Écran vun Ärem Auto.
+
+@@ 378 content.workshop.sections.s2.p.1
+Wann Dir Iech un dëse Plang haalt, gëtt Ären Auto manner ofgenotzt, Dir vermeit deier Pannen an den Auto behält beim Verkaf besser säi Wäert. Wat zu engem Entretien gehéiert, hänkt vum Plang of. Dozou gehéieren zum Beispill den Uelegwiessel, d’Filteren, d’Kontroll vun de Bremsen an den Niveauen, d’Luuchten an d’Scheiwewëscher.
+
+@@ 379 content.workshop.sections.s3.h
+Bei dësen Zeeche sollt Dir an den Atelier kommen
+
+@@ 380 content.workshop.sections.s3.items.0
+Eng Warnluucht am Cockpit geet net méi aus.
+
+@@ 381 content.workshop.sections.s3.items.1
+D’Bremse jäizen, vibréieren oder zéien op eng Säit.
+
+@@ 382 content.workshop.sections.s3.items.2
+De Motor huet ze wéineg Kraaft oder spréngt schlecht un.
+
+@@ 383 content.workshop.sections.s3.items.3
+Et richt verbrannt, eppes leeft aus oder et kënnt ongewéinlechen Damp.
+
+@@ 384 content.workshop.sections.s3.items.4
+En neie Geräisch beim Fueren oder wann Dir d’Steierrad dréit.
+
+@@ 385 content.workshop.sections.s3.p.0
+Gëtt e Feeler fréi fonnt, bleift d’Reparatur méi einfach. Beschreift am Formulaire, wat Dir mierkt a zënter wéini: Dat ass déi bescht Basis fir d’Diagnos.
+
+@@ 386 content.workshop.sections.s4.h
+Karosserie a Lack no engem klengen Accident
+
+@@ 387 content.workshop.sections.s4.p.0
+Ass d’Karosserie verkraazt oder agedréckt, oder ass de Pare-choc beschiedegt? Da schéckt eis Fotoe vum Schued iwwer WhatsApp op {whatsapp}. Dir kritt eng éischt Aschätzung, nach ier Dir bei eis kommt. Duerno reparéiere mir an eisem Atelier d’Karosserie a lackéieren déi beschiedegt Deeler nei.
+
+@@ 388 content.workshop.sections.s4.p.1
+Wann en anert Gefier bedeelegt ass, fëllt de Constat amiable op der Plaz aus a maacht selwer Fotoe vum Accident. Dës Dokumenter sinn nëtzlech fir Är Versécherung.
+
+@@ 389 content.workshop.sections.s5.h
+Autoen a Camionnetten
+
+@@ 390 content.workshop.sections.s5.p.0
+Eisen Atelier këmmert sech ëm Autoen a Camionnetten. Fir e Rasemeeër, eng Motorsee oder eng aner Maschinn kuckt op eiser Säit [Gaart & Bësch](page:garden). Fir eng Karosserie oder en Deel bis op d’Metall ofzebeizen, entdeckt eist [Ofbeize mat Sodablast](page:sodablast).
+
+@@ 391 content.workshop.faqH
+Froen zum Atelier
+
+@@ 392 content.workshop.faq.q1.q
+Wéi maachen ech e Rendez-vous am Atelier aus?
+
+@@ 393 content.workshop.faq.q1.a
+Beschreift Äert Gefier a wat ze maachen ass: am Formulaire op dëser Säit, um Telefon op {phone} oder iwwer WhatsApp op {whatsapp}. Mir ruffen Iech zréck, fir de Rendez-vous auszemaachen.
+
+@@ 394 content.workshop.faq.q2.q
+Wéini ass d’Garage op?
+
+@@ 395 content.workshop.faq.q2.a
+{hours}
+
+@@ 396 content.workshop.faq.q3.q
+Kann ech Fotoe schécken, ier ech kommen?
+
+@@ 397 content.workshop.faq.q3.a
+Jo. Fir Karosserie oder Sodablast schéckt eis Fotoen iwwer WhatsApp op {whatsapp}: Dir kritt eng éischt Aschätzung.
+
+@@ 398 content.workshop.faq.q4.q
+Wou ass den Atelier?
+
+@@ 399 content.workshop.faq.q4.a
+Um {address}, um Rond-point zu Ierpeldeng, nieft der Aral-Tankstell, tëscht Ettelbréck an Dikrech.
+
+@@ 400 content.workshop.faq.q5.q
+A wéi enge Sprooche kann ech de Problem erklären?
+
+@@ 401 content.workshop.faq.q5.a
+Op Lëtzebuergesch, Franséisch, Däitsch, Englesch oder Portugisesch.
+
+
+######## Sodablast ########
+
+@@ 402 pages.sodablast.h1
+Sodablast zu Ierpeldeng
+
+@@ 403 pages.sodablast.lead
+Beim Sodablast sprëtze mir Natron op d’Uewerfläch a maachen esou Lack, Fett an Dreck ewech. Dës mëll Method beschiedegt keng empfindlech Uewerflächen: al Karosserien, Felgen, mechanesch Deeler.
+
+@@ 404 pages.sodablast.whatH2
+Fir wat?
+
+@@ 405 pages.sodablast.items.carrosserie
+Al Karosserien, virun enger Restauratioun
+
+@@ 406 pages.sodablast.items.jantes
+Felgen
+
+@@ 407 pages.sodablast.items.pieces
+Mechanesch Deeler
+
+@@ 408 pages.sodablast.photosH2
+Virdrun an duerno
+
+@@ 409 pages.sodablast.photosMissing
+[FEHLT — Vorher-nachher-Fotos Sodablast]
+
+@@ 410 pages.sodablast.whatsapp
+Schéckt eis Fotoen op WhatsApp fir eng éischt Aschätzung.
+
+@@ 411 pages.sodablast.whatsappText
+Moien, hei sinn e puer Fotoe fir eng éischt Aschätzung fir e Sodablast.
+
+@@ 412 pages.sodablast.whatsappLink
+Fotoen op WhatsApp schécken
+
+@@ 413 pages.sodablast.formH2
+Rendez-vous ufroen
+
+@@ 414 details.sodablast.explainH2
+Wéi funktionéiert Sodablast?
+
+@@ 415 details.sodablast.explain
+Natron gëtt mat Drockloft op d’Uewerfläch gestraalt. Et ass méi mëll wéi Sand an hëlt Lack, Fett a Knascht ewech, ouni d’Metall unzegräifen. Dofir gëtt et fir empfindlech Deeler an al Karosserien benotzt.
+
+@@ 416 details.sodablast.explain2
+D’Ofbeizen leet déi ursprénglech Uewerfläch fräi: Dir gesitt de richtegen Zoustand vum Metall virun enger Reparatur oder engem neie Lack.
+
+@@ 417 details.sodablast.processH2
+Esou leeft d’Ofbeizen of
+
+@@ 418 details.sodablast.process.0
+Schéckt eis Fotoe vum Auto oder vum Deel iwwer WhatsApp.
+
+@@ 419 details.sodablast.process.1
+Dir kritt eng éischt Aschätzung.
+
+@@ 420 details.sodablast.process.2
+Mir maachen zesummen e Rendez-vous an der Garage.
+
+@@ 421 content.sodablast.sections.s1.h
+Sodablast oder Sandstralen: wat ass den Ënnerscheed?
+
+@@ 422 content.sodablast.sections.s1.p.0
+Beim klassesche Sandstrale gëtt en haart Material wéi Sand oder Korund op d’Uewerfläch gestraalt. Dat beizt séier of, mä et gräift och d’Metall un a kann dënn Blecher erhëtzen an deforméieren.
+
+@@ 423 content.sodablast.sections.s1.p.1
+Natron ass vill méi mëll wéi Metall. Et hëlt Lack, Fett an Dreck ewech, ouni d’Uewerfläch ofzedroen an ouni se z’erhëtzen. Dofir passt Sodablast gutt fir empfindlech Deeler an al Karosserien.
+
+@@ 424 content.sodablast.sections.s2.h
+Fir wéi eng Projeten?
+
+@@ 425 content.sodablast.sections.s2.items.0
+Restauratioun vun engem alen Auto: d’Karosserie bis op d’Metall fräileeën, ier se reparéiert a lackéiert gëtt.
+
+@@ 426 content.sodablast.sections.s2.items.1
+Felgen: den ale Lack an de festsëtzenden Dreck ewechmaachen, ier se nei lackéiert ginn.
+
+@@ 427 content.sodablast.sections.s2.items.2
+Mechanesch Deeler: e Carter, e Motorblock oder en Zylinderkapp botzen, ier se kontrolléiert oder erëm zesummegebaut ginn.
+
+@@ 428 content.sodablast.sections.s2.p.0
+Dir wësst net, ob Ären Deel sech dofir eegent? Schéckt eis eng Foto iwwer WhatsApp op {whatsapp}, mir soen Iech et.
+
+@@ 429 content.sodablast.sections.s3.h
+Nom Ofbeizen: d’Metall schützen
+
+@@ 430 content.sodablast.sections.s3.p.0
+Eng ofgebeizt Uewerfläch ass blankt Metall. Am Kontakt mat Loft a Fiichtegkeet oxydéiert se séier. Plangt dofir den nächste Schrëtt vun Ufank un: Grondéierung, Reparatur oder Lack. D’Natronreschter gi virum Lackéiere mat Waasser ofgespullt.
+
+@@ 431 content.sodablast.sections.s3.p.1
+Bei engem Auto kann eisen Atelier duerno d’Karosserie reparéieren an nei lackéieren: Kuckt [Mechanik a Karosserie](page:workshop).
+
+@@ 432 content.sodablast.sections.s4.h
+Sodablast zu Lëtzebuerg, zu Ierpeldeng
+
+@@ 433 content.sodablast.sections.s4.p.0
+Eisen Atelier ass um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech, an aus dem ganzen Norde vu Lëtzebuerg einfach z’erreechen. Ob fir en eenzelnen Deel oder fir e ganzen Auto: Mir maachen zesummen e Rendez-vous an der Garage aus.
+
+@@ 434 content.sodablast.faqH
+Froen zum Sodablast
+
+@@ 435 content.sodablast.faq.q1.q
+Beschiedegt Sodablast d’Metall?
+
+@@ 436 content.sodablast.faq.q1.a
+Nee. Natron ass méi mëll wéi Metall: Et hëlt Lack, Fett an Dreck ewech, ouni d’Uewerfläch ofzedroen. Dat ass den Ënnerscheed zum Sandstralen.
+
+@@ 437 content.sodablast.faq.q2.q
+Wat kascht d’Ofbeize mat Sodablast?
+
+@@ 438 content.sodablast.faq.q2.a
+Dat hänkt dovun of, wéi grouss den Deel ass a wéi vill Schichten ewech mussen. Schéckt eis Fotoen iwwer WhatsApp op {whatsapp}: Dir kritt eng éischt Aschätzung.
+
+@@ 439 content.sodablast.faq.q3.q
+Muss den Deel nom Ofbeize behandelt ginn?
+
+@@ 440 content.sodablast.faq.q3.a
+Jo. Dat blankt Metall muss séier mat enger Grondéierung oder engem Lack geschützt ginn, soss oxydéiert et.
+
+@@ 441 content.sodablast.faq.q4.q
+Kann een och Felge mat Sodablast ofbeizen?
+
+@@ 442 content.sodablast.faq.q4.a
+Jo, Felge gehéieren zu den Deeler, déi mir mat Sodablast ofbeizen, sou wéi al Karosserien a mechanesch Deeler.
+
+
+######## Jardin & forêt ########
+
+@@ 443 pages.garden.h1
+Gaart- a Bëschmaschinnen zu Ierpeldeng
+
+@@ 444 pages.garden.lead
+Mir verkafen a reparéieren Gaart- a Bëschmaschinnen, virun allem vun de Marken Honda a Stihl.
+
+@@ 445 pages.garden.dealerMissing
+[UNBESTÄTIGT — Händlerstatus Honda und Stihl; Logos nur mit Freigabe]
+
+@@ 446 pages.garden.whatH2
+Verkaf a Reparatur
+
+@@ 447 pages.garden.text
+Rasemeeër, Fräischneider, Motorsee oder Heckeschéier: Bréngt Är Maschinn an den Atelier oder loosst Iech vun eis beroden, fir eng nei auszesichen.
+
+@@ 448 pages.garden.formH2
+Reparatur ufroen
+
+@@ 449 details.garden.saleH2
+Verkaf
+
+@@ 450 details.garden.sale
+Rasemeeër, Fräischneider, Motorsee oder Heckeschéier: Mir verkafe Gaart- a Bëschmaschinnen, virun allem vun de Marken Honda a Stihl. Sot eis, wéi grouss Ären Terrain ass a wat Dir wëllt maachen, mir beroden Iech beim Wielen.
+
+@@ 451 details.garden.repairH2
+Reparatur
+
+@@ 452 details.garden.repair
+De Rasemeeër spréngt net méi un, d’Motorsee schneit schlecht, de Fräischneider verléiert Kraaft? Bréngt Är Maschinn an den Atelier oder beschreift de Problem am Formulaire.
+
+@@ 453 content.garden.sections.s1.h
+Gaart- a Bëschmaschinnen an der Nordstad
+
+@@ 454 content.garden.sections.s1.p.0
+Fir Äre Gaart, Ären Terrain oder Äre Bësch ze fleegen, fannt Dir an der Garage Um Rond Point Maschinnen, virun allem vun de Marken Honda a Stihl, an en Atelier, fir se ze reparéieren. D’Garage ass um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech.
+
+@@ 455 content.garden.sections.s2.h
+Déi richteg Maschinn wielen
+
+@@ 456 content.garden.sections.s2.items.0
+Rasemeeër: D’Gréisst vum Rasen, d’Steigung an d’Hindernisser bestëmmen d’Schnëttbreet an d’Aart vum Undriff.
+
+@@ 457 content.garden.sections.s2.items.1
+Fräischneider: fir Kanten, Häng an héicht Gras, wou de Rasemeeër net hikënnt.
+
+@@ 458 content.garden.sections.s2.items.2
+Motorsee: D’Längt vum Schwäert hänkt vum Duerchmiesser vum Holz of, dat Dir am meeschte schneit.
+
+@@ 459 content.garden.sections.s2.items.3
+Heckeschéier: D’Längt vum Messer an d’Gewiicht zielen, wann Dir laang oder an der Héicht schneit.
+
+@@ 460 content.garden.sections.s2.p.0
+Bensin oder Akku? Eng Maschinn mat Akku ass méi roueg a spréngt ouni Méi un. Eng Maschinn mat Bensinsmotor hält och op grousse Flächen duer. Sot eis, wéi Dir se benotzt, mir beroden Iech.
+
+@@ 461 content.garden.sections.s3.h
+Reparatur: wéini Dir Är Maschinn brénge sollt
+
+@@ 462 content.garden.sections.s3.items.0
+De Motor spréngt net méi un oder geet aus.
+
+@@ 463 content.garden.sections.s3.items.1
+D’Maschinn verléiert Kraaft oder fëmmt.
+
+@@ 464 content.garden.sections.s3.items.2
+D’Kett oder d’Messer schneit schlecht.
+
+@@ 465 content.garden.sections.s3.items.3
+Dir héiert ongewéinlech Geräischer oder spiert Vibratiounen.
+
+@@ 466 content.garden.sections.s3.p.0
+Beschreift d’Pann am Formulaire oder rufft eis un op {phone}. Gitt d’Mark an de Modell vun der Maschinn un: Da wësse mir direkt, ëm wat et geet.
+
+@@ 467 content.garden.sections.s4.h
+Esou kënnt Är Maschinn gutt duerch de Wanter
+
+@@ 468 content.garden.sections.s4.p.0
+Ier Dir eng Maschinn mat Bensinsmotor fir de Wanter ewechstellt, botzt se, maacht den Tank eidel oder loosst de Motor lafen, bis hien ausgeet. Stellt se duerno am Dréchenen of. Esou spréngt d’Maschinn am Fréijoer méi einfach erëm un.
+
+@@ 469 content.garden.sections.s4.p.1
+Den Akku gehéiert op eng frostfräi Plaz, am beschten hallef gelueden.
+
+@@ 470 content.garden.faqH
+Froen zu de Gaartmaschinnen
+
+@@ 471 content.garden.faq.q1.q
+Vu wéi enge Marke verkaaft Dir Maschinnen?
+
+@@ 472 content.garden.faq.q1.a
+Virun allem Maschinne vun Honda a Stihl.
+
+@@ 473 content.garden.faq.q2.q
+Wéi loossen ech mäi Rasemeeër oder meng Motorsee reparéieren?
+
+@@ 474 content.garden.faq.q2.a
+Bréngt d’Maschinn an den Atelier oder beschreift d’Pann am Formulaire op dëser Säit. Mir ruffen Iech zréck.
+
+@@ 475 content.garden.faq.q3.q
+Wéini kann ech an der Garage laanschtkommen?
+
+@@ 476 content.garden.faq.q3.a
+{hours}
+
+@@ 477 content.garden.faq.q4.q
+Wou ass d’Garage?
+
+@@ 478 content.garden.faq.q4.a
+Um {address}, um Rond-point zu Ierpeldeng, nieft der Aral-Tankstell.
+
+
+######## Anhänger zu verkaufen ########
+
+@@ 479 pages.trailersForSale.h1
+Unhänger kafen zu Ierpeldeng
+
+@@ 480 pages.trailersForSale.lead
+Mir verkafen Unhänger vu Saris, Humbaur a WM Meyer, fir Privatleit a Betriber.
+
+@@ 481 pages.trailersForSale.dealerMissing
+[UNBESTÄTIGT — Händlerstatus Saris, Humbaur, WM Meyer; Logos nur mit Freigabe]
+
+@@ 482 pages.trailersForSale.adviceH2
+Wéi en Unhänger mat wéi engem Führerschäin?
+
+@@ 483 pages.trailersForSale.advice
+Mir hëllefen Iech, en Unhänger ze wielen, deen Ären Auto zéie kann an deen Dir mat Ärem Führerschäin fueren dierft: Gréisst, zulässegt Gesamtgewiicht, Bremsen. Eis Unhängersich fir d’Lounen weist Iech d’Führerschäinreegele mat Beispiller.
+
+@@ 484 pages.trailersForSale.adviceLink
+Wéi en Unhänger mat wéi engem Führerschäin?
+
+@@ 485 pages.trailersForSale.stockH2
+Unhänger am Stock
+
+@@ 486 pages.trailersForSale.stockMissing
+[FEHLT — Anhänger auf Lager]
+
+@@ 487 pages.trailersForSale.formH2
+Hutt Dir eng Fro zu engem Unhänger?
+
+@@ 488 details.trailers.chooseH2
+De richtegen Unhänger wielen
+
+@@ 489 details.trailers.masseH
+Zulässegt Gesamtgewiicht
+
+@@ 490 details.trailers.masse
+Et bestëmmt, wéi e Führerschäin Dir braucht. Bis 750 kg geet de Führerschäin B duer, doriwwer hänkt et vun Ärem Auto of.
+
+@@ 491 details.trailers.freinH
+Bremsen
+
+@@ 492 details.trailers.frein
+En Unhänger mat méi wéi 750 kg zulässegt Gesamtgewiicht muss gebremst sinn.
+
+@@ 493 details.trailers.chargeH
+Unhängelaascht
+
+@@ 494 details.trailers.charge
+Ären Auto dierf net méi zéie wéi am Feld O.1 (gebremst) oder O.2 (ongebremst) vun der Carte grise steet.
+
+@@ 495 details.trailers.usageH
+Bauaart a Moossen
+
+@@ 496 details.trailers.usage
+Plateau, Kipper, Autosunhänger oder Kofferunhänger: De passenden Unhänger hänkt dovun of, wat Dir am meeschte transportéiert a wou Dir en ofstellt.
+
+@@ 497 content.trailersForSale.sections.s1.h
+Saris, Humbaur a WM Meyer zu Ierpeldeng
+
+@@ 498 content.trailersForSale.sections.s1.p.0
+Mir verkafen Unhänger vu Saris, Humbaur a WM Meyer, fir Privatleit a fir Betriber. Sot eis, wat Dir transportéiert: Mir hëllefen Iech, de Modell ze fannen, deen zu Ärem Auto an zu Ärem Führerschäin passt.
+
+@@ 499 content.trailersForSale.sections.s1.p.1
+D’Garage ass um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech.
+
+@@ 500 content.trailersForSale.sections.s2.h
+Déi richteg Froe virum Kaf
+
+@@ 501 content.trailersForSale.sections.s2.items.0
+Wat transportéieren ech am meeschten, a wéi vill weit et?
+
+@@ 502 content.trailersForSale.sections.s2.items.1
+Wéi laang a wéi breet muss d’Luedfläch sinn?
+
+@@ 503 content.trailersForSale.sections.s2.items.2
+Ka mäin Auto dësen Unhänger zéien (Felder O.1 an O.2 vun der Carte grise)?
+
+@@ 504 content.trailersForSale.sections.s2.items.3
+Geet mäi Führerschäin duer: B, B mam Code 96 oder BE?
+
+@@ 505 content.trailersForSale.sections.s2.items.4
+Wou stellen ech den Unhänger of, wann ech en net brauch?
+
+@@ 506 content.trailersForSale.sections.s3.h
+Privatleit a Betriber
+
+@@ 507 content.trailersForSale.sections.s3.p.0
+Privatleit brauchen den Unhänger fir de Gaart, fir ze plënneren oder fir e Fräizäitgefier ze transportéieren. En Handwierker oder e Betrib transportéiert domat all Dag Material a Maschinnen: Do zielen d’Notzlaascht, eng robust Luedfläch an d’Befestegungspunkten nach méi.
+
+@@ 508 content.trailersForSale.sections.s4.h
+Kafen oder lounen?
+
+@@ 509 content.trailersForSale.sections.s4.p.0
+Wann Dir nëmmen heiansdo en Unhänger braucht, kann et duergoen, een ze [lounen](page:rental). Eis Unhängersich weist Iech och, wéi en Unhänger Dir mat Ärem Führerschäin zéien dierft.
+
+@@ 510 content.trailersForSale.faqH
+Froen zum Kaf vun engem Unhänger
+
+@@ 511 content.trailersForSale.faq.q1.q
+Vu wéi enge Marke verkaaft Dir Unhänger?
+
+@@ 512 content.trailersForSale.faq.q1.a
+Saris, Humbaur a WM Meyer.
+
+@@ 513 content.trailersForSale.faq.q2.q
+Verkaaft Dir och u Betriber?
+
+@@ 514 content.trailersForSale.faq.q2.a
+Jo, mir verkafen Unhänger u Privatleit an u Betriber.
+
+
+######## Kontakt & Öffnungszeiten ########
+
+@@ 515 contactBar.label
+Direktkontakt
+
+@@ 516 contactBar.call
+Uruffen
+
+@@ 517 contactBar.whatsapp
+WhatsApp
+
+@@ 518 contactBar.ask
+Ufroen
+
+@@ 519 contactBar.whatsappText
+Moien, ech hunn eng Fro un d’Garage Um Rond Point.
+
+@@ 520 access.h2
+Esou fannt Dir eis
+
+@@ 521 access.address
+Adress
+
+@@ 522 access.landmark
+Um Rond-point, nieft der Aral-Tankstell, tëscht Ettelbréck an Dikrech.
+
+@@ 523 access.hoursH3
+Ëffnungszäiten
+
+@@ 524 access.languagesH3
+Sproochen
+
+@@ 525 access.languages
+Mir schwätze Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch.
+
+@@ 526 access.mapLink
+Route an Google Maps
+
+@@ 527 access.external
+(extern Websäit)
+
+@@ 528 access.mapTitle
+De Rond-point zu Ierpeldeng
+
+@@ 529 access.osm
+© OpenStreetMap-Mataarbechter
+
+@@ 530 access.osmLabel
+Kaartendaten
+
+@@ 531 access.labels.garage
+Garage Um Rond Point
+
+@@ 532 access.labels.aral
+Aral
+
+@@ 533 access.labels.ettelbruck
+Ettelbréck
+
+@@ 534 access.labels.diekirch
+Dikrech
+
+@@ 535 access.labels.erpeldange
+Ierpeldeng
+
+@@ 536 access.labels.rail
+Eisebunn
+
+@@ 537 access.labels.sure
+Sauer
+
+@@ 538 hours.caption
+Ëffnungszäite vun der Garage Um Rond Point
+
+@@ 539 hours.day
+Dag
+
+@@ 540 hours.time
+Zäiten
+
+@@ 541 hours.days.mo
+Méindeg
+
+@@ 542 hours.days.tu
+Dënschdeg
+
+@@ 543 hours.days.we
+Mëttwoch
+
+@@ 544 hours.days.th
+Donneschdeg
+
+@@ 545 hours.days.fr
+Freideg
+
+@@ 546 hours.days.sa
+Samschdeg
+
+@@ 547 hours.days.su
+Sonndeg
+
+@@ 548 hours.closed
+Zou
+
+@@ 549 hours.today
+haut
+
+@@ 550 hours.and
+an
+
+@@ 551 hours.holidays
+Feierdeeg: [UNBESTÄTIGT — Feiertage vermutlich geschlossen]
+
+@@ 552 hours.short
+Méindeg bis Freideg {weekday}, Samschdeg {saturday}
+
+@@ 553 pages.contact.h1
+Kontakt a Wee bei eis
+
+@@ 554 pages.contact.lead
+Garage Um Rond Point, 1, rue du Viaduc, L-9147 Erpeldange-sur-Sûre. Um Rond-point, nieft der Aral-Tankstell. Telefon +352 81 05 41, WhatsApp +352 621 373 272, info@rondpoint.lu. Mir schwätze Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch.
+
+@@ 555 pages.contact.waysH2
+Esou erreecht Dir eis
+
+@@ 556 pages.contact.phone
+Telefon
+
+@@ 557 pages.contact.whatsapp
+WhatsApp
+
+@@ 558 pages.contact.email
+E-Mail
+
+@@ 559 pages.contact.paymentH2
+Bezuelen
+
+@@ 560 pages.contact.payment
+Bar, mat Kaart (Visa, Mastercard oder V PAY), mat Payconiq, Apple Pay oder PayPal oder per Iwwerweisung.
+
+@@ 561 pages.contact.paymentMissing
+[UNBESTÄTIGT — Zahlungsmittel]
+
+@@ 562 pages.contact.formH2
+Schreift eis
+
+@@ 563 content.contact.sections.s1.h
+Wéi erreecht Dir eis am beschten?
+
+@@ 564 content.contact.sections.s1.items.0
+Eng kuerz Fro oder Fotoen, déi Dir eis weise wëllt: WhatsApp op {whatsapp}.
+
+@@ 565 content.contact.sections.s1.items.1
+E Rendez-vous oder eng direkt Äntwert: Telefon op {phone}.
+
+@@ 566 content.contact.sections.s1.items.2
+Eng detailléiert Ufro: de Formulaire hei ënnen oder eng E-Mail un {email}.
+
+@@ 567 content.contact.sections.s2.h
+De Wee bei eis an d’Garage
+
+@@ 568 content.contact.sections.s2.p.0
+D’Garage ass um {address}, um Rond-point zu Ierpeldeng, nieft der Aral-Tankstell. Kommt Dir vun Ettelbréck oder vun Dikrech? Da läit de Rond-point op Ärem Wee. Fir déi genee Route maacht Google Maps iwwer dës Säit op.
+
+@@ 569 content.contact.faqH
+Praktesch Froen
+
+@@ 570 content.contact.faq.q1.q
+Wéini ass d’Garage op?
+
+@@ 571 content.contact.faq.q1.a
+{hours}
+
+@@ 572 content.contact.faq.q2.q
+Wéi eng Sprooche schwätzt Dir?
+
+@@ 573 content.contact.faq.q2.a
+Mir schwätze Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch.
+
+
+######## Formulare ########
+
+@@ 574 forms.optional
+fakultativ
+
+@@ 575 forms.name
+Numm
+
+@@ 576 forms.phone
+Telefon
+
+@@ 577 forms.phoneHint
+Mir ruffen Iech zréck.
+
+@@ 578 forms.email
+E-Mail
+
+@@ 579 forms.message
+Message
+
+@@ 580 forms.consent
+Ech sinn domat averstanen, datt Garage Um Rond Point meng Donnéeë benotzt, fir op meng Ufro z’äntweren. Méi Informatiounen an der {link}.
+
+@@ 581 forms.consentLink
+Dateschutzerklärung
+
+@@ 582 forms.honeypot
+Fëllt dëst Feld net aus
+
+@@ 583 forms.choose
+Wielt …
+
+@@ 584 forms.sending
+Gëtt geschéckt …
+
+@@ 585 forms.successH
+Är Ufro ass ukomm.
+
+@@ 586 forms.successText
+Mir äntweren Iech sou séier wéi méiglech. Ass et dréngend? Rufft +352 81 05 41 un.
+
+@@ 587 forms.errorSummary
+Iwwerpréift déi markéiert Felder.
+
+@@ 588 forms.errorSend
+D’Ufro gouf net geschéckt. Probéiert et nach eng Kéier oder rufft eis un op +352 81 05 41.
+
+@@ 589 forms.errorRate
+Dir hutt haut scho vill Ufroe geschéckt. Rufft eis un op +352 81 05 41.
+
+@@ 590 forms.fallbackH
+Leschte Schrëtt: Är Ufro schécken
+
+@@ 591 forms.fallbackText
+Wielt, wéi Dir eis d’Ufro schéckt. Äre Message ass scho fäerdeg geschriwwen, Dir musst en just nach schécken.
+
+@@ 592 forms.fallbackWhatsapp
+Iwwer WhatsApp schécken
+
+@@ 593 forms.fallbackMail
+Per E-Mail schécken
+
+@@ 594 forms.fallbackEdit
+Ufro änneren
+
+@@ 595 forms.fallbackSubject
+Ufro iwwer de Site
+
+@@ 596 forms.fallbackIntro
+Moien, hei ass meng Ufro:
+
+@@ 597 forms.errors.name
+Gitt Ären Numm un.
+
+@@ 598 forms.errors.phone
+Gitt eng Telefonsnummer un, fir datt mir Iech zréckruffe kënnen.
+
+@@ 599 forms.errors.phoneInvalid
+Dës Nummer schéngt net komplett ze sinn. Gitt se mat der Landesvirwiel un, zum Beispill +352 621 123 456.
+
+@@ 600 forms.errors.email
+Dës E-Mail-Adress ass net gëlteg. Si muss en @ enthalen, zum Beispill numm@beispill.lu.
+
+@@ 601 forms.errors.consent
+Kräizt d’Këschtchen un, fir datt mir Är Donnéeë benotzen dierfen, fir Iech z’äntweren.
+
+@@ 602 forms.errors.vehicle
+Wielt en Unhänger oder e Gefier.
+
+@@ 603 forms.errors.from
+Gitt den Ufanksdatum un.
+
+@@ 604 forms.errors.to
+Gitt den Enddatum un.
+
+@@ 605 forms.errors.toBeforeFrom
+Den Datum „Bis“ däerf net virum Datum „Vun“ leien.
+
+@@ 606 forms.errors.past
+Wielt en Datum vun haut un.
+
+@@ 607 forms.errors.wish
+Wielt, wat Dir wëllt.
+
+@@ 608 forms.errors.reason
+Wielt, fir wat Dir kommt.
+
+@@ 609 forms.errors.machine
+Gitt d’Gefier oder d’Maschinn un.
+
+@@ 610 forms.errors.work
+Beschreift, wat ze maachen ass.
+
+@@ 611 forms.errors.subject
+Wielt en Theema.
+
+@@ 612 forms.errors.message
+Schreift Äre Message.
+
+@@ 613 forms.rental.vehicle
+Gewënschten Unhänger oder Gefier
+
+@@ 614 forms.rental.from
+Vun
+
+@@ 615 forms.rental.to
+Bis
+
+@@ 616 forms.rental.licence
+Äre Führerschäin
+
+@@ 617 forms.rental.licenceNone
+Keng Angab
+
+@@ 618 forms.rental.licenceB
+B
+
+@@ 619 forms.rental.licenceB96
+B + Code 96
+
+@@ 620 forms.rental.licenceBE
+BE
+
+@@ 621 forms.rental.submit
+Lounufro schécken
+
+@@ 622 forms.rental.noFleet
+Schreift eis am Message, wat Dir wëllt lounen.
+
+@@ 623 forms.rental.other
+Eppes anescht, am Message beschriwwen
+
+@@ 624 forms.car.carLabel
+Auto
+
+@@ 625 forms.car.wish
+Dir wëllt
+
+@@ 626 forms.car.wishTest
+Eng Probefahrt
+
+@@ 627 forms.car.wishInfo
+Méi Informatiounen
+
+@@ 628 forms.car.wishTradeIn
+Reprise vu mengem Auto
+
+@@ 629 forms.car.tradeInH
+Nëmme fir eng Reprise
+
+@@ 630 forms.car.tradeMake
+Mark a Modell
+
+@@ 631 forms.car.tradeYear
+Joer
+
+@@ 632 forms.car.tradeKm
+Kilometerstand
+
+@@ 633 forms.car.title
+Informatiounen ufroen
+
+@@ 634 forms.car.submit
+Ufro schécken
+
+@@ 635 forms.workshop.reason
+Fir wat?
+
+@@ 636 forms.workshop.reasonMaintenance
+Entretien
+
+@@ 637 forms.workshop.reasonRepair
+Pann oder Reparatur
+
+@@ 638 forms.workshop.reasonBody
+Karosserie
+
+@@ 639 forms.workshop.reasonSodablast
+Sodablast
+
+@@ 640 forms.workshop.reasonGarden
+Gaart- oder Bëschmaschinn
+
+@@ 641 forms.workshop.machine
+Gefier oder Maschinn
+
+@@ 642 forms.workshop.machineHint
+Mark, Modell a Joer, zum Beispill: VW Golf 2018.
+
+@@ 643 forms.workshop.work
+Wat ass ze maachen?
+
+@@ 644 forms.workshop.date
+Wonschdatum
+
+@@ 645 forms.workshop.photos
+Fir Karosserie oder Sodablast schéckt eis Fotoen op WhatsApp: +352 621 373 272.
+
+@@ 646 forms.workshop.submit
+Rendez-vous ufroen
+
+@@ 647 forms.contact.subject
+Theema
+
+@@ 648 forms.contact.subjectQuestion
+Allgemeng Fro
+
+@@ 649 forms.contact.subjectTrailer
+Unhänger kafen
+
+@@ 650 forms.contact.subjectDepot
+Kommissiounsverkaf
+
+@@ 651 forms.contact.subjectOther
+Soss eppes
+
+@@ 652 forms.contact.submit
+Message schécken
+
+
+######## Menü, Footer, Bildtexte ########
+
+@@ 653 meta.lang
+Lëtzebuergesch
+
+@@ 654 meta.siteName
+Garage Um Rond Point
+
+@@ 655 meta.ogAlt
+Garage Um Rond Point um Rond-point zu Ierpeldeng
+
+@@ 656 nav.skip
+Direkt bei den Inhalt
+
+@@ 657 nav.main
+Haaptnavigatioun
+
+@@ 658 nav.rental
+Lounen
+
+@@ 659 nav.cars
+Autoen
+
+@@ 660 nav.workshop
+Atelier
+
+@@ 661 nav.trailersForSale
+Unhänger kafen
+
+@@ 662 nav.garden
+Gaart & Bësch
+
+@@ 663 nav.contact
+Kontakt
+
+@@ 664 nav.menu
+Menü
+
+@@ 665 nav.close
+Zoumaachen
+
+@@ 666 nav.langLabel
+Sprooch
+
+@@ 667 nav.callAria
++352 81 05 41 uruffen
+
+@@ 668 nav.home
+Startsäit
+
+@@ 669 nav.breadcrumb
+Navigatiounspad
+
+@@ 670 nav.logoAria
+Garage Um Rond Point, Startsäit
+
+@@ 671 status.stock.one
+{n} Auto am Stock.
+
+@@ 672 status.stock.other
+{n} Autoen am Stock.
+
+@@ 673 status.updatedToday
+Lëscht haut ëm {time} aktualiséiert.
+
+@@ 674 status.updatedYesterday
+Lëscht gëschter ëm {time} aktualiséiert.
+
+@@ 675 status.updatedOn
+Lëscht aktualiséiert: {date} ëm {time}.
+
+@@ 676 status.never
+D’Lëscht mat eisen Autoen ass geschwënn do.
+
+@@ 677 status.everyMorning
+D’Lëscht vun den Autoe gëtt all Moien aktualiséiert.
+
+@@ 678 photos.heroWorkshop
+Schwaarzen Auto an engem modernen, hellen Atelier
+
+@@ 679 photos.workshop
+Mecanicien bei der Aarbecht am Motorraum vun engem Auto
+
+@@ 680 photos.sodablast
+Rustegen Oldtimer mat ofblätterndem Lack
+
+@@ 681 photos.bodywork
+Rouden Sportsauto op enger Hiefbün an engem Atelier
+
+@@ 682 photos.garden
+Benzinsrasemeeër op engem Rasen
+
+@@ 683 photos.gardenPage
+Gras méien an der Sonn
+
+@@ 684 photos.paint
+Lackéiere vun enger Karosserie mat der Sprëtzpistoul
+
+@@ 685 photos.rental
+Wäisse Pick-up op engem Plateau
+
+@@ 686 photos.trailersSale
+Kippunhänger mat Gitteropsaz
+
+@@ 687 photos.fleetAlt
+Foto: {name}
+
+@@ 688 photos.creditsH2
+Beispillfotoen
+
+@@ 689 photos.credits
+Beispillfotoen ënner fräier Lizenz:
+
+@@ 690 footer.hoursH
+Ëffnungszäiten
+
+@@ 691 footer.followH
+Follegt eis
+
+@@ 692 footer.portals
+Eis Annoncen och op {luxauto} an {autoscout}
+
+@@ 693 footer.legal
+Impressum
+
+@@ 694 footer.privacy
+Dateschutz
+
+@@ 695 footer.tiktokMissing
+TikTok [UNBESTÄTIGT — genaue URL]
+
+
+######## Impressum & Datenschutz ########
+
+@@ 696 pages.thanks.h1
+Är Ufro ass ukomm
+
+@@ 697 pages.thanks.text
+Mir äntweren Iech [FEHLT — Antwortzeit, z. B. « le jour ouvrable suivant »]. Ass et dréngend? Rufft +352 81 05 41 un.
+
+@@ 698 pages.thanks.back
+Zréck op d’Startsäit
+
+@@ 699 pages.notFound.h1
+Säit net fonnt
+
+@@ 700 pages.notFound.text
+Dës Säit gëtt et net oder net méi. E verkaaften Auto verschwënnt vun eiser Lëscht.
+
+@@ 701 legal.h1
+Impressum
+
+@@ 702 legal.publisherH2
+Erausgeber vun der Websäit
+
+@@ 703 legal.company
+Firmennumm
+
+@@ 704 legal.legalForm
+Rechtsform
+
+@@ 705 legal.address
+Sëtz
+
+@@ 706 legal.phone
+Telefon
+
+@@ 707 legal.email
+E-Mail
+
+@@ 708 legal.rcs
+Handelsregister
+
+@@ 709 legal.vat
+TVA-Nummer
+
+@@ 710 legal.registered
+Androung
+
+@@ 711 legal.manager
+Geschäftsféierer
+
+@@ 712 legal.permit
+Niederlassungserlaabnes (Autorisation d’établissement)
+
+@@ 713 legal.capital
+Gesellschaftskapital
+
+@@ 714 legal.managerMissing
+[UNBESTÄTIGT — Gérant David Moreira laut Editus]
+
+@@ 715 legal.permitMissing
+[FEHLT — Nummer der Gewerbegenehmigung]
+
+@@ 716 legal.capitalMissing
+[FEHLT — Gesellschaftskapital]
+
+@@ 717 legal.hostingH2
+Hosting
+
+@@ 718 legal.hosting
+D’Websäit gëtt vu GitHub Pages gehost, engem Service vu GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, Vereenegt Staaten.
+
+@@ 719 legal.contentH2
+Inhalt
+
+@@ 720 legal.content
+D’Autosannoncen iwwerhuelen eis eegen Annoncen op LuxAuto an AutoScout24. Präisser an technesch Donnéeë kënne sech änneren; verbindlech ass eleng d’Offer, déi an der Garage bestätegt gëtt.
+
+@@ 721 legal.photosH2
+Fotoen a Plang
+
+@@ 722 legal.photos
+Plang vum Rond-point, gezeechent no Date vun OpenStreetMap (© OpenStreetMap-Mataarbechter, Lizenz ODbL). Fotoe vun den Autoen: eis eegen Annoncen.
+
+@@ 723 legal.fontH2
+Schrëft
+
+@@ 724 legal.font
+Archivo, Omnibus-Type, SIL Open Font License 1.1.
+
+@@ 725 privacy.h1
+Dateschutzerklärung
+
+@@ 726 privacy.intro
+Mir veraarbechten Är Donnéeën nëmmen, fir op Är Ufroen z’äntweren. Dës Websäit setzt keng Cookies a benotzt keng Tools fir Tracking oder Reklamm.
+
+@@ 727 privacy.controllerH2
+Verantwortlechen
+
+@@ 728 privacy.controller
+Garage Um Rond Point S.à r.l., 1, rue du Viaduc, L-9147 Erpeldange-sur-Sûre, Lëtzebuerg. Telefon +352 81 05 41, info@rondpoint.lu.
+
+@@ 729 privacy.formsH2
+Ufroformulairen
+
+@@ 730 privacy.forms
+Wann Dir e Formulaire schéckt, kréie mir d’Donnéeën, déi Dir agitt: Numm, Telefon, E-Mail, wann Dir se ugitt, Äre Message an d’Detailer vun Ärer Ufro (zum Beispill Lounzäit, Gefier, gewënschte Rendez-vous). Mir benotzen se, fir Iech z’äntweren an eng Offer oder e Rendez-vous virzebereeden.
+
+@@ 731 privacy.legalBasis
+Rechtsgrondlag: Är Awëllegung (Art. 6 Abs. 1 Buchst. a DSGVO), déi Dir gitt, wann Dir d’Këschtchen ukräizt, a virvertraglech Moossnamen op Är Ufro (Art. 6 Abs. 1 Buchst. b DSGVO). Dir kënnt Är Awëllegung all Moment per E-Mail oder Telefon zréckzéien.
+
+@@ 732 privacy.storage
+Är Ufro gëtt an enger Datebank bei Supabase (Regioun Europäesch Unioun) gespäichert an eis per E-Mail iwwer [UNBESTÄTIGT — EU-Mailanbieter, mit Nave klären] zougestallt. D’Ufroe ginn no 90 Deeg automatesch geläscht [UNBESTÄTIGT — Frist mit Kunde bestätigen]. Korrespondenz, déi zu engem Kontrakt féiert, bewahre mir no de Buchhaltungsflichten op.
+
+@@ 733 privacy.abuse
+Fir Mëssbrauch ze begrenzen, späichere mir 24 Stonnen laang e kryptografeschen Hashwäert vun Ärer IP-Adress. Doraus kann een Är Adress net erëmfannen.
+
+@@ 734 privacy.hostingH2
+Hosting a Server-Protokoller
+
+@@ 735 privacy.hosting
+D’Websäit gëtt vu GitHub Pages (GitHub, Inc., Vereenegt Staaten) gehost. Bei all Besuch veraarbecht GitHub Är IP-Adress an technesch Donnéeën, fir d’Säiten auszeliwweren an d’Sécherheet ze garantéieren. GitHub ass nom EU-US-Dateschutzrumm (EU-US Data Privacy Framework) zertifiéiert. Rechtsgrondlag: eist berechtegt Interessi un enger Websäit, déi sécher an erreechbar ass (Art. 6 Abs. 1 Buchst. f DSGVO).
+
+@@ 736 privacy.linksH2
+Linken op aner Servicer
+
+@@ 737 privacy.links
+D’Websäit lued keen externen Inhalt: Schrëften, Fotoen a Plang sinn zesumme mat der Websäit gehost. D’Linken op Google Maps, WhatsApp, Facebook, Instagram, TikTok, LuxAuto an AutoScout24 ginn nëmmen op, wann Dir drop klickt. Dës Servicer veraarbechten Är Donnéeën dann no hiren eegene Reegelen. WhatsApp gehéiert zu Meta Platforms; wann Dir eis op WhatsApp schreift, veraarbecht Meta Är Nummer an Är Messagen.
+
+@@ 738 privacy.rightsH2
+Är Rechter
+
+@@ 739 privacy.rights
+Dir kënnt Accès op Är Donnéeën, hir Korrektur, hir Läschung, d’Aschränkung vun der Veraarbechtung an d’Portabilitéit vun den Donnéeë verlaangen an der Veraarbechtung widderspriechen. Schreift eis op info@rondpoint.lu. Dir kënnt och eng Reklamatioun bei der Nationaler Kommissioun fir den Dateschutz (CNPD) aginn: 15, boulevard du Jazz, L-4370 Belvaux, cnpd.public.lu.
+
+@@ 740 privacy.updated
+Stand: {date}
+
+
+######## Google: Titel und Beschreibungen ########
+
+@@ 741 seo.home.title
+Garage Um Rond Point Erpeldange – Unhänger, Autoen, Atelier
+
+@@ 742 seo.home.description
+Garage um Rond-point zu Ierpeldeng (Erpeldange), tëscht Ettelbréck an Dikrech: Unhänger a Camionnetten lounen, nei Autoen an Occasiounen, Mechanik a Karosserie.
+
+@@ 743 seo.rental.title
+Unhänger lounen zu Erpeldange bei Ettelbréck | Um Rond Point
+
+@@ 744 seo.rental.description
+Autosunhänger, Motosunhänger, Kipper, Killunhänger oder Camionnette zu Erpeldange: Kuckt, wéi en Unhänger passt, wat e kascht an ob Äre Führerschäin duergeet.
+
+@@ 745 seo.category.title.porte-voiture
+Autosunhänger lounen zu Erpeldange | Garage Um Rond Point
+
+@@ 746 seo.category.title.porte-moto
+Motosunhänger lounen zu Erpeldange | Garage Um Rond Point
+
+@@ 747 seo.category.title.benne
+Kipper lounen zu Erpeldange bei Ettelbréck | Um Rond Point
+
+@@ 748 seo.category.title.frigorifique
+Killunhänger lounen zu Erpeldange | Garage Um Rond Point
+
+@@ 749 seo.category.title.camionnette
+Camionnette lounen zu Erpeldange | Garage Um Rond Point
+
+@@ 750 seo.category.description.porte-voiture
+Lount en Autosunhänger um Rond-point zu Erpeldange, no bei Ettelbréck: Moossen, Notzlaascht, Präis an néidege Führerschäin fir all Unhänger an eiser Flott.
+
+@@ 751 seo.category.description.porte-moto
+Lount e Motosunhänger um Rond-point zu Erpeldange, no bei Ettelbréck: Moossen, Notzlaascht, Präis an néidege Führerschäin fir all Unhänger an eiser Flott.
+
+@@ 752 seo.category.description.benne
+Lount e Kipper fir Äerd, Bauschutt oder Gréngschnëtt um Rond-point zu Erpeldange, no bei Ettelbréck: Notzlaascht, Präis a wat fir e Führerschäin Dir braucht.
+
+@@ 753 seo.category.description.frigorifique
+Lount e Killunhänger fir Äert Fest oder Festival um Rond-point zu Erpeldange, no bei Ettelbréck: Bannevolumen, Temperatur, Präis an néidege Führerschäin.
+
+@@ 754 seo.category.description.camionnette
+Lount eng Camionnette fir en Ëmzug oder Material um Rond-point zu Erpeldange, no bei Ettelbréck. Bis 3.500 kg geet de Führerschäin B duer. Präis pro Dag.
+
+@@ 755 seo.cars.title
+Nei Autoen an Occasiounen zu Erpeldange | Um Rond Point
+
+@@ 756 seo.cars.description
+All d’Autoen am Stock vun der Garage Um Rond Point zu Erpeldange, mat Präis, Kilometerstand a Fotoen. Lëscht all Moien aktualiséiert. Probefahrt op Rendez-vous.
+
+@@ 757 seo.car.suffixLong
+ | Garage Um Rond Point
+
+@@ 758 seo.car.suffixShort
+ | Um Rond Point
+
+@@ 759 seo.car.place
+ zu Ierpeldeng
+
+@@ 760 seo.car.descTail
+Ze gesinn an der Garage Um Rond Point zu Ierpeldeng.
+
+@@ 761 seo.car.descExtra.0
+ Probefahrt op Rendez-vous.
+
+@@ 762 seo.car.descExtra.1
+ Tëscht Ettelbréck an Dikrech.
+
+@@ 763 seo.car.descExtra.2
+ Rufft +352 81 05 41 un.
+
+@@ 764 seo.car.descGearbox
+Schaltung: {gearbox}
+
+@@ 765 seo.car.soldTitle
+{make} {model} verkaaft | Garage Um Rond Point, Erpeldange
+
+@@ 766 seo.car.soldDescription
+{make} {model}: Dësen Auto ass verkaaft oder net méi am Stock. Kuckt déi aner nei Autoen an Occasioune vun der Garage Um Rond Point zu Erpeldange.
+
+@@ 767 seo.workshop.title
+Mechanik a Karosserie zu Erpeldange | Garage Um Rond Point
+
+@@ 768 seo.workshop.description
+Entretien, Diagnos, Reparatur, Karosserie a Lackéierung an der Garage um Rond-point zu Erpeldange, bei Ettelbréck an Dikrech. Frot online e Rendez-vous un.
+
+@@ 769 seo.sodablast.title
+Sodablast zu Lëtzebuerg | Garage Um Rond Point, Erpeldange
+
+@@ 770 seo.sodablast.description
+Sodablast mécht Lack an Dreck ewech, ouni d’Uewerfläch ze beschiedegen: al Autoen, Felgen, mechanesch Deeler. Zu Erpeldange, tëscht Ettelbréck an Dikrech.
+
+@@ 771 seo.trailersForSale.title
+Unhänger kafen: Humbaur, Saris, WM Meyer | Erpeldange
+
+@@ 772 seo.trailersForSale.description
+Kaaft Ären Unhänger zu Erpeldange: Humbaur, Saris oder WM Meyer. Mir hëllefen Iech, Gréisst a Gewiicht passend zu Ärem Auto an Ärem Führerschäin ze wielen.
+
+@@ 773 seo.garden.title
+Gaart- a Bëschmaschinne vun Honda a Stihl zu Erpeldange
+
+@@ 774 seo.garden.description
+Verkaf a Reparatur vu Gaart- a Bëschmaschinnen, virun allem vun Honda a Stihl, an der Garage Um Rond Point zu Erpeldange, tëscht Ettelbréck an Dikrech.
+
+@@ 775 seo.contact.title
+Kontakt a Wee bei eis | Garage Um Rond Point, Erpeldange
+
+@@ 776 seo.contact.description
+1, rue du Viaduc zu Erpeldange-sur-Sûre, um Rond-point nieft der Aral. Méindeg bis Freideg 7:45–12 an 13–18 Auer, Samschdeg 8–12 Auer. Tel. +352 81 05 41.
+
+@@ 777 seo.thanks.title
+Ufro geschéckt | Garage Um Rond Point, Erpeldange-sur-Sûre
+
+@@ 778 seo.thanks.description
+Är Ufro ass bei der Garage Um Rond Point zu Erpeldange ukomm. Mir äntweren Iech séier. Ass et dréngend? Rufft eis un op +352 81 05 41. Merci villmools!
+
+@@ 779 seo.legal.title
+Impressum | Garage Um Rond Point, Erpeldange-sur-Sûre
+
+@@ 780 seo.legal.description
+Impressum vun der Garage Um Rond Point S.à r.l., 1, rue du Viaduc, L-9147 Erpeldange-sur-Sûre: Erausgeber, Handelsregister B296148, TVA LU36559673, Hosting.
+
+@@ 781 seo.privacy.title
+Dateschutzerklärung | Garage Um Rond Point, Erpeldange
+
+@@ 782 seo.privacy.description
+Wéi eng Donnéeën d’Garage Um Rond Point veraarbecht, wann Dir eis schreift, firwat, wéi laang a wéi eng Rechter Dir hutt. Ouni Cookies, ouni Tracking-Tools.

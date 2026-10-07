@@ -1,0 +1,32 @@
+---
+/**
+ * Admin-Dashboard (nicht in der Sitemap, noindex, in robots.txt gesperrt).
+ * Die Sicherheit liegt im GitHub-Zugangsschlüssel: ohne ihn kann niemand speichern.
+ * Content-Security-Policy: Anfragen nur an die eigene Seite und api.github.com.
+ */
+import '@/styles/global.css';
+import '@/admin/admin.css';
+import App from '@/admin/App.tsx';
+import { path, withBase } from '@/i18n/config';
+---
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; connect-src 'self' https://api.github.com; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="description" content="Verwaltung der Website Garage Um Rond Point" />
+    <title>Website verwalten | Um Rond Point</title>
+    <link rel="icon" href={withBase('/favicon-32.png')} type="image/png" sizes="32x32" />
+    <meta name="theme-color" content="#000000" />
+  </head>
+  <body class="a-body">
+    <App client:only="react" base={withBase('')} siteHref={path('fr', 'home')} />
+    <noscript><p style="padding:24px">Bitte JavaScript aktivieren. / Veuillez activer JavaScript.</p></noscript>
+  </body>
+</html>

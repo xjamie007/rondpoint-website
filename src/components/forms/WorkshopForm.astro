@@ -3,7 +3,7 @@
 import FormShell from './FormShell.astro';
 import { rich, type Dict } from '@/i18n';
 import type { Lang } from '@/i18n/config';
-import { site, whatsappHref } from '@/lib/site';
+import { site, whatsappHref, whatsappText } from '@/lib/site';
 
 interface Props {
   lang: Lang;
@@ -21,7 +21,7 @@ const reasons = [
   ['sodablast', w.reasonSodablast],
   ['jardin', w.reasonGarden],
 ] as const;
-const waLink = `<a class="link" href="${whatsappHref(t.pages.sodablast.whatsappText)}" rel="noopener">${site.whatsapp.display}</a>`;
+const waLink = `<a class="link" href="${whatsappHref(t.pages.sodablast.whatsappText)}" rel="noopener">${whatsappText}</a>`;
 ---
 <FormShell type="atelier" lang={lang} t={t} id={id} submit={w.submit}>
   <fieldset>

@@ -10,7 +10,7 @@ import ContactBar from '@/components/ContactBar.astro';
 import { useT } from '@/i18n';
 import { alternates as alts, HREFLANG, HTML_LANG, pathFor, withBase, type Lang, type Route } from '@/i18n/config';
 import { organization, SITE_ORIGIN } from '@/lib/jsonld';
-import { presentation } from '@/lib/site';
+import { presentation, site } from '@/lib/site';
 
 interface Props {
   lang: Lang;
@@ -32,6 +32,9 @@ const og = ogImage ?? { src: withBase(presentation ? '/og/rondpoint-demo.png' : 
 const ogUrl = new URL(og.src, SITE_ORIGIN).toString();
 const OG_LOCALE: Record<Lang, string> = { fr: 'fr_LU', de: 'de_LU', lb: 'lb_LU', en: 'en_GB', pt: 'pt_PT' };
 const ld = [organization(), ...jsonld];
+// Hinweis oben (im Dashboard ein- und ausschalten), sonst französischer Text
+const notice = (site as { notice?: { active?: boolean } & Partial<Record<Lang, string>> }).notice;
+const noticeText = notice?.active ? (notice[lang]?.trim() || notice.fr?.trim() || '') : '';
 ---
 <!doctype html>
 <html lang={HTML_LANG[lang]} dir="ltr">
@@ -90,6 +93,7 @@ const ld = [organization(), ...jsonld];
   <body>
     <div class="scroll-progress" aria-hidden="true"></div>
     <a class="skip-link" href="#main">{t.nav.skip}</a>
+    {noticeText && <p class="site-notice" role="status">{noticeText}</p>}
     <Header lang={lang} t={t} alternates={alternates} current={route.page} />
     <main id="main" tabindex="-1">
       <slot />
