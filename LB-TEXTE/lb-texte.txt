@@ -226,7 +226,7 @@ Wat transportéiert Dir?
 Een Auto
 
 @@ 73 finder.cargo.moto
-Eng Moto
+Een Moto
 
 @@ 74 finder.cargo.terre
 Buedem, Bauschutt oder Gréngschnëtt

@@ -58,7 +58,7 @@ const lb: Dict = {
     cargoLegend: 'Wat transportéiert Dir?',
     cargo: {
       voiture: 'Een Auto',
-      moto: 'Eng Moto',
+      moto: 'Een Moto',
       terre: 'Buedem, Bauschutt oder Gréngschnëtt',
       fete: 'Gedrénks an Iessen fir e Fest',
       meubles: 'Miwwelen oder Karton',
