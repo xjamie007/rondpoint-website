@@ -564,3 +564,61 @@ html:not([data-seen]) .logo-o { animation: spin-o var(--dur-4) var(--ease-in-out
   html:not([data-seen]) .logo-o { animation: none !important; }
   .ph-curtain::before { display: none; }
 }
+
+
+/* ==================================================================
+   Formulare und FAQ: zentriert, als Karten (alle Seiten).
+   Außerhalb der Layer, damit sie die Abstände der Seiten-Styles schlagen.
+================================================================== */
+section[aria-labelledby='form-h'] {
+  text-align: center;
+  background-color: var(--color-paper);
+  background-image: radial-gradient(rgb(0 0 0 / 0.075) 1px, transparent 1.4px);
+  background-size: 22px 22px;
+}
+section.block[aria-labelledby='form-h']:not(.section) { margin-inline: calc(-1 * var(--gutter)); padding: 56px var(--gutter); }
+section[aria-labelledby='form-h'] h2 { text-align: center; }
+section[aria-labelledby='form-h'] h2::after { content: ''; display: block; width: 56px; height: 5px; margin: 14px auto 0; background: var(--color-orange); }
+section[aria-labelledby='form-h'] .wrap > p, section[aria-labelledby='form-h'] > p { max-width: 60ch; margin-inline: auto !important; }
+section[aria-labelledby='form-h'] form.inquiry {
+  text-align: left;
+  width: 100%;
+  max-width: 46rem;
+  margin: 32px auto 0;
+  padding: clamp(20px, 4vw, 40px);
+  background: var(--color-white);
+  border: 1.5px solid var(--color-black);
+  border-radius: 4px;
+  box-shadow: 6px 6px 0 var(--color-orange);
+}
+@media (min-width: 48rem) { section[aria-labelledby='form-h'] form.inquiry { box-shadow: 12px 12px 0 var(--color-orange); } }
+.field-hint.below { margin: 6px 0 0; }
+.inquiry .submit-row .btn { min-width: min(100%, 260px); }
+
+.faq-section h2 { text-align: center; }
+.faq-section .h-bar::after { margin-inline: auto; }
+.faq-section .faq { max-width: 52rem; margin-inline: auto; display: grid; gap: 12px; }
+.faq-section .faq details {
+  border: 1.5px solid var(--color-black);
+  border-radius: 4px;
+  background: var(--color-white);
+  transition: border-color var(--dur-2) var(--ease-out), box-shadow var(--dur-3) var(--ease-out), transform var(--dur-2) var(--ease-out);
+}
+.faq-section .faq details:last-child { border-bottom: 1.5px solid var(--color-black); }
+.faq-section .faq summary { padding: 16px 18px 16px 22px; }
+.faq-section .faq .answer { padding: 0 22px 22px; color: var(--color-asphalt); line-height: 1.6; }
+.faq-section .faq .pm { width: 36px; height: 36px; border-radius: 50%; background: var(--color-paper); transition: background-color var(--dur-2) var(--ease-out), rotate var(--dur-3) var(--ease-out); }
+.faq-section .faq .pm::before, .faq-section .faq .pm::after { left: 10px; top: 17px; width: 16px; }
+.faq-section .faq details[open] { border-color: var(--color-orange); box-shadow: 6px 6px 0 var(--color-orange); }
+.faq-section .faq details[open] .pm { background: var(--color-orange); rotate: 180deg; }
+@media (hover: hover) {
+  .faq-section .faq details:not([open]):hover { transform: translateY(-2px); box-shadow: 0 10px 22px -16px rgb(0 0 0 / 0.5); }
+  .faq-section .faq details:not([open]):hover .pm { background: #ffe3d1; }
+}
+
+/* Sprungmarken (z. B. „Wéi Dir eis fannt“): weich scrollen, Ziel kurz hervorheben */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+  h2:target::after, [id]:target > h2::after { animation: target-pulse 1.2s var(--ease-out) 0.4s both; }
+}
+@keyframes target-pulse { 0% { width: 56px; } 45% { width: 160px; } 100% { width: 56px; } }

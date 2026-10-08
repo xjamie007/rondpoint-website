@@ -23,7 +23,7 @@ export const GET: APIRoute = async () => {
     const alts = alternates(route);
     const links = [
       ...alts.map((a) => `    <xhtml:link rel="alternate" hreflang="${HREFLANG[a.lang]}" href="${abs(a.href)}"/>`),
-      `    <xhtml:link rel="alternate" hreflang="x-default" href="${abs(pathFor('fr', route))}"/>`,
+      `    <xhtml:link rel="alternate" hreflang="x-default" href="${abs(pathFor('lb', route))}"/>`,
     ].join('\n');
     return LANGS.map(
       (lang) =>

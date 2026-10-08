@@ -2,7 +2,7 @@
 
 1. D’Garage um Rond-point zu Ierpeldeng
 
-2. Lount en Unhänger oder eng Camionnette, fannt Ären nächsten Auto a loosst Ären eegenen entretenéieren a reparéieren. Um 1, rue du Viaduc, nieft der Aral-Tankstell, tëscht Ettelbréck an Dikrech.
+2. Lount en Unhänger oder eng Camionnette, fannt Ären nächsten Auto. Dir fannt eis op 1, rue du Viaduc, nieft der Aral-Tankstell, tëscht Ettelbréck an Angelduerf.
 
 3. Unhänger fannen
 
@@ -137,15 +137,15 @@
 
 71. Wat transportéiert Dir?
 
-72. En Auto
+72. Een Auto
 
 73. Eng Moto
 
-74. Äerd, Bauschutt oder Gréngschnëtt
+74. Buedem, Bauschutt oder Gréngschnëtt
 
 75. Gedrénks an Iessen fir e Fest
 
-76. Miwwelen oder Kartongen
+76. Miwwelen oder Karton
 
 77. Material oder Maschinnen
 
@@ -321,7 +321,7 @@
 
 166. Mam Motosunhänger bréngt Dir eng Moto, e Scooter oder e Quad an den Atelier, an d’Vakanz oder op d’Rennstreck. Fir en ze zéien, geet en normalen Auto duer.
 
-167. Mam Kipper transportéiert Dir Äerd, Bauschutt, Sand oder Gréngschnëtt a kippt d’Luedung of. Fir e Chantier, fir de Gaart oder fir an de Recyclingszenter.
+167. Mam Kipper transportéiert Dir Buedem, Bauschutt, Sand oder Gréngschnëtt a kippt d’Luedung of. Fir e Chantier, fir de Gaart oder fir an de Recyclingszenter.
 
 168. De Killunhänger hält Gedrénks an Iessen wärend engem Fest, enger Hochzäit oder engem Festival frësch. Dir stellt de Killunhänger fir d’Dauer vum Fest op der Plaz of.
 
@@ -379,7 +379,7 @@
 
 195. Opgepasst mam Gewiicht vum Material
 
-196. Material, dat lass gelueden ass, weit vill. E Kubikmeter fiicht Äerd weit ongeféier 1,5 bis 1,8 Tonnen, e Kubikmeter Kis ongeféier 1,5 Tonnen. E Kipper, dee bis un de Rand voll ass, iwwerschreit also séier seng Notzlaascht.
+196. Material, dat lass gelueden ass, weit vill. E Kubikmeter fiichte Buedem weit ongeféier 1,5 bis 1,8 Tonnen, e Kubikmeter Kis ongeféier 1,5 Tonnen. E Kipper, dee bis un de Rand voll ass, iwwerschreit also séier seng Notzlaascht.
 
 197. Kuckt d’Notzlaascht an den Detailer vum Unhänger no a luet deementspriechend: Léiwer zweemol fueren, wéi den Unhänger z’iwwerlueden.
 
@@ -727,7 +727,7 @@
 
 369. Esou kritt Dir e Rendez-vous
 
-370. Beschreift Äert Gefier a wat ze maachen ass – am Formulaire, um Telefon oder iwwer WhatsApp.
+370. Beschreift Äert Gefier a wat ze maachen ass, am Formulaire, um Telefon oder iwwer WhatsApp.
 
 371. Mir ruffen Iech zréck, fir den Datum ofzemaachen.
 
@@ -897,11 +897,11 @@
 
 453. Gaart- a Bëschmaschinnen an der Nordstad
 
-454. Fir Äre Gaart, Ären Terrain oder Äre Bësch ze fleegen, fannt Dir an der Garage Um Rond Point Maschinnen, virun allem vun de Marken Honda a Stihl, an en Atelier, fir se ze reparéieren. D’Garage ass um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech.
+454. Fir Äre Gaart, Ären Terrain oder Äre Bësch ze pfleegen, fannt Dir an der Garage Um Rond Point Maschinnen, virun allem vun de Marken Honda a Stihl, an en Atelier, fir se ze reparéieren. D’Garage ass um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech.
 
 455. Déi richteg Maschinn wielen
 
-456. Rasemeeër: D’Gréisst vum Rasen, d’Steigung an d’Hindernisser bestëmmen d’Schnëttbreet an d’Aart vum Undriff.
+456. Rasemeeër: D’Gréisst vum Wuess, d’Steigung an d’Hindernisser bestëmmen d’Schnëttbreet an d’Aart vum Undriff.
 
 457. Fräischneider: fir Kanten, Häng an héicht Gras, wou de Rasemeeër net hikënnt.
 
@@ -917,7 +917,7 @@
 
 463. D’Maschinn verléiert Kraaft oder fëmmt.
 
-464. D’Kett oder d’Messer schneit schlecht.
+464. D’Ketten oder d’Messer schneit schlecht.
 
 465. Dir héiert ongewéinlech Geräischer oder spiert Vibratiounen.
 
@@ -925,7 +925,7 @@
 
 467. Esou kënnt Är Maschinn gutt duerch de Wanter
 
-468. Ier Dir eng Maschinn mat Bensinsmotor fir de Wanter ewechstellt, botzt se, maacht den Tank eidel oder loosst de Motor lafen, bis hien ausgeet. Stellt se duerno am Dréchenen of. Esou spréngt d’Maschinn am Fréijoer méi einfach erëm un.
+468. Ier Dir eng Maschinn mat Bensinsmotor fir de Wanter ewechstellt, botzt se, maacht den Tank eidel oder loosst de Motor lafen, bis se ausgeet. Stellt se duerno am Dréchenen of. Esou spréngt d’Maschinn am Fréijoer méi einfach erëm un.
 
 469. Den Akku gehéiert op eng frostfräi Plaz, am beschten hallef gelueden.
 
@@ -1359,7 +1359,7 @@
 
 681. Rouden Sportsauto op enger Hiefbün an engem Atelier
 
-682. Benzinsrasemeeër op engem Rasen
+682. Benzinsrasemeeër op engem Wuess
 
 683. Gras méien an der Sonn
 
@@ -1499,7 +1499,7 @@
 
 751. Lount e Motosunhänger um Rond-point zu Erpeldange, no bei Ettelbréck: Moossen, Notzlaascht, Präis an néidege Führerschäin fir all Unhänger an eiser Flott.
 
-752. Lount e Kipper fir Äerd, Bauschutt oder Gréngschnëtt um Rond-point zu Erpeldange, no bei Ettelbréck: Notzlaascht, Präis a wat fir e Führerschäin Dir braucht.
+752. Lount e Kipper fir Buedem, Bauschutt oder Gréngschnëtt um Rond-point zu Erpeldange, no bei Ettelbréck: Notzlaascht, Präis a wat fir e Führerschäin Dir braucht.
 
 753. Lount e Killunhänger fir Äert Fest oder Festival um Rond-point zu Erpeldange, no bei Ettelbréck: Bannevolumen, Temperatur, Präis an néidege Führerschäin.
 

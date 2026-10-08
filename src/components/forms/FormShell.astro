@@ -64,7 +64,6 @@ const privacyLink = `<a class="link" href="${path(lang, 'privacy')}">${f.consent
       </div>
       <div class="fg">
         <label class="field-label" for={`${id}-phone`}>{f.phone}</label>
-        <span class="field-hint" id={`${id}-phone-hint`}>{f.phoneHint}</span>
         <input
           class="field"
           id={`${id}-phone`}
@@ -79,6 +78,7 @@ const privacyLink = `<a class="link" href="${path(lang, 'privacy')}">${f.consent
           data-msg-invalid={f.errors.phoneInvalid}
           data-validate="phone"
         />
+        <span class="field-hint below" id={`${id}-phone-hint`}>{f.phoneHint}</span>
       </div>
     </div>
     <div class="fg">

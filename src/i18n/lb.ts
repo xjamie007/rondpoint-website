@@ -45,7 +45,7 @@ const lb: Dict = {
 
   hero: {
     h1: 'D’Garage um Rond-point zu Ierpeldeng',
-    sub: 'Lount en Unhänger oder eng Camionnette, fannt Ären nächsten Auto a loosst Ären eegenen entretenéieren a reparéieren. Um 1, rue du Viaduc, nieft der Aral-Tankstell, tëscht Ettelbréck an Dikrech.',
+    sub: 'Lount en Unhänger oder eng Camionnette, fannt Ären nächsten Auto. Dir fannt eis op 1, rue du Viaduc, nieft der Aral-Tankstell, tëscht Ettelbréck an Angelduerf.',
     ctaFinder: 'Unhänger fannen',
     ctaCars: 'Autoe kucken',
     drawingAlt: 'Plang vum Rond-point zu Ierpeldeng mat der Plaz vun der Garage nieft der Aral-Tankstell',
@@ -57,11 +57,11 @@ const lb: Dict = {
       'Sot eis, wat Dir transportéiert a wat fir e Führerschäin Dir hutt. Dir gesitt direkt, wéi eng Unhänger passen, wat se kaschten an ob Äre Führerschäin duergeet.',
     cargoLegend: 'Wat transportéiert Dir?',
     cargo: {
-      voiture: 'En Auto',
+      voiture: 'Een Auto',
       moto: 'Eng Moto',
-      terre: 'Äerd, Bauschutt oder Gréngschnëtt',
+      terre: 'Buedem, Bauschutt oder Gréngschnëtt',
       fete: 'Gedrénks an Iessen fir e Fest',
-      meubles: 'Miwwelen oder Kartongen',
+      meubles: 'Miwwelen oder Karton',
       materiel: 'Material oder Maschinnen',
     },
     licenceLegend: 'Wat fir e Führerschäin hutt Dir?',
@@ -285,7 +285,7 @@ const lb: Dict = {
     workshop: 'Mecanicien bei der Aarbecht am Motorraum vun engem Auto',
     sodablast: 'Rastegen Oldtimer mat ofgeblättertem Lack',
     bodywork: 'Rouden Sportsauto op enger Hiefbün an engem Atelier',
-    garden: 'Benzinsrasemeeër op engem Rasen',
+    garden: 'Benzinsrasemeeër op engem Wuess',
     gardenPage: 'Gras méien an der Sonn',
     paint: 'Lackéiere vun enger Karosserie mat der Sprëtzpistoul',
     rental: 'Wäisse Pick-up op engem Plateau',
@@ -456,7 +456,7 @@ const lb: Dict = {
         'porte-moto':
           'Mam Motosunhänger bréngt Dir eng Moto, e Scooter oder e Quad an den Atelier, an d’Vakanz oder op d’Rennstreck. Fir en ze zéien, geet en normalen Auto duer.',
         benne:
-          'Mam Kipper transportéiert Dir Äerd, Bauschutt, Sand oder Gréngschnëtt a kippt d’Luedung of. Fir e Chantier, fir de Gaart oder fir an de Recyclingszenter.',
+          'Mam Kipper transportéiert Dir Buedem, Bauschutt, Sand oder Gréngschnëtt a kippt d’Luedung of. Fir e Chantier, fir de Gaart oder fir an de Recyclingszenter.',
         frigorifique:
           'De Killunhänger hält Gedrénks an Iessen wärend engem Fest, enger Hochzäit oder engem Festival frësch. Dir stellt de Killunhänger fir d’Dauer vum Fest op der Plaz of.',
         camionnette:
@@ -661,7 +661,7 @@ const lb: Dict = {
         'porte-moto':
           'Lount e Motosunhänger um Rond-point zu Erpeldange, no bei Ettelbréck: Moossen, Notzlaascht, Präis an néidege Führerschäin fir all Unhänger an eiser Flott.',
         benne:
-          'Lount e Kipper fir Äerd, Bauschutt oder Gréngschnëtt um Rond-point zu Erpeldange, no bei Ettelbréck: Notzlaascht, Präis a wat fir e Führerschäin Dir braucht.',
+          'Lount e Kipper fir Buedem, Bauschutt oder Gréngschnëtt um Rond-point zu Erpeldange, no bei Ettelbréck: Notzlaascht, Präis a wat fir e Führerschäin Dir braucht.',
         frigorifique:
           'Lount e Killunhänger fir Äert Fest oder Festival um Rond-point zu Erpeldange, no bei Ettelbréck: Bannevolumen, Temperatur, Präis an néidege Führerschäin.',
         camionnette:
@@ -838,7 +838,7 @@ const lb: Dict = {
       carrosserie: 'No engem klengen Accident reparéiere mir d’Karosserie a lackéieren déi beschiedegt Deeler nei. Schéckt eis Fotoe vum Schued iwwer WhatsApp fir eng éischt Aschätzung.',
       processH2: 'Esou kritt Dir e Rendez-vous',
       process: [
-        'Beschreift Äert Gefier a wat ze maachen ass – am Formulaire, um Telefon oder iwwer WhatsApp.',
+        'Beschreift Äert Gefier a wat ze maachen ass, am Formulaire, um Telefon oder iwwer WhatsApp.',
         'Mir ruffen Iech zréck, fir den Datum ofzemaachen.',
         'Dir bréngt Äert Gefier an d’Garage, 1, rue du Viaduc.',
       ],
@@ -1000,13 +1000,13 @@ const lb: Dict = {
         s1: {
           h: 'Gaart- a Bëschmaschinnen an der Nordstad',
           p: [
-            'Fir Äre Gaart, Ären Terrain oder Äre Bësch ze fleegen, fannt Dir an der Garage Um Rond Point Maschinnen, virun allem vun de Marken Honda a Stihl, an en Atelier, fir se ze reparéieren. D’Garage ass um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech.',
+            'Fir Äre Gaart, Ären Terrain oder Äre Bësch ze pfleegen, fannt Dir an der Garage Um Rond Point Maschinnen, virun allem vun de Marken Honda a Stihl, an en Atelier, fir se ze reparéieren. D’Garage ass um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech.',
           ],
         },
         s2: {
           h: 'Déi richteg Maschinn wielen',
           items: [
-            'Rasemeeër: D’Gréisst vum Rasen, d’Steigung an d’Hindernisser bestëmmen d’Schnëttbreet an d’Aart vum Undriff.',
+            'Rasemeeër: D’Gréisst vum Wuess, d’Steigung an d’Hindernisser bestëmmen d’Schnëttbreet an d’Aart vum Undriff.',
             'Fräischneider: fir Kanten, Häng an héicht Gras, wou de Rasemeeër net hikënnt.',
             'Motorsee: D’Längt vum Schwäert hänkt vum Duerchmiesser vum Holz of, dat Dir am meeschte schneit.',
             'Heckeschéier: D’Längt vum Messer an d’Gewiicht zielen, wann Dir laang oder an der Héicht schneit.',
@@ -1020,7 +1020,7 @@ const lb: Dict = {
           items: [
             'De Motor spréngt net méi un oder geet aus.',
             'D’Maschinn verléiert Kraaft oder fëmmt.',
-            'D’Kett oder d’Messer schneit schlecht.',
+            'D’Ketten oder d’Messer schneit schlecht.',
             'Dir héiert ongewéinlech Geräischer oder spiert Vibratiounen.',
           ],
           p: [
@@ -1030,7 +1030,7 @@ const lb: Dict = {
         s4: {
           h: 'Esou kënnt Är Maschinn gutt duerch de Wanter',
           p: [
-            'Ier Dir eng Maschinn mat Bensinsmotor fir de Wanter ewechstellt, botzt se, maacht den Tank eidel oder loosst de Motor lafen, bis hien ausgeet. Stellt se duerno am Dréchenen of. Esou spréngt d’Maschinn am Fréijoer méi einfach erëm un.',
+            'Ier Dir eng Maschinn mat Bensinsmotor fir de Wanter ewechstellt, botzt se, maacht den Tank eidel oder loosst de Motor lafen, bis se ausgeet. Stellt se duerno am Dréchenen of. Esou spréngt d’Maschinn am Fréijoer méi einfach erëm un.',
             'Den Akku gehéiert op eng frostfräi Plaz, am beschten hallef gelueden.',
           ],
         },
@@ -1234,7 +1234,7 @@ const lb: Dict = {
           s1: {
             h: 'Opgepasst mam Gewiicht vum Material',
             p: [
-              'Material, dat lass gelueden ass, weit vill. E Kubikmeter fiicht Äerd weit ongeféier 1,5 bis 1,8 Tonnen, e Kubikmeter Kis ongeféier 1,5 Tonnen. E Kipper, dee bis un de Rand voll ass, iwwerschreit also séier seng Notzlaascht.',
+              'Material, dat lass gelueden ass, weit vill. E Kubikmeter fiichte Buedem weit ongeféier 1,5 bis 1,8 Tonnen, e Kubikmeter Kis ongeféier 1,5 Tonnen. E Kipper, dee bis un de Rand voll ass, iwwerschreit also séier seng Notzlaascht.',
               'Kuckt d’Notzlaascht an den Detailer vum Unhänger no a luet deementspriechend: Léiwer zweemol fueren, wéi den Unhänger z’iwwerlueden.',
             ],
           },

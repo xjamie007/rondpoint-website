@@ -67,18 +67,18 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `status.never` | La liste de nos voitures arrive bientôt. | D’Lëscht mat eisen Autoen ass geschwënn do. |
 | `status.everyMorning` | Liste des voitures mise à jour chaque matin. | D’Lëscht vun den Autoe gëtt all Moien aktualiséiert. |
 | `hero.h1` | Le garage du rond-point d’Erpeldange | D’Garage um Rond-point zu Ierpeldeng |
-| `hero.sub` | Louez une remorque ou une camionnette, trouvez votre prochaine voiture, faites entretenir et réparer la vôtre. Au 1, rue du Viaduc, à côté de la station Aral, entre Ettelbruck et Diekirch. | Lount en Unhänger oder eng Camionnette, fannt Ären nächsten Auto a loosst Ären eegenen entretenéieren a reparéieren. Um 1, rue du Viaduc, nieft der Aral-Tankstell, tëscht Ettelbréck an Dikrech. |
+| `hero.sub` | Louez une remorque ou une camionnette, trouvez votre prochaine voiture, faites entretenir et réparer la vôtre. Au 1, rue du Viaduc, à côté de la station Aral, entre Ettelbruck et Diekirch. | Lount en Unhänger oder eng Camionnette, fannt Ären nächsten Auto. Dir fannt eis op 1, rue du Viaduc, nieft der Aral-Tankstell, tëscht Ettelbréck an Angelduerf. |
 | `hero.ctaFinder` | Trouver une remorque | Unhänger fannen |
 | `hero.ctaCars` | Voir les voitures | Autoe kucken |
 | `hero.drawingAlt` | Plan du rond-point d’Erpeldange avec l’emplacement du garage à côté de la station Aral | Plang vum Rond-point zu Ierpeldeng mat der Plaz vun der Garage nieft der Aral-Tankstell |
 | `finder.h2` | Quelle remorque vous faut-il ? | Wat fir en Unhänger braucht Dir? |
 | `finder.intro` | Dites-nous ce que vous transportez et quel permis vous avez. Vous voyez tout de suite les remorques qui conviennent, leur prix et si votre permis suffit. | Sot eis, wat Dir transportéiert a wat fir e Führerschäin Dir hutt. Dir gesitt direkt, wéi eng Unhänger passen, wat se kaschten an ob Äre Führerschäin duergeet. |
 | `finder.cargoLegend` | Que transportez-vous ? | Wat transportéiert Dir? |
-| `finder.cargo.voiture` | Une voiture | En Auto |
+| `finder.cargo.voiture` | Une voiture | Een Auto |
 | `finder.cargo.moto` | Une moto | Eng Moto |
-| `finder.cargo.terre` | Terre, gravats ou déchets verts | Äerd, Bauschutt oder Gréngschnëtt |
+| `finder.cargo.terre` | Terre, gravats ou déchets verts | Buedem, Bauschutt oder Gréngschnëtt |
 | `finder.cargo.fete` | Boissons et repas pour une fête | Gedrénks an Iessen fir e Fest |
-| `finder.cargo.meubles` | Meubles ou cartons | Miwwelen oder Kartongen |
+| `finder.cargo.meubles` | Meubles ou cartons | Miwwelen oder Karton |
 | `finder.cargo.materiel` | Matériel ou machines | Material oder Maschinnen |
 | `finder.licenceLegend` | Quel permis avez-vous ? | Wat fir e Führerschäin hutt Dir? |
 | `finder.licence.B` | Permis B | Führerschäin B |
@@ -272,7 +272,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `photos.workshop` | Mécanicien au travail dans le compartiment moteur d’une voiture | Mecanicien bei der Aarbecht am Motorraum vun engem Auto |
 | `photos.sodablast` | Voiture ancienne rouillée, peinture écaillée | Rastegen Oldtimer mat ofgeblättertem Lack |
 | `photos.bodywork` | Voiture de sport rouge sur un pont élévateur dans un atelier | Rouden Sportsauto op enger Hiefbün an engem Atelier |
-| `photos.garden` | Tondeuse à gazon thermique sur une pelouse | Benzinsrasemeeër op engem Rasen |
+| `photos.garden` | Tondeuse à gazon thermique sur une pelouse | Benzinsrasemeeër op engem Wuess |
 | `photos.gardenPage` | Tonte d’une pelouse au soleil | Gras méien an der Sonn |
 | `photos.paint` | Peinture d’une carrosserie au pistolet | Lackéiere vun enger Karosserie mat der Sprëtzpistoul |
 | `photos.rental` | Pick-up blanc chargé sur un plateau | Wäisse Pick-up op engem Plateau |
@@ -376,7 +376,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `pages.category.h1.camionnette` | Louer une camionnette à Erpeldange | Camionnette lounen zu Ierpeldeng |
 | `pages.category.intro.porte-voiture` | La remorque porte-voiture sert à transporter une voiture en panne, une voiture de collection ou une voiture que vous venez d’acheter. Vérifiez avant de partir que votre voiture peut tracter l’ensemble et que votre permis suffit. | Mam Autosunhänger transportéiert Dir e futtisen Auto, en Oldtimer oder en Auto, deen Dir grad kaaft hutt. Kuckt, ier Dir lassfuert, ob Ären Auto den Unhänger mat der Luedung zéien däerf an ob Äre Führerschäin duergeet. |
 | `pages.category.intro.porte-moto` | La remorque porte-moto sert à emmener une moto, un scooter ou un quad à l’atelier, en vacances ou sur un circuit. Elle se tracte avec une voiture ordinaire. | Mam Motosunhänger bréngt Dir eng Moto, e Scooter oder e Quad an den Atelier, an d’Vakanz oder op d’Rennstreck. Fir en ze zéien, geet en normalen Auto duer. |
-| `pages.category.intro.benne` | La benne basculante sert à transporter terre, gravats, sable ou déchets verts, et se vide en basculant. Pour un chantier, le jardin ou un passage au parc à conteneurs. | Mam Kipper transportéiert Dir Äerd, Bauschutt, Sand oder Gréngschnëtt a kippt d’Luedung of. Fir e Chantier, fir de Gaart oder fir an de Recyclingszenter. |
+| `pages.category.intro.benne` | La benne basculante sert à transporter terre, gravats, sable ou déchets verts, et se vide en basculant. Pour un chantier, le jardin ou un passage au parc à conteneurs. | Mam Kipper transportéiert Dir Buedem, Bauschutt, Sand oder Gréngschnëtt a kippt d’Luedung of. Fir e Chantier, fir de Gaart oder fir an de Recyclingszenter. |
 | `pages.category.intro.frigorifique` | La remorque frigorifique garde boissons et repas au frais pendant une fête, un mariage ou un festival. Vous la garez sur place pour la durée de l’événement. | De Killunhänger hält Gedrénks an Iessen wärend engem Fest, enger Hochzäit oder engem Festival frësch. Dir stellt de Killunhänger fir d’Dauer vum Fest op der Plaz of. |
 | `pages.category.intro.camionnette` | La camionnette sert à un déménagement, au transport de meubles ou de matériel. Jusqu’à 3 500 kg de masse maximale, elle se conduit avec le permis B. | Mat der Camionnette plënnert Dir oder transportéiert Miwwelen oder Material. Bis 3.500 kg zoulässegt Gesamtgewiicht fuert Dir se mam Führerschäin B. |
 | `pages.category.vehiclesH2` | Nos véhicules | Eis Gefierer |
@@ -526,7 +526,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `seo.category.title.camionnette` | Location camionnette à Erpeldange \| Garage Um Rond Point | Camionnette lounen zu Erpeldange \| Garage Um Rond Point |
 | `seo.category.description.porte-voiture` | Louez une remorque porte-voiture au rond-point d’Erpeldange, près d’Ettelbruck : dimensions, charge utile, prix et permis nécessaire pour chaque remorque. | Lount en Autosunhänger um Rond-point zu Erpeldange, no bei Ettelbréck: Moossen, Notzlaascht, Präis an néidege Führerschäin fir all Unhänger an eiser Flott. |
 | `seo.category.description.porte-moto` | Louez une remorque porte-moto au rond-point d’Erpeldange, près d’Ettelbruck : dimensions, charge utile, prix et permis nécessaire pour chaque remorque. | Lount e Motosunhänger um Rond-point zu Erpeldange, no bei Ettelbréck: Moossen, Notzlaascht, Präis an néidege Führerschäin fir all Unhänger an eiser Flott. |
-| `seo.category.description.benne` | Louez une benne basculante pour terre, gravats ou déchets verts au rond-point d’Erpeldange, près d’Ettelbruck : charge utile, prix et permis nécessaire. | Lount e Kipper fir Äerd, Bauschutt oder Gréngschnëtt um Rond-point zu Erpeldange, no bei Ettelbréck: Notzlaascht, Präis a wat fir e Führerschäin Dir braucht. |
+| `seo.category.description.benne` | Louez une benne basculante pour terre, gravats ou déchets verts au rond-point d’Erpeldange, près d’Ettelbruck : charge utile, prix et permis nécessaire. | Lount e Kipper fir Buedem, Bauschutt oder Gréngschnëtt um Rond-point zu Erpeldange, no bei Ettelbréck: Notzlaascht, Präis a wat fir e Führerschäin Dir braucht. |
 | `seo.category.description.frigorifique` | Louez une remorque frigorifique pour votre fête ou festival au rond-point d’Erpeldange, près d’Ettelbruck : volume, température, prix et permis nécessaire. | Lount e Killunhänger fir Äert Fest oder Festival um Rond-point zu Erpeldange, no bei Ettelbréck: Bannevolumen, Temperatur, Präis an néidege Führerschäin. |
 | `seo.category.description.camionnette` | Louez une camionnette pour un déménagement ou du matériel au rond-point d’Erpeldange, près d’Ettelbruck. Jusqu’à 3 500 kg, le permis B suffit. Prix au jour. | Lount eng Camionnette fir en Ëmzug oder Material um Rond-point zu Erpeldange, no bei Ettelbréck. Bis 3.500 kg geet de Führerschäin B duer. Präis pro Dag. |
 | `seo.cars.title` | Voitures neuves et d’occasion à Erpeldange \| Um Rond Point | Nei Autoen an Occasiounen zu Erpeldange \| Um Rond Point |
@@ -630,7 +630,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `details.workshop.carrosserieH` | Carrosserie et peinture | Karosserie a Lack |
 | `details.workshop.carrosserie` | Après un accrochage, nous réparons la carrosserie et repeignons les éléments abîmés. Envoyez-nous des photos des dégâts sur WhatsApp pour un premier avis. | No engem klengen Accident reparéiere mir d’Karosserie a lackéieren déi beschiedegt Deeler nei. Schéckt eis Fotoe vum Schued iwwer WhatsApp fir eng éischt Aschätzung. |
 | `details.workshop.processH2` | Comment prendre rendez-vous | Esou kritt Dir e Rendez-vous |
-| `details.workshop.process[0]` | Décrivez votre véhicule et ce qu’il faut faire, dans le formulaire, par téléphone ou sur WhatsApp. | Beschreift Äert Gefier a wat ze maachen ass – am Formulaire, um Telefon oder iwwer WhatsApp. |
+| `details.workshop.process[0]` | Décrivez votre véhicule et ce qu’il faut faire, dans le formulaire, par téléphone ou sur WhatsApp. | Beschreift Äert Gefier a wat ze maachen ass, am Formulaire, um Telefon oder iwwer WhatsApp. |
 | `details.workshop.process[1]` | Nous vous rappelons pour fixer la date. | Mir ruffen Iech zréck, fir den Datum ofzemaachen. |
 | `details.workshop.process[2]` | Vous déposez votre véhicule au garage, au 1, rue du Viaduc. | Dir bréngt Äert Gefier an d’Garage, 1, rue du Viaduc. |
 | `details.sodablast.explainH2` | Comment fonctionne le sodablast ? | Wéi funktionéiert Sodablast? |
@@ -705,9 +705,9 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `content.sodablast.faq.q4.q` | Peut-on décaper des jantes au sodablast ? | Kann een och Felge mat Sodablast ofbeizen? |
 | `content.sodablast.faq.q4.a` | Oui, les jantes font partie des pièces que nous décapons au sodablast, comme les carrosseries anciennes et les pièces mécaniques. | Jo, Felge gehéieren zu den Deeler, déi mir mat Sodablast ofbeizen, sou wéi al Karosserien a mechanesch Deeler. |
 | `content.garden.sections.s1.h` | Machines de jardin et de forêt dans la Nordstad | Gaart- a Bëschmaschinnen an der Nordstad |
-| `content.garden.sections.s1.p[0]` | Pour entretenir votre jardin, votre terrain ou votre bois, vous trouvez au Garage Um Rond Point des machines principalement des marques Honda et Stihl, et un atelier pour les réparer. Le garage se trouve au rond-point d’Erpeldange, entre Ettelbruck et Diekirch. | Fir Äre Gaart, Ären Terrain oder Äre Bësch ze fleegen, fannt Dir an der Garage Um Rond Point Maschinnen, virun allem vun de Marken Honda a Stihl, an en Atelier, fir se ze reparéieren. D’Garage ass um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech. |
+| `content.garden.sections.s1.p[0]` | Pour entretenir votre jardin, votre terrain ou votre bois, vous trouvez au Garage Um Rond Point des machines principalement des marques Honda et Stihl, et un atelier pour les réparer. Le garage se trouve au rond-point d’Erpeldange, entre Ettelbruck et Diekirch. | Fir Äre Gaart, Ären Terrain oder Äre Bësch ze pfleegen, fannt Dir an der Garage Um Rond Point Maschinnen, virun allem vun de Marken Honda a Stihl, an en Atelier, fir se ze reparéieren. D’Garage ass um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech. |
 | `content.garden.sections.s2.h` | Bien choisir sa machine | Déi richteg Maschinn wielen |
-| `content.garden.sections.s2.items[0]` | Tondeuse : la surface de la pelouse, la pente et les obstacles décident de la largeur de coupe et du type d’entraînement. | Rasemeeër: D’Gréisst vum Rasen, d’Steigung an d’Hindernisser bestëmmen d’Schnëttbreet an d’Aart vum Undriff. |
+| `content.garden.sections.s2.items[0]` | Tondeuse : la surface de la pelouse, la pente et les obstacles décident de la largeur de coupe et du type d’entraînement. | Rasemeeër: D’Gréisst vum Wuess, d’Steigung an d’Hindernisser bestëmmen d’Schnëttbreet an d’Aart vum Undriff. |
 | `content.garden.sections.s2.items[1]` | Débroussailleuse : pour les bordures, les talus et l’herbe haute que la tondeuse n’atteint pas. | Fräischneider: fir Kanten, Häng an héicht Gras, wou de Rasemeeër net hikënnt. |
 | `content.garden.sections.s2.items[2]` | Tronçonneuse : la longueur du guide dépend du diamètre du bois que vous coupez le plus souvent. | Motorsee: D’Längt vum Schwäert hänkt vum Duerchmiesser vum Holz of, dat Dir am meeschte schneit. |
 | `content.garden.sections.s2.items[3]` | Taille-haie : la longueur de la lame et le poids comptent si vous taillez longtemps ou en hauteur. | Heckeschéier: D’Längt vum Messer an d’Gewiicht zielen, wann Dir laang oder an der Héicht schneit. |
@@ -715,11 +715,11 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `content.garden.sections.s3.h` | Réparation : quand apporter votre machine | Reparatur: wéini Dir Är Maschinn brénge sollt |
 | `content.garden.sections.s3.items[0]` | Le moteur ne démarre plus ou cale. | De Motor spréngt net méi un oder geet aus. |
 | `content.garden.sections.s3.items[1]` | La machine perd de la puissance ou fume. | D’Maschinn verléiert Kraaft oder fëmmt. |
-| `content.garden.sections.s3.items[2]` | La chaîne ou la lame coupe mal. | D’Kett oder d’Messer schneit schlecht. |
+| `content.garden.sections.s3.items[2]` | La chaîne ou la lame coupe mal. | D’Ketten oder d’Messer schneit schlecht. |
 | `content.garden.sections.s3.items[3]` | Des bruits ou des vibrations inhabituels apparaissent. | Dir héiert ongewéinlech Geräischer oder spiert Vibratiounen. |
 | `content.garden.sections.s3.p[0]` | Décrivez la panne dans le formulaire ou appelez-nous au {phone}. Indiquez la marque et le modèle de la machine : nous savons tout de suite de quoi il s’agit. | Beschreift d’Pann am Formulaire oder rufft eis un op {phone}. Gitt d’Mark an de Modell vun der Maschinn un: Da wësse mir direkt, ëm wat et geet. |
 | `content.garden.sections.s4.h` | Conseils pour passer l’hiver | Esou kënnt Är Maschinn gutt duerch de Wanter |
-| `content.garden.sections.s4.p[0]` | Avant de ranger une machine thermique pour l’hiver, nettoyez-la, videz le réservoir ou laissez le moteur tourner jusqu’à l’arrêt, puis rangez-la au sec. Une machine bien rangée redémarre plus facilement au printemps. | Ier Dir eng Maschinn mat Bensinsmotor fir de Wanter ewechstellt, botzt se, maacht den Tank eidel oder loosst de Motor lafen, bis hien ausgeet. Stellt se duerno am Dréchenen of. Esou spréngt d’Maschinn am Fréijoer méi einfach erëm un. |
+| `content.garden.sections.s4.p[0]` | Avant de ranger une machine thermique pour l’hiver, nettoyez-la, videz le réservoir ou laissez le moteur tourner jusqu’à l’arrêt, puis rangez-la au sec. Une machine bien rangée redémarre plus facilement au printemps. | Ier Dir eng Maschinn mat Bensinsmotor fir de Wanter ewechstellt, botzt se, maacht den Tank eidel oder loosst de Motor lafen, bis se ausgeet. Stellt se duerno am Dréchenen of. Esou spréngt d’Maschinn am Fréijoer méi einfach erëm un. |
 | `content.garden.sections.s4.p[1]` | Les batteries se stockent à l’abri du gel, de préférence à moitié chargées. | Den Akku gehéiert op eng frostfräi Plaz, am beschten hallef gelueden. |
 | `content.garden.faqH` | Questions sur les machines de jardin | Froen zu de Gaartmaschinnen |
 | `content.garden.faq.q1.q` | Quelles marques de machines vendez-vous ? | Vu wéi enge Marke verkaaft Dir Maschinnen? |
@@ -798,7 +798,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `content.category.porte-moto.sections.s2.items[2]` | Comprimez légèrement la suspension, sans l’écraser. | Dréckt d’Fiederung e bëssen zesummen, awer net ze vill. |
 | `content.category.porte-moto.sections.s2.items[3]` | Contrôlez la tension des sangles après les premiers kilomètres. | Kontrolléiert no den éischte Kilometer, ob d’Spannrimmen nach fest sinn. |
 | `content.category.benne.sections.s1.h` | Attention au poids des matériaux | Opgepasst mam Gewiicht vum Material |
-| `content.category.benne.sections.s1.p[0]` | Les matériaux en vrac sont lourds. Un mètre cube de terre humide pèse environ 1,5 à 1,8 tonne, un mètre cube de gravier environ 1,5 tonne. Une benne remplie à ras bord dépasse donc vite sa charge utile. | Material, dat lass gelueden ass, weit vill. E Kubikmeter fiicht Äerd weit ongeféier 1,5 bis 1,8 Tonnen, e Kubikmeter Kis ongeféier 1,5 Tonnen. E Kipper, dee bis un de Rand voll ass, iwwerschreit also séier seng Notzlaascht. |
+| `content.category.benne.sections.s1.p[0]` | Les matériaux en vrac sont lourds. Un mètre cube de terre humide pèse environ 1,5 à 1,8 tonne, un mètre cube de gravier environ 1,5 tonne. Une benne remplie à ras bord dépasse donc vite sa charge utile. | Material, dat lass gelueden ass, weit vill. E Kubikmeter fiichte Buedem weit ongeféier 1,5 bis 1,8 Tonnen, e Kubikmeter Kis ongeféier 1,5 Tonnen. E Kipper, dee bis un de Rand voll ass, iwwerschreit also séier seng Notzlaascht. |
 | `content.category.benne.sections.s1.p[1]` | Regardez la charge utile dans la fiche de la remorque et remplissez en conséquence : mieux vaut deux trajets qu’une remorque surchargée. | Kuckt d’Notzlaascht an den Detailer vum Unhänger no a luet deementspriechend: Léiwer zweemol fueren, wéi den Unhänger z’iwwerlueden. |
 | `content.category.benne.sections.s2.h` | Chantier, jardin, parc à conteneurs | Chantier, Gaart, Recyclingszenter |
 | `content.category.benne.sections.s2.items[0]` | Couvrez le chargement avec une bâche ou un filet pour que rien ne tombe sur la route. | Deckt d’Luedung mat enger Bâche oder engem Netz of, fir datt näischt op d’Strooss fält. |

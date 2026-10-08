@@ -10,7 +10,7 @@
 D’Garage um Rond-point zu Ierpeldeng
 
 @@ 2 hero.sub
-Lount en Unhänger oder eng Camionnette, fannt Ären nächsten Auto a loosst Ären eegenen entretenéieren a reparéieren. Um 1, rue du Viaduc, nieft der Aral-Tankstell, tëscht Ettelbréck an Dikrech.
+Lount en Unhänger oder eng Camionnette, fannt Ären nächsten Auto. Dir fannt eis op 1, rue du Viaduc, nieft der Aral-Tankstell, tëscht Ettelbréck an Angelduerf.
 
 @@ 3 hero.ctaFinder
 Unhänger fannen
@@ -223,19 +223,19 @@ Sot eis, wat Dir transportéiert a wat fir e Führerschäin Dir hutt. Dir gesitt
 Wat transportéiert Dir?
 
 @@ 72 finder.cargo.voiture
-En Auto
+Een Auto
 
 @@ 73 finder.cargo.moto
 Eng Moto
 
 @@ 74 finder.cargo.terre
-Äerd, Bauschutt oder Gréngschnëtt
+Buedem, Bauschutt oder Gréngschnëtt
 
 @@ 75 finder.cargo.fete
 Gedrénks an Iessen fir e Fest
 
 @@ 76 finder.cargo.meubles
-Miwwelen oder Kartongen
+Miwwelen oder Karton
 
 @@ 77 finder.cargo.materiel
 Material oder Maschinnen
@@ -508,7 +508,7 @@ Mam Autosunhänger transportéiert Dir e futtisen Auto, en Oldtimer oder en Auto
 Mam Motosunhänger bréngt Dir eng Moto, e Scooter oder e Quad an den Atelier, an d’Vakanz oder op d’Rennstreck. Fir en ze zéien, geet en normalen Auto duer.
 
 @@ 167 pages.category.intro.benne
-Mam Kipper transportéiert Dir Äerd, Bauschutt, Sand oder Gréngschnëtt a kippt d’Luedung of. Fir e Chantier, fir de Gaart oder fir an de Recyclingszenter.
+Mam Kipper transportéiert Dir Buedem, Bauschutt, Sand oder Gréngschnëtt a kippt d’Luedung of. Fir e Chantier, fir de Gaart oder fir an de Recyclingszenter.
 
 @@ 168 pages.category.intro.frigorifique
 De Killunhänger hält Gedrénks an Iessen wärend engem Fest, enger Hochzäit oder engem Festival frësch. Dir stellt de Killunhänger fir d’Dauer vum Fest op der Plaz of.
@@ -595,7 +595,7 @@ Kontrolléiert no den éischte Kilometer, ob d’Spannrimmen nach fest sinn.
 Opgepasst mam Gewiicht vum Material
 
 @@ 196 content.category.benne.sections.s1.p.0
-Material, dat lass gelueden ass, weit vill. E Kubikmeter fiicht Äerd weit ongeféier 1,5 bis 1,8 Tonnen, e Kubikmeter Kis ongeféier 1,5 Tonnen. E Kipper, dee bis un de Rand voll ass, iwwerschreit also séier seng Notzlaascht.
+Material, dat lass gelueden ass, weit vill. E Kubikmeter fiichte Buedem weit ongeféier 1,5 bis 1,8 Tonnen, e Kubikmeter Kis ongeféier 1,5 Tonnen. E Kipper, dee bis un de Rand voll ass, iwwerschreit also séier seng Notzlaascht.
 
 @@ 197 content.category.benne.sections.s1.p.1
 Kuckt d’Notzlaascht an den Detailer vum Unhänger no a luet deementspriechend: Léiwer zweemol fueren, wéi den Unhänger z’iwwerlueden.
@@ -1123,7 +1123,7 @@ No engem klengen Accident reparéiere mir d’Karosserie a lackéieren déi besc
 Esou kritt Dir e Rendez-vous
 
 @@ 370 details.workshop.process.0
-Beschreift Äert Gefier a wat ze maachen ass – am Formulaire, um Telefon oder iwwer WhatsApp.
+Beschreift Äert Gefier a wat ze maachen ass, am Formulaire, um Telefon oder iwwer WhatsApp.
 
 @@ 371 details.workshop.process.1
 Mir ruffen Iech zréck, fir den Datum ofzemaachen.
@@ -1381,13 +1381,13 @@ De Rasemeeër spréngt net méi un, d’Motorsee schneit schlecht, de Fräischne
 Gaart- a Bëschmaschinnen an der Nordstad
 
 @@ 454 content.garden.sections.s1.p.0
-Fir Äre Gaart, Ären Terrain oder Äre Bësch ze fleegen, fannt Dir an der Garage Um Rond Point Maschinnen, virun allem vun de Marken Honda a Stihl, an en Atelier, fir se ze reparéieren. D’Garage ass um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech.
+Fir Äre Gaart, Ären Terrain oder Äre Bësch ze pfleegen, fannt Dir an der Garage Um Rond Point Maschinnen, virun allem vun de Marken Honda a Stihl, an en Atelier, fir se ze reparéieren. D’Garage ass um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech.
 
 @@ 455 content.garden.sections.s2.h
 Déi richteg Maschinn wielen
 
 @@ 456 content.garden.sections.s2.items.0
-Rasemeeër: D’Gréisst vum Rasen, d’Steigung an d’Hindernisser bestëmmen d’Schnëttbreet an d’Aart vum Undriff.
+Rasemeeër: D’Gréisst vum Wuess, d’Steigung an d’Hindernisser bestëmmen d’Schnëttbreet an d’Aart vum Undriff.
 
 @@ 457 content.garden.sections.s2.items.1
 Fräischneider: fir Kanten, Häng an héicht Gras, wou de Rasemeeër net hikënnt.
@@ -1411,7 +1411,7 @@ De Motor spréngt net méi un oder geet aus.
 D’Maschinn verléiert Kraaft oder fëmmt.
 
 @@ 464 content.garden.sections.s3.items.2
-D’Kett oder d’Messer schneit schlecht.
+D’Ketten oder d’Messer schneit schlecht.
 
 @@ 465 content.garden.sections.s3.items.3
 Dir héiert ongewéinlech Geräischer oder spiert Vibratiounen.
@@ -1423,7 +1423,7 @@ Beschreift d’Pann am Formulaire oder rufft eis un op {phone}. Gitt d’Mark an
 Esou kënnt Är Maschinn gutt duerch de Wanter
 
 @@ 468 content.garden.sections.s4.p.0
-Ier Dir eng Maschinn mat Bensinsmotor fir de Wanter ewechstellt, botzt se, maacht den Tank eidel oder loosst de Motor lafen, bis hien ausgeet. Stellt se duerno am Dréchenen of. Esou spréngt d’Maschinn am Fréijoer méi einfach erëm un.
+Ier Dir eng Maschinn mat Bensinsmotor fir de Wanter ewechstellt, botzt se, maacht den Tank eidel oder loosst de Motor lafen, bis se ausgeet. Stellt se duerno am Dréchenen of. Esou spréngt d’Maschinn am Fréijoer méi einfach erëm un.
 
 @@ 469 content.garden.sections.s4.p.1
 Den Akku gehéiert op eng frostfräi Plaz, am beschten hallef gelueden.
@@ -2077,7 +2077,7 @@ Rastegen Oldtimer mat ofgeblättertem Lack
 Rouden Sportsauto op enger Hiefbün an engem Atelier
 
 @@ 682 photos.garden
-Benzinsrasemeeër op engem Rasen
+Benzinsrasemeeër op engem Wuess
 
 @@ 683 photos.gardenPage
 Gras méien an der Sonn
@@ -2293,7 +2293,7 @@ Lount en Autosunhänger um Rond-point zu Erpeldange, no bei Ettelbréck: Moossen
 Lount e Motosunhänger um Rond-point zu Erpeldange, no bei Ettelbréck: Moossen, Notzlaascht, Präis an néidege Führerschäin fir all Unhänger an eiser Flott.
 
 @@ 752 seo.category.description.benne
-Lount e Kipper fir Äerd, Bauschutt oder Gréngschnëtt um Rond-point zu Erpeldange, no bei Ettelbréck: Notzlaascht, Präis a wat fir e Führerschäin Dir braucht.
+Lount e Kipper fir Buedem, Bauschutt oder Gréngschnëtt um Rond-point zu Erpeldange, no bei Ettelbréck: Notzlaascht, Präis a wat fir e Führerschäin Dir braucht.
 
 @@ 753 seo.category.description.frigorifique
 Lount e Killunhänger fir Äert Fest oder Festival um Rond-point zu Erpeldange, no bei Ettelbréck: Bannevolumen, Temperatur, Präis an néidege Führerschäin.

@@ -11,7 +11,7 @@ import { site, telHref, phoneText } from '@/lib/site';
 const fr = useT('fr');
 ---
 <!doctype html>
-<html lang="fr">
+<html lang="lb">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -22,7 +22,7 @@ const fr = useT('fr');
     <script is:inline define:vars={{ base: BASE }}>
       (function () {
         var m = location.pathname.slice(base.length).match(/^\/(lb|de|fr|en|pt)(\/|$)/);
-        var l = m ? m[1] : 'fr';
+        var l = m ? m[1] : 'lb';
         document.documentElement.setAttribute('data-lang', l);
         document.documentElement.lang = l === 'pt' ? 'pt-PT' : l;
       })();
@@ -37,7 +37,7 @@ const fr = useT('fr');
     </style>
   </head>
   <body>
-    <header class="wrap nf-head"><Logo href={path('fr', 'home')} label={fr.nav.logoAria} /></header>
+    <header class="wrap nf-head"><Logo href={path('lb', 'home')} label={fr.nav.logoAria} /></header>
     <main class="wrap nf">
       {
         LANGS.map((l) => {

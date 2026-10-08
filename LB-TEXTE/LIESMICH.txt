@@ -1,7 +1,7 @@
 Luxemburgische Texte prüfen
 ===========================
 
-lb-pruefen.txt  – 782 Texte, rund 6241 Wörter, nur Luxemburgisch.
+lb-pruefen.txt  – 782 Texte, rund 6236 Wörter, nur Luxemburgisch.
                   Abschnittsweise in spellchecker.lu (oder einen anderen Checker) einfügen.
                   Jeder Text hat eine Nummer (z. B. „57.“).
 
