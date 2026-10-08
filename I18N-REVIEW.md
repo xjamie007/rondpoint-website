@@ -51,9 +51,9 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `nav.close` | Fermer | Zoumaachen |
 | `nav.langLabel` | Langue | Sprooch |
 | `nav.callAria` | Appeler le +352 81 05 41 | +352 81 05 41 uruffen |
-| `nav.home` | Accueil | Startsäit |
+| `nav.home` | Accueil | Haaptsäit |
 | `nav.breadcrumb` | Fil d’Ariane | Navigatiounspad |
-| `nav.logoAria` | Garage Um Rond Point, accueil | Garage Um Rond Point, Startsäit |
+| `nav.logoAria` | Garage Um Rond Point, accueil | Garage Um Rond Point, Haaptsäit |
 | `contactBar.label` | Contact rapide | Direktkontakt |
 | `contactBar.call` | Appeler | Uruffen |
 | `contactBar.whatsapp` | WhatsApp | WhatsApp |
@@ -86,7 +86,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `finder.licence.BE` | Permis BE | Führerschäin BE |
 | `finder.licence.unknown` | Je ne sais pas | Ech weess et net |
 | `finder.exactSummary` | Calcul exact pour votre voiture (facultatif) | Genee fir Ären Auto ausrechnen (fakultativ) |
-| `finder.f2` | Masse maximale de votre voiture (champ F.2) | Zulässegt Gesamtgewiicht vun Ärem Auto (Feld F.2) |
+| `finder.f2` | Masse maximale de votre voiture (champ F.2) | Zoulässegt Gesamtgewiicht vun Ärem Auto (Feld F.2) |
 | `finder.o1` | Charge remorquable freinée (champ O.1) | Unhängelaascht gebremst (Feld O.1) |
 | `finder.o2` | Charge remorquable non freinée (champ O.2) | Unhängelaascht ongebremst (Feld O.2) |
 | `finder.kg` | kg | kg |
@@ -97,9 +97,9 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `finder.matchCount.other` | {n} remorques conviennent | {n} Unhänger passen |
 | `finder.none` | Aucune remorque ne convient pour cette combinaison. Appelez-nous au +352 81 05 41, nous vous conseillons. | Fir dës Kombinatioun passt keen Unhänger. Rufft eis un op +352 81 05 41, mir beroden Iech. |
 | `finder.vansHeading` | Camionnettes | Camionnetten |
-| `finder.vanStatement` | Une camionnette jusqu’à 3 500 kg de masse maximale se conduit avec le permis B. | Eng Camionnette bis 3.500 kg zulässegt Gesamtgewiicht fuert Dir mam Führerschäin B. |
+| `finder.vanStatement` | Une camionnette jusqu’à 3 500 kg de masse maximale se conduit avec le permis B. | Eng Camionnette bis 3.500 kg zoulässegt Gesamtgewiicht fuert Dir mam Führerschäin B. |
 | `finder.specs.payload` | Charge utile | Notzlaascht |
-| `finder.specs.mma` | Masse maximale | Zulässegt Gesamtgewiicht |
+| `finder.specs.mma` | Masse maximale | Zoulässegt Gesamtgewiicht |
 | `finder.specs.empty` | Poids à vide | Eidelgewiicht |
 | `finder.specs.surface` | Surface de chargement | Luedfläch |
 | `finder.specs.height` | Hauteur de chargement | Luedhéicht |
@@ -136,12 +136,12 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `finder.finePrint` | Indication basée sur les règles du permis de conduire au Luxembourg (transports.public.lu). En cas de doute, demandez-nous avant de partir. | Dës Angab baséiert op de Führerschäinreegelen zu Lëtzebuerg (transports.public.lu). Wann Dir net sécher sidd, frot eis, ier Dir lassfuert. |
 | `finder.sourceLink` | Règles du permis sur transports.public.lu | Führerschäinreegelen op transports.public.lu |
 | `finder.empty` | La liste de nos remorques arrive bientôt. Appelez-nous au +352 81 05 41. | D’Lëscht mat eisen Unhänger kënnt geschwënn. Rufft eis un op +352 81 05 41. |
-| `finder.noJsRules` | Avec le permis B, vous pouvez tracter une remorque jusqu’à 750 kg de masse maximale, ou une remorque plus lourde si voiture et remorque ensemble ne dépassent pas 3 500 kg. Avec le code 96, l’ensemble peut aller jusqu’à 4 250 kg. Au-delà, il faut le permis BE. | Mam Führerschäin B dierft Dir en Unhänger bis 750 kg zulässegt Gesamtgewiicht zéien, oder e méi schwéieren Unhänger, wann Auto an Unhänger zesummen net méi wéi 3.500 kg weien. Mam Code 96 sinn zesumme bis zu 4.250 kg erlaabt. Doriwwer braucht Dir de Führerschäin BE. |
+| `finder.noJsRules` | Avec le permis B, vous pouvez tracter une remorque jusqu’à 750 kg de masse maximale, ou une remorque plus lourde si voiture et remorque ensemble ne dépassent pas 3 500 kg. Avec le code 96, l’ensemble peut aller jusqu’à 4 250 kg. Au-delà, il faut le permis BE. | Mam Führerschäin B dierft Dir en Unhänger bis 750 kg zoulässegt Gesamtgewiicht zéien, oder e méi schwéieren Unhänger, wann Auto an Unhänger zesummen net méi wéi 3.500 kg weien. Mam Code 96 sinn zesumme bis zu 4.250 kg erlaabt. Doriwwer braucht Dir de Führerschäin BE. |
 | `fleetTable.h2` | Toute notre flotte | Eis ganz Flott |
 | `fleetTable.caption` | Nos remorques et camionnettes de location | Eis Unhänger a Camionnetten fir ze lounen |
 | `fleetTable.kind` | Type | Typ |
 | `fleetTable.payload` | Charge utile | Notzlaascht |
-| `fleetTable.mma` | Masse maximale | Zulässegt Gesamtgewiicht |
+| `fleetTable.mma` | Masse maximale | Zoulässegt Gesamtgewiicht |
 | `fleetTable.surface` | Surface | Luedfläch |
 | `fleetTable.licence` | Permis nécessaire | Néidege Führerschäin |
 | `fleetTable.day` | Prix jour | Präis pro Dag |
@@ -157,7 +157,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `categories.voiture` | Voiture | Auto |
 | `cars.homeH2` | Nos voitures en stock | Eis Autoen am Stock |
 | `cars.h1` | Voitures neuves et d’occasion | Nei Autoen an Occasiounen |
-| `cars.lead` | Toutes les voitures en stock au Garage Um Rond Point, au rond-point d’Erpeldange. Appelez-nous ou écrivez-nous sur WhatsApp avant de passer, pour un essai sur rendez-vous. | All d’Autoen am Stock vun der Garage Um Rond Point, um Rond-point zu Ierpeldeng. Rufft eis un oder schreift eis op WhatsApp, ier Dir laanschtkommt. Probefahrten op Rendez-vous. |
+| `cars.lead` | Toutes les voitures en stock au Garage Um Rond Point, au rond-point d’Erpeldange. Appelez-nous ou écrivez-nous sur WhatsApp avant de passer, pour un essai sur rendez-vous. | All d’Autoen am Stock vun der Garage Um Rond Point, um Rond-point zu Ierpeldeng. Rufft eis un oder schreift eis op WhatsApp, ier Dir laanschtkommt. Probefaarten op Rendez-vous. |
 | `cars.seeAll.one` | Voir la voiture | Den Auto kucken |
 | `cars.seeAll.other` | Voir les {n} voitures | All {n} Autoe kucken |
 | `cars.year` | Année | Joer |
@@ -248,7 +248,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `car.condition` | État | Zoustand |
 | `car.vatRecoverable` | TVA récupérable | TVA ofsetzbar |
 | `car.equipmentH2` | Équipement | Ausstattung |
-| `car.equipmentMore` | Voir les {n} équipements | Ganz Ausstattung kucken ({n}) |
+| `car.equipmentMore` | Voir les {n} équipements | Déi ganz Ausstattung kucken ({n}) |
 | `car.descriptionH2` | Description | Beschreiwung |
 | `car.originalNote` | Description d’origine en français | Original-Beschreiwung op Franséisch |
 | `car.originalListNote` | Liste d’origine en français | Original-Lëscht op Franséisch |
@@ -270,7 +270,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `car.gallery.alt` | {make} {model} {version}, photo {i} sur {n} | {make} {model} {version}, Foto {i} vun {n} |
 | `photos.heroWorkshop` | Voiture noire dans un atelier moderne et lumineux | Schwaarzen Auto an engem modernen, hellen Atelier |
 | `photos.workshop` | Mécanicien au travail dans le compartiment moteur d’une voiture | Mecanicien bei der Aarbecht am Motorraum vun engem Auto |
-| `photos.sodablast` | Voiture ancienne rouillée, peinture écaillée | Rustegen Oldtimer mat ofblätterndem Lack |
+| `photos.sodablast` | Voiture ancienne rouillée, peinture écaillée | Rastegen Oldtimer mat ofgeblättertem Lack |
 | `photos.bodywork` | Voiture de sport rouge sur un pont élévateur dans un atelier | Rouden Sportsauto op enger Hiefbün an engem Atelier |
 | `photos.garden` | Tondeuse à gazon thermique sur une pelouse | Benzinsrasemeeër op engem Rasen |
 | `photos.gardenPage` | Tonte d’une pelouse au soleil | Gras méien an der Sonn |
@@ -297,12 +297,12 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `reviews.h2` | Avis Google | Google-Bewäertungen |
 | `reviews.link` | Lire tous les avis sur Google | All Bewäertungen op Google liesen |
 | `reviews.missing` | [FEHLT — 2–3 vom Kunden freigegebene Zitate aus dem Google-Profil, mit Vorname + Initiale und Monat/Jahr] | [FEHLT — 2–3 vom Kunden freigegebene Zitate aus dem Google-Profil, mit Vorname + Initiale und Monat/Jahr] |
-| `faq.h2` | Questions fréquentes | Heefeg Froen |
+| `faq.h2` | Questions fréquentes | Froen & Äntwerten |
 | `faq.rentalH2` | Questions sur la location | Froen zum Lounen |
 | `faq.items.permis.q` | Quel permis faut-il pour tracter une remorque ? | Wat fir e Führerschäin brauch ech, fir en Unhänger ze zéien? |
-| `faq.items.permis.a` | Avec le permis B, vous pouvez tracter une remorque jusqu’à 750 kg de masse maximale. Une remorque plus lourde est permise si la voiture et la remorque ensemble ne dépassent pas 3 500 kg. Avec le code 96 sur votre permis B, l’ensemble peut aller jusqu’à 4 250 kg. Au-delà, il faut le permis BE, qui autorise une remorque jusqu’à 3 500 kg. | Mam Führerschäin B dierft Dir en Unhänger bis 750 kg zulässegt Gesamtgewiicht zéien. E méi schwéieren Unhänger ass erlaabt, wann Auto an Unhänger zesummen net méi wéi 3.500 kg weien. Mam Code 96 op Ärem Führerschäin B dierfen Auto an Unhänger zesumme bis zu 4.250 kg weien. Doriwwer braucht Dir de Führerschäin BE. Domat dierft Dir en Unhänger bis 3.500 kg zéien. |
+| `faq.items.permis.a` | Avec le permis B, vous pouvez tracter une remorque jusqu’à 750 kg de masse maximale. Une remorque plus lourde est permise si la voiture et la remorque ensemble ne dépassent pas 3 500 kg. Avec le code 96 sur votre permis B, l’ensemble peut aller jusqu’à 4 250 kg. Au-delà, il faut le permis BE, qui autorise une remorque jusqu’à 3 500 kg. | Mam Führerschäin B dierft Dir en Unhänger bis 750 kg zoulässegt Gesamtgewiicht zéien. E méi schwéieren Unhänger ass erlaabt, wann Auto an Unhänger zesummen net méi wéi 3.500 kg weien. Mam Code 96 op Ärem Führerschäin B dierfen Auto an Unhänger zesumme bis zu 4.250 kg weien. Doriwwer braucht Dir de Führerschäin BE. Domat dierft Dir en Unhänger bis 3.500 kg zéien. |
 | `faq.items.carte.q` | Où voir ce que ma voiture peut tracter ? | Wou gesinn ech, wat mäin Auto zéien däerf? |
-| `faq.items.carte.a` | Sur le certificat d’immatriculation : le champ O.1 indique la charge remorquable avec freins, le champ O.2 sans freins. La masse maximale de votre voiture figure au champ F.2. | Op der Carte grise: D’Feld O.1 weist d’Unhängelaascht mat Bremsen, d’Feld O.2 d’Unhängelaascht ouni Bremsen. Dat zulässegt Gesamtgewiicht vun Ärem Auto steet am Feld F.2. |
+| `faq.items.carte.a` | Sur le certificat d’immatriculation : le champ O.1 indique la charge remorquable avec freins, le champ O.2 sans freins. La masse maximale de votre voiture figure au champ F.2. | Op der Carte grise: D’Feld O.1 weist d’Unhängelaascht mat Bremsen, d’Feld O.2 d’Unhängelaascht ouni Bremsen. Dat zoulässegt Gesamtgewiicht vun Ärem Auto steet am Feld F.2. |
 | `faq.items.prix.q` | Combien coûte la location d’une remorque ? | Wat kascht et, en Unhänger ze lounen? |
 | `faq.items.prix.a` | Le prix à la journée et au week-end est indiqué pour chaque remorque dans notre guide. [FEHLT — Preise der Flotte] | De Präis pro Dag a pro Weekend steet bei all Unhänger an eiser Unhängersich. [FEHLT — Preise der Flotte] |
 | `faq.items.louer.q` | Que faut-il pour louer ? | Wat brauch ech, fir ze lounen? |
@@ -319,13 +319,13 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `faq.items.langues.a` | Luxembourgeois, français, allemand, anglais et portugais. | Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch. |
 | `faq.items.paiement.q` | Comment puis-je payer ? | Wéi kann ech bezuelen? |
 | `faq.items.paiement.a` | En espèces, par carte Visa, Mastercard ou V PAY, avec Payconiq, Apple Pay ou PayPal, ou par virement. [UNBESTÄTIGT — Zahlungsmittel] | Bar, mat Kaart (Visa, Mastercard oder V PAY), mat Payconiq, Apple Pay oder PayPal oder per Iwwerweisung. [UNBESTÄTIGT — Zahlungsmittel] |
-| `access.h2` | Nous trouver | Esou fannt Dir eis |
+| `access.h2` | Nous trouver | Wéi Dir eis fannt |
 | `access.address` | Adresse | Adress |
 | `access.landmark` | Au rond-point, à côté de la station Aral, entre Ettelbruck et Diekirch. | Um Rond-point, nieft der Aral-Tankstell, tëscht Ettelbréck an Dikrech. |
 | `access.hoursH3` | Heures d’ouverture | Ëffnungszäiten |
 | `access.languagesH3` | Langues | Sproochen |
 | `access.languages` | Nous parlons luxembourgeois, français, allemand, anglais et portugais. | Mir schwätze Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch. |
-| `access.mapLink` | Itinéraire dans Google Maps | Route an Google Maps |
+| `access.mapLink` | Itinéraire dans Google Maps | Route op Google Maps |
 | `access.external` | (site externe) | (extern Websäit) |
 | `access.mapTitle` | Le rond-point d’Erpeldange | De Rond-point zu Ierpeldeng |
 | `access.osm` | © les contributeurs d’OpenStreetMap | © OpenStreetMap-Mataarbechter |
@@ -376,9 +376,9 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `pages.category.h1.camionnette` | Louer une camionnette à Erpeldange | Camionnette lounen zu Ierpeldeng |
 | `pages.category.intro.porte-voiture` | La remorque porte-voiture sert à transporter une voiture en panne, une voiture de collection ou une voiture que vous venez d’acheter. Vérifiez avant de partir que votre voiture peut tracter l’ensemble et que votre permis suffit. | Mam Autosunhänger transportéiert Dir e futtisen Auto, en Oldtimer oder en Auto, deen Dir grad kaaft hutt. Kuckt, ier Dir lassfuert, ob Ären Auto den Unhänger mat der Luedung zéien däerf an ob Äre Führerschäin duergeet. |
 | `pages.category.intro.porte-moto` | La remorque porte-moto sert à emmener une moto, un scooter ou un quad à l’atelier, en vacances ou sur un circuit. Elle se tracte avec une voiture ordinaire. | Mam Motosunhänger bréngt Dir eng Moto, e Scooter oder e Quad an den Atelier, an d’Vakanz oder op d’Rennstreck. Fir en ze zéien, geet en normalen Auto duer. |
-| `pages.category.intro.benne` | La benne basculante sert à transporter terre, gravats, sable ou déchets verts, et se vide en basculant. Pour un chantier, le jardin ou un passage au parc à conteneurs. | Mam Kipper transportéiert Dir Äerd, Bauschutt, Sand oder Gréngschnëtt a kippt d’Luedung of. Fir e Chantier, fir de Gaart oder fir an de Recyclingcenter. |
-| `pages.category.intro.frigorifique` | La remorque frigorifique garde boissons et repas au frais pendant une fête, un mariage ou un festival. Vous la garez sur place pour la durée de l’événement. | De Killunhänger hält Gedrénks an Iessen während engem Fest, enger Hochzäit oder engem Festival frësch. Dir stellt de Killunhänger fir d’Dauer vum Fest op der Plaz of. |
-| `pages.category.intro.camionnette` | La camionnette sert à un déménagement, au transport de meubles ou de matériel. Jusqu’à 3 500 kg de masse maximale, elle se conduit avec le permis B. | Mat der Camionnette plënnert Dir oder transportéiert Miwwelen oder Material. Bis 3.500 kg zulässegt Gesamtgewiicht fuert Dir se mam Führerschäin B. |
+| `pages.category.intro.benne` | La benne basculante sert à transporter terre, gravats, sable ou déchets verts, et se vide en basculant. Pour un chantier, le jardin ou un passage au parc à conteneurs. | Mam Kipper transportéiert Dir Äerd, Bauschutt, Sand oder Gréngschnëtt a kippt d’Luedung of. Fir e Chantier, fir de Gaart oder fir an de Recyclingszenter. |
+| `pages.category.intro.frigorifique` | La remorque frigorifique garde boissons et repas au frais pendant une fête, un mariage ou un festival. Vous la garez sur place pour la durée de l’événement. | De Killunhänger hält Gedrénks an Iessen wärend engem Fest, enger Hochzäit oder engem Festival frësch. Dir stellt de Killunhänger fir d’Dauer vum Fest op der Plaz of. |
+| `pages.category.intro.camionnette` | La camionnette sert à un déménagement, au transport de meubles ou de matériel. Jusqu’à 3 500 kg de masse maximale, elle se conduit avec le permis B. | Mat der Camionnette plënnert Dir oder transportéiert Miwwelen oder Material. Bis 3.500 kg zoulässegt Gesamtgewiicht fuert Dir se mam Führerschäin B. |
 | `pages.category.vehiclesH2` | Nos véhicules | Eis Gefierer |
 | `pages.category.licenceH2` | Quel permis ? | Wat fir e Führerschäin? |
 | `pages.category.backToFinder` | Comparer avec toutes nos remorques | Mat all eisen Unhänger vergläichen |
@@ -410,7 +410,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `pages.trailersForSale.lead` | Nous vendons des remorques Saris, Humbaur et WM Meyer, pour les particuliers et les professionnels. | Mir verkafen Unhänger vu Saris, Humbaur a WM Meyer, fir Privatleit a Betriber. |
 | `pages.trailersForSale.dealerMissing` | [UNBESTÄTIGT — Händlerstatus Saris, Humbaur, WM Meyer; Logos nur mit Freigabe] | [UNBESTÄTIGT — Händlerstatus Saris, Humbaur, WM Meyer; Logos nur mit Freigabe] |
 | `pages.trailersForSale.adviceH2` | Quel permis pour quelle remorque ? | Wéi en Unhänger mat wéi engem Führerschäin? |
-| `pages.trailersForSale.advice` | Nous vous aidons à choisir une remorque que votre voiture peut tracter et que votre permis autorise : taille, masse maximale, freinage. Notre guide de location vous montre les règles du permis avec des exemples. | Mir hëllefen Iech, en Unhänger ze wielen, deen Ären Auto zéie kann an deen Dir mat Ärem Führerschäin fueren dierft: Gréisst, zulässegt Gesamtgewiicht, Bremsen. Eis Unhängersich fir d’Lounen weist Iech d’Führerschäinreegele mat Beispiller. |
+| `pages.trailersForSale.advice` | Nous vous aidons à choisir une remorque que votre voiture peut tracter et que votre permis autorise : taille, masse maximale, freinage. Notre guide de location vous montre les règles du permis avec des exemples. | Mir hëllefen Iech, en Unhänger ze wielen, deen Ären Auto zéie kann an deen Dir mat Ärem Führerschäin fueren dierft: Gréisst, zoulässegt Gesamtgewiicht, Bremsen. Eis Unhängersich fir d’Lounen weist Iech d’Führerschäinreegele mat Beispiller. |
 | `pages.trailersForSale.adviceLink` | Quel permis pour quelle remorque ? | Wéi en Unhänger mat wéi engem Führerschäin? |
 | `pages.trailersForSale.stockH2` | Remorques en stock | Unhänger am Stock |
 | `pages.trailersForSale.stockMissing` | [FEHLT — Anhänger auf Lager] | [FEHLT — Anhänger auf Lager] |
@@ -433,7 +433,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `pages.contact.formH2` | Nous écrire | Schreift eis |
 | `pages.thanks.h1` | Votre demande est bien arrivée | Är Ufro ass ukomm |
 | `pages.thanks.text` | Nous vous répondons [FEHLT — Antwortzeit, z. B. « le jour ouvrable suivant »]. C’est urgent ? Appelez le +352 81 05 41. | Mir äntweren Iech [FEHLT — Antwortzeit, z. B. « le jour ouvrable suivant »]. Ass et dréngend? Rufft +352 81 05 41 un. |
-| `pages.thanks.back` | Retour à l’accueil | Zréck op d’Startsäit |
+| `pages.thanks.back` | Retour à l’accueil | Zréck op d’Haaptsäit |
 | `pages.notFound.h1` | Page introuvable | Säit net fonnt |
 | `pages.notFound.text` | Cette page n’existe pas ou plus. Une voiture vendue disparaît de notre liste. | Dës Säit gëtt et net oder net méi. E verkaaften Auto verschwënnt vun eiser Lëscht. |
 | `forms.optional` | facultatif | fakultativ |
@@ -442,7 +442,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `forms.phoneHint` | Nous vous rappelons. | Mir ruffen Iech zréck. |
 | `forms.email` | E-mail | E-Mail |
 | `forms.message` | Message | Message |
-| `forms.consent` | J’accepte que Garage Um Rond Point utilise mes données pour répondre à ma demande. Plus d’informations dans la {link}. | Ech sinn domat averstanen, datt Garage Um Rond Point meng Donnéeë benotzt, fir op meng Ufro z’äntweren. Méi Informatiounen an der {link}. |
+| `forms.consent` | J’accepte que Garage Um Rond Point utilise mes données pour répondre à ma demande. Plus d’informations dans la {link}. | Ech sinn domat averstanen, datt d’Garage Um Rond Point meng Donnéeë benotzt, fir op meng Ufro z’äntweren. Méi Informatiounen an der {link}. |
 | `forms.consentLink` | protection des données | Dateschutzerklärung |
 | `forms.honeypot` | Ne remplissez pas ce champ | Fëllt dëst Feld net aus |
 | `forms.choose` | Choisissez… | Wielt … |
@@ -488,7 +488,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `forms.rental.other` | Autre, précisé dans le message | Eppes anescht, am Message beschriwwen |
 | `forms.car.carLabel` | Voiture | Auto |
 | `forms.car.wish` | Vous souhaitez | Dir wëllt |
-| `forms.car.wishTest` | Un essai | Eng Probefahrt |
+| `forms.car.wishTest` | Un essai | Eng Probefaart |
 | `forms.car.wishInfo` | Plus d’informations | Méi Informatiounen |
 | `forms.car.wishTradeIn` | Faire reprendre ma voiture | Reprise vu mengem Auto |
 | `forms.car.tradeInH` | Seulement pour une reprise | Nëmme fir eng Reprise |
@@ -530,12 +530,12 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `seo.category.description.frigorifique` | Louez une remorque frigorifique pour votre fête ou festival au rond-point d’Erpeldange, près d’Ettelbruck : volume, température, prix et permis nécessaire. | Lount e Killunhänger fir Äert Fest oder Festival um Rond-point zu Erpeldange, no bei Ettelbréck: Bannevolumen, Temperatur, Präis an néidege Führerschäin. |
 | `seo.category.description.camionnette` | Louez une camionnette pour un déménagement ou du matériel au rond-point d’Erpeldange, près d’Ettelbruck. Jusqu’à 3 500 kg, le permis B suffit. Prix au jour. | Lount eng Camionnette fir en Ëmzug oder Material um Rond-point zu Erpeldange, no bei Ettelbréck. Bis 3.500 kg geet de Führerschäin B duer. Präis pro Dag. |
 | `seo.cars.title` | Voitures neuves et d’occasion à Erpeldange \| Um Rond Point | Nei Autoen an Occasiounen zu Erpeldange \| Um Rond Point |
-| `seo.cars.description` | Toutes les voitures en stock au Garage Um Rond Point à Erpeldange, avec prix, kilométrage et photos. Liste mise à jour chaque matin. Essai sur rendez-vous. | All d’Autoen am Stock vun der Garage Um Rond Point zu Erpeldange, mat Präis, Kilometerstand a Fotoen. Lëscht all Moien aktualiséiert. Probefahrt op Rendez-vous. |
+| `seo.cars.description` | Toutes les voitures en stock au Garage Um Rond Point à Erpeldange, avec prix, kilométrage et photos. Liste mise à jour chaque matin. Essai sur rendez-vous. | All d’Autoen am Stock vun der Garage Um Rond Point zu Erpeldange, mat Präis, Kilometerstand a Fotoen. Lëscht all Moien aktualiséiert. Probefaart op Rendez-vous. |
 | `seo.car.suffixLong` |  \| Garage Um Rond Point |  \| Garage Um Rond Point |
 | `seo.car.suffixShort` |  \| Um Rond Point |  \| Um Rond Point |
 | `seo.car.place` |  à Erpeldange |  zu Ierpeldeng |
 | `seo.car.descTail` | À voir au Garage Um Rond Point à Erpeldange. | Ze gesinn an der Garage Um Rond Point zu Ierpeldeng. |
-| `seo.car.descExtra[0]` |  Essai sur rendez-vous. |  Probefahrt op Rendez-vous. |
+| `seo.car.descExtra[0]` |  Essai sur rendez-vous. |  Probefaart op Rendez-vous. |
 | `seo.car.descExtra[1]` |  Entre Ettelbruck et Diekirch. |  Tëscht Ettelbréck an Dikrech. |
 | `seo.car.descExtra[2]` |  Appelez le +352 81 05 41. |  Rufft +352 81 05 41 un. |
 | `seo.car.descGearbox` | boîte {gearbox} | Schaltung: {gearbox} |
@@ -556,7 +556,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `seo.legal.title` | Mentions légales \| Garage Um Rond Point, Erpeldange-sur-Sûre | Impressum \| Garage Um Rond Point, Erpeldange-sur-Sûre |
 | `seo.legal.description` | Mentions légales du Garage Um Rond Point S.à r.l., 1, rue du Viaduc, L-9147 Erpeldange-sur-Sûre : éditeur, RCS B296148, TVA LU36559673, hébergement du site. | Impressum vun der Garage Um Rond Point S.à r.l., 1, rue du Viaduc, L-9147 Erpeldange-sur-Sûre: Erausgeber, Handelsregister B296148, TVA LU36559673, Hosting. |
 | `seo.privacy.title` | Protection des données \| Garage Um Rond Point, Erpeldange | Dateschutzerklärung \| Garage Um Rond Point, Erpeldange |
-| `seo.privacy.description` | Quelles données le Garage Um Rond Point traite quand vous nous écrivez, pourquoi, combien de temps et quels sont vos droits. Sans cookies, sans outil de suivi. | Wéi eng Donnéeën d’Garage Um Rond Point veraarbecht, wann Dir eis schreift, firwat, wéi laang a wéi eng Rechter Dir hutt. Ouni Cookies, ouni Tracking-Tools. |
+| `seo.privacy.description` | Quelles données le Garage Um Rond Point traite quand vous nous écrivez, pourquoi, combien de temps et quels sont vos droits. Sans cookies, sans outil de suivi. | Wéi eng Donnéeën d’Garage Um Rond Point veraarbecht, wann Dir eis schreift, firwat, wéi laang a wéi eng Rechter Dir hutt. Ouni Cookien, ouni Tracking-Tools. |
 | `legal.h1` | Mentions légales | Impressum |
 | `legal.publisherH2` | Éditeur du site | Erausgeber vun der Websäit |
 | `legal.company` | Raison sociale | Firmennumm |
@@ -568,7 +568,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `legal.vat` | Numéro de TVA | TVA-Nummer |
 | `legal.registered` | Immatriculation | Androung |
 | `legal.manager` | Gérant | Geschäftsféierer |
-| `legal.permit` | Autorisation d’établissement | Niederlassungserlaabnes (Autorisation d’établissement) |
+| `legal.permit` | Autorisation d’établissement | Néierlassungserlaabnes (Autorisation d’établissement) |
 | `legal.capital` | Capital social | Gesellschaftskapital |
 | `legal.managerMissing` | [UNBESTÄTIGT — Gérant David Moreira laut Editus] | [UNBESTÄTIGT — Gérant David Moreira laut Editus] |
 | `legal.permitMissing` | [FEHLT — Nummer der Gewerbegenehmigung] | [FEHLT — Nummer der Gewerbegenehmigung] |
@@ -582,7 +582,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `legal.fontH2` | Police de caractères | Schrëft |
 | `legal.font` | Archivo, Omnibus-Type, SIL Open Font License 1.1. | Archivo, Omnibus-Type, SIL Open Font License 1.1. |
 | `privacy.h1` | Protection des données | Dateschutzerklärung |
-| `privacy.intro` | Nous traitons vos données uniquement pour répondre à vos demandes. Ce site ne dépose pas de cookies et n’utilise pas d’outil de suivi ni de publicité. | Mir veraarbechten Är Donnéeën nëmmen, fir op Är Ufroen z’äntweren. Dës Websäit setzt keng Cookies a benotzt keng Tools fir Tracking oder Reklamm. |
+| `privacy.intro` | Nous traitons vos données uniquement pour répondre à vos demandes. Ce site ne dépose pas de cookies et n’utilise pas d’outil de suivi ni de publicité. | Mir veraarbechten Är Donnéeën nëmmen, fir op Är Ufroen z’äntweren. Dës Websäit setzt keng Cookien a benotzt keng Tools fir Tracking oder Reklamm. |
 | `privacy.controllerH2` | Responsable du traitement | Verantwortlechen |
 | `privacy.controller` | GARAGE UM ROND POINT S.à r.l., 1, rue du Viaduc, L-9147 Erpeldange-sur-Sûre, Luxembourg. Téléphone +352 81 05 41, info@rondpoint.lu. | Garage Um Rond Point S.à r.l., 1, rue du Viaduc, L-9147 Erpeldange-sur-Sûre, Lëtzebuerg. Telefon +352 81 05 41, info@rondpoint.lu. |
 | `privacy.formsH2` | Formulaires de demande | Ufroformulairen |
@@ -606,7 +606,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `offer.sub.sodablast` | Décapage doux | Schounend ofbeizen |
 | `about.h2` | Qui sommes-nous ? | Iwwer eis |
 | `about.text` | Le Garage Um Rond Point, c’est votre garage au rond-point d’Erpeldange, entre Ettelbruck et Diekirch. Location de remorques et de camionnettes, vente de voitures et de remorques, atelier et machines de jardin : tout se trouve à la même adresse. Passez nous voir, nous parlons votre langue. | D’Garage Um Rond Point ass Är Garage um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech. Unhänger a Camionnetten lounen, Autoen an Unhänger kafen, Atelier a Gaartmaschinnen: alles op enger Adress. Kommt laanscht – mir schwätzen Är Sprooch. |
-| `about.link` | Nous trouver | Esou fannt Dir eis |
+| `about.link` | Nous trouver | Wéi Dir eis fannt |
 | `about.photoAlt` | Mécanicien qui tend une clé de voiture | Mecanicien reecht en Autosschlëssel |
 | `details.points.workshop[0]` | Entretien et révision | Entretien a Revisioun |
 | `details.points.workshop[1]` | Diagnostic des pannes | Feelerdiagnos |
@@ -624,18 +624,18 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `details.workshop.entretienH` | Entretien et révision | Entretien a Revisioun |
 | `details.workshop.entretien` | Un entretien régulier garde votre voiture fiable et sûre : vidange, filtres, freins, niveaux et contrôle général. Indiquez-nous dans votre demande le kilométrage et la date du dernier entretien. | E reegelméissegen Entretien hält Ären Auto zouverlässeg a sécher: Uelegwiessel, Filteren, Bremsen, Niveauen an allgemeng Kontroll. Sot eis an Ärer Ufro de Kilometerstand an den Datum vum leschten Entretien. |
 | `details.workshop.diagnosticH` | Diagnostic des pannes | Feelerdiagnos |
-| `details.workshop.diagnostic` | Un voyant s’allume, un bruit inhabituel, la voiture démarre mal : décrivez ce que vous remarquez et depuis quand. Le diagnostic permet de trouver la cause avant de réparer. | Eng Warnlut geet un, en ongewinnte Geräisch, den Auto spréngt schlecht un: Beschreift, wat Dir mierkt a zënter wéini. D’Diagnos fënnt d’Ursaach, ier reparéiert gëtt. |
+| `details.workshop.diagnostic` | Un voyant s’allume, un bruit inhabituel, la voiture démarre mal : décrivez ce que vous remarquez et depuis quand. Le diagnostic permet de trouver la cause avant de réparer. | Eng Warnluucht geet un, en ongewéinlecht Geräisch, den Auto spréngt schlecht un: Beschreift, wat Dir mierkt a zanter wéini. D’Diagnos fënnt d’Ursaach, ier reparéiert gëtt. |
 | `details.workshop.reparationH` | Réparation mécanique | Mechanesch Reparatur |
 | `details.workshop.reparation` | Après le diagnostic, nous réparons votre voiture ou votre camionnette dans notre atelier au rond-point d’Erpeldange. | No der Diagnos reparéiere mir Ären Auto oder Är Camionnette an eisem Atelier um Rond-point zu Ierpeldeng. |
 | `details.workshop.carrosserieH` | Carrosserie et peinture | Karosserie a Lack |
 | `details.workshop.carrosserie` | Après un accrochage, nous réparons la carrosserie et repeignons les éléments abîmés. Envoyez-nous des photos des dégâts sur WhatsApp pour un premier avis. | No engem klengen Accident reparéiere mir d’Karosserie a lackéieren déi beschiedegt Deeler nei. Schéckt eis Fotoe vum Schued iwwer WhatsApp fir eng éischt Aschätzung. |
 | `details.workshop.processH2` | Comment prendre rendez-vous | Esou kritt Dir e Rendez-vous |
 | `details.workshop.process[0]` | Décrivez votre véhicule et ce qu’il faut faire, dans le formulaire, par téléphone ou sur WhatsApp. | Beschreift Äert Gefier a wat ze maachen ass – am Formulaire, um Telefon oder iwwer WhatsApp. |
-| `details.workshop.process[1]` | Nous vous rappelons pour fixer la date. | Mir ruffen Iech zréck fir den Datum ofzemaachen. |
+| `details.workshop.process[1]` | Nous vous rappelons pour fixer la date. | Mir ruffen Iech zréck, fir den Datum ofzemaachen. |
 | `details.workshop.process[2]` | Vous déposez votre véhicule au garage, au 1, rue du Viaduc. | Dir bréngt Äert Gefier an d’Garage, 1, rue du Viaduc. |
 | `details.sodablast.explainH2` | Comment fonctionne le sodablast ? | Wéi funktionéiert Sodablast? |
 | `details.sodablast.explain` | Le bicarbonate de soude est projeté sur la surface avec de l’air comprimé. Plus tendre que le sable, il enlève la peinture, la graisse et la saleté sans creuser le métal. C’est pourquoi on l’utilise pour les pièces fragiles et les carrosseries anciennes. | Natron gëtt mat Drockloft op d’Uewerfläch gestraalt. Et ass méi mëll wéi Sand an hëlt Lack, Fett a Knascht ewech, ouni d’Metall unzegräifen. Dofir gëtt et fir empfindlech Deeler an al Karosserien benotzt. |
-| `details.sodablast.explain2` | Le décapage met à nu la surface d’origine : vous voyez l’état réel du métal avant une réparation ou une nouvelle peinture. | D’Ofbeizen leet déi ursprénglech Uewerfläch fräi: Dir gesitt de richtegen Zoustand vum Metall virun enger Reparatur oder engem neie Lack. |
+| `details.sodablast.explain2` | Le décapage met à nu la surface d’origine : vous voyez l’état réel du métal avant une réparation ou une nouvelle peinture. | D’Ofbeize leet déi ursprénglech Uewerfläch fräi: Dir gesitt de richtegen Zoustand vum Metall virun enger Reparatur oder engem neie Lack. |
 | `details.sodablast.processH2` | Comment se passe un décapage | Esou leeft d’Ofbeizen of |
 | `details.sodablast.process[0]` | Envoyez-nous des photos de la voiture ou de la pièce sur WhatsApp. | Schéckt eis Fotoe vum Auto oder vum Deel iwwer WhatsApp. |
 | `details.sodablast.process[1]` | Nous vous donnons un premier avis. | Dir kritt eng éischt Aschätzung. |
@@ -645,32 +645,32 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `details.garden.repairH2` | Réparation | Reparatur |
 | `details.garden.repair` | La tondeuse ne démarre plus, la tronçonneuse coupe mal, la débroussailleuse perd de la puissance ? Apportez votre machine à l’atelier ou décrivez le problème dans le formulaire. | De Rasemeeër spréngt net méi un, d’Motorsee schneit schlecht, de Fräischneider verléiert Kraaft? Bréngt Är Maschinn an den Atelier oder beschreift de Problem am Formulaire. |
 | `details.trailers.chooseH2` | Bien choisir sa remorque | De richtegen Unhänger wielen |
-| `details.trailers.masseH` | Masse maximale | Zulässegt Gesamtgewiicht |
+| `details.trailers.masseH` | Masse maximale | Zoulässegt Gesamtgewiicht |
 | `details.trailers.masse` | Elle décide du permis nécessaire. Jusqu’à 750 kg, le permis B suffit ; au-delà, cela dépend de votre voiture. | Et bestëmmt, wéi e Führerschäin Dir braucht. Bis 750 kg geet de Führerschäin B duer, doriwwer hänkt et vun Ärem Auto of. |
 | `details.trailers.freinH` | Freinage | Bremsen |
-| `details.trailers.frein` | Une remorque de plus de 750 kg de masse maximale doit être équipée de freins. | En Unhänger mat méi wéi 750 kg zulässegt Gesamtgewiicht muss gebremst sinn. |
+| `details.trailers.frein` | Une remorque de plus de 750 kg de masse maximale doit être équipée de freins. | En Unhänger mat engem zoulässege Gesamtgewiicht vu méi wéi 750 kg muss gebremst sinn. |
 | `details.trailers.chargeH` | Charge remorquable | Unhängelaascht |
-| `details.trailers.charge` | Votre voiture ne peut pas tracter plus que la valeur du champ O.1 (remorque freinée) ou O.2 (non freinée) du certificat d’immatriculation. | Ären Auto dierf net méi zéie wéi am Feld O.1 (gebremst) oder O.2 (ongebremst) vun der Carte grise steet. |
+| `details.trailers.charge` | Votre voiture ne peut pas tracter plus que la valeur du champ O.1 (remorque freinée) ou O.2 (non freinée) du certificat d’immatriculation. | Ären Auto däerf net méi zéie wéi am Feld O.1 (gebremst) oder O.2 (ongebremst) vun der Carte grise steet. |
 | `details.trailers.usageH` | Forme et dimensions | Bauaart a Moossen |
 | `details.trailers.usage` | Plateau, benne, porte-voiture ou fourgon : la bonne remorque dépend de ce que vous transportez le plus souvent et de la place pour la ranger. | Plateau, Kipper, Autosunhänger oder Kofferunhänger: De passenden Unhänger hänkt dovun of, wat Dir am meeschte transportéiert a wou Dir en ofstellt. |
 | `content.workshop.sections.s1.h` | Votre garage de proximité entre Ettelbruck et Diekirch | Är Garage no bei Iech, tëscht Ettelbréck an Dikrech |
 | `content.workshop.sections.s1.p[0]` | Le Garage Um Rond Point se trouve au {address}, directement au rond-point d’Erpeldange, à côté de la station Aral. Pour les habitants d’Erpeldange-sur-Sûre, d’Ettelbruck, de Diekirch et de toute la Nordstad, l’atelier est à quelques minutes de chez vous. | D’Garage Um Rond Point ass um {address}, direkt um Rond-point zu Ierpeldeng, nieft der Aral-Tankstell. Wann Dir zu Ierpeldeng, Ettelbréck, Dikrech oder soss iergendwou an der Nordstad wunnt, ass eisen Atelier just e puer Minutten ewech. |
 | `content.workshop.sections.s1.p[1]` | Nous parlons luxembourgeois, français, allemand, anglais et portugais. Vous pouvez donc nous expliquer le problème de votre voiture dans la langue qui vous convient le mieux. | Mir schwätze Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch. Dir kënnt eis de Problem mat Ärem Auto also an der Sprooch erklären, déi Iech am léifsten ass. |
 | `content.workshop.sections.s2.h` | Entretien : pourquoi suivre le plan du constructeur | Entretien: firwat de Plang vum Hiersteller wichteg ass |
-| `content.workshop.sections.s2.p[0]` | Chaque constructeur fixe un plan d’entretien, selon le kilométrage ou le temps écoulé depuis le dernier passage. Vous le trouvez dans le carnet d’entretien ou sur l’écran de bord de votre voiture. | All Hiersteller leet en Entretiensplang fest, nom Kilometerstand oder no der Zäit zënter dem leschte Besuch an der Garage. Dir fannt en am Carnet d’entretien oder um Écran vun Ärem Auto. |
+| `content.workshop.sections.s2.p[0]` | Chaque constructeur fixe un plan d’entretien, selon le kilométrage ou le temps écoulé depuis le dernier passage. Vous le trouvez dans le carnet d’entretien ou sur l’écran de bord de votre voiture. | All Hiersteller leet en Entretiensplang fest, nom Kilometerstand oder no der Zäit zanter dem leschte Besuch an der Garage. Dir fannt en am Carnet d’entretien oder um Ecran vun Ärem Auto. |
 | `content.workshop.sections.s2.p[1]` | Respecter ces échéances limite l’usure, évite des pannes coûteuses et aide à garder la valeur de la voiture à la revente. Selon le plan, un entretien comprend par exemple la vidange, les filtres, le contrôle des freins et des niveaux, l’éclairage et les essuie-glaces. | Wann Dir Iech un dëse Plang haalt, gëtt Ären Auto manner ofgenotzt, Dir vermeit deier Pannen an den Auto behält beim Verkaf besser säi Wäert. Wat zu engem Entretien gehéiert, hänkt vum Plang of. Dozou gehéieren zum Beispill den Uelegwiessel, d’Filteren, d’Kontroll vun de Bremsen an den Niveauen, d’Luuchten an d’Scheiwewëscher. |
 | `content.workshop.sections.s3.h` | Les signes qui doivent vous faire venir à l’atelier | Bei dësen Zeeche sollt Dir an den Atelier kommen |
 | `content.workshop.sections.s3.items[0]` | Un voyant reste allumé au tableau de bord. | Eng Warnluucht am Cockpit geet net méi aus. |
 | `content.workshop.sections.s3.items[1]` | Le freinage grince, vibre ou tire d’un côté. | D’Bremse jäizen, vibréieren oder zéien op eng Säit. |
 | `content.workshop.sections.s3.items[2]` | Le moteur manque de puissance ou démarre mal. | De Motor huet ze wéineg Kraaft oder spréngt schlecht un. |
 | `content.workshop.sections.s3.items[3]` | Une odeur de brûlé, une fuite ou une fumée inhabituelle. | Et richt verbrannt, eppes leeft aus oder et kënnt ongewéinlechen Damp. |
-| `content.workshop.sections.s3.items[4]` | Un bruit nouveau en roulant ou en tournant le volant. | En neie Geräisch beim Fueren oder wann Dir d’Steierrad dréit. |
-| `content.workshop.sections.s3.p[0]` | Plus tôt un défaut est trouvé, plus la réparation reste simple. Décrivez dans le formulaire ce que vous remarquez et depuis quand : c’est la meilleure base pour le diagnostic. | Gëtt e Feeler fréi fonnt, bleift d’Reparatur méi einfach. Beschreift am Formulaire, wat Dir mierkt a zënter wéini: Dat ass déi bescht Basis fir d’Diagnos. |
+| `content.workshop.sections.s3.items[4]` | Un bruit nouveau en roulant ou en tournant le volant. | En neit Geräisch beim Fueren oder wann Dir d’Steierrad dréit. |
+| `content.workshop.sections.s3.p[0]` | Plus tôt un défaut est trouvé, plus la réparation reste simple. Décrivez dans le formulaire ce que vous remarquez et depuis quand : c’est la meilleure base pour le diagnostic. | Gëtt e Feeler fréi fonnt, bleift d’Reparatur méi einfach. Beschreift am Formulaire, wat Dir mierkt a zanter wéini: Dat ass déi bescht Basis fir d’Diagnos. |
 | `content.workshop.sections.s4.h` | Carrosserie et peinture après un accrochage | Karosserie a Lack no engem klengen Accident |
 | `content.workshop.sections.s4.p[0]` | Rayure, bosse ou pare-chocs abîmé : envoyez-nous des photos des dégâts sur WhatsApp au {whatsapp}. Vous recevez un premier avis avant même de venir. Ensuite, nous réparons la carrosserie et repeignons les éléments abîmés dans notre atelier. | Ass d’Karosserie verkraazt oder agedréckt, oder ass de Pare-choc beschiedegt? Da schéckt eis Fotoe vum Schued iwwer WhatsApp op {whatsapp}. Dir kritt eng éischt Aschätzung, nach ier Dir bei eis kommt. Duerno reparéiere mir an eisem Atelier d’Karosserie a lackéieren déi beschiedegt Deeler nei. |
 | `content.workshop.sections.s4.p[1]` | Si un autre véhicule est en cause, remplissez le constat amiable sur place et prenez vous-même des photos de l’accident. Ces documents sont utiles pour votre assurance. | Wann en anert Gefier bedeelegt ass, fëllt de Constat amiable op der Plaz aus a maacht selwer Fotoe vum Accident. Dës Dokumenter sinn nëtzlech fir Är Versécherung. |
 | `content.workshop.sections.s5.h` | Voitures et camionnettes | Autoen a Camionnetten |
-| `content.workshop.sections.s5.p[0]` | L’atelier s’occupe des voitures et des camionnettes. Pour une tondeuse, une tronçonneuse ou une autre machine, voyez notre page [Jardin & forêt](page:garden). Pour mettre une carrosserie ou une pièce à nu, découvrez le [décapage sodablast](page:sodablast). | Eisen Atelier këmmert sech ëm Autoen a Camionnetten. Fir e Rasemeeër, eng Motorsee oder eng aner Maschinn kuckt op eiser Säit [Gaart & Bësch](page:garden). Fir eng Karosserie oder en Deel bis op d’Metall ofzebeizen, entdeckt eist [Ofbeize mat Sodablast](page:sodablast). |
+| `content.workshop.sections.s5.p[0]` | L’atelier s’occupe des voitures et des camionnettes. Pour une tondeuse, une tronçonneuse ou une autre machine, voyez notre page [Jardin & forêt](page:garden). Pour mettre une carrosserie ou une pièce à nu, découvrez le [décapage sodablast](page:sodablast). | Eisen Atelier këmmert sech ëm Autoen a Camionnetten. Fir e Rasemeeër, eng Motorsee oder eng aner Maschinn, kuckt op eiser Säit [Gaart & Bësch](page:garden). Fir eng Karosserie oder en Deel bis op d’Metall ofzebeizen, entdeckt eist [Ofbeize mat Sodablast](page:sodablast). |
 | `content.workshop.faqH` | Questions sur l’atelier | Froen zum Atelier |
 | `content.workshop.faq.q1.q` | Comment prendre rendez-vous à l’atelier ? | Wéi maachen ech e Rendez-vous am Atelier aus? |
 | `content.workshop.faq.q1.a` | Décrivez votre véhicule et ce qu’il faut faire dans le formulaire de cette page, par téléphone au {phone} ou sur WhatsApp au {whatsapp}. Nous vous rappelons pour fixer le rendez-vous. | Beschreift Äert Gefier a wat ze maachen ass: am Formulaire op dëser Säit, um Telefon op {phone} oder iwwer WhatsApp op {whatsapp}. Mir ruffen Iech zréck, fir de Rendez-vous auszemaachen. |
@@ -711,7 +711,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `content.garden.sections.s2.items[1]` | Débroussailleuse : pour les bordures, les talus et l’herbe haute que la tondeuse n’atteint pas. | Fräischneider: fir Kanten, Häng an héicht Gras, wou de Rasemeeër net hikënnt. |
 | `content.garden.sections.s2.items[2]` | Tronçonneuse : la longueur du guide dépend du diamètre du bois que vous coupez le plus souvent. | Motorsee: D’Längt vum Schwäert hänkt vum Duerchmiesser vum Holz of, dat Dir am meeschte schneit. |
 | `content.garden.sections.s2.items[3]` | Taille-haie : la longueur de la lame et le poids comptent si vous taillez longtemps ou en hauteur. | Heckeschéier: D’Längt vum Messer an d’Gewiicht zielen, wann Dir laang oder an der Héicht schneit. |
-| `content.garden.sections.s2.p[0]` | Thermique ou à batterie ? Une machine à batterie est plus silencieuse et démarre sans effort. Une machine thermique garde son autonomie sur les grands terrains. Dites-nous comment vous l’utilisez, nous vous conseillons. | Bensin oder Akku? Eng Maschinn mat Akku ass méi roueg a spréngt ouni Méi un. Eng Maschinn mat Bensinsmotor hält och op grousse Flächen duer. Sot eis, wéi Dir se benotzt, mir beroden Iech. |
+| `content.garden.sections.s2.p[0]` | Thermique ou à batterie ? Une machine à batterie est plus silencieuse et démarre sans effort. Une machine thermique garde son autonomie sur les grands terrains. Dites-nous comment vous l’utilisez, nous vous conseillons. | Bensin oder Akku? Eng Maschinn mat Akku ass méi roueg a spréngt ouni Méi un. Eng Maschinn mat Bensinsmotor hält och op grouss Flächen duer. Sot eis, wéi Dir se benotzt, mir beroden Iech. |
 | `content.garden.sections.s3.h` | Réparation : quand apporter votre machine | Reparatur: wéini Dir Är Maschinn brénge sollt |
 | `content.garden.sections.s3.items[0]` | Le moteur ne démarre plus ou cale. | De Motor spréngt net méi un oder geet aus. |
 | `content.garden.sections.s3.items[1]` | La machine perd de la puissance ou fume. | D’Maschinn verléiert Kraaft oder fëmmt. |
@@ -752,13 +752,13 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `content.cars.sections.s1.p[0]` | Toutes les voitures de cette page sont en stock chez nous, au rond-point d’Erpeldange. La liste est mise à jour chaque matin à partir de nos annonces : vous voyez le prix, le kilométrage, l’année et les photos de chaque voiture. | All d’Autoen op dëser Säit si bei eis am Stock, um Rond-point zu Ierpeldeng. D’Lëscht gëtt all Moien op Basis vun eisen Annoncen aktualiséiert: Dir gesitt de Präis, de Kilometerstand, d’Joer an d’Fotoe vun all Auto. |
 | `content.cars.sections.s1.items[0]` | Choisissez une voiture dans la liste et ouvrez sa fiche. | Wielt en Auto aus der Lëscht a maacht seng Detailsäit op. |
 | `content.cars.sections.s1.items[1]` | Appelez-nous ou écrivez-nous sur WhatsApp pour vérifier qu’elle est encore disponible. | Rufft eis un oder schreift eis op WhatsApp, fir nozefroen, ob en nach disponibel ass. |
-| `content.cars.sections.s1.items[2]` | Venez la voir au garage et faites un essai sur rendez-vous. | Kommt den Auto an der Garage kucken a maacht eng Probefahrt op Rendez-vous. |
+| `content.cars.sections.s1.items[2]` | Venez la voir au garage et faites un essai sur rendez-vous. | Kommt den Auto an der Garage kucken a maacht eng Probefaart op Rendez-vous. |
 | `content.cars.sections.s2.h` | Voitures neuves et d’occasion près d’Ettelbruck et de Diekirch | Nei Autoen an Occasiounen no bei Ettelbréck an Dikrech |
 | `content.cars.sections.s2.p[0]` | Le stock comprend des voitures neuves et des voitures d’occasion. Il change souvent : la liste vous montre chaque jour l’état du matin. Nos annonces sont aussi publiées sur LuxAuto et AutoScout24. | Am Stock sinn nei Autoen an Occasiounen. De Stock ännert sech dacks: D’Lëscht weist Iech all Dag de Stand vum Moien. Dir fannt eis Annoncen och op LuxAuto an AutoScout24. |
 | `content.cars.sections.s3.h` | Et votre voiture actuelle ? | Wat ass mat Ärem aktuellen Auto? |
 | `content.cars.sections.s3.p[0]` | Vous souhaitez faire reprendre votre voiture ? Indiquez-le dans le formulaire de la voiture qui vous intéresse. Vous préférez vendre sans vous en occuper ? Découvrez notre service de dépôt-vente plus bas sur cette page. | Wëllt Dir Ären Auto a Reprise ginn? Sot et eis am Formulaire vum Auto, deen Iech interesséiert. Wëllt Dir léiwer verkafen, ouni Iech selwer drëm ze këmmeren? Entdeckt eise Kommissiounsverkaf méi ënnen op dëser Säit. |
 | `content.cars.faqH` | Questions sur nos voitures | Froen zu eisen Autoen |
-| `content.cars.faq.q1.q` | Puis-je essayer une voiture ? | Kann ech eng Probefahrt maachen? |
+| `content.cars.faq.q1.q` | Puis-je essayer une voiture ? | Kann ech eng Probefaart maachen? |
 | `content.cars.faq.q1.a` | Oui, sur rendez-vous. Appelez-nous au {phone} ou écrivez-nous sur WhatsApp au {whatsapp}. | Jo, op Rendez-vous. Rufft eis un op {phone} oder schreift eis iwwer WhatsApp op {whatsapp}. |
 | `content.cars.faq.q2.q` | Où puis-je voir les voitures ? | Wou kann ech d’Autoe kucken? |
 | `content.cars.faq.q2.a` | Au garage, au {address}, au rond-point d’Erpeldange. {hours} | An der Garage, um {address}, um Rond-point zu Ierpeldeng. {hours} |
@@ -778,7 +778,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `content.rental.sections.s1.h` | Location de remorques dans la Nordstad | Unhänger lounen an der Nordstad |
 | `content.rental.sections.s1.p[0]` | Au rond-point d’Erpeldange, entre Ettelbruck et Diekirch, vous louez une remorque ou une camionnette tout près de chez vous. Notre guide ci-dessus vous montre en quelques clics quelle remorque convient à ce que vous transportez et si votre permis suffit. | Um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech, lount Dir en Unhänger oder eng Camionnette ganz no bei Iech doheem. Eis Unhängersich hei uewe weist Iech mat e puer Klicks, wéi en Unhänger zu deem passt, wat Dir transportéiert, an ob Äre Führerschäin duergeet. |
 | `content.rental.sections.s2.h` | Conseils pour bien charger | Tipps fir richteg ze lueden |
-| `content.rental.sections.s2.items[0]` | Ne dépassez jamais la masse maximale de la remorque, ni la charge remorquable de votre voiture. | Iwwerschreit ni dat zulässegt Gesamtgewiicht vum Unhänger an och net d’Unhängelaascht vun Ärem Auto. |
+| `content.rental.sections.s2.items[0]` | Ne dépassez jamais la masse maximale de la remorque, ni la charge remorquable de votre voiture. | Iwwerschreit ni dat zoulässegt Gesamtgewiicht vum Unhänger an och net d’Unhängelaascht vun Ärem Auto. |
 | `content.rental.sections.s2.items[1]` | Répartissez la charge : les objets lourds au-dessus de l’essieu, un peu de poids sur la flèche, comme l’indique la notice. | Verdeelt d’Luedung: schwéier Saachen iwwer d’Achs, e bësse Gewiicht op d’Kupplung, sou wéi et an der Uleedung steet. |
 | `content.rental.sections.s2.items[2]` | Arrimez le chargement avec des sangles et couvrez le vrac avec une bâche ou un filet. | Sécheert d’Luedung mat Spannrimmen an deckt alles, wat lass ass, mat enger Bâche oder engem Netz of. |
 | `content.rental.sections.s2.items[3]` | Avant de partir, vérifiez l’attelage, les feux et la pression des pneus. | Ier Dir lassfuert, kontrolléiert d’Kupplung, d’Luuchten an den Drock vun de Pneuen. |
@@ -789,12 +789,12 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `content.category.porte-voiture.sections.s2.items[0]` | Vérifiez que la voiture transportée ne dépasse pas la charge utile de la remorque. | Kontrolléiert, datt den Auto net méi weit wéi d’Notzlaascht vum Unhänger. |
 | `content.category.porte-voiture.sections.s2.items[1]` | Montez lentement, bien dans l’axe des rampes, avec quelqu’un qui vous guide. | Fuert lues a riicht op d’Rampen erop, mat engem, deen Iech aweist. |
 | `content.category.porte-voiture.sections.s2.items[2]` | Placez la voiture pour qu’un peu de poids repose sur l’avant de la remorque, comme l’indique la notice. | Stellt den Auto esou, datt e bësse Gewiicht op de viischten Deel vum Unhänger läit, sou wéi et an der Uleedung steet. |
-| `content.category.porte-voiture.sections.s2.items[3]` | Arrimez chaque roue avec des sangles adaptées et contrôlez-les après les premiers kilomètres. | Sécheert all Rad mat passende Spannrimmen a kontrolléiert se no den éischte Kilometer. |
+| `content.category.porte-voiture.sections.s2.items[3]` | Arrimez chaque roue avec des sangles adaptées et contrôlez-les après les premiers kilomètres. | Sécheert all Rad mat passend Spannrimmen a kontrolléiert se no den éischte Kilometer. |
 | `content.category.porte-moto.sections.s1.h` | Transporter une moto | Eng Moto transportéieren |
 | `content.category.porte-moto.sections.s1.p[0]` | Pour aller sur un circuit, faire réparer une moto ou la ramener après un achat, la remorque porte-moto est plus simple qu’une camionnette : la moto monte par la rampe et se cale dans le support de roue. | Fir op eng Rennstreck ze fueren, eng Moto reparéieren ze loossen oder se nom Kaf heemzebréngen, ass de Motosunhänger méi einfach wéi eng Camionnette: D’Moto kënnt iwwer d’Ramp erop a steet da fest am Radhalter. |
 | `content.category.porte-moto.sections.s2.h` | Bien attacher une moto | D’Moto richteg festmaachen |
 | `content.category.porte-moto.sections.s2.items[0]` | Calez la roue avant dans le support. | Setzt d’Viischtrad fest an de Radhalter. |
-| `content.category.porte-moto.sections.s2.items[1]` | Utilisez quatre sangles, deux à l’avant et deux à l’arrière, sur des points solides du cadre. | Benotzt véier Spannrimmen, zwee vir an zwee hannen, u stabile Punkte vum Rumm. |
+| `content.category.porte-moto.sections.s2.items[1]` | Utilisez quatre sangles, deux à l’avant et deux à l’arrière, sur des points solides du cadre. | Benotzt véier Spannrimmen, zwee vir an zwee hannen, u stabil Punkte vum Rumm. |
 | `content.category.porte-moto.sections.s2.items[2]` | Comprimez légèrement la suspension, sans l’écraser. | Dréckt d’Fiederung e bëssen zesummen, awer net ze vill. |
 | `content.category.porte-moto.sections.s2.items[3]` | Contrôlez la tension des sangles après les premiers kilomètres. | Kontrolléiert no den éischte Kilometer, ob d’Spannrimmen nach fest sinn. |
 | `content.category.benne.sections.s1.h` | Attention au poids des matériaux | Opgepasst mam Gewiicht vum Material |
@@ -805,7 +805,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `content.category.benne.sections.s2.items[1]` | Triez les déchets avant de partir : au parc à conteneurs, vous gagnez du temps. | Sortéiert den Offall, ier Dir lassfuert: Am Recyclingszenter spuert Dir esou Zäit. |
 | `content.category.benne.sections.s2.items[2]` | Basculez uniquement sur un sol plat et stable, la remorque attelée. | Kippt nëmmen op flaachem, festem Buedem of, wann den Unhänger ugekuppelt ass. |
 | `content.category.frigorifique.sections.s1.h` | Pour quelles occasions ? | Fir wéi eng Geleeënheeten? |
-| `content.category.frigorifique.sections.s1.p[0]` | Fête de famille, mariage, anniversaire, kermesse, marché ou fête d’association : la remorque frigorifique garde les boissons et les plats au frais sur place, pendant toute la durée de l’événement. | Familljefest, Hochzäit, Gebuertsdag, Kiermes, Maart oder Veräinsfest: De Killunhänger hält Gedrénks an Iessen op der Plaz frësch, während der ganzer Dauer vum Evenement. |
+| `content.category.frigorifique.sections.s1.p[0]` | Fête de famille, mariage, anniversaire, kermesse, marché ou fête d’association : la remorque frigorifique garde les boissons et les plats au frais sur place, pendant toute la durée de l’événement. | Familljefest, Hochzäit, Gebuertsdag, Kiermes, Maart oder Veräinsfest: De Killunhänger hält Gedrénks an Iessen op der Plaz frësch, wärend der ganzer Dauer vum Evenement. |
 | `content.category.frigorifique.sections.s2.h` | Conseils d’utilisation | Esou benotzt Dir de Killunhänger |
 | `content.category.frigorifique.sections.s2.items[0]` | Branchez la remorque quelques heures avant de la charger pour qu’elle soit froide. | Schléisst den Unhänger e puer Stonne virum Lueden un, fir datt e scho kal ass. |
 | `content.category.frigorifique.sections.s2.items[1]` | Chargez de préférence des produits déjà froids : refroidir un grand volume de boissons tièdes prend du temps. | Luet am beschte Produiten, déi scho kal sinn: Et brauch Zäit, fir vill lauwarmt Gedrénks ofzekillen. |

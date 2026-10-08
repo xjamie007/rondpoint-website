@@ -73,7 +73,7 @@ All Bewäertungen op Google liesen
 [FEHLT — 2–3 vom Kunden freigegebene Zitate aus dem Google-Profil, mit Vorname + Initiale und Monat/Jahr]
 
 @@ 23 faq.h2
-Heefeg Froen
+Froen & Äntwerten
 
 @@ 24 faq.rentalH2
 Froen zum Lounen
@@ -82,13 +82,13 @@ Froen zum Lounen
 Wat fir e Führerschäin brauch ech, fir en Unhänger ze zéien?
 
 @@ 26 faq.items.permis.a
-Mam Führerschäin B dierft Dir en Unhänger bis 750 kg zulässegt Gesamtgewiicht zéien. E méi schwéieren Unhänger ass erlaabt, wann Auto an Unhänger zesummen net méi wéi 3.500 kg weien. Mam Code 96 op Ärem Führerschäin B dierfen Auto an Unhänger zesumme bis zu 4.250 kg weien. Doriwwer braucht Dir de Führerschäin BE. Domat dierft Dir en Unhänger bis 3.500 kg zéien.
+Mam Führerschäin B dierft Dir en Unhänger bis 750 kg zoulässegt Gesamtgewiicht zéien. E méi schwéieren Unhänger ass erlaabt, wann Auto an Unhänger zesummen net méi wéi 3.500 kg weien. Mam Code 96 op Ärem Führerschäin B dierfen Auto an Unhänger zesumme bis zu 4.250 kg weien. Doriwwer braucht Dir de Führerschäin BE. Domat dierft Dir en Unhänger bis 3.500 kg zéien.
 
 @@ 27 faq.items.carte.q
 Wou gesinn ech, wat mäin Auto zéien däerf?
 
 @@ 28 faq.items.carte.a
-Op der Carte grise: D’Feld O.1 weist d’Unhängelaascht mat Bremsen, d’Feld O.2 d’Unhängelaascht ouni Bremsen. Dat zulässegt Gesamtgewiicht vun Ärem Auto steet am Feld F.2.
+Op der Carte grise: D’Feld O.1 weist d’Unhängelaascht mat Bremsen, d’Feld O.2 d’Unhängelaascht ouni Bremsen. Dat zoulässegt Gesamtgewiicht vun Ärem Auto steet am Feld F.2.
 
 @@ 29 faq.items.prix.q
 Wat kascht et, en Unhänger ze lounen?
@@ -166,7 +166,7 @@ Iwwer eis
 D’Garage Um Rond Point ass Är Garage um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech. Unhänger a Camionnetten lounen, Autoen an Unhänger kafen, Atelier a Gaartmaschinnen: alles op enger Adress. Kommt laanscht – mir schwätzen Är Sprooch.
 
 @@ 54 about.link
-Esou fannt Dir eis
+Wéi Dir eis fannt
 
 @@ 55 about.photoAlt
 Mecanicien reecht en Autosschlëssel
@@ -259,7 +259,7 @@ Ech weess et net
 Genee fir Ären Auto ausrechnen (fakultativ)
 
 @@ 84 finder.f2
-Zulässegt Gesamtgewiicht vun Ärem Auto (Feld F.2)
+Zoulässegt Gesamtgewiicht vun Ärem Auto (Feld F.2)
 
 @@ 85 finder.o1
 Unhängelaascht gebremst (Feld O.1)
@@ -292,13 +292,13 @@ Fir dës Kombinatioun passt keen Unhänger. Rufft eis un op +352 81 05 41, mir b
 Camionnetten
 
 @@ 95 finder.vanStatement
-Eng Camionnette bis 3.500 kg zulässegt Gesamtgewiicht fuert Dir mam Führerschäin B.
+Eng Camionnette bis 3.500 kg zoulässegt Gesamtgewiicht fuert Dir mam Führerschäin B.
 
 @@ 96 finder.specs.payload
 Notzlaascht
 
 @@ 97 finder.specs.mma
-Zulässegt Gesamtgewiicht
+Zoulässegt Gesamtgewiicht
 
 @@ 98 finder.specs.empty
 Eidelgewiicht
@@ -409,7 +409,7 @@ Führerschäinreegelen op transports.public.lu
 D’Lëscht mat eisen Unhänger kënnt geschwënn. Rufft eis un op +352 81 05 41.
 
 @@ 134 finder.noJsRules
-Mam Führerschäin B dierft Dir en Unhänger bis 750 kg zulässegt Gesamtgewiicht zéien, oder e méi schwéieren Unhänger, wann Auto an Unhänger zesummen net méi wéi 3.500 kg weien. Mam Code 96 sinn zesumme bis zu 4.250 kg erlaabt. Doriwwer braucht Dir de Führerschäin BE.
+Mam Führerschäin B dierft Dir en Unhänger bis 750 kg zoulässegt Gesamtgewiicht zéien, oder e méi schwéieren Unhänger, wann Auto an Unhänger zesummen net méi wéi 3.500 kg weien. Mam Code 96 sinn zesumme bis zu 4.250 kg erlaabt. Doriwwer braucht Dir de Führerschäin BE.
 
 @@ 135 fleetTable.h2
 Eis ganz Flott
@@ -424,7 +424,7 @@ Typ
 Notzlaascht
 
 @@ 139 fleetTable.mma
-Zulässegt Gesamtgewiicht
+Zoulässegt Gesamtgewiicht
 
 @@ 140 fleetTable.surface
 Luedfläch
@@ -508,13 +508,13 @@ Mam Autosunhänger transportéiert Dir e futtisen Auto, en Oldtimer oder en Auto
 Mam Motosunhänger bréngt Dir eng Moto, e Scooter oder e Quad an den Atelier, an d’Vakanz oder op d’Rennstreck. Fir en ze zéien, geet en normalen Auto duer.
 
 @@ 167 pages.category.intro.benne
-Mam Kipper transportéiert Dir Äerd, Bauschutt, Sand oder Gréngschnëtt a kippt d’Luedung of. Fir e Chantier, fir de Gaart oder fir an de Recyclingcenter.
+Mam Kipper transportéiert Dir Äerd, Bauschutt, Sand oder Gréngschnëtt a kippt d’Luedung of. Fir e Chantier, fir de Gaart oder fir an de Recyclingszenter.
 
 @@ 168 pages.category.intro.frigorifique
-De Killunhänger hält Gedrénks an Iessen während engem Fest, enger Hochzäit oder engem Festival frësch. Dir stellt de Killunhänger fir d’Dauer vum Fest op der Plaz of.
+De Killunhänger hält Gedrénks an Iessen wärend engem Fest, enger Hochzäit oder engem Festival frësch. Dir stellt de Killunhänger fir d’Dauer vum Fest op der Plaz of.
 
 @@ 169 pages.category.intro.camionnette
-Mat der Camionnette plënnert Dir oder transportéiert Miwwelen oder Material. Bis 3.500 kg zulässegt Gesamtgewiicht fuert Dir se mam Führerschäin B.
+Mat der Camionnette plënnert Dir oder transportéiert Miwwelen oder Material. Bis 3.500 kg zoulässegt Gesamtgewiicht fuert Dir se mam Führerschäin B.
 
 @@ 170 pages.category.vehiclesH2
 Eis Gefierer
@@ -535,7 +535,7 @@ Um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech, lount Dir en Unhän
 Tipps fir richteg ze lueden
 
 @@ 176 content.rental.sections.s2.items.0
-Iwwerschreit ni dat zulässegt Gesamtgewiicht vum Unhänger an och net d’Unhängelaascht vun Ärem Auto.
+Iwwerschreit ni dat zoulässegt Gesamtgewiicht vum Unhänger an och net d’Unhängelaascht vun Ärem Auto.
 
 @@ 177 content.rental.sections.s2.items.1
 Verdeelt d’Luedung: schwéier Saachen iwwer d’Achs, e bësse Gewiicht op d’Kupplung, sou wéi et an der Uleedung steet.
@@ -568,7 +568,7 @@ Fuert lues a riicht op d’Rampen erop, mat engem, deen Iech aweist.
 Stellt den Auto esou, datt e bësse Gewiicht op de viischten Deel vum Unhänger läit, sou wéi et an der Uleedung steet.
 
 @@ 187 content.category.porte-voiture.sections.s2.items.3
-Sécheert all Rad mat passende Spannrimmen a kontrolléiert se no den éischte Kilometer.
+Sécheert all Rad mat passend Spannrimmen a kontrolléiert se no den éischte Kilometer.
 
 @@ 188 content.category.porte-moto.sections.s1.h
 Eng Moto transportéieren
@@ -583,7 +583,7 @@ D’Moto richteg festmaachen
 Setzt d’Viischtrad fest an de Radhalter.
 
 @@ 192 content.category.porte-moto.sections.s2.items.1
-Benotzt véier Spannrimmen, zwee vir an zwee hannen, u stabile Punkte vum Rumm.
+Benotzt véier Spannrimmen, zwee vir an zwee hannen, u stabil Punkte vum Rumm.
 
 @@ 193 content.category.porte-moto.sections.s2.items.2
 Dréckt d’Fiederung e bëssen zesummen, awer net ze vill.
@@ -616,7 +616,7 @@ Kippt nëmmen op flaachem, festem Buedem of, wann den Unhänger ugekuppelt ass.
 Fir wéi eng Geleeënheeten?
 
 @@ 203 content.category.frigorifique.sections.s1.p.0
-Familljefest, Hochzäit, Gebuertsdag, Kiermes, Maart oder Veräinsfest: De Killunhänger hält Gedrénks an Iessen op der Plaz frësch, während der ganzer Dauer vum Evenement.
+Familljefest, Hochzäit, Gebuertsdag, Kiermes, Maart oder Veräinsfest: De Killunhänger hält Gedrénks an Iessen op der Plaz frësch, wärend der ganzer Dauer vum Evenement.
 
 @@ 204 content.category.frigorifique.sections.s2.h
 Esou benotzt Dir de Killunhänger
@@ -664,7 +664,7 @@ Eis Autoen am Stock
 Nei Autoen an Occasiounen
 
 @@ 218 cars.lead
-All d’Autoen am Stock vun der Garage Um Rond Point, um Rond-point zu Ierpeldeng. Rufft eis un oder schreift eis op WhatsApp, ier Dir laanschtkommt. Probefahrten op Rendez-vous.
+All d’Autoen am Stock vun der Garage Um Rond Point, um Rond-point zu Ierpeldeng. Rufft eis un oder schreift eis op WhatsApp, ier Dir laanschtkommt. Probefaarten op Rendez-vous.
 
 @@ 219 cars.seeAll.one
 Den Auto kucken
@@ -937,7 +937,7 @@ TVA ofsetzbar
 Ausstattung
 
 @@ 309 car.equipmentMore
-Ganz Ausstattung kucken ({n})
+Déi ganz Ausstattung kucken ({n})
 
 @@ 310 car.descriptionH2
 Beschreiwung
@@ -1021,7 +1021,7 @@ Wielt en Auto aus der Lëscht a maacht seng Detailsäit op.
 Rufft eis un oder schreift eis op WhatsApp, fir nozefroen, ob en nach disponibel ass.
 
 @@ 337 content.cars.sections.s1.items.2
-Kommt den Auto an der Garage kucken a maacht eng Probefahrt op Rendez-vous.
+Kommt den Auto an der Garage kucken a maacht eng Probefaart op Rendez-vous.
 
 @@ 338 content.cars.sections.s2.h
 Nei Autoen an Occasiounen no bei Ettelbréck an Dikrech
@@ -1039,7 +1039,7 @@ Wëllt Dir Ären Auto a Reprise ginn? Sot et eis am Formulaire vum Auto, deen Ie
 Froen zu eisen Autoen
 
 @@ 343 content.cars.faq.q1.q
-Kann ech eng Probefahrt maachen?
+Kann ech eng Probefaart maachen?
 
 @@ 344 content.cars.faq.q1.a
 Jo, op Rendez-vous. Rufft eis un op {phone} oder schreift eis iwwer WhatsApp op {whatsapp}.
@@ -1105,7 +1105,7 @@ E reegelméissegen Entretien hält Ären Auto zouverlässeg a sécher: Uelegwies
 Feelerdiagnos
 
 @@ 364 details.workshop.diagnostic
-Eng Warnlut geet un, en ongewinnte Geräisch, den Auto spréngt schlecht un: Beschreift, wat Dir mierkt a zënter wéini. D’Diagnos fënnt d’Ursaach, ier reparéiert gëtt.
+Eng Warnluucht geet un, en ongewéinlecht Geräisch, den Auto spréngt schlecht un: Beschreift, wat Dir mierkt a zanter wéini. D’Diagnos fënnt d’Ursaach, ier reparéiert gëtt.
 
 @@ 365 details.workshop.reparationH
 Mechanesch Reparatur
@@ -1126,7 +1126,7 @@ Esou kritt Dir e Rendez-vous
 Beschreift Äert Gefier a wat ze maachen ass – am Formulaire, um Telefon oder iwwer WhatsApp.
 
 @@ 371 details.workshop.process.1
-Mir ruffen Iech zréck fir den Datum ofzemaachen.
+Mir ruffen Iech zréck, fir den Datum ofzemaachen.
 
 @@ 372 details.workshop.process.2
 Dir bréngt Äert Gefier an d’Garage, 1, rue du Viaduc.
@@ -1144,7 +1144,7 @@ Mir schwätze Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch. D
 Entretien: firwat de Plang vum Hiersteller wichteg ass
 
 @@ 377 content.workshop.sections.s2.p.0
-All Hiersteller leet en Entretiensplang fest, nom Kilometerstand oder no der Zäit zënter dem leschte Besuch an der Garage. Dir fannt en am Carnet d’entretien oder um Écran vun Ärem Auto.
+All Hiersteller leet en Entretiensplang fest, nom Kilometerstand oder no der Zäit zanter dem leschte Besuch an der Garage. Dir fannt en am Carnet d’entretien oder um Ecran vun Ärem Auto.
 
 @@ 378 content.workshop.sections.s2.p.1
 Wann Dir Iech un dëse Plang haalt, gëtt Ären Auto manner ofgenotzt, Dir vermeit deier Pannen an den Auto behält beim Verkaf besser säi Wäert. Wat zu engem Entretien gehéiert, hänkt vum Plang of. Dozou gehéieren zum Beispill den Uelegwiessel, d’Filteren, d’Kontroll vun de Bremsen an den Niveauen, d’Luuchten an d’Scheiwewëscher.
@@ -1165,10 +1165,10 @@ De Motor huet ze wéineg Kraaft oder spréngt schlecht un.
 Et richt verbrannt, eppes leeft aus oder et kënnt ongewéinlechen Damp.
 
 @@ 384 content.workshop.sections.s3.items.4
-En neie Geräisch beim Fueren oder wann Dir d’Steierrad dréit.
+En neit Geräisch beim Fueren oder wann Dir d’Steierrad dréit.
 
 @@ 385 content.workshop.sections.s3.p.0
-Gëtt e Feeler fréi fonnt, bleift d’Reparatur méi einfach. Beschreift am Formulaire, wat Dir mierkt a zënter wéini: Dat ass déi bescht Basis fir d’Diagnos.
+Gëtt e Feeler fréi fonnt, bleift d’Reparatur méi einfach. Beschreift am Formulaire, wat Dir mierkt a zanter wéini: Dat ass déi bescht Basis fir d’Diagnos.
 
 @@ 386 content.workshop.sections.s4.h
 Karosserie a Lack no engem klengen Accident
@@ -1183,7 +1183,7 @@ Wann en anert Gefier bedeelegt ass, fëllt de Constat amiable op der Plaz aus a 
 Autoen a Camionnetten
 
 @@ 390 content.workshop.sections.s5.p.0
-Eisen Atelier këmmert sech ëm Autoen a Camionnetten. Fir e Rasemeeër, eng Motorsee oder eng aner Maschinn kuckt op eiser Säit [Gaart & Bësch](page:garden). Fir eng Karosserie oder en Deel bis op d’Metall ofzebeizen, entdeckt eist [Ofbeize mat Sodablast](page:sodablast).
+Eisen Atelier këmmert sech ëm Autoen a Camionnetten. Fir e Rasemeeër, eng Motorsee oder eng aner Maschinn, kuckt op eiser Säit [Gaart & Bësch](page:garden). Fir eng Karosserie oder en Deel bis op d’Metall ofzebeizen, entdeckt eist [Ofbeize mat Sodablast](page:sodablast).
 
 @@ 391 content.workshop.faqH
 Froen zum Atelier
@@ -1264,7 +1264,7 @@ Wéi funktionéiert Sodablast?
 Natron gëtt mat Drockloft op d’Uewerfläch gestraalt. Et ass méi mëll wéi Sand an hëlt Lack, Fett a Knascht ewech, ouni d’Metall unzegräifen. Dofir gëtt et fir empfindlech Deeler an al Karosserien benotzt.
 
 @@ 416 details.sodablast.explain2
-D’Ofbeizen leet déi ursprénglech Uewerfläch fräi: Dir gesitt de richtegen Zoustand vum Metall virun enger Reparatur oder engem neie Lack.
+D’Ofbeize leet déi ursprénglech Uewerfläch fräi: Dir gesitt de richtegen Zoustand vum Metall virun enger Reparatur oder engem neie Lack.
 
 @@ 417 details.sodablast.processH2
 Esou leeft d’Ofbeizen of
@@ -1399,7 +1399,7 @@ Motorsee: D’Längt vum Schwäert hänkt vum Duerchmiesser vum Holz of, dat Dir
 Heckeschéier: D’Längt vum Messer an d’Gewiicht zielen, wann Dir laang oder an der Héicht schneit.
 
 @@ 460 content.garden.sections.s2.p.0
-Bensin oder Akku? Eng Maschinn mat Akku ass méi roueg a spréngt ouni Méi un. Eng Maschinn mat Bensinsmotor hält och op grousse Flächen duer. Sot eis, wéi Dir se benotzt, mir beroden Iech.
+Bensin oder Akku? Eng Maschinn mat Akku ass méi roueg a spréngt ouni Méi un. Eng Maschinn mat Bensinsmotor hält och op grouss Flächen duer. Sot eis, wéi Dir se benotzt, mir beroden Iech.
 
 @@ 461 content.garden.sections.s3.h
 Reparatur: wéini Dir Är Maschinn brénge sollt
@@ -1471,7 +1471,7 @@ Mir verkafen Unhänger vu Saris, Humbaur a WM Meyer, fir Privatleit a Betriber.
 Wéi en Unhänger mat wéi engem Führerschäin?
 
 @@ 483 pages.trailersForSale.advice
-Mir hëllefen Iech, en Unhänger ze wielen, deen Ären Auto zéie kann an deen Dir mat Ärem Führerschäin fueren dierft: Gréisst, zulässegt Gesamtgewiicht, Bremsen. Eis Unhängersich fir d’Lounen weist Iech d’Führerschäinreegele mat Beispiller.
+Mir hëllefen Iech, en Unhänger ze wielen, deen Ären Auto zéie kann an deen Dir mat Ärem Führerschäin fueren dierft: Gréisst, zoulässegt Gesamtgewiicht, Bremsen. Eis Unhängersich fir d’Lounen weist Iech d’Führerschäinreegele mat Beispiller.
 
 @@ 484 pages.trailersForSale.adviceLink
 Wéi en Unhänger mat wéi engem Führerschäin?
@@ -1489,7 +1489,7 @@ Hutt Dir eng Fro zu engem Unhänger?
 De richtegen Unhänger wielen
 
 @@ 489 details.trailers.masseH
-Zulässegt Gesamtgewiicht
+Zoulässegt Gesamtgewiicht
 
 @@ 490 details.trailers.masse
 Et bestëmmt, wéi e Führerschäin Dir braucht. Bis 750 kg geet de Führerschäin B duer, doriwwer hänkt et vun Ärem Auto of.
@@ -1498,13 +1498,13 @@ Et bestëmmt, wéi e Führerschäin Dir braucht. Bis 750 kg geet de Führerschä
 Bremsen
 
 @@ 492 details.trailers.frein
-En Unhänger mat méi wéi 750 kg zulässegt Gesamtgewiicht muss gebremst sinn.
+En Unhänger mat engem zoulässege Gesamtgewiicht vu méi wéi 750 kg muss gebremst sinn.
 
 @@ 493 details.trailers.chargeH
 Unhängelaascht
 
 @@ 494 details.trailers.charge
-Ären Auto dierf net méi zéie wéi am Feld O.1 (gebremst) oder O.2 (ongebremst) vun der Carte grise steet.
+Ären Auto däerf net méi zéie wéi am Feld O.1 (gebremst) oder O.2 (ongebremst) vun der Carte grise steet.
 
 @@ 495 details.trailers.usageH
 Bauaart a Moossen
@@ -1585,7 +1585,7 @@ Ufroen
 Moien, ech hunn eng Fro un d’Garage Um Rond Point.
 
 @@ 520 access.h2
-Esou fannt Dir eis
+Wéi Dir eis fannt
 
 @@ 521 access.address
 Adress
@@ -1603,7 +1603,7 @@ Sproochen
 Mir schwätze Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch.
 
 @@ 526 access.mapLink
-Route an Google Maps
+Route op Google Maps
 
 @@ 527 access.external
 (extern Websäit)
@@ -1768,7 +1768,7 @@ E-Mail
 Message
 
 @@ 580 forms.consent
-Ech sinn domat averstanen, datt Garage Um Rond Point meng Donnéeë benotzt, fir op meng Ufro z’äntweren. Méi Informatiounen an der {link}.
+Ech sinn domat averstanen, datt d’Garage Um Rond Point meng Donnéeë benotzt, fir op meng Ufro z’äntweren. Méi Informatiounen an der {link}.
 
 @@ 581 forms.consentLink
 Dateschutzerklärung
@@ -1906,7 +1906,7 @@ Auto
 Dir wëllt
 
 @@ 626 forms.car.wishTest
-Eng Probefahrt
+Eng Probefaart
 
 @@ 627 forms.car.wishInfo
 Méi Informatiounen
@@ -2035,13 +2035,13 @@ Sprooch
 +352 81 05 41 uruffen
 
 @@ 668 nav.home
-Startsäit
+Haaptsäit
 
 @@ 669 nav.breadcrumb
 Navigatiounspad
 
 @@ 670 nav.logoAria
-Garage Um Rond Point, Startsäit
+Garage Um Rond Point, Haaptsäit
 
 @@ 671 status.stock.one
 {n} Auto am Stock.
@@ -2071,7 +2071,7 @@ Schwaarzen Auto an engem modernen, hellen Atelier
 Mecanicien bei der Aarbecht am Motorraum vun engem Auto
 
 @@ 680 photos.sodablast
-Rustegen Oldtimer mat ofblätterndem Lack
+Rastegen Oldtimer mat ofgeblättertem Lack
 
 @@ 681 photos.bodywork
 Rouden Sportsauto op enger Hiefbün an engem Atelier
@@ -2128,7 +2128,7 @@ TikTok [UNBESTÄTIGT — genaue URL]
 Mir äntweren Iech [FEHLT — Antwortzeit, z. B. « le jour ouvrable suivant »]. Ass et dréngend? Rufft +352 81 05 41 un.
 
 @@ 698 pages.thanks.back
-Zréck op d’Startsäit
+Zréck op d’Haaptsäit
 
 @@ 699 pages.notFound.h1
 Säit net fonnt
@@ -2170,7 +2170,7 @@ Androung
 Geschäftsféierer
 
 @@ 712 legal.permit
-Niederlassungserlaabnes (Autorisation d’établissement)
+Néierlassungserlaabnes (Autorisation d’établissement)
 
 @@ 713 legal.capital
 Gesellschaftskapital
@@ -2212,7 +2212,7 @@ Archivo, Omnibus-Type, SIL Open Font License 1.1.
 Dateschutzerklärung
 
 @@ 726 privacy.intro
-Mir veraarbechten Är Donnéeën nëmmen, fir op Är Ufroen z’äntweren. Dës Websäit setzt keng Cookies a benotzt keng Tools fir Tracking oder Reklamm.
+Mir veraarbechten Är Donnéeën nëmmen, fir op Är Ufroen z’äntweren. Dës Websäit setzt keng Cookien a benotzt keng Tools fir Tracking oder Reklamm.
 
 @@ 727 privacy.controllerH2
 Verantwortlechen
@@ -2305,7 +2305,7 @@ Lount eng Camionnette fir en Ëmzug oder Material um Rond-point zu Erpeldange, n
 Nei Autoen an Occasiounen zu Erpeldange | Um Rond Point
 
 @@ 756 seo.cars.description
-All d’Autoen am Stock vun der Garage Um Rond Point zu Erpeldange, mat Präis, Kilometerstand a Fotoen. Lëscht all Moien aktualiséiert. Probefahrt op Rendez-vous.
+All d’Autoen am Stock vun der Garage Um Rond Point zu Erpeldange, mat Präis, Kilometerstand a Fotoen. Lëscht all Moien aktualiséiert. Probefaart op Rendez-vous.
 
 @@ 757 seo.car.suffixLong
  | Garage Um Rond Point
@@ -2320,7 +2320,7 @@ All d’Autoen am Stock vun der Garage Um Rond Point zu Erpeldange, mat Präis, 
 Ze gesinn an der Garage Um Rond Point zu Ierpeldeng.
 
 @@ 761 seo.car.descExtra.0
- Probefahrt op Rendez-vous.
+ Probefaart op Rendez-vous.
 
 @@ 762 seo.car.descExtra.1
  Tëscht Ettelbréck an Dikrech.
@@ -2383,4 +2383,4 @@ Impressum vun der Garage Um Rond Point S.à r.l., 1, rue du Viaduc, L-9147 Erpel
 Dateschutzerklärung | Garage Um Rond Point, Erpeldange
 
 @@ 782 seo.privacy.description
-Wéi eng Donnéeën d’Garage Um Rond Point veraarbecht, wann Dir eis schreift, firwat, wéi laang a wéi eng Rechter Dir hutt. Ouni Cookies, ouni Tracking-Tools.
+Wéi eng Donnéeën d’Garage Um Rond Point veraarbecht, wann Dir eis schreift, firwat, wéi laang a wéi eng Rechter Dir hutt. Ouni Cookien, ouni Tracking-Tools.

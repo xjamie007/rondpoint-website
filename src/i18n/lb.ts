@@ -21,9 +21,9 @@ const lb: Dict = {
     close: 'Zoumaachen',
     langLabel: 'Sprooch',
     callAria: '+352 81 05 41 uruffen',
-    home: 'Startsäit',
+    home: 'Haaptsäit',
     breadcrumb: 'Navigatiounspad',
-    logoAria: 'Garage Um Rond Point, Startsäit',
+    logoAria: 'Garage Um Rond Point, Haaptsäit',
   },
 
   contactBar: {
@@ -72,7 +72,7 @@ const lb: Dict = {
       unknown: 'Ech weess et net',
     },
     exactSummary: 'Genee fir Ären Auto ausrechnen (fakultativ)',
-    f2: 'Zulässegt Gesamtgewiicht vun Ärem Auto (Feld F.2)',
+    f2: 'Zoulässegt Gesamtgewiicht vun Ärem Auto (Feld F.2)',
     o1: 'Unhängelaascht gebremst (Feld O.1)',
     o2: 'Unhängelaascht ongebremst (Feld O.2)',
     kg: 'kg',
@@ -81,10 +81,10 @@ const lb: Dict = {
     matchCount: { one: '{n} Unhänger passt', other: '{n} Unhänger passen' },
     none: 'Fir dës Kombinatioun passt keen Unhänger. Rufft eis un op +352 81 05 41, mir beroden Iech.',
     vansHeading: 'Camionnetten',
-    vanStatement: 'Eng Camionnette bis 3.500 kg zulässegt Gesamtgewiicht fuert Dir mam Führerschäin B.',
+    vanStatement: 'Eng Camionnette bis 3.500 kg zoulässegt Gesamtgewiicht fuert Dir mam Führerschäin B.',
     specs: {
       payload: 'Notzlaascht',
-      mma: 'Zulässegt Gesamtgewiicht',
+      mma: 'Zoulässegt Gesamtgewiicht',
       empty: 'Eidelgewiicht',
       surface: 'Luedfläch',
       height: 'Luedhéicht',
@@ -125,7 +125,7 @@ const lb: Dict = {
     sourceLink: 'Führerschäinreegelen op transports.public.lu',
     empty: 'D’Lëscht mat eisen Unhänger kënnt geschwënn. Rufft eis un op +352 81 05 41.',
     noJsRules:
-      'Mam Führerschäin B dierft Dir en Unhänger bis 750 kg zulässegt Gesamtgewiicht zéien, oder e méi schwéieren Unhänger, wann Auto an Unhänger zesummen net méi wéi 3.500 kg weien. Mam Code 96 sinn zesumme bis zu 4.250 kg erlaabt. Doriwwer braucht Dir de Führerschäin BE.',
+      'Mam Führerschäin B dierft Dir en Unhänger bis 750 kg zoulässegt Gesamtgewiicht zéien, oder e méi schwéieren Unhänger, wann Auto an Unhänger zesummen net méi wéi 3.500 kg weien. Mam Code 96 sinn zesumme bis zu 4.250 kg erlaabt. Doriwwer braucht Dir de Führerschäin BE.',
   },
 
   fleetTable: {
@@ -133,7 +133,7 @@ const lb: Dict = {
     caption: 'Eis Unhänger a Camionnetten fir ze lounen',
     kind: 'Typ',
     payload: 'Notzlaascht',
-    mma: 'Zulässegt Gesamtgewiicht',
+    mma: 'Zoulässegt Gesamtgewiicht',
     surface: 'Luedfläch',
     licence: 'Néidege Führerschäin',
     day: 'Präis pro Dag',
@@ -155,7 +155,7 @@ const lb: Dict = {
   cars: {
     homeH2: 'Eis Autoen am Stock',
     h1: 'Nei Autoen an Occasiounen',
-    lead: 'All d’Autoen am Stock vun der Garage Um Rond Point, um Rond-point zu Ierpeldeng. Rufft eis un oder schreift eis op WhatsApp, ier Dir laanschtkommt. Probefahrten op Rendez-vous.',
+    lead: 'All d’Autoen am Stock vun der Garage Um Rond Point, um Rond-point zu Ierpeldeng. Rufft eis un oder schreift eis op WhatsApp, ier Dir laanschtkommt. Probefaarten op Rendez-vous.',
     seeAll: { one: 'Den Auto kucken', other: 'All {n} Autoe kucken' },
     year: 'Joer',
     km: 'Kilometer',
@@ -256,7 +256,7 @@ const lb: Dict = {
     condition: 'Zoustand',
     vatRecoverable: 'TVA ofsetzbar',
     equipmentH2: 'Ausstattung',
-    equipmentMore: 'Ganz Ausstattung kucken ({n})',
+    equipmentMore: 'Déi ganz Ausstattung kucken ({n})',
     descriptionH2: 'Beschreiwung',
     originalNote: 'Original-Beschreiwung op Franséisch',
     originalListNote: 'Original-Lëscht op Franséisch',
@@ -283,7 +283,7 @@ const lb: Dict = {
   photos: {
     heroWorkshop: 'Schwaarzen Auto an engem modernen, hellen Atelier',
     workshop: 'Mecanicien bei der Aarbecht am Motorraum vun engem Auto',
-    sodablast: 'Rustegen Oldtimer mat ofblätterndem Lack',
+    sodablast: 'Rastegen Oldtimer mat ofgeblättertem Lack',
     bodywork: 'Rouden Sportsauto op enger Hiefbün an engem Atelier',
     garden: 'Benzinsrasemeeër op engem Rasen',
     gardenPage: 'Gras méien an der Sonn',
@@ -326,16 +326,16 @@ const lb: Dict = {
   },
 
   faq: {
-    h2: 'Heefeg Froen',
+    h2: 'Froen & Äntwerten',
     rentalH2: 'Froen zum Lounen',
     items: {
       permis: {
         q: 'Wat fir e Führerschäin brauch ech, fir en Unhänger ze zéien?',
-        a: 'Mam Führerschäin B dierft Dir en Unhänger bis 750 kg zulässegt Gesamtgewiicht zéien. E méi schwéieren Unhänger ass erlaabt, wann Auto an Unhänger zesummen net méi wéi 3.500 kg weien. Mam Code 96 op Ärem Führerschäin B dierfen Auto an Unhänger zesumme bis zu 4.250 kg weien. Doriwwer braucht Dir de Führerschäin BE. Domat dierft Dir en Unhänger bis 3.500 kg zéien.',
+        a: 'Mam Führerschäin B dierft Dir en Unhänger bis 750 kg zoulässegt Gesamtgewiicht zéien. E méi schwéieren Unhänger ass erlaabt, wann Auto an Unhänger zesummen net méi wéi 3.500 kg weien. Mam Code 96 op Ärem Führerschäin B dierfen Auto an Unhänger zesumme bis zu 4.250 kg weien. Doriwwer braucht Dir de Führerschäin BE. Domat dierft Dir en Unhänger bis 3.500 kg zéien.',
       },
       carte: {
         q: 'Wou gesinn ech, wat mäin Auto zéien däerf?',
-        a: 'Op der Carte grise: D’Feld O.1 weist d’Unhängelaascht mat Bremsen, d’Feld O.2 d’Unhängelaascht ouni Bremsen. Dat zulässegt Gesamtgewiicht vun Ärem Auto steet am Feld F.2.',
+        a: 'Op der Carte grise: D’Feld O.1 weist d’Unhängelaascht mat Bremsen, d’Feld O.2 d’Unhängelaascht ouni Bremsen. Dat zoulässegt Gesamtgewiicht vun Ärem Auto steet am Feld F.2.',
       },
       prix: {
         q: 'Wat kascht et, en Unhänger ze lounen?',
@@ -373,13 +373,13 @@ const lb: Dict = {
   },
 
   access: {
-    h2: 'Esou fannt Dir eis',
+    h2: 'Wéi Dir eis fannt',
     address: 'Adress',
     landmark: 'Um Rond-point, nieft der Aral-Tankstell, tëscht Ettelbréck an Dikrech.',
     hoursH3: 'Ëffnungszäiten',
     languagesH3: 'Sproochen',
     languages: 'Mir schwätze Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch.',
-    mapLink: 'Route an Google Maps',
+    mapLink: 'Route op Google Maps',
     external: '(extern Websäit)',
     mapTitle: 'De Rond-point zu Ierpeldeng',
     osm: '© OpenStreetMap-Mataarbechter',
@@ -456,11 +456,11 @@ const lb: Dict = {
         'porte-moto':
           'Mam Motosunhänger bréngt Dir eng Moto, e Scooter oder e Quad an den Atelier, an d’Vakanz oder op d’Rennstreck. Fir en ze zéien, geet en normalen Auto duer.',
         benne:
-          'Mam Kipper transportéiert Dir Äerd, Bauschutt, Sand oder Gréngschnëtt a kippt d’Luedung of. Fir e Chantier, fir de Gaart oder fir an de Recyclingcenter.',
+          'Mam Kipper transportéiert Dir Äerd, Bauschutt, Sand oder Gréngschnëtt a kippt d’Luedung of. Fir e Chantier, fir de Gaart oder fir an de Recyclingszenter.',
         frigorifique:
-          'De Killunhänger hält Gedrénks an Iessen während engem Fest, enger Hochzäit oder engem Festival frësch. Dir stellt de Killunhänger fir d’Dauer vum Fest op der Plaz of.',
+          'De Killunhänger hält Gedrénks an Iessen wärend engem Fest, enger Hochzäit oder engem Festival frësch. Dir stellt de Killunhänger fir d’Dauer vum Fest op der Plaz of.',
         camionnette:
-          'Mat der Camionnette plënnert Dir oder transportéiert Miwwelen oder Material. Bis 3.500 kg zulässegt Gesamtgewiicht fuert Dir se mam Führerschäin B.',
+          'Mat der Camionnette plënnert Dir oder transportéiert Miwwelen oder Material. Bis 3.500 kg zoulässegt Gesamtgewiicht fuert Dir se mam Führerschäin B.',
       },
       vehiclesH2: 'Eis Gefierer',
       licenceH2: 'Wat fir e Führerschäin?',
@@ -505,7 +505,7 @@ const lb: Dict = {
       dealerMissing: '[UNBESTÄTIGT — Händlerstatus Saris, Humbaur, WM Meyer; Logos nur mit Freigabe]',
       adviceH2: 'Wéi en Unhänger mat wéi engem Führerschäin?',
       advice:
-        'Mir hëllefen Iech, en Unhänger ze wielen, deen Ären Auto zéie kann an deen Dir mat Ärem Führerschäin fueren dierft: Gréisst, zulässegt Gesamtgewiicht, Bremsen. Eis Unhängersich fir d’Lounen weist Iech d’Führerschäinreegele mat Beispiller.',
+        'Mir hëllefen Iech, en Unhänger ze wielen, deen Ären Auto zéie kann an deen Dir mat Ärem Führerschäin fueren dierft: Gréisst, zoulässegt Gesamtgewiicht, Bremsen. Eis Unhängersich fir d’Lounen weist Iech d’Führerschäinreegele mat Beispiller.',
       adviceLink: 'Wéi en Unhänger mat wéi engem Führerschäin?',
       stockH2: 'Unhänger am Stock',
       stockMissing: '[FEHLT — Anhänger auf Lager]',
@@ -534,7 +534,7 @@ const lb: Dict = {
     thanks: {
       h1: 'Är Ufro ass ukomm',
       text: 'Mir äntweren Iech [FEHLT — Antwortzeit, z. B. « le jour ouvrable suivant »]. Ass et dréngend? Rufft +352 81 05 41 un.',
-      back: 'Zréck op d’Startsäit',
+      back: 'Zréck op d’Haaptsäit',
     },
     notFound: {
       h1: 'Säit net fonnt',
@@ -550,7 +550,7 @@ const lb: Dict = {
     email: 'E-Mail',
     message: 'Message',
     consent:
-      'Ech sinn domat averstanen, datt Garage Um Rond Point meng Donnéeë benotzt, fir op meng Ufro z’äntweren. Méi Informatiounen an der {link}.',
+      'Ech sinn domat averstanen, datt d’Garage Um Rond Point meng Donnéeë benotzt, fir op meng Ufro z’äntweren. Méi Informatiounen an der {link}.',
     consentLink: 'Dateschutzerklärung',
     honeypot: 'Fëllt dëst Feld net aus',
     choose: 'Wielt …',
@@ -602,7 +602,7 @@ const lb: Dict = {
     car: {
       carLabel: 'Auto',
       wish: 'Dir wëllt',
-      wishTest: 'Eng Probefahrt',
+      wishTest: 'Eng Probefaart',
       wishInfo: 'Méi Informatiounen',
       wishTradeIn: 'Reprise vu mengem Auto',
       tradeInH: 'Nëmme fir eng Reprise',
@@ -671,14 +671,14 @@ const lb: Dict = {
     cars: {
       title: 'Nei Autoen an Occasiounen zu Erpeldange | Um Rond Point',
       description:
-        'All d’Autoen am Stock vun der Garage Um Rond Point zu Erpeldange, mat Präis, Kilometerstand a Fotoen. Lëscht all Moien aktualiséiert. Probefahrt op Rendez-vous.',
+        'All d’Autoen am Stock vun der Garage Um Rond Point zu Erpeldange, mat Präis, Kilometerstand a Fotoen. Lëscht all Moien aktualiséiert. Probefaart op Rendez-vous.',
     },
     car: {
       suffixLong: ' | Garage Um Rond Point',
       suffixShort: ' | Um Rond Point',
       place: ' zu Ierpeldeng',
       descTail: 'Ze gesinn an der Garage Um Rond Point zu Ierpeldeng.',
-      descExtra: [' Probefahrt op Rendez-vous.', ' Tëscht Ettelbréck an Dikrech.', ' Rufft +352 81 05 41 un.'],
+      descExtra: [' Probefaart op Rendez-vous.', ' Tëscht Ettelbréck an Dikrech.', ' Rufft +352 81 05 41 un.'],
       descGearbox: 'Schaltung: {gearbox}',
       soldTitle: '{make} {model} verkaaft | Garage Um Rond Point, Erpeldange',
       soldDescription:
@@ -722,7 +722,7 @@ const lb: Dict = {
     privacy: {
       title: 'Dateschutzerklärung | Garage Um Rond Point, Erpeldange',
       description:
-        'Wéi eng Donnéeën d’Garage Um Rond Point veraarbecht, wann Dir eis schreift, firwat, wéi laang a wéi eng Rechter Dir hutt. Ouni Cookies, ouni Tracking-Tools.',
+        'Wéi eng Donnéeën d’Garage Um Rond Point veraarbecht, wann Dir eis schreift, firwat, wéi laang a wéi eng Rechter Dir hutt. Ouni Cookien, ouni Tracking-Tools.',
     },
   },
 
@@ -738,7 +738,7 @@ const lb: Dict = {
     vat: 'TVA-Nummer',
     registered: 'Androung',
     manager: 'Geschäftsféierer',
-    permit: 'Niederlassungserlaabnes (Autorisation d’établissement)',
+    permit: 'Néierlassungserlaabnes (Autorisation d’établissement)',
     capital: 'Gesellschaftskapital',
     managerMissing: '[UNBESTÄTIGT — Gérant David Moreira laut Editus]',
     permitMissing: '[FEHLT — Nummer der Gewerbegenehmigung]',
@@ -759,7 +759,7 @@ const lb: Dict = {
   privacy: {
     h1: 'Dateschutzerklärung',
     intro:
-      'Mir veraarbechten Är Donnéeën nëmmen, fir op Är Ufroen z’äntweren. Dës Websäit setzt keng Cookies a benotzt keng Tools fir Tracking oder Reklamm.',
+      'Mir veraarbechten Är Donnéeën nëmmen, fir op Är Ufroen z’äntweren. Dës Websäit setzt keng Cookien a benotzt keng Tools fir Tracking oder Reklamm.',
     controllerH2: 'Verantwortlechen',
     controller:
       'Garage Um Rond Point S.à r.l., 1, rue du Viaduc, L-9147 Erpeldange-sur-Sûre, Lëtzebuerg. Telefon +352 81 05 41, info@rondpoint.lu.',
@@ -799,7 +799,7 @@ const lb: Dict = {
   about: {
     h2: 'Iwwer eis',
     text: 'D’Garage Um Rond Point ass Är Garage um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech. Unhänger a Camionnetten lounen, Autoen an Unhänger kafen, Atelier a Gaartmaschinnen: alles op enger Adress. Kommt laanscht – mir schwätzen Är Sprooch.',
-    link: 'Esou fannt Dir eis',
+    link: 'Wéi Dir eis fannt',
     photoAlt: 'Mecanicien reecht en Autosschlëssel',
   },
   /** Startseite: Stichpunkte; Unterseiten: ausführliche Erklärungen */
@@ -831,7 +831,7 @@ const lb: Dict = {
       entretienH: 'Entretien a Revisioun',
       entretien: 'E reegelméissegen Entretien hält Ären Auto zouverlässeg a sécher: Uelegwiessel, Filteren, Bremsen, Niveauen an allgemeng Kontroll. Sot eis an Ärer Ufro de Kilometerstand an den Datum vum leschten Entretien.',
       diagnosticH: 'Feelerdiagnos',
-      diagnostic: 'Eng Warnlut geet un, en ongewinnte Geräisch, den Auto spréngt schlecht un: Beschreift, wat Dir mierkt a zënter wéini. D’Diagnos fënnt d’Ursaach, ier reparéiert gëtt.',
+      diagnostic: 'Eng Warnluucht geet un, en ongewéinlecht Geräisch, den Auto spréngt schlecht un: Beschreift, wat Dir mierkt a zanter wéini. D’Diagnos fënnt d’Ursaach, ier reparéiert gëtt.',
       reparationH: 'Mechanesch Reparatur',
       reparation: 'No der Diagnos reparéiere mir Ären Auto oder Är Camionnette an eisem Atelier um Rond-point zu Ierpeldeng.',
       carrosserieH: 'Karosserie a Lack',
@@ -839,14 +839,14 @@ const lb: Dict = {
       processH2: 'Esou kritt Dir e Rendez-vous',
       process: [
         'Beschreift Äert Gefier a wat ze maachen ass – am Formulaire, um Telefon oder iwwer WhatsApp.',
-        'Mir ruffen Iech zréck fir den Datum ofzemaachen.',
+        'Mir ruffen Iech zréck, fir den Datum ofzemaachen.',
         'Dir bréngt Äert Gefier an d’Garage, 1, rue du Viaduc.',
       ],
     },
     sodablast: {
       explainH2: 'Wéi funktionéiert Sodablast?',
       explain: 'Natron gëtt mat Drockloft op d’Uewerfläch gestraalt. Et ass méi mëll wéi Sand an hëlt Lack, Fett a Knascht ewech, ouni d’Metall unzegräifen. Dofir gëtt et fir empfindlech Deeler an al Karosserien benotzt.',
-      explain2: 'D’Ofbeizen leet déi ursprénglech Uewerfläch fräi: Dir gesitt de richtegen Zoustand vum Metall virun enger Reparatur oder engem neie Lack.',
+      explain2: 'D’Ofbeize leet déi ursprénglech Uewerfläch fräi: Dir gesitt de richtegen Zoustand vum Metall virun enger Reparatur oder engem neie Lack.',
       processH2: 'Esou leeft d’Ofbeizen of',
       process: [
         'Schéckt eis Fotoe vum Auto oder vum Deel iwwer WhatsApp.',
@@ -862,12 +862,12 @@ const lb: Dict = {
     },
     trailers: {
       chooseH2: 'De richtegen Unhänger wielen',
-      masseH: 'Zulässegt Gesamtgewiicht',
+      masseH: 'Zoulässegt Gesamtgewiicht',
       masse: 'Et bestëmmt, wéi e Führerschäin Dir braucht. Bis 750 kg geet de Führerschäin B duer, doriwwer hänkt et vun Ärem Auto of.',
       freinH: 'Bremsen',
-      frein: 'En Unhänger mat méi wéi 750 kg zulässegt Gesamtgewiicht muss gebremst sinn.',
+      frein: 'En Unhänger mat engem zoulässege Gesamtgewiicht vu méi wéi 750 kg muss gebremst sinn.',
       chargeH: 'Unhängelaascht',
-      charge: 'Ären Auto dierf net méi zéie wéi am Feld O.1 (gebremst) oder O.2 (ongebremst) vun der Carte grise steet.',
+      charge: 'Ären Auto däerf net méi zéie wéi am Feld O.1 (gebremst) oder O.2 (ongebremst) vun der Carte grise steet.',
       usageH: 'Bauaart a Moossen',
       usage: 'Plateau, Kipper, Autosunhänger oder Kofferunhänger: De passenden Unhänger hänkt dovun of, wat Dir am meeschte transportéiert a wou Dir en ofstellt.',
     },
@@ -886,7 +886,7 @@ const lb: Dict = {
         s2: {
           h: 'Entretien: firwat de Plang vum Hiersteller wichteg ass',
           p: [
-            'All Hiersteller leet en Entretiensplang fest, nom Kilometerstand oder no der Zäit zënter dem leschte Besuch an der Garage. Dir fannt en am Carnet d’entretien oder um Écran vun Ärem Auto.',
+            'All Hiersteller leet en Entretiensplang fest, nom Kilometerstand oder no der Zäit zanter dem leschte Besuch an der Garage. Dir fannt en am Carnet d’entretien oder um Ecran vun Ärem Auto.',
             'Wann Dir Iech un dëse Plang haalt, gëtt Ären Auto manner ofgenotzt, Dir vermeit deier Pannen an den Auto behält beim Verkaf besser säi Wäert. Wat zu engem Entretien gehéiert, hänkt vum Plang of. Dozou gehéieren zum Beispill den Uelegwiessel, d’Filteren, d’Kontroll vun de Bremsen an den Niveauen, d’Luuchten an d’Scheiwewëscher.',
           ],
         },
@@ -897,10 +897,10 @@ const lb: Dict = {
             'D’Bremse jäizen, vibréieren oder zéien op eng Säit.',
             'De Motor huet ze wéineg Kraaft oder spréngt schlecht un.',
             'Et richt verbrannt, eppes leeft aus oder et kënnt ongewéinlechen Damp.',
-            'En neie Geräisch beim Fueren oder wann Dir d’Steierrad dréit.',
+            'En neit Geräisch beim Fueren oder wann Dir d’Steierrad dréit.',
           ],
           p: [
-            'Gëtt e Feeler fréi fonnt, bleift d’Reparatur méi einfach. Beschreift am Formulaire, wat Dir mierkt a zënter wéini: Dat ass déi bescht Basis fir d’Diagnos.',
+            'Gëtt e Feeler fréi fonnt, bleift d’Reparatur méi einfach. Beschreift am Formulaire, wat Dir mierkt a zanter wéini: Dat ass déi bescht Basis fir d’Diagnos.',
           ],
         },
         s4: {
@@ -913,7 +913,7 @@ const lb: Dict = {
         s5: {
           h: 'Autoen a Camionnetten',
           p: [
-            'Eisen Atelier këmmert sech ëm Autoen a Camionnetten. Fir e Rasemeeër, eng Motorsee oder eng aner Maschinn kuckt op eiser Säit [Gaart & Bësch](page:garden). Fir eng Karosserie oder en Deel bis op d’Metall ofzebeizen, entdeckt eist [Ofbeize mat Sodablast](page:sodablast).',
+            'Eisen Atelier këmmert sech ëm Autoen a Camionnetten. Fir e Rasemeeër, eng Motorsee oder eng aner Maschinn, kuckt op eiser Säit [Gaart & Bësch](page:garden). Fir eng Karosserie oder en Deel bis op d’Metall ofzebeizen, entdeckt eist [Ofbeize mat Sodablast](page:sodablast).',
           ],
         },
       },
@@ -1012,7 +1012,7 @@ const lb: Dict = {
             'Heckeschéier: D’Längt vum Messer an d’Gewiicht zielen, wann Dir laang oder an der Héicht schneit.',
           ],
           p: [
-            'Bensin oder Akku? Eng Maschinn mat Akku ass méi roueg a spréngt ouni Méi un. Eng Maschinn mat Bensinsmotor hält och op grousse Flächen duer. Sot eis, wéi Dir se benotzt, mir beroden Iech.',
+            'Bensin oder Akku? Eng Maschinn mat Akku ass méi roueg a spréngt ouni Méi un. Eng Maschinn mat Bensinsmotor hält och op grouss Flächen duer. Sot eis, wéi Dir se benotzt, mir beroden Iech.',
           ],
         },
         s3: {
@@ -1109,7 +1109,7 @@ const lb: Dict = {
           items: [
             'Wielt en Auto aus der Lëscht a maacht seng Detailsäit op.',
             'Rufft eis un oder schreift eis op WhatsApp, fir nozefroen, ob en nach disponibel ass.',
-            'Kommt den Auto an der Garage kucken a maacht eng Probefahrt op Rendez-vous.',
+            'Kommt den Auto an der Garage kucken a maacht eng Probefaart op Rendez-vous.',
           ],
         },
         s2: {
@@ -1128,7 +1128,7 @@ const lb: Dict = {
       faqH: 'Froen zu eisen Autoen',
       faq: {
         q1: {
-          q: 'Kann ech eng Probefahrt maachen?',
+          q: 'Kann ech eng Probefaart maachen?',
           a: 'Jo, op Rendez-vous. Rufft eis un op {phone} oder schreift eis iwwer WhatsApp op {whatsapp}.',
         },
         q2: {
@@ -1181,7 +1181,7 @@ const lb: Dict = {
         s2: {
           h: 'Tipps fir richteg ze lueden',
           items: [
-            'Iwwerschreit ni dat zulässegt Gesamtgewiicht vum Unhänger an och net d’Unhängelaascht vun Ärem Auto.',
+            'Iwwerschreit ni dat zoulässegt Gesamtgewiicht vum Unhänger an och net d’Unhängelaascht vun Ärem Auto.',
             'Verdeelt d’Luedung: schwéier Saachen iwwer d’Achs, e bësse Gewiicht op d’Kupplung, sou wéi et an der Uleedung steet.',
             'Sécheert d’Luedung mat Spannrimmen an deckt alles, wat lass ass, mat enger Bâche oder engem Netz of.',
             'Ier Dir lassfuert, kontrolléiert d’Kupplung, d’Luuchten an den Drock vun de Pneuen.',
@@ -1205,7 +1205,7 @@ const lb: Dict = {
               'Kontrolléiert, datt den Auto net méi weit wéi d’Notzlaascht vum Unhänger.',
               'Fuert lues a riicht op d’Rampen erop, mat engem, deen Iech aweist.',
               'Stellt den Auto esou, datt e bësse Gewiicht op de viischten Deel vum Unhänger läit, sou wéi et an der Uleedung steet.',
-              'Sécheert all Rad mat passende Spannrimmen a kontrolléiert se no den éischte Kilometer.',
+              'Sécheert all Rad mat passend Spannrimmen a kontrolléiert se no den éischte Kilometer.',
             ],
           },
         },
@@ -1222,7 +1222,7 @@ const lb: Dict = {
             h: 'D’Moto richteg festmaachen',
             items: [
               'Setzt d’Viischtrad fest an de Radhalter.',
-              'Benotzt véier Spannrimmen, zwee vir an zwee hannen, u stabile Punkte vum Rumm.',
+              'Benotzt véier Spannrimmen, zwee vir an zwee hannen, u stabil Punkte vum Rumm.',
               'Dréckt d’Fiederung e bëssen zesummen, awer net ze vill.',
               'Kontrolléiert no den éischte Kilometer, ob d’Spannrimmen nach fest sinn.',
             ],
@@ -1253,7 +1253,7 @@ const lb: Dict = {
           s1: {
             h: 'Fir wéi eng Geleeënheeten?',
             p: [
-              'Familljefest, Hochzäit, Gebuertsdag, Kiermes, Maart oder Veräinsfest: De Killunhänger hält Gedrénks an Iessen op der Plaz frësch, während der ganzer Dauer vum Evenement.',
+              'Familljefest, Hochzäit, Gebuertsdag, Kiermes, Maart oder Veräinsfest: De Killunhänger hält Gedrénks an Iessen op der Plaz frësch, wärend der ganzer Dauer vum Evenement.',
             ],
           },
           s2: {
