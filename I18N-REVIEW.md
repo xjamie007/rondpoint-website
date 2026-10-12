@@ -14,7 +14,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 - **Anhänger-Daten:** „Unhängelaascht gebremst/ongebremst" (O.1/O.2), „Eidelgewiicht", „Luedfläch", „Luedhéicht", „Bannevolumen", „Stroumversuergung", „{n}-poleg", „Plattformunhänger", „Kofferunhänger"
 - **Ladung:** „Gréngschnëtt", „Bauschutt", „Recyclingcenter", „e futtisen Auto"
 - **Finder:** „Unhängersich", Überschrift „Wéi en Unhänger mat wéi engem Führerschäin?"
-- **Garten:** „Rasemeeër", „Fräischneider", „Motorsee", „Heckeschéier"
+- **Garten:** „Méimaschinn", „Fräischneider", „Motorsee", „Heckeschéier"
 - **Formulare:** „Landesvirwiel", „d'Këschtchen ukräizen", „Reprise vu mengem Auto", „Wonschdatum", „Navigatiounspad"
 - **Werkstatt:** „TVA ofsetzbar", „No engem klengen Accident", „Éischt Zouloossung"
 - **Recht:** „Niederlassungserlaabnes", „Geschäftsféierer", „Erausgeber", „Awëllegung", „virvertraglech Moossnamen", „EU-US-Dateschutzrumm", „Nationaler Kommissioun fir den Dateschutz" (CNPD); Zitierweise „Art. 6 Abs. 1 Buchst. a DSGVO", vielleicht lieber „RGPD"
@@ -75,7 +75,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `finder.intro` | Dites-nous ce que vous transportez et quel permis vous avez. Vous voyez tout de suite les remorques qui conviennent, leur prix et si votre permis suffit. | Sot eis, wat Dir transportéiert a wat fir e Führerschäin Dir hutt. Dir gesitt direkt, wéi eng Unhänger passen, wat se kaschten an ob Äre Führerschäin duergeet. |
 | `finder.cargoLegend` | Que transportez-vous ? | Wat transportéiert Dir? |
 | `finder.cargo.voiture` | Une voiture | Een Auto |
-| `finder.cargo.moto` | Une moto | Eng Moto |
+| `finder.cargo.moto` | Une moto | Een Moto |
 | `finder.cargo.terre` | Terre, gravats ou déchets verts | Buedem, Bauschutt oder Gréngschnëtt |
 | `finder.cargo.fete` | Boissons et repas pour une fête | Gedrénks an Iessen fir e Fest |
 | `finder.cargo.meubles` | Meubles ou cartons | Miwwelen oder Karton |
@@ -272,7 +272,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `photos.workshop` | Mécanicien au travail dans le compartiment moteur d’une voiture | Mecanicien bei der Aarbecht am Motorraum vun engem Auto |
 | `photos.sodablast` | Voiture ancienne rouillée, peinture écaillée | Rastegen Oldtimer mat ofgeblättertem Lack |
 | `photos.bodywork` | Voiture de sport rouge sur un pont élévateur dans un atelier | Rouden Sportsauto op enger Hiefbün an engem Atelier |
-| `photos.garden` | Tondeuse à gazon thermique sur une pelouse | Benzinsrasemeeër op engem Wuess |
+| `photos.garden` | Tondeuse à gazon thermique sur une pelouse | Méimaschinn mat Bensinsmotor op engem Wuess |
 | `photos.gardenPage` | Tonte d’une pelouse au soleil | Gras méien an der Sonn |
 | `photos.paint` | Peinture d’une carrosserie au pistolet | Lackéiere vun enger Karosserie mat der Sprëtzpistoul |
 | `photos.rental` | Pick-up blanc chargé sur un plateau | Wäisse Pick-up op engem Plateau |
@@ -419,7 +419,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `pages.garden.lead` | Nous vendons et réparons des machines de jardin et de forêt, principalement des marques Honda et Stihl. | Mir verkafen a reparéieren Gaart- a Bëschmaschinnen, virun allem vun de Marken Honda a Stihl. |
 | `pages.garden.dealerMissing` | [UNBESTÄTIGT — Händlerstatus Honda und Stihl; Logos nur mit Freigabe] | [UNBESTÄTIGT — Händlerstatus Honda und Stihl; Logos nur mit Freigabe] |
 | `pages.garden.whatH2` | Vente et réparation | Verkaf a Reparatur |
-| `pages.garden.text` | Tondeuse, débroussailleuse, tronçonneuse ou taille-haie : apportez votre machine à l’atelier ou demandez-nous conseil pour en choisir une nouvelle. | Rasemeeër, Fräischneider, Motorsee oder Heckeschéier: Bréngt Är Maschinn an den Atelier oder loosst Iech vun eis beroden, fir eng nei auszesichen. |
+| `pages.garden.text` | Tondeuse, débroussailleuse, tronçonneuse ou taille-haie : apportez votre machine à l’atelier ou demandez-nous conseil pour en choisir une nouvelle. | Méimaschinn, Fräischneider, Motorsee oder Heckeschéier: Bréngt Är Maschinn an den Atelier oder loosst Iech vun eis beroden, fir eng nei auszesichen. |
 | `pages.garden.formH2` | Demander une réparation | Reparatur ufroen |
 | `pages.contact.h1` | Contact et accès | Kontakt a Wee bei eis |
 | `pages.contact.lead` | Garage Um Rond Point, 1, rue du Viaduc, L-9147 Erpeldange-sur-Sûre. Au rond-point, à côté de la station Aral. Téléphone +352 81 05 41, WhatsApp +352 621 373 272, info@rondpoint.lu. Nous parlons luxembourgeois, français, allemand, anglais et portugais. | Garage Um Rond Point, 1, rue du Viaduc, L-9147 Erpeldange-sur-Sûre. Um Rond-point, nieft der Aral-Tankstell. Telefon +352 81 05 41, WhatsApp +352 621 373 272, info@rondpoint.lu. Mir schwätze Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch. |
@@ -641,9 +641,9 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `details.sodablast.process[1]` | Nous vous donnons un premier avis. | Dir kritt eng éischt Aschätzung. |
 | `details.sodablast.process[2]` | Nous fixons ensemble un rendez-vous au garage. | Mir maachen zesummen e Rendez-vous an der Garage. |
 | `details.garden.saleH2` | Vente | Verkaf |
-| `details.garden.sale` | Tondeuse, débroussailleuse, tronçonneuse ou taille-haie : nous vendons des machines de jardin et de forêt, principalement des marques Honda et Stihl. Dites-nous la taille de votre terrain et ce que vous voulez faire, nous vous conseillons pour le choix. | Rasemeeër, Fräischneider, Motorsee oder Heckeschéier: Mir verkafe Gaart- a Bëschmaschinnen, virun allem vun de Marken Honda a Stihl. Sot eis, wéi grouss Ären Terrain ass a wat Dir wëllt maachen, mir beroden Iech beim Wielen. |
+| `details.garden.sale` | Tondeuse, débroussailleuse, tronçonneuse ou taille-haie : nous vendons des machines de jardin et de forêt, principalement des marques Honda et Stihl. Dites-nous la taille de votre terrain et ce que vous voulez faire, nous vous conseillons pour le choix. | Méimaschinn, Fräischneider, Motorsee oder Heckeschéier: Mir verkafe Gaart- a Bëschmaschinnen, virun allem vun de Marken Honda a Stihl. Sot eis, wéi grouss Ären Terrain ass a wat Dir wëllt maachen, mir beroden Iech beim Wielen. |
 | `details.garden.repairH2` | Réparation | Reparatur |
-| `details.garden.repair` | La tondeuse ne démarre plus, la tronçonneuse coupe mal, la débroussailleuse perd de la puissance ? Apportez votre machine à l’atelier ou décrivez le problème dans le formulaire. | De Rasemeeër spréngt net méi un, d’Motorsee schneit schlecht, de Fräischneider verléiert Kraaft? Bréngt Är Maschinn an den Atelier oder beschreift de Problem am Formulaire. |
+| `details.garden.repair` | La tondeuse ne démarre plus, la tronçonneuse coupe mal, la débroussailleuse perd de la puissance ? Apportez votre machine à l’atelier ou décrivez le problème dans le formulaire. | D’Méimaschinn spréngt net méi un, d’Motorsee schneit schlecht, de Fräischneider verléiert Kraaft? Bréngt Är Maschinn an den Atelier oder beschreift de Problem am Formulaire. |
 | `details.trailers.chooseH2` | Bien choisir sa remorque | De richtegen Unhänger wielen |
 | `details.trailers.masseH` | Masse maximale | Zoulässegt Gesamtgewiicht |
 | `details.trailers.masse` | Elle décide du permis nécessaire. Jusqu’à 750 kg, le permis B suffit ; au-delà, cela dépend de votre voiture. | Et bestëmmt, wéi e Führerschäin Dir braucht. Bis 750 kg geet de Führerschäin B duer, doriwwer hänkt et vun Ärem Auto of. |
@@ -670,7 +670,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `content.workshop.sections.s4.p[0]` | Rayure, bosse ou pare-chocs abîmé : envoyez-nous des photos des dégâts sur WhatsApp au {whatsapp}. Vous recevez un premier avis avant même de venir. Ensuite, nous réparons la carrosserie et repeignons les éléments abîmés dans notre atelier. | Ass d’Karosserie verkraazt oder agedréckt, oder ass de Pare-choc beschiedegt? Da schéckt eis Fotoe vum Schued iwwer WhatsApp op {whatsapp}. Dir kritt eng éischt Aschätzung, nach ier Dir bei eis kommt. Duerno reparéiere mir an eisem Atelier d’Karosserie a lackéieren déi beschiedegt Deeler nei. |
 | `content.workshop.sections.s4.p[1]` | Si un autre véhicule est en cause, remplissez le constat amiable sur place et prenez vous-même des photos de l’accident. Ces documents sont utiles pour votre assurance. | Wann en anert Gefier bedeelegt ass, fëllt de Constat amiable op der Plaz aus a maacht selwer Fotoe vum Accident. Dës Dokumenter sinn nëtzlech fir Är Versécherung. |
 | `content.workshop.sections.s5.h` | Voitures et camionnettes | Autoen a Camionnetten |
-| `content.workshop.sections.s5.p[0]` | L’atelier s’occupe des voitures et des camionnettes. Pour une tondeuse, une tronçonneuse ou une autre machine, voyez notre page [Jardin & forêt](page:garden). Pour mettre une carrosserie ou une pièce à nu, découvrez le [décapage sodablast](page:sodablast). | Eisen Atelier këmmert sech ëm Autoen a Camionnetten. Fir e Rasemeeër, eng Motorsee oder eng aner Maschinn, kuckt op eiser Säit [Gaart & Bësch](page:garden). Fir eng Karosserie oder en Deel bis op d’Metall ofzebeizen, entdeckt eist [Ofbeize mat Sodablast](page:sodablast). |
+| `content.workshop.sections.s5.p[0]` | L’atelier s’occupe des voitures et des camionnettes. Pour une tondeuse, une tronçonneuse ou une autre machine, voyez notre page [Jardin & forêt](page:garden). Pour mettre une carrosserie ou une pièce à nu, découvrez le [décapage sodablast](page:sodablast). | Eisen Atelier këmmert sech ëm Autoen a Camionnetten. Fir eng Méimaschinn, eng Motorsee oder eng aner Maschinn, kuckt op eiser Säit [Gaart & Bësch](page:garden). Fir eng Karosserie oder en Deel bis op d’Metall ofzebeizen, entdeckt eist [Ofbeize mat Sodablast](page:sodablast). |
 | `content.workshop.faqH` | Questions sur l’atelier | Froen zum Atelier |
 | `content.workshop.faq.q1.q` | Comment prendre rendez-vous à l’atelier ? | Wéi maachen ech e Rendez-vous am Atelier aus? |
 | `content.workshop.faq.q1.a` | Décrivez votre véhicule et ce qu’il faut faire dans le formulaire de cette page, par téléphone au {phone} ou sur WhatsApp au {whatsapp}. Nous vous rappelons pour fixer le rendez-vous. | Beschreift Äert Gefier a wat ze maachen ass: am Formulaire op dëser Säit, um Telefon op {phone} oder iwwer WhatsApp op {whatsapp}. Mir ruffen Iech zréck, fir de Rendez-vous auszemaachen. |
@@ -707,8 +707,8 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `content.garden.sections.s1.h` | Machines de jardin et de forêt dans la Nordstad | Gaart- a Bëschmaschinnen an der Nordstad |
 | `content.garden.sections.s1.p[0]` | Pour entretenir votre jardin, votre terrain ou votre bois, vous trouvez au Garage Um Rond Point des machines principalement des marques Honda et Stihl, et un atelier pour les réparer. Le garage se trouve au rond-point d’Erpeldange, entre Ettelbruck et Diekirch. | Fir Äre Gaart, Ären Terrain oder Äre Bësch ze pfleegen, fannt Dir an der Garage Um Rond Point Maschinnen, virun allem vun de Marken Honda a Stihl, an en Atelier, fir se ze reparéieren. D’Garage ass um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech. |
 | `content.garden.sections.s2.h` | Bien choisir sa machine | Déi richteg Maschinn wielen |
-| `content.garden.sections.s2.items[0]` | Tondeuse : la surface de la pelouse, la pente et les obstacles décident de la largeur de coupe et du type d’entraînement. | Rasemeeër: D’Gréisst vum Wuess, d’Steigung an d’Hindernisser bestëmmen d’Schnëttbreet an d’Aart vum Undriff. |
-| `content.garden.sections.s2.items[1]` | Débroussailleuse : pour les bordures, les talus et l’herbe haute que la tondeuse n’atteint pas. | Fräischneider: fir Kanten, Häng an héicht Gras, wou de Rasemeeër net hikënnt. |
+| `content.garden.sections.s2.items[0]` | Tondeuse : la surface de la pelouse, la pente et les obstacles décident de la largeur de coupe et du type d’entraînement. | Méimaschinn: D’Gréisst vum Wuess, d’Steigung an d’Hindernisser bestëmmen d’Schnëttbreet an d’Aart vum Undriff. |
+| `content.garden.sections.s2.items[1]` | Débroussailleuse : pour les bordures, les talus et l’herbe haute que la tondeuse n’atteint pas. | Fräischneider: fir Kanten, Häng an héicht Gras, wou d’Méimaschinn net hikënnt. |
 | `content.garden.sections.s2.items[2]` | Tronçonneuse : la longueur du guide dépend du diamètre du bois que vous coupez le plus souvent. | Motorsee: D’Längt vum Schwäert hänkt vum Duerchmiesser vum Holz of, dat Dir am meeschte schneit. |
 | `content.garden.sections.s2.items[3]` | Taille-haie : la longueur de la lame et le poids comptent si vous taillez longtemps ou en hauteur. | Heckeschéier: D’Längt vum Messer an d’Gewiicht zielen, wann Dir laang oder an der Héicht schneit. |
 | `content.garden.sections.s2.p[0]` | Thermique ou à batterie ? Une machine à batterie est plus silencieuse et démarre sans effort. Une machine thermique garde son autonomie sur les grands terrains. Dites-nous comment vous l’utilisez, nous vous conseillons. | Bensin oder Akku? Eng Maschinn mat Akku ass méi roueg a spréngt ouni Méi un. Eng Maschinn mat Bensinsmotor hält och op grouss Flächen duer. Sot eis, wéi Dir se benotzt, mir beroden Iech. |
@@ -720,11 +720,11 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 | `content.garden.sections.s3.p[0]` | Décrivez la panne dans le formulaire ou appelez-nous au {phone}. Indiquez la marque et le modèle de la machine : nous savons tout de suite de quoi il s’agit. | Beschreift d’Pann am Formulaire oder rufft eis un op {phone}. Gitt d’Mark an de Modell vun der Maschinn un: Da wësse mir direkt, ëm wat et geet. |
 | `content.garden.sections.s4.h` | Conseils pour passer l’hiver | Esou kënnt Är Maschinn gutt duerch de Wanter |
 | `content.garden.sections.s4.p[0]` | Avant de ranger une machine thermique pour l’hiver, nettoyez-la, videz le réservoir ou laissez le moteur tourner jusqu’à l’arrêt, puis rangez-la au sec. Une machine bien rangée redémarre plus facilement au printemps. | Ier Dir eng Maschinn mat Bensinsmotor fir de Wanter ewechstellt, botzt se, maacht den Tank eidel oder loosst de Motor lafen, bis se ausgeet. Stellt se duerno am Dréchenen of. Esou spréngt d’Maschinn am Fréijoer méi einfach erëm un. |
-| `content.garden.sections.s4.p[1]` | Les batteries se stockent à l’abri du gel, de préférence à moitié chargées. | Den Akku gehéiert op eng frostfräi Plaz, am beschten hallef gelueden. |
+| `content.garden.sections.s4.p[1]` | Les batteries se stockent à l’abri du gel, de préférence à moitié chargées. | Den Akku gehéiert op eng fraschtfräi Plaz, am beschten hallef gelueden. |
 | `content.garden.faqH` | Questions sur les machines de jardin | Froen zu de Gaartmaschinnen |
 | `content.garden.faq.q1.q` | Quelles marques de machines vendez-vous ? | Vu wéi enge Marke verkaaft Dir Maschinnen? |
 | `content.garden.faq.q1.a` | Principalement des machines Honda et Stihl. | Virun allem Maschinne vun Honda a Stihl. |
-| `content.garden.faq.q2.q` | Comment faire réparer ma tondeuse ou ma tronçonneuse ? | Wéi loossen ech mäi Rasemeeër oder meng Motorsee reparéieren? |
+| `content.garden.faq.q2.q` | Comment faire réparer ma tondeuse ou ma tronçonneuse ? | Wéi loossen ech meng Méimaschinn oder meng Motorsee reparéieren? |
 | `content.garden.faq.q2.a` | Apportez la machine à l’atelier ou décrivez la panne dans le formulaire de cette page. Nous vous rappelons. | Bréngt d’Maschinn an den Atelier oder beschreift d’Pann am Formulaire op dëser Säit. Mir ruffen Iech zréck. |
 | `content.garden.faq.q3.q` | Quand puis-je passer au garage ? | Wéini kann ech an der Garage laanschtkommen? |
 | `content.garden.faq.q3.a` | {hours} | {hours} |

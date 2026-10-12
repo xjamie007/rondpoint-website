@@ -10,7 +10,7 @@ Die Übersetzungen sind Entwürfe. Diese Stellen waren beim Übersetzen am unsic
 - **Anhänger-Daten:** „Unhängelaascht gebremst/ongebremst" (O.1/O.2), „Eidelgewiicht", „Luedfläch", „Luedhéicht", „Bannevolumen", „Stroumversuergung", „{n}-poleg", „Plattformunhänger", „Kofferunhänger"
 - **Ladung:** „Gréngschnëtt", „Bauschutt", „Recyclingcenter", „e futtisen Auto"
 - **Finder:** „Unhängersich", Überschrift „Wéi en Unhänger mat wéi engem Führerschäin?"
-- **Garten:** „Rasemeeër", „Fräischneider", „Motorsee", „Heckeschéier"
+- **Garten:** „Méimaschinn", „Fräischneider", „Motorsee", „Heckeschéier"
 - **Formulare:** „Landesvirwiel", „d'Këschtchen ukräizen", „Reprise vu mengem Auto", „Wonschdatum", „Navigatiounspad"
 - **Werkstatt:** „TVA ofsetzbar", „No engem klengen Accident", „Éischt Zouloossung"
 - **Recht:** „Niederlassungserlaabnes", „Geschäftsféierer", „Erausgeber", „Awëllegung", „virvertraglech Moossnamen", „EU-US-Dateschutzrumm", „Nationaler Kommissioun fir den Dateschutz" (CNPD); Zitierweise „Art. 6 Abs. 1 Buchst. a DSGVO", vielleicht lieber „RGPD"

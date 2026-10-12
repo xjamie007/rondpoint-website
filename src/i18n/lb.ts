@@ -285,7 +285,7 @@ const lb: Dict = {
     workshop: 'Mecanicien bei der Aarbecht am Motorraum vun engem Auto',
     sodablast: 'Rastegen Oldtimer mat ofgeblättertem Lack',
     bodywork: 'Rouden Sportsauto op enger Hiefbün an engem Atelier',
-    garden: 'Benzinsrasemeeër op engem Wuess',
+    garden: 'Méimaschinn mat Bensinsmotor op engem Wuess',
     gardenPage: 'Gras méien an der Sonn',
     paint: 'Lackéiere vun enger Karosserie mat der Sprëtzpistoul',
     rental: 'Wäisse Pick-up op engem Plateau',
@@ -516,7 +516,7 @@ const lb: Dict = {
       lead: 'Mir verkafen a reparéieren Gaart- a Bëschmaschinnen, virun allem vun de Marken Honda a Stihl.',
       dealerMissing: '[UNBESTÄTIGT — Händlerstatus Honda und Stihl; Logos nur mit Freigabe]',
       whatH2: 'Verkaf a Reparatur',
-      text: 'Rasemeeër, Fräischneider, Motorsee oder Heckeschéier: Bréngt Är Maschinn an den Atelier oder loosst Iech vun eis beroden, fir eng nei auszesichen.',
+      text: 'Méimaschinn, Fräischneider, Motorsee oder Heckeschéier: Bréngt Är Maschinn an den Atelier oder loosst Iech vun eis beroden, fir eng nei auszesichen.',
       formH2: 'Reparatur ufroen',
     },
     contact: {
@@ -856,9 +856,9 @@ const lb: Dict = {
     },
     garden: {
       saleH2: 'Verkaf',
-      sale: 'Rasemeeër, Fräischneider, Motorsee oder Heckeschéier: Mir verkafe Gaart- a Bëschmaschinnen, virun allem vun de Marken Honda a Stihl. Sot eis, wéi grouss Ären Terrain ass a wat Dir wëllt maachen, mir beroden Iech beim Wielen.',
+      sale: 'Méimaschinn, Fräischneider, Motorsee oder Heckeschéier: Mir verkafe Gaart- a Bëschmaschinnen, virun allem vun de Marken Honda a Stihl. Sot eis, wéi grouss Ären Terrain ass a wat Dir wëllt maachen, mir beroden Iech beim Wielen.',
       repairH2: 'Reparatur',
-      repair: 'De Rasemeeër spréngt net méi un, d’Motorsee schneit schlecht, de Fräischneider verléiert Kraaft? Bréngt Är Maschinn an den Atelier oder beschreift de Problem am Formulaire.',
+      repair: 'D’Méimaschinn spréngt net méi un, d’Motorsee schneit schlecht, de Fräischneider verléiert Kraaft? Bréngt Är Maschinn an den Atelier oder beschreift de Problem am Formulaire.',
     },
     trailers: {
       chooseH2: 'De richtegen Unhänger wielen',
@@ -913,7 +913,7 @@ const lb: Dict = {
         s5: {
           h: 'Autoen a Camionnetten',
           p: [
-            'Eisen Atelier këmmert sech ëm Autoen a Camionnetten. Fir e Rasemeeër, eng Motorsee oder eng aner Maschinn, kuckt op eiser Säit [Gaart & Bësch](page:garden). Fir eng Karosserie oder en Deel bis op d’Metall ofzebeizen, entdeckt eist [Ofbeize mat Sodablast](page:sodablast).',
+            'Eisen Atelier këmmert sech ëm Autoen a Camionnetten. Fir eng Méimaschinn, eng Motorsee oder eng aner Maschinn, kuckt op eiser Säit [Gaart & Bësch](page:garden). Fir eng Karosserie oder en Deel bis op d’Metall ofzebeizen, entdeckt eist [Ofbeize mat Sodablast](page:sodablast).',
           ],
         },
       },
@@ -1006,8 +1006,8 @@ const lb: Dict = {
         s2: {
           h: 'Déi richteg Maschinn wielen',
           items: [
-            'Rasemeeër: D’Gréisst vum Wuess, d’Steigung an d’Hindernisser bestëmmen d’Schnëttbreet an d’Aart vum Undriff.',
-            'Fräischneider: fir Kanten, Häng an héicht Gras, wou de Rasemeeër net hikënnt.',
+            'Méimaschinn: D’Gréisst vum Wuess, d’Steigung an d’Hindernisser bestëmmen d’Schnëttbreet an d’Aart vum Undriff.',
+            'Fräischneider: fir Kanten, Häng an héicht Gras, wou d’Méimaschinn net hikënnt.',
             'Motorsee: D’Längt vum Schwäert hänkt vum Duerchmiesser vum Holz of, dat Dir am meeschte schneit.',
             'Heckeschéier: D’Längt vum Messer an d’Gewiicht zielen, wann Dir laang oder an der Héicht schneit.',
           ],
@@ -1031,7 +1031,7 @@ const lb: Dict = {
           h: 'Esou kënnt Är Maschinn gutt duerch de Wanter',
           p: [
             'Ier Dir eng Maschinn mat Bensinsmotor fir de Wanter ewechstellt, botzt se, maacht den Tank eidel oder loosst de Motor lafen, bis se ausgeet. Stellt se duerno am Dréchenen of. Esou spréngt d’Maschinn am Fréijoer méi einfach erëm un.',
-            'Den Akku gehéiert op eng frostfräi Plaz, am beschten hallef gelueden.',
+            'Den Akku gehéiert op eng fraschtfräi Plaz, am beschten hallef gelueden.',
           ],
         },
       },
@@ -1042,7 +1042,7 @@ const lb: Dict = {
           a: 'Virun allem Maschinne vun Honda a Stihl.',
         },
         q2: {
-          q: 'Wéi loossen ech mäi Rasemeeër oder meng Motorsee reparéieren?',
+          q: 'Wéi loossen ech meng Méimaschinn oder meng Motorsee reparéieren?',
           a: 'Bréngt d’Maschinn an den Atelier oder beschreift d’Pann am Formulaire op dëser Säit. Mir ruffen Iech zréck.',
         },
         q3: {

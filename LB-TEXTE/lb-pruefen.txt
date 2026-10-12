@@ -767,7 +767,7 @@
 
 389. Autoen a Camionnetten
 
-390. Eisen Atelier këmmert sech ëm Autoen a Camionnetten. Fir e Rasemeeër, eng Motorsee oder eng aner Maschinn, kuckt op eiser Säit Gaart & Bësch. Fir eng Karosserie oder en Deel bis op d’Metall ofzebeizen, entdeckt eist Ofbeize mat Sodablast.
+390. Eisen Atelier këmmert sech ëm Autoen a Camionnetten. Fir eng Méimaschinn, eng Motorsee oder eng aner Maschinn, kuckt op eiser Säit Gaart & Bësch. Fir eng Karosserie oder en Deel bis op d’Metall ofzebeizen, entdeckt eist Ofbeize mat Sodablast.
 
 391. Froen zum Atelier
 
@@ -883,17 +883,17 @@
 
 446. Verkaf a Reparatur
 
-447. Rasemeeër, Fräischneider, Motorsee oder Heckeschéier: Bréngt Är Maschinn an den Atelier oder loosst Iech vun eis beroden, fir eng nei auszesichen.
+447. Méimaschinn, Fräischneider, Motorsee oder Heckeschéier: Bréngt Är Maschinn an den Atelier oder loosst Iech vun eis beroden, fir eng nei auszesichen.
 
 448. Reparatur ufroen
 
 449. Verkaf
 
-450. Rasemeeër, Fräischneider, Motorsee oder Heckeschéier: Mir verkafe Gaart- a Bëschmaschinnen, virun allem vun de Marken Honda a Stihl. Sot eis, wéi grouss Ären Terrain ass a wat Dir wëllt maachen, mir beroden Iech beim Wielen.
+450. Méimaschinn, Fräischneider, Motorsee oder Heckeschéier: Mir verkafe Gaart- a Bëschmaschinnen, virun allem vun de Marken Honda a Stihl. Sot eis, wéi grouss Ären Terrain ass a wat Dir wëllt maachen, mir beroden Iech beim Wielen.
 
 451. Reparatur
 
-452. De Rasemeeër spréngt net méi un, d’Motorsee schneit schlecht, de Fräischneider verléiert Kraaft? Bréngt Är Maschinn an den Atelier oder beschreift de Problem am Formulaire.
+452. D’Méimaschinn spréngt net méi un, d’Motorsee schneit schlecht, de Fräischneider verléiert Kraaft? Bréngt Är Maschinn an den Atelier oder beschreift de Problem am Formulaire.
 
 453. Gaart- a Bëschmaschinnen an der Nordstad
 
@@ -901,9 +901,9 @@
 
 455. Déi richteg Maschinn wielen
 
-456. Rasemeeër: D’Gréisst vum Wuess, d’Steigung an d’Hindernisser bestëmmen d’Schnëttbreet an d’Aart vum Undriff.
+456. Méimaschinn: D’Gréisst vum Wuess, d’Steigung an d’Hindernisser bestëmmen d’Schnëttbreet an d’Aart vum Undriff.
 
-457. Fräischneider: fir Kanten, Häng an héicht Gras, wou de Rasemeeër net hikënnt.
+457. Fräischneider: fir Kanten, Häng an héicht Gras, wou d’Méimaschinn net hikënnt.
 
 458. Motorsee: D’Längt vum Schwäert hänkt vum Duerchmiesser vum Holz of, dat Dir am meeschte schneit.
 
@@ -927,7 +927,7 @@
 
 468. Ier Dir eng Maschinn mat Bensinsmotor fir de Wanter ewechstellt, botzt se, maacht den Tank eidel oder loosst de Motor lafen, bis se ausgeet. Stellt se duerno am Dréchenen of. Esou spréngt d’Maschinn am Fréijoer méi einfach erëm un.
 
-469. Den Akku gehéiert op eng frostfräi Plaz, am beschten hallef gelueden.
+469. Den Akku gehéiert op eng fraschtfräi Plaz, am beschten hallef gelueden.
 
 470. Froen zu de Gaartmaschinnen
 
@@ -935,7 +935,7 @@
 
 472. Virun allem Maschinne vun Honda a Stihl.
 
-473. Wéi loossen ech mäi Rasemeeër oder meng Motorsee reparéieren?
+473. Wéi loossen ech meng Méimaschinn oder meng Motorsee reparéieren?
 
 474. Bréngt d’Maschinn an den Atelier oder beschreift d’Pann am Formulaire op dëser Säit. Mir ruffen Iech zréck.
 
@@ -1359,7 +1359,7 @@
 
 681. Rouden Sportsauto op enger Hiefbün an engem Atelier
 
-682. Benzinsrasemeeër op engem Wuess
+682. Méimaschinn mat Bensinsmotor op engem Wuess
 
 683. Gras méien an der Sonn
 

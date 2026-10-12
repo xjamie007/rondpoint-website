@@ -1183,7 +1183,7 @@ Wann en anert Gefier bedeelegt ass, fëllt de Constat amiable op der Plaz aus a 
 Autoen a Camionnetten
 
 @@ 390 content.workshop.sections.s5.p.0
-Eisen Atelier këmmert sech ëm Autoen a Camionnetten. Fir e Rasemeeër, eng Motorsee oder eng aner Maschinn, kuckt op eiser Säit [Gaart & Bësch](page:garden). Fir eng Karosserie oder en Deel bis op d’Metall ofzebeizen, entdeckt eist [Ofbeize mat Sodablast](page:sodablast).
+Eisen Atelier këmmert sech ëm Autoen a Camionnetten. Fir eng Méimaschinn, eng Motorsee oder eng aner Maschinn, kuckt op eiser Säit [Gaart & Bësch](page:garden). Fir eng Karosserie oder en Deel bis op d’Metall ofzebeizen, entdeckt eist [Ofbeize mat Sodablast](page:sodablast).
 
 @@ 391 content.workshop.faqH
 Froen zum Atelier
@@ -1360,7 +1360,7 @@ Mir verkafen a reparéieren Gaart- a Bëschmaschinnen, virun allem vun de Marken
 Verkaf a Reparatur
 
 @@ 447 pages.garden.text
-Rasemeeër, Fräischneider, Motorsee oder Heckeschéier: Bréngt Är Maschinn an den Atelier oder loosst Iech vun eis beroden, fir eng nei auszesichen.
+Méimaschinn, Fräischneider, Motorsee oder Heckeschéier: Bréngt Är Maschinn an den Atelier oder loosst Iech vun eis beroden, fir eng nei auszesichen.
 
 @@ 448 pages.garden.formH2
 Reparatur ufroen
@@ -1369,13 +1369,13 @@ Reparatur ufroen
 Verkaf
 
 @@ 450 details.garden.sale
-Rasemeeër, Fräischneider, Motorsee oder Heckeschéier: Mir verkafe Gaart- a Bëschmaschinnen, virun allem vun de Marken Honda a Stihl. Sot eis, wéi grouss Ären Terrain ass a wat Dir wëllt maachen, mir beroden Iech beim Wielen.
+Méimaschinn, Fräischneider, Motorsee oder Heckeschéier: Mir verkafe Gaart- a Bëschmaschinnen, virun allem vun de Marken Honda a Stihl. Sot eis, wéi grouss Ären Terrain ass a wat Dir wëllt maachen, mir beroden Iech beim Wielen.
 
 @@ 451 details.garden.repairH2
 Reparatur
 
 @@ 452 details.garden.repair
-De Rasemeeër spréngt net méi un, d’Motorsee schneit schlecht, de Fräischneider verléiert Kraaft? Bréngt Är Maschinn an den Atelier oder beschreift de Problem am Formulaire.
+D’Méimaschinn spréngt net méi un, d’Motorsee schneit schlecht, de Fräischneider verléiert Kraaft? Bréngt Är Maschinn an den Atelier oder beschreift de Problem am Formulaire.
 
 @@ 453 content.garden.sections.s1.h
 Gaart- a Bëschmaschinnen an der Nordstad
@@ -1387,10 +1387,10 @@ Fir Äre Gaart, Ären Terrain oder Äre Bësch ze pfleegen, fannt Dir an der Gar
 Déi richteg Maschinn wielen
 
 @@ 456 content.garden.sections.s2.items.0
-Rasemeeër: D’Gréisst vum Wuess, d’Steigung an d’Hindernisser bestëmmen d’Schnëttbreet an d’Aart vum Undriff.
+Méimaschinn: D’Gréisst vum Wuess, d’Steigung an d’Hindernisser bestëmmen d’Schnëttbreet an d’Aart vum Undriff.
 
 @@ 457 content.garden.sections.s2.items.1
-Fräischneider: fir Kanten, Häng an héicht Gras, wou de Rasemeeër net hikënnt.
+Fräischneider: fir Kanten, Häng an héicht Gras, wou d’Méimaschinn net hikënnt.
 
 @@ 458 content.garden.sections.s2.items.2
 Motorsee: D’Längt vum Schwäert hänkt vum Duerchmiesser vum Holz of, dat Dir am meeschte schneit.
@@ -1426,7 +1426,7 @@ Esou kënnt Är Maschinn gutt duerch de Wanter
 Ier Dir eng Maschinn mat Bensinsmotor fir de Wanter ewechstellt, botzt se, maacht den Tank eidel oder loosst de Motor lafen, bis se ausgeet. Stellt se duerno am Dréchenen of. Esou spréngt d’Maschinn am Fréijoer méi einfach erëm un.
 
 @@ 469 content.garden.sections.s4.p.1
-Den Akku gehéiert op eng frostfräi Plaz, am beschten hallef gelueden.
+Den Akku gehéiert op eng fraschtfräi Plaz, am beschten hallef gelueden.
 
 @@ 470 content.garden.faqH
 Froen zu de Gaartmaschinnen
@@ -1438,7 +1438,7 @@ Vu wéi enge Marke verkaaft Dir Maschinnen?
 Virun allem Maschinne vun Honda a Stihl.
 
 @@ 473 content.garden.faq.q2.q
-Wéi loossen ech mäi Rasemeeër oder meng Motorsee reparéieren?
+Wéi loossen ech meng Méimaschinn oder meng Motorsee reparéieren?
 
 @@ 474 content.garden.faq.q2.a
 Bréngt d’Maschinn an den Atelier oder beschreift d’Pann am Formulaire op dëser Säit. Mir ruffen Iech zréck.
@@ -2077,7 +2077,7 @@ Rastegen Oldtimer mat ofgeblättertem Lack
 Rouden Sportsauto op enger Hiefbün an engem Atelier
 
 @@ 682 photos.garden
-Benzinsrasemeeër op engem Wuess
+Méimaschinn mat Bensinsmotor op engem Wuess
 
 @@ 683 photos.gardenPage
 Gras méien an der Sonn
