@@ -88,6 +88,8 @@
     "pt": ""
   },
   "admin": {
+    "enabled": false,
+    "$enabled": "Dashboard freischalten: true. Solange false, zeigt /admin/ „Am Opbau“ und /admin/data.json ist leer.",
     "repo": "xjamie007/rondpoint-website",
     "branch": "main"
   },

@@ -1,16 +1,20 @@
 ---
 /**
  * Admin-Dashboard (nicht in der Sitemap, noindex, in robots.txt gesperrt).
+ * Solange site.json → admin.enabled false ist, erscheint nur „Am Opbau“.
  * Die Sicherheit liegt im GitHub-Zugangsschlüssel: ohne ihn kann niemand speichern.
  * Content-Security-Policy: Anfragen nur an die eigene Seite und api.github.com.
  */
 import '@/styles/global.css';
 import '@/admin/admin.css';
 import App from '@/admin/App.tsx';
+import Logo from '@/components/Logo.astro';
 import { path, withBase } from '@/i18n/config';
+import { site } from '@/lib/site';
+const enabled = (site as { admin?: { enabled?: boolean } }).admin?.enabled === true;
 ---
 <!doctype html>
-<html lang="de">
+<html lang={enabled ? 'de' : 'lb'}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -21,12 +25,44 @@ import { path, withBase } from '@/i18n/config';
     />
     <meta name="referrer" content="no-referrer" />
     <meta name="description" content="Verwaltung der Website Garage Um Rond Point" />
-    <title>Website verwalten | Um Rond Point</title>
+    <title>{enabled ? 'Website verwalten' : 'Am Opbau'} | Um Rond Point</title>
     <link rel="icon" href={withBase('/favicon-32.png')} type="image/png" sizes="32x32" />
     <meta name="theme-color" content="#000000" />
   </head>
   <body class="a-body">
-    <App client:only="react" base={withBase('')} siteHref={path('lb', 'home')} />
-    <noscript><p style="padding:24px">Bitte JavaScript aktivieren. / Veuillez activer JavaScript.</p></noscript>
+    {
+      enabled ? (
+        <>
+          <App client:only="react" base={withBase('')} siteHref={path('lb', 'home')} />
+          <noscript>
+            <p style="padding:24px">Bitte JavaScript aktivieren. / Veuillez activer JavaScript.</p>
+          </noscript>
+        </>
+      ) : (
+        <main class="a-login wip">
+          <div class="a-login-card">
+            <Logo href={path('lb', 'home')} label="Garage Um Rond Point" />
+            <span class="wip-badge">Work in progress</span>
+            <h1>Am Opbau</h1>
+            <p lang="lb">Dëse Beräich ass nach net fäerdeg. Geschwënn kënnt Dir hei Är Websäit selwer verwalten.</p>
+            <p lang="fr">Cet espace est en cours de construction.</p>
+            <p lang="de">Dieser Bereich ist noch in Arbeit.</p>
+            <div class="wip-bar" aria-hidden="true"><span></span></div>
+            <a class="btn btn-primary btn-go" href={path('lb', 'home')}>Zréck op d’Websäit</a>
+          </div>
+        </main>
+      )
+    }
   </body>
 </html>
+
+<style>
+  .wip .a-login-card { justify-items: start; }
+  .wip-badge { display: inline-block; padding: 4px 10px; border-radius: 999px; background: var(--color-orange); color: var(--color-black); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.02em; }
+  .wip h1 { font-size: clamp(2rem, 1.6rem + 2vw, 2.75rem); }
+  .wip p[lang='fr'], .wip p[lang='de'] { font-size: 0.9375rem; }
+  .wip-bar { width: 100%; height: 6px; border-radius: 999px; background: #eee; overflow: hidden; margin: 6px 0 8px; }
+  .wip-bar span { display: block; width: 40%; height: 100%; border-radius: inherit; background: var(--color-orange); animation: wip-move 1.8s var(--ease-in-out) infinite alternate; }
+  @keyframes wip-move { from { transform: translateX(-10%); } to { transform: translateX(160%); } }
+  @media (prefers-reduced-motion: reduce) { .wip-bar span { animation: none; width: 60%; } }
+</style>

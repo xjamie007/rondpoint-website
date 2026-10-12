@@ -247,6 +247,8 @@ Der Workflow `.github/workflows/stock-sync.yml` baut die Website bei jedem Push 
 
 ## Admin-Dashboard (`/admin/`)
 
+**Derzeit gesperrt:** `src/content/site.json` → `admin.enabled: false`. Dann zeigt `/admin/` nur eine „Am Opbau“-Seite, und `/admin/data.json` enthält keine Daten. Zum Freischalten auf `true` setzen. Der Link „Login“ im Footer bleibt.
+
 Die Garage pflegt ihre Website selbst, im Browser auf Handy oder Computer. Erreichbar ist es über den Link „Login“ unten im Footer oder direkt unter `/admin/`. Die Oberfläche gibt es auf Deutsch und Französisch.
 
 **Was man ändern kann**

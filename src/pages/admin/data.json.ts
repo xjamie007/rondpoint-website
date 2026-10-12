@@ -32,6 +32,10 @@ function flatten(o: unknown, pre = '', out: Flat = {}): Flat {
 }
 
 export const GET: APIRoute = async () => {
+  // Dashboard gesperrt (site.json → admin.enabled): keine Daten veröffentlichen
+  if (!(siteJson as { admin?: { enabled?: boolean } }).admin?.enabled) {
+    return new Response(JSON.stringify({ disabled: true }), { headers: { 'Content-Type': 'application/json; charset=utf-8' } });
+  }
   const base = { fr, de, lb, en, pt };
   const dict: Record<string, Flat> = {};
   for (const l of LANGS) dict[l] = flatten(base[l]);
