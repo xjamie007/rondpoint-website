@@ -32,6 +32,7 @@ const FUEL_MAP: Record<string, Fuel> = {
   electric: 'electric',
   gpl: 'lpg',
   lpg: 'lpg',
+  'gpl lpg': 'lpg',
 };
 
 const TRANSMISSION_MAP: Record<string, Transmission> = {

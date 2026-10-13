@@ -14,7 +14,7 @@
     "check": "astro check",
     "test": "vitest run",
     "test:watch": "vitest",
-    "sync": "node --experimental-strip-types scripts/sync/index.ts",
+    "sync": "node --experimental-strip-types --env-file-if-exists=.env scripts/sync/index.ts",
     "fixtures": "node --experimental-strip-types scripts/sync/fetch-fixtures.ts",
     "open-points": "node --experimental-strip-types scripts/open-points.ts",
     "i18n:review": "node --experimental-strip-types scripts/i18n-review.ts",

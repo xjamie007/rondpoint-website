@@ -41,10 +41,17 @@ jobs:
 
       - run: npm ci
 
-      - name: Bestand abgleichen (LuxAuto, Ersatz AutoScout24)
+      # Quelle: MovingCar-API, sobald das Secret MOVINGCAR_API_KEY gesetzt ist;
+      # sonst wie bisher LuxAuto mit AutoScout24 als Ersatz.
+      - name: Bestand abgleichen (MovingCar)
         id: sync
         if: github.event_name != 'push'
         continue-on-error: true
+        env:
+          MOVINGCAR_API_KEY: ${{ secrets.MOVINGCAR_API_KEY }}
+          MOVINGCAR_AUTH: ${{ vars.MOVINGCAR_AUTH }}
+          MOVINGCAR_PARTNER_ID: ${{ vars.MOVINGCAR_PARTNER_ID }}
+          MOVINGCAR_VEHICLES: ${{ vars.MOVINGCAR_VEHICLES }}
         run: npm run sync
 
       - name: Tests

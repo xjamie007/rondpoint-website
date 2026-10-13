@@ -1,0 +1,10 @@
+{
+  "_data": {
+    "nbannonces": "3",
+    "annonces": [
+      { "id": "111", "slug": "renault-clio-111", "reference_interne": "141314", "statut": "en-ligne", "id_partenaire": "30", "id_vehicule": "1", "id_categorie": "1", "type_vehicule": "occasion", "marque": "Renault", "id_marque": "126", "modele": "Clio", "id_modele": "2631", "type": "1.5 dCi 90 Energy Intens", "immat": "06-11-2017", "km": "15000", "prix": "16000", "prix_professionnel": "15500", "prix_barre": "18660", "tva": "oui", "carburant": "diesel", "transmission": "manuelle", "cv": "90", "kw": "66", "nb_photos": "2", "photo": "https://webfiles.movingcar.lu/annonces/1600x1200/111-a.jpg", "photos": ["https://webfiles.movingcar.lu/annonces/1600x1200/111-a.jpg", "https://webfiles.movingcar.lu/annonces/1600x1200/111-b.jpg"], "selection": "oui" },
+      { "id": "334", "slug": "audi-a1-334", "reference_interne": "", "statut": "reserve", "id_partenaire": "30", "id_vehicule": "1", "id_categorie": "7", "type_vehicule": "neuf", "marque": "Audi", "id_marque": "12", "modele": "Q3", "id_modele": "146", "type": "Sportback 35 TFSI", "immat": "", "km": "10", "prix": "42900", "tva": "non", "carburant": "hybride-essence", "transmission": "automatique", "cv": "150", "kw": "110", "nb_photos": "1", "photo": "https://webfiles.movingcar.lu/annonces/1600x1200/334-a.jpg", "photos": ["https://webfiles.movingcar.lu/annonces/1600x1200/334-a.jpg"] },
+      { "id": "500", "reference_interne": "", "statut": "en-ligne", "id_vehicule": "3", "id_categorie": "9", "type_vehicule": "occasion", "marque": "Renault", "modele": "Master", "type": "", "immat": "01-03-2020", "km": "80000", "prix": "0", "tva": "oui", "carburant": "diesel", "transmission": "manuelle", "cv": "130", "kw": "96" }
+    ]
+  }
+}

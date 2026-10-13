@@ -22,9 +22,9 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   image: {
-    // Fotos der Inserate werden beim Build von den Portalen geholt und in
+    // Fotos der Inserate werden beim Build von MovingCar (früher von den Portalen) geholt und in
     // AVIF/WebP umgerechnet. Keine Fotos im Repository (T2.10).
-    domains: ['static.prd.luxauto.lu', 'prod.pictures.autoscout24.net'],
+    domains: ['webfiles.movingcar.lu', 'static.prd.luxauto.lu', 'prod.pictures.autoscout24.net'],
   },
   prefetch: false,
   devToolbar: { enabled: false },

@@ -1,7 +1,8 @@
 /**
  * Täglicher Bestand-Abgleich (T2). Aufruf: npm run sync [-- --dry-run]
  *
- * Ablauf: robots.txt → LuxAuto → (bei Fehler) AutoScout24 → Sicherungen →
+ * Ablauf: MovingCar-API (wenn MOVINGCAR_API_KEY gesetzt ist), sonst robots.txt → LuxAuto →
+ * (bei Fehler) AutoScout24 → Sicherungen →
  * Lebenslauf → stock.json (nur bei Änderung) + sync-status.json (immer).
  * Bei Abbruch bleibt stock.json unverändert, der Prozess endet mit Code 1
  * und schreibt sync-report.md für das GitHub-Issue.
@@ -21,6 +22,7 @@ import { PoliteClient, type HttpClient } from './http.ts';
 import { luxautoAdapter } from './sources/luxauto.ts';
 import { autoscoutAdapter, AS24_ORIGIN, fetchDealer } from './sources/autoscout24.ts';
 import type { SourceAdapter, SourceResult } from './sources/types.ts';
+import { movingCarAdapter, movingCarConfigFromEnv } from './sources/movingcar.ts';
 import { guardReason, GuardError } from './guards.ts';
 import { mergeStock, type Changes } from './lifecycle.ts';
 import { crossCheck } from './crosscheck.ts';
@@ -59,6 +61,12 @@ function summary(today: string, changes: Changes, vehicles: Vehicle[], source: s
   ].join('\n');
 }
 
+/** MovingCar allein, sobald der Zugang eingerichtet ist; sonst die öffentlichen Portale */
+export function defaultAdapters(env: Record<string, string | undefined> = process.env): SourceAdapter[] {
+  const mc = movingCarConfigFromEnv(env);
+  return mc ? [movingCarAdapter(mc)] : [luxautoAdapter, autoscoutAdapter];
+}
+
 export interface SyncInput {
   client: HttpClient;
   previous: StockFile;
@@ -87,10 +95,12 @@ export async function runSync(input: SyncInput): Promise<SyncOutput> {
   const errors: string[] = [];
   let result: SourceResult | null = null;
 
-  for (const adapter of input.adapters ?? [luxautoAdapter, autoscoutAdapter]) {
+  for (const adapter of input.adapters ?? defaultAdapters()) {
     try {
-      log(`Quelle ${adapter.name}: robots.txt prüfen`);
-      await client.loadRobots(adapter.origin);
+      if (adapter.robots !== false) {
+        log(`Quelle ${adapter.name}: robots.txt prüfen`);
+        await client.loadRobots(adapter.origin);
+      } else log(`Quelle ${adapter.name}`);
       const r = await adapter.fetchAll(client, log);
       const reason = guardReason({ previousCount, valid: r.listings.length, invalid: r.invalid.length });
       if (reason) throw new GuardError(reason);
@@ -135,7 +145,7 @@ export async function runSync(input: SyncInput): Promise<SyncOutput> {
     } catch (err) {
       warnings.push(`Vergleich mit AutoScout24 nicht möglich: ${(err as Error).message}`);
     }
-  } else if (result.source !== 'luxauto') {
+  } else if (result.source === 'autoscout24') {
     warnings.push(`LuxAuto gescheitert, Ersatzquelle AutoScout24 benutzt: ${errors.join(' | ')}`);
   }
 

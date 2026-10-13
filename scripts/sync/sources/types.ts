@@ -7,7 +7,7 @@ export interface ParsedListing {
 }
 
 export interface SourceResult {
-  source: 'luxauto' | 'autoscout24';
+  source: 'movingcar' | 'luxauto' | 'autoscout24';
   /** gültige, geprüfte Inserate */
   listings: Listing[];
   /** Anzahl der gefundenen Inserats-Links */
@@ -18,8 +18,10 @@ export interface SourceResult {
 }
 
 export interface SourceAdapter {
-  readonly name: 'luxauto' | 'autoscout24';
+  readonly name: 'movingcar' | 'luxauto' | 'autoscout24';
   readonly origin: string;
+  /** robots.txt laden? (nein bei einer offiziellen API mit Zugangsschlüssel) */
+  readonly robots?: boolean;
   fetchAll(client: HttpClient, log: (msg: string) => void): Promise<SourceResult>;
 }
 

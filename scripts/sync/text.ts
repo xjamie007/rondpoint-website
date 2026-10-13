@@ -70,12 +70,14 @@ export function cleanDescription(lines: string[]): DescriptionBlock[] {
   return blocks;
 }
 
-/** HTML-Beschreibung (AutoScout24) in Zeilen reinen Texts zerlegen. */
+/** HTML-Beschreibung (MovingCar, AutoScout24) in Zeilen reinen Texts zerlegen. */
 export function htmlToLines(html: string): string[] {
   return html
     .replace(/<\s*br\s*\/?>/gi, '\n')
     .replace(/<\s*li[^>]*>/gi, '\n• ')
-    .replace(/<\/\s*(p|div|li|ul|ol|h\d)\s*>/gi, '\n')
+    // </li> ohne Zeilenumbruch: das nächste <li> beginnt ohnehin eine neue Zeile, sonst zerfällt die Liste
+    .replace(/<\/\s*li\s*>/gi, '')
+    .replace(/<\/\s*(p|div|ul|ol|h\d)\s*>/gi, '\n')
     .replace(/<[^>]+>/g, '')
     .replace(/&nbsp;/g, ' ')
     .replace(/&amp;/g, '&')

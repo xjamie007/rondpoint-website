@@ -10,3 +10,7 @@ fonts-src/archivo-sub.ttf
 .DS_Store
 .claude/
 deno.lock
+
+# Zugangsdaten MovingCar (nie ins Repository)
+requete_movingcar*
+*movingcar*.txt

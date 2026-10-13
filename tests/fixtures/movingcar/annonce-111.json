@@ -1,0 +1,9 @@
+{ "_data": { "partenaire": { "id_partenaire": "30", "garage": "Garage Um Rond Point" }, "annonce": {
+  "id": "111", "reference_interne": "141314", "statut": "en-ligne", "id_vehicule": "1", "id_categorie": "1", "type_vehicule": "occasion",
+  "marque": "Renault", "modele": "Clio", "type": "1.5 dCi 90 Energy Intens", "immat": "06-11-2017", "km": "15000", "prix": "16000", "tva": "oui", "en_stock": "oui",
+  "description": "<p>Véhicule collaborateur, kilométrage évolutif.</p><ul><li>Carnet d'entretien</li><li>2 clés</li></ul><p>Réf interne : 141314</p>",
+  "photos": ["https://webfiles.movingcar.lu/annonces/1600x1200/111-a.jpg", "https://webfiles.movingcar.lu/annonces/1600x1200/111-b.jpg"],
+  "equipements": ["regulateur_de_vitesse", "isofix"], "equipements_fr": ["Climatisation automatique", "Isofix", "Régulateur de vitesse"],
+  "annee_modele": "2017", "carburant": "diesel", "classe_emission": "euro-6d-temp", "co2_wltp": "122", "conso_mixte_wltp": "4.8",
+  "couleur_carrosserie": "Noir", "couleur_interieur": "Gris", "cv": "90", "cylindree": "1461", "kw": "66", "place": "5", "porte": "5", "transmission": "manuelle"
+} } }

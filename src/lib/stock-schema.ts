@@ -40,8 +40,8 @@ export const photoSchema = z.object({
 
 /** Das, was eine Quelle liefert – ohne Lebenslauf. */
 export const listingSchema = z.object({
-  stableId: z.string().regex(/^(r\d+|lx\d+|as[0-9a-f-]+)$/),
-  source: z.enum(['luxauto', 'autoscout24']),
+  stableId: z.string().regex(/^(r\d+|lx\d+|mc\d+|as[0-9a-f-]+)$/),
+  source: z.enum(['movingcar', 'luxauto', 'autoscout24']),
   sourceId: z.string().min(1),
   sourceUrl: z.url({ protocol: /^https$/ }),
 
@@ -100,7 +100,7 @@ export const syncStatusSchema = z.object({
   lastSuccess: z.string().nullable(),
   lastRun: z.string().nullable(),
   status: z.enum(['ok', 'error', 'never']),
-  source: z.enum(['luxauto', 'autoscout24']).nullable(),
+  source: z.enum(['movingcar', 'luxauto', 'autoscout24']).nullable(),
   count: z.number().int().min(0),
   warnings: z.array(z.string()),
   error: z.string().nullable().optional(),
