@@ -40,10 +40,13 @@ const {
   class: cls,
 } = Astro.props;
 const preview = photo.contain ? '' : await lqip(photo.file);
+// Foto-Platz für den Editor auf der Seite (src/edit/), z. B. „hero-workshop"
+const slot = photo.file.split('/').pop()!.replace(/\.\w+$/, '');
 ---
 <figure
   class:list={['ph', photo.contain && 'ph-contain', reveal && 'reveal-img', settle && 'settle', curtain && 'ph-curtain', accent && 'ph-accent', parallax && 'ph-parallax', cls]}
   style={`aspect-ratio: ${ratio}`}
+  data-eimg={slot}
 >
   {preview && <span class="ph-lqip" aria-hidden="true" style={`background-image: url(${preview}); background-position: ${position}`} />}
   <Picture

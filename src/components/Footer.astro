@@ -4,7 +4,7 @@
  */
 import LangSwitch from './LangSwitch.astro';
 import { rich, type Dict } from '@/i18n';
-import { path, withBase, type Lang } from '@/i18n/config';
+import { path, type Lang } from '@/i18n/config';
 import { showOpenPoints, site, telHref, whatsappHref, phoneText, whatsappText } from '@/lib/site';
 import { hoursSummary } from '@/lib/content';
 import Logo from './Logo.astro';
@@ -63,7 +63,7 @@ const hoursShort = hoursSummary(t, lang);
       <ul class="links">
         <li><a href={path(lang, 'legal')}>{t.footer.legal}</a></li>
         <li><a href={path(lang, 'privacy')}>{t.footer.privacy}</a></li>
-        <li><a class="login" href={withBase('/admin/')} rel="nofollow">Login</a></li>
+        <li><a class="login" href="#login" data-ed-login rel="nofollow">Login</a></li>
       </ul>
       <LangSwitch lang={lang} alternates={alternates} label={t.nav.langLabel} tone="dark" uid="footer" />
     </div>

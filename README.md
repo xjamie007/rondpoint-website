@@ -254,9 +254,9 @@ Der Workflow `.github/workflows/stock-sync.yml` baut die Website bei jedem Push 
 
 ## Admin-Dashboard (`/admin/`)
 
-**Derzeit gesperrt:** `src/content/site.json` → `admin.enabled: false`. Dann zeigt `/admin/` nur eine „Am Opbau“-Seite, und `/admin/data.json` enthält keine Daten. Zum Freischalten auf `true` setzen. Der Link „Login“ im Footer bleibt.
+**Derzeit gesperrt:** `src/content/site.json` → `admin.enabled: false`. Dann zeigt `/admin/` nur eine „Am Opbau“-Seite, und `/admin/data.json` enthält keine Daten. Zum Freischalten auf `true` setzen. Der Link „Login“ im Footer öffnet inzwischen den Admin-Bereich direkt auf der Seite (siehe unten), das Dashboard bleibt unter `/admin/` erreichbar.
 
-Die Garage pflegt ihre Website selbst, im Browser auf Handy oder Computer. Erreichbar ist es über den Link „Login“ unten im Footer oder direkt unter `/admin/`. Die Oberfläche gibt es auf Deutsch und Französisch.
+Die Garage pflegt ihre Website selbst, im Browser auf Handy oder Computer. Erreichbar ist es direkt unter `/admin/`. Die Oberfläche gibt es auf Deutsch und Französisch.
 
 **Was man ändern kann**
 - **Öffnungszeiten:** zwei Zeitfenster pro Tag. Website, Footer, FAQ-Antworten und Google-Daten übernehmen sie automatisch.
@@ -283,6 +283,27 @@ Die Garage pflegt ihre Website selbst, im Browser auf Handy oder Computer. Errei
 Ohne Schlüssel kann niemand speichern. Die Seite `/admin/` ist für Suchmaschinen gesperrt (`noindex`, `robots.txt`), und ihre Content-Security-Policy erlaubt Anfragen nur an die eigene Seite und an `api.github.com`.
 
 **Demo:** „Demo ansehen“ auf der Anmeldeseite zeigt alles mit den Daten des letzten Builds. Änderungen bleiben in diesem Browser, für Präsentationen beim Kunden.
+
+## Admin-Bereich direkt auf der Seite (Login im Footer)
+
+Wie bei der Krombach-Demo: Der unauffällige Link „Login“ neben „Mentions légales“ öffnet ein Anmeldefenster mit Benutzername und Passwort. Danach wird direkt auf der Seite bearbeitet, auf Handy und Computer. Ohne Login sieht die Seite genau so aus wie gebaut. Besucher laden nur einen kleinen Starter (`src/edit/boot.ts`), der Editor selbst kommt erst nach dem Login.
+
+**Was man ändern kann**
+- **Texte:** antippen und lostippen, auf jeder Seite und in jeder Sprache (Sprache unter „Seiten“ wechseln). Texte mit Telefonnummer, Adresse oder Link öffnen ein kleines Fenster, damit diese Teile erhalten bleiben.
+- **Bilder:** antippen → „Foto aus Galerie“ oder „Foto aufnehmen“. Das Foto wird auf 2400 px verkleinert. Dort auch Bildbeschreibung, Ausblenden und Original-Bild.
+- **Listen** (Aufzählungen, Ablauf-Schritte, Absätze): einen Eintrag antippen → ↑ ↓ Kopieren Löschen.
+- **Google:** Titel und Beschreibung der Seite mit Zeichenzähler und Vorschau, dazu alle Bildbeschreibungen der Seite.
+- Unten: **Speichern · Rückgängig · Seiten · Google · Mehr** („Mehr“: Kurzanleitung, Seite oder ganze Website auf Original zurücksetzen, Abmelden). Nicht gespeicherte Änderungen bleiben beim Seitenwechsel erhalten.
+
+**Nicht hier:** Öffnungszeiten, Kontaktdaten, Mietflotte und der Fahrzeugbestand sind Daten, keine Texte (Dashboard bzw. MovingCar).
+
+**Aufbau** (`src/edit/`)
+- `storage.ts` – **Speichern & Login, die einzige Stelle, die später ausgetauscht wird.** In der Demo (`storage: 'demo'`) bleibt alles im Browser (IndexedDB), der Login vergleicht nur einen SHA-256-Hash. Für den Betrieb auf einem Webspace wird `storage: 'server'` gesetzt; die Datei beschreibt den Vertrag für eine kleine `api.php`. Der Rest der Seite bleibt dabei unverändert.
+- `match.ts` – ordnet sichtbaren Text seinem Schlüssel in `src/i18n/<sprache>.ts` zu (getestet in `tests/edit.test.ts`).
+- `editor.ts`, `editor.css` – Bedienoberfläche und Anwenden der Änderungen.
+- Format der Änderungen: `texts` entspricht `src/content/texts.json`, `lists` enthält geänderte Listen als Ganzes, `photos` die Foto-Plätze aus `Photo.astro` (`data-eimg`).
+
+**Demo-Zugang:** Benutzername `rondpoint`, Passwort bei Nave (steht nicht im Repository). Der Login ist nur für die Vorführung gedacht, kein echter Schutz: Änderungen bleiben ohnehin im Browser der Person, die sie macht.
 
 ## Formulare ohne Supabase
 

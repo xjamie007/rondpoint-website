@@ -22,14 +22,8 @@ import { PHOTO_KEYS, photo, fleetPhoto } from '@/lib/photos';
 import { activeCars } from '@/lib/stock';
 import { CATEGORIES, CARGO } from '@/content.config';
 import { groupKeys } from '@/lib/text-groups';
+import { flatten, type Flat } from '@/edit/match';
 
-type Flat = Record<string, string>;
-function flatten(o: unknown, pre = '', out: Flat = {}): Flat {
-  if (typeof o === 'string') out[pre] = o;
-  else if (Array.isArray(o)) o.forEach((v, i) => flatten(v, `${pre}.${i}`, out));
-  else if (o && typeof o === 'object') for (const [k, v] of Object.entries(o)) flatten(v, pre ? `${pre}.${k}` : k, out);
-  return out;
-}
 
 export const GET: APIRoute = async () => {
   // Dashboard gesperrt (site.json → admin.enabled): keine Daten veröffentlichen
