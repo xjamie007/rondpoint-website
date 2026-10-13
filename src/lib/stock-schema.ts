@@ -74,6 +74,9 @@ export const listingSchema = z.object({
   priceEur: z.number().int().positive().max(5_000_000),
   vatRecoverable: z.boolean(),
   options: z.array(z.string().min(1).max(200)),
+  /** Ausstattung auf Deutsch / Englisch (MovingCar liefert sie übersetzt) */
+  optionsDe: z.array(z.string().min(1).max(200)).optional(),
+  optionsEn: z.array(z.string().min(1).max(200)).optional(),
   description: z.array(descriptionBlockSchema),
   photos: z.array(photoSchema),
   garageRef: z.string().regex(/^\d+$/).nullable(),

@@ -746,7 +746,7 @@ const pt: Dict = {
       'O site está alojado no GitHub Pages, um serviço da GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, Estados Unidos.',
     contentH2: 'Conteúdo',
     content:
-      'Os anúncios de carros reproduzem os nossos próprios anúncios publicados no LuxAuto e no AutoScout24. Os preços e as características podem mudar; só a oferta confirmada na garagem é vinculativa.',
+      'Os anúncios de carros vêm da nossa gestão de stock MovingCar, tal como os nossos anúncios no LuxAuto e no AutoScout24. Os preços e as características podem mudar; só a oferta confirmada na garagem é vinculativa.',
     photosH2: 'Fotos e planta',
     photos: 'Planta da rotunda desenhada a partir dos dados do OpenStreetMap (© contribuidores do OpenStreetMap, licença ODbL). Fotos dos carros: os nossos próprios anúncios.',
     fontH2: 'Tipo de letra',

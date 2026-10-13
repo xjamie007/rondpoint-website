@@ -3,7 +3,7 @@
 Die Website der Garage Um Rond Point am Kreisel in Erpeldange-sur-Sûre, in fünf Sprachen (FR Standard, LB, DE, EN, PT). Sie hat drei Besonderheiten:
 
 - **„Quelle remorque ?"**: ein Anhänger-Finder mit Führerschein-Check und maßstäblichen Ladeflächen-Zeichnungen
-- **Fahrzeugbestand**: kommt jeden Morgen automatisch von LuxAuto, AutoScout24 dient als Ersatz
+- **Fahrzeugbestand**: kommt jeden Morgen automatisch aus MovingCar (Bestandsverwaltung der Garage, offizielle API)
 - **Formulare**: gehen an eine Supabase Edge Function in der EU
 
 Offene Punkte stehen in [`OFFENE-PUNKTE.md`](OFFENE-PUNKTE.md), die Texte zur Prüfung durch Muttersprachler in [`I18N-REVIEW.md`](I18N-REVIEW.md).
@@ -74,7 +74,7 @@ src/
   data/sync-status.json          Stand des letzten Abgleichs
   data/vehicle-overrides.json    Ergänzungen von Hand (WLTP, ausblenden)
   data/map.json                  Kreisel-Geometrie aus OpenStreetMap
-scripts/sync/                    der tägliche Abgleich (LuxAuto, AutoScout24)
+scripts/sync/                    der tägliche Abgleich (MovingCar)
 supabase/                        Edge Function und Migration
 tests/                           Vitest + Fixtures
 ```
@@ -91,42 +91,49 @@ tests/                           Vitest + Fixtures
   ```
   Mit `"hide": true` verschwindet ein Auto, mit `"condition": "new"` wird es als Neuwagen geführt.
 
-## Bestand-Abgleich
+## Bestand-Abgleich (MovingCar)
 
-`.github/workflows/stock-sync.yml` läuft jeden Morgen um 04:17 UTC, das ist 06:17 Uhr Luxemburger Sommerzeit und 05:17 Uhr Winterzeit. Er lädt `robots.txt`, dann die LuxAuto-Garagenseite mit allen Unterseiten und jedes Inserat. Danach prüft er die Daten, schreibt `src/data/stock.json` (nur bei Änderung) und **immer** `sync-status.json`, baut die Seite und veröffentlicht sie.
+Quelle ist die **MovingCar-API**, die Bestandsverwaltung der Garage (Dokumentation: https://api.movingcar.lu/fr/webservices). MovingCar verteilt die Inserate auch an LuxAuto und AutoScout24. Die Website liest sie direkt an der Quelle, nicht mehr bei den Portalen.
 
-- **Von Hand starten:** GitHub → Actions → „Bestand-Sync und Deploy" → „Run workflow". Lokal geht es mit `npm run sync`; mit `npm run sync -- --dry-run` wird nichts geschrieben.
-- **Höflich:** eigener User-Agent `RondPointStockSync/1.0 (+https://www.rondpoint.lu/fr/contact/)`, jede Anfrage wird gegen `robots.txt` geprüft, 2 s Abstand, höchstens 80 Anfragen pro Lauf, Timeout 20 s, zwei Wiederholungen. Bei 403, 429 oder einer Bot-Abfrage wird die Quelle für diesen Lauf aufgegeben; es wird nichts umgangen.
-- **Gelesen wird über sichtbare Labels** („Kilométrage", „Année" …) und über das JSON-LD, nie über CSS-Klassen. Neuwagen erkennt der Parser am Merkmal `vehicule_neuf` im Datenstrom, denn das JSON-LD sagt bei allen Autos „UsedCondition". Für Neuwagen wird keine Erstzulassung gesetzt, weil LuxAuto dort das Einstelldatum zeigt.
-- **Fotos:** LuxAuto-Variante `x` = 2048 × 1536 px, die größte (gemessen am 28.09.2026; `b` = 400 × 300, `r` = 530 × 350). AutoScout24 rechnet die Größe auf Anfrage um, genutzt wird 1920 × 1440.
-- **Plausibilität:** Unplausible Werte wie „1632 CV" werden nicht angezeigt und im Bericht gemeldet, das Auto bleibt im Bestand.
-- **Abgleich mit AutoScout24:** Nach einem erfolgreichen LuxAuto-Lauf wird die AutoScout24-Händlerseite gelesen, das ist eine einzige Anfrage. Der Lauf vergleicht die Anzahl und übernimmt zwei Dinge:
-  - „neu", wenn AutoScout24 ein Auto als Neuwagen führt (wegen der WLTP-Pflicht)
-  - die Karosserie, wenn LuxAuto keine brauchbare liefert („4/5 portes")
+`.github/workflows/stock-sync.yml` läuft jeden Morgen um 04:17 UTC (06:17 Uhr Luxemburger Sommerzeit, 05:17 Uhr Winterzeit). Dabei geschieht Folgendes:
+1. Er lädt die Liste der Inserate (Autos und Nutzfahrzeuge, „en ligne“ und „réservé“).
+2. Er lädt die Details jedes Inserats auf Französisch, Deutsch und Englisch. Die beiden letzten werden nur für die Ausstattung gebraucht.
+3. Er prüft die Daten und schreibt `src/data/stock.json` (nur bei Änderung) und **immer** `sync-status.json`.
+4. Er baut die Seite und veröffentlicht sie.
 
-  Das geht über das Briefing hinaus, das AutoScout24 nur als Ersatz und zum Zählen vorsieht.
-- **Stabile Kennung:** `stableId = "r" + Ref Interne` aus der Beschreibung (in beiden Portalen gleich), sonst `lx…`/`as…`. Die URL eines Autos ändert sich nie, solange es existiert.
+- **Zugang:**
+  - HTTP-Basic mit Benutzer und Passwort, die die Garage von MovingCar bekommen hat.
+  - Auf GitHub liegen sie als Secret `MOVINGCAR_API_KEY` („benutzer:passwort“), dazu die Variable `MOVINGCAR_AUTH` = `basic`.
+  - Lokal stehen sie in `.env`. Die Datei ist von Git ausgeschlossen, ebenso `requete_movingcar*`.
+  - Optionale Variablen: `MOVINGCAR_PARTNER_ID` (der Zugang sieht heute nur den Partner 182) und `MOVINGCAR_VEHICLES` (Standard `1_3` = Voiture + Utilitaire, z. B. `1_3_12` mit Anhängern).
+- **Von Hand starten:** GitHub → Actions → „Bestand-Sync und Deploy“ → „Run workflow“. Lokal geht es mit `npm run sync`; mit `npm run sync -- --dry-run` wird nichts geschrieben.
+- **Daten:**
+  - Preis, km, Erstzulassung, Kraftstoff, Getriebe, Leistung, Hubraum, Karosserie, Sitze und Farben
+  - WLTP-Verbrauch und CO₂ (wenn in MovingCar eingetragen), Abgasnorm
+  - Beschreibung, nur als Text, HTML wird nie übernommen
+  - Ausstattung auf FR, DE und EN
+  - Fotos in 1600 × 1200
+- **Stabile Kennung:** `stableId = "r" + interne Referenz`. Die MovingCar-ID ist genau die Referenz, die auch auf LuxAuto als „Ref Interne“ stand, deshalb haben die Autoseiten beim Wechsel auf MovingCar ihre Adressen behalten. Die URL eines Autos ändert sich nie, solange es existiert.
+- **Neuwagen:** MovingCar trägt bei Neuwagen ein Platzhalter-Zulassungsdatum ein. Die Seite zeigt „—“ statt einer Erstzulassung.
+- **Plausibilität:** Unplausible Werte wie „1632 CV“ oder „1200 kW“ werden nicht angezeigt und im Bericht gemeldet, das Auto bleibt im Bestand.
 - **Lebenslauf:**
   - neu → `active`
-  - fehlt → `unavailable`: Die Seite bleibt mit `noindex` und „vendue", das Auto verschwindet aus Liste und Sitemap.
-  - nach 14 Tagen → entfernt, der Pfad liefert die 404
+  - fehlt → `unavailable`: Die Seite bleibt mit `noindex` und „vendue“, das Auto verschwindet aus Liste und Sitemap.
+  - nach 14 Tagen → entfernt, der Pfad liefert 404
   - taucht wieder auf → wieder `active` unter derselben URL
-- **Sicherungen – lieber gestern als falsch:** Der Lauf bricht ab, wenn mehr als 30 % der Inserate ungültig sind, wenn er 0 Autos findet oder wenn die Anzahl um mehr als 50 % fällt (sofern vorher mindestens 4 da waren). Dann passiert Folgendes:
+- **Sicherungen – lieber gestern als falsch:** Der Lauf bricht ab, wenn die Anmeldung fehlschlägt, wenn mehr als 30 % der Inserate ungültig sind, wenn er 0 Autos findet oder wenn die Anzahl um mehr als 50 % fällt (sofern vorher mindestens 4 da waren). Dann passiert Folgendes:
   - `stock.json` bleibt unverändert.
   - `sync-status.json` bekommt `status: "error"`.
-  - Ein Issue „Bestand-Sync fehlgeschlagen" wird angelegt oder ergänzt.
+  - Ein Issue „Bestand-Sync fehlgeschlagen“ wird angelegt oder ergänzt.
   - Es wird nicht deployt, und der Job endet mit Fehler (GitHub schickt eine Mail).
 - **60-Tage-Regel:** GitHub schaltet geplante Workflows in öffentlichen Repositories nach 60 Tagen ohne Aktivität ab. Der tägliche Commit von `sync-status.json` hält das Repository aktiv.
-- **Statuszeile:** Im HTML steht immer das echte Datum („mise à jour le 28 septembre 2026 à 06:17"). Ein kleines Skript macht daraus „aujourd'hui"/„hier", aber nur, wenn der Abgleich höchstens 36 Stunden alt ist.
+- **Statuszeile:** Im HTML steht immer das echte Datum („mise à jour le 13 octobre 2026 à 06:17“). Ein kleines Skript macht daraus „aujourd'hui“/„hier“, aber nur, wenn der Abgleich höchstens 36 Stunden alt ist.
 
-### Wenn LuxAuto das Layout ändert
+**Tests:**
+- `tests/movingcar.test.ts` prüft die Umwandlung mit den Beispieldaten der MovingCar-Dokumentation.
+- `tests/sync-run.test.ts` spielt ganze Läufe gegen eine nachgebildete API durch: den normalen Lauf, ein verschwundenes Auto, eine abgelehnte Anmeldung (Abbruch, Seite unverändert) und einen Einbruch der Anzahl (Abbruch).
 
-1. `npm run fixtures` holt die Garagenseite, das Referenzinserat 1930044 und die AutoScout24-Händlerseite neu nach `tests/fixtures/`. Weitere Inserate gehen mit `npm run fixtures -- 1931062 1916354`.
-2. `npm test` zeigt, welche Parser-Tests scheitern.
-3. Den Parser in `scripts/sync/sources/luxauto.ts` anpassen, nie die Erwartungen in den Tests an einen kaputten Parser.
-4. `npm run sync -- --dry-run` gegen die echten Seiten laufen lassen, danach committen.
-
-`tests/sync-run.test.ts` spielt ganze Läufe mit Fixtures durch: den normalen Lauf, ein verschwundenes Auto, ein kaputtes Layout (Abbruch, Seite unverändert) und einen Einbruch der Anzahl (Abbruch).
+**Alter Portal-Abgleich:** `scripts/sync/sources/luxauto.ts` und `autoscout24.ts` (mit `http.ts`, `robots.ts`, `crosscheck.ts`, `fetch-fixtures.ts` und ihren Tests) werden nicht mehr benutzt. Sie können gelöscht werden.
 
 ## Formulare
 
@@ -199,8 +206,8 @@ Archivo stammt aus dem offiziellen Repository (github.com/Omnibus-Type/Archivo),
 ## Entscheidungen und Abweichungen vom Briefing
 
 - **Zahlenformat Französisch:** `fr` statt `fr-LU`. CLDR setzt für fr-LU den Punkt („29.280"), gewünscht ist „29 280 €".
-- **AutoScout24 im Normalbetrieb:** Außer dem Zählen übernimmt der Abgleich von AutoScout24 den Zustand „neu" und fehlende Karosserien, siehe oben. Beides ist vorsichtiger als die LuxAuto-Daten allein.
-- **Neuwagen ohne Erstzulassung:** LuxAuto zeigt bei Neuwagen unter „Année" das Einstelldatum. Die Seite schreibt dort „—" statt eines falschen Datums.
+- **MovingCar statt Portale (13.10.2026):** Der Bestand kommt direkt aus der Bestandsverwaltung der Garage, nicht mehr von LuxAuto oder AutoScout24. Daten und Fotos stammen von der Garage selbst, und die Ausstattung gibt es auf Französisch, Deutsch und Englisch. Für Lëtzebuergesch und Portugiesisch zeigt die Seite die französische Liste mit Hinweis.
+- **Neuwagen ohne Erstzulassung:** MovingCar trägt bei Neuwagen ein Platzhalter-Datum ein. Die Seite schreibt dort „—" statt eines falschen Datums.
 - **Plausibilitätsprüfung:** Unplausible Leistungs- und Hubraumwerte werden verworfen, das Auto aber nicht übersprungen. So verschwindet ein Oldtimer nicht wegen eines Tippfehlers.
 - **„aujourd'hui" per Skript:** Eine statische Seite, die „aujourd'hui" fest ins HTML schreibt, ist am nächsten Tag falsch, wenn ein Lauf scheitert. Deshalb steht das echte Datum im HTML, und JavaScript ersetzt es nur innerhalb von 36 Stunden.
 - **Heute in der Öffnungszeiten-Tabelle:** wird aus demselben Grund im Browser markiert, nicht im Build.

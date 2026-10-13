@@ -2,9 +2,9 @@
 
 Stand: 08.10.2026, Recherche von Nave. Bestätigt ist nur, was eine Quelle hat. Alles andere ist als Annahme markiert.
 
-## Heute
+## Heute (13.10.2026)
 
-`scripts/sync/` liest jeden Morgen die öffentlichen Inserate der Garage auf LuxAuto, mit AutoScout24 als Ersatz. Diese Inserate stammen aus MovingCar, die Website zeigt also schon den MovingCar-Bestand, nur auf einem Umweg.
+**MovingCar ist angebunden.** Die Garage hat einen Zugang bekommen (HTTP-Basic, Partner 182). `scripts/sync/sources/movingcar.ts` liest jeden Morgen Liste und Details über die offizielle API, siehe README → „Bestand-Abgleich“. LuxAuto und AutoScout24 werden nicht mehr ausgelesen. **RCU** ist offen und wartet auf Kontakt und Unterlagen.
 
 ## MovingCar (movingcar.lu)
 

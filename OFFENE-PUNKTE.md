@@ -21,6 +21,13 @@ Für den Kundentermin ist `presentation: true` in `src/content/site.json` gesetz
 - Die Vektordatei des Logos besorgen.
 - Die Kunden-Freigabe für das Logo auf der Website einholen, falls nötig.
 
+## Stand 13.10.2026: Bestand aus MovingCar
+
+Der Abgleich liest den Bestand jetzt über die offizielle MovingCar-API, mit dem Zugang der Garage. LuxAuto und AutoScout24 werden nicht mehr ausgelesen. Damit sind die Punkte **1** (Einverständnis für die Übernahme der Portal-Inserate) und **2** (Nutzungsbedingungen der Portale) erledigt. Die Daten kommen von der Garage selbst über ihren Dienstleister. Die Punkte 32–35 („bitte in LuxAuto korrigieren“) gelten jetzt für **MovingCar**:
+- Beim Austin-Healey (141522) stehen auch in MovingCar 1632 CV, 1200 kW und 21912 cm³. Die Website blendet diese Werte aus.
+- **WLTP bei Neuwagen:** MovingCar hat Felder für Verbrauch und CO₂ (WLTP), sie sind bei den Neuwagen aber leer (Ausnahme: CO₂ beim Touareg). Trägt die Garage sie in MovingCar ein, erscheinen sie automatisch auf der Website. Das erledigt Punkt 3.
+- **RCU** (Autos auf Bestellung): wartet auf Kontakt und Unterlagen, siehe `API-ANFRAGEN.md`.
+
 ## Stand 07.10.2026: Dashboard, Texte, Formulare
 
 - **Admin-Dashboard** unter `/admin/` (Link „Login“ im Footer). Für den echten Betrieb braucht die Garage einen Zugangsschlüssel. Nave erstellt ihn, die Anleitung steht im README unter „Admin-Dashboard“. Ohne Schlüssel läuft nur die Demo.

@@ -73,6 +73,9 @@ export function cleanDescription(lines: string[]): DescriptionBlock[] {
 /** HTML-Beschreibung (MovingCar, AutoScout24) in Zeilen reinen Texts zerlegen. */
 export function htmlToLines(html: string): string[] {
   return html
+    // Absätze innerhalb von Listenpunkten (<li><p>…</p></li>, so liefert MovingCar) auflösen
+    .replace(/<\s*li([^>]*)>\s*<\s*p[^>]*>/gi, '<li$1>')
+    .replace(/<\/\s*p\s*>\s*<\/\s*li\s*>/gi, '</li>')
     .replace(/<\s*br\s*\/?>/gi, '\n')
     .replace(/<\s*li[^>]*>/gi, '\n• ')
     // </li> ohne Zeilenumbruch: das nächste <li> beginnt ohnehin eine neue Zeile, sonst zerfällt die Liste

@@ -748,7 +748,7 @@ const de: Dict = {
       'Die Website wird von GitHub Pages gehostet, einem Dienst der GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, Vereinigte Staaten.',
     contentH2: 'Inhalt',
     content:
-      'Die Autoanzeigen übernehmen unsere eigenen Anzeigen auf LuxAuto und AutoScout24. Preise und technische Daten können sich ändern; maßgeblich ist allein das in der Garage bestätigte Angebot.',
+      'Die Autoanzeigen stammen aus unserer Bestandsverwaltung MovingCar, wie unsere Anzeigen auf LuxAuto und AutoScout24. Preise und technische Daten können sich ändern; maßgeblich ist allein das in der Garage bestätigte Angebot.',
     photosH2: 'Fotos und Plan',
     photos:
       'Plan des Kreisels gezeichnet nach Daten von OpenStreetMap (© OpenStreetMap-Mitwirkende, Lizenz ODbL). Fotos der Autos: unsere eigenen Anzeigen.',

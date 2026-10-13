@@ -1,20 +1,17 @@
 {
-  "lastSuccess": "2026-10-13T11:53:04.641Z",
-  "lastRun": "2026-10-13T11:53:04.641Z",
+  "lastSuccess": "2026-10-13T17:36:56.383Z",
+  "lastRun": "2026-10-13T17:36:56.383Z",
   "status": "ok",
-  "source": "luxauto",
+  "source": "movingcar",
   "count": 9,
   "warnings": [
-    "lx1931062: Leistung (CV) 1632 ist unplausibel und wird nicht angezeigt",
-    "lx1931062: Hubraum (cm³) 21912 ist unplausibel und wird nicht angezeigt",
-    "lx1930043: unbekannte Karosserie „4/5 portes\"",
-    "lx1869981: unbekannte Karosserie „4/5 portes\"",
-    "r141314: Karosserie „4/5 portes\" von LuxAuto unbrauchbar, von AutoScout24 übernommen („Citadine\")",
-    "r132129: Karosserie „4/5 portes\" von LuxAuto unbrauchbar, von AutoScout24 übernommen („Citadine\")",
+    "r141522: Leistung (CV) 1632 ist unplausibel und wird nicht angezeigt",
+    "r141522: Leistung (kW) 1200 ist unplausibel und wird nicht angezeigt",
+    "r141522: Hubraum (cm³) 21912 ist unplausibel und wird nicht angezeigt",
     "Neuwagen ohne WLTP-Verbrauch/CO₂: r122845 DFSK K01 (dfsk-k01-2026-r122845) – in vehicle-overrides.json ergänzen",
-    "Neuwagen ohne WLTP-Verbrauch/CO₂: r132129 VW T-Roc (vw-t-roc-2026-r132129) – in vehicle-overrides.json ergänzen",
+    "Neuwagen ohne WLTP-Verbrauch/CO₂: r132129 Volkswagen T-Roc (vw-t-roc-2026-r132129) – in vehicle-overrides.json ergänzen",
     "Neuwagen ohne WLTP-Verbrauch/CO₂: r139035 Cupra Terramar (cupra-terramar-2026-r139035) – in vehicle-overrides.json ergänzen",
-    "Neuwagen ohne WLTP-Verbrauch/CO₂: r139047 VW Touareg (vw-touareg-2026-r139047) – in vehicle-overrides.json ergänzen",
+    "Neuwagen ohne WLTP-Verbrauch/CO₂: r139047 Volkswagen Touareg (vw-touareg-2026-r139047) – in vehicle-overrides.json ergänzen",
     "Neuwagen ohne WLTP-Verbrauch/CO₂: r141314 Audi A1 (audi-a1-2026-r141314) – in vehicle-overrides.json ergänzen"
   ],
   "error": null

@@ -57,8 +57,11 @@ const specs: [string, string | null][] = [
   [c.ref, ref],
 ];
 const shownSpecs = specs.filter(([, val]) => val != null) as [string, string][];
-const firstOptions = v.options.slice(0, 12);
-const moreOptions = v.options.slice(12);
+// Ausstattung in der Sprache der Seite, wenn MovingCar sie übersetzt liefert (DE, EN), sonst Französisch
+const optList = lang === 'de' && v.optionsDe?.length ? v.optionsDe : lang === 'en' && v.optionsEn?.length ? v.optionsEn : v.options;
+const optLang = optList === v.options ? 'fr' : lang;
+const firstOptions = optList.slice(0, 12);
+const moreOptions = optList.slice(12);
 const similar = similarCars(v);
 const whatsappText = fmt(c.whatsappText, { make: v.make, model: v.model, id: ref });
 
@@ -158,17 +161,17 @@ const jsonld = [
             )}
           </section>
 
-          {v.options.length > 0 && (
+          {optList.length > 0 && (
             <section class="block" aria-labelledby="equip-h">
               <h2 id="equip-h">{c.equipmentH2}</h2>
-              {lang !== 'fr' && <p class="t-small t-muted">{c.originalListNote}</p>}
-              <ul class="options" lang="fr">
+              {optLang !== lang && <p class="t-small t-muted">{c.originalListNote}</p>}
+              <ul class="options" lang={optLang}>
                 {firstOptions.map((o) => <li>{o}</li>)}
               </ul>
               {moreOptions.length > 0 && (
                 <details class="more">
-                  <summary class="btn btn-secondary">{fmt(c.equipmentMore, { n: v.options.length })}</summary>
-                  <ul class="options" lang="fr">
+                  <summary class="btn btn-secondary">{fmt(c.equipmentMore, { n: optList.length })}</summary>
+                  <ul class="options" lang={optLang}>
                     {moreOptions.map((o) => <li>{o}</li>)}
                   </ul>
                 </details>

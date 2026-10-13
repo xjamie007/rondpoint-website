@@ -11,13 +11,14 @@ const fakeApi = (calls: string[] = []): JsonFetcher => async (url) => {
   calls.push(url);
   if (url.includes('/fr/annonces/')) return fx('annonces.json');
   if (url.includes('/fr/annonce/?id=111')) return fx('annonce-111.json');
+  if (url.includes('/de/annonce/?id=111')) return { _data: { annonce: { equipements_de: ['Tempomat'] } } };
   return { _data: { annonce: null } };
 };
 
 describe('MovingCar: Konfiguration', () => {
-  it('ohne Schlüssel keine MovingCar-Quelle, sonst nur MovingCar', () => {
+  it('nur MovingCar; ohne Schlüssel klarer Fehler statt LuxAuto', () => {
     expect(movingCarConfigFromEnv({})).toBeNull();
-    expect(defaultAdapters({}).map((a) => a.name)).toEqual(['luxauto', 'autoscout24']);
+    expect(() => defaultAdapters({})).toThrow(/MOVINGCAR_API_KEY/);
     expect(defaultAdapters({ MOVINGCAR_API_KEY: 'x' }).map((a) => a.name)).toEqual(['movingcar']);
     expect(movingCarConfigFromEnv({ MOVINGCAR_API_KEY: ' x ', MOVINGCAR_AUTH: 'header:X-Api-Key', MOVINGCAR_PARTNER_ID: '77' })).toEqual({ key: 'x', auth: 'header:X-Api-Key', partnerId: '77', vehicles: '1_3' });
   });
@@ -62,14 +63,37 @@ describe('MovingCar: Umwandlung', () => {
       { kind: 'ul', items: ["Carnet d'entretien", '2 clés'] },
     ]);
   });
-  it('Neuwagen ohne Referenz → mc-Kennung, Hybrid, SUV', () => {
-    const { listing } = mapAnnonce(fx('annonces.json')._data.annonces[1], null);
-    expect(listing).toMatchObject({ stableId: 'mc334', condition: 'new', firstRegistration: null, fuel: 'hybrid', transmission: 'automatic', body: 'suv', garageRef: null });
+  it('ohne eigenes Referenzfeld gilt die MovingCar-ID als Ref Interne; Neuwagen ohne Erstzulassung', () => {
+    const { listing } = mapAnnonce({ ...fx('annonces.json')._data.annonces[1], immat: '01-10-2026' }, null);
+    expect(listing).toMatchObject({ stableId: 'r334', garageRef: '334', condition: 'new', firstRegistration: null, fuel: 'hybrid', transmission: 'automatic', body: 'suv' });
+  });
+  it('unplausible Leistung wird verworfen (z. B. 1200 kW)', () => {
+    const m = mapAnnonce({ ...fx('annonces.json')._data.annonces[0], cv: '1632', kw: '1200' }, null);
+    expect(m.listing).toMatchObject({ powerHp: null, powerKw: null });
+    expect(m.warnings.join(' ')).toMatch(/unplausibel/);
+  });
+  it('Ausstattung auf Deutsch und Englisch', () => {
+    const d = { ...fx('annonce-111.json')._data.annonce, equipements_de: ['Isofix', 'Tempomat'], equipements_en: ['Isofix', 'Cruise control'] };
+    const { listing } = mapAnnonce(fx('annonces.json')._data.annonces[0], d);
+    expect(listing).toMatchObject({ optionsDe: ['Isofix', 'Tempomat'], optionsEn: ['Isofix', 'Cruise control'] });
   });
   it('ohne Preis ungültig', () => {
     const m = mapAnnonce(fx('annonces.json')._data.annonces[2], null);
     expect(m.listing).toBeNull();
     expect(m.invalid).toMatch(/Preis/);
+  });
+});
+
+describe('MovingCar: Beschreibung', () => {
+  it('Listenpunkte mit Absatz (<li><p>…</p></li>) bleiben eine Liste', () => {
+    const d = { ...fx('annonce-111.json')._data.annonce, description: '<p>ÉQUIPEMENTS</p><ul><li><p>DSG</p></li><li><p>4Drive</p></li></ul><br><p>Garantie 5 ans</p>' };
+    const { listing } = mapAnnonce(fx('annonces.json')._data.annonces[0], d);
+    expect(listing!.description).toEqual([
+      { kind: 'p', text: 'ÉQUIPEMENTS' },
+      { kind: 'ul', items: ['DSG', '4Drive'] },
+      { kind: 'p', text: 'Garantie 5 ans' },
+    ]);
+    expect(listing!.colorExterior).toBe('Noir');
   });
 });
 
@@ -79,7 +103,7 @@ describe('MovingCar: ganzer Abruf', () => {
     const r = await fetchMovingCar(cfg, fakeApi(calls), () => {});
     expect(r.source).toBe('movingcar');
     expect(r.found).toBe(3);
-    expect(r.listings.map((l) => l.stableId)).toEqual(['r141314', 'mc334']);
+    expect(r.listings.map((l) => l.stableId)).toEqual(['r141314', 'r334']);
     expect(r.invalid).toHaveLength(1);
     expect(calls[0]).toContain('statut=en-ligne_reserve');
     expect(calls[0]).toContain('v_id=1_3');

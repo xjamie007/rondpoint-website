@@ -748,7 +748,7 @@ const lb: Dict = {
       'D’Websäit gëtt vu GitHub Pages gehost, engem Service vu GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, Vereenegt Staaten.',
     contentH2: 'Inhalt',
     content:
-      'D’Autosannoncen iwwerhuelen eis eegen Annoncen op LuxAuto an AutoScout24. Präisser an technesch Donnéeë kënne sech änneren; verbindlech ass eleng d’Offer, déi an der Garage bestätegt gëtt.',
+      'D’Autosannoncen kommen aus eiser Stockverwaltung MovingCar, sou wéi eis Annoncen op LuxAuto an AutoScout24. Präisser an technesch Donnéeë kënne sech änneren; verbindlech ass eleng d’Offer, déi an der Garage bestätegt gëtt.',
     photosH2: 'Fotoen a Plang',
     photos:
       'Plang vum Rond-point, gezeechent no Date vun OpenStreetMap (© OpenStreetMap-Mataarbechter, Lizenz ODbL). Fotoe vun den Autoen: eis eegen Annoncen.',

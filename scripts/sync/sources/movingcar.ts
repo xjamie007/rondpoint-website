@@ -138,6 +138,12 @@ export function euroLabel(v: unknown): string | null {
   return s.replace(/^euro-/i, 'Euro ').replace(/-temp$/i, '-TEMP');
 }
 
+/** „blanc“ → „Blanc“ (die Seite übersetzt die Farbe, JSON-LD zeigt sie so) */
+const cap = (v: unknown): string | null => {
+  const s = str(v);
+  return s ? s.charAt(0).toLocaleUpperCase('fr') + s.slice(1) : null;
+};
+
 /** „4.8“ → „4,8 l/100 km“ */
 const consumption = (v: unknown): string | null => {
   const n = dec(v);
@@ -155,9 +161,10 @@ export function mapAnnonce(list: Raw, detail: Raw | null): Mapped {
   const a = { ...list, ...(detail ?? {}) };
   const id = str(a.id);
   const warnings: string[] = [];
-  const warn = (m: string) => warnings.push(`mc${id}: ${m}`);
-  const ref = str(a.reference_interne).replace(/^r/i, '');
+  // interne Referenz der Garage: eigenes Feld, sonst die MovingCar-ID (sie steht auf LuxAuto als „Ref Interne“)
+  const ref = str(a.reference_interne).replace(/^r/i, '') || id;
   const stableId = /^\d+$/.test(ref) ? `r${ref}` : `mc${id}`;
+  const warn = (m: string) => warnings.push(`${stableId}: ${m}`);
 
   const price = int(a.prix);
   if (!price) return { listing: null, warnings, invalid: 'kein Preis (prix = 0)' };
@@ -171,7 +178,7 @@ export function mapAnnonce(list: Raw, detail: Raw | null): Mapped {
   const body: Body = vId === '3' ? 'van' : (BODY_BY_CATEGORY[str(a.id_categorie)] ?? 'other');
 
   const hp = plausible(int(a.cv), PLAUSIBLE.powerHp, 'Leistung (CV)', warn);
-  const kw = int(a.kw);
+  const kw = plausible(int(a.kw), [15, 1180], 'Leistung (kW)', warn);
   const cc = plausible(int(a.cylindree), PLAUSIBLE.displacementCc, 'Hubraum (cm³)', warn);
   const seats = plausible(int(a.place), PLAUSIBLE.seats, 'Sitzplätze', warn);
 
@@ -181,7 +188,8 @@ export function mapAnnonce(list: Raw, detail: Raw | null): Mapped {
     return m ? { url, width: Number(m[1]), height: Number(m[2]) } : { url };
   });
 
-  const options = Array.isArray(a.equipements_fr) ? (a.equipements_fr as unknown[]).map(str).filter(Boolean).map((o) => o.slice(0, 200)) : [];
+  const strList = (v: unknown) => (Array.isArray(v) ? (v as unknown[]).map(str).filter(Boolean).map((o) => o.slice(0, 200)) : []);
+  const options = strList(a.equipements_fr);
   const description = cleanDescription(htmlToLines(str(a.description)));
   const co2 = int(a.co2_wltp) ?? int(a.co2);
   const condition = str(a.type_vehicule) === 'neuf' ? 'new' : 'used';
@@ -196,7 +204,8 @@ export function mapAnnonce(list: Raw, detail: Raw | null): Mapped {
     model: str(a.modele),
     version: str(a.type).slice(0, 200),
     condition,
-    firstRegistration: mcMonth(a.immat),
+    // Neuwagen tragen in MovingCar ein Platzhalter-Datum; wie bisher keine Erstzulassung zeigen
+    firstRegistration: condition === 'new' ? null : mcMonth(a.immat),
     modelYear: int(a.annee_modele),
     mileageKm: int(a.km) ?? 0,
     fuel: fuel.value,
@@ -209,14 +218,16 @@ export function mapAnnonce(list: Raw, detail: Raw | null): Mapped {
     body,
     bodyRaw: str(a.id_categorie) || undefined,
     seats,
-    colorExterior: str(a.couleur_carrosserie) || null,
-    colorInterior: str(a.couleur_interieur) || null,
+    colorExterior: cap(a.couleur_carrosserie),
+    colorInterior: cap(a.couleur_interieur),
     co2Gkm: co2,
     wltpConsumption: consumption(a.conso_mixte_wltp),
     euroNorm: euroLabel(a.classe_emission),
     priceEur: price,
     vatRecoverable: str(a.tva) === 'oui',
     options,
+    optionsDe: strList(a.equipements_de),
+    optionsEn: strList(a.equipements_en),
     description,
     photos,
     garageRef: /^\d+$/.test(ref) ? ref : null,
@@ -236,7 +247,12 @@ function data(res: unknown): Raw {
 }
 
 /** Ganzen Bestand laden */
-export async function fetchMovingCar(cfg: MovingCarConfig, fetchJson: JsonFetcher, log: (msg: string) => void): Promise<SourceResult> {
+export async function fetchMovingCar(cfg: MovingCarConfig, fetchApi: JsonFetcher, log: (msg: string) => void): Promise<SourceResult> {
+  let requests = 0;
+  const fetchJson: JsonFetcher = (url) => {
+    requests++;
+    return fetchApi(url);
+  };
   const params = new URLSearchParams({
     v_id: cfg.vehicles,
     statut: 'en-ligne_reserve',
@@ -268,6 +284,15 @@ export async function fetchMovingCar(cfg: MovingCarConfig, fetchJson: JsonFetche
     try {
       const d = data(await fetchJson(`${MC_ORIGIN}/fr/annonce/?id=${encodeURIComponent(id)}&dim_photos=1600x1200`));
       detail = (d.annonce as Raw) ?? null;
+      for (const l of ['de', 'en'] as const) {
+        try {
+          const dl = data(await fetchJson(`${MC_ORIGIN}/${l}/annonce/?id=${encodeURIComponent(id)}`));
+          const eq = (dl.annonce as Raw | undefined)?.[`equipements_${l}`];
+          if (detail && eq) detail[`equipements_${l}`] = eq;
+        } catch {
+          warnings.push(`mc${id}: Ausstattung ${l.toUpperCase()} nicht abrufbar`);
+        }
+      }
     } catch (err) {
       if (err instanceof MovingCarError && /Anmeldung|Zugang/.test(err.message)) throw err;
       warnings.push(`mc${id}: Details nicht abrufbar (${(err as Error).message}), nur Daten aus der Liste`);
@@ -285,6 +310,7 @@ export async function fetchMovingCar(cfg: MovingCarConfig, fetchJson: JsonFetche
     seen.add(m.listing.stableId);
     listings.push(m.listing);
   }
+  log(`MovingCar: ${requests} Anfragen, ${listings.length} gültige Inserate`);
   return { source: 'movingcar', listings, found: list.length, invalid, warnings };
 }
 

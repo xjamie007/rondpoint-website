@@ -1,8 +1,7 @@
 /**
  * Täglicher Bestand-Abgleich (T2). Aufruf: npm run sync [-- --dry-run]
  *
- * Ablauf: MovingCar-API (wenn MOVINGCAR_API_KEY gesetzt ist), sonst robots.txt → LuxAuto →
- * (bei Fehler) AutoScout24 → Sicherungen →
+ * Ablauf: MovingCar-API (Bestandsverwaltung der Garage) → Sicherungen →
  * Lebenslauf → stock.json (nur bei Änderung) + sync-status.json (immer).
  * Bei Abbruch bleibt stock.json unverändert, der Prozess endet mit Code 1
  * und schreibt sync-report.md für das GitHub-Issue.
@@ -19,13 +18,10 @@ import {
   type Vehicle,
 } from '../../src/lib/stock-schema.ts';
 import { PoliteClient, type HttpClient } from './http.ts';
-import { luxautoAdapter } from './sources/luxauto.ts';
-import { autoscoutAdapter, AS24_ORIGIN, fetchDealer } from './sources/autoscout24.ts';
 import type { SourceAdapter, SourceResult } from './sources/types.ts';
 import { movingCarAdapter, movingCarConfigFromEnv } from './sources/movingcar.ts';
 import { guardReason, GuardError } from './guards.ts';
 import { mergeStock, type Changes } from './lifecycle.ts';
-import { crossCheck } from './crosscheck.ts';
 
 /** Datum in Luxemburger Zeit, YYYY-MM-DD */
 export function todayInLuxembourg(now = new Date()): string {
@@ -61,10 +57,14 @@ function summary(today: string, changes: Changes, vehicles: Vehicle[], source: s
   ].join('\n');
 }
 
-/** MovingCar allein, sobald der Zugang eingerichtet ist; sonst die öffentlichen Portale */
+/**
+ * Einzige Quelle: MovingCar. LuxAuto und AutoScout24 werden nicht mehr gelesen (die Inserate dort
+ * kommen ohnehin aus MovingCar). Ohne Zugang bricht der Lauf ab, der Bestand bleibt unverändert.
+ */
 export function defaultAdapters(env: Record<string, string | undefined> = process.env): SourceAdapter[] {
   const mc = movingCarConfigFromEnv(env);
-  return mc ? [movingCarAdapter(mc)] : [luxautoAdapter, autoscoutAdapter];
+  if (!mc) throw new Error('MOVINGCAR_API_KEY fehlt (GitHub-Secret bzw. .env)');
+  return [movingCarAdapter(mc)];
 }
 
 export interface SyncInput {
@@ -75,8 +75,6 @@ export interface SyncInput {
   now: Date;
   log: (msg: string) => void;
   adapters?: SourceAdapter[];
-  /** AutoScout24 zum Vergleich abfragen (Standard: ja) */
-  crossCheck?: boolean;
 }
 
 export interface SyncOutput {
@@ -95,7 +93,14 @@ export async function runSync(input: SyncInput): Promise<SyncOutput> {
   const errors: string[] = [];
   let result: SourceResult | null = null;
 
-  for (const adapter of input.adapters ?? defaultAdapters()) {
+  let adapters: SourceAdapter[];
+  try {
+    adapters = input.adapters ?? defaultAdapters();
+  } catch (err) {
+    errors.push((err as Error).message);
+    adapters = [];
+  }
+  for (const adapter of adapters) {
     try {
       if (adapter.robots !== false) {
         log(`Quelle ${adapter.name}: robots.txt prüfen`);
@@ -133,21 +138,7 @@ export async function runSync(input: SyncInput): Promise<SyncOutput> {
 
   const warnings = [...result.warnings];
   for (const inv of result.invalid) warnings.push(`übersprungen: ${inv.url} – ${inv.reason}`);
-  let listings = result.listings;
-
-  if (result.source === 'luxauto' && input.crossCheck !== false) {
-    try {
-      await client.loadRobots(AS24_ORIGIN);
-      const dealer = await fetchDealer(client);
-      const cc = crossCheck(listings, dealer.listings);
-      listings = cc.listings;
-      warnings.push(...cc.warnings);
-    } catch (err) {
-      warnings.push(`Vergleich mit AutoScout24 nicht möglich: ${(err as Error).message}`);
-    }
-  } else if (result.source === 'autoscout24') {
-    warnings.push(`LuxAuto gescheitert, Ersatzquelle AutoScout24 benutzt: ${errors.join(' | ')}`);
-  }
+  const listings = result.listings;
 
   const merged = mergeStock(previous.vehicles, listings, today);
   const next = stockFileSchema.parse({ vehicles: merged.vehicles });
@@ -214,7 +205,7 @@ async function main(): Promise<number> {
   if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, report);
   console.log('\n' + report);
   log(
-    `${client.requestCount} Anfragen, stock.json ${out.code !== 0 ? 'unverändert (Abbruch)' : out.stockChanged ? 'aktualisiert' : 'unverändert'}${dryRun ? ' (Probelauf, nichts geschrieben)' : ''}`,
+    `${client.requestCount ? `${client.requestCount} Portal-Anfragen, ` : ''}stock.json ${out.code !== 0 ? 'unverändert (Abbruch)' : out.stockChanged ? 'aktualisiert' : 'unverändert'}${dryRun ? ' (Probelauf, nichts geschrieben)' : ''}`,
   );
   return out.code;
 }

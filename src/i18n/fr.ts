@@ -749,7 +749,7 @@ const fr = {
       'Le site est hébergé par GitHub Pages, un service de GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.',
     contentH2: 'Contenu',
     content:
-      'Les annonces de voitures reprennent nos propres annonces publiées sur LuxAuto et AutoScout24. Les prix et caractéristiques peuvent changer ; seule l’offre confirmée au garage fait foi.',
+      'Les annonces de voitures proviennent de notre gestion de stock MovingCar, comme nos annonces sur LuxAuto et AutoScout24. Les prix et caractéristiques peuvent changer ; seule l’offre confirmée au garage fait foi.',
     photosH2: 'Photos et plan',
     photos: 'Plan du rond-point dessiné d’après les données OpenStreetMap (© les contributeurs d’OpenStreetMap, licence ODbL). Photos des voitures : nos propres annonces.',
     fontH2: 'Police de caractères',
