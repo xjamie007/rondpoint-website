@@ -81,7 +81,7 @@ function mapPage() {
   mapLists();
 }
 
-/** Listen (Aufzählungen, Fragen, Karten): Einträge lassen sich verschieben, kopieren, löschen. */
+/** Listen (Aufzählungen, Ablauf-Schritte, Absätze): Einträge lassen sich verschieben, kopieren, löschen. */
 function mapLists() {
   const groups = new Map<string, Map<number, Element[]>>();
   for (const el of $$('[data-eok], [data-eka]')) {
@@ -629,7 +629,7 @@ function helpSheet() {
   sheet('Kurzanleitung', `<ol class="ed-help">
     <li><b>Text ändern:</b> Text antippen und lostippen. Texte mit Telefonnummer, Adresse oder Link öffnen ein kleines Fenster.</li>
     <li><b>Bild ändern:</b> Bild antippen → „Foto aus Galerie" oder „Foto aufnehmen". Dort auch die Bildbeschreibung.</li>
-    <li><b>Reihenfolge, Kopieren, Löschen:</b> einen Eintrag einer Liste antippen (z. B. eine Frage oder einen Punkt) – unten erscheinen ↑ ↓ Kopieren Löschen.</li>
+    <li><b>Reihenfolge, Kopieren, Löschen:</b> einen Eintrag einer Liste antippen (z. B. einen Aufzählungspunkt oder Absatz) – unten erscheinen ↑ ↓ Kopieren Löschen.</li>
     <li><b>Andere Sprache:</b> unter „Seiten" die Sprache wählen und dort genauso ändern.</li>
     <li><b>Google:</b> Titel, Beschreibung und Bildbeschreibungen pro Seite und Sprache.</li>
     <li><b>Fertig?</b> Auf <b>Speichern</b> tippen. Vertippt? <b>Rückgängig</b>.</li></ol>`);
