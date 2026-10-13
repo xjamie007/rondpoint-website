@@ -41,8 +41,8 @@ jobs:
 
       - run: npm ci
 
-      # Quelle: MovingCar-API, sobald das Secret MOVINGCAR_API_KEY gesetzt ist;
-      # sonst wie bisher LuxAuto mit AutoScout24 als Ersatz.
+      # Quelle: MovingCar-API (Secret MOVINGCAR_API_KEY, Variable MOVINGCAR_AUTH=basic).
+      # Bei einem Push wird nur gebaut, der Bestand bleibt wie im Repository.
       - name: Bestand abgleichen (MovingCar)
         id: sync
         if: github.event_name != 'push'
