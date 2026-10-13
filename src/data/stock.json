@@ -95,7 +95,7 @@
       "garageRef": "122845",
       "slug": "dfsk-k01-2026-r122845",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-10-12",
+      "lastSeen": "2026-10-13",
       "lastChanged": "2026-10-01",
       "status": "active",
       "unavailableSince": null
@@ -372,7 +372,7 @@
       "garageRef": "132129",
       "slug": "vw-t-roc-2026-r132129",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-10-12",
+      "lastSeen": "2026-10-13",
       "lastChanged": "2026-10-01",
       "status": "active",
       "unavailableSince": null
@@ -721,7 +721,7 @@
       "garageRef": "139035",
       "slug": "cupra-terramar-2026-r139035",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-10-12",
+      "lastSeen": "2026-10-13",
       "lastChanged": "2026-10-01",
       "status": "active",
       "unavailableSince": null
@@ -1056,7 +1056,7 @@
       "garageRef": "139047",
       "slug": "vw-touareg-2026-r139047",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-10-12",
+      "lastSeen": "2026-10-13",
       "lastChanged": "2026-09-28",
       "status": "active",
       "unavailableSince": null
@@ -1085,7 +1085,7 @@
       "co2Gkm": null,
       "wltpConsumption": null,
       "euroNorm": null,
-      "priceEur": 114900,
+      "priceEur": 112900,
       "vatRecoverable": true,
       "options": [
         "4 roues motrices",
@@ -1351,147 +1351,147 @@
       ],
       "photos": [
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202016_Gfq9ksAJvsr9wDP8.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882555_y1YdKtX8U97IK67q.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202016_cyEaNbH3P59yXi46.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882555_9jjR6sXY7mcb10e9.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202016_FQIb39akuNf7JpmW.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882555_Rcu9hDQ26TyFzE6u.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202016_Jr6oeUduq80SQUsA.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882555_VxP6GBcEo3c1a8se.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202017_8ZRJiMGvtb305XGJ.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882556_Bcp0vqwRHRPjWDJB.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202017_O2mJQgP1s6cfVBSi.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882556_QyYV6dXPqVV6j91g.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202017_NPtC6cKRj2vVM6nB.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882556_evoM7Gywzh83YBDe.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202018_VGBZN9m3rMb22wJu.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882557_PrwrDOTNbSSyKZ8b.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202018_ZBj0Hst8ZQ9m088l.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882557_P78QqlWbOAtN9wtl.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202018_lE3Y40E8KpBh9BgW.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882557_Hf2xbpaoj2BV2fvM.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202019_xnfLNQ7Ppw4Fba0g.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882558_qitNTWeU2mrPnXqr.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202019_57PDcQgGxhHhfsJZ.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882558_0gwyIimYtqpNhbQZ.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202020_PHaurdlDcCgmVnGT.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882558_IwS7lltVGfm75i1v.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202020_i5ox7vQ50735Rt8I.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882559_CBNSJU60Z3iAsvkq.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202020_I2sVPmAitzq4TJ6s.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882559_R4Lnm03soA295JjK.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202021_pwFJJj68EHGTBtRE.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882559_IOy7W6ooNhNgROcD.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202021_mbRk1L4FkKU0jsE3.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882560_7oXS1gUbc3vlYfcP.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202021_WR0aqsExqSyzJgF2.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882560_XvR3NwfGq4h3GoW6.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202022_KdUsSqDCMMXqXILj.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882560_r9cDYvPb1OPT5TL6.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202022_jXquoEoYhfaTkROK.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882560_RbuBi8l3mGRVGQ0J.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202022_06v7UqFZyGXYYX1I.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882561_9I0pLy3iGL12IvL8.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202023_GJepm1rBWZwuOdZf.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882561_hD1xgtfFdtjf5bI7.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202023_yJIl7r25Fo89XtRc.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882561_uYvFrREAuJy6AKS0.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202023_IS6MWcH3s6GQ58Vb.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882562_1LUyPVv4Eoq9H8Yb.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202024_mJAc2pz3bRdLUH6f.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882562_FcFNl79UWiO61VF5.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202024_ylKGmBK9IvpULhvo.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882562_3kN0Ajf3POrkKQFS.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202024_4hRZiuA1qVye7eAC.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882563_e85bNjbiSKiYUxDJ.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202025_qMsc2ouncKKI1NUV.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882563_egI3PDv1DQ2uSk2k.jpg",
           "width": 2048,
           "height": 1536
         },
         {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791202025_LB6n6hLdZu0nKTah.jpg",
+          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1791882563_CjkBaUd2WEitMH8H.jpg",
           "width": 2048,
           "height": 1536
         }
@@ -1499,8 +1499,8 @@
       "garageRef": "141210",
       "slug": "bmw-x7-2025-r141210",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-10-12",
-      "lastChanged": "2026-10-06",
+      "lastSeen": "2026-10-13",
+      "lastChanged": "2026-10-13",
       "status": "active",
       "unavailableSince": null
     },
@@ -1655,7 +1655,7 @@
       "garageRef": "141213",
       "slug": "audi-tts-2019-r141213",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-10-12",
+      "lastSeen": "2026-10-13",
       "lastChanged": "2026-09-28",
       "status": "active",
       "unavailableSince": null
@@ -1918,9 +1918,9 @@
       "slug": "bmw-118-2019-r141215",
       "firstSeen": "2026-09-28",
       "lastSeen": "2026-10-12",
-      "lastChanged": "2026-09-28",
-      "status": "active",
-      "unavailableSince": null
+      "lastChanged": "2026-10-13",
+      "status": "unavailable",
+      "unavailableSince": "2026-10-13"
     },
     {
       "stableId": "r141306",
@@ -2106,7 +2106,7 @@
       "garageRef": "141306",
       "slug": "audi-a4-2024-r141306",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-10-12",
+      "lastSeen": "2026-10-13",
       "lastChanged": "2026-09-28",
       "status": "active",
       "unavailableSince": null
@@ -2315,7 +2315,7 @@
       "garageRef": "141314",
       "slug": "audi-a1-2026-r141314",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-10-12",
+      "lastSeen": "2026-10-13",
       "lastChanged": "2026-10-01",
       "status": "active",
       "unavailableSince": null
@@ -2413,7 +2413,7 @@
       "garageRef": "141522",
       "slug": "austin-healey-3000-1966-r141522",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-10-12",
+      "lastSeen": "2026-10-13",
       "lastChanged": "2026-09-28",
       "status": "active",
       "unavailableSince": null
