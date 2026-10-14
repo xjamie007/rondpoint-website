@@ -11,6 +11,8 @@ import { useT } from '@/i18n';
 import { alternates as alts, HREFLANG, HTML_LANG, pathFor, withBase, type Lang, type Route } from '@/i18n/config';
 import { organization, SITE_ORIGIN } from '@/lib/jsonld';
 import { presentation, site } from '@/lib/site';
+import { hoursInline } from '@/lib/content';
+import { BUILD_COMMIT_TIME } from '@/lib/build';
 
 interface Props {
   lang: Lang;
@@ -23,9 +25,10 @@ interface Props {
   contactBar?: { askHref?: string; whatsappText?: string };
   isHome?: boolean;
 }
-const { lang, route, title, description, noindex = false, ogImage, jsonld = [], contactBar = {}, isHome = false } =
-  Astro.props;
+const { lang, route, title, noindex = false, ogImage, jsonld = [], contactBar = {}, isHome = false } = Astro.props;
 const t = useT(lang);
+// {hours} in der Beschreibung: Öffnungszeiten aus horaires.json (eine Stelle für die ganze Website)
+const description = Astro.props.description.replace(/\{hours\}/g, hoursInline(t, lang));
 const alternates = alts(route);
 const canonical = new URL(pathFor(lang, route), SITE_ORIGIN).toString();
 const og = ogImage ?? { src: withBase(presentation ? '/og/rondpoint-demo.png' : '/og/rondpoint.png'), width: 1200, height: 630, alt: t.meta.ogAlt };
@@ -43,6 +46,7 @@ const noticeText = notice?.active ? (notice[lang]?.trim() || notice.fr?.trim() |
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="rp-build" content={BUILD_COMMIT_TIME} />
     {(noindex || presentation) && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonical} />
     {

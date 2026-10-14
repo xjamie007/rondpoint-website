@@ -15,7 +15,7 @@ interface Props {
 const { t, captionVisible = false } = Astro.props;
 const fmtRange = ([a, b]: [string, string]) => `${a}–${b}`;
 ---
-<div class="hours">
+<div class="hours" data-hours="table">
   <table>
     <caption class:list={[captionVisible ? 'cap' : 'sr-only']}>{t.hours.caption}</caption>
     <thead class="sr-only">

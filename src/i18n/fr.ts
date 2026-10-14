@@ -708,7 +708,7 @@ const fr = {
     contact: {
       title: 'Contact et accès | Garage Um Rond Point, Erpeldange',
       description:
-        '1, rue du Viaduc à Erpeldange-sur-Sûre, au rond-point à côté de la station Aral. Lundi à vendredi 7h45–12h et 13h–18h, samedi 8h–12h. Tél. +352 81 05 41.',
+        '1, rue du Viaduc à Erpeldange-sur-Sûre, au rond-point à côté de l’Aral. {hours}. Tél. +352 81 05 41.',
     },
     thanks: {
       title: 'Demande envoyée | Garage Um Rond Point, Erpeldange-sur-Sûre',

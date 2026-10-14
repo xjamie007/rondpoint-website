@@ -5,6 +5,7 @@
  */
 import type { ImageMetadata } from 'astro';
 import credits from '@/assets/demo/credits.json';
+import hiddenJson from '@/content/photos.json';
 import { presentation } from './site.ts';
 
 const demo = import.meta.glob<{ default: ImageMetadata }>('/src/assets/demo/*.{jpg,png,webp}', { eager: true });
@@ -32,8 +33,12 @@ function find(map: Record<string, { default: ImageMetadata }>, dir: string, key:
   return null;
 }
 
+/** Im Admin-Bereich ausgeblendete Foto-Plätze (src/content/photos.json) */
+export const hiddenPhotos = new Set(Object.entries(hiddenJson as Record<string, { hidden?: boolean }>).filter(([, v]) => v?.hidden).map(([k]) => k));
+
 /** Echtes Foto, sonst in der Präsentation das Demo-Foto, sonst null (Platzhalter). */
 export function photo(key: PhotoKey): Photo | null {
+  if (hiddenPhotos.has(key)) return null;
   const r = find(real, 'photos', key);
   if (r) return { ...r, demo: false };
   if (!presentation) return null;

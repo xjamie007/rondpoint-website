@@ -54,6 +54,17 @@ jobs:
           MOVINGCAR_VEHICLES: ${{ vars.MOVINGCAR_VEHICLES }}
         run: npm run sync
 
+      # Supabase pausiert Projekte im Free-Plan nach 7 Tagen ohne Zugriff (Login und Formulare
+      # gingen dann nicht mehr). Eine kleine Anfrage am Tag hält es aktiv. Ohne Supabase: übersprungen.
+      - name: Supabase aktiv halten
+        if: github.event_name == 'schedule' && vars.PUBLIC_SUPABASE_URL != ''
+        continue-on-error: true
+        env:
+          SB_URL: ${{ vars.PUBLIC_SUPABASE_URL }}
+          SB_KEY: ${{ vars.PUBLIC_SUPABASE_ANON_KEY }}
+        run: |
+          curl -fsS -o /dev/null "$SB_URL/rest/v1/admin_changes?select=id&limit=1" -H "apikey: $SB_KEY"
+
       - name: Tests
         run: npm test
 
@@ -104,6 +115,9 @@ jobs:
         if: steps.sync.outcome != 'failure'
         env:
           PUBLIC_INQUIRY_URL: ${{ vars.PUBLIC_INQUIRY_URL }}
+          # Admin-Bereich auf der Seite: mit diesen beiden Variablen Login über Supabase, sonst Demo
+          PUBLIC_SUPABASE_URL: ${{ vars.PUBLIC_SUPABASE_URL }}
+          PUBLIC_SUPABASE_ANON_KEY: ${{ vars.PUBLIC_SUPABASE_ANON_KEY }}
           SITE_URL: ${{ steps.pages.outputs.origin }}
           BASE_PATH: ${{ steps.pages.outputs.base_path }}
         run: npm run build

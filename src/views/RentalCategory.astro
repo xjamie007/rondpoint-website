@@ -57,7 +57,7 @@ const s = t.finder;
       <ul class="static-results">
         {
           items.map((i) => (
-            <li class="static-result">
+            <li class="static-result" data-fleet={i.id}>
               {fleetPhoto(i.photo) && (
                 <Photo
                   photo={fleetPhoto(i.photo)!}

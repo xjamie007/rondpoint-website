@@ -2,7 +2,8 @@
  * Mietflotte: Typen und Auswertung für den Finder „Quelle remorque ?" (C5).
  * Rein, ohne Astro – die React-Island nutzt dieselben Funktionen wie der Build.
  */
-import { assessTrailer, assessVan, fits, type Assessment, type CarData, type VisitorLicence } from './permis.ts';
+import { assessTrailer, assessVan, fits, LIMITS, type Assessment, type CarData, type VisitorLicence } from './permis.ts';
+import type { Lang } from '../i18n/config.ts';
 
 export const CARGO_ORDER = ['voiture', 'moto', 'terre', 'fete', 'meubles', 'materiel'] as const;
 export type Cargo = (typeof CARGO_ORDER)[number];
@@ -47,6 +48,74 @@ export interface FleetItem {
 
 export const isTrailer = (i: Pick<FleetItem, 'category'>) => TRAILER_CATEGORIES.includes(i.category);
 export const isVan = (i: Pick<FleetItem, 'category'>) => i.category === 'camionnette';
+
+/** Rohdaten eines Fahrzeugs (wie src/content/flotte/*.json, Felder dürfen fehlen) */
+export interface FleetSource {
+  category: string;
+  name: { fr: string } & Partial<Record<Lang, string>>;
+  brand?: string | null;
+  mmaKg: number;
+  emptyKg?: number | null;
+  payloadKg: number;
+  braked: boolean;
+  loadLengthM?: number | null;
+  loadWidthM?: number | null;
+  loadHeightM?: number | null;
+  volumeM3?: number | null;
+  tempRange?: { minC: number; maxC: number } | null;
+  power?: string | null;
+  socket?: 7 | 13 | null;
+  showPallets?: boolean;
+  suitableFor?: string[];
+  priceDay?: number | null;
+  priceWeekend?: number | null;
+  deposit?: number | null;
+  notes?: ({ fr: string } & Partial<Record<Lang, string>>) | null;
+  photo?: string | null;
+  active?: boolean;
+  sample?: boolean;
+}
+
+/** Rohdaten → Eintrag in einer Sprache (Build und Vorschau im Admin-Bereich) */
+export function toFleetItem(id: string, d: FleetSource, lang: Lang): FleetItem {
+  return {
+    id,
+    category: d.category as Category,
+    name: d.name[lang] || d.name.fr,
+    brand: d.brand ?? null,
+    mmaKg: d.mmaKg,
+    emptyKg: d.emptyKg ?? null,
+    payloadKg: d.payloadKg,
+    braked: d.braked,
+    loadLengthM: d.loadLengthM ?? null,
+    loadWidthM: d.loadWidthM ?? null,
+    loadHeightM: d.loadHeightM ?? null,
+    volumeM3: d.volumeM3 ?? null,
+    tempRange: d.tempRange ?? null,
+    power: d.power ?? null,
+    socket: d.socket ?? null,
+    showPallets: d.showPallets ?? false,
+    suitableFor: (d.suitableFor ?? []) as Cargo[],
+    priceDay: d.priceDay ?? null,
+    priceWeekend: d.priceWeekend ?? null,
+    deposit: d.deposit ?? null,
+    notes: d.notes ? d.notes[lang] || d.notes.fr : null,
+    photo: d.photo ?? null,
+    sample: d.sample ?? false,
+  };
+}
+
+/** Warum ein Fahrzeug nicht angezeigt wird (null = wird angezeigt) */
+export function hiddenReason(d: FleetSource, showSamples: boolean): 'inactive' | 'sample' | 'trailerLimit' | 'vanLimit' | null {
+  if (d.active === false) return 'inactive';
+  if (d.sample && !showSamples) return 'sample';
+  const cat = { category: d.category as Category };
+  if (isTrailer(cat) && d.mmaKg > LIMITS.trailerBEKg) return 'trailerLimit';
+  if (isVan(cat) && d.mmaKg > LIMITS.vanBKg) return 'vanLimit';
+  return null;
+}
+
+export const bySmallest = (a: FleetItem, b: FleetItem) => a.payloadKg - b.payloadKg;
 
 export interface FinderState {
   cargo: Cargo | null;

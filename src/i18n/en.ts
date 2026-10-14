@@ -705,7 +705,7 @@ const en: Dict = {
     contact: {
       title: 'Contact and directions | Garage Um Rond Point, Erpeldange',
       description:
-        '1, rue du Viaduc in Erpeldange-sur-Sûre, at the roundabout next to the Aral station. Mon–Fri 7.45am–12pm and 1pm–6pm, Sat 8am–12pm. Phone +352 81 05 41.',
+        '1, rue du Viaduc in Erpeldange-sur-Sûre, at the roundabout by the Aral. {hours}. Phone +352 81 05 41.',
     },
     thanks: {
       title: 'Request sent | Garage Um Rond Point, Erpeldange-sur-Sûre',

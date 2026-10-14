@@ -20,24 +20,41 @@ export interface FaqItem {
 }
 
 const same = (a: [string, string][], b: [string, string][]) => JSON.stringify(a) === JSON.stringify(b);
+type Week = Record<DayKey, [string, string][]>;
 
-/** „Lundi – Vendredi : 07:45–12:00 et 13:00–18:00 · Samedi : 08:00–12:00 · Dimanche : fermé“ */
-export function hoursSummary(t: Dict, lang: Lang, sep = ' · '): string {
+/** Aufeinanderfolgende Tage mit gleichen Zeiten zusammenfassen */
+function dayGroups(week: Week) {
   const groups: { from: DayKey; to: DayKey; iv: [string, string][] }[] = [];
   for (const d of DAY_KEYS) {
-    const iv = horaires.week[d] as [string, string][];
+    const iv = week[d] ?? [];
     const last = groups.at(-1);
     if (last && same(last.iv, iv)) last.to = d;
     else groups.push({ from: d, to: d, iv });
   }
+  return groups;
+}
+
+/** „Lundi – Vendredi : 07:45–12:00 et 13:00–18:00 · Samedi : 08:00–12:00 · Dimanche : fermé“ */
+export function hoursSummary(t: Dict, lang: Lang, sep = ' · ', week: Week = horaires.week): string {
   const colon = lang === 'fr' ? '\u00a0: ' : ': ';
-  return groups
+  return dayGroups(week)
     .map((g) => {
       const days = g.from === g.to ? t.hours.days[g.from] : `${t.hours.days[g.from]} – ${t.hours.days[g.to]}`;
       const time = g.iv.length ? g.iv.map(([a, b]) => `${a}–${b}`).join(` ${t.hours.and} `) : t.hours.closed.toLocaleLowerCase();
       return `${days}${colon}${time}`;
     })
     .join(sep);
+}
+
+/** Für Fließtext (z. B. Google-Beschreibung): „Lundi–vendredi 07:45–12:00 et 13:00–18:00, samedi 08:00–12:00“, ohne geschlossene Tage */
+export function hoursInline(t: Dict, lang: Lang, week: Week = horaires.week): string {
+  // im Satz klein (fr, pt); portugiesisch kurz „segunda–sexta“
+  const day = (d: DayKey) => (lang === 'fr' || lang === 'pt' ? t.hours.days[d].toLocaleLowerCase().replace(/-feira$/, '') : t.hours.days[d]);
+  const s = dayGroups(week)
+    .filter((g) => g.iv.length)
+    .map((g) => `${g.from === g.to ? day(g.from) : `${day(g.from)}–${day(g.to)}`} ${g.iv.map(([a, b]) => `${a}–${b}`).join(` ${t.hours.and} `)}`)
+    .join(', ');
+  return s.charAt(0).toLocaleUpperCase() + s.slice(1);
 }
 
 /** Platzhalter füllen (reiner Text) */

@@ -4,3 +4,7 @@ project_id = "rondpoint"
 [functions.inquiry]
 # Die Formulare senden ohne Schlüssel (keine Schlüssel im Frontend).
 verify_jwt = false
+
+[functions.publish]
+# Die Anmeldung prüft die Function selbst (Supabase Auth, /auth/v1/user), auch für CORS-Vorabfragen.
+verify_jwt = false

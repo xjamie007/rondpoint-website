@@ -11,7 +11,11 @@
 import { escapeHtml, useT } from '@/i18n';
 import { HTML_LANG, type Lang } from '@/i18n/config';
 import { buildIndex, capture, displayText, flatten, getPath, isRich, listOf, norm, renderHtml, setPath, type Caps } from './match';
-import { emptyState, siteStorage as S, SITE_CONFIG, type EditState, type ListOverride } from './storage';
+import { emptyState, siteStorage as S, type EditState, type ListOverride } from './storage';
+import { $, $$, closeSheet, confirmBox, pickers, prepareImage, sheet, toast } from './ui';
+import { hoursSheet, hoursText, hoursVar, renderHours, type HoursCtx } from './hours';
+import { fleetEdit, fleetSheet, renderFleet, type FleetCtx } from './fleet';
+import hiddenPhotos from '@/content/photos.json';
 import css from './editor.css?inline';
 
 // erst mit dem Editor laden, nicht auf jeder Seite für alle Besucher
@@ -29,8 +33,6 @@ let sel: { path: string; j: number } | null = null;
 let bar: HTMLElement | null = null;
 let ctxBar: HTMLElement | null = null;
 
-const $ = <T extends Element = HTMLElement>(s: string, r: ParentNode = document) => r.querySelector<T>(s);
-const $$ = <T extends Element = HTMLElement>(s: string, r: ParentNode = document) => [...r.querySelectorAll<T>(s)];
 const clone = <T>(o: T): T => JSON.parse(JSON.stringify(o));
 const DRAFT = 'rp-draft';
 const draft = {
@@ -38,6 +40,10 @@ const draft = {
   set: (s: EditState | null) => { try { s ? sessionStorage.setItem(DRAFT, JSON.stringify(s)) : sessionStorage.removeItem(DRAFT); } catch { /* nur diese Seite */ } },
 };
 const dirty = () => !!draft.get();
+// Öffnungszeiten und Anhänger (hours.ts, fleet.ts) arbeiten auf demselben Stand
+const hctx: HoursCtx = { t: nested, lang, state: () => state, change: (fn) => change(fn) };
+const fctx: FleetCtx = { ...hctx, storage: S };
+let hoursShown = false;
 
 /* ------------------------------------------------------------ Seite zuordnen (einmal, am Original) */
 const orig = new Map<string, string>(); // Schlüssel → Original-HTML
@@ -48,10 +54,13 @@ const lists = new Map<string, ListInfo>();
 const touched = new Set<string>();
 let seo: { title?: string; desc?: string; origTitle: string; origDesc: string } = { origTitle: '', origDesc: '' };
 
-const SKIP = 'script, style, noscript, template, svg, select, astro-island, .ed-ui';
+const SKIP = 'script, style, noscript, template, svg, select, astro-island, .ed-ui, [data-hours], [data-fleet]';
 
 function mapPage() {
   const index = buildIndex(dict);
+  // Texte, die nur aus den Öffnungszeiten bestehen ({hours}), ändern sich mit der Tabelle
+  const plainHours = norm(hoursText(hctx, true));
+  for (const el of $$('main p, main dd, main li')) if (!el.closest(SKIP) && norm(el.textContent ?? '') === plainHours) el.dataset.hours = 'text';
   for (const el of $$('body *')) {
     if (el.closest(SKIP) || el.closest('[data-eok]')) continue;
     if (![...el.childNodes].some((n) => n.nodeType === 3 && n.textContent!.trim())) continue;
@@ -169,8 +178,11 @@ function render() {
     if (el === document.activeElement) continue;
     const key = el.dataset.eok!;
     const v = current(el, key);
-    if (v === null) { if (el.innerHTML !== orig.get(key)) el.innerHTML = orig.get(key)!; }
-    else if (caps.has(key)) el.innerHTML = renderHtml(v, caps.get(key)!);
+    const c = caps.get(key);
+    // {hours} in einem Text: geänderte Öffnungszeiten gleich mit anzeigen
+    const hc = c && 'hours' in c.vars && state.hours ? { ...c, vars: { ...c.vars, hours: hoursVar(hctx) } } : null;
+    if (v === null && !hc) { if (el.innerHTML !== orig.get(key)) el.innerHTML = orig.get(key)!; }
+    else if (c) el.innerHTML = renderHtml(v ?? dict[key], hc ?? c);
     else if (el.textContent !== v) el.textContent = v;
   }
   for (const el of $$('[data-eka]')) {
@@ -192,6 +204,8 @@ function render() {
     const src = p?.src ? S.imageUrl(p.src) : img.dataset.edSrc;
     if (img.getAttribute('src') !== src) img.setAttribute('src', src);
   }
+  if (state.hours || hoursShown) { renderHours(hctx); hoursShown = true; }
+  void renderFleet(fctx);
   document.title = (seo.title && state.texts[lang]?.[seo.title]) || seo.origTitle;
   $<HTMLMetaElement>('meta[name=description]')?.setAttribute('content', (seo.desc && state.texts[lang]?.[seo.desc]) || seo.origDesc);
   if (admin) prepare();
@@ -203,9 +217,9 @@ function loginLabel() {
 }
 function loginDialog() {
   const w = sheet('Anmelden', `<form class="ed-form" autocomplete="on">
-    <label>Benutzername<input name="u" autocomplete="username" autocapitalize="none" required></label>
+    <label>${S.userLabel}<input name="u" ${S.live ? 'type="email" ' : ''}autocomplete="username" autocapitalize="none" required></label>
     <label>Passwort<input name="p" type="password" autocomplete="current-password" required></label>
-    <p class="ed-err" hidden>Benutzername oder Passwort stimmt nicht.</p>
+    <p class="ed-err" hidden>${S.userLabel} oder Passwort stimmt nicht.</p>
     <button class="ed-btn ed-primary ed-block" type="submit">Anmelden</button></form>`);
   $('form', w)!.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -246,12 +260,13 @@ function buildBar() {
   bar.innerHTML = `<button class="ed-b ed-save" data-a="save" disabled><span class="ed-i">✓</span><span>Speichern</span></button>
     <button class="ed-b" data-a="undo" disabled><span class="ed-i">↶</span><span>Rückgängig</span></button>
     <button class="ed-b" data-a="pages"><span class="ed-i">☰</span><span>Seiten</span></button>
-    <button class="ed-b" data-a="seo"><span class="ed-i">G</span><span>Google</span></button>
+    <button class="ed-b" data-a="fleet"><span class="ed-i">🛻</span><span>Anhänger</span></button>
+    <button class="ed-b" data-a="hours"><span class="ed-i">🕒</span><span>Zeiten</span></button>
     <button class="ed-b" data-a="more"><span class="ed-i">⋯</span><span>Mehr</span></button>`;
   document.body.append(bar);
   bar.addEventListener('click', (e) => {
     const b = (e.target as Element).closest('button');
-    if (b) ({ save, undo: doUndo, pages: pagesSheet, seo: seoSheet, more: moreSheet })[b.dataset.a as 'save']();
+    if (b) ({ save, undo: doUndo, pages: pagesSheet, fleet: () => { commitEditing(); fleetSheet(fctx); }, hours: () => { commitEditing(); hoursSheet(hctx); }, more: moreSheet })[b.dataset.a as 'save']();
   });
   ctxBar = document.createElement('div');
   ctxBar.className = 'ed-ctx ed-ui';
@@ -295,9 +310,9 @@ async function save() {
   try {
     await S.saveContent(state);
     draft.set(null);
-    toast(SITE_CONFIG.storage === 'server' ? 'Gespeichert ✓ – die Seite ist aktualisiert.' : 'Gespeichert ✓ (Demo: in diesem Browser gespeichert)');
-  } catch {
-    toast('Speichern hat nicht geklappt. Bitte erneut versuchen.', 5000);
+    toast(S.live ? 'Gespeichert ✓ – in wenigen Minuten für alle Besucher sichtbar.' : 'Gespeichert ✓ (Demo: in diesem Browser gespeichert)', 4200);
+  } catch (e) {
+    toast(`Speichern hat nicht geklappt. ${S.live ? (e as Error).message : 'Bitte erneut versuchen.'}`, 7000);
   }
   busy = false;
   updateBar();
@@ -312,7 +327,10 @@ function prepare() {
     el.spellcheck = true;
     el.classList.add('ed-text');
   }
+  for (const el of $$('[data-hours=table], [data-hours=sum]')) el.classList.add('ed-data');
+  for (const el of $$('[data-fleet], .ed-finder .result')) el.classList.add('ed-data');
   for (const el of $$('[data-eimg]')) {
+    if (el.closest('[data-fleet]')) continue; // Fotos der Anhänger: im Fenster „Anhänger“
     el.classList.add('ed-img');
     if (!$('.ed-chip', el)) el.insertAdjacentHTML('beforeend', '<span class="ed-chip" aria-hidden="true">🖼 Bild ändern</span>');
   }
@@ -325,6 +343,9 @@ document.addEventListener('click', (e) => {
   const t = e.target as Element;
   if (t.closest('.ed-ui, [data-ed-login]')) return;
   if (t.closest('a[href], summary')) e.preventDefault();
+  if (t.closest('[data-hours=table], [data-hours=sum]')) { e.preventDefault(); commitEditing(); hoursSheet(hctx); return; }
+  const card = t.closest<HTMLElement>('[data-fleet]');
+  if (card) { e.preventDefault(); commitEditing(); fleetEdit(fctx, card.dataset.fleet!); return; }
   const fig = t.closest<HTMLElement>('[data-eimg]');
   if (fig && !t.closest('.ed-text')) { e.preventDefault(); select(t); imageSheet(fig); return; }
   const attr = t.closest<HTMLInputElement>('.ed-attr');
@@ -473,6 +494,13 @@ function richSheet(el: HTMLElement) {
   $('[data-a=orig]', w)!.onclick = () => { $<HTMLTextAreaElement>('[name=v]', w)!.value = dict[key].replace(/­/g, ''); };
   $('[data-a=ok]', w)!.onclick = () => {
     const nv = $<HTMLTextAreaElement>('[name=v]', w)!.value.trim();
+    // Platzhalter müssen erhalten bleiben (sonst fehlt z. B. die Telefonnummer, und die Prüfung beim Veröffentlichen schlägt an)
+    const vars = (x: string) => [...x.matchAll(/\{(\w+)\}/g)].map((m) => m[1]).sort().join();
+    if (nv && vars(nv) !== vars(dict[key])) {
+      const need = [...new Set(dict[key].match(/\{\w+\}/g) ?? [])].join(' ');
+      toast(need ? `Bitte ${need} genau so im Text lassen – die Website setzt dort die Angaben ein.` : 'Bitte keine Teile in {geschweiften Klammern} einfügen.', 5000);
+      return;
+    }
     closeSheet();
     if (nv && nv !== v) change(() => setText(el, key, nv));
   };
@@ -489,31 +517,6 @@ function attrSheet(el: HTMLInputElement) {
 }
 
 /* ------------------------------------------------------------ Bilder */
-function prepareImage(file: File, maxW = 2400): Promise<{ blob: Blob; ext: string }> {
-  return new Promise((res, rej) => {
-    const url = URL.createObjectURL(file);
-    const img = new Image();
-    img.onload = () => {
-      const scale = Math.min(1, maxW / img.naturalWidth);
-      const cv = document.createElement('canvas');
-      cv.width = Math.round(img.naturalWidth * scale);
-      cv.height = Math.round(img.naturalHeight * scale);
-      const cx = cv.getContext('2d')!;
-      cx.imageSmoothingQuality = 'high';
-      cx.drawImage(img, 0, 0, cv.width, cv.height);
-      URL.revokeObjectURL(url);
-      cv.toBlob((b) => {
-        if (b?.type === 'image/webp') return res({ blob: b, ext: 'webp' });
-        cv.toBlob((j) => (j ? res({ blob: j, ext: 'jpg' }) : rej(new Error('encode'))), 'image/jpeg', 0.82);
-      }, 'image/webp', 0.82);
-    };
-    img.onerror = () => { URL.revokeObjectURL(url); rej(new Error('format')); };
-    img.src = url;
-  });
-}
-const pickers = () => `<div class="ed-row ed-pick"><label class="ed-btn ed-primary">📁 Foto aus Galerie<input type="file" accept="image/*" hidden></label>
-  <label class="ed-btn ed-primary">📷 Foto aufnehmen<input type="file" accept="image/*" capture="environment" hidden></label></div>`;
-
 function imageSheet(fig: HTMLElement) {
   const k = fig.dataset.eimg!;
   const img = $<HTMLImageElement>('img', fig);
@@ -522,7 +525,7 @@ function imageSheet(fig: HTMLElement) {
   const w = sheet('Bild', `<div class="ed-form"><div class="ed-prev"><img src="${escapeHtml(img?.currentSrc || img?.src || '')}" alt=""></div>${pickers()}
     ${altKey ? `<label>Bildbeschreibung (für Google und Screenreader)<input name="alt" value="${escapeHtml(current(img!, altKey) ?? origAttr.get(altKey)!)}" placeholder="z. B. Werkstatt der Garage am Kreisel"></label>` : ''}
     <p class="ed-hint">Das Bild wird automatisch verkleinert und für schnelles Laden optimiert. Es erscheint überall, wo dieses Foto vorkommt.</p>
-    <div class="ed-row">${p().src ? '<button class="ed-btn ed-ghost" data-a="orig">Original-Bild</button>' : ''}
+    <div class="ed-row">${p().src && !S.live ? '<button class="ed-btn ed-ghost" data-a="orig">Original-Bild</button>' : ''}
     <button class="ed-btn ed-ghost ed-red" data-a="hide">${p().hidden ? 'Wieder anzeigen' : 'Bild ausblenden'}</button>
     <button class="ed-btn ed-primary" data-a="ok">Fertig</button></div></div>`);
   for (const inp of $$<HTMLInputElement>('input[type=file]', w)) {
@@ -613,15 +616,25 @@ function seoSheet() {
 }
 function moreSheet() {
   commitEditing();
+  const hidden = Object.entries(hiddenPhotos as Record<string, { hidden?: boolean }>).filter(([k, v]) => v?.hidden && !state.photos[k]).map(([k]) => k);
   const w = sheet('Mehr', `<div class="ed-list">
+    <button class="ed-li" data-m="seo">G&nbsp; Google – Titel und Beschreibung dieser Seite</button>
+    <button class="ed-li" data-m="hours">🕒 Öffnungszeiten</button>
+    <button class="ed-li" data-m="fleet">🛻 Mietanhänger & Transporter</button>
     <button class="ed-li" data-m="help">❓ Kurzanleitung</button>
-    <button class="ed-li" data-m="resetp">↺ Diese Seite auf Original zurücksetzen</button>
-    <button class="ed-li ed-red" data-m="reset">↺ Ganze Website auf Original zurücksetzen</button>
+    ${hidden.length ? `<button class="ed-li" data-m="unhide">🖼 Ausgeblendete Bilder wieder anzeigen (${hidden.length})</button>` : ''}
+    ${S.live
+      ? '<button class="ed-li ed-red" data-m="discard">↺ Nicht gespeicherte Änderungen verwerfen</button>'
+      : `<button class="ed-li" data-m="resetp">↺ Diese Seite auf Original zurücksetzen</button>
+    <button class="ed-li ed-red" data-m="reset">↺ Ganze Website auf Original zurücksetzen</button>`}
     <button class="ed-li" data-m="logout">⎋ Abmelden</button></div>`);
   for (const b of $$('[data-m]', w)) {
     b.onclick = () => {
       closeSheet();
-      ({ help: helpSheet, resetp: resetPage, reset: resetAll, logout })[b.dataset.m as 'help']();
+      ({
+        seo: seoSheet, hours: () => hoursSheet(hctx), fleet: () => fleetSheet(fctx), help: helpSheet, resetp: resetPage, reset: resetAll, discard, logout,
+        unhide: () => { change(() => { for (const k of hidden) state.photos[k] = { hidden: false }; }); toast('Die Bilder erscheinen nach dem Speichern wieder.', 3600); },
+      })[b.dataset.m as 'help']();
     };
   }
 }
@@ -631,8 +644,10 @@ function helpSheet() {
     <li><b>Bild ändern:</b> Bild antippen → „Foto aus Galerie" oder „Foto aufnehmen". Dort auch die Bildbeschreibung.</li>
     <li><b>Reihenfolge, Kopieren, Löschen:</b> einen Eintrag einer Liste antippen (z. B. einen Aufzählungspunkt oder Absatz) – unten erscheinen ↑ ↓ Kopieren Löschen.</li>
     <li><b>Andere Sprache:</b> unter „Seiten" die Sprache wählen und dort genauso ändern.</li>
-    <li><b>Google:</b> Titel, Beschreibung und Bildbeschreibungen pro Seite und Sprache.</li>
-    <li><b>Fertig?</b> Auf <b>Speichern</b> tippen. Vertippt? <b>Rückgängig</b>.</li></ol>`);
+    <li><b>Öffnungszeiten:</b> unten auf <b>Zeiten</b> tippen (oder auf die Öffnungszeiten auf der Seite). Sie gelten überall: Tabelle, Fußzeile, Texte und Google.</li>
+    <li><b>Mietanhänger:</b> unten auf <b>Anhänger</b> tippen – anlegen, Daten, Preise, Texte und Foto ändern, ausblenden oder löschen. Oder direkt auf eine Anhänger-Karte tippen.</li>
+    <li><b>Google:</b> unter „Mehr“ Titel, Beschreibung und Bildbeschreibungen pro Seite und Sprache.</li>
+    <li><b>Fertig?</b> Auf <b>Speichern</b> tippen${S.live ? ' – nach wenigen Minuten sehen alle Besucher die Änderungen' : ''}. Vertippt? <b>Rückgängig</b>.</li></ol>`);
 }
 async function resetPage() {
   if (!(await confirmBox('Seite zurücksetzen', 'Alle Änderungen auf dieser Seite in dieser Sprache werden verworfen. Kopf- und Fußbereich bleiben, wie sie sind.', 'Zurücksetzen', true))) return;
@@ -650,6 +665,17 @@ async function resetPage() {
   });
   save();
 }
+/** Supabase: nur Ungespeichertes verwerfen – Gespeichertes ist schon veröffentlicht */
+async function discard() {
+  if (!dirty()) { toast('Es gibt keine ungespeicherten Änderungen.'); return; }
+  if (!(await confirmBox('Änderungen verwerfen', 'Alle Änderungen seit dem letzten Speichern gehen verloren.', 'Verwerfen', true))) return;
+  state = (await S.loadContent()) ?? emptyState();
+  undo = [];
+  draft.set(null);
+  updateBar();
+  render();
+  toast('Verworfen – die Seite zeigt den gespeicherten Stand');
+}
 async function resetAll() {
   if (!(await confirmBox('Ganze Website zurücksetzen', 'Alle Änderungen in allen Sprachen und alle hochgeladenen Bilder werden gelöscht. Die Website sieht danach wieder genau aus wie das Original.', 'Alles zurücksetzen', true))) return;
   await S.resetContent();
@@ -659,41 +685,6 @@ async function resetAll() {
   updateBar();
   render();
   toast('Website auf Original zurückgesetzt');
-}
-
-/* ------------------------------------------------------------ Fenster, Hinweise */
-function sheet(title: string, body: string, opts: { wide?: boolean; onClose?: () => void } = {}) {
-  closeSheet();
-  const wrap = document.createElement('div');
-  wrap.className = 'ed-sheet-wrap ed-ui';
-  wrap.innerHTML = `<div class="ed-sheet${opts.wide ? ' ed-wide' : ''}" role="dialog" aria-modal="true" aria-label="${escapeHtml(title)}">
-    <div class="ed-sheet-head"><h2>${escapeHtml(title)}</h2><button class="ed-x" aria-label="Schließen">✕</button></div>
-    <div class="ed-sheet-body">${body}</div></div>`;
-  document.body.append(wrap);
-  const close = () => { closeSheet(); opts.onClose?.(); };
-  $('.ed-x', wrap)!.onclick = close;
-  wrap.addEventListener('mousedown', (e) => { if (e.target === wrap) close(); });
-  wrap.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
-  const f = $<HTMLInputElement>('input:not([type=file]), textarea', wrap);
-  setTimeout(() => (f ?? $<HTMLButtonElement>('.ed-x', wrap))!.focus(), 60);
-  return wrap;
-}
-function closeSheet() { $$('.ed-sheet-wrap').forEach((w) => w.remove()); }
-function toast(msg: string, ms = 2600) {
-  const t = document.createElement('div');
-  t.className = 'ed-toast ed-ui';
-  t.setAttribute('role', 'status');
-  t.textContent = msg;
-  document.body.append(t);
-  setTimeout(() => { t.classList.add('ed-out'); setTimeout(() => t.remove(), 400); }, ms);
-}
-function confirmBox(title: string, text: string, okLabel: string, danger = false): Promise<boolean> {
-  return new Promise((res) => {
-    const w = sheet(title, `<p class="ed-p">${escapeHtml(text)}</p><div class="ed-row"><button class="ed-btn ed-ghost" data-a="no">Abbrechen</button>
-      <button class="ed-btn ${danger ? 'ed-danger' : 'ed-primary'}" data-a="yes">${escapeHtml(okLabel)}</button></div>`, { onClose: () => res(false) });
-    $('[data-a=no]', w)!.onclick = () => { closeSheet(); res(false); };
-    $('[data-a=yes]', w)!.onclick = () => { closeSheet(); res(true); };
-  });
 }
 
 /* ------------------------------------------------------------ Start (aus boot.ts) */

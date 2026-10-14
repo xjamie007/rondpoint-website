@@ -6,6 +6,7 @@ import pt from './pt.ts';
 import { intlLocale, type Lang } from './config.ts';
 import siteJson from '../content/site.json';
 import textsJson from '../content/texts.json';
+import listsJson from '../content/lists.json';
 
 /** Präsentationsversion: interne Platzhalter nicht anzeigen (siehe src/lib/site.ts) */
 const PRESENTATION = (siteJson as { presentation?: boolean }).presentation === true;
@@ -89,12 +90,34 @@ export function applyOverrides<T>(dict: T, over: Record<string, string> | undefi
   return out as T;
 }
 
+/* ------------------------------------------------------------------
+   Geänderte Listen aus dem Admin-Bereich (src/content/lists.json):
+   Pfad → ganze Liste. Nur Pfade, die im französischen Grundtext eine Liste sind.
+------------------------------------------------------------------- */
+const LISTS = listsJson as unknown as Partial<Record<Lang, Record<string, unknown[]>>>;
+
+export function applyLists<T>(dict: T, lists: Record<string, unknown[]> | undefined): T {
+  if (!lists || !Object.keys(lists).length) return dict;
+  const out = structuredClone(dict) as Record<string, unknown>;
+  for (const [key, value] of Object.entries(lists)) {
+    const parts = key.split('.');
+    if (!Array.isArray(value) || !value.length || !value.every((x) => typeof x === 'string') || !Array.isArray(getPath(fr, parts))) continue;
+    let node = out;
+    for (const k of parts.slice(0, -1)) {
+      if (!node[k] || typeof node[k] !== 'object') node[k] = {};
+      node = node[k] as Record<string, unknown>;
+    }
+    node[parts.at(-1)!] = value;
+  }
+  return out as T;
+}
+
 const raw: Record<Lang, DeepPartial<Dict>> = {
-  fr: applyOverrides(fr, OVERRIDES.fr),
-  de: applyOverrides(de, OVERRIDES.de),
-  lb: applyOverrides(lb, OVERRIDES.lb),
-  en: applyOverrides(en, OVERRIDES.en),
-  pt: applyOverrides(pt, OVERRIDES.pt),
+  fr: applyLists(applyOverrides(fr, OVERRIDES.fr), LISTS.fr),
+  de: applyLists(applyOverrides(de, OVERRIDES.de), LISTS.de),
+  lb: applyLists(applyOverrides(lb, OVERRIDES.lb), LISTS.lb),
+  en: applyLists(applyOverrides(en, OVERRIDES.en), LISTS.en),
+  pt: applyLists(applyOverrides(pt, OVERRIDES.pt), LISTS.pt),
 };
 
 /**

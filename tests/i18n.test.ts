@@ -4,6 +4,8 @@ import de from '../src/i18n/de.ts';
 import lb from '../src/i18n/lb.ts';
 import en from '../src/i18n/en.ts';
 import pt from '../src/i18n/pt.ts';
+import { hoursInline } from '../src/lib/content.ts';
+import type { Dict } from '../src/i18n/index.ts';
 
 type Tree = string | string[] | { [k: string]: Tree };
 
@@ -61,8 +63,13 @@ describe.each(Object.entries(langs))('Übersetzung %s', (_lang, dict) => {
   });
 });
 
-describe.each(Object.entries({ fr, ...langs }))('SEO-Längen %s', (_lang, dict) => {
-  const seo = (dict as typeof fr).seo;
+// {hours} mit festen Beispielzeiten füllen: Änderungen der Öffnungszeiten im Admin-Bereich lassen die Tests nicht scheitern
+const WEEK = { mo: [['07:45', '12:00'], ['13:00', '18:00']], tu: [['07:45', '12:00'], ['13:00', '18:00']], we: [['07:45', '12:00'], ['13:00', '18:00']], th: [['07:45', '12:00'], ['13:00', '18:00']], fr: [['07:45', '12:00'], ['13:00', '18:00']], sa: [['08:00', '12:00']], su: [] } as Record<'mo' | 'tu' | 'we' | 'th' | 'fr' | 'sa' | 'su', [string, string][]>;
+
+describe.each(Object.entries({ fr, ...langs }))('SEO-Längen %s', (lang, dict) => {
+  const raw = (dict as typeof fr).seo;
+  const fill = (s: string) => s.replace('{hours}', hoursInline(dict as Dict, lang as 'fr', WEEK));
+  const seo = { ...raw, contact: { ...raw.contact, description: fill(raw.contact.description) } };
   const pages = ['home', 'rental', 'cars', 'workshop', 'sodablast', 'trailersForSale', 'garden', 'contact', 'thanks', 'legal', 'privacy'] as const;
   it.each(pages)('%s: Title 50–60, Description 150–160', (p) => {
     const { title, description } = seo[p];

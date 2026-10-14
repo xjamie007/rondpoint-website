@@ -35,7 +35,7 @@ const hoursShort = hoursSummary(t, lang);
     </div>
     <div class="reveal">
       <p class="h">{t.footer.hoursH}</p>
-      <p class="tnum hours-sum">{hoursShort.split(' · ').map((l) => <span>{l}</span>)}</p>
+      <p class="tnum hours-sum" data-hours="sum">{hoursShort.split(' · ').map((l) => <span>{l}</span>)}</p>
       <p class="t-small">{t.status.everyMorning}</p>
     </div>
     <div class="reveal">

@@ -21,6 +21,25 @@ Für den Kundentermin ist `presentation: true` in `src/content/site.json` gesetz
 - Die Vektordatei des Logos besorgen.
 - Die Kunden-Freigabe für das Logo auf der Website einholen, falls nötig.
 
+## Stand 14.10.2026: Admin-Bereich auf der Seite
+
+Neu im Admin-Bereich (Login im Footer):
+- **Öffnungszeiten an einer Stelle:** Sie gelten für Tabelle, Fußzeile, Texte, Google-Beschreibung und Google-Daten.
+- **Mietanhänger:** anlegen, bearbeiten (Daten, Preise, Beschreibung in fünf Sprachen, Foto), ausblenden, löschen.
+- **Fotoänderung geprüft.** In der Demo bleibt ein neues Foto nach Speichern und Neuladen erhalten.
+
+**Für den Livegang des Admin-Bereichs (Nave):** Supabase einrichten, wie im README unter „Supabase einrichten“ beschrieben (etwa 30 Minuten).
+- Projekt in der EU anlegen und `supabase db push` ausführen.
+- Registrierung schließen und ein Konto pro Person anlegen.
+- GitHub-Schlüssel erstellen, `supabase secrets set` ausführen, `supabase functions deploy publish`.
+- Die zwei GitHub-Variablen `PUBLIC_SUPABASE_URL` und `PUBLIC_SUPABASE_ANON_KEY` setzen.
+
+Bis dahin läuft der Admin-Bereich als Demo und speichert nur im eigenen Browser.
+
+**Offen:**
+- Entscheidung Free- oder Pro-Plan bei Supabase. Der Free-Plan pausiert nach 7 Tagen ohne Zugriff, der tägliche Workflow fragt deshalb einmal am Tag an.
+- Die echten Mietanhänger eintragen und die fünf Beispiele löschen. Das geht jetzt direkt im Admin-Bereich.
+
 ## Stand 13.10.2026: Bestand aus MovingCar
 
 Der Abgleich liest den Bestand jetzt über die offizielle MovingCar-API, mit dem Zugang der Garage. LuxAuto und AutoScout24 werden nicht mehr ausgelesen. Damit sind die Punkte **1** (Einverständnis für die Übernahme der Portal-Inserate) und **2** (Nutzungsbedingungen der Portale) erledigt. Die Daten kommen von der Garage selbst über ihren Dienstleister. Die Punkte 32–35 („bitte in LuxAuto korrigieren“) gelten jetzt für **MovingCar**:
@@ -30,7 +49,7 @@ Der Abgleich liest den Bestand jetzt über die offizielle MovingCar-API, mit dem
 
 ## Stand 07.10.2026: Dashboard, Texte, Formulare
 
-- **Admin-Dashboard** unter `/admin/` (Link „Login“ im Footer). Für den echten Betrieb braucht die Garage einen Zugangsschlüssel. Nave erstellt ihn, die Anleitung steht im README unter „Admin-Dashboard“. Ohne Schlüssel läuft nur die Demo.
+- **Admin-Dashboard** unter `/admin/`: inzwischen abgelöst durch den Admin-Bereich auf der Seite (siehe Stand 14.10.2026).
 - **Formulare** funktionieren ohne Supabase über WhatsApp und E-Mail mit fertig formuliertem Text (siehe README). Punkt 6 bleibt für den Versand direkt aus der Website offen.
 - **Seitentexte:** Alle Leistungs- und Kategorieseiten haben ausführliche Texte und eigene FAQs in fünf Sprachen. **LB und PT** von Muttersprachlern prüfen lassen: `npm run lb:export`, dann `LB-TEXTE/lb-pruefen.txt`.
 

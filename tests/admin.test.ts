@@ -42,7 +42,8 @@ describe('Dashboard: Öffnungszeiten', () => {
     expect(hoursErrors(x)).toEqual({ mo: 'order', tu: 'overlap' });
   });
   it('Zusammenfassung gruppiert gleiche Tage', () => {
-    expect(hoursSummary(useT('de'), 'de')).toBe('Montag – Freitag: 07:45–12:00 und 13:00–18:00 · Samstag: 08:00–12:00 · Sonntag: geschlossen');
+    const week = { mo: [['07:45', '12:00'], ['13:00', '18:00']], tu: [['07:45', '12:00'], ['13:00', '18:00']], we: [['07:45', '12:00'], ['13:00', '18:00']], th: [['07:45', '12:00'], ['13:00', '18:00']], fr: [['07:45', '12:00'], ['13:00', '18:00']], sa: [['08:00', '12:00']], su: [] } as Horaires['week'];
+    expect(hoursSummary(useT('de'), 'de', ' · ', week)).toBe('Montag – Freitag: 07:45–12:00 und 13:00–18:00 · Samstag: 08:00–12:00 · Sonntag: geschlossen');
   });
 });
 

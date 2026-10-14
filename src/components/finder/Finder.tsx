@@ -357,7 +357,7 @@ function Result(
   const d = i.display;
   const key = `${hydrated ? row.assessment.verdict : 'static'}${row.assessment.exceedsTowLimit ? '-tow' : ''}`;
   return (
-    <li className="result" style={{ viewTransitionName: `fleet-${props.uid}-${i.id}` }}>
+    <li className="result" data-fleet={i.id} style={{ viewTransitionName: `fleet-${props.uid}-${i.id}` }}>
       {d.photo && (
         <div className={`result-photo${d.photo.contain ? ' contain' : ''}`}>
           <img
@@ -373,6 +373,7 @@ function Result(
         </div>
       )}
       <h4 className="result-name">{i.name}</h4>
+      {i.notes && <p className="result-notes">{i.notes}</p>}
       {i.loadLengthM != null && i.loadWidthM != null && d.lengthLabel && d.widthLabel && d.diagramAria && (
         <figure className="result-diagram">
           <LoadDiagram

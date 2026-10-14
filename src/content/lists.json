@@ -1,0 +1,3 @@
+{
+  "$comment": "Geänderte Listen aus dem Admin-Bereich auf der Seite: Sprache → Pfad (wie in src/i18n/fr.ts) → ganze Liste. Hat Vorrang vor texts.json und den Grundtexten."
+}

@@ -33,7 +33,7 @@ const h = t.fleetTable;
         </thead>
         <tbody role="rowgroup">
           {items.map((i) => (
-            <tr role="row">
+            <tr role="row" data-fleet={i.id}>
               <th scope="row" role="rowheader">
                 {i.name}
                 <span class="cat t-small">{t.categories[i.category]}</span>

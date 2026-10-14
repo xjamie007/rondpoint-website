@@ -707,7 +707,7 @@ const lb: Dict = {
     contact: {
       title: 'Kontakt a Wee bei eis | Garage Um Rond Point, Erpeldange',
       description:
-        '1, rue du Viaduc zu Erpeldange-sur-Sûre, um Rond-point nieft der Aral. Méindeg bis Freideg 7:45–12 an 13–18 Auer, Samschdeg 8–12 Auer. Tel. +352 81 05 41.',
+        '1, rue du Viaduc zu Erpeldange-sur-Sûre, um Rond-point nieft der Aral. {hours}. Tel. +352 81 05 41.',
     },
     thanks: {
       title: 'Ufro geschéckt | Garage Um Rond Point, Erpeldange-sur-Sûre',

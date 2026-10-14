@@ -252,9 +252,9 @@ Der Workflow `.github/workflows/stock-sync.yml` baut die Website bei jedem Push 
 - Solange `presentation: true` gilt, tragen alle Seiten `noindex`, und `robots.txt` sperrt Suchmaschinen. Damit taucht die Demo mit den Stockfotos nicht bei Google auf.
 - Lokal den Build unter einem Unterpfad testen: `SITE_URL=https://example.github.io BASE_PATH=/rondpoint-website npm run build`.
 
-## Admin-Dashboard (`/admin/`)
+## Älteres Admin-Dashboard (`/admin/`, gesperrt)
 
-**Derzeit gesperrt:** `src/content/site.json` → `admin.enabled: false`. Dann zeigt `/admin/` nur eine „Am Opbau“-Seite, und `/admin/data.json` enthält keine Daten. Zum Freischalten auf `true` setzen. Der Link „Login“ im Footer öffnet inzwischen den Admin-Bereich direkt auf der Seite (siehe unten), das Dashboard bleibt unter `/admin/` erreichbar.
+Abgelöst durch den Admin-Bereich auf der Seite (nächster Abschnitt). **Derzeit gesperrt:** `src/content/site.json` → `admin.enabled: false`. Dann zeigt `/admin/` nur eine „Am Opbau“-Seite, und `/admin/data.json` enthält keine Daten. Zum Freischalten auf `true` setzen. Der Link „Login“ im Footer öffnet inzwischen den Admin-Bereich direkt auf der Seite (siehe unten), das Dashboard bleibt unter `/admin/` erreichbar.
 
 Die Garage pflegt ihre Website selbst, im Browser auf Handy oder Computer. Erreichbar ist es direkt unter `/admin/`. Die Oberfläche gibt es auf Deutsch und Französisch.
 
@@ -286,24 +286,101 @@ Ohne Schlüssel kann niemand speichern. Die Seite `/admin/` ist für Suchmaschin
 
 ## Admin-Bereich direkt auf der Seite (Login im Footer)
 
-Wie bei der Krombach-Demo: Der unauffällige Link „Login“ neben „Mentions légales“ öffnet ein Anmeldefenster mit Benutzername und Passwort. Danach wird direkt auf der Seite bearbeitet, auf Handy und Computer. Ohne Login sieht die Seite genau so aus wie gebaut. Besucher laden nur einen kleinen Starter (`src/edit/boot.ts`), der Editor selbst kommt erst nach dem Login.
+**Das ist der Admin-Bereich für die Garage.** Der unauffällige Link „Login“ neben „Mentions légales“ öffnet ein Anmeldefenster. Danach bearbeitet man direkt auf der Seite, auf Handy und Computer. Ohne Login sieht die Seite genau so aus wie gebaut. Besucher laden nur einen kleinen Starter (`src/edit/boot.ts`), der Editor kommt erst nach dem Login.
 
 **Was man ändern kann**
-- **Texte:** antippen und lostippen, auf jeder Seite und in jeder Sprache (Sprache unter „Seiten“ wechseln). Texte mit Telefonnummer, Adresse oder Link öffnen ein kleines Fenster, damit diese Teile erhalten bleiben.
-- **Bilder:** antippen → „Foto aus Galerie“ oder „Foto aufnehmen“. Das Foto wird auf 2400 px verkleinert. Dort auch Bildbeschreibung, Ausblenden und Original-Bild.
+- **Texte:** antippen und lostippen, auf jeder Seite und in jeder Sprache (Sprache unter „Seiten“ wechseln). Texte mit Telefonnummer, Adresse oder Link öffnen ein kleines Fenster. Platzhalter wie `{phone}` müssen dabei bleiben, sonst übernimmt der Editor den Text nicht.
+- **Bilder:** antippen → „Foto aus Galerie“ oder „Foto aufnehmen“. Das Foto wird im Browser auf 2400 px verkleinert (WebP). Dort gibt es auch die Bildbeschreibung und „Ausblenden“.
 - **Listen** (Aufzählungen, Ablauf-Schritte, Absätze): einen Eintrag antippen → ↑ ↓ Kopieren Löschen.
-- **Google:** Titel und Beschreibung der Seite mit Zeichenzähler und Vorschau, dazu alle Bildbeschreibungen der Seite.
-- Unten: **Speichern · Rückgängig · Seiten · Google · Mehr** („Mehr“: Kurzanleitung, Seite oder ganze Website auf Original zurücksetzen, Abmelden). Nicht gespeicherte Änderungen bleiben beim Seitenwechsel erhalten.
+- **Öffnungszeiten (unten „Zeiten“ oder auf die Zeiten auf der Seite tippen):**
+  - Pro Tag geöffnet/geschlossen, bis zu zwei Zeitfenster (Mittagspause), dazu „Montag auf Dienstag–Freitag übertragen“.
+  - Das ist **eine Stelle für die ganze Website:** Tabelle, Fußzeile, alle Texte mit `{hours}` (auch die Google-Beschreibung der Kontaktseite) und die Öffnungszeiten für Google (JSON-LD).
+- **Mietanhänger & Transporter (unten „Anhänger“ oder auf eine Fahrzeug-Karte tippen):**
+  - Anlegen, bearbeiten und löschen.
+  - Felder: Art, Name in fünf Sprachen, Marke, Gewichte (Nutzlast auf Knopfdruck aus Gesamt- und Leergewicht), Ladefläche, Paletten, Preise, Kaution, „geeignet für“, Steckdose, Kühlung.
+  - Eine kurze Beschreibung in fünf Sprachen, sie erscheint auf der Karte.
+  - Ein Foto, „Auf der Website zeigen“ zum Ausblenden.
+  - Die Prüfregeln sind dieselben wie beim Build (`supabase/functions/publish/convert.ts`, z. B. höchstens 3 500 kg). Ein gespeichertes Fahrzeug lässt den Build also nie scheitern.
+  - Vorschau sofort auf der Startseite, der Seite „Mieten“ (Finder und Tabelle) und den Kategorieseiten.
+- **Google (unter „Mehr“):** Titel und Beschreibung der Seite mit Zeichenzähler und Vorschau, dazu alle Bildbeschreibungen der Seite.
+- **Die Leiste unten:** **Speichern · Rückgängig · Seiten · Anhänger · Zeiten · Mehr**. Nicht gespeicherte Änderungen bleiben beim Seitenwechsel erhalten.
 
-**Nicht hier:** Öffnungszeiten, Kontaktdaten, Mietflotte und der Fahrzeugbestand sind Daten, keine Texte (Dashboard bzw. MovingCar).
+**Nicht hier:** Kontaktdaten und der Fahrzeugbestand (Autos kommen aus MovingCar).
 
-**Aufbau** (`src/edit/`)
-- `storage.ts` – **Speichern & Login, die einzige Stelle, die später ausgetauscht wird.** In der Demo (`storage: 'demo'`) bleibt alles im Browser (IndexedDB), der Login vergleicht nur einen SHA-256-Hash. Für den Betrieb auf einem Webspace wird `storage: 'server'` gesetzt; die Datei beschreibt den Vertrag für eine kleine `api.php`. Der Rest der Seite bleibt dabei unverändert.
-- `match.ts` – ordnet sichtbaren Text seinem Schlüssel in `src/i18n/<sprache>.ts` zu (getestet in `tests/edit.test.ts`).
-- `editor.ts`, `editor.css` – Bedienoberfläche und Anwenden der Änderungen.
-- Format der Änderungen: `texts` entspricht `src/content/texts.json`, `lists` enthält geänderte Listen als Ganzes, `photos` die Foto-Plätze aus `Photo.astro` (`data-eimg`).
+### Demo und Betrieb
 
-**Demo-Zugang:** Benutzername `rondpoint`, Passwort bei Nave (steht nicht im Repository). Der Login ist nur für die Vorführung gedacht, kein echter Schutz: Änderungen bleiben ohnehin im Browser der Person, die sie macht.
+| | Demo (heute) | Betrieb mit Supabase |
+|---|---|---|
+| Anmeldung | Benutzername `rondpoint`, Passwort bei Nave (nur als Hash in `src/edit/storage.ts`) | E-Mail und Passwort, je Person ein Konto in Supabase |
+| Speichern | nur in diesem Browser (IndexedDB) | für alle Besucher, nach wenigen Minuten |
+| Umgeschaltet durch | – | GitHub-Variablen `PUBLIC_SUPABASE_URL` und `PUBLIC_SUPABASE_ANON_KEY` |
+
+**So funktioniert das Speichern mit Supabase:**
+1. Der Editor schickt den Stand an die Edge Function `publish` (`supabase/functions/publish/`).
+2. Die Function prüft die Anmeldung und den Inhalt und schreibt alles als **einen Commit** ins Repository.
+   - Texte → `src/content/texts.json`
+   - Listen → `src/content/lists.json`
+   - Fotos → `src/assets/photos/`, ausgeblendete Fotos → `src/content/photos.json`
+   - Öffnungszeiten → `src/content/horaires.json`
+   - Anhänger → `src/content/flotte/<kennung>.json` und `src/assets/flotte/`
+3. Der Push startet `stock-sync.yml`: Tests, Build, Veröffentlichung. Das dauert meist 2–5 Minuten.
+4. Bis dahin zeigt der Browser der Person, die gespeichert hat, schon den neuen Stand. Er vergleicht dafür die Commit-Zeit im `<meta name="rp-build">`.
+
+Das bringt folgende Vorteile:
+- Jede Änderung ist im Git-Verlauf und lässt sich zurückholen.
+- Die Website bleibt statisch, schnell und vollständig für Google lesbar.
+- Supabase speichert keine Inhalte, nur die Konten und ein Protokoll (`admin_changes`: wer, wann, was).
+
+### Supabase einrichten (Nave, einmalig, ca. 30 Minuten)
+
+Dasselbe Supabase-Projekt dient auch den Formularen (siehe oben).
+
+1. **Projekt anlegen:** supabase.com → New project, Region **EU (Frankfurt)**. Ein starkes Datenbank-Passwort im Passwortmanager ablegen.
+2. **Tabellen anlegen:** `supabase link --project-ref <ref>`, dann `supabase db push`. Das legt `inquiries`, `inquiry_rate` und `admin_changes` an, alle mit RLS gesperrt.
+3. **Registrierung schließen:** Authentication → Sign In / Providers → „Allow new users to sign up“ **aus**. Neue Konten legt nur Nave an.
+4. **Konten anlegen:** Authentication → Users → „Add user“ → „Create new user“. E-Mail und Passwort eingeben, „Auto Confirm User“ anhaken. Ein Konto pro Person, zum Beispiel für den Gérant und Nave.
+5. **GitHub-Schlüssel für die Function:**
+   - GitHub → Settings → Developer settings → Fine-grained tokens → Generate new token.
+   - Nur das Repository `rondpoint-website`, Berechtigung **Contents: Read and write**.
+   - Ablaufdatum im Kalender eintragen.
+6. **Geheimnisse setzen:**
+   ```bash
+   supabase secrets set GITHUB_TOKEN=github_pat_… GITHUB_REPO=xjamie007/rondpoint-website GITHUB_BRANCH=main ALLOWED_ORIGINS=https://xjamie007.github.io,https://www.rondpoint.lu
+   ```
+   Optional `ADMIN_EMAILS=a@…,b@…`: dann dürfen nur diese Konten speichern.
+7. **Function veröffentlichen:** `supabase functions deploy publish`. Die Function prüft die Anmeldung selbst, deshalb steht in `supabase/config.toml` `verify_jwt = false`.
+8. **Website umschalten:**
+   - GitHub → Settings → Secrets and variables → Actions → **Variables**: `PUBLIC_SUPABASE_URL` = `https://<ref>.supabase.co` und `PUBLIC_SUPABASE_ANON_KEY` = der „anon“/„publishable“ Schlüssel. Der ist für den Browser gedacht und öffentlich.
+   - Danach den Workflow einmal starten.
+9. **Test:** Auf der Website „Login“ → E-Mail und Passwort → einen Text ändern → Speichern. Nach wenigen Minuten erscheint ein Commit „Website-Editor: Texte DE“, und die Seite zeigt die Änderung.
+
+**Gut zu wissen**
+- **Konten verwalten:** Passwort vergessen → in Supabase unter Users ein neues setzen. Jemand verlässt die Firma → Konto löschen.
+- **Free-Plan:** Supabase pausiert kostenlose Projekte nach 7 Tagen ohne Zugriff. Der tägliche Workflow fragt Supabase deshalb einmal am Tag an („Supabase aktiv halten“). Für einen Firmenauftritt ist der Pro-Plan die sichere Wahl, denn ein pausiertes Projekt sperrt Login und Formulare.
+- **Eigene Domain:** zusätzlich in `ALLOWED_ORIGINS` eintragen (Schritt 6), sonst blockiert der Browser das Speichern.
+- **Läuft der Build nach dem Speichern nicht durch** (z. B. GitHub-Störung): Der Commit liegt trotzdem im Repository. „Run workflow“ startet ihn erneut, es geht nichts verloren.
+
+### Aufbau (`src/edit/`)
+- `storage.ts`: **Speichern und Login, Demo oder Supabase.** Sonst ändert sich beim Umschalten nichts.
+- `match.ts`: ordnet sichtbaren Text seinem Schlüssel in `src/i18n/<sprache>.ts` zu (getestet in `tests/edit.test.ts`).
+- `editor.ts`, `editor.css`, `ui.ts`: Bedienoberfläche und das Anwenden der Änderungen.
+- `hours.ts`: Fenster „Öffnungszeiten“ und Vorschau (Tabelle `[data-hours=table]`, Fußzeile `[data-hours=sum]`, Texte mit `{hours}`).
+- `fleet.ts`: Fenster „Anhänger“.
+  - Die Daten kommen aus `/edit/fleet.json`, das beim Build entsteht.
+  - Die Vorschau auf den Kategorieseiten macht `fleet.ts` selbst.
+  - `fleet-preview.ts` zeichnet Finder und Tabelle neu. Es wird erst bei Änderungen geladen, weil es React braucht.
+- `supabase/functions/publish/`:
+  - `convert.ts`: Prüfregeln und Umwandlung in Dateien. Dieselbe Datei läuft im Editor, in der Function und in den Tests (`tests/publish.test.ts`).
+  - `publish.ts`: Anmeldung, GitHub-Commit, Protokoll.
+  - `index.ts`: Einstieg für Deno.
+- Format der Änderungen (`EditState` in `convert.ts`):
+  - `texts` wie `src/content/texts.json`
+  - `lists` mit geänderten Listen als Ganzes
+  - `photos` mit den Foto-Plätzen (`data-eimg`)
+  - `hours` mit der Woche wie in `horaires.json`
+  - `fleet` mit Kennung → Fahrzeugdaten, `null` heißt gelöscht
+
+Das ältere Dashboard unter `/admin/` (Anmeldung mit GitHub-Schlüssel) bleibt gesperrt. Es wird nicht mehr gebraucht, sobald Supabase läuft.
 
 ## Formulare ohne Supabase
 

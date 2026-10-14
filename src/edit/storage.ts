@@ -2,40 +2,37 @@
  *  SPEICHERN & LOGIN – die einzige Stelle, die für die Veröffentlichung
  *  ausgetauscht wird. Seiten, Editor und Design bleiben gleich.
  *
- *  DEMO   (storage: 'demo')   Inhalte, Bilder und Login bleiben in diesem
+ *  DEMO      (ohne Supabase)  Inhalte, Bilder und Login bleiben in diesem
  *                             Browser (IndexedDB). Nichts verlässt das Gerät.
- *  LIVE   (storage: 'server') Spricht mit einer kleinen PHP-Datei (api.php):
- *                             Inhalt -> content.json, Bilder -> Ordner images/,
- *                             Passwort nur als Hash auf dem Server.
+ *  SUPABASE  (PUBLIC_SUPABASE_URL und PUBLIC_SUPABASE_ANON_KEY beim Build gesetzt)
+ *                             Anmeldung mit E-Mail und Passwort (Supabase Auth).
+ *                             Speichern = die Edge Function `publish` schreibt die
+ *                             Änderungen als Commit ins Repository; GitHub baut die
+ *                             Seite neu, nach wenigen Minuten sehen sie alle.
+ *                             Bis dahin zeigt dieser Browser den gespeicherten Stand.
  *
  *  Schnittstelle (beide Varianten identisch):
  *    hint()                -> boolean  lohnt es, den Editor zu laden? (synchron, für jeden Besucher)
- *    loadContent()         -> EditState|null   gespeicherter Stand (null = Original)
- *    saveContent(state)                 speichern
- *    resetContent()                     gespeicherten Stand verwerfen
- *    uploadImage(blob, name) -> path    z. B. "images/uploads/werkstatt-1a2b.webp"
+ *    loadContent()         -> EditState|null   gespeicherter, noch nicht sichtbarer Stand
+ *    saveContent(state)                 speichern (Supabase: veröffentlichen)
+ *    resetContent()                     gespeicherten Stand verwerfen (nur Demo)
+ *    uploadImage(blob, name) -> path    Demo „images/uploads/…“, Supabase „upload/<sha>.<endung>“
  *    imageUrl(path)        -> url       (synchron) Adresse für <img src>
  *    login(user, pass)     -> boolean
  *    logout()
  *    isLoggedIn()          -> boolean
  *
- *  API-Vertrag für api.php (JSON, Session-Cookie):
- *    POST ?action=login   {user,pass}   -> {ok}
- *    POST ?action=logout                 -> {ok}
- *    GET  ?action=session                -> {loggedIn}
- *    GET  content.json                   -> Inhalt (EditState)
- *    POST ?action=save    {content}      -> {ok}
- *    POST ?action=reset                  -> {ok}
- *    POST ?action=upload  multipart file -> {ok,path}
- *
- *  Format des Inhalts: `texts` hat dasselbe Format wie src/content/texts.json
- *  (Sprache → "schlüssel.mit.punkten" → Text) und kann dort direkt übernommen werden.
+ *  Format des Inhalts: supabase/functions/publish/convert.ts (EditState).
  * ========================================================================= */
-import type { Lang } from '@/i18n/config';
+import type { EditState } from '../../supabase/functions/publish/convert';
+
+export type { EditState };
+
+const SB_URL = (import.meta.env.PUBLIC_SUPABASE_URL as string | undefined)?.replace(/\/$/, '') ?? '';
+const SB_KEY = (import.meta.env.PUBLIC_SUPABASE_ANON_KEY as string | undefined) ?? '';
 
 export const SITE_CONFIG = {
-  storage: 'demo' as 'demo' | 'server',
-  api: `${import.meta.env.BASE_URL.replace(/\/?$/, '/')}api.php`,
+  storage: (SB_URL && SB_KEY ? 'supabase' : 'demo') as 'demo' | 'supabase',
   // Demo-Zugang (nur Demo!). Gespeichert ist nur der SHA-256-Hash des Passworts.
   demoUser: 'rondpoint',
   demoPassHash: 'f89e2ec568c1908a086b38d5137666acd071644c9992dafe364b2ef8d13181c2',
@@ -48,17 +45,13 @@ export interface ListOverride {
   from: number[];
 }
 
-export interface EditState {
-  v: 1;
-  texts: Partial<Record<Lang, Record<string, string>>>;
-  lists: Partial<Record<Lang, Record<string, ListOverride>>>;
-  /** Foto-Platz (Dateiname ohne Endung, z. B. "hero-workshop") → neues Bild oder ausgeblendet */
-  photos: Record<string, { src?: string; hidden?: boolean }>;
-}
-
 export const emptyState = (): EditState => ({ v: 1, texts: {}, lists: {}, photos: {} });
 
 export interface SiteStorage {
+  /** true: Speichern veröffentlicht für alle Besucher (Supabase) */
+  live: boolean;
+  /** Beschriftung des ersten Login-Felds */
+  userLabel: string;
   init(): Promise<void>;
   hint(): boolean;
   loadContent(): Promise<EditState | null>;
@@ -101,19 +94,39 @@ const flag = {
   get: (s: Storage, k: string) => { try { return s.getItem(k) === '1'; } catch { return false; } },
   set: (s: Storage, k: string, on: boolean) => { try { on ? s.setItem(k, '1') : s.removeItem(k); } catch { /* ohne Speicher: nur diese Seite */ } },
 };
+const local = {
+  get: <T>(k: string): T | null => { try { return JSON.parse(localStorage.getItem(k) ?? 'null'); } catch { return null; } },
+  set: (k: string, v: unknown) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, JSON.stringify(v)); } catch { /* ohne Speicher */ } },
+};
+
+/** Hochgeladene Bilder (Vorschau) aus IndexedDB, als Objekt-URL */
+const urls: Record<string, string> = {};
+async function loadImages() {
+  try {
+    const keys = await idb<IDBValidKey[]>('img', 'readonly', (s) => s.getAllKeys());
+    for (const k of keys) {
+      const blob = await idb<Blob | undefined>('img', 'readonly', (s) => s.get(k));
+      if (blob) urls[String(k)] = URL.createObjectURL(blob);
+    }
+  } catch { /* kein IndexedDB: Original */ }
+}
+async function keepImage(path: string, blob: Blob) {
+  try { await idb('img', 'readwrite', (s) => s.put(blob, path)); } catch { /* nur für diese Sitzung */ }
+  urls[path] = URL.createObjectURL(blob);
+}
+/** nicht mehr verwendete Bilder entfernen */
+async function pruneImages(json: string) {
+  try {
+    const keys = await idb<IDBValidKey[]>('img', 'readonly', (s) => s.getAllKeys());
+    for (const k of keys) if (!json.includes(String(k))) await idb('img', 'readwrite', (s) => s.delete(k));
+  } catch { /* egal */ }
+}
 
 /* =================== DEMO: alles bleibt im Browser =================== */
-const urls: Record<string, string> = {};
 const DemoStorage: SiteStorage = {
-  async init() {
-    try {
-      const keys = await idb<IDBValidKey[]>('img', 'readonly', (s) => s.getAllKeys());
-      for (const k of keys) {
-        const blob = await idb<Blob | undefined>('img', 'readonly', (s) => s.get(k));
-        if (blob) urls[String(k)] = URL.createObjectURL(blob);
-      }
-    } catch { /* kein IndexedDB: Original */ }
-  },
+  live: false,
+  userLabel: 'Benutzername',
+  init: loadImages,
   hint: () => flag.get(localStorage, 'rp-edit') || flag.get(sessionStorage, 'rp-admin'),
   async loadContent() {
     try { return (await idb<EditState | undefined>('kv', 'readonly', (s) => s.get('content'))) ?? null; } catch { return null; }
@@ -121,9 +134,7 @@ const DemoStorage: SiteStorage = {
   async saveContent(c) {
     const json = JSON.stringify(c);
     await idb('kv', 'readwrite', (s) => s.put(JSON.parse(json), 'content'));
-    // nicht mehr verwendete hochgeladene Bilder entfernen
-    const keys = await idb<IDBValidKey[]>('img', 'readonly', (s) => s.getAllKeys());
-    for (const k of keys) if (!json.includes(String(k))) await idb('img', 'readwrite', (s) => s.delete(k));
+    await pruneImages(json);
     flag.set(localStorage, 'rp-edit', true);
   },
   async resetContent() {
@@ -147,36 +158,110 @@ const DemoStorage: SiteStorage = {
   async isLoggedIn() { return flag.get(sessionStorage, 'rp-admin'); },
 };
 
-/* =================== LIVE: kleine PHP-Datei auf dem Webspace =================== */
-async function api(action: string, body?: unknown, isForm = false) {
-  const opt: RequestInit = { method: body ? 'POST' : 'GET', credentials: 'same-origin' };
-  if (body) opt.body = isForm ? (body as FormData) : JSON.stringify(body);
-  if (body && !isForm) opt.headers = { 'Content-Type': 'application/json' };
-  return (await fetch(`${SITE_CONFIG.api}?action=${action}`, opt)).json();
+/* =================== SUPABASE: Anmeldung + Veröffentlichen über die Edge Function =================== */
+const SESSION = 'rp-session';
+const PENDING = 'rp-pending';
+interface Session { access_token: string; refresh_token: string; expires_at: number; email: string }
+interface Pending { state: EditState; at: string }
+
+async function authCall(path: string, body: unknown, token?: string): Promise<Record<string, unknown>> {
+  const r = await fetch(`${SB_URL}/auth/v1/${path}`, {
+    method: 'POST',
+    headers: { apikey: SB_KEY, 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+    body: JSON.stringify(body ?? {}),
+  });
+  const j = r.status === 204 ? {} : await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(String(j.error_description ?? j.msg ?? j.message ?? r.status));
+  return j;
 }
-const ServerStorage: SiteStorage = {
-  async init() {},
-  // ponytail: lädt den Editor für jeden Besucher (die Änderungen liegen auf dem Server); ein Build aus content.json spart das später
-  hint: () => true,
+function keepSession(j: Record<string, unknown>): Session {
+  const s: Session = {
+    access_token: String(j.access_token),
+    refresh_token: String(j.refresh_token),
+    expires_at: Number(j.expires_at) || Math.floor(Date.now() / 1000) + Number(j.expires_in ?? 3600),
+    email: String((j.user as { email?: string } | undefined)?.email ?? ''),
+  };
+  local.set(SESSION, s);
+  return s;
+}
+/** Gültiger Zugangsschlüssel, bei Bedarf erneuert */
+async function accessToken(): Promise<string> {
+  const s = local.get<Session>(SESSION);
+  if (!s) throw new Error('Bitte erneut anmelden.');
+  if (s.expires_at * 1000 - Date.now() > 60_000) return s.access_token;
+  try {
+    return keepSession(await authCall('token?grant_type=refresh_token', { refresh_token: s.refresh_token })).access_token;
+  } catch {
+    local.set(SESSION, null);
+    throw new Error('Die Anmeldung ist abgelaufen. Bitte erneut anmelden.');
+  }
+}
+async function publishCall(body: unknown): Promise<Record<string, unknown>> {
+  const r = await fetch(`${SB_URL}/functions/v1/publish`, {
+    method: 'POST',
+    headers: { apikey: SB_KEY, Authorization: `Bearer ${await accessToken()}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok || !j.ok) throw new Error(String(j.error ?? `Fehler ${r.status}`));
+  return j;
+}
+function toBase64(blob: Blob): Promise<string> {
+  return new Promise((res, rej) => {
+    const fr = new FileReader();
+    fr.onload = () => res(String(fr.result).split(',')[1]);
+    fr.onerror = () => rej(fr.error);
+    fr.readAsDataURL(blob);
+  });
+}
+/** Commit-Zeit, aus der diese Seite gebaut wurde (meta rp-build) */
+const builtAt = () => Date.parse(document.querySelector<HTMLMetaElement>('meta[name=rp-build]')?.content ?? '') || 0;
+
+const SupabaseStorage: SiteStorage = {
+  live: true,
+  userLabel: 'E-Mail',
+  init: loadImages,
+  hint: () => !!local.get(SESSION) || !!local.get(PENDING),
   async loadContent() {
+    const p = local.get<Pending>(PENDING);
+    if (!p) return null;
+    // schon veröffentlicht: die Seite zeigt den Stand selbst
+    if (builtAt() >= Date.parse(p.at)) {
+      local.set(PENDING, null);
+      return null;
+    }
+    return p.state;
+  },
+  async saveContent(state) {
+    const r = await publishCall({ action: 'publish', state });
+    local.set(PENDING, { state, at: String(r.committedAt ?? new Date().toISOString()) } satisfies Pending);
+    await pruneImages(JSON.stringify(state));
+  },
+  async resetContent() { /* veröffentlichte Änderungen bleiben; ungespeicherte verwirft der Editor */ },
+  async uploadImage(blob) {
+    const ext = blob.type === 'image/webp' ? 'webp' : blob.type === 'image/png' ? 'png' : 'jpg';
+    const r = await publishCall({ action: 'blob', ext, data: await toBase64(blob) });
+    const path = `upload/${r.sha}.${ext}`;
+    await keepImage(path, blob);
+    return path;
+  },
+  imageUrl: (p) => urls[p] ?? p,
+  async login(user, pass) {
     try {
-      const r = await fetch(`${import.meta.env.BASE_URL.replace(/\/?$/, '/')}content.json?v=${Date.now()}`, { cache: 'no-store' });
-      return r.ok ? r.json() : null;
-    } catch { return null; }
+      keepSession(await authCall('token?grant_type=password', { email: user.trim(), password: pass }));
+      return true;
+    } catch {
+      return false;
+    }
   },
-  async saveContent(content) { if (!(await api('save', { content })).ok) throw new Error('save'); },
-  async resetContent() { await api('reset', {}); },
-  async uploadImage(blob, name) {
-    const fd = new FormData();
-    fd.append('file', blob, name);
-    const r = await api('upload', fd, true);
-    if (!r.ok) throw new Error('upload');
-    return r.path;
+  async logout() {
+    const s = local.get<Session>(SESSION);
+    local.set(SESSION, null);
+    if (s) await authCall('logout', {}, s.access_token).catch(() => {});
   },
-  imageUrl: (p) => (!p || /^(data:|blob:|https?:|\/)/.test(p) ? p : import.meta.env.BASE_URL.replace(/\/?$/, '/') + p),
-  async login(user, pass) { return !!(await api('login', { user, pass })).ok; },
-  async logout() { await api('logout', {}); },
-  async isLoggedIn() { try { return !!(await api('session')).loggedIn; } catch { return false; } },
+  async isLoggedIn() {
+    try { return !!(await accessToken()); } catch { return false; }
+  },
 };
 
-export const siteStorage: SiteStorage = SITE_CONFIG.storage === 'server' ? ServerStorage : DemoStorage;
+export const siteStorage: SiteStorage = SITE_CONFIG.storage === 'supabase' ? SupabaseStorage : DemoStorage;
