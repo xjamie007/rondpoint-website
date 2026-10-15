@@ -12,6 +12,7 @@
 import { spawnSync } from 'node:child_process';
 import { createInterface } from 'node:readline';
 import { hashPassword } from '../worker/auth.ts';
+import { SCHEMA } from '../worker/schema.ts';
 
 const [cmd, emailArg, ...rest] = process.argv.slice(2);
 const printOnly = rest.includes('--print') || emailArg === '--print';
@@ -51,7 +52,8 @@ if (cmd === 'list') {
   const again = await ask('Passwort wiederholen: ');
   if (pw !== again) { console.error('Die Passwörter stimmen nicht überein.'); process.exit(1); }
   const hash = await hashPassword(pw);
-  d1(`INSERT INTO admins (email, pass_hash) VALUES ('${email}', '${hash}') ON CONFLICT(email) DO UPDATE SET pass_hash = excluded.pass_hash;`);
+  // Tabelle anlegen, falls der Worker noch nie aufgerufen wurde
+  d1(`${SCHEMA[0]}; INSERT INTO admins (email, pass_hash) VALUES ('${email}', '${hash}') ON CONFLICT(email) DO UPDATE SET pass_hash = excluded.pass_hash;`);
   console.log(`Konto ${email} ist bereit. Anmelden über „Login“ unten auf der Website.`);
 } else {
   console.log('Aufruf: npm run admin -- add name@example.com | remove name@example.com | list');

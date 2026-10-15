@@ -333,45 +333,27 @@ Das bringt folgende Vorteile:
 - Die Website bleibt statisch, schnell und vollständig für Google lesbar.
 - Supabase speichert keine Inhalte, nur die Konten und ein Protokoll (`admin_changes`: wer, wann, was).
 
-### Cloudflare einrichten (Nave, einmalig, ca. 30 Minuten)
+### Cloudflare einrichten (Nave, einmalig)
 
 Auf Cloudflare liegt alles an einem Ort, kostenlos:
 - **Seiten:** Ein Worker liefert die gebauten Seiten aus `dist/` aus (`wrangler.jsonc`).
 - **Admin-Bereich und Formulare:** Derselbe Worker beantwortet `/api/*` (`worker/`).
-- **Datenbank:** Konten, Anmelde-Fehlversuche, Protokoll und Formular-Anfragen liegen in einer D1-Datenbank in der EU (`worker/migrations/`).
-- **Veröffentlichen:** GitHub Actions baut die Seite und lädt sie hoch, wie bisher bei GitHub Pages.
+- **Datenbank:** D1 in der EU, die Datenbank-ID steht in `wrangler.jsonc`. Die Tabellen legt der Worker beim ersten Aufruf selbst an (`worker/schema.ts`).
+- **Veröffentlichen:** Cloudflare baut selbst aus GitHub (Workers Builds, verbunden mit `xjamie007/rondpoint-website`, Branch `main`). Jeder Push wird veröffentlicht, auch der tägliche Bestand-Abgleich und das Speichern im Admin-Bereich.
 
-1. **Cloudflare-Konto:** dash.cloudflare.com → **Workers & Pages**. Beim ersten Besuch eine workers.dev-Subdomain wählen, z. B. `nave`. Die Website liegt dann unter `https://rondpoint-website.nave.workers.dev`.
-2. **Datenbank anlegen:** **Storage & Databases → D1 SQL Database → Create Database**.
-   - Name `rondpoint`.
-   - Unter *Data location* **Specify jurisdiction → European Union** wählen. Das geht nur beim Anlegen.
-   - Danach die **Database ID** kopieren.
-3. **Cloudflare-Schlüssel für GitHub:**
-   - **My Profile → API Tokens → Create Token** → Vorlage **„Edit Cloudflare Workers“**.
-   - Eine Berechtigung ergänzen: **Account → D1 → Edit**.
-   - Account Resources: das eigene Konto → Create.
-   - Den Token kopieren. Die **Account ID** steht unter Workers & Pages rechts.
-4. **GitHub-Schlüssel für den Editor:**
-   - github.com → Settings → Developer settings → **Fine-grained tokens**.
-   - Nur das Repository `rondpoint-website`, **Contents: Read and write**.
-   - Ablaufdatum im Kalender eintragen.
-5. **In GitHub eintragen** (Repository → Settings → Secrets and variables → Actions):
-   - *Secrets:*
-     - `CLOUDFLARE_API_TOKEN`
-     - `CLOUDFLARE_ACCOUNT_ID`
-     - `EDITOR_GITHUB_TOKEN` (der Token aus Schritt 4)
-     - `SESSION_SECRET`: ein langer Zufallswert, z. B. aus `openssl rand -base64 48`
-   - *Variables:*
-     - `HOSTING` = `cloudflare`
-     - `SITE_URL` = die Adresse aus Schritt 1
-     - `D1_DATABASE_ID` = die ID aus Schritt 2
-6. **Veröffentlichen:** GitHub → Actions → „Bestand-Sync und Deploy“ → **Run workflow**. Der Lauf legt die Tabellen an, lädt die Seite hoch und setzt die Geheimnisse des Workers.
-7. **Konten anlegen** (im Projektordner, einmal `npx wrangler login`):
+**Einstellungen in Cloudflare** (Workers & Pages → `rondpoint-website` → Settings):
+1. **Build:** Build command `npm run build`, Deploy command `npx wrangler deploy`. Unter Build → Variables `PUBLIC_HOSTING` = `cloudflare`. Später kommt `SITE_URL` = `https://www.rondpoint.lu` dazu, sobald die Domain verbunden ist; `PUBLIC_INQUIRY_URL` = `/api/inquiry`, sobald die Formulare per Mail gehen.
+2. **Variables and Secrets** (Typ *Secret*):
+   - `SESSION_SECRET`: ein langer Zufallswert, z. B. aus `openssl rand -base64 48`.
+   - `GITHUB_TOKEN`: ein Fine-grained Token von GitHub, nur das Repository `rondpoint-website`, **Contents: Read and write**. Das Ablaufdatum im Kalender eintragen.
+3. **Konten anlegen** (im Projektordner, einmal `npx wrangler login`):
    ```bash
    npm run admin -- add name@example.com
    ```
-   Das Passwort (mindestens 12 Zeichen) wird nur auf dem eigenen Rechner verschlüsselt. Es gibt keine Registrierung, nur so angelegte Konten können sich anmelden. Weitere Befehle: `npm run admin -- list` und `npm run admin -- remove name@example.com`, gelöscht ist gelöscht, auch für laufende Sitzungen.
-8. **Test:** Auf der workers.dev-Adresse unten auf „Login“ → E-Mail und Passwort → einen Text ändern → Speichern. Nach wenigen Minuten erscheint ein Commit „Website-Editor: …“, und die Seite zeigt die Änderung.
+   Das Passwort (mindestens 12 Zeichen) wird nur auf dem eigenen Rechner verschlüsselt. Es gibt keine Registrierung, nur so angelegte Konten können sich anmelden. Weitere Befehle: `npm run admin -- list` und `npm run admin -- remove name@example.com`.
+4. **Test:** auf der workers.dev-Adresse des Workers unten auf „Login“ → E-Mail und Passwort → einen Text ändern → Speichern. Nach einigen Minuten erscheint ein Commit „Website-Editor: …“ und ein neuer Build in Cloudflare.
+
+Die GitHub-Variable `HOSTING` bleibt leer. Sonst würde zusätzlich GitHub Actions auf Cloudflare veröffentlichen; dieser Weg mit eigenem API-Token ist nur die Alternative zu Workers Builds.
 
 **Eigene Domain (rondpoint.lu):**
 - Die Domain in Cloudflare hinzufügen (**Add a domain**). Beim Registrar die Nameserver auf die zwei von Cloudflare umstellen. E-Mail-Einträge (MX) übernimmt Cloudflare beim Import, bitte trotzdem prüfen.

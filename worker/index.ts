@@ -21,6 +21,7 @@ import { ContentError, type EditState } from '../supabase/functions/publish/conv
 import { HttpError, makeGit } from '../supabase/functions/publish/publish.ts';
 import { clearCookie, COOKIE, getCookie, makeSession, readSession, sessionCookie, sha256Hex, verifyPassword } from './auth';
 import { handleInquiry } from './inquiry';
+import { SCHEMA } from './schema';
 import type { Ctx, Env } from './types';
 
 const WINDOW = 15 * 60;
@@ -116,12 +117,22 @@ export async function cleanup(env: Env, now = Date.now()): Promise<void> {
   ]);
 }
 
+/** Tabellen beim ersten Aufruf anlegen (einmal je Worker-Instanz; alles „IF NOT EXISTS“) */
+let schemaReady: Promise<unknown> | null = null;
+export function ensureSchema(env: Env): Promise<unknown> {
+  return (schemaReady ??= env.DB.batch(SCHEMA.map((s) => env.DB.prepare(s))).catch((e) => {
+    schemaReady = null;
+    throw e;
+  }));
+}
+
 export default {
   async fetch(req: Request, env: Env): Promise<Response> {
     const url = new URL(req.url);
     if (!url.pathname.startsWith('/api/')) return env.ASSETS.fetch(req);
     let res: Response;
     try {
+      await ensureSchema(env);
       res = await route(req, env, url);
     } catch (e) {
       if (e instanceof ContentError) res = json(422, { ok: false, error: e.message });
@@ -137,6 +148,6 @@ export default {
     return out;
   },
   async scheduled(_event: unknown, env: Env, ctx: Ctx): Promise<void> {
-    ctx.waitUntil(cleanup(env));
+    ctx.waitUntil(ensureSchema(env).then(() => cleanup(env)));
   },
 };

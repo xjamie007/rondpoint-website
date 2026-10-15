@@ -3,6 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { DatabaseSync } from 'node:sqlite';
 import worker, { cleanup } from '../worker/index.ts';
+import { SCHEMA } from '../worker/schema.ts';
 import { hashPassword, makeSession, readSession, verifyPassword } from '../worker/auth.ts';
 import type { D1Database, D1PreparedStatement, Env } from '../worker/types.ts';
 
@@ -11,7 +12,7 @@ const horaires = JSON.parse(readFileSync('tests/fixtures/horaires.json', 'utf8')
 
 function memoryD1(): { d1: D1Database; db: DatabaseSync } {
   const db = new DatabaseSync(':memory:');
-  db.exec(readFileSync('worker/migrations/0001_init.sql', 'utf8'));
+  for (const st of SCHEMA) db.exec(st);
   const stmt = (sql: string, args: unknown[] = []): D1PreparedStatement => ({
     bind: (...a: unknown[]) => stmt(sql, a),
     first: async <T,>() => ((db.prepare(sql).get(...(args as never[])) as T) ?? null),
@@ -45,6 +46,14 @@ const call = (path: string, init: RequestInit & { cookie?: string; editor?: bool
 const login = (email: string, password: string, extra: RequestInit & { editor?: boolean } = {}) =>
   call('/api/login', { method: 'POST', body: JSON.stringify({ email, password }), headers: { 'content-type': 'application/json' }, ...extra });
 const cookieOf = (r: Response) => (r.headers.get('set-cookie') ?? '').split(';')[0];
+
+describe('Worker: Tabellen', () => {
+  it('schema.ts entspricht worker/migrations/0001_init.sql', () => {
+    const sql = readFileSync('worker/migrations/0001_init.sql', 'utf8').split('\n').filter((l) => !l.trim().startsWith('--')).join('\n');
+    const norm = (x: string) => x.replace(/\s+/g, ' ').trim();
+    expect(sql.split(';').map(norm).filter(Boolean)).toEqual(SCHEMA.map(norm));
+  });
+});
 
 describe('Worker: Passwort und Sitzung', () => {
   it('Passwort-Hash: richtig, falsch, unbekanntes Konto', async () => {

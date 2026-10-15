@@ -16,8 +16,8 @@
     {
       "binding": "DB",
       "database_name": "rondpoint",
-      // beim Anlegen „Jurisdiction: EU“ wählen; die ID trägt Nave hier ein
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      // angelegt mit „Jurisdiction: EU“
+      "database_id": "2ddc9434-2793-4673-bc5f-65d869c7f111",
       "migrations_dir": "worker/migrations"
     }
   ],
