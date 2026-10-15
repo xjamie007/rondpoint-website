@@ -4,6 +4,10 @@
  *
  *  DEMO      (ohne Supabase)  Inhalte, Bilder und Login bleiben in diesem
  *                             Browser (IndexedDB). Nichts verlässt das Gerät.
+ *  CLOUDFLARE (PUBLIC_HOSTING=cloudflare beim Build, Standard für den Betrieb)
+ *                             Der Worker der Website (worker/index.ts) prüft E-Mail und Passwort
+ *                             und setzt ein Sitzungs-Cookie; Speichern wie bei Supabase (Commit
+ *                             nach GitHub, danach neuer Build). Konten: npm run admin.
  *  SUPABASE  (PUBLIC_SUPABASE_URL und PUBLIC_SUPABASE_ANON_KEY beim Build gesetzt)
  *                             Anmeldung mit E-Mail und Passwort (Supabase Auth).
  *                             Speichern = die Edge Function `publish` schreibt die
@@ -31,8 +35,10 @@ export type { EditState };
 const SB_URL = (import.meta.env.PUBLIC_SUPABASE_URL as string | undefined)?.replace(/\/$/, '') ?? '';
 const SB_KEY = (import.meta.env.PUBLIC_SUPABASE_ANON_KEY as string | undefined) ?? '';
 
+const CF = import.meta.env.PUBLIC_HOSTING === 'cloudflare';
+
 export const SITE_CONFIG = {
-  storage: (SB_URL && SB_KEY ? 'supabase' : 'demo') as 'demo' | 'supabase',
+  storage: (CF ? 'cloudflare' : SB_URL && SB_KEY ? 'supabase' : 'demo') as 'demo' | 'cloudflare' | 'supabase',
   // Demo-Zugang (nur Demo!). Gespeichert ist nur der SHA-256-Hash des Passworts.
   demoUser: 'rondpoint',
   demoPassHash: 'f89e2ec568c1908a086b38d5137666acd071644c9992dafe364b2ef8d13181c2',
@@ -55,7 +61,10 @@ export interface SiteStorage {
   init(): Promise<void>;
   hint(): boolean;
   loadContent(): Promise<EditState | null>;
-  saveContent(c: EditState): Promise<void>;
+  /** c: Stand für diese Seite; payload (nur Supabase): was veröffentlicht wird, sonst c */
+  saveContent(c: EditState, payload?: EditState): Promise<void>;
+  /** Supabase: seit wie vielen Minuten eine gespeicherte Änderung noch nicht online ist (sonst null) */
+  pendingMinutes(): number | null;
   resetContent(): Promise<void>;
   uploadImage(blob: Blob, name: string): Promise<string>;
   imageUrl(path: string): string;
@@ -125,6 +134,7 @@ async function pruneImages(json: string) {
 /* =================== DEMO: alles bleibt im Browser =================== */
 const DemoStorage: SiteStorage = {
   live: false,
+  pendingMinutes: () => null,
   userLabel: 'Benutzername',
   init: loadImages,
   hint: () => flag.get(localStorage, 'rp-edit') || flag.get(sessionStorage, 'rp-admin'),
@@ -164,14 +174,24 @@ const PENDING = 'rp-pending';
 interface Session { access_token: string; refresh_token: string; expires_at: number; email: string }
 interface Pending { state: EditState; at: string }
 
+/** Fehler mit name 'AuthError' = neu anmelden; 'NetworkError' = keine Verbindung (Anmeldung bleibt) */
+const fail = (name: 'AuthError' | 'NetworkError', message: string) => Object.assign(new Error(message), { name });
+
 async function authCall(path: string, body: unknown, token?: string): Promise<Record<string, unknown>> {
-  const r = await fetch(`${SB_URL}/auth/v1/${path}`, {
-    method: 'POST',
-    headers: { apikey: SB_KEY, 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
-    body: JSON.stringify(body ?? {}),
-  });
+  let r: Response;
+  try {
+    r = await fetch(`${SB_URL}/auth/v1/${path}`, {
+      method: 'POST',
+      headers: { apikey: SB_KEY, 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+      body: JSON.stringify(body ?? {}),
+    });
+  } catch {
+    throw fail('NetworkError', 'Keine Verbindung zum Server. Bitte Internet prüfen und erneut versuchen.');
+  }
   const j = r.status === 204 ? {} : await r.json().catch(() => ({}));
-  if (!r.ok) throw new Error(String(j.error_description ?? j.msg ?? j.message ?? r.status));
+  const msg = String(j.error_description ?? j.msg ?? j.message ?? r.status);
+  if (r.status === 400 || r.status === 401 || r.status === 403) throw fail('AuthError', msg);
+  if (!r.ok) throw fail('NetworkError', `Anmeldung gerade nicht möglich (${msg}).`);
   return j;
 }
 function keepSession(j: Record<string, unknown>): Session {
@@ -187,22 +207,31 @@ function keepSession(j: Record<string, unknown>): Session {
 /** Gültiger Zugangsschlüssel, bei Bedarf erneuert */
 async function accessToken(): Promise<string> {
   const s = local.get<Session>(SESSION);
-  if (!s) throw new Error('Bitte erneut anmelden.');
+  if (!s) throw fail('AuthError', 'Bitte erneut anmelden.');
   if (s.expires_at * 1000 - Date.now() > 60_000) return s.access_token;
   try {
     return keepSession(await authCall('token?grant_type=refresh_token', { refresh_token: s.refresh_token })).access_token;
-  } catch {
+  } catch (e) {
+    // nur bei abgelehnter Anmeldung abmelden, nicht bei schlechter Verbindung
+    if ((e as Error).name !== 'AuthError') throw e;
     local.set(SESSION, null);
-    throw new Error('Die Anmeldung ist abgelaufen. Bitte erneut anmelden.');
+    throw fail('AuthError', 'Die Anmeldung ist abgelaufen. Bitte erneut anmelden.');
   }
 }
 async function publishCall(body: unknown): Promise<Record<string, unknown>> {
-  const r = await fetch(`${SB_URL}/functions/v1/publish`, {
-    method: 'POST',
-    headers: { apikey: SB_KEY, Authorization: `Bearer ${await accessToken()}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
-  });
+  const token = await accessToken();
+  let r: Response;
+  try {
+    r = await fetch(`${SB_URL}/functions/v1/publish`, {
+      method: 'POST',
+      headers: { apikey: SB_KEY, Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+  } catch {
+    throw fail('NetworkError', 'Keine Verbindung zum Server. Bitte Internet prüfen und erneut versuchen.');
+  }
   const j = await r.json().catch(() => ({}));
+  if (r.status === 401) throw fail('AuthError', String(j.error ?? 'Bitte erneut anmelden.'));
   if (!r.ok || !j.ok) throw new Error(String(j.error ?? `Fehler ${r.status}`));
   return j;
 }
@@ -232,10 +261,14 @@ const SupabaseStorage: SiteStorage = {
     }
     return p.state;
   },
-  async saveContent(state) {
-    const r = await publishCall({ action: 'publish', state });
+  async saveContent(state, payload) {
+    const r = await publishCall({ action: 'publish', state: payload ?? state });
     local.set(PENDING, { state, at: String(r.committedAt ?? new Date().toISOString()) } satisfies Pending);
     await pruneImages(JSON.stringify(state));
+  },
+  pendingMinutes() {
+    const p = local.get<Pending>(PENDING);
+    return p ? Math.round((Date.now() - Date.parse(p.at)) / 60_000) : null;
   },
   async resetContent() { /* veröffentlichte Änderungen bleiben; ungespeicherte verwirft der Editor */ },
   async uploadImage(blob) {
@@ -250,8 +283,9 @@ const SupabaseStorage: SiteStorage = {
     try {
       keepSession(await authCall('token?grant_type=password', { email: user.trim(), password: pass }));
       return true;
-    } catch {
-      return false;
+    } catch (e) {
+      if ((e as Error).name === 'AuthError') return false; // E-Mail oder Passwort falsch
+      throw e; // keine Verbindung o. ä.: Meldung anzeigen
     }
   },
   async logout() {
@@ -264,4 +298,67 @@ const SupabaseStorage: SiteStorage = {
   },
 };
 
-export const siteStorage: SiteStorage = SITE_CONFIG.storage === 'supabase' ? SupabaseStorage : DemoStorage;
+/* =================== CLOUDFLARE: Worker der eigenen Seite (/api) =================== */
+const CF_FLAG = 'rp-cf';
+const API = `${import.meta.env.BASE_URL.replace(/\/?$/, '/')}api/`;
+
+async function cfCall(path: string, body?: unknown): Promise<Record<string, unknown>> {
+  let r: Response;
+  try {
+    r = await fetch(API + path, {
+      method: body === undefined ? 'GET' : 'POST',
+      credentials: 'same-origin',
+      headers: body === undefined ? {} : { 'content-type': 'application/json', 'x-rp-editor': '1' },
+      body: body === undefined ? undefined : JSON.stringify(body),
+    });
+  } catch {
+    throw fail('NetworkError', 'Keine Verbindung zum Server. Bitte Internet prüfen und erneut versuchen.');
+  }
+  const j = await r.json().catch(() => ({}));
+  if (r.status === 401) throw fail('AuthError', String(j.error ?? 'Bitte erneut anmelden.'));
+  if (!r.ok || j.ok === false) throw new Error(String(j.error ?? `Fehler ${r.status}`));
+  return j;
+}
+
+const CloudflareStorage: SiteStorage = {
+  ...SupabaseStorage,
+  hint: () => !!local.get(CF_FLAG) || !!local.get(PENDING),
+  async saveContent(state, payload) {
+    const r = await cfCall('publish', { action: 'publish', state: payload ?? state });
+    local.set(PENDING, { state, at: String(r.committedAt ?? new Date().toISOString()) } satisfies Pending);
+    await pruneImages(JSON.stringify(state));
+  },
+  async uploadImage(blob) {
+    const ext = blob.type === 'image/webp' ? 'webp' : blob.type === 'image/png' ? 'png' : 'jpg';
+    const r = await cfCall('publish', { action: 'blob', ext, data: await toBase64(blob) });
+    const path = `upload/${r.sha}.${ext}`;
+    await keepImage(path, blob);
+    return path;
+  },
+  async login(user, pass) {
+    try {
+      await cfCall('login', { email: user.trim(), password: pass });
+      local.set(CF_FLAG, 1);
+      return true;
+    } catch (e) {
+      if ((e as Error).name === 'AuthError') return false; // E-Mail oder Passwort falsch
+      throw e; // zu viele Versuche, keine Verbindung: Meldung anzeigen
+    }
+  },
+  async logout() {
+    local.set(CF_FLAG, null);
+    await cfCall('logout', {}).catch(() => {});
+  },
+  async isLoggedIn() {
+    try {
+      const ok = !!(await cfCall('session')).loggedIn;
+      if (!ok) local.set(CF_FLAG, null);
+      return ok;
+    } catch {
+      return false;
+    }
+  },
+};
+
+export const siteStorage: SiteStorage =
+  SITE_CONFIG.storage === 'cloudflare' ? CloudflareStorage : SITE_CONFIG.storage === 'supabase' ? SupabaseStorage : DemoStorage;

@@ -8,20 +8,26 @@
  *                       auf den Branch schreiben → GitHub Actions baut und veröffentlicht
  *  3. Protokoll in der Tabelle admin_changes (wer, wann, was), wenn vorhanden
  *
- * Ohne Deno-Abhängigkeiten, damit die Tests (Vitest) dieselbe Logik prüfen.
+ * Ohne Deno-Abhängigkeiten, damit die Tests (Vitest) dieselbe Logik prüfen. Der GitHub-Teil
+ * (makeGit) dient auch dem Cloudflare Worker (worker/index.ts).
  */
 import { ContentError, toFiles, type EditState, type FileChange, type RepoSnapshot } from './convert.ts';
 
-export interface Env {
-  SUPABASE_URL: string;
-  SUPABASE_ANON_KEY: string;
-  SUPABASE_SERVICE_ROLE_KEY?: string;
+export interface GitEnv {
   /** Fine-grained Token: nur dieses Repository, „Contents: Read and write“ */
   GITHUB_TOKEN: string;
   /** z. B. xjamie007/rondpoint-website */
   GITHUB_REPO: string;
   GITHUB_BRANCH?: string;
-  /** kommagetrennt; leer = jedes Konto dieses Supabase-Projekts */
+  /** nur für Tests: andere Adresse der GitHub-API */
+  GITHUB_API?: string;
+}
+
+export interface Env extends GitEnv {
+  SUPABASE_URL: string;
+  SUPABASE_ANON_KEY: string;
+  SUPABASE_SERVICE_ROLE_KEY?: string;
+  /** kommagetrennt, Pflicht: nur diese Konten dürfen speichern (ohne Liste speichert niemand) */
   ADMIN_EMAILS?: string;
   /** kommagetrennt, z. B. https://www.rondpoint.lu,https://xjamie007.github.io */
   ALLOWED_ORIGINS?: string;
@@ -30,9 +36,11 @@ export interface Env {
 const MAX_IMAGE = 10 * 1024 * 1024;
 const WATCH = ['src/assets/photos/', 'src/assets/flotte/', 'src/content/flotte/'];
 
-class HttpError extends Error {
-  constructor(public status: number, message: string) {
+export class HttpError extends Error {
+  status: number;
+  constructor(status: number, message: string) {
     super(message);
+    this.status = status;
   }
 }
 
@@ -65,10 +73,12 @@ export function imageKind(base64: string): 'webp' | 'jpg' | 'png' | null {
   return null;
 }
 
-export function makeHandler(env: Env, f: typeof fetch = fetch) {
+/** Fotos hochladen und Änderungen als einen Commit schreiben (Supabase und Cloudflare) */
+export function makeGit(env: GitEnv, f: typeof fetch = fetch) {
   const branch = env.GITHUB_BRANCH || 'main';
+  const api = (env.GITHUB_API || 'https://api.github.com').replace(/\/$/, '');
   const gh = async <T>(path: string, init: RequestInit = {}): Promise<T> => {
-    const r = await f(`https://api.github.com/repos/${env.GITHUB_REPO}${path}`, {
+    const r = await f(`${api}/repos/${env.GITHUB_REPO}${path}`, {
       ...init,
       headers: { Accept: 'application/vnd.github+json', Authorization: `Bearer ${env.GITHUB_TOKEN}`, 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'rondpoint-editor', ...(init.body ? { 'Content-Type': 'application/json' } : {}) },
     });
@@ -79,24 +89,13 @@ export function makeHandler(env: Env, f: typeof fetch = fetch) {
     return (await r.json()) as T;
   };
   const readJson = async (path: string, ref: string): Promise<Record<string, unknown>> => {
-    const r = await f(`https://api.github.com/repos/${env.GITHUB_REPO}/contents/${path}?ref=${ref}`, {
+    const r = await f(`${api}/repos/${env.GITHUB_REPO}/contents/${path}?ref=${ref}`, {
       headers: { Accept: 'application/vnd.github.raw+json', Authorization: `Bearer ${env.GITHUB_TOKEN}`, 'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'rondpoint-editor' },
     });
     if (r.status === 404) return {};
     if (!r.ok) throw new HttpError(502, `GitHub ${r.status} beim Lesen von ${path}`);
     return JSON.parse(await r.text());
   };
-
-  async function user(req: Request): Promise<string> {
-    const auth = req.headers.get('authorization') ?? '';
-    if (!/^Bearer\s+\S+/.test(auth)) throw new HttpError(401, 'Bitte anmelden.');
-    const r = await f(`${env.SUPABASE_URL}/auth/v1/user`, { headers: { apikey: env.SUPABASE_ANON_KEY, Authorization: auth } });
-    if (!r.ok) throw new HttpError(401, 'Die Anmeldung ist abgelaufen. Bitte erneut anmelden.');
-    const email = String(((await r.json()) as { email?: string }).email ?? '').toLowerCase();
-    const allowed = (env.ADMIN_EMAILS ?? '').split(',').map((s) => s.trim().toLowerCase()).filter(Boolean);
-    if (allowed.length && !allowed.includes(email)) throw new HttpError(403, 'Dieses Konto darf die Website nicht bearbeiten.');
-    return email;
-  }
 
   async function blob(body: { data?: unknown; ext?: unknown }) {
     const data = typeof body.data === 'string' ? body.data : '';
@@ -149,11 +148,35 @@ export function makeHandler(env: Env, f: typeof fetch = fetch) {
     throw new HttpError(409, 'Speichern gerade nicht möglich, bitte gleich noch einmal.');
   }
 
+  return { blob, publish };
+}
+
+export function makeHandler(env: Env, f: typeof fetch = fetch) {
+  const { blob, publish } = makeGit(env, f);
+
+  async function user(req: Request): Promise<string> {
+    const auth = req.headers.get('authorization') ?? '';
+    if (!/^Bearer\s+\S+/.test(auth)) throw new HttpError(401, 'Bitte anmelden.');
+    // Schlüssel des Browsers weiterreichen (gilt auch für die neuen „publishable“ Schlüssel)
+    const apikey = req.headers.get('apikey') || env.SUPABASE_ANON_KEY;
+    const r = await f(`${env.SUPABASE_URL}/auth/v1/user`, { headers: { apikey, Authorization: auth } });
+    if (!r.ok) throw new HttpError(401, 'Die Anmeldung ist abgelaufen. Bitte erneut anmelden.');
+    const email = String(((await r.json()) as { email?: string }).email ?? '').toLowerCase();
+    // Ohne Liste darf niemand speichern: sonst könnte sich jeder selbst ein Konto anlegen und veröffentlichen
+    const allowed = (env.ADMIN_EMAILS ?? '').split(',').map((s) => s.trim().toLowerCase()).filter(Boolean);
+    if (!allowed.length) throw new HttpError(403, 'ADMIN_EMAILS ist nicht gesetzt – Speichern ist gesperrt.');
+    if (!email || !allowed.includes(email)) throw new HttpError(403, 'Dieses Konto darf die Website nicht bearbeiten.');
+    return email;
+  }
+
   async function log(email: string, summary: string[], sha: string) {
-    if (!env.SUPABASE_SERVICE_ROLE_KEY || !summary.length) return;
+    const key = env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!key || !summary.length) return;
+    // alter Service-Role-Schlüssel (JWT) auch als Bearer, neue „sb_secret_…“-Schlüssel nur als apikey
+    const auth: Record<string, string> = key.startsWith('eyJ') ? { Authorization: `Bearer ${key}` } : {};
     await f(`${env.SUPABASE_URL}/rest/v1/admin_changes`, {
       method: 'POST',
-      headers: { apikey: env.SUPABASE_SERVICE_ROLE_KEY, Authorization: `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+      headers: { apikey: key, ...auth, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
       body: JSON.stringify({ user_email: email, summary: summary.join(', '), commit_sha: sha }),
     }).catch(() => {});
   }

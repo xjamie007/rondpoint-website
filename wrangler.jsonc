@@ -1,0 +1,31 @@
+// Cloudflare Worker der Website (Seiten aus dist/, Admin-Bereich und Formulare unter /api).
+// Veröffentlicht wird über GitHub Actions (.github/workflows/stock-sync.yml), siehe README → „Cloudflare“.
+{
+  "name": "rondpoint-website",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash",
+    // nur /api/* geht an den Worker, alle Seiten und Bilder kommen direkt aus dem Speicher (kostenlos)
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "rondpoint",
+      // beim Anlegen „Jurisdiction: EU“ wählen; die ID trägt Nave hier ein
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "worker/migrations"
+    }
+  ],
+  // täglich aufräumen: Anfragen nach 90 Tagen, IP-Hashes und Fehlversuche nach 24 Stunden
+  "triggers": { "crons": ["30 3 * * *"] },
+  "vars": {
+    "GITHUB_REPO": "xjamie007/rondpoint-website",
+    "GITHUB_BRANCH": "main"
+  },
+  "observability": { "enabled": true }
+}

@@ -116,6 +116,8 @@ const pt: Dict = {
     },
     licenceShort: { B: 'B', B96: 'B com código 96', BE: 'BE' },
     price: '{day} por dia, {weekend} por fim de semana',
+    priceDayOnly: '{day} por dia',
+    priceWeekendOnly: '{weekend} por fim de semana',
     priceMissing: '[FEHLT — Preis pro Tag und Wochenende]',
     request: 'Pedir este atrelado',
     requestVan: 'Pedir esta carrinha',
@@ -744,6 +746,7 @@ const pt: Dict = {
     hostingH2: 'Alojamento',
     hosting:
       'O site está alojado no GitHub Pages, um serviço da GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, Estados Unidos.',
+    hostingCloudflare: 'O site está alojado na Cloudflare (Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, Estados Unidos).',
     contentH2: 'Conteúdo',
     content:
       'Os anúncios de carros vêm da nossa gestão de stock MovingCar, tal como os nossos anúncios no LuxAuto e no AutoScout24. Os preços e as características podem mudar; só a oferta confirmada na garagem é vinculativa.',
@@ -766,11 +769,15 @@ const pt: Dict = {
       'Fundamento jurídico: o seu consentimento (artigo 6.º, n.º 1, alínea a), do RGPD), que dá ao assinalar a caixa, e as diligências pré-contratuais a seu pedido (artigo 6.º, n.º 1, alínea b), do RGPD). Pode retirar o seu consentimento a qualquer momento por e-mail ou por telefone.',
     storage:
       'O seu pedido é guardado numa base de dados da Supabase (região União Europeia) e é-nos transmitido por e-mail através de [UNBESTÄTIGT — EU-Mailanbieter, mit Nave klären]. Os pedidos são apagados automaticamente após 90 dias [UNBESTÄTIGT — Frist mit Kunde bestätigen]. As comunicações que levem à celebração de um contrato são conservadas de acordo com as obrigações contabilísticas.',
+    storageCloudflare:
+      'O seu pedido é guardado numa base de dados da Cloudflare (região União Europeia) e é-nos transmitido por e-mail através de [UNBESTÄTIGT — EU-Mailanbieter, mit Nave klären]. Os pedidos são apagados automaticamente após 90 dias [UNBESTÄTIGT — Frist mit Kunde bestätigen]. As comunicações que levem à celebração de um contrato são conservadas de acordo com as obrigações contabilísticas.',
     abuse:
       'Para limitar abusos, registamos durante 24 horas um resumo criptográfico (hash) do seu endereço IP. Esse valor não permite descobrir o seu endereço.',
     hostingH2: 'Alojamento e registos do servidor',
     hosting:
       'O site está alojado no GitHub Pages (GitHub, Inc., Estados Unidos). Em cada visita, a GitHub trata o seu endereço IP e dados técnicos para entregar as páginas e garantir a segurança. A GitHub está certificada ao abrigo do Quadro de Privacidade de Dados UE-EUA (EU-US Data Privacy Framework). Fundamento jurídico: o nosso interesse legítimo em ter um site seguro e disponível (artigo 6.º, n.º 1, alínea f), do RGPD).',
+    hostingCloudflare:
+      'O site está alojado na Cloudflare (Cloudflare, Inc., Estados Unidos). Em cada visita, a Cloudflare trata o seu endereço IP e dados técnicos para entregar as páginas e garantir a segurança. A Cloudflare está certificada ao abrigo do Quadro de Privacidade de Dados UE-EUA (EU-US Data Privacy Framework). Fundamento jurídico: o nosso interesse legítimo em ter um site seguro e disponível (artigo 6.º, n.º 1, alínea f), do RGPD).',
     linksH2: 'Ligações para outros serviços',
     links:
       'O site não carrega conteúdos externos: tipos de letra, fotos e planta estão alojados com o site. As ligações para Google Maps, WhatsApp, Facebook, Instagram, TikTok, LuxAuto e AutoScout24 só se abrem se clicar nelas. Esses serviços tratam então os seus dados segundo as suas próprias regras. O WhatsApp pertence à Meta Platforms; se nos escrever pelo WhatsApp, a Meta trata o seu número e as suas mensagens.',

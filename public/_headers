@@ -1,0 +1,16 @@
+# Kopfzeilen für Cloudflare (GitHub Pages ignoriert diese Datei).
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Strict-Transport-Security: max-age=31536000
+  Permissions-Policy: geolocation=(), microphone=(), interest-cohort=()
+
+# Dateien mit Prüfsumme im Namen ändern sich nie: ein Jahr zwischenspeichern
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/admin/*
+  X-Robots-Tag: noindex, nofollow
+/edit/*
+  X-Robots-Tag: noindex, nofollow

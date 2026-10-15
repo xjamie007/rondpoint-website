@@ -1,14 +1,16 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync, readdirSync } from 'node:fs';
-import { CARGO, CATEGORIES, ContentError, fleetErrors, hoursErrors, toFiles, validate, type EditState, type FileChange, type FleetData, type RepoSnapshot } from '../supabase/functions/publish/convert.ts';
+import { CARGO, CATEGORIES, ContentError, LINK_CATS, LINK_PAGES, fleetErrors, hoursErrors, toFiles, validate, type EditState, type FileChange, type FleetData, type RepoSnapshot } from '../supabase/functions/publish/convert.ts';
 import { imageKind, makeHandler, type Env } from '../supabase/functions/publish/publish.ts';
 import { applyLists, useT } from '../src/i18n/index.ts';
 import fr from '../src/i18n/fr.ts';
-import { hoursInline, hoursSummary } from '../src/lib/content.ts';
+import { contentHtml, hoursInline, hoursSummary } from '../src/lib/content.ts';
+import { PAGE_SLUGS, RENTAL_CATEGORY_SLUGS } from '../src/i18n/config.ts';
 
-const dir = 'src/content/flotte/_dev';
+// Feste Testdaten: die echten Dateien ändert der Admin-Bereich (Beispiele löschen, Zeiten ändern)
+const dir = 'tests/fixtures/flotte';
 const samples = readdirSync(dir).map((f) => [f.replace('.json', ''), JSON.parse(readFileSync(`${dir}/${f}`, 'utf8')) as FleetData] as const);
-const horaires = JSON.parse(readFileSync('src/content/horaires.json', 'utf8'));
+const horaires = JSON.parse(readFileSync('tests/fixtures/horaires.json', 'utf8'));
 const SHA = 'a'.repeat(40);
 const SHA2 = 'b'.repeat(40);
 const state = (x: Partial<EditState> = {}): EditState => ({ v: 1, texts: {}, lists: {}, photos: {}, ...x });
@@ -28,6 +30,13 @@ describe('Admin-Bereich: Prüfregeln', () => {
     const list = (name: string) => [...new RegExp(`export const ${name} = \\[([^\\]]*)\\]`).exec(cfg)![1].matchAll(/'([^']+)'/g)].map((m) => m[1]);
     expect([...CATEGORIES]).toEqual(list('CATEGORIES'));
     expect([...CARGO]).toEqual(list('CARGO'));
+  });
+  it('Link-Ziele wie src/i18n/config.ts', () => {
+    expect([...LINK_PAGES].sort()).toEqual(Object.keys(PAGE_SLUGS).sort());
+    expect([...LINK_CATS].sort()).toEqual(Object.keys(RENTAL_CATEGORY_SLUGS).sort());
+    expect(() => validate(state({ texts: { de: { 'a.b': 'Siehe [Garten](page:garten).' } } }))).toThrow(/page:garten/);
+    expect(() => validate(state({ texts: { de: { 'a.b': 'Siehe [Garten](page:garden) und [Kipper](cat:benne).' } } }))).not.toThrow();
+    expect(contentHtml('Siehe [Garten](page:garten).', useT('de'), 'de')).toBe('Siehe Garten.');
   });
   it('alle Beispiel-Fahrzeuge und die echten Öffnungszeiten sind gültig', () => {
     for (const [, d] of samples) expect(fleetErrors(d)).toEqual({});
@@ -62,6 +71,14 @@ describe('Admin-Bereich: Änderungen → Dateien', () => {
     expect(JSON.parse(f['src/content/texts.json'].text!).fr).toEqual({ 'hero.h1': 'X', 'nav.home': 'Accueil !' });
     expect(JSON.parse(f['src/content/lists.json'].text!).fr).toEqual({ 'details.points.workshop': ['a', 'b'] });
     expect(summary).toEqual(['Texte FR']);
+  });
+
+  it('Eintrag einer schon geänderten Liste landet in der Liste, nicht in texts.json', () => {
+    const r = repo({ lists: { de: { 'details.points.workshop': ['Eins', 'Zwei', 'Drei'] } } });
+    const { files } = toFiles(state({ texts: { de: { 'details.points.workshop.1': 'Zwei korrigiert', 'hero.h1': 'Neu' } } }), r);
+    const f = byPath(files);
+    expect(JSON.parse(f['src/content/lists.json'].text!).de['details.points.workshop']).toEqual(['Eins', 'Zwei korrigiert', 'Drei']);
+    expect(JSON.parse(f['src/content/texts.json'].text!).de).toEqual({ 'nav.home': 'Start', 'hero.h1': 'Neu' });
   });
 
   it('Fotos: neues Bild ersetzt alle Formate des Platzes, Ausblenden in photos.json', () => {
@@ -116,7 +133,7 @@ describe('Build: Listen aus lists.json, Öffnungszeiten an einer Stelle', () => 
 });
 
 /* ------------------------------------------------------------------ Edge Function mit simulierter API */
-const ENV: Env = { SUPABASE_URL: 'https://sb.test', SUPABASE_ANON_KEY: 'anon', GITHUB_TOKEN: 'gh', GITHUB_REPO: 'o/r', ALLOWED_ORIGINS: 'https://site.test' };
+const ENV: Env = { SUPABASE_URL: 'https://sb.test', SUPABASE_ANON_KEY: 'anon', GITHUB_TOKEN: 'gh', GITHUB_REPO: 'o/r', ALLOWED_ORIGINS: 'https://site.test', ADMIN_EMAILS: 'chef@garage.lu' };
 const WEBP = btoa('RIFF\x00\x00\x00\x00WEBPVP8 ' + '\x00'.repeat(20));
 
 function fakeApi(opts: { user?: string | null; conflicts?: number } = {}) {
@@ -156,6 +173,10 @@ describe('Edge Function publish (mit simulierter API)', () => {
     expect((await makeHandler(ENV, fakeApi().f)(post({ action: 'publish' }, ''))).status).toBe(401);
     const only = { ...ENV, ADMIN_EMAILS: 'info@rondpoint.lu' };
     expect((await makeHandler(only, fakeApi().f)(post({ action: 'publish', state: state() }))).status).toBe(403);
+    // ohne Liste speichert niemand (sonst könnte sich jeder selbst registrieren)
+    const none = await makeHandler({ ...ENV, ADMIN_EMAILS: '' }, fakeApi().f)(post({ action: 'publish', state: state() }));
+    expect(none.status).toBe(403);
+    expect((await none.json()).error).toMatch(/ADMIN_EMAILS/);
   });
   it('Foto hochladen: nur echte Bilder', async () => {
     const api = fakeApi();

@@ -9,12 +9,13 @@
  *  auf die fertige Seite angewendet; ohne Änderungen bleibt sie genau wie gebaut.
  * ========================================================================= */
 import { escapeHtml, useT } from '@/i18n';
-import { HTML_LANG, type Lang } from '@/i18n/config';
+import { HTML_LANG, LANGS, type Lang } from '@/i18n/config';
+import { hoursInline } from '@/lib/content';
 import { buildIndex, capture, displayText, flatten, getPath, isRich, listOf, norm, renderHtml, setPath, type Caps } from './match';
 import { emptyState, siteStorage as S, type EditState, type ListOverride } from './storage';
 import { $, $$, closeSheet, confirmBox, pickers, prepareImage, sheet, toast } from './ui';
-import { hoursSheet, hoursText, hoursVar, renderHours, type HoursCtx } from './hours';
-import { fleetEdit, fleetSheet, renderFleet, type FleetCtx } from './fleet';
+import { baseWeek, hoursSheet, hoursText, hoursVar, renderHours, weekOf, type HoursCtx } from './hours';
+import { fleetEdit, fleetSheet, loadBase, renderFleet, type FleetCtx } from './fleet';
 import hiddenPhotos from '@/content/photos.json';
 import css from './editor.css?inline';
 
@@ -26,6 +27,8 @@ const nested = useT(lang);
 const dict = flatten(nested);
 
 let state: EditState = emptyState();
+/** Supabase: zuletzt veröffentlichter Stand dieses Browsers (Vergleich für das nächste Speichern) */
+let lastSaved: EditState = emptyState();
 let admin = false;
 let busy = false;
 let undo: string[] = [];
@@ -84,7 +87,8 @@ function mapPage() {
     el.dataset.eka = key;
     if (!origAttr.has(key)) origAttr.set(key, el.getAttribute(attr)!);
   }
-  const seoKey = (text: string) => Object.keys(dict).find((k) => k.startsWith('seo.') && displayText(dict[k]) === norm(text));
+  // auch Beschreibungen mit Platzhaltern wie {hours} (Kontaktseite)
+  const seoKey = (text: string) => Object.keys(dict).find((k) => k.startsWith('seo.') && displayText(dict[k]) === norm(text)) ?? index.find(text).find((k) => k.startsWith('seo.'));
   const desc = $<HTMLMetaElement>('meta[name=description]')?.content ?? '';
   seo = { title: seoKey(document.title), desc: seoKey(desc), origTitle: document.title, origDesc: desc };
   mapLists();
@@ -206,8 +210,9 @@ function render() {
   }
   if (state.hours || hoursShown) { renderHours(hctx); hoursShown = true; }
   void renderFleet(fctx);
-  document.title = (seo.title && state.texts[lang]?.[seo.title]) || seo.origTitle;
-  $<HTMLMetaElement>('meta[name=description]')?.setAttribute('content', (seo.desc && state.texts[lang]?.[seo.desc]) || seo.origDesc);
+  const fill = (v: string) => v.replace(/\{hours\}/g, hoursInline(nested, lang, weekOf(state)));
+  document.title = fill((seo.title && state.texts[lang]?.[seo.title]) || seo.origTitle);
+  $<HTMLMetaElement>('meta[name=description]')?.setAttribute('content', fill((seo.desc && state.texts[lang]?.[seo.desc]) || seo.origDesc));
   if (admin) prepare();
 }
 
@@ -215,8 +220,8 @@ function render() {
 function loginLabel() {
   for (const a of $$('[data-ed-login]')) a.textContent = admin ? 'Abmelden' : 'Login';
 }
-function loginDialog() {
-  const w = sheet('Anmelden', `<form class="ed-form" autocomplete="on">
+function loginDialog(note = '') {
+  const w = sheet('Anmelden', `<form class="ed-form" autocomplete="on">${note ? `<p class="ed-hint">${escapeHtml(note)}</p>` : ''}
     <label>${S.userLabel}<input name="u" ${S.live ? 'type="email" ' : ''}autocomplete="username" autocapitalize="none" required></label>
     <label>Passwort<input name="p" type="password" autocomplete="current-password" required></label>
     <p class="ed-err" hidden>${S.userLabel} oder Passwort stimmt nicht.</p>
@@ -224,8 +229,16 @@ function loginDialog() {
   $('form', w)!.addEventListener('submit', async (e) => {
     e.preventDefault();
     const f = e.target as HTMLFormElement & { u: HTMLInputElement; p: HTMLInputElement };
-    if (!(await S.login(f.u.value, f.p.value))) {
-      $('.ed-err', w)!.hidden = false;
+    const err = $('.ed-err', w)!;
+    let ok = false;
+    try {
+      ok = await S.login(f.u.value, f.p.value);
+      err.textContent = `${S.userLabel} oder Passwort stimmt nicht.`;
+    } catch (x) {
+      err.textContent = (x as Error).message;
+    }
+    if (!ok) {
+      err.hidden = false;
       f.p.value = '';
       f.p.focus();
       return;
@@ -251,10 +264,14 @@ function startAdmin() {
   buildBar();
   loginLabel();
   render();
+  // Veröffentlichung hängt? (Build auf GitHub fehlgeschlagen)
+  const min = S.pendingMinutes();
+  if (min != null && min > 20) toast(`Hinweis: Die letzte Speicherung (vor ${min} Minuten) ist noch nicht online. Bitte Nave Bescheid geben – auf GitHub ist die Veröffentlichung wohl hängen geblieben.`, 9000);
 }
 
 function buildBar() {
   bar?.remove();
+  ctxBar?.remove();
   bar = document.createElement('div');
   bar.className = 'ed-bar ed-ui';
   bar.innerHTML = `<button class="ed-b ed-save" data-a="save" disabled><span class="ed-i">✓</span><span>Speichern</span></button>
@@ -307,15 +324,67 @@ async function save() {
   commitEditing();
   busy = true;
   updateBar();
+  // Stand beim Tippen auf „Speichern“: was währenddessen geändert wird, bleibt ungespeichert
+  const snap: EditState = clone(state);
+  const snapJson = JSON.stringify(snap);
   try {
-    await S.saveContent(state);
-    draft.set(null);
+    if (S.live) {
+      await S.saveContent(snap, await publishPayload(snap, lastSaved));
+      lastSaved = snap;
+      undo = []; // Gespeichertes ist veröffentlicht: Rückgängig gilt ab hier
+    } else await S.saveContent(snap);
+    draft.set(JSON.stringify(state) === snapJson ? null : state);
     toast(S.live ? 'Gespeichert ✓ – in wenigen Minuten für alle Besucher sichtbar.' : 'Gespeichert ✓ (Demo: in diesem Browser gespeichert)', 4200);
   } catch (e) {
-    toast(`Speichern hat nicht geklappt. ${S.live ? (e as Error).message : 'Bitte erneut versuchen.'}`, 7000);
+    const err = e as Error;
+    if (err.name === 'AuthError') {
+      loginDialog('Bitte erneut anmelden – Ihre Änderungen bleiben erhalten. Danach noch einmal speichern.');
+    } else toast(`Speichern hat nicht geklappt. ${S.live ? err.message : 'Bitte erneut versuchen.'}`, 7000);
   }
   busy = false;
   updateBar();
+}
+
+/**
+ * Supabase: nur senden, was sich seit dem letzten Speichern geändert hat (alte Werte nicht erneut
+ * schreiben). Zurückgenommenes ausdrücklich mit dem Stand der Seite senden – sonst bliebe die schon
+ * veröffentlichte Änderung im Repository.
+ */
+async function publishPayload(cur: EditState, prev: EditState): Promise<EditState> {
+  const out = emptyState();
+  const same = (a: unknown, b: unknown) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+  const flat = new Map<Lang, Record<string, string>>();
+  const baked = (l: Lang) => flat.get(l) ?? (flat.set(l, flatten(useT(l))), flat.get(l)!);
+  for (const l of LANGS) {
+    const a = prev.texts[l] ?? {};
+    const b = cur.texts[l] ?? {};
+    for (const k of new Set([...Object.keys(a), ...Object.keys(b)])) {
+      if (a[k] === b[k]) continue;
+      const v = b[k] ?? baked(l)[k];
+      if (v != null) (out.texts[l] ??= {})[k] = v;
+    }
+    const la = prev.lists[l] ?? {};
+    const lb = cur.lists[l] ?? {};
+    for (const p of new Set([...Object.keys(la), ...Object.keys(lb)])) {
+      if (same(la[p], lb[p])) continue;
+      const base = getPath(useT(l), p);
+      const v = lb[p] ?? (Array.isArray(base) ? { value: base, from: base.map((_, i) => i) } : null);
+      if (v) (out.lists[l] ??= {})[p] = v;
+    }
+  }
+  for (const k of new Set([...Object.keys(prev.photos), ...Object.keys(cur.photos)])) {
+    if (same(prev.photos[k], cur.photos[k])) continue;
+    out.photos[k] = cur.photos[k] ?? (prev.photos[k].hidden ? { hidden: false } : prev.photos[k]);
+  }
+  if (!same(prev.hours, cur.hours)) out.hours = cur.hours ?? baseWeek;
+  const fa = prev.fleet ?? {};
+  const fb = cur.fleet ?? {};
+  const changed = [...new Set([...Object.keys(fa), ...Object.keys(fb)])].filter((id) => !same(fa[id], fb[id]));
+  if (changed.length) {
+    const base = changed.some((id) => !(id in fb)) ? await loadBase() : null;
+    out.fleet = Object.fromEntries(changed.map((id) => [id, id in fb ? fb[id] : base!.entries.find((e) => e.id === id)?.data ?? null]));
+  }
+  return out;
 }
 
 /* ------------------------------------------------------------ Seite zum Bearbeiten vorbereiten */
@@ -390,7 +459,9 @@ function commitText(el: HTMLElement) {
   if (!key || !el.isConnected) return; // beim Neuaufbau einer Liste entfernt: zählt nicht
   const v = norm(el.textContent ?? '');
   if (!v) { render(); toast('Ein Text kann nicht ganz leer sein – zum Entfernen den Eintrag löschen.', 4000); return; }
-  if (v === norm(current(el, key) ?? dict[key])) return;
+  // unverändert: auch wenn im Grundtext ein ausgeblendeter Hinweis [FEHLT …] steht
+  const cur = current(el, key);
+  if (cur != null ? v === norm(cur) : v === norm(dict[key]) || v === displayText(dict[key])) return;
   change(() => setText(el, key, v), false);
   // derselbe Text an anderer Stelle (Menü oben und im Handy-Menü)
   for (const o of $$(`[data-eok="${CSS.escape(key)}"]`)) if (o !== el && !inList(o, key)) o.textContent = v;
@@ -496,6 +567,11 @@ function richSheet(el: HTMLElement) {
     const nv = $<HTMLTextAreaElement>('[name=v]', w)!.value.trim();
     // Platzhalter müssen erhalten bleiben (sonst fehlt z. B. die Telefonnummer, und die Prüfung beim Veröffentlichen schlägt an)
     const vars = (x: string) => [...x.matchAll(/\{(\w+)\}/g)].map((m) => m[1]).sort().join();
+    const links = (x: string) => [...x.matchAll(/\]\(([^)\s]+)\)/g)].map((m) => m[1]).sort().join();
+    if (nv && links(nv) !== links(dict[key])) {
+      toast('Bitte bei Links nur das Wort in [eckigen Klammern] ändern, nicht das Ziel in (runden Klammern).', 5000);
+      return;
+    }
     if (nv && vars(nv) !== vars(dict[key])) {
       const need = [...new Set(dict[key].match(/\{\w+\}/g) ?? [])].join(' ');
       toast(need ? `Bitte ${need} genau so im Text lassen – die Website setzt dort die Angaben ein.` : 'Bitte keine Teile in {geschweiften Klammern} einfügen.', 5000);
@@ -588,11 +664,15 @@ function seoSheet() {
     <button class="ed-btn ed-primary ed-block" data-a="ok">Übernehmen</button></div>`, { wide: true });
   const t = $<HTMLInputElement>('[name=t]', w);
   const d = $<HTMLTextAreaElement>('[name=d]', w);
+  // {hours} setzt die Website ein: Vorschau und Zeichenzahl mit den echten Öffnungszeiten
+  const fill = (v: string) => v.replace(/\{hours\}/g, hoursInline(nested, lang, weekOf(state)));
   const upd = () => {
-    $('.ed-serp-t', w)!.textContent = t?.value ?? document.title;
-    $('.ed-serp-d', w)!.textContent = d?.value ?? seo.origDesc;
-    if (t) $('[data-c=t]', w)!.textContent = `${t.value.length}/60${t.value.length > 60 ? ' – etwas lang' : ''}`;
-    if (d) $('[data-c=d]', w)!.textContent = `${d.value.length}/160${d.value.length > 160 ? ' – etwas lang' : ''}`;
+    const tv = t ? fill(t.value) : document.title;
+    const dv = d ? fill(d.value) : seo.origDesc;
+    $('.ed-serp-t', w)!.textContent = tv;
+    $('.ed-serp-d', w)!.textContent = dv;
+    if (t) $('[data-c=t]', w)!.textContent = `${tv.length}/60${tv.length > 60 ? ' – etwas lang' : ''}`;
+    if (d) $('[data-c=d]', w)!.textContent = `${dv.length}/160${dv.length > 160 ? ' – etwas lang' : ''}${d.value.includes('{hours}') ? ' · {hours} = Öffnungszeiten, setzt die Website ein' : ''}`;
   };
   if (t) t.oninput = upd;
   if (d) d.oninput = upd;
@@ -694,6 +774,7 @@ export async function boot(loginClicked: boolean) {
     mapPage();
     await S.init();
     state = (await S.loadContent()) ?? emptyState();
+    lastSaved = clone(state);
     if (await S.isLoggedIn()) startAdmin();
     else render();
   })();

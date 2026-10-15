@@ -54,7 +54,7 @@ export function hoursSheet(ctx: HoursCtx) {
         </div>`;
       }).join('')}</div>
       <div class="ed-row ed-row-start"><button type="button" class="ed-btn ed-ghost" data-copy>Montag auf Dienstag–Freitag übertragen</button>
-        ${!same(w, baseWeek) ? '<button type="button" class="ed-btn ed-ghost" data-orig>Wie zuletzt veröffentlicht</button>' : ''}</div>
+        ${!same(w, baseWeek) ? '<button type="button" class="ed-btn ed-ghost" data-orig>Wie zurzeit auf der Website</button>' : ''}</div>
       <div class="ed-prev-hours"><span class="ed-hint">So steht es in der Fußzeile:</span><p>${escapeHtml(hoursSummary(t, ctx.lang, ' · ', w))}</p></div>
       <div class="ed-row"><button type="button" class="ed-btn ed-ghost" data-cancel>Abbrechen</button><button type="button" class="ed-btn ed-primary" data-ok>Übernehmen</button></div>`;
   };

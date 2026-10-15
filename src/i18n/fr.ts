@@ -119,6 +119,8 @@ const fr = {
     },
     licenceShort: { B: 'B', B96: 'B avec code 96', BE: 'BE' },
     price: '{day} la journée, {weekend} le week-end',
+    priceDayOnly: '{day} la journée',
+    priceWeekendOnly: '{weekend} le week-end',
     priceMissing: '[FEHLT — Preis pro Tag und Wochenende]',
     request: 'Demander cette remorque',
     requestVan: 'Demander cette camionnette',
@@ -747,6 +749,7 @@ const fr = {
     hostingH2: 'Hébergement',
     hosting:
       'Le site est hébergé par GitHub Pages, un service de GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.',
+    hostingCloudflare: 'Le site est hébergé par Cloudflare (Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, États-Unis).',
     contentH2: 'Contenu',
     content:
       'Les annonces de voitures proviennent de notre gestion de stock MovingCar, comme nos annonces sur LuxAuto et AutoScout24. Les prix et caractéristiques peuvent changer ; seule l’offre confirmée au garage fait foi.',
@@ -769,11 +772,15 @@ const fr = {
       'Base légale : votre consentement (art. 6, paragraphe 1, point a du RGPD), que vous donnez en cochant la case, et les mesures précontractuelles à votre demande (art. 6, paragraphe 1, point b du RGPD). Vous pouvez retirer votre consentement à tout moment par e-mail ou par téléphone.',
     storage:
       'Votre demande est enregistrée dans une base de données chez Supabase (région Union européenne) et nous est transmise par e-mail via [UNBESTÄTIGT — EU-Mailanbieter, mit Nave klären]. Les demandes sont supprimées automatiquement après 90 jours [UNBESTÄTIGT — Frist mit Kunde bestätigen]. Les échanges qui mènent à un contrat sont conservés selon les obligations comptables.',
+    storageCloudflare:
+      'Votre demande est enregistrée dans une base de données chez Cloudflare (région Union européenne) et nous est transmise par e-mail via [UNBESTÄTIGT — EU-Mailanbieter, mit Nave klären]. Les demandes sont supprimées automatiquement après 90 jours [UNBESTÄTIGT — Frist mit Kunde bestätigen]. Les échanges qui mènent à un contrat sont conservés selon les obligations comptables.',
     abuse:
       'Pour limiter les abus, nous enregistrons une empreinte cryptographique (hachage) de votre adresse IP pendant 24 heures. Elle ne permet pas de retrouver votre adresse.',
     hostingH2: 'Hébergement et journaux du serveur',
     hosting:
       'Le site est hébergé par GitHub Pages (GitHub, Inc., États-Unis). À chaque visite, GitHub traite votre adresse IP et des données techniques pour livrer les pages et assurer la sécurité. GitHub est certifié selon le cadre de protection des données UE–États-Unis (EU-US Data Privacy Framework). Base légale : notre intérêt légitime à un site sûr et disponible (art. 6, paragraphe 1, point f du RGPD).',
+    hostingCloudflare:
+      'Le site est hébergé par Cloudflare (Cloudflare, Inc., États-Unis). À chaque visite, Cloudflare traite votre adresse IP et des données techniques pour livrer les pages et assurer la sécurité. Cloudflare est certifié selon le cadre de protection des données UE–États-Unis (EU-US Data Privacy Framework). Base légale : notre intérêt légitime à un site sûr et disponible (art. 6, paragraphe 1, point f du RGPD).',
     linksH2: 'Liens vers d’autres services',
     links:
       'Le site ne charge aucun contenu externe : polices, photos et plan sont hébergés avec le site. Les liens vers Google Maps, WhatsApp, Facebook, Instagram, TikTok, LuxAuto et AutoScout24 ne s’ouvrent que si vous cliquez. Ces services traitent alors vos données selon leurs propres règles. WhatsApp appartient à Meta Platforms ; si vous nous écrivez sur WhatsApp, Meta traite votre numéro et vos messages.',

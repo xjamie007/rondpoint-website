@@ -1,0 +1,14 @@
+{
+  "$comment": "Einzige Quelle für Öffnungszeiten: Tabelle, Footer und JSON-LD lesen hieraus (G3). Zeiten in Europe/Luxembourg.",
+  "timezone": "Europe/Luxembourg",
+  "week": {
+    "mo": [["07:45", "12:00"], ["13:00", "18:00"]],
+    "tu": [["07:45", "12:00"], ["13:00", "18:00"]],
+    "we": [["07:45", "12:00"], ["13:00", "18:00"]],
+    "th": [["07:45", "12:00"], ["13:00", "18:00"]],
+    "fr": [["07:45", "12:00"], ["13:00", "18:00"]],
+    "sa": [["08:00", "12:00"]],
+    "su": []
+  },
+  "holidaysConfirmed": false
+}

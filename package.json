@@ -19,7 +19,8 @@
     "open-points": "node --experimental-strip-types scripts/open-points.ts",
     "i18n:review": "node --experimental-strip-types scripts/i18n-review.ts",
     "lb:export": "node --experimental-strip-types scripts/lb-texts.ts export",
-    "lb:import": "node --experimental-strip-types scripts/lb-texts.ts import"
+    "lb:import": "node --experimental-strip-types scripts/lb-texts.ts import",
+    "admin": "node --experimental-strip-types scripts/admin-user.ts"
   },
   "dependencies": {
     "@astrojs/react": "^7.0.0",

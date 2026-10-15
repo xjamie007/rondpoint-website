@@ -2,7 +2,7 @@
  * Reine Logik der Edge Function `inquiry` (F): Prüfung je Typ, Betreffzeile, Mailtext.
  * Keine Abhängigkeit von Supabase, damit sie mit `deno test` prüfbar ist.
  */
-import { z } from 'npm:zod@4.6.5';
+import { z } from 'zod';
 
 export const LANGS = ['fr', 'de', 'lb', 'en', 'pt'] as const;
 export type Lang = (typeof LANGS)[number];

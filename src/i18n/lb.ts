@@ -116,6 +116,8 @@ const lb: Dict = {
     },
     licenceShort: { B: 'B', B96: 'B mam Code 96', BE: 'BE' },
     price: '{day} pro Dag, {weekend} pro Weekend',
+    priceDayOnly: '{day} pro Dag',
+    priceWeekendOnly: '{weekend} pro Weekend',
     priceMissing: '[FEHLT — Preis pro Tag und Wochenende]',
     request: 'Dësen Unhänger ufroen',
     requestVan: 'Dës Camionnette ufroen',
@@ -746,6 +748,7 @@ const lb: Dict = {
     hostingH2: 'Hosting',
     hosting:
       'D’Websäit gëtt vu GitHub Pages gehost, engem Service vu GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, Vereenegt Staaten.',
+    hostingCloudflare: 'D’Websäit gëtt vu Cloudflare gehost (Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, Vereenegt Staaten).',
     contentH2: 'Inhalt',
     content:
       'D’Autosannoncen kommen aus eiser Stockverwaltung MovingCar, sou wéi eis Annoncen op LuxAuto an AutoScout24. Präisser an technesch Donnéeë kënne sech änneren; verbindlech ass eleng d’Offer, déi an der Garage bestätegt gëtt.',
@@ -770,11 +773,15 @@ const lb: Dict = {
       'Rechtsgrondlag: Är Awëllegung (Art. 6 Abs. 1 Buchst. a DSGVO), déi Dir gitt, wann Dir d’Këschtchen ukräizt, a virvertraglech Moossnamen op Är Ufro (Art. 6 Abs. 1 Buchst. b DSGVO). Dir kënnt Är Awëllegung all Moment per E-Mail oder Telefon zréckzéien.',
     storage:
       'Är Ufro gëtt an enger Datebank bei Supabase (Regioun Europäesch Unioun) gespäichert an eis per E-Mail iwwer [UNBESTÄTIGT — EU-Mailanbieter, mit Nave klären] zougestallt. D’Ufroe ginn no 90 Deeg automatesch geläscht [UNBESTÄTIGT — Frist mit Kunde bestätigen]. Korrespondenz, déi zu engem Kontrakt féiert, bewahre mir no de Buchhaltungsflichten op.',
+    storageCloudflare:
+      'Är Ufro gëtt an enger Datebank bei Cloudflare (Regioun Europäesch Unioun) gespäichert an eis per E-Mail iwwer [UNBESTÄTIGT — EU-Mailanbieter, mit Nave klären] zougestallt. D’Ufroe ginn no 90 Deeg automatesch geläscht [UNBESTÄTIGT — Frist mit Kunde bestätigen]. Korrespondenz, déi zu engem Kontrakt féiert, bewahre mir no de Buchhaltungsflichten op.',
     abuse:
       'Fir Mëssbrauch ze begrenzen, späichere mir 24 Stonnen laang e kryptografeschen Hashwäert vun Ärer IP-Adress. Doraus kann een Är Adress net erëmfannen.',
     hostingH2: 'Hosting a Server-Protokoller',
     hosting:
       'D’Websäit gëtt vu GitHub Pages (GitHub, Inc., Vereenegt Staaten) gehost. Bei all Besuch veraarbecht GitHub Är IP-Adress an technesch Donnéeën, fir d’Säiten auszeliwweren an d’Sécherheet ze garantéieren. GitHub ass nom EU-US-Dateschutzrumm (EU-US Data Privacy Framework) zertifiéiert. Rechtsgrondlag: eist berechtegt Interessi un enger Websäit, déi sécher an erreechbar ass (Art. 6 Abs. 1 Buchst. f DSGVO).',
+    hostingCloudflare:
+      'D’Websäit gëtt vu Cloudflare (Cloudflare, Inc., Vereenegt Staaten) gehost. Bei all Besuch veraarbecht Cloudflare Är IP-Adress an technesch Donnéeën, fir d’Säiten auszeliwweren an d’Sécherheet ze garantéieren. Cloudflare ass nom EU-US-Dateschutzrumm (EU-US Data Privacy Framework) zertifiéiert. Rechtsgrondlag: eist berechtegt Interessi un enger Websäit, déi sécher an erreechbar ass (Art. 6 Abs. 1 Buchst. f DSGVO).',
     linksH2: 'Linken op aner Servicer',
     links:
       'D’Websäit lued keen externen Inhalt: Schrëften, Fotoen a Plang sinn zesumme mat der Websäit gehost. D’Linken op Google Maps, WhatsApp, Facebook, Instagram, TikTok, LuxAuto an AutoScout24 ginn nëmmen op, wann Dir drop klickt. Dës Servicer veraarbechten Är Donnéeën dann no hiren eegene Reegelen. WhatsApp gehéiert zu Meta Platforms; wann Dir eis op WhatsApp schreift, veraarbecht Meta Är Nummer an Är Messagen.',

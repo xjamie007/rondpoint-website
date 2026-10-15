@@ -35,8 +35,9 @@ Das Foto selbst bewegt sich beim Laden nicht, damit das LCP nicht wartet. Bei re
 | Styling | Tailwind CSS 4 mit eigenen Tokens (`src/styles/global.css`) |
 | Schrift | Archivo variabel, selbst gehostet (`public/fonts/`, OFL) |
 | Daten | Content Collection `flotte`, `src/data/stock.json` (Abgleich), `src/content/*.json` |
-| Formulare | Supabase Edge Function `inquiry` (EU), Tabelle `inquiries`, Löschung nach 90 Tagen |
-| Hosting | GitHub Pages über GitHub Actions |
+| Formulare | Cloudflare Worker `/api/inquiry` mit D1 (EU), Löschung nach 90 Tagen; Alternative: Supabase Edge Function `inquiry` |
+| Hosting | Cloudflare Worker mit statischen Assets (Variable `HOSTING=cloudflare`), sonst GitHub Pages; beides über GitHub Actions |
+| Admin-Bereich | Editor auf der Seite (`src/edit/`), Anmeldung und Speichern über den Worker (`worker/`) |
 
 ## Starten
 
@@ -309,13 +310,14 @@ Ohne Schlüssel kann niemand speichern. Die Seite `/admin/` ist für Suchmaschin
 
 ### Demo und Betrieb
 
-| | Demo (heute) | Betrieb mit Supabase |
-|---|---|---|
-| Anmeldung | Benutzername `rondpoint`, Passwort bei Nave (nur als Hash in `src/edit/storage.ts`) | E-Mail und Passwort, je Person ein Konto in Supabase |
-| Speichern | nur in diesem Browser (IndexedDB) | für alle Besucher, nach wenigen Minuten |
-| Umgeschaltet durch | – | GitHub-Variablen `PUBLIC_SUPABASE_URL` und `PUBLIC_SUPABASE_ANON_KEY` |
+| | Demo (heute) | Betrieb auf Cloudflare (Standard) | Alternative: Supabase |
+|---|---|---|---|
+| Anmeldung | Benutzername `rondpoint`, Passwort bei Nave (nur als Hash in `src/edit/storage.ts`) | E-Mail und Passwort, Konten mit `npm run admin` | E-Mail und Passwort, Konten in Supabase |
+| Speichern | nur in diesem Browser (IndexedDB) | für alle Besucher, nach wenigen Minuten | für alle Besucher, nach wenigen Minuten |
+| Umgeschaltet durch | – | GitHub-Variable `HOSTING=cloudflare` | GitHub-Variablen `PUBLIC_SUPABASE_URL` und `PUBLIC_SUPABASE_ANON_KEY` |
+| Kosten | – | 0 € (Free-Plan reicht) | 0 € (Free, pausiert) oder etwa 25 $ im Monat |
 
-**So funktioniert das Speichern mit Supabase:**
+**So funktioniert das Speichern** (Cloudflare: `worker/index.ts` unter `/api/publish`; Supabase: Edge Function `publish`):
 1. Der Editor schickt den Stand an die Edge Function `publish` (`supabase/functions/publish/`).
 2. Die Function prüft die Anmeldung und den Inhalt und schreibt alles als **einen Commit** ins Repository.
    - Texte → `src/content/texts.json`
@@ -331,7 +333,67 @@ Das bringt folgende Vorteile:
 - Die Website bleibt statisch, schnell und vollständig für Google lesbar.
 - Supabase speichert keine Inhalte, nur die Konten und ein Protokoll (`admin_changes`: wer, wann, was).
 
-### Supabase einrichten (Nave, einmalig, ca. 30 Minuten)
+### Cloudflare einrichten (Nave, einmalig, ca. 30 Minuten)
+
+Auf Cloudflare liegt alles an einem Ort, kostenlos:
+- **Seiten:** Ein Worker liefert die gebauten Seiten aus `dist/` aus (`wrangler.jsonc`).
+- **Admin-Bereich und Formulare:** Derselbe Worker beantwortet `/api/*` (`worker/`).
+- **Datenbank:** Konten, Anmelde-Fehlversuche, Protokoll und Formular-Anfragen liegen in einer D1-Datenbank in der EU (`worker/migrations/`).
+- **Veröffentlichen:** GitHub Actions baut die Seite und lädt sie hoch, wie bisher bei GitHub Pages.
+
+1. **Cloudflare-Konto:** dash.cloudflare.com → **Workers & Pages**. Beim ersten Besuch eine workers.dev-Subdomain wählen, z. B. `nave`. Die Website liegt dann unter `https://rondpoint-website.nave.workers.dev`.
+2. **Datenbank anlegen:** **Storage & Databases → D1 SQL Database → Create Database**.
+   - Name `rondpoint`.
+   - Unter *Data location* **Specify jurisdiction → European Union** wählen. Das geht nur beim Anlegen.
+   - Danach die **Database ID** kopieren.
+3. **Cloudflare-Schlüssel für GitHub:**
+   - **My Profile → API Tokens → Create Token** → Vorlage **„Edit Cloudflare Workers“**.
+   - Eine Berechtigung ergänzen: **Account → D1 → Edit**.
+   - Account Resources: das eigene Konto → Create.
+   - Den Token kopieren. Die **Account ID** steht unter Workers & Pages rechts.
+4. **GitHub-Schlüssel für den Editor:**
+   - github.com → Settings → Developer settings → **Fine-grained tokens**.
+   - Nur das Repository `rondpoint-website`, **Contents: Read and write**.
+   - Ablaufdatum im Kalender eintragen.
+5. **In GitHub eintragen** (Repository → Settings → Secrets and variables → Actions):
+   - *Secrets:*
+     - `CLOUDFLARE_API_TOKEN`
+     - `CLOUDFLARE_ACCOUNT_ID`
+     - `EDITOR_GITHUB_TOKEN` (der Token aus Schritt 4)
+     - `SESSION_SECRET`: ein langer Zufallswert, z. B. aus `openssl rand -base64 48`
+   - *Variables:*
+     - `HOSTING` = `cloudflare`
+     - `SITE_URL` = die Adresse aus Schritt 1
+     - `D1_DATABASE_ID` = die ID aus Schritt 2
+6. **Veröffentlichen:** GitHub → Actions → „Bestand-Sync und Deploy“ → **Run workflow**. Der Lauf legt die Tabellen an, lädt die Seite hoch und setzt die Geheimnisse des Workers.
+7. **Konten anlegen** (im Projektordner, einmal `npx wrangler login`):
+   ```bash
+   npm run admin -- add name@example.com
+   ```
+   Das Passwort (mindestens 12 Zeichen) wird nur auf dem eigenen Rechner verschlüsselt. Es gibt keine Registrierung, nur so angelegte Konten können sich anmelden. Weitere Befehle: `npm run admin -- list` und `npm run admin -- remove name@example.com`, gelöscht ist gelöscht, auch für laufende Sitzungen.
+8. **Test:** Auf der workers.dev-Adresse unten auf „Login“ → E-Mail und Passwort → einen Text ändern → Speichern. Nach wenigen Minuten erscheint ein Commit „Website-Editor: …“, und die Seite zeigt die Änderung.
+
+**Eigene Domain (rondpoint.lu):**
+- Die Domain in Cloudflare hinzufügen (**Add a domain**). Beim Registrar die Nameserver auf die zwei von Cloudflare umstellen. E-Mail-Einträge (MX) übernimmt Cloudflare beim Import, bitte trotzdem prüfen.
+- Danach Workers & Pages → `rondpoint-website` → **Settings → Domains & Routes → Add → Custom domain** → `www.rondpoint.lu` und `rondpoint.lu`.
+- Die Variable `SITE_URL` auf `https://www.rondpoint.lu` setzen und den Workflow erneut starten.
+
+**Formulare direkt verschicken (statt WhatsApp/E-Mail-Knopf):**
+- Einen EU-Mailanbieter wählen, z. B. Brevo, und die Absender-Domain dort bestätigen.
+- Die Werte des Workers setzen, jeweils mit `npx wrangler secret put …`: `MAIL_PROVIDER` (`brevo` oder `scaleway`), `MAIL_API_KEY`, `MAIL_FROM` (z. B. `rondpoint.lu <formulaire@rondpoint.lu>`) und `FORM_RECIPIENT`.
+- Danach die GitHub-Variable `PUBLIC_INQUIRY_URL` = `/api/inquiry` setzen.
+- Anfragen bleiben 90 Tage in D1 (Dashboard → D1 → `rondpoint` → `inquiries`). Scheitert eine Mail, steht dort `mail_status = failed`.
+
+**Gut zu wissen**
+- **Kosten:** Seiten und Bilder sind auf Cloudflare unbegrenzt kostenlos. Der Worker läuft nur für `/api` (Free: 100 000 Aufrufe pro Tag), D1 im Free-Plan reicht weit.
+- **GitHub Pages abschalten,** sobald alles auf Cloudflare läuft: Settings → Pages → „Unpublish site“. Sonst bleibt der letzte Stand dort sichtbar.
+- **Zurück zu GitHub Pages:** die Variable `HOSTING` löschen.
+- **Lokal testen:**
+  - Eine `.dev.vars` mit `SESSION_SECRET=…`, `GITHUB_TOKEN=…` und `MAIL_PROVIDER=log` anlegen; sie ist von Git ausgeschlossen.
+  - Dann `PUBLIC_HOSTING=cloudflare npm run build`, `npx wrangler d1 migrations apply rondpoint --local` und `npx wrangler dev`.
+- **Weitere Kunden-Websites:** dieselben Dateien (`worker/`, `wrangler.jsonc`) mit eigenem Worker-Namen, eigener Datenbank und eigenen Secrets. Pro Website 0 €.
+
+### Alternative: Supabase einrichten (Nave, einmalig, ca. 30 Minuten)
 
 Dasselbe Supabase-Projekt dient auch den Formularen (siehe oben).
 
@@ -345,23 +407,37 @@ Dasselbe Supabase-Projekt dient auch den Formularen (siehe oben).
    - Ablaufdatum im Kalender eintragen.
 6. **Geheimnisse setzen:**
    ```bash
-   supabase secrets set GITHUB_TOKEN=github_pat_… GITHUB_REPO=xjamie007/rondpoint-website GITHUB_BRANCH=main ALLOWED_ORIGINS=https://xjamie007.github.io,https://www.rondpoint.lu
+   supabase secrets set GITHUB_TOKEN=github_pat_… GITHUB_REPO=xjamie007/rondpoint-website GITHUB_BRANCH=main ALLOWED_ORIGINS=https://xjamie007.github.io,https://www.rondpoint.lu ADMIN_EMAILS=chef@…,info@nave.lu
    ```
-   Optional `ADMIN_EMAILS=a@…,b@…`: dann dürfen nur diese Konten speichern.
-7. **Function veröffentlichen:** `supabase functions deploy publish`. Die Function prüft die Anmeldung selbst, deshalb steht in `supabase/config.toml` `verify_jwt = false`.
+   `ADMIN_EMAILS` ist **Pflicht**: Nur diese E-Mail-Adressen dürfen speichern. Ohne Liste lehnt die Function jedes Speichern ab. Das ist der zweite Schutz, falls die Registrierung in Schritt 3 doch offen ist. Ein neues Konto braucht also zwei Schritte: anlegen (Schritt 4) und hier eintragen.
+7. **Function veröffentlichen:** `supabase functions deploy publish --no-verify-jwt`. Die Function prüft die Anmeldung selbst. `--no-verify-jwt` (wie `verify_jwt = false` in `supabase/config.toml`) ist nötig, sonst blockiert Supabase schon die Vorabfrage des Browsers.
 8. **Website umschalten:**
    - GitHub → Settings → Secrets and variables → Actions → **Variables**: `PUBLIC_SUPABASE_URL` = `https://<ref>.supabase.co` und `PUBLIC_SUPABASE_ANON_KEY` = der „anon“/„publishable“ Schlüssel. Der ist für den Browser gedacht und öffentlich.
    - Danach den Workflow einmal starten.
 9. **Test:** Auf der Website „Login“ → E-Mail und Passwort → einen Text ändern → Speichern. Nach wenigen Minuten erscheint ein Commit „Website-Editor: Texte DE“, und die Seite zeigt die Änderung.
 
 **Gut zu wissen**
-- **Konten verwalten:** Passwort vergessen → in Supabase unter Users ein neues setzen. Jemand verlässt die Firma → Konto löschen.
+- **Konten verwalten:**
+  - Passwort vergessen → in Supabase unter Users ein neues setzen.
+  - Jemand verlässt die Firma → das Konto löschen und die Adresse aus `ADMIN_EMAILS` nehmen.
+  - Läuft die Anmeldung beim Speichern ab, fragt der Editor erneut nach dem Passwort. Die Änderungen bleiben dabei erhalten.
+- **Speichern:**
+  - Gespeichert wird nur, was sich seit dem letzten Speichern geändert hat. Was man zurücknimmt, wird ausdrücklich wieder auf den alten Stand gesetzt.
+  - „Rückgängig“ gilt bis zum letzten Speichern.
+  - Ist eine Speicherung nach 20 Minuten noch nicht online, zeigt der Editor einen Hinweis. Dann unter GitHub → Actions nachsehen.
 - **Free-Plan:** Supabase pausiert kostenlose Projekte nach 7 Tagen ohne Zugriff. Der tägliche Workflow fragt Supabase deshalb einmal am Tag an („Supabase aktiv halten“). Für einen Firmenauftritt ist der Pro-Plan die sichere Wahl, denn ein pausiertes Projekt sperrt Login und Formulare.
 - **Eigene Domain:** zusätzlich in `ALLOWED_ORIGINS` eintragen (Schritt 6), sonst blockiert der Browser das Speichern.
 - **Läuft der Build nach dem Speichern nicht durch** (z. B. GitHub-Störung): Der Commit liegt trotzdem im Repository. „Run workflow“ startet ihn erneut, es geht nichts verloren.
 
 ### Aufbau (`src/edit/`)
-- `storage.ts`: **Speichern und Login, Demo oder Supabase.** Sonst ändert sich beim Umschalten nichts.
+- `storage.ts`: **Speichern und Login: Demo, Cloudflare oder Supabase.** Sonst ändert sich beim Umschalten nichts.
+- `worker/` (Cloudflare):
+  - `index.ts`: Wegweiser für `/api`, tägliches Aufräumen.
+  - `auth.ts`: PBKDF2-Passwörter und signiertes Cookie.
+  - `inquiry.ts`: Formulare.
+  - `migrations/`: Tabellen.
+  - Getestet in `tests/worker.test.ts` mit echter SQLite-Datenbank.
+  - Die Umwandlung in Dateien (`convert.ts`) und der GitHub-Commit (`makeGit` in `publish.ts`) sind dieselben wie bei Supabase.
 - `match.ts`: ordnet sichtbaren Text seinem Schlüssel in `src/i18n/<sprache>.ts` zu (getestet in `tests/edit.test.ts`).
 - `editor.ts`, `editor.css`, `ui.ts`: Bedienoberfläche und das Anwenden der Änderungen.
 - `hours.ts`: Fenster „Öffnungszeiten“ und Vorschau (Tabelle `[data-hours=table]`, Fußzeile `[data-hours=sum]`, Texte mit `{hours}`).

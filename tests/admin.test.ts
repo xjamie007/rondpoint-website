@@ -8,7 +8,8 @@ import { hoursSummary } from '../src/lib/content.ts';
 
 const CATS = ['porte-voiture', 'porte-moto', 'benne', 'frigorifique', 'plateau', 'fourgon', 'camionnette', 'voiture'];
 const CARGO = ['voiture', 'moto', 'terre', 'fete', 'meubles', 'materiel'];
-const dir = 'src/content/flotte/_dev';
+// Feste Testdaten: die echten Dateien ändert der Admin-Bereich (Beispiele löschen, Zeiten ändern)
+const dir = 'tests/fixtures/flotte';
 const samples = readdirSync(dir).map((f) => JSON.parse(readFileSync(`${dir}/${f}`, 'utf8')) as FleetData);
 
 describe('Dashboard: Prüfregeln der Flotte (wie src/content.config.ts)', () => {
@@ -33,7 +34,7 @@ describe('Dashboard: Prüfregeln der Flotte (wie src/content.config.ts)', () => 
 });
 
 describe('Dashboard: Öffnungszeiten', () => {
-  const h: Horaires = JSON.parse(readFileSync('src/content/horaires.json', 'utf8'));
+  const h: Horaires = JSON.parse(readFileSync('tests/fixtures/horaires.json', 'utf8'));
   it('gültige Zeiten ohne Fehler', () => expect(hoursErrors(h)).toEqual({}));
   it('Fehler bei falscher Reihenfolge und Überschneidung', () => {
     const x = structuredClone(h);
@@ -50,7 +51,7 @@ describe('Dashboard: Öffnungszeiten', () => {
 describe('Dashboard: Änderungen → Dateien', () => {
   const base = (): Draft => ({
     site: JSON.parse(readFileSync('src/content/site.json', 'utf8')),
-    horaires: JSON.parse(readFileSync('src/content/horaires.json', 'utf8')),
+    horaires: JSON.parse(readFileSync('tests/fixtures/horaires.json', 'utf8')),
     texts: JSON.parse(readFileSync('src/content/texts.json', 'utf8')),
     fleet: [{ path: 'src/content/flotte/_dev/exemple-benne.json', data: samples[0], preview: null }],
     uploads: {},
@@ -60,7 +61,7 @@ describe('Dashboard: Änderungen → Dateien', () => {
   it('erkennt Stammdaten, Flotte, Fotos und Löschungen', () => {
     const o = base();
     const d = base();
-    d.site.notice.active = true;
+    d.site.notice.active = !o.site.notice.active;
     d.fleet = [{ path: 'src/content/flotte/plateau.json', data: { ...samples[0], sample: false }, preview: null }];
     d.uploads['src/assets/photos/about.jpg'] = { dataUrl: 'data:', base64: 'AAA' };
     d.deletes.push('src/assets/photos/rental.jpg');
@@ -69,7 +70,7 @@ describe('Dashboard: Änderungen → Dateien', () => {
       ['src/assets/photos/about.jpg', 'src/assets/photos/rental.jpg', 'src/content/flotte/_dev/exemple-benne.json', 'src/content/flotte/plateau.json', 'src/content/site.json'].sort(),
     );
     expect(files.find((f) => f.path.endsWith('exemple-benne.json'))?.delete).toBe(true);
-    expect(JSON.parse(files.find((f) => f.path.endsWith('site.json'))!.text!).notice.active).toBe(true);
+    expect(JSON.parse(files.find((f) => f.path.endsWith('site.json'))!.text!).notice.active).toBe(!o.site.notice.active);
   });
 });
 

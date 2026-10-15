@@ -78,6 +78,8 @@ jobs:
             echo "Keine Änderung"
           else
             git commit -m "Bestand-Sync $(date -u +%Y-%m-%d)"
+            # inzwischen gespeichert (z. B. aus dem Admin-Bereich)? Darauf aufsetzen statt abzubrechen
+            git pull --rebase --quiet origin main
             git push
           fi
 
@@ -105,32 +107,52 @@ jobs:
           key: astro-images-${{ github.run_id }}
           restore-keys: astro-images-
 
-      # Adresse und Basis-Pfad kommen von GitHub Pages: ohne eigene Domain
-      # https://<konto>.github.io/<repo>/, mit eigener Domain die Wurzel.
+      # Wohin veröffentlicht wird, bestimmt die Variable HOSTING:
+      #  - nicht gesetzt: GitHub Pages (Adresse und Basis-Pfad von configure-pages)
+      #  - cloudflare:    Cloudflare Worker (Adresse aus der Variable SITE_URL), siehe README → „Cloudflare“
       - uses: actions/configure-pages@v5
         id: pages
-        if: steps.sync.outcome != 'failure'
+        if: steps.sync.outcome != 'failure' && vars.HOSTING != 'cloudflare'
 
       - name: Build
         if: steps.sync.outcome != 'failure'
         env:
+          PUBLIC_HOSTING: ${{ vars.HOSTING }}
           PUBLIC_INQUIRY_URL: ${{ vars.PUBLIC_INQUIRY_URL }}
-          # Admin-Bereich auf der Seite: mit diesen beiden Variablen Login über Supabase, sonst Demo
+          # Admin-Bereich auf der Seite: Cloudflare (HOSTING=cloudflare), Supabase (diese beiden Variablen) oder Demo
           PUBLIC_SUPABASE_URL: ${{ vars.PUBLIC_SUPABASE_URL }}
           PUBLIC_SUPABASE_ANON_KEY: ${{ vars.PUBLIC_SUPABASE_ANON_KEY }}
-          SITE_URL: ${{ steps.pages.outputs.origin }}
-          BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          SITE_URL: ${{ vars.HOSTING == 'cloudflare' && vars.SITE_URL || steps.pages.outputs.origin }}
+          BASE_PATH: ${{ vars.HOSTING != 'cloudflare' && steps.pages.outputs.base_path || '' }}
         run: npm run build
 
       - uses: actions/upload-pages-artifact@v3
-        if: steps.sync.outcome != 'failure'
+        if: steps.sync.outcome != 'failure' && vars.HOSTING != 'cloudflare'
         with:
           path: dist
 
       - name: Deploy
         id: deploy
-        if: steps.sync.outcome != 'failure'
+        if: steps.sync.outcome != 'failure' && vars.HOSTING != 'cloudflare'
         uses: actions/deploy-pages@v4
+
+      # Cloudflare: Datenbank-Tabellen anlegen bzw. ergänzen, Worker mit den Seiten hochladen,
+      # Geheimnisse des Workers aus den GitHub-Secrets setzen.
+      - name: Auf Cloudflare veröffentlichen
+        if: steps.sync.outcome != 'failure' && vars.HOSTING == 'cloudflare'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          D1_DATABASE_ID: ${{ vars.D1_DATABASE_ID }}
+          SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+          EDITOR_GITHUB_TOKEN: ${{ secrets.EDITOR_GITHUB_TOKEN }}
+        run: |
+          if [ -n "$D1_DATABASE_ID" ]; then sed -i "s/00000000-0000-0000-0000-000000000000/$D1_DATABASE_ID/" wrangler.jsonc; fi
+          npx --yes wrangler@4 d1 migrations apply rondpoint --remote
+          npx --yes wrangler@4 deploy
+          node -e 'const s={};if(process.env.SESSION_SECRET)s.SESSION_SECRET=process.env.SESSION_SECRET;if(process.env.EDITOR_GITHUB_TOKEN)s.GITHUB_TOKEN=process.env.EDITOR_GITHUB_TOKEN;require("fs").writeFileSync(process.env.RUNNER_TEMP+"/cf-secrets.json",JSON.stringify(s))'
+          if [ "$(cat "$RUNNER_TEMP/cf-secrets.json")" != "{}" ]; then npx --yes wrangler@4 secret bulk "$RUNNER_TEMP/cf-secrets.json"; fi
+          rm -f "$RUNNER_TEMP/cf-secrets.json"
 
       - name: Abbruch melden
         if: steps.sync.outcome == 'failure'

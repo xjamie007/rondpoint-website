@@ -6,7 +6,7 @@
  */
 import { rich, type Dict } from '@/i18n';
 import type { FleetView } from '@/lib/fleet-view';
-import { presentation } from '@/lib/site';
+import { showOpenPoints } from '@/lib/site';
 
 interface Props {
   t: Dict;
@@ -42,8 +42,8 @@ const h = t.fleetTable;
               <td role="cell" data-label={h.mma} class="tnum">{i.display.mma}</td>
               <td role="cell" data-label={h.surface} class="tnum">{i.display.surface ?? '—'}</td>
               <td role="cell" data-label={h.licence}>{i.display.requiredShort}</td>
-              <td role="cell" data-label={h.day} class="tnum">{i.display.priceDay ?? (presentation ? '—' : <span set:html={rich('[FEHLT]')} />)}</td>
-              <td role="cell" data-label={h.weekend} class="tnum">{i.display.priceWeekend ?? (presentation ? '—' : <span set:html={rich('[FEHLT]')} />)}</td>
+              <td role="cell" data-label={h.day} class="tnum">{i.display.priceDay ?? (showOpenPoints ? <span set:html={rich('[FEHLT]')} /> : '—')}</td>
+              <td role="cell" data-label={h.weekend} class="tnum">{i.display.priceWeekend ?? (showOpenPoints ? <span set:html={rich('[FEHLT]')} /> : '—')}</td>
             </tr>
           ))}
         </tbody>

@@ -6,7 +6,7 @@ import { rich, useT } from '@/i18n';
 import { path, type Lang } from '@/i18n/config';
 import { dateLong } from '@/lib/format';
 import { breadcrumbs } from '@/lib/jsonld';
-import { site } from '@/lib/site';
+import { onCloudflare, site } from '@/lib/site';
 import { demoCredits } from '@/lib/photos';
 
 interface Props {
@@ -58,7 +58,7 @@ const rows: [string, string][] = [
     </section>
     <section aria-labelledby="host-h">
       <h2 id="host-h">{l.hostingH2}</h2>
-      <p>{l.hosting}</p>
+      <p>{onCloudflare ? l.hostingCloudflare : l.hosting}</p>
     </section>
     <section aria-labelledby="content-h">
       <h2 id="content-h">{l.contentH2}</h2>

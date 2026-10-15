@@ -46,6 +46,7 @@
 .ed-x { width: 44px; height: 44px; border: 0; border-radius: 50%; background: #f1f1f1; font-size: 18px; cursor: pointer; color: #111; }
 .ed-sheet-body { padding: 16px 18px 22px; }
 .ed-sheet.ed-working .ed-sheet-body { opacity: 0.5; pointer-events: none; }
+.ed-sheet.ed-working .ed-x { opacity: 0.4; pointer-events: none; }
 .ed-sheet.ed-working .ed-sheet-head h2::after { content: ' – Bild wird vorbereitet …'; font-weight: 400; color: #666; }
 
 .ed-form { display: flex; flex-direction: column; gap: 14px; }

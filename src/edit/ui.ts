@@ -13,7 +13,11 @@ export function sheet(title: string, body: string, opts: { wide?: boolean; onClo
     <div class="ed-sheet-head"><h2>${escapeHtml(title)}</h2><button class="ed-x" aria-label="Schließen">✕</button></div>
     <div class="ed-sheet-body">${body}</div></div>`;
   document.body.append(wrap);
-  const close = () => { closeSheet(); opts.onClose?.(); };
+  const close = () => {
+    if ($('.ed-sheet.ed-working', wrap)) return; // Foto wird noch hochgeladen
+    closeSheet();
+    opts.onClose?.();
+  };
   $('.ed-x', wrap)!.onclick = close;
   wrap.addEventListener('mousedown', (e) => { if (e.target === wrap) close(); });
   wrap.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });

@@ -57,7 +57,14 @@ export function fleetView(items: FleetItem[], lang: Lang, t: Dict): FleetView[] 
       req.kind === 'licence' ? fmt(s.verdict.required, { licence: s.licenceShort[req.licence] }) : s.verdict.requiredDepends;
     const priceDay = i.priceDay != null ? eur(lang, i.priceDay) : null;
     const priceWeekend = i.priceWeekend != null ? eur(lang, i.priceWeekend) : null;
-    const price = priceDay && priceWeekend ? fmt(s.price, { day: priceDay, weekend: priceWeekend }) : null;
+    const price =
+      priceDay && priceWeekend
+        ? fmt(s.price, { day: priceDay, weekend: priceWeekend })
+        : priceDay
+          ? fmt(s.priceDayOnly, { day: priceDay })
+          : priceWeekend
+            ? fmt(s.priceWeekendOnly, { weekend: priceWeekend })
+            : null;
     let diagramAria: string | null = null;
     if (hasDims) {
       diagramAria = fmt(s.diagramLabel, { l: metersBare(lang, i.loadLengthM!), w: metersBare(lang, i.loadWidthM!) });

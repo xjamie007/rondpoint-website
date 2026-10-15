@@ -7,7 +7,7 @@
  *   GITHUB_REPO      xjamie007/rondpoint-website
  *   GITHUB_BRANCH    main (Standard)
  *   ALLOWED_ORIGINS  Adressen der Website, kommagetrennt
- *   ADMIN_EMAILS     optional: nur diese Konten dürfen speichern
+ *   ADMIN_EMAILS     Pflicht: nur diese Konten dürfen speichern (kommagetrennt)
  * SUPABASE_URL, SUPABASE_ANON_KEY und SUPABASE_SERVICE_ROLE_KEY setzt Supabase selbst.
  */
 import { makeHandler } from './publish.ts';

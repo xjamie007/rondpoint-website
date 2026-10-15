@@ -10,7 +10,7 @@ import { getFleet } from '@/lib/fleet.server';
 import { cargoOptions } from '@/lib/fleet';
 import { fleetView, maxDiagramTotal } from '@/lib/fleet-view';
 import { withPhotos } from '@/lib/fleet-photos';
-import { presentation } from '@/lib/site';
+import { showOpenPoints } from '@/lib/site';
 import './finder-static.css';
 
 interface Props {
@@ -80,7 +80,7 @@ const sourceUrl = 'https://transports.public.lu/fr/conduire/conducteur-permis/ca
         maxTotalM={maxDiagramTotal(fleet)}
         uid={id}
         headingLevel={headingTag === 'h1' ? 2 : 3}
-      presentation={presentation}
+      hideOpenPoints={!showOpenPoints}
       />
       )
     }

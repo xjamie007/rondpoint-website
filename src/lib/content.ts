@@ -6,7 +6,7 @@
  * Änderung im Dashboard stimmen.
  */
 import { rich, type Dict } from '@/i18n';
-import { path, pathFor, type Lang, type PageKey, type RentalCategorySlugKey } from '@/i18n/config';
+import { PAGE_SLUGS, path, pathFor, RENTAL_CATEGORY_SLUGS, type Lang, type PageKey, type RentalCategorySlugKey } from '@/i18n/config';
 import { DAY_KEYS, horaires, site, type DayKey } from '@/lib/site';
 
 export interface Block {
@@ -79,6 +79,9 @@ export function contentPlain(s: string, t: Dict, lang: Lang): string {
 export function contentHtml(s: string, t: Dict, lang: Lang): string {
   const html = rich(fillVars(s, t, lang));
   return html.replace(LINK, (_m, text: string, kind: string, key: string) => {
+    // unbekanntes Ziel (z. B. im Admin-Bereich vertippt): nur das Wort, statt den Build abzubrechen
+    const known = kind === 'cat' ? key in RENTAL_CATEGORY_SLUGS : key in PAGE_SLUGS;
+    if (!known) return text;
     const href = kind === 'cat' ? pathFor(lang, { page: 'rentalCategory', category: key as RentalCategorySlugKey }) : path(lang, key as PageKey);
     return `<a class="link" href="${href}">${text}</a>`;
   });

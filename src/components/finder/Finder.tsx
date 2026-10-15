@@ -64,7 +64,8 @@ export interface FinderProps {
   uid: string;
   headingLevel?: 3 | 2;
   /** Präsentationsversion: fehlende Preise nicht als Platzhalter zeigen */
-  presentation?: boolean;
+  /** fehlenden Preis nicht als offenen Punkt zeigen (Präsentation und nach dem Livegang) */
+  hideOpenPoints?: boolean;
 }
 
 const OPEN_SPLIT = /(\[(?:FEHLT|UNBESTÄTIGT)[^\]]*\])/;
@@ -422,7 +423,7 @@ function Result(
       <div className="verdicts" key={key} data-verdict>
         <Verdict a={row.assessment} row={row} s={s} licence={licence} locale={props.intlLocale} hydrated={hydrated} />
       </div>
-      {(d.price || !props.presentation) && <p className="result-price">{d.price ?? <Open text={s.priceMissing} />}</p>}
+      {(d.price || !props.hideOpenPoints) && <p className="result-price">{d.price ?? <Open text={s.priceMissing} />}</p>}
       <p className="result-cta">
         <a className="btn btn-primary" href={requestHref(props.requestBase, i.id, hydrated ? licence : null, hydrated ? cargo : null)}>
           {row.kind === 'van' ? s.requestVan : s.request}

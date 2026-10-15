@@ -18,7 +18,7 @@ import '@/components/finder/finder-static.css';
 import Photo from '@/components/Photo.astro';
 import ContentSections from '@/components/ContentSections.astro';
 import { fleetPhoto } from '@/lib/photos';
-import { presentation, showOpenPoints } from '@/lib/site';
+import { showOpenPoints } from '@/lib/site';
 
 interface Props {
   lang: Lang;
@@ -99,7 +99,7 @@ const s = t.finder;
               </dl>
               <p class="verdict"><span>{category === 'camionnette' ? s.vanStatement : i.display.requiredText}</span></p>
               {i.notes && <p>{i.notes}</p>}
-              {(i.display.price || !presentation) && (
+              {(i.display.price || showOpenPoints) && (
                 <p class="result-price" set:html={i.display.price ? rich(i.display.price) : rich(s.priceMissing)} />
               )}
               <p>

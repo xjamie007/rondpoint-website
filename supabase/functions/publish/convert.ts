@@ -25,6 +25,9 @@ export type Week = Record<DayKey, Interval[]>;
 /** Wie src/content.config.ts (Test prüft die Gleichheit) */
 export const CATEGORIES = ['porte-voiture', 'porte-moto', 'benne', 'frigorifique', 'plateau', 'fourgon', 'camionnette', 'voiture'] as const;
 export const CARGO = ['voiture', 'moto', 'terre', 'fete', 'meubles', 'materiel'] as const;
+/** Ziele interner Links in Texten: [Wort](page:…) und [Wort](cat:…), wie src/i18n/config.ts (Test prüft die Gleichheit) */
+export const LINK_PAGES = ['home', 'rental', 'cars', 'workshop', 'sodablast', 'trailersForSale', 'garden', 'contact', 'thanks', 'legal', 'privacy'] as const;
+export const LINK_CATS = ['porte-voiture', 'porte-moto', 'benne', 'frigorifique', 'camionnette'] as const;
 
 export type I18nText = { fr: string } & Partial<Record<Exclude<Lang, 'fr'>, string>>;
 export interface FleetData {
@@ -197,6 +200,15 @@ export function slugify(s: string): string {
   );
 }
 
+/** Interne Links mit unbekanntem Ziel würden den Build abbrechen */
+function badLink(v: string): string | null {
+  for (const m of v.matchAll(/\]\((page|cat):([\w-]+)\)/g)) {
+    const ok = m[1] === 'page' ? (LINK_PAGES as readonly string[]).includes(m[2]) : (LINK_CATS as readonly string[]).includes(m[2]);
+    if (!ok) return `${m[1]}:${m[2]}`;
+  }
+  return null;
+}
+
 /** Listen in den Texten sind reine Textlisten (Aufzählungen, Absätze, Schritte) */
 const textList = (v: unknown[]) => v.length > 0 && v.length <= 100 && v.every((x) => typeof x === 'string' && x.trim() && x.length <= MAX_TEXT);
 
@@ -208,12 +220,16 @@ export function validate(s: EditState): void {
     for (const [k, v] of Object.entries(tx ?? {})) {
       if (!KEY.test(k)) throw new ContentError(`Ungültiger Textschlüssel ${k}`);
       if (typeof v !== 'string' || !v.trim() || v.length > MAX_TEXT) throw new ContentError(`Text ${k} ist leer oder zu lang`);
+      const bad = badLink(v);
+      if (bad) throw new ContentError(`Text ${k}: unbekanntes Link-Ziel ${bad}`);
     }
   }
   for (const [l, ls] of Object.entries(s.lists ?? {})) {
     if (!LANGS.includes(l as Lang)) throw new ContentError(`Unbekannte Sprache ${l}`);
     for (const [p, o] of Object.entries(ls ?? {})) {
       if (!KEY.test(p) || !o || !Array.isArray(o.value) || !textList(o.value)) throw new ContentError(`Ungültige Liste ${p}`);
+      const bad = o.value.map((x) => badLink(String(x))).find(Boolean);
+      if (bad) throw new ContentError(`Liste ${p}: unbekanntes Link-Ziel ${bad}`);
     }
   }
   for (const [k, p] of Object.entries(s.photos ?? {})) {
@@ -256,9 +272,18 @@ export function toFiles(s: EditState, repo: RepoSnapshot): { files: FileChange[]
     const ls = s.lists?.[l] ?? {};
     if (!Object.keys(tx).length && !Object.keys(ls).length) continue;
     const t = (texts[l] = { ...obj(texts[l]) } as Record<string, string>);
-    for (const [k, v] of Object.entries(tx)) if (t[k] !== v.trim()) { t[k] = v.trim(); textChanged = true; }
+    const L = (lists[l] = { ...obj(lists[l]) } as Record<string, unknown[]>);
+    for (const [k, v] of Object.entries(tx)) {
+      // Eintrag einer schon geänderten Liste: in die Liste schreiben (sie ersetzt beim Build texts.json)
+      const m = /^(.+)\.(\d+)$/.exec(k);
+      const list = m && !(m[1] in ls) && Array.isArray(L[m[1]]) ? L[m[1]] : null;
+      if (list && +m![2] < list.length) {
+        if (list[+m![2]] !== v.trim()) { L[m![1]] = list.map((x, i) => (i === +m![2] ? v.trim() : x)); listChanged = true; }
+        continue;
+      }
+      if (t[k] !== v.trim()) { t[k] = v.trim(); textChanged = true; }
+    }
     if (Object.keys(ls).length) {
-      const L = (lists[l] = { ...obj(lists[l]) } as Record<string, unknown[]>);
       for (const [p, o] of Object.entries(ls)) {
         // die Liste ersetzt einzelne Textänderungen darunter
         for (const k of Object.keys(t)) if (k.startsWith(`${p}.`) && !(k in tx)) { delete t[k]; textChanged = true; }

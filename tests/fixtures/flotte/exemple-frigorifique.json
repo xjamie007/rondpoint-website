@@ -1,0 +1,36 @@
+{
+  "$comment": "BEISPIEL für Entwicklung und Kundenpräsentation (sample: true). Maße und Gewichte sind Beispielwerte, keine echten Flottendaten. Preise bewusst leer.",
+  "sample": true,
+  "category": "frigorifique",
+  "name": {
+    "fr": "Remorque frigorifique 1,3 t (exemple)",
+    "de": "Kühlanhänger 1,3 t (Beispiel)",
+    "lb": "Killunhänger 1,3 t (Beispill)",
+    "en": "Refrigerated trailer 1.3 t (example)",
+    "pt": "Atrelado frigorífico 1,3 t (exemplo)"
+  },
+  "mmaKg": 1300,
+  "emptyKg": 640,
+  "payloadKg": 660,
+  "braked": true,
+  "loadLengthM": 2.6,
+  "loadWidthM": 1.45,
+  "loadHeightM": 1.8,
+  "volumeM3": 6.8,
+  "tempRange": {
+    "minC": 2,
+    "maxC": 8
+  },
+  "power": "230 V",
+  "showPallets": true,
+  "socket": 13,
+  "suitableFor": [
+    "fete"
+  ],
+  "photo": "fleet-frigorifique",
+  "brand": null,
+  "priceDay": null,
+  "priceWeekend": null,
+  "deposit": null,
+  "active": true
+}

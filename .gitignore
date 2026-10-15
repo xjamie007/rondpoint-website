@@ -14,3 +14,7 @@ deno.lock
 # Zugangsdaten MovingCar (nie ins Repository)
 requete_movingcar*
 *movingcar*.txt
+
+# Cloudflare (lokal)
+.wrangler/
+.dev.vars

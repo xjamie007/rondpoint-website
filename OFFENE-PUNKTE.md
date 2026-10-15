@@ -21,6 +21,23 @@ Für den Kundentermin ist `presentation: true` in `src/content/site.json` gesetz
 - Die Vektordatei des Logos besorgen.
 - Die Kunden-Freigabe für das Logo auf der Website einholen, falls nötig.
 
+## Stand 15.10.2026: Umzug auf Cloudflare vorbereitet
+
+Website, Admin-Bereich und Formulare laufen auf Cloudflare, sobald die Variable `HOSTING=cloudflare` gesetzt ist. Supabase wird dafür nicht mehr gebraucht.
+- Ein Worker liefert die Seiten aus und beantwortet `/api` (Anmeldung, Speichern, Formulare).
+- Konten, Protokoll und Anfragen liegen in einer D1-Datenbank in der EU.
+- Lokal im Cloudflare-Laufzeitsystem geprüft: Anmelden, Speichern, Formular, Schutz gegen fremde Seiten, 404-Seite.
+
+**Für Nave:** die Schritte im README unter „Cloudflare einrichten“:
+- Datenbank mit Jurisdiction EU anlegen.
+- Zwei Schlüssel erstellen und in GitHub eintragen.
+- Konten anlegen mit `npm run admin -- add …`.
+
+**Offen:**
+- Domain rondpoint.lu zu Cloudflare umziehen (Punkt 7).
+- EU-Mailanbieter für die Formulare wählen (Punkt 6).
+- Danach GitHub Pages abschalten.
+
 ## Stand 14.10.2026: Admin-Bereich auf der Seite
 
 Neu im Admin-Bereich (Login im Footer):
@@ -57,12 +74,12 @@ Der Abgleich liest den Bestand jetzt über die offizielle MovingCar-API, mit dem
 
 | # | Thema | Was fehlt | Wo eintragen |
 |---|---|---|---|
-| 1 | **Schriftliches Einverständnis** der Garage, dass ihre Inserate und Fotos von LuxAuto/AutoScout24 auf der eigenen Website übernommen werden (B7.4, T2.8) | Dokument | Ablage bei Nave |
-| 2 | **Nutzungsbedingungen der Portale**: Das Einverständnis der Garage deckt ihre Inhalte ab, nicht aber das automatische Lesen von luxauto.lu und autoscout24.lu. Die `robots.txt` erlaubt unserem Bot die nötigen Seiten. AutoScout24 sperrt dort aber ausdrücklich KI-Crawler, und die AGB beider Portale können automatisiertes Auslesen untersagen. **Empfehlung:** Bei LuxAuto (atHome Group) nach einem offiziellen Export oder Feed für die Händler-Website fragen, oder eine schriftliche Erlaubnis einholen. | Klärung Nave, Kunde, Portal | – |
+| 1 | ~~**Schriftliches Einverständnis**~~ **Erledigt 13.10.2026:** Der Bestand kommt über den MovingCar-Zugang der Garage. ~~der Garage, dass ihre Inserate und Fotos von LuxAuto/AutoScout24 auf der eigenen Website übernommen werden (B7.4, T2.8) | Dokument | Ablage bei Nave |
+| 2 | ~~**Nutzungsbedingungen der Portale**~~ **Erledigt 13.10.2026** (MovingCar statt Portale). Alt: Das Einverständnis der Garage deckt ihre Inhalte ab, nicht aber das automatische Lesen von luxauto.lu und autoscout24.lu. Die `robots.txt` erlaubt unserem Bot die nötigen Seiten. AutoScout24 sperrt dort aber ausdrücklich KI-Crawler, und die AGB beider Portale können automatisiertes Auslesen untersagen. **Empfehlung:** Bei LuxAuto (atHome Group) nach einem offiziellen Export oder Feed für die Händler-Website fragen, oder eine schriftliche Erlaubnis einholen. | Klärung Nave, Kunde, Portal | – |
 | 3 | **Neuwagen: WLTP-Verbrauch und CO₂** (Richtlinie 1999/94/EG). Heute sind 5 Neuwagen im Bestand, und keins der Portale liefert Werte. Die Seite zeigt „Consommation et CO₂ (WLTP) : informations au garage". Ob das rechtlich reicht, ist `[UNBESTÄTIGT]`. | Werte je Auto oder rechtliche Klärung | `src/data/vehicle-overrides.json` (`wltpConsumption`, `co2Gkm`); der Sync-Bericht listet die Autos |
-| 4 | **Mietflotte**: Art, zulässiges Gesamtgewicht, Leergewicht, Nutzlast, gebremst, Innenmaße, bei Kühlanhängern Volumen, Temperatur und Strom; Preis pro Tag und Wochenende, Kaution, Stecker 7/13-polig, Fotos. Ohne Flotte zeigt der Finder im Produktions-Build „La liste de nos remorques arrive bientôt". Die Kategorieseiten entstehen erst mit Fahrzeugen. | Liste des Kunden | `src/content/flotte/*.json` (eine Datei pro Fahrzeug, Schema in `src/content.config.ts`) |
+| 4 | **Mietflotte**: Art, zulässiges Gesamtgewicht, Leergewicht, Nutzlast, gebremst, Innenmaße, bei Kühlanhängern Volumen, Temperatur und Strom; Preis pro Tag und Wochenende, Kaution, Stecker 7/13-polig, Fotos. Ohne Flotte zeigt der Finder im Produktions-Build „La liste de nos remorques arrive bientôt". Die Kategorieseiten entstehen erst mit Fahrzeugen. | Liste des Kunden | **Admin-Bereich → „Anhänger“** (oder `src/content/flotte/*.json`) |
 | 5 | **Impressum**: Gewerbegenehmigung (autorisation d'établissement), Gesellschaftskapital, Gérant bestätigen (nur Editus nennt David Moreira) | Nummer, Betrag, Bestätigung | `site.json` → `businessPermit`, `shareCapital`, `manager.confirmed` · Schlüssel `legal.permitMissing`, `legal.capitalMissing`, `legal.managerMissing` |
-| 6 | **Formular-Versand**: Supabase-Projekt in der EU anlegen, Migration und Function deployen, Mailanbieter in der EU wählen (Brevo oder Scaleway sind vorbereitet), Empfänger bestätigen (info@rondpoint.lu `[UNBESTÄTIGT]`) | Entscheidung Nave, Zugang | README → „Formulare"; GitHub-Variable `PUBLIC_INQUIRY_URL` |
+| 6 | **Formular-Versand**: Auf Cloudflare vorbereitet (`/api/inquiry`, siehe README → „Cloudflare einrichten“); es fehlt der Mailanbieter in der EU. Alt: Supabase-Projekt in der EU anlegen, Migration und Function deployen, Mailanbieter in der EU wählen (Brevo oder Scaleway sind vorbereitet), Empfänger bestätigen (info@rondpoint.lu `[UNBESTÄTIGT]`) | Entscheidung Nave, Zugang | README → „Formulare"; GitHub-Variable `PUBLIC_INQUIRY_URL` |
 | 7 | **Domain und DNS**: Wo ist rondpoint.lu registriert, wer hat Zugriff? Die heutige Wix-Seite hängt daran. | Zugang | README → „Livegang" |
 | 8 | **Führerscheinregeln** vor Livegang noch einmal gegen transports.public.lu prüfen. Am 28.09.2026 geprüft: B bis 750 kg; darüber, wenn das Gespann ≤ 3 500 kg wiegt; ≤ 4 250 kg mit Schulung (Code 96). Die Feldcodes F.2, O.1 und O.2 am luxemburgischen Dokument bestätigen. | Prüfung | `src/lib/permis.ts`, Schlüssel `faq.items.permis.a`, `faq.items.carte.a` |
 | 9 | **LB und PT** von Muttersprachlern prüfen lassen, jeder Text (je 541). Die unsichersten Stellen stehen oben in der Liste. | Prüfung | `I18N-REVIEW.md`; Geprüftes in `src/i18n/review.json` eintragen, dann `npm run i18n:review` |
@@ -75,7 +92,7 @@ Der Abgleich liest den Bestand jetzt über die offizielle MovingCar-API, mit dem
 | 11 | Location | `pages.rental.durationsMissing` (`site.json` → `confirmations.rentalDurations`) | Stimmt „à la journée ou pour le week-end"? |
 | 12 | Location, Finder, FAQ | `finder.priceMissing`, `faq.items.prix.a` | Preise (kommen mit der Flotte, Punkt 4) |
 | 13 | Voitures | `depot.missing` | Konditionen des Kommissionsverkaufs |
-| 14 | Voitures, Autoseiten | `site.json` → `confirmations.pricesInclVat` | Sind die Preise aus LuxAuto TTC? (Einige Inserate tragen „TVA récupérable"; das wird angezeigt.) |
+| 14 | Voitures, Autoseiten | `site.json` → `confirmations.pricesInclVat` | Sind die Preise aus MovingCar TTC? (Einige Inserate tragen „TVA récupérable"; das wird angezeigt.) |
 | 15 | Atelier | `pages.workshop.transparencyMissing` (`confirmations.workshopTransparency`) | Kostenvoranschlag vorher und detaillierte Rechnung? Nur dann kommt der Satz auf die Seite. |
 | 16 | Atelier, FAQ | `faq.items.marques.a` (`confirmations.workshopAllBrands`) | Werden alle Marken repariert? |
 | 17 | Atelier | `pages.workshop.extraMissing` (`confirmations.workshopExtraKeywords`) | Richtbank, Smart Repair, Ausbeulen, Turbo, 4x4, Restaurierung: Was davon stimmt? |
@@ -97,16 +114,16 @@ Der Abgleich liest den Bestand jetzt über die offizielle MovingCar-API, mit dem
 | 28 | Startseite Leistungen | `services.photoMissing` | Fotos Werkstatt, Sodablast, Garten & Forst, Anhänger |
 | 29 | Sodablast | `pages.sodablast.photosMissing` | Vorher-nachher-Fotos |
 | 30 | Logo | `src/components/Logo.astro` | Vektordatei. Das „O" braucht eine eigene SVG-Gruppe `class="logo-o"`, dann läuft die Drehung beim Laden (C7). |
-| 31 | Mietflotte | `photo` in `src/content/flotte/*.json` | Fotos der Anhänger (optional) |
+| 31 | Mietflotte | Admin-Bereich → „Anhänger“ → Foto | Fotos der Anhänger (optional) |
 
-## Aus dem Abgleich (bitte in LuxAuto korrigieren)
+## Aus dem Abgleich (bitte in MovingCar korrigieren)
 
 | # | Inserat | Befund |
 |---|---|---|
 | 32 | Austin-Healey 3000 (Ref 141522) | „Puissance 1632 CV" und „Cylindrée 21912 Cm³" sind offensichtlich Tippfehler im Inserat. Die Website zeigt beide Werte nicht an, und der Sync meldet es täglich. |
-| 33 | Audi A1 (141314), BMW 118i (141215), VW T-Roc (132129) | Carrosserie „4/5 portes" ist eine Türenzahl, keine Karosserie. Die Website übernimmt die Karosserie von AutoScout24 („Citadine"). |
+| 33 | ~~Audi A1, BMW 118i, VW T-Roc~~ **Erledigt:** Die Karosserie kommt jetzt aus der MovingCar-Kategorie. | Carrosserie „4/5 portes" ist eine Türenzahl, keine Karosserie. Die Website übernimmt die Karosserie von AutoScout24 („Citadine"). |
 | 34 | Mehrere Autos | Hochformat-Fotos mit weißem Rand (z. B. Audi A4, VW T-Roc). Querformat 4:3 füllt die Liste besser. |
-| 35 | Neuwagen | LuxAuto markiert Neuwagen im JSON-LD als „UsedCondition" und zeigt unter „Année" das Einstelldatum. Der Abgleich erkennt sie trotzdem (Merkmal `vehicule_neuf`, Abgleich mit AutoScout24) und setzt keine Erstzulassung. |
+| 35 | ~~Neuwagen~~ **Erledigt:** MovingCar liefert den Zustand direkt. Alt: LuxAuto markiert Neuwagen im JSON-LD als „UsedCondition" und zeigt unter „Année" das Einstelldatum. Der Abgleich erkennt sie trotzdem (Merkmal `vehicule_neuf`, Abgleich mit AutoScout24) und setzt keine Erstzulassung. |
 
 ## Für Nave
 

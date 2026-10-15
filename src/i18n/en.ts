@@ -116,6 +116,8 @@ const en: Dict = {
     },
     licenceShort: { B: 'B', B96: 'B with code 96', BE: 'BE' },
     price: '{day} per day, {weekend} per weekend',
+    priceDayOnly: '{day} per day',
+    priceWeekendOnly: '{weekend} per weekend',
     priceMissing: '[FEHLT — Preis pro Tag und Wochenende]',
     request: 'Request this trailer',
     requestVan: 'Request this van',
@@ -744,6 +746,7 @@ const en: Dict = {
     hostingH2: 'Hosting',
     hosting:
       'The website is hosted by GitHub Pages, a service of GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, United States.',
+    hostingCloudflare: 'The website is hosted by Cloudflare (Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, United States).',
     contentH2: 'Content',
     content:
       'The car listings come from our stock management system MovingCar, like our listings on LuxAuto and AutoScout24. Prices and specifications may change; only the offer confirmed at the garage is binding.',
@@ -766,11 +769,15 @@ const en: Dict = {
       'Legal basis: your consent (Art. 6(1)(a) GDPR), which you give by ticking the box, and steps taken at your request prior to entering into a contract (Art. 6(1)(b) GDPR). You can withdraw your consent at any time by email or by phone.',
     storage:
       'Your request is stored in a database at Supabase (European Union region) and sent to us by email via [UNBESTÄTIGT — EU-Mailanbieter, mit Nave klären]. Requests are deleted automatically after 90 days [UNBESTÄTIGT — Frist mit Kunde bestätigen]. Correspondence that leads to a contract is kept in accordance with accounting obligations.',
+    storageCloudflare:
+      'Your request is stored in a database at Cloudflare (European Union region) and sent to us by email via [UNBESTÄTIGT — EU-Mailanbieter, mit Nave klären]. Requests are deleted automatically after 90 days [UNBESTÄTIGT — Frist mit Kunde bestätigen]. Correspondence that leads to a contract is kept in accordance with accounting obligations.',
     abuse:
       'To limit misuse, we store a cryptographic hash of your IP address for 24 hours. It cannot be used to recover your address.',
     hostingH2: 'Hosting and server logs',
     hosting:
       'The website is hosted by GitHub Pages (GitHub, Inc., United States). On every visit, GitHub processes your IP address and technical data to deliver the pages and to ensure security. GitHub is certified under the EU-US Data Privacy Framework. Legal basis: our legitimate interest in a secure and available website (Art. 6(1)(f) GDPR).',
+    hostingCloudflare:
+      'The website is hosted by Cloudflare (Cloudflare, Inc., United States). On every visit, Cloudflare processes your IP address and technical data to deliver the pages and to ensure security. Cloudflare is certified under the EU-US Data Privacy Framework. Legal basis: our legitimate interest in a secure and available website (Art. 6(1)(f) GDPR).',
     linksH2: 'Links to other services',
     links:
       'The website does not load any external content: fonts, photos and the map are hosted with the website. Links to Google Maps, WhatsApp, Facebook, Instagram, TikTok, LuxAuto and AutoScout24 only open if you click them. These services then process your data according to their own rules. WhatsApp belongs to Meta Platforms; if you write to us on WhatsApp, Meta processes your number and your messages.',

@@ -205,7 +205,7 @@ function editSheet(ctx: FleetCtx, base: Base, row: Row | null) {
     </div>
     <label class="ed-check" data-trailer><input type="checkbox" name="showPallets" ${d.showPallets ? 'checked' : ''}> Europaletten auf der Ladefläche anzeigen</label>
 
-    <h3 class="ed-h3">Preise <small>optional · auf der Karte erscheint der Preis, wenn Tag und Wochenende ausgefüllt sind</small></h3>
+    <h3 class="ed-h3">Preise <small>optional – ohne Preis fragen Kunden über das Formular an</small></h3>
     <div class="ed-grid">${nf('Pro Tag', 'priceDay', '€')}${nf('Wochenende', 'priceWeekend', '€')}${nf('Kaution', 'deposit', '€')}</div>
 
     <h3 class="ed-h3">Ausstattung</h3>

@@ -50,6 +50,9 @@ export function dayKeyInLuxembourg(date = new Date()): DayKey {
   ];
 }
 
+/** Wo die Website läuft (Impressum, Datenschutz): PUBLIC_HOSTING=cloudflare beim Build, sonst GitHub Pages */
+export const onCloudflare = import.meta.env.PUBLIC_HOSTING === 'cloudflare';
+
 export const telHref = `tel:${site.phone.tel}`;
 /** Nummern ohne Zeilenumbruch in der Mitte (geschützte Leerzeichen) */
 export const phoneText = site.phone.display.replace(/ /g, '\u00a0');
