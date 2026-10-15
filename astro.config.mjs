@@ -7,6 +7,9 @@ import tailwindcss from '@tailwindcss/vite';
 // Ohne diese Variablen: eigene Domain, Website im Wurzelverzeichnis.
 const SITE_URL = process.env.SITE_URL || 'https://www.rondpoint.lu';
 const BASE_PATH = process.env.BASE_PATH || '/';
+// Cloudflare Workers Builds setzt WORKERS_CI=1: dann Cloudflare-Modus (Admin-Login über den Worker,
+// Cloudflare in Impressum und Datenschutz), auch ohne eigene Build-Variable PUBLIC_HOSTING.
+const HOSTING = process.env.PUBLIC_HOSTING || (process.env.WORKERS_CI ? 'cloudflare' : '');
 
 export default defineConfig({
   site: SITE_URL,
@@ -20,6 +23,7 @@ export default defineConfig({
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
+    define: { 'import.meta.env.PUBLIC_HOSTING': JSON.stringify(HOSTING) },
   },
   image: {
     // Fotos der Inserate werden beim Build von MovingCar (früher von den Portalen) geholt und in
