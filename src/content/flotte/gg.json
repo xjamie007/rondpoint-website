@@ -1,0 +1,28 @@
+{
+  "category": "benne",
+  "name": {
+    "fr": "gg"
+  },
+  "brand": "gg",
+  "mmaKg": 750,
+  "emptyKg": null,
+  "payloadKg": 500,
+  "braked": false,
+  "loadLengthM": null,
+  "loadWidthM": null,
+  "loadHeightM": null,
+  "volumeM3": null,
+  "tempRange": null,
+  "power": null,
+  "socket": 13,
+  "showPallets": false,
+  "suitableFor": [
+    "fahrrad"
+  ],
+  "priceDay": null,
+  "priceWeekend": null,
+  "deposit": null,
+  "notes": null,
+  "photo": null,
+  "active": true
+}
