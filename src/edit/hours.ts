@@ -44,29 +44,51 @@ export function hoursSheet(ctx: HoursCtx) {
           <label class="ed-check"><input type="checkbox" data-open ${iv.length ? 'checked' : ''}> <b>${escapeHtml(t.hours.days[d])}</b></label>
           <div class="ed-ivs">${
             iv.length
-              ? iv.map(([a, b], i) => `<div class="ed-iv"><input type="time" step="300" value="${a}" data-i="${i}" data-j="0" aria-label="${escapeHtml(t.hours.days[d])} von">
-                  <span>–</span><input type="time" step="300" value="${b}" data-i="${i}" data-j="1" aria-label="${escapeHtml(t.hours.days[d])} bis">
+              ? iv.map(([a, b], i) => `<div class="ed-iv"><input type="time" value="${a}" data-i="${i}" data-j="0" aria-label="${escapeHtml(t.hours.days[d])} von">
+                  <span>–</span><input type="time" value="${b}" data-i="${i}" data-j="1" aria-label="${escapeHtml(t.hours.days[d])} bis">
                   ${i === 1 ? '<button type="button" class="ed-mini" data-rm>✕ entfernen</button>' : ''}</div>`).join('') +
                 (iv.length === 1 ? '<button type="button" class="ed-mini" data-add>+ zweites Zeitfenster (Mittagspause)</button>' : '')
               : `<span class="ed-closed">${escapeHtml(t.hours.closed)}</span>`
           }</div>
-          ${errs[d] ? `<p class="ed-err">${ERR[errs[d]!]}</p>` : ''}
+          <p class="ed-err" data-err ${errs[d] ? '' : 'hidden'}>${errs[d] ? ERR[errs[d]!] : ''}</p>
         </div>`;
       }).join('')}</div>
       <div class="ed-row ed-row-start"><button type="button" class="ed-btn ed-ghost" data-copy>Montag auf Dienstag–Freitag übertragen</button>
-        ${!same(w, baseWeek) ? '<button type="button" class="ed-btn ed-ghost" data-orig>Wie zurzeit auf der Website</button>' : ''}</div>
-      <div class="ed-prev-hours"><span class="ed-hint">So steht es in der Fußzeile:</span><p>${escapeHtml(hoursSummary(t, ctx.lang, ' · ', w))}</p></div>
+        <button type="button" class="ed-btn ed-ghost" data-orig ${same(w, baseWeek) ? 'hidden' : ''}>Wie zurzeit auf der Website</button></div>
+      <div class="ed-prev-hours"><span class="ed-hint">So steht es in der Fußzeile:</span><p data-prev>${escapeHtml(hoursSummary(t, ctx.lang, ' · ', w))}</p></div>
       <div class="ed-row"><button type="button" class="ed-btn ed-ghost" data-cancel>Abbrechen</button><button type="button" class="ed-btn ed-primary" data-ok>Übernehmen</button></div>`;
   };
   draw();
 
+  /** Fehler und Vorschau aktualisieren, ohne die Eingabefelder neu zu zeichnen (sonst springt der Cursor beim Tippen) */
+  const status = () => {
+    const errs = hoursErrors(w);
+    for (const el of $$('[data-d]', body)) {
+      const d = el.dataset.d as DayKey;
+      el.classList.toggle('ed-day-err', !!errs[d]);
+      const p = $('[data-err]', el)!;
+      p.hidden = !errs[d];
+      p.textContent = errs[d] ? ERR[errs[d]!] : '';
+    }
+    $('[data-prev]', body)!.textContent = hoursSummary(t, ctx.lang, ' · ', w);
+    $<HTMLButtonElement>('[data-orig]', body)!.hidden = same(w, baseWeek);
+  };
+  const onTime = (e: Event) => {
+    const el = e.target as HTMLInputElement;
+    const d = el.closest<HTMLElement>('[data-d]')?.dataset.d as DayKey | undefined;
+    if (!d || el.type !== 'time') return;
+    w[d][+el.dataset.i!][+el.dataset.j!] = el.value;
+    status();
+  };
+  body.addEventListener('input', onTime);
   body.addEventListener('change', (e) => {
     const el = e.target as HTMLInputElement;
     const d = el.closest<HTMLElement>('[data-d]')?.dataset.d as DayKey | undefined;
     if (!d) return;
-    if (el.matches('[data-open]')) w[d] = el.checked ? [(w.mo[0] ?? ['08:00', '12:00']).slice() as Interval] : [];
-    else if (el.type === 'time') w[d][+el.dataset.i!][+el.dataset.j!] = el.value;
-    draw();
+    if (el.matches('[data-open]')) {
+      w[d] = el.checked ? [(w.mo[0] ?? ['08:00', '12:00']).slice() as Interval] : [];
+      draw();
+    } else onTime(e);
   });
   body.addEventListener('click', (e) => {
     const b = (e.target as Element).closest<HTMLButtonElement>('button');

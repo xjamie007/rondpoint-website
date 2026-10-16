@@ -5,7 +5,7 @@ const lb: Dict = {
   meta: {
     lang: 'Lëtzebuergesch',
     siteName: 'Garage Um Rond Point',
-    ogAlt: 'Garage Um Rond Point um Rond-point zu Ierpeldeng',
+    ogAlt: 'Garage Um Rond Point zu Ierpeldeng',
   },
 
   nav: {
@@ -44,7 +44,7 @@ const lb: Dict = {
   },
 
   hero: {
-    h1: 'D’Garage um Rond-point zu Ierpeldeng',
+    h1: 'D’Garage Um Rond Point zu Ierpeldeng',
     sub: 'Lount en Unhänger oder eng Camionnette, fannt Ären nächsten Auto. Dir fannt eis op 1, rue du Viaduc, nieft der Aral-Tankstell, tëscht Ettelbréck an Angelduerf.',
     ctaFinder: 'Unhänger fannen',
     ctaCars: 'Autoe kucken',
@@ -157,7 +157,7 @@ const lb: Dict = {
   cars: {
     homeH2: 'Eis Autoen am Stock',
     h1: 'Nei Autoen an Occasiounen',
-    lead: 'All d’Autoen am Stock vun der Garage Um Rond Point, um Rond-point zu Ierpeldeng. Rufft eis un oder schreift eis op WhatsApp, ier Dir laanschtkommt. Probefaarten op Rendez-vous.',
+    lead: 'All d’Autoen am Stock vun der Garage Um Rond Point zu Ierpeldeng. Rufft eis un oder schreift eis op WhatsApp, ier Dir laanschtkommt. Probefaarten op Rendez-vous.',
     seeAll: { one: 'Den Auto kucken', other: 'All {n} Autoe kucken' },
     year: 'Joer',
     km: 'Kilometer',
@@ -377,7 +377,7 @@ const lb: Dict = {
   access: {
     h2: 'Wéi Dir eis fannt',
     address: 'Adress',
-    landmark: 'Um Rond-point, nieft der Aral-Tankstell, tëscht Ettelbréck an Dikrech.',
+    landmark: 'Nieft der Aral-Tankstell, tëscht Ettelbréck an Dikrech.',
     hoursH3: 'Ëffnungszäiten',
     languagesH3: 'Sproochen',
     languages: 'Mir schwätze Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch.',
@@ -523,7 +523,7 @@ const lb: Dict = {
     },
     contact: {
       h1: 'Kontakt a Wee bei eis',
-      lead: 'Garage Um Rond Point, 1, rue du Viaduc, L-9147 Erpeldange-sur-Sûre. Um Rond-point, nieft der Aral-Tankstell. Telefon +352 81 05 41, WhatsApp +352 621 373 272, info@rondpoint.lu. Mir schwätze Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch.',
+      lead: 'Garage Um Rond Point, 1, rue du Viaduc, L-9147 Erpeldange-sur-Sûre. Nieft der Aral-Tankstell. Telefon +352 81 05 41, WhatsApp +352 621 373 272, info@rondpoint.lu. Mir schwätze Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch.',
       waysH2: 'Esou erreecht Dir eis',
       phone: 'Telefon',
       whatsapp: 'WhatsApp',
@@ -642,7 +642,7 @@ const lb: Dict = {
     home: {
       title: 'Garage Um Rond Point Erpeldange – Unhänger, Autoen, Atelier',
       description:
-        'Garage um Rond-point zu Ierpeldeng (Erpeldange), tëscht Ettelbréck an Dikrech: Unhänger a Camionnetten lounen, nei Autoen an Occasiounen, Mechanik a Karosserie.',
+        'Garage Um Rond Point zu Ierpeldeng (Erpeldange), tëscht Ettelbréck an Dikrech: Unhänger a Camionnetten lounen, nei Autoen an Occasiounen, Mechanik a Karosserie.',
     },
     rental: {
       title: 'Unhänger lounen zu Erpeldange bei Ettelbréck | Um Rond Point',
@@ -659,15 +659,15 @@ const lb: Dict = {
       },
       description: {
         'porte-voiture':
-          'Lount en Autosunhänger um Rond-point zu Erpeldange, no bei Ettelbréck: Moossen, Notzlaascht, Präis an néidege Führerschäin fir all Unhänger an eiser Flott.',
+          'Lount en Autosunhänger bei Um Rond Point zu Erpeldange, no bei Ettelbréck: Moossen, Notzlaascht, Präis an néidege Führerschäin fir all Unhänger an eiser Flott.',
         'porte-moto':
-          'Lount e Motosunhänger um Rond-point zu Erpeldange, no bei Ettelbréck: Moossen, Notzlaascht, Präis an néidege Führerschäin fir all Unhänger an eiser Flott.',
+          'Lount e Motosunhänger bei Um Rond Point zu Erpeldange, no bei Ettelbréck: Moossen, Notzlaascht, Präis an néidege Führerschäin fir all Unhänger an eiser Flott.',
         benne:
-          'Lount e Kipper fir Buedem, Bauschutt oder Gréngschnëtt um Rond-point zu Erpeldange, no bei Ettelbréck: Notzlaascht, Präis a wat fir e Führerschäin Dir braucht.',
+          'Lount e Kipper fir Buedem, Bauschutt oder Gréngschnëtt bei Um Rond Point zu Erpeldange, no bei Ettelbréck: Notzlaascht, Präis an néidege Führerschäin.',
         frigorifique:
-          'Lount e Killunhänger fir Äert Fest oder Festival um Rond-point zu Erpeldange, no bei Ettelbréck: Bannevolumen, Temperatur, Präis an néidege Führerschäin.',
+          'Lount e Killunhänger fir Äert Fest oder Festival bei Um Rond Point zu Erpeldange, no bei Ettelbréck: Bannevolumen, Temperatur, Präis an néidege Führerschäin.',
         camionnette:
-          'Lount eng Camionnette fir en Ëmzug oder Material um Rond-point zu Erpeldange, no bei Ettelbréck. Bis 3.500 kg geet de Führerschäin B duer. Präis pro Dag.',
+          'Lount eng Camionnette fir en Ëmzug oder Material bei Um Rond Point zu Erpeldange, no bei Ettelbréck. Bis 3.500 kg geet de Führerschäin B duer. Präis pro Dag.',
       },
     },
     cars: {
@@ -689,7 +689,7 @@ const lb: Dict = {
     workshop: {
       title: 'Mechanik a Karosserie zu Erpeldange | Garage Um Rond Point',
       description:
-        'Entretien, Diagnos, Reparatur, Karosserie a Lackéierung an der Garage um Rond-point zu Erpeldange, bei Ettelbréck an Dikrech. Frot online e Rendez-vous un.',
+        'Entretien, Diagnos, Reparatur, Karosserie a Lackéierung an der Garage Um Rond Point zu Erpeldange, bei Ettelbréck an Dikrech. Frot online e Rendez-vous un.',
     },
     sodablast: {
       title: 'Sodablast zu Lëtzebuerg | Garage Um Rond Point, Erpeldange',
@@ -709,7 +709,7 @@ const lb: Dict = {
     contact: {
       title: 'Kontakt a Wee bei eis | Garage Um Rond Point, Erpeldange',
       description:
-        '1, rue du Viaduc zu Erpeldange-sur-Sûre, um Rond-point nieft der Aral. {hours}. Tel. +352 81 05 41.',
+        '1, rue du Viaduc zu Erpeldange-sur-Sûre, nieft der Aral-Tankstell. {hours}. Tel. +352 81 05 41.',
     },
     thanks: {
       title: 'Ufro geschéckt | Garage Um Rond Point, Erpeldange-sur-Sûre',
@@ -805,7 +805,7 @@ const lb: Dict = {
   /** Kurzes „Über uns“ auf der Startseite (nur bestätigte Angaben: Lage, Leistungen, Sprachen, Öffnungstage) */
   about: {
     h2: 'Iwwer eis',
-    text: 'D’Garage Um Rond Point ass Är Garage um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech. Unhänger a Camionnetten lounen, Autoen an Unhänger kafen, Atelier a Gaartmaschinnen: alles op enger Adress. Kommt laanscht – mir schwätzen Är Sprooch.',
+    text: 'D’Garage Um Rond Point ass Är Garage zu Ierpeldeng, tëscht Ettelbréck an Dikrech. Unhänger a Camionnetten lounen, Autoen an Unhänger kafen, Atelier a Gaartmaschinnen: alles op enger Adress. Kommt laanscht – mir schwätzen Är Sprooch.',
     link: 'Wéi Dir eis fannt',
     photoAlt: 'Mecanicien reecht en Autosschlëssel',
   },
@@ -840,7 +840,7 @@ const lb: Dict = {
       diagnosticH: 'Feelerdiagnos',
       diagnostic: 'Eng Warnluucht geet un, en ongewéinlecht Geräisch, den Auto spréngt schlecht un: Beschreift, wat Dir mierkt a zanter wéini. D’Diagnos fënnt d’Ursaach, ier reparéiert gëtt.',
       reparationH: 'Mechanesch Reparatur',
-      reparation: 'No der Diagnos reparéiere mir Ären Auto oder Är Camionnette an eisem Atelier um Rond-point zu Ierpeldeng.',
+      reparation: 'No der Diagnos reparéiere mir Ären Auto oder Är Camionnette an eisem Atelier zu Ierpeldeng.',
       carrosserieH: 'Karosserie a Lack',
       carrosserie: 'No engem klengen Accident reparéiere mir d’Karosserie a lackéieren déi beschiedegt Deeler nei. Schéckt eis Fotoe vum Schued iwwer WhatsApp fir eng éischt Aschätzung.',
       processH2: 'Esou kritt Dir e Rendez-vous',
@@ -886,7 +886,7 @@ const lb: Dict = {
         s1: {
           h: 'Är Garage no bei Iech, tëscht Ettelbréck an Dikrech',
           p: [
-            'D’Garage Um Rond Point ass um {address}, direkt um Rond-point zu Ierpeldeng, nieft der Aral-Tankstell. Wann Dir zu Ierpeldeng, Ettelbréck, Dikrech oder soss iergendwou an der Nordstad wunnt, ass eisen Atelier just e puer Minutten ewech.',
+            'D’Garage Um Rond Point ass um {address}, direkt nieft der Aral-Tankstell. Wann Dir zu Ierpeldeng, Ettelbréck, Dikrech oder soss iergendwou an der Nordstad wunnt, ass eisen Atelier just e puer Minutten ewech.',
             'Mir schwätze Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch. Dir kënnt eis de Problem mat Ärem Auto also an der Sprooch erklären, déi Iech am léifsten ass.',
           ],
         },
@@ -940,7 +940,7 @@ const lb: Dict = {
         },
         q4: {
           q: 'Wou ass den Atelier?',
-          a: 'Um {address}, um Rond-point zu Ierpeldeng, nieft der Aral-Tankstell, tëscht Ettelbréck an Dikrech.',
+          a: 'Um {address}, nieft der Aral-Tankstell, tëscht Ettelbréck an Dikrech.',
         },
         q5: {
           q: 'A wéi enge Sprooche kann ech de Problem erklären?',
@@ -978,7 +978,7 @@ const lb: Dict = {
         s4: {
           h: 'Sodablast zu Lëtzebuerg, zu Ierpeldeng',
           p: [
-            'Eisen Atelier ass um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech, an aus dem ganzen Norde vu Lëtzebuerg einfach z’erreechen. Ob fir en eenzelnen Deel oder fir e ganzen Auto: Mir maachen zesummen e Rendez-vous an der Garage aus.',
+            'Eisen Atelier ass zu Ierpeldeng, tëscht Ettelbréck an Dikrech, an aus dem ganzen Norde vu Lëtzebuerg einfach z’erreechen. Ob fir en eenzelnen Deel oder fir e ganzen Auto: Mir maachen zesummen e Rendez-vous an der Garage aus.',
           ],
         },
       },
@@ -1007,7 +1007,7 @@ const lb: Dict = {
         s1: {
           h: 'Gaart- a Bëschmaschinnen an der Nordstad',
           p: [
-            'Fir Äre Gaart, Ären Terrain oder Äre Bësch ze pfleegen, fannt Dir an der Garage Um Rond Point Maschinnen, virun allem vun de Marken Honda a Stihl, an en Atelier, fir se ze reparéieren. D’Garage ass um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech.',
+            'Fir Äre Gaart, Ären Terrain oder Äre Bësch ze pfleegen, fannt Dir an der Garage Um Rond Point Maschinnen, virun allem vun de Marken Honda a Stihl, an en Atelier, fir se ze reparéieren. D’Garage ass zu Ierpeldeng, tëscht Ettelbréck an Dikrech.',
           ],
         },
         s2: {
@@ -1058,7 +1058,7 @@ const lb: Dict = {
         },
         q4: {
           q: 'Wou ass d’Garage?',
-          a: 'Um {address}, um Rond-point zu Ierpeldeng, nieft der Aral-Tankstell.',
+          a: 'Um {address}, nieft der Aral-Tankstell.',
         },
       },
     },
@@ -1068,7 +1068,7 @@ const lb: Dict = {
           h: 'Saris, Humbaur a WM Meyer zu Ierpeldeng',
           p: [
             'Mir verkafen Unhänger vu Saris, Humbaur a WM Meyer, fir Privatleit a fir Betriber. Sot eis, wat Dir transportéiert: Mir hëllefen Iech, de Modell ze fannen, deen zu Ärem Auto an zu Ärem Führerschäin passt.',
-            'D’Garage ass um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech.',
+            'D’Garage Um Rond Point ass zu Ierpeldeng, tëscht Ettelbréck an Dikrech.',
           ],
         },
         s2: {
@@ -1111,7 +1111,7 @@ const lb: Dict = {
         s1: {
           h: 'En Auto kafen an der Garage Um Rond Point',
           p: [
-            'All d’Autoen op dëser Säit si bei eis am Stock, um Rond-point zu Ierpeldeng. D’Lëscht gëtt all Moien op Basis vun eisen Annoncen aktualiséiert: Dir gesitt de Präis, de Kilometerstand, d’Joer an d’Fotoe vun all Auto.',
+            'All d’Autoen op dëser Säit si bei eis zu Ierpeldeng am Stock. D’Lëscht gëtt all Moien op Basis vun eisen Annoncen aktualiséiert: Dir gesitt de Präis, de Kilometerstand, d’Joer an d’Fotoe vun all Auto.',
           ],
           items: [
             'Wielt en Auto aus der Lëscht a maacht seng Detailsäit op.',
@@ -1140,7 +1140,7 @@ const lb: Dict = {
         },
         q2: {
           q: 'Wou kann ech d’Autoe kucken?',
-          a: 'An der Garage, um {address}, um Rond-point zu Ierpeldeng. {hours}',
+          a: 'An der Garage Um Rond Point, um {address}. {hours}',
         },
         q3: {
           q: 'Sinn Är Autoen och op LuxAuto an AutoScout24?',
@@ -1161,7 +1161,7 @@ const lb: Dict = {
         s2: {
           h: 'De Wee bei eis an d’Garage',
           p: [
-            'D’Garage ass um {address}, um Rond-point zu Ierpeldeng, nieft der Aral-Tankstell. Kommt Dir vun Ettelbréck oder vun Dikrech? Da läit de Rond-point op Ärem Wee. Fir déi genee Route maacht Google Maps iwwer dës Säit op.',
+            'D’Garage Um Rond Point ass um {address}, nieft der Aral-Tankstell. Kommt Dir vun Ettelbréck oder vun Dikrech? Da läit d’Garage op Ärem Wee. Fir déi genee Route maacht Google Maps iwwer dës Säit op.',
           ],
         },
       },
@@ -1182,7 +1182,7 @@ const lb: Dict = {
         s1: {
           h: 'Unhänger lounen an der Nordstad',
           p: [
-            'Um Rond-point zu Ierpeldeng, tëscht Ettelbréck an Dikrech, lount Dir en Unhänger oder eng Camionnette ganz no bei Iech doheem. Eis Unhängersich hei uewe weist Iech mat e puer Klicks, wéi en Unhänger zu deem passt, wat Dir transportéiert, an ob Äre Führerschäin duergeet.',
+            'Bei Um Rond Point zu Ierpeldeng, tëscht Ettelbréck an Dikrech, lount Dir en Unhänger oder eng Camionnette ganz no bei Iech doheem. Eis Unhängersich hei uewe weist Iech mat e puer Klicks, wéi en Unhänger zu deem passt, wat Dir transportéiert, an ob Äre Führerschäin duergeet.',
           ],
         },
         s2: {

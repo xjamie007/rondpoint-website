@@ -5,7 +5,7 @@ const de: Dict = {
   meta: {
     lang: 'Deutsch',
     siteName: 'Garage Um Rond Point',
-    ogAlt: 'Garage Um Rond Point am Kreisel in Erpeldange',
+    ogAlt: 'Garage Um Rond Point in Erpeldange',
   },
 
   nav: {
@@ -44,7 +44,7 @@ const de: Dict = {
   },
 
   hero: {
-    h1: 'Die Garage am Kreisel in Erpeldange',
+    h1: 'Die Garage Um Rond Point in Erpeldange',
     sub: 'Mieten Sie einen Anhänger oder Transporter, finden Sie Ihr nächstes Auto, lassen Sie Ihres warten und reparieren. 1, rue du Viaduc, neben der Aral-Tankstelle, zwischen Ettelbruck und Diekirch.',
     ctaFinder: 'Anhänger finden',
     ctaCars: 'Autos ansehen',
@@ -157,7 +157,7 @@ const de: Dict = {
   cars: {
     homeH2: 'Unsere Autos im Bestand',
     h1: 'Neu- und Gebrauchtwagen',
-    lead: 'Alle Autos im Bestand der Garage Um Rond Point am Kreisel in Erpeldange. Rufen Sie uns an oder schreiben Sie uns auf WhatsApp, bevor Sie vorbeikommen. Probefahrten nach Vereinbarung.',
+    lead: 'Alle Autos im Bestand der Garage Um Rond Point in Erpeldange. Rufen Sie uns an oder schreiben Sie uns auf WhatsApp, bevor Sie vorbeikommen. Probefahrten nach Vereinbarung.',
     seeAll: { one: 'Das Auto ansehen', other: 'Alle {n} Autos ansehen' },
     year: 'Jahr',
     km: 'Kilometer',
@@ -377,7 +377,7 @@ const de: Dict = {
   access: {
     h2: 'So finden Sie uns',
     address: 'Adresse',
-    landmark: 'Am Kreisel, neben der Aral-Tankstelle, zwischen Ettelbruck und Diekirch.',
+    landmark: 'Neben der Aral-Tankstelle, zwischen Ettelbruck und Diekirch.',
     hoursH3: 'Öffnungszeiten',
     languagesH3: 'Sprachen',
     languages: 'Wir sprechen Luxemburgisch, Französisch, Deutsch, Englisch und Portugiesisch.',
@@ -523,7 +523,7 @@ const de: Dict = {
     },
     contact: {
       h1: 'Kontakt und Anfahrt',
-      lead: 'Garage Um Rond Point, 1, rue du Viaduc, L-9147 Erpeldange-sur-Sûre. Am Kreisel, neben der Aral-Tankstelle. Telefon +352 81 05 41, WhatsApp +352 621 373 272, info@rondpoint.lu. Wir sprechen Luxemburgisch, Französisch, Deutsch, Englisch und Portugiesisch.',
+      lead: 'Garage Um Rond Point, 1, rue du Viaduc, L-9147 Erpeldange-sur-Sûre. Neben der Aral-Tankstelle. Telefon +352 81 05 41, WhatsApp +352 621 373 272, info@rondpoint.lu. Wir sprechen Luxemburgisch, Französisch, Deutsch, Englisch und Portugiesisch.',
       waysH2: 'So erreichen Sie uns',
       phone: 'Telefon',
       whatsapp: 'WhatsApp',
@@ -642,7 +642,7 @@ const de: Dict = {
     home: {
       title: 'Garage Um Rond Point Erpeldange – Anhänger, Autos, Werkstatt',
       description:
-        'Am Kreisel in Erpeldange, zwischen Ettelbruck und Diekirch: Anhänger und Transporter mieten, Neu- und Gebrauchtwagen, Werkstatt für Mechanik und Karosserie.',
+        'Garage Um Rond Point in Erpeldange, zwischen Ettelbruck und Diekirch: Anhänger und Transporter mieten, Neu- und Gebrauchtwagen, Mechanik und Karosserie.',
     },
     rental: {
       title: 'Anhänger mieten in Erpeldange bei Ettelbruck | Um Rond Point',
@@ -659,15 +659,15 @@ const de: Dict = {
       },
       description: {
         'porte-voiture':
-          'Mieten Sie einen Autotransporter am Kreisel in Erpeldange in der Nähe von Ettelbruck: Maße, Nutzlast, Preis und benötigter Führerschein für jeden Anhänger.',
+          'Mieten Sie einen Autotransporter bei Um Rond Point in Erpeldange, nahe Ettelbruck: Maße, Nutzlast, Preis und benötigter Führerschein für jeden Anhänger.',
         'porte-moto':
-          'Mieten Sie einen Motorradanhänger am Kreisel in Erpeldange in der Nähe von Ettelbruck: Maße, Nutzlast, Preis und benötigter Führerschein für jeden Anhänger.',
+          'Mieten Sie einen Motorradanhänger bei Um Rond Point in Erpeldange, nahe Ettelbruck: Maße, Nutzlast, Preis und benötigter Führerschein für jeden Anhänger.',
         benne:
-          'Mieten Sie einen Kipper für Erde, Bauschutt oder Grünschnitt am Kreisel in Erpeldange in der Nähe von Ettelbruck: Nutzlast, Preis und benötigter Führerschein.',
+          'Mieten Sie einen Kipper für Erde, Bauschutt oder Grünschnitt bei Um Rond Point in Erpeldange, nahe Ettelbruck: Nutzlast, Preis und benötigter Führerschein.',
         frigorifique:
-          'Mieten Sie einen Kühlanhänger für Ihr Fest oder Festival am Kreisel in Erpeldange bei Ettelbruck: Volumen, Temperatur, Preis und benötigter Führerschein.',
+          'Mieten Sie einen Kühlanhänger für Ihr Fest oder Festival bei Um Rond Point in Erpeldange, nahe Ettelbruck: Volumen, Temperatur, Preis und nötiger Führerschein.',
         camionnette:
-          'Mieten Sie einen Transporter für einen Umzug oder Material am Kreisel in Erpeldange bei Ettelbruck. Bis 3.500 kg reicht Führerschein B. Preis pro Tag.',
+          'Mieten Sie einen Transporter für einen Umzug oder Material bei Um Rond Point in Erpeldange, nahe Ettelbruck. Bis 3.500 kg reicht Führerschein B. Preis pro Tag.',
       },
     },
     cars: {
@@ -689,7 +689,7 @@ const de: Dict = {
     workshop: {
       title: 'Autowerkstatt bei Ettelbruck: Mechanik und Karosserie',
       description:
-        'Wartung, Diagnose, Reparatur, Karosserie und Lackierung in der Garage am Kreisel in Erpeldange, bei Ettelbruck und Diekirch. Fragen Sie online einen Termin an.',
+        'Wartung, Diagnose, Reparatur, Karosserie und Lackierung in der Garage Um Rond Point in Erpeldange, bei Ettelbruck und Diekirch. Termin online anfragen.',
     },
     sodablast: {
       title: 'Sodastrahlen (Sodablast) in Luxemburg | Garage Um Rond Point',
@@ -709,7 +709,7 @@ const de: Dict = {
     contact: {
       title: 'Kontakt und Anfahrt | Garage Um Rond Point, Erpeldange',
       description:
-        '1, rue du Viaduc in Erpeldange-sur-Sûre, am Kreisel neben der Aral. {hours}. Tel. +352 81 05 41.',
+        '1, rue du Viaduc in Erpeldange-sur-Sûre, neben der Aral-Tankstelle. {hours}. Tel. +352 81 05 41.',
     },
     thanks: {
       title: 'Anfrage gesendet | Garage Um Rond Point, Erpeldange-sur-Sûre',
@@ -805,7 +805,7 @@ const de: Dict = {
   /** Kurzes „Über uns“ auf der Startseite (nur bestätigte Angaben: Lage, Leistungen, Sprachen, Öffnungstage) */
   about: {
     h2: 'Über uns',
-    text: 'Garage Um Rond Point ist Ihre Garage am Kreisel in Erpeldange, zwischen Ettelbruck und Diekirch. Anhänger und Transporter mieten, Autos und Anhänger kaufen, Werkstatt und Gartenmaschinen: alles unter einer Adresse. Kommen Sie vorbei – wir sprechen Ihre Sprache.',
+    text: 'Garage Um Rond Point ist Ihre Garage in Erpeldange, zwischen Ettelbruck und Diekirch. Anhänger und Transporter mieten, Autos und Anhänger kaufen, Werkstatt und Gartenmaschinen: alles unter einer Adresse. Kommen Sie vorbei – wir sprechen Ihre Sprache.',
     link: 'So finden Sie uns',
     photoAlt: 'Mechaniker reicht einen Autoschlüssel',
   },
@@ -840,7 +840,7 @@ const de: Dict = {
       diagnosticH: 'Fehlerdiagnose',
       diagnostic: 'Eine Warnleuchte geht an, ein ungewohntes Geräusch, das Auto springt schlecht an: Beschreiben Sie, was Sie bemerken und seit wann. Die Diagnose findet die Ursache, bevor repariert wird.',
       reparationH: 'Mechanische Reparatur',
-      reparation: 'Nach der Diagnose reparieren wir Ihr Auto oder Ihren Transporter in unserer Werkstatt am Kreisel in Erpeldange.',
+      reparation: 'Nach der Diagnose reparieren wir Ihr Auto oder Ihren Transporter in unserer Werkstatt in Erpeldange.',
       carrosserieH: 'Karosserie und Lack',
       carrosserie: 'Nach einem Blechschaden reparieren wir die Karosserie und lackieren die beschädigten Teile neu. Schicken Sie uns Fotos der Schäden per WhatsApp für eine erste Einschätzung.',
       processH2: 'So bekommen Sie einen Termin',
@@ -886,7 +886,7 @@ const de: Dict = {
         s1: {
           h: 'Ihre Autowerkstatt zwischen Ettelbruck und Diekirch',
           p: [
-            'Die Garage Um Rond Point, {address}, liegt direkt am Kreisel in Erpeldange, neben der Aral-Tankstelle. Für alle aus Erpeldange-sur-Sûre, Ettelbruck, Diekirch und der ganzen Nordstad ist die Werkstatt nur wenige Minuten entfernt.',
+            'Die Garage Um Rond Point, {address}, liegt direkt neben der Aral-Tankstelle. Für alle aus Erpeldange-sur-Sûre, Ettelbruck, Diekirch und der ganzen Nordstad ist die Werkstatt nur wenige Minuten entfernt.',
             'Wir sprechen Luxemburgisch, Französisch, Deutsch, Englisch und Portugiesisch. So können Sie uns das Problem mit Ihrem Auto in der Sprache erklären, die Ihnen am besten liegt.',
           ],
         },
@@ -940,7 +940,7 @@ const de: Dict = {
         },
         q4: {
           q: 'Wo befindet sich die Werkstatt?',
-          a: '{address}, am Kreisel in Erpeldange, neben der Aral-Tankstelle, zwischen Ettelbruck und Diekirch.',
+          a: '{address}, neben der Aral-Tankstelle, zwischen Ettelbruck und Diekirch.',
         },
         q5: {
           q: 'In welchen Sprachen kann ich das Problem erklären?',
@@ -978,7 +978,7 @@ const de: Dict = {
         s4: {
           h: 'Sodastrahlen in Luxemburg, in Erpeldange',
           p: [
-            'Unsere Werkstatt liegt am Kreisel in Erpeldange-sur-Sûre, zwischen Ettelbruck und Diekirch, und ist aus dem ganzen Norden Luxemburgs gut erreichbar. Ob einzelnes Teil oder komplettes Auto: Wir vereinbaren gemeinsam einen Termin in der Garage.',
+            'Unsere Werkstatt liegt in Erpeldange-sur-Sûre, zwischen Ettelbruck und Diekirch, und ist aus dem ganzen Norden Luxemburgs gut erreichbar. Ob einzelnes Teil oder komplettes Auto: Wir vereinbaren gemeinsam einen Termin in der Garage.',
           ],
         },
       },
@@ -1007,7 +1007,7 @@ const de: Dict = {
         s1: {
           h: 'Garten- und Forstgeräte in der Nordstad',
           p: [
-            'Für die Pflege Ihres Gartens, Ihres Grundstücks oder Ihres Waldstücks finden Sie in der Garage Um Rond Point Geräte vor allem der Marken Honda und Stihl – und eine Werkstatt, die sie repariert. Die Garage liegt am Kreisel in Erpeldange, zwischen Ettelbruck und Diekirch.',
+            'Für die Pflege Ihres Gartens, Ihres Grundstücks oder Ihres Waldstücks finden Sie in der Garage Um Rond Point Geräte vor allem der Marken Honda und Stihl – und eine Werkstatt, die sie repariert. Die Garage liegt in Erpeldange, zwischen Ettelbruck und Diekirch.',
           ],
         },
         s2: {
@@ -1058,7 +1058,7 @@ const de: Dict = {
         },
         q4: {
           q: 'Wo befindet sich die Garage?',
-          a: '{address}, am Kreisel in Erpeldange, neben der Aral-Tankstelle.',
+          a: '{address}, neben der Aral-Tankstelle.',
         },
       },
     },
@@ -1068,7 +1068,7 @@ const de: Dict = {
           h: 'Saris, Humbaur und WM Meyer in Erpeldange',
           p: [
             'Wir verkaufen Anhänger der Marken Saris, Humbaur und WM Meyer, für Privat- und Geschäftskunden. Sagen Sie uns, was Sie transportieren: Wir helfen Ihnen, das Modell zu finden, das zu Ihrem Auto und Ihrem Führerschein passt.',
-            'Die Garage liegt am Kreisel in Erpeldange-sur-Sûre, zwischen Ettelbruck und Diekirch.',
+            'Die Garage Um Rond Point liegt in Erpeldange-sur-Sûre, zwischen Ettelbruck und Diekirch.',
           ],
         },
         s2: {
@@ -1111,7 +1111,7 @@ const de: Dict = {
         s1: {
           h: 'Ein Auto kaufen bei der Garage Um Rond Point',
           p: [
-            'Alle Autos auf dieser Seite stehen bei uns am Kreisel in Erpeldange im Bestand. Die Liste wird jeden Morgen anhand unserer Anzeigen aktualisiert: Sie sehen Preis, Kilometerstand, Jahr und Fotos jedes Autos.',
+            'Alle Autos auf dieser Seite stehen bei uns in Erpeldange im Bestand. Die Liste wird jeden Morgen anhand unserer Anzeigen aktualisiert: Sie sehen Preis, Kilometerstand, Jahr und Fotos jedes Autos.',
           ],
           items: [
             'Wählen Sie ein Auto in der Liste und öffnen Sie die Detailseite.',
@@ -1140,7 +1140,7 @@ const de: Dict = {
         },
         q2: {
           q: 'Wo kann ich mir die Autos ansehen?',
-          a: 'In der Garage, {address}, am Kreisel in Erpeldange. {hours}',
+          a: 'In der Garage Um Rond Point, {address}. {hours}',
         },
         q3: {
           q: 'Stehen Ihre Autos auch auf LuxAuto und AutoScout24?',
@@ -1161,7 +1161,7 @@ const de: Dict = {
         s2: {
           h: 'Anfahrt zur Garage',
           p: [
-            'Die Garage, {address}, liegt am Kreisel in Erpeldange-sur-Sûre, neben der Aral-Tankstelle. Sie kommen aus Ettelbruck oder Diekirch? Dann liegt der Kreisel auf Ihrem Weg. Für die genaue Route öffnen Sie Google Maps über diese Seite.',
+            'Die Garage Um Rond Point, {address}, liegt neben der Aral-Tankstelle. Sie kommen aus Ettelbruck oder Diekirch? Dann liegt die Garage auf Ihrem Weg. Für die genaue Route öffnen Sie Google Maps über diese Seite.',
           ],
         },
       },
@@ -1182,7 +1182,7 @@ const de: Dict = {
         s1: {
           h: 'Anhänger mieten in der Nordstad',
           p: [
-            'Am Kreisel in Erpeldange, zwischen Ettelbruck und Diekirch, mieten Sie einen Anhänger oder Transporter ganz in Ihrer Nähe. Unsere Anhängersuche oben zeigt Ihnen mit wenigen Klicks, welcher Anhänger zu Ihrer Ladung passt und ob Ihr Führerschein reicht.',
+            'Bei Um Rond Point in Erpeldange, zwischen Ettelbruck und Diekirch, mieten Sie einen Anhänger oder Transporter ganz in Ihrer Nähe. Unsere Anhängersuche oben zeigt Ihnen mit wenigen Klicks, welcher Anhänger zu Ihrer Ladung passt und ob Ihr Führerschein reicht.',
           ],
         },
         s2: {

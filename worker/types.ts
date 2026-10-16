@@ -20,9 +20,15 @@ export interface Ctx {
   waitUntil(promise: Promise<unknown>): void;
 }
 
+export interface Ai {
+  run(model: string, input: Record<string, unknown>): Promise<unknown>;
+}
+
 export interface Env {
   ASSETS: Fetcher;
   DB: D1Database;
+  /** Workers AI (Übersetzung im Admin-Bereich) */
+  AI?: Ai;
   /** zufälliger Wert (wrangler secret put SESSION_SECRET), signiert die Anmelde-Cookies */
   SESSION_SECRET: string;
   /** Fine-grained Token: nur dieses Repository, „Contents: Read and write“ */

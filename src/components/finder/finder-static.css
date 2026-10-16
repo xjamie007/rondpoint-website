@@ -45,3 +45,21 @@
 .result:hover .result-photo img { scale: 1.04; }
 .static-result .result-photo { margin: -24px -24px 0; }
 @media (prefers-reduced-motion: reduce) { .result:hover .result-photo img { scale: 1; } }
+
+/* Handy: zwei Anhänger nebeneinander, nur das Wichtigste (Maße, Paletten und Details am Computer) */
+@media (max-width: 47.99rem) {
+  .finder .result-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .finder .result { padding: 12px; gap: 8px; }
+  .finder .result-photo { margin: -12px -12px 0; aspect-ratio: 4 / 3; }
+  .finder .result-name { font-size: 0.9375rem; line-height: 1.25; overflow-wrap: anywhere; hyphens: auto; }
+  .finder .result-notes, .finder .result-diagram { display: none; }
+  .finder .result-specs { grid-template-columns: 1fr; gap: 4px; }
+  .finder .result-specs > div:nth-child(n + 3) { display: none; }
+  .finder .result-specs dt { font-size: 0.75rem; line-height: 1.3; }
+  .finder .result-specs dd { font-size: 0.875rem; font-weight: 600; }
+  .finder .verdict { font-size: 0.8125rem; gap: 6px; line-height: 1.3; }
+  .finder .verdict svg { width: 16px; height: 16px; }
+  .finder .result-price { font-size: 0.875rem; margin: 0; }
+  .finder .result-cta .btn { min-height: 44px; padding: 8px 10px; font-size: 0.8125rem; line-height: 1.2; white-space: normal; text-align: center; }
+  .finder .result-cta .btn::after { display: none; }
+}

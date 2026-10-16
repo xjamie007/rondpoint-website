@@ -5,7 +5,7 @@ const pt: Dict = {
   meta: {
     lang: 'Português',
     siteName: 'Garage Um Rond Point',
-    ogAlt: 'Garage Um Rond Point na rotunda de Erpeldange',
+    ogAlt: 'Garage Um Rond Point em Erpeldange',
   },
 
   nav: {
@@ -44,7 +44,7 @@ const pt: Dict = {
   },
 
   hero: {
-    h1: 'A garagem da rotunda de Erpeldange',
+    h1: 'A Garage Um Rond Point em Erpeldange',
     sub: 'Alugue um atrelado ou uma carrinha, encontre o seu próximo carro ou traga o seu para manutenção e reparação. Estamos em 1, rue du Viaduc, ao lado do posto de abastecimento Aral, entre Ettelbruck e Diekirch.',
     ctaFinder: 'Encontrar um atrelado',
     ctaCars: 'Ver os carros',
@@ -157,7 +157,7 @@ const pt: Dict = {
   cars: {
     homeH2: 'Os nossos carros em stock',
     h1: 'Carros novos e usados',
-    lead: 'Todos os carros em stock na Garage Um Rond Point, na rotunda de Erpeldange. Ligue ou escreva-nos pelo WhatsApp antes de vir, para um test drive por marcação.',
+    lead: 'Todos os carros em stock na Garage Um Rond Point em Erpeldange. Ligue ou escreva-nos pelo WhatsApp antes de vir, para um test drive por marcação.',
     seeAll: { one: 'Ver o carro', other: 'Ver os {n} carros' },
     year: 'Ano',
     km: 'Quilómetros',
@@ -377,7 +377,7 @@ const pt: Dict = {
   access: {
     h2: 'Onde estamos',
     address: 'Morada',
-    landmark: 'Na rotunda, ao lado do posto de abastecimento Aral, entre Ettelbruck e Diekirch.',
+    landmark: 'Ao lado do posto de abastecimento Aral, entre Ettelbruck e Diekirch.',
     hoursH3: 'Horário de funcionamento',
     languagesH3: 'Línguas',
     languages: 'Falamos luxemburguês, francês, alemão, inglês e português.',
@@ -523,7 +523,7 @@ const pt: Dict = {
     },
     contact: {
       h1: 'Contacto e localização',
-      lead: 'Garage Um Rond Point, 1, rue du Viaduc, L-9147 Erpeldange-sur-Sûre. Na rotunda, ao lado do posto de abastecimento Aral. Telefone +352 81 05 41, WhatsApp +352 621 373 272, info@rondpoint.lu. Falamos luxemburguês, francês, alemão, inglês e português.',
+      lead: 'Garage Um Rond Point, 1, rue du Viaduc, L-9147 Erpeldange-sur-Sûre. Ao lado do posto de abastecimento Aral. Telefone +352 81 05 41, WhatsApp +352 621 373 272, info@rondpoint.lu. Falamos luxemburguês, francês, alemão, inglês e português.',
       waysH2: 'Como nos contactar',
       phone: 'Telefone',
       whatsapp: 'WhatsApp',
@@ -640,7 +640,7 @@ const pt: Dict = {
     home: {
       title: 'Garage Um Rond Point Erpeldange – atrelados, carros, oficina',
       description:
-        'Na rotunda de Erpeldange, entre Ettelbruck e Diekirch: aluguer de atrelados e carrinhas, carros novos e usados, oficina automóvel, mecânica e carroçaria.',
+        'Na Um Rond Point em Erpeldange, entre Ettelbruck e Diekirch: aluguer de atrelados e carrinhas, carros novos e usados, oficina automóvel, mecânica e carroçaria.',
     },
     rental: {
       title: 'Aluguer de atrelados no Luxemburgo | Erpeldange, Ettelbruck',
@@ -657,15 +657,15 @@ const pt: Dict = {
       },
       description: {
         'porte-voiture':
-          'Alugue um atrelado porta-carros na rotunda de Erpeldange, perto de Ettelbruck: dimensões, carga útil, preço e carta de condução necessária para cada atrelado.',
+          'Alugue um atrelado porta-carros na Um Rond Point em Erpeldange, perto de Ettelbruck: dimensões, carga útil, preço e carta necessária para cada atrelado.',
         'porte-moto':
-          'Alugue um atrelado porta-motos na rotunda de Erpeldange, perto de Ettelbruck: dimensões, carga útil, preço e carta de condução necessária para cada atrelado.',
+          'Alugue um atrelado porta-motos na Um Rond Point em Erpeldange, perto de Ettelbruck: dimensões, carga útil, preço e carta necessária para cada atrelado.',
         benne:
-          'Alugue um atrelado basculante para terra, entulho ou restos de jardim na rotunda de Erpeldange, perto de Ettelbruck: carga útil, preço e carta necessária.',
+          'Alugue um atrelado basculante para terra, entulho ou restos de jardim na Um Rond Point em Erpeldange, perto de Ettelbruck: carga útil, preço e carta necessária.',
         frigorifique:
-          'Alugue um atrelado frigorífico para a sua festa ou festival na rotunda de Erpeldange, perto de Ettelbruck: volume, temperatura, preço e carta necessária.',
+          'Alugue um atrelado frigorífico para a sua festa ou festival na Um Rond Point em Erpeldange, perto de Ettelbruck: volume, temperatura, preço e carta necessária.',
         camionnette:
-          'Alugue uma carrinha para mudanças ou transporte de material na rotunda de Erpeldange, perto de Ettelbruck. Até 3500 kg, basta a carta B. Veja o preço por dia.',
+          'Alugue uma carrinha para mudanças ou transporte de material na Um Rond Point em Erpeldange, perto de Ettelbruck. Até 3500 kg, basta a carta B. Preço por dia.',
       },
     },
     cars: {
@@ -687,7 +687,7 @@ const pt: Dict = {
     workshop: {
       title: 'Oficina automóvel em Erpeldange | Garage Um Rond Point',
       description:
-        'Oficina automóvel perto de Ettelbruck e Diekirch: manutenção, diagnóstico, reparação, carroçaria e pintura na rotunda de Erpeldange. Peça marcação online.',
+        'Oficina automóvel perto de Ettelbruck e Diekirch: manutenção, diagnóstico, reparação, carroçaria e pintura na Um Rond Point em Erpeldange. Peça marcação online.',
     },
     sodablast: {
       title: 'Decapagem com bicarbonato (sodablast) no Luxemburgo',
@@ -707,7 +707,7 @@ const pt: Dict = {
     contact: {
       title: 'Contacto e localização | Garage Um Rond Point, Erpeldange',
       description:
-        '1, rue du Viaduc em Erpeldange-sur-Sûre, na rotunda, ao lado do posto Aral. {hours}. Tel. +352 81 05 41.',
+        '1, rue du Viaduc em Erpeldange-sur-Sûre, junto ao posto de abastecimento Aral. {hours}. Tel. +352 81 05 41.',
     },
     thanks: {
       title: 'Pedido enviado | Garage Um Rond Point, Erpeldange-sur-Sûre',
@@ -801,7 +801,7 @@ const pt: Dict = {
   /** Kurzes „Über uns“ auf der Startseite (nur bestätigte Angaben: Lage, Leistungen, Sprachen, Öffnungstage) */
   about: {
     h2: 'Quem somos',
-    text: 'A Garage Um Rond Point é a sua garagem na rotunda de Erpeldange, entre Ettelbruck e Diekirch. Aluguer de atrelados e carrinhas, venda de carros e atrelados, oficina e máquinas de jardim: tudo no mesmo endereço. Passe por cá – falamos a sua língua.',
+    text: 'A Garage Um Rond Point é a sua garagem em Erpeldange, entre Ettelbruck e Diekirch. Aluguer de atrelados e carrinhas, venda de carros e atrelados, oficina e máquinas de jardim: tudo no mesmo endereço. Passe por cá – falamos a sua língua.',
     link: 'Como chegar',
     photoAlt: 'Mecânico a entregar uma chave de carro',
   },
@@ -836,7 +836,7 @@ const pt: Dict = {
       diagnosticH: 'Diagnóstico de avarias',
       diagnostic: 'Uma luz de aviso acende-se, um ruído estranho, o carro custa a pegar: descreva o que nota e desde quando. O diagnóstico encontra a causa antes da reparação.',
       reparationH: 'Reparação mecânica',
-      reparation: 'Depois do diagnóstico, reparamos o seu carro ou a sua carrinha na nossa oficina, na rotunda de Erpeldange.',
+      reparation: 'Depois do diagnóstico, reparamos o seu carro ou a sua carrinha na nossa oficina em Erpeldange.',
       carrosserieH: 'Chaparia e pintura',
       carrosserie: 'Depois de um pequeno toque, reparamos a carroçaria e pintamos as peças danificadas. Envie-nos fotos dos danos pelo WhatsApp para uma primeira opinião.',
       processH2: 'Como marcar',
@@ -882,7 +882,7 @@ const pt: Dict = {
         s1: {
           h: 'A sua garagem de proximidade entre Ettelbruck e Diekirch',
           p: [
-            'A Garage Um Rond Point fica no {address}, mesmo na rotunda de Erpeldange, ao lado do posto Aral. Para quem vive em Erpeldange-sur-Sûre, Ettelbruck, Diekirch e em toda a Nordstad, a oficina fica a poucos minutos de casa.',
+            'A Garage Um Rond Point fica no {address}, mesmo ao lado do posto Aral. Para quem vive em Erpeldange-sur-Sûre, Ettelbruck, Diekirch e em toda a Nordstad, a oficina fica a poucos minutos de casa.',
             'Falamos luxemburguês, francês, alemão, inglês e português. Assim, pode explicar-nos o problema do seu carro na língua em que se sente mais à vontade.',
           ],
         },
@@ -936,7 +936,7 @@ const pt: Dict = {
         },
         q4: {
           q: 'Onde fica a oficina?',
-          a: 'No {address}, na rotunda de Erpeldange, ao lado do posto Aral, entre Ettelbruck e Diekirch.',
+          a: 'No {address}, ao lado do posto Aral, entre Ettelbruck e Diekirch.',
         },
         q5: {
           q: 'Em que línguas posso explicar o problema?',
@@ -974,7 +974,7 @@ const pt: Dict = {
         s4: {
           h: 'Sodablast no Luxemburgo, em Erpeldange',
           p: [
-            'A nossa oficina fica na rotunda de Erpeldange-sur-Sûre, entre Ettelbruck e Diekirch, com acesso fácil a partir de todo o norte do Luxemburgo. Seja para uma peça ou para um carro completo, marcamos juntos uma data na garagem.',
+            'A nossa oficina fica em Erpeldange-sur-Sûre, entre Ettelbruck e Diekirch, com acesso fácil a partir de todo o norte do Luxemburgo. Seja para uma peça ou para um carro completo, marcamos juntos uma data na garagem.',
           ],
         },
       },
@@ -1003,7 +1003,7 @@ const pt: Dict = {
         s1: {
           h: 'Máquinas de jardim e floresta na Nordstad',
           p: [
-            'Para cuidar do seu jardim, do seu terreno ou da sua mata, encontra na Garage Um Rond Point máquinas sobretudo das marcas Honda e Stihl, e uma oficina para as reparar. A garagem fica na rotunda de Erpeldange, entre Ettelbruck e Diekirch.',
+            'Para cuidar do seu jardim, do seu terreno ou da sua mata, encontra na Garage Um Rond Point máquinas sobretudo das marcas Honda e Stihl, e uma oficina para as reparar. A garagem fica em Erpeldange, entre Ettelbruck e Diekirch.',
           ],
         },
         s2: {
@@ -1054,7 +1054,7 @@ const pt: Dict = {
         },
         q4: {
           q: 'Onde fica a garagem?',
-          a: 'No {address}, na rotunda de Erpeldange, ao lado do posto Aral.',
+          a: 'No {address}, ao lado do posto Aral.',
         },
       },
     },
@@ -1064,7 +1064,7 @@ const pt: Dict = {
           h: 'Saris, Humbaur e WM Meyer em Erpeldange',
           p: [
             'Vendemos atrelados das marcas Saris, Humbaur e WM Meyer, tanto para particulares como para profissionais. Diga-nos o que transporta: ajudamos a encontrar o modelo adequado ao seu carro e à sua carta de condução.',
-            'A garagem fica na rotunda de Erpeldange-sur-Sûre, entre Ettelbruck e Diekirch.',
+            'A Garage Um Rond Point fica em Erpeldange-sur-Sûre, entre Ettelbruck e Diekirch.',
           ],
         },
         s2: {
@@ -1107,7 +1107,7 @@ const pt: Dict = {
         s1: {
           h: 'Comprar um carro na Garage Um Rond Point',
           p: [
-            'Todos os carros desta página estão em stock na nossa garagem, na rotunda de Erpeldange. A lista é atualizada todas as manhãs a partir dos nossos anúncios: vê o preço, os quilómetros, o ano e as fotos de cada carro.',
+            'Todos os carros desta página estão em stock na nossa garagem em Erpeldange. A lista é atualizada todas as manhãs a partir dos nossos anúncios: vê o preço, os quilómetros, o ano e as fotos de cada carro.',
           ],
           items: [
             'Escolha um carro na lista e abra a respetiva ficha.',
@@ -1136,7 +1136,7 @@ const pt: Dict = {
         },
         q2: {
           q: 'Onde posso ver os carros?',
-          a: 'Na garagem, no {address}, na rotunda de Erpeldange. {hours}',
+          a: 'Na Garage Um Rond Point, no {address}. {hours}',
         },
         q3: {
           q: 'Os vossos carros também estão no LuxAuto e no AutoScout24?',
@@ -1157,7 +1157,7 @@ const pt: Dict = {
         s2: {
           h: 'Como chegar à garagem',
           p: [
-            'A garagem fica no {address}, na rotunda de Erpeldange-sur-Sûre, ao lado do posto Aral. Vem de Ettelbruck ou de Diekirch? A rotunda fica no seu caminho. Para o itinerário exato, abra o Google Maps a partir desta página.',
+            'A Garage Um Rond Point fica no {address}, ao lado do posto Aral. Vem de Ettelbruck ou de Diekirch? A garagem fica no seu caminho. Para o itinerário exato, abra o Google Maps a partir desta página.',
           ],
         },
       },
@@ -1178,7 +1178,7 @@ const pt: Dict = {
         s1: {
           h: 'Aluguer de atrelados na Nordstad',
           p: [
-            'Na rotunda de Erpeldange, entre Ettelbruck e Diekirch, aluga um atrelado ou uma carrinha muito perto de casa. O nosso guia, mais acima, mostra-lhe em poucos cliques que atrelado serve para o que vai transportar e se a sua carta é suficiente.',
+            'Na Garage Um Rond Point, em Erpeldange, entre Ettelbruck e Diekirch, aluga um atrelado ou uma carrinha muito perto de casa. O nosso guia, mais acima, mostra-lhe em poucos cliques que atrelado serve para o que vai transportar e se a sua carta é suficiente.',
           ],
         },
         s2: {

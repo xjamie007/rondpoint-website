@@ -167,3 +167,23 @@ describe('Worker: Formulare', () => {
     expect(db.prepare('SELECT COUNT(*) AS n FROM login_attempts').get()).toEqual({ n: 0 });
   });
 });
+
+describe('Worker: Übersetzen (Workers AI)', () => {
+  it('nur angemeldet; Platzhalter und Links müssen erhalten bleiben, sonst wird die Sprache verworfen', async () => {
+    const body = JSON.stringify({ text: 'Rufen Sie {phone} an oder lesen Sie [mehr](page:workshop).', from: 'de', to: ['fr', 'en', 'lb'] });
+    expect((await call('/api/translate', { method: 'POST', body })).status).toBe(401);
+    const run = vi.fn(async () => ({
+      response: 'Voilà: {"fr": "Appelez {phone} ou lisez [plus](page:workshop).", "en": "Call {phone} or read [more](page:workshop).", "lb": "Rufft un oder liest méi."}',
+    }));
+    env.AI = { run };
+    const c = cookieOf(await login('chef@garage.lu', 'richtig-langes-passwort'));
+    const r = await (await call('/api/translate', { method: 'POST', body, cookie: c })).json();
+    expect(r.translations).toEqual({ fr: 'Appelez {phone} ou lisez [plus](page:workshop).', en: 'Call {phone} or read [more](page:workshop).' });
+    expect(r.skipped).toEqual(['lb']);
+    expect((run.mock.calls[0] as unknown[])[0]).toMatch(/gemma/);
+    const sys = ((run.mock.calls[0] as unknown[])[1] as { messages: { content: string }[] }).messages[0].content;
+    expect(sys).toMatch(/Um Rond Point/);
+    expect(sys).toMatch(/Luxembourgish/);
+  });
+});
+

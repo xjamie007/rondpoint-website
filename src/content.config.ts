@@ -46,7 +46,8 @@ const flotte = defineCollection({
     power: z.string().nullable().default(null),
     socket: z.union([z.literal(7), z.literal(13)]).nullable().default(null),
     showPallets: z.boolean().default(false),
-    suitableFor: z.array(z.enum(CARGO)).default([]),
+    // Ladungsarten aus src/content/cargo.json (im Admin-Bereich erweiterbar); unbekannte ignoriert der Finder
+    suitableFor: z.array(z.string().regex(/^[a-z0-9][a-z0-9-]{0,30}$/)).default([]),
     priceDay: z.number().positive().nullable().default(null),
     priceWeekend: z.number().positive().nullable().default(null),
     deposit: z.number().positive().nullable().default(null),

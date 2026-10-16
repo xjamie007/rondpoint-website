@@ -6,6 +6,7 @@
  *   POST /api/logout
  *   GET  /api/session   → { loggedIn, email }
  *   POST /api/publish   { action: "blob" | "publish" } → wie die Supabase-Function, Commit nach GitHub
+ *   POST /api/translate { text, from, to } → Übersetzung mit Workers AI (worker/translate.ts)
  *   POST /api/inquiry   Formulare (worker/inquiry.ts)
  *
  * Täglich (Cron): alte Anfragen (90 Tage), IP-Hashes und Fehlversuche (24 h) löschen.
@@ -22,6 +23,7 @@ import { HttpError, makeGit } from '../supabase/functions/publish/publish.ts';
 import { clearCookie, COOKIE, getCookie, makeSession, readSession, sessionCookie, sha256Hex, verifyPassword } from './auth';
 import { handleInquiry } from './inquiry';
 import { SCHEMA } from './schema';
+import { translate } from './translate';
 import type { Ctx, Env } from './types';
 
 const WINDOW = 15 * 60;
@@ -105,6 +107,11 @@ async function route(req: Request, env: Env, url: URL): Promise<Response> {
   if (p === '/api/login') return login(req, env);
   if (p === '/api/logout') return json(200, { ok: true }, { 'set-cookie': clearCookie() });
   if (p === '/api/publish') return publish(req, env);
+  if (p === '/api/translate') {
+    if (!(await sessionEmail(req, env))) return json(401, { ok: false, error: 'Die Anmeldung ist abgelaufen. Bitte erneut anmelden.' });
+    const r = await translate(env, ((await req.json().catch(() => ({}))) ?? {}) as Record<string, unknown>);
+    return json(r.status, r.body);
+  }
   return json(404, { ok: false, error: 'Nicht gefunden' });
 }
 

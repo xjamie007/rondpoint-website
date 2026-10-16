@@ -10,6 +10,7 @@
  *   Fotos        → src/assets/photos/<platz>.<webp|jpg|png>, Ausblenden in src/content/photos.json
  *   Zeiten       → src/content/horaires.json (week)
  *   Anhänger     → src/content/flotte/<id>.json, Foto src/assets/flotte/<id>.<endung>
+ *   Ladungsarten → src/content/cargo.json („Was transportieren Sie?“ im Finder)
  *
  * Hochgeladene Bilder liegen schon als Git-Blob bei GitHub; im Inhalt stehen sie als
  * „upload/<blob-sha>.<endung>“.
@@ -24,7 +25,14 @@ export type Week = Record<DayKey, Interval[]>;
 
 /** Wie src/content.config.ts (Test prüft die Gleichheit) */
 export const CATEGORIES = ['porte-voiture', 'porte-moto', 'benne', 'frigorifique', 'plateau', 'fourgon', 'camionnette', 'voiture'] as const;
+/** Ladungsarten von Anfang an (Beschriftung in src/i18n/*.ts); die aktuelle Liste steht in src/content/cargo.json */
 export const CARGO = ['voiture', 'moto', 'terre', 'fete', 'meubles', 'materiel'] as const;
+export const CARGO_ID = /^[a-z0-9][a-z0-9-]{0,30}$/;
+/** Eine Ladungsart; label nur bei eigenen oder umbenannten (sonst Text aus src/i18n) */
+export interface CargoItem {
+  id: string;
+  label?: Partial<Record<Lang, string>>;
+}
 /** Ziele interner Links in Texten: [Wort](page:…) und [Wort](cat:…), wie src/i18n/config.ts (Test prüft die Gleichheit) */
 export const LINK_PAGES = ['home', 'rental', 'cars', 'workshop', 'sodablast', 'trailersForSale', 'garden', 'contact', 'thanks', 'legal', 'privacy'] as const;
 export const LINK_CATS = ['porte-voiture', 'porte-moto', 'benne', 'frigorifique', 'camionnette'] as const;
@@ -66,6 +74,10 @@ export interface EditState {
   hours?: Week;
   /** Mietanhänger und Transporter: Kennung → Daten, null = gelöscht */
   fleet?: Record<string, FleetData | null>;
+  /** Ladungsarten im Finder, ganze Liste in Reihenfolge */
+  cargo?: CargoItem[];
+  /** nur für den Editor: automatisch übersetzte Texte („sprache:schlüssel“), werden nicht gespeichert */
+  auto?: string[];
 }
 
 /** Was im Repository liegt (nur das, was die Umwandlung braucht) */
@@ -74,6 +86,8 @@ export interface RepoSnapshot {
   lists: Record<string, unknown>;
   photos: Record<string, unknown>;
   horaires: Record<string, unknown>;
+  /** src/content/cargo.json (fehlt sie: Standardliste) */
+  cargo?: Record<string, unknown>;
   /** vorhandene Pfade unter src/assets/photos, src/assets/flotte, src/content/flotte */
   files: string[];
 }
@@ -139,7 +153,8 @@ export function fleetErrors(d: FleetData): Record<string, string> {
   for (const k of ['priceDay', 'priceWeekend', 'deposit'] as const) if (!posNum(d[k])) e[k] = 'num';
   if (d.socket != null && d.socket !== 7 && d.socket !== 13) e.socket = 'socket';
   if (d.tempRange && (!Number.isFinite(d.tempRange.minC) || !Number.isFinite(d.tempRange.maxC) || d.tempRange.minC > d.tempRange.maxC)) e.tempRange = 'temp';
-  if (!Array.isArray(d.suitableFor ?? []) || (d.suitableFor ?? []).some((c) => !(CARGO as readonly string[]).includes(c))) e.suitableFor = 'cargo';
+  // Ladungsarten: gültige Kennungen; nicht mehr vorhandene ignoriert der Finder
+  if (!Array.isArray(d.suitableFor ?? []) || (d.suitableFor ?? []).some((c) => typeof c !== 'string' || !CARGO_ID.test(c))) e.suitableFor = 'cargo';
   if (d.notes && (typeof d.notes !== 'object' || !d.notes.fr?.trim()) && Object.values(d.notes ?? {}).some((x) => typeof x === 'string' && x.trim())) e['notes.fr'] = 'required';
   for (const l of LANGS) if (d.notes && !str(d.notes[l], 600)) e[`notes.${l}`] = 'long';
   for (const k of ['brand', 'power'] as const) if (!str(d[k], 80)) e[k] = 'long';
@@ -177,7 +192,7 @@ export function cleanFleet(d: FleetData): FleetData {
     power: s(d.power),
     socket: d.socket ?? null,
     showPallets: !!d.showPallets,
-    suitableFor: CARGO.filter((c) => (d.suitableFor ?? []).includes(c)),
+    suitableFor: [...new Set((d.suitableFor ?? []).filter((c) => typeof c === 'string' && CARGO_ID.test(c)))],
     priceDay: n(d.priceDay),
     priceWeekend: n(d.priceWeekend),
     deposit: n(d.deposit),
@@ -240,12 +255,34 @@ export function validate(s: EditState): void {
     const e = hoursErrors(s.hours);
     if (Object.keys(e).length) throw new ContentError(`Öffnungszeiten prüfen: ${Object.keys(e).join(', ')}`);
   }
+  if (s.cargo != null) cargoErrors(s.cargo);
   for (const [id, d] of Object.entries(s.fleet ?? {})) {
     if (!FLEET_ID.test(id)) throw new ContentError(`Ungültige Kennung ${id}`);
     if (d === null) continue;
     const e = fleetErrors(d);
     if (Object.keys(e).length) throw new ContentError(`Anhänger „${d.name?.fr ?? id}“: ${Object.keys(e).join(', ')} prüfen`);
   }
+}
+
+/** Ladungsarten prüfen: 1–20, eindeutige Kennungen, Beschriftung höchstens 60 Zeichen, eigene mit Beschriftung */
+export function cargoErrors(list: CargoItem[]): void {
+  if (!Array.isArray(list) || !list.length || list.length > 20) throw new ContentError('Ladungsarten: 1 bis 20 Einträge');
+  const seen = new Set<string>();
+  for (const c of list) {
+    if (!c || !CARGO_ID.test(c.id) || seen.has(c.id)) throw new ContentError(`Ladungsart ${c?.id}: ungültige oder doppelte Kennung`);
+    seen.add(c.id);
+    const labels = Object.entries(c.label ?? {});
+    if (labels.some(([l, v]) => !LANGS.includes(l as Lang) || typeof v !== 'string' || v.length > 60)) throw new ContentError(`Ladungsart ${c.id}: Beschriftung prüfen`);
+    if (!(CARGO as readonly string[]).includes(c.id) && !labels.some(([, v]) => v.trim())) throw new ContentError(`Ladungsart ${c.id}: Beschriftung fehlt`);
+  }
+}
+
+/** Ladungsarten aufräumen: leere Beschriftungen weg */
+export function cleanCargo(list: CargoItem[]): CargoItem[] {
+  return list.map((c) => {
+    const label = Object.fromEntries(Object.entries(c.label ?? {}).filter(([, v]) => v?.trim()).map(([l, v]) => [l, v!.trim()]));
+    return Object.keys(label).length ? { id: c.id, label } : { id: c.id };
+  });
 }
 
 /* ------------------------------------------------------------------ Umwandlung */
@@ -321,6 +358,15 @@ export function toFiles(s: EditState, repo: RepoSnapshot): { files: FileChange[]
   if (s.hours && JSON.stringify(s.hours) !== JSON.stringify(obj(repo.horaires).week)) {
     put('src/content/horaires.json', json({ ...obj(repo.horaires), week: Object.fromEntries(DAYS.map((d) => [d, s.hours![d]])) }));
     summary.add('Öffnungszeiten');
+  }
+
+  // Ladungsarten
+  if (s.cargo) {
+    const items = cleanCargo(s.cargo);
+    if (JSON.stringify(items) !== JSON.stringify(obj(repo.cargo).items ?? CARGO.map((id) => ({ id })))) {
+      put('src/content/cargo.json', json({ ...obj(repo.cargo), items }));
+      summary.add('Ladungsarten');
+    }
   }
 
   // Anhänger

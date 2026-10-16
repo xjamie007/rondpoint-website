@@ -9,13 +9,17 @@
  *  auf die fertige Seite angewendet; ohne Änderungen bleibt sie genau wie gebaut.
  * ========================================================================= */
 import { escapeHtml, useT } from '@/i18n';
-import { HTML_LANG, LANGS, type Lang } from '@/i18n/config';
+import { HTML_LANG, type Lang } from '@/i18n/config';
 import { hoursInline } from '@/lib/content';
 import { buildIndex, capture, displayText, flatten, getPath, isRich, listOf, norm, renderHtml, setPath, type Caps } from './match';
 import { emptyState, siteStorage as S, type EditState, type ListOverride } from './storage';
 import { $, $$, closeSheet, confirmBox, pickers, prepareImage, sheet, toast } from './ui';
 import { baseWeek, hoursSheet, hoursText, hoursVar, renderHours, weekOf, type HoursCtx } from './hours';
-import { fleetEdit, fleetSheet, loadBase, renderFleet, type FleetCtx } from './fleet';
+import { cargoSheet, fleetEdit, fleetSheet, loadBase, renderFleet, type FleetCtx } from './fleet';
+import { countChanges, reviewSheet } from './review';
+import { changedFleet, diffForPublish } from './diff';
+import { CARGO_ITEMS } from '@/lib/cargo';
+import { autoOn, canTranslate, queueTranslate, setAuto } from './translate';
 import hiddenPhotos from '@/content/photos.json';
 import css from './editor.css?inline';
 
@@ -46,6 +50,15 @@ const dirty = () => !!draft.get();
 // Öffnungszeiten und Anhänger (hours.ts, fleet.ts) arbeiten auf demselben Stand
 const hctx: HoursCtx = { t: nested, lang, state: () => state, change: (fn) => change(fn) };
 const fctx: FleetCtx = { ...hctx, storage: S };
+/** in diesem Schritt geänderte Texte: danach automatisch in die anderen Sprachen übersetzen */
+let changedTexts: [string, string][] = [];
+const openReview = () => {
+  commitEditing();
+  void reviewSheet({
+    lang, state: () => state, lastSaved: () => lastSaved, change: (fn) => change(fn), storage: S, save,
+    openHours: () => hoursSheet(hctx), openFleet: (id) => (id ? fleetEdit(fctx, id) : fleetSheet(fctx)), openCargo: () => cargoSheet(fctx),
+  });
+};
 let hoursShown = false;
 
 /* ------------------------------------------------------------ Seite zuordnen (einmal, am Original) */
@@ -283,7 +296,7 @@ function buildBar() {
   document.body.append(bar);
   bar.addEventListener('click', (e) => {
     const b = (e.target as Element).closest('button');
-    if (b) ({ save, undo: doUndo, pages: pagesSheet, fleet: () => { commitEditing(); fleetSheet(fctx); }, hours: () => { commitEditing(); hoursSheet(hctx); }, more: moreSheet })[b.dataset.a as 'save']();
+    if (b) ({ save: openReview, undo: doUndo, pages: pagesSheet, fleet: () => { commitEditing(); fleetSheet(fctx); }, hours: () => { commitEditing(); hoursSheet(hctx); }, more: moreSheet })[b.dataset.a as 'save']();
   });
   ctxBar = document.createElement('div');
   ctxBar.className = 'ed-ctx ed-ui';
@@ -297,18 +310,22 @@ function updateBar() {
   const s = $<HTMLButtonElement>('[data-a=save]', bar)!;
   s.disabled = !dirty() || busy;
   s.classList.toggle('ed-dirty', dirty());
-  $('span:last-child', s)!.textContent = busy ? 'Speichert…' : dirty() ? 'Speichern' : 'Gespeichert';
+  const n = dirty() ? countChanges(state, lastSaved) : 0;
+  $('span:last-child', s)!.textContent = busy ? 'Speichert…' : dirty() ? (n ? `Speichern (${n})` : 'Speichern') : 'Gespeichert';
   $<HTMLButtonElement>('[data-a=undo]', bar)!.disabled = !undo.length;
 }
 /** Jede Änderung: Stand für „Rückgängig" merken, ändern, als Entwurf behalten (auch beim Seitenwechsel), anzeigen */
 function change(fn: () => void | false, show = true) {
   const before = JSON.stringify(state);
+  changedTexts = [];
   if (fn() === false) return;
   undo.push(before);
   if (undo.length > 60) undo.shift();
   draft.set(state);
   updateBar();
   if (show) render();
+  for (const [k, v] of changedTexts) queueTranslate({ state: () => state, change: (f) => change(f) }, k, v, lang);
+  changedTexts = [];
 }
 function doUndo() {
   const prev = undo.pop();
@@ -332,7 +349,10 @@ async function save() {
       await S.saveContent(snap, await publishPayload(snap, lastSaved));
       lastSaved = snap;
       undo = []; // Gespeichertes ist veröffentlicht: Rückgängig gilt ab hier
-    } else await S.saveContent(snap);
+    } else {
+      await S.saveContent(snap);
+      lastSaved = snap;
+    }
     draft.set(JSON.stringify(state) === snapJson ? null : state);
     toast(S.live ? 'Gespeichert ✓ – in wenigen Minuten für alle Besucher sichtbar.' : 'Gespeichert ✓ (Demo: in diesem Browser gespeichert)', 4200);
   } catch (e) {
@@ -351,40 +371,17 @@ async function save() {
  * veröffentlichte Änderung im Repository.
  */
 async function publishPayload(cur: EditState, prev: EditState): Promise<EditState> {
-  const out = emptyState();
-  const same = (a: unknown, b: unknown) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
   const flat = new Map<Lang, Record<string, string>>();
-  const baked = (l: Lang) => flat.get(l) ?? (flat.set(l, flatten(useT(l))), flat.get(l)!);
-  for (const l of LANGS) {
-    const a = prev.texts[l] ?? {};
-    const b = cur.texts[l] ?? {};
-    for (const k of new Set([...Object.keys(a), ...Object.keys(b)])) {
-      if (a[k] === b[k]) continue;
-      const v = b[k] ?? baked(l)[k];
-      if (v != null) (out.texts[l] ??= {})[k] = v;
-    }
-    const la = prev.lists[l] ?? {};
-    const lb = cur.lists[l] ?? {};
-    for (const p of new Set([...Object.keys(la), ...Object.keys(lb)])) {
-      if (same(la[p], lb[p])) continue;
-      const base = getPath(useT(l), p);
-      const v = lb[p] ?? (Array.isArray(base) ? { value: base, from: base.map((_, i) => i) } : null);
-      if (v) (out.lists[l] ??= {})[p] = v;
-    }
-  }
-  for (const k of new Set([...Object.keys(prev.photos), ...Object.keys(cur.photos)])) {
-    if (same(prev.photos[k], cur.photos[k])) continue;
-    out.photos[k] = cur.photos[k] ?? (prev.photos[k].hidden ? { hidden: false } : prev.photos[k]);
-  }
-  if (!same(prev.hours, cur.hours)) out.hours = cur.hours ?? baseWeek;
-  const fa = prev.fleet ?? {};
+  // Anhänger, wie gebaut: nur laden, wenn einer zurückgenommen wurde
   const fb = cur.fleet ?? {};
-  const changed = [...new Set([...Object.keys(fa), ...Object.keys(fb)])].filter((id) => !same(fa[id], fb[id]));
-  if (changed.length) {
-    const base = changed.some((id) => !(id in fb)) ? await loadBase() : null;
-    out.fleet = Object.fromEntries(changed.map((id) => [id, id in fb ? fb[id] : base!.entries.find((e) => e.id === id)?.data ?? null]));
-  }
-  return out;
+  const base = changedFleet(cur, prev).some((id) => !(id in fb)) ? await loadBase() : null;
+  return diffForPublish(cur, prev, {
+    texts: (l) => flat.get(l) ?? (flat.set(l, flatten(useT(l))), flat.get(l)!),
+    list: (l, p) => getPath(useT(l), p),
+    week: baseWeek,
+    cargo: CARGO_ITEMS,
+    fleet: (id) => base?.entries.find((e) => e.id === id)?.data,
+  });
 }
 
 /* ------------------------------------------------------------ Seite zum Bearbeiten vorbereiten */
@@ -435,7 +432,7 @@ document.addEventListener('focusout', (e) => {
 document.addEventListener('keydown', (e) => {
   if (!admin) return;
   const t = (e.target as Element).closest?.<HTMLElement>('.ed-text');
-  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 's') { e.preventDefault(); if (t) commitText(t); save(); return; }
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 's') { e.preventDefault(); if (t) commitText(t); openReview(); return; }
   if (t && e.key === 'Enter') { e.preventDefault(); t.blur(); }
   if (t && e.key === ' ') e.stopPropagation(); // Leertaste in Buttons und Fragen nicht als Klick
 });
@@ -452,6 +449,9 @@ function setText(el: HTMLElement, key: string, v: string) {
   for (const k of (el.dataset.ekeys ?? key).split(' ')) {
     if (norm(v) === norm(dict[k])) delete t[k];
     else t[k] = v;
+    // von Hand geändert: keine automatische Übersetzung mehr in dieser Sprache
+    if (state.auto?.length) state.auto = state.auto.filter((x) => x !== `${lang}:${k}`);
+    changedTexts.push([k, v]);
   }
 }
 function commitText(el: HTMLElement) {
@@ -701,6 +701,8 @@ function moreSheet() {
     <button class="ed-li" data-m="seo">G&nbsp; Google – Titel und Beschreibung dieser Seite</button>
     <button class="ed-li" data-m="hours">🕒 Öffnungszeiten</button>
     <button class="ed-li" data-m="fleet">🛻 Mietanhänger & Transporter</button>
+    <button class="ed-li" data-m="cargo">🧺 „Was transportieren Sie?“ (Auswahl im Finder)</button>
+    ${canTranslate ? `<button class="ed-li" data-m="tr">🌐 Automatisch in die anderen Sprachen übersetzen: <b>${autoOn() ? 'an' : 'aus'}</b></button>` : ''}
     <button class="ed-li" data-m="help">❓ Kurzanleitung</button>
     ${hidden.length ? `<button class="ed-li" data-m="unhide">🖼 Ausgeblendete Bilder wieder anzeigen (${hidden.length})</button>` : ''}
     ${S.live
@@ -712,7 +714,8 @@ function moreSheet() {
     b.onclick = () => {
       closeSheet();
       ({
-        seo: seoSheet, hours: () => hoursSheet(hctx), fleet: () => fleetSheet(fctx), help: helpSheet, resetp: resetPage, reset: resetAll, discard, logout,
+        seo: seoSheet, hours: () => hoursSheet(hctx), fleet: () => fleetSheet(fctx), cargo: () => cargoSheet(fctx), help: helpSheet,
+        tr: () => { setAuto(!autoOn()); toast(autoOn() ? 'Geänderte Texte werden automatisch übersetzt' : 'Automatische Übersetzung aus'); }, resetp: resetPage, reset: resetAll, discard, logout,
         unhide: () => { change(() => { for (const k of hidden) state.photos[k] = { hidden: false }; }); toast('Die Bilder erscheinen nach dem Speichern wieder.', 3600); },
       })[b.dataset.m as 'help']();
     };
@@ -727,7 +730,8 @@ function helpSheet() {
     <li><b>Öffnungszeiten:</b> unten auf <b>Zeiten</b> tippen (oder auf die Öffnungszeiten auf der Seite). Sie gelten überall: Tabelle, Fußzeile, Texte und Google.</li>
     <li><b>Mietanhänger:</b> unten auf <b>Anhänger</b> tippen – anlegen, Daten, Preise, Texte und Foto ändern, ausblenden oder löschen. Oder direkt auf eine Anhänger-Karte tippen.</li>
     <li><b>Google:</b> unter „Mehr“ Titel, Beschreibung und Bildbeschreibungen pro Seite und Sprache.</li>
-    <li><b>Fertig?</b> Auf <b>Speichern</b> tippen${S.live ? ' – nach wenigen Minuten sehen alle Besucher die Änderungen' : ''}. Vertippt? <b>Rückgängig</b>.</li></ol>`);
+    ${canTranslate ? '<li><b>Andere Sprachen:</b> Ein geänderter Text wird automatisch in die anderen Sprachen übersetzt (abschaltbar unter „Mehr“). Prüfen Sie die Übersetzungen beim Speichern.</li>' : ''}
+    <li><b>Fertig?</b> Auf <b>Speichern</b> tippen: Sie sehen alle Änderungen und können Texte dort noch verbessern, dann „${S.live ? 'Jetzt veröffentlichen' : 'Speichern'}“${S.live ? ' – nach wenigen Minuten sehen alle Besucher die Änderungen' : ''}. Vertippt? <b>Rückgängig</b>.</li></ol>`);
 }
 async function resetPage() {
   if (!(await confirmBox('Seite zurücksetzen', 'Alle Änderungen auf dieser Seite in dieser Sprache werden verworfen. Kopf- und Fußbereich bleiben, wie sie sind.', 'Zurücksetzen', true))) return;

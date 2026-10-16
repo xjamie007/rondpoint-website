@@ -5,7 +5,7 @@ const en: Dict = {
   meta: {
     lang: 'English',
     siteName: 'Garage Um Rond Point',
-    ogAlt: 'Garage Um Rond Point at the Erpeldange roundabout',
+    ogAlt: 'Garage Um Rond Point in Erpeldange',
   },
 
   nav: {
@@ -44,7 +44,7 @@ const en: Dict = {
   },
 
   hero: {
-    h1: 'The garage at the Erpeldange roundabout',
+    h1: 'Garage Um Rond Point in Erpeldange',
     sub: 'Hire a trailer or a van, find your next car, have yours serviced and repaired. At 1, rue du Viaduc, next to the Aral station, between Ettelbruck and Diekirch.',
     ctaFinder: 'Find a trailer',
     ctaCars: 'See the cars',
@@ -157,7 +157,7 @@ const en: Dict = {
   cars: {
     homeH2: 'Our cars in stock',
     h1: 'New and used cars',
-    lead: 'All the cars in stock at Garage Um Rond Point, at the Erpeldange roundabout. Call us or message us on WhatsApp before you come. Test drives by appointment.',
+    lead: 'All the cars in stock at Garage Um Rond Point in Erpeldange. Call us or message us on WhatsApp before you come. Test drives by appointment.',
     seeAll: { one: 'See the car', other: 'See all {n} cars' },
     year: 'Year',
     km: 'Kilometres',
@@ -377,7 +377,7 @@ const en: Dict = {
   access: {
     h2: 'Find us',
     address: 'Address',
-    landmark: 'At the roundabout, next to the Aral station, between Ettelbruck and Diekirch.',
+    landmark: 'Next to the Aral station, between Ettelbruck and Diekirch.',
     hoursH3: 'Opening hours',
     languagesH3: 'Languages',
     languages: 'We speak Luxembourgish, French, German, English and Portuguese.',
@@ -523,7 +523,7 @@ const en: Dict = {
     },
     contact: {
       h1: 'Contact and directions',
-      lead: 'Garage Um Rond Point, 1, rue du Viaduc, L-9147 Erpeldange-sur-Sûre. At the roundabout, next to the Aral station. Phone +352 81 05 41, WhatsApp +352 621 373 272, info@rondpoint.lu. We speak Luxembourgish, French, German, English and Portuguese.',
+      lead: 'Garage Um Rond Point, 1, rue du Viaduc, L-9147 Erpeldange-sur-Sûre. Next to the Aral station. Phone +352 81 05 41, WhatsApp +352 621 373 272, info@rondpoint.lu. We speak Luxembourgish, French, German, English and Portuguese.',
       waysH2: 'How to reach us',
       phone: 'Phone',
       whatsapp: 'WhatsApp',
@@ -640,7 +640,7 @@ const en: Dict = {
     home: {
       title: 'Garage Um Rond Point Erpeldange – trailers, cars, workshop',
       description:
-        'At the Erpeldange roundabout, between Ettelbruck and Diekirch: trailer hire in Luxembourg, van hire, new and used cars, mechanical repairs and bodywork.',
+        'At Um Rond Point in Erpeldange, between Ettelbruck and Diekirch: trailer hire in Luxembourg, van hire, new and used cars, mechanical repairs and bodywork.',
     },
     rental: {
       title: 'Trailer hire Luxembourg – Erpeldange, near Ettelbruck',
@@ -657,15 +657,15 @@ const en: Dict = {
       },
       description: {
         'porte-voiture':
-          'Car trailer rental at the Erpeldange roundabout in Luxembourg, near Ettelbruck: dimensions, payload, price and the driving licence required for each trailer.',
+          'Car trailer rental at Um Rond Point in Erpeldange, Luxembourg, near Ettelbruck: dimensions, payload, price and the driving licence required for each trailer.',
         'porte-moto':
-          'Hire a motorbike trailer at the roundabout in Erpeldange, near Ettelbruck: dimensions, payload, price and the driving licence required for each trailer.',
+          'Hire a motorbike trailer at Um Rond Point in Erpeldange, near Ettelbruck: dimensions, payload, price and the driving licence required for each trailer.',
         benne:
-          'Hire a tipper trailer for soil, rubble, sand or garden waste at the Erpeldange roundabout, near Ettelbruck: payload, price and the driving licence required.',
+          'Hire a tipper trailer for soil, rubble, sand or garden waste at Um Rond Point in Erpeldange, near Ettelbruck: payload, price and the driving licence required.',
         frigorifique:
-          'Refrigerated trailer hire for your party or festival at the Erpeldange roundabout, near Ettelbruck: volume, temperature, price and the licence you need.',
+          'Refrigerated trailer hire for your party or festival at Um Rond Point in Erpeldange, near Ettelbruck: volume, temperature, price and the licence you need.',
         camionnette:
-          'Van hire near Ettelbruck for moving house or transporting equipment, at the Erpeldange roundabout. Up to 3,500 kg, a B licence is enough. Price per day.',
+          'Van hire near Ettelbruck for moving house or transporting equipment, at Um Rond Point in Erpeldange. Up to 3,500 kg, a B licence is enough. Price per day.',
       },
     },
     cars: {
@@ -687,7 +687,7 @@ const en: Dict = {
     workshop: {
       title: 'Car repair and bodywork in Erpeldange | Um Rond Point',
       description:
-        'Car servicing, diagnostics, repairs, bodywork and paintwork at the Erpeldange roundabout, near Ettelbruck and Diekirch. Request your appointment online.',
+        'Car servicing, diagnostics, repairs, bodywork and paintwork at Um Rond Point in Erpeldange, near Ettelbruck and Diekirch. Request your appointment online.',
     },
     sodablast: {
       title: 'Soda blasting in Luxembourg | Garage Um Rond Point',
@@ -707,7 +707,7 @@ const en: Dict = {
     contact: {
       title: 'Contact and directions | Garage Um Rond Point, Erpeldange',
       description:
-        '1, rue du Viaduc in Erpeldange-sur-Sûre, at the roundabout by the Aral. {hours}. Phone +352 81 05 41.',
+        '1, rue du Viaduc in Erpeldange-sur-Sûre, next to the Aral station. {hours}. Phone +352 81 05 41.',
     },
     thanks: {
       title: 'Request sent | Garage Um Rond Point, Erpeldange-sur-Sûre',
@@ -801,7 +801,7 @@ const en: Dict = {
   /** Kurzes „Über uns“ auf der Startseite (nur bestätigte Angaben: Lage, Leistungen, Sprachen, Öffnungstage) */
   about: {
     h2: 'About us',
-    text: 'Garage Um Rond Point is your garage on the Erpeldange roundabout, between Ettelbruck and Diekirch. Trailer and van hire, cars and trailers for sale, workshop and garden machinery: all at one address. Drop by – we speak your language.',
+    text: 'Garage Um Rond Point is your garage in Erpeldange, between Ettelbruck and Diekirch. Trailer and van hire, cars and trailers for sale, workshop and garden machinery: all at one address. Drop by – we speak your language.',
     link: 'How to find us',
     photoAlt: 'Mechanic holding out a car key',
   },
@@ -836,7 +836,7 @@ const en: Dict = {
       diagnosticH: 'Fault diagnosis',
       diagnostic: 'A warning light comes on, an unusual noise, the car is hard to start: describe what you notice and since when. Diagnosis finds the cause before anything is repaired.',
       reparationH: 'Mechanical repairs',
-      reparation: 'After the diagnosis, we repair your car or van in our workshop at the Erpeldange roundabout.',
+      reparation: 'After the diagnosis, we repair your car or van in our workshop in Erpeldange.',
       carrosserieH: 'Bodywork and paint',
       carrosserie: 'After a minor collision, we repair the bodywork and repaint the damaged parts. Send us photos of the damage on WhatsApp for a first opinion.',
       processH2: 'How to book an appointment',
@@ -882,7 +882,7 @@ const en: Dict = {
         s1: {
           h: 'Your local car garage between Ettelbruck and Diekirch',
           p: [
-            'Garage Um Rond Point is at {address}, right at the Erpeldange roundabout, next to the Aral station. If you live in Erpeldange-sur-Sûre, Ettelbruck, Diekirch or anywhere in the Nordstad, the workshop is just a few minutes from home.',
+            'Garage Um Rond Point is at {address}, right next to the Aral station. If you live in Erpeldange-sur-Sûre, Ettelbruck, Diekirch or anywhere in the Nordstad, the workshop is just a few minutes from home.',
             'We speak Luxembourgish, French, German, English and Portuguese, so you can explain the problem with your car in whichever language suits you best.',
           ],
         },
@@ -936,7 +936,7 @@ const en: Dict = {
         },
         q4: {
           q: 'Where is the workshop?',
-          a: 'At {address}, at the Erpeldange roundabout, next to the Aral station, between Ettelbruck and Diekirch.',
+          a: 'At {address}, next to the Aral station, between Ettelbruck and Diekirch.',
         },
         q5: {
           q: 'Which languages can I explain the problem in?',
@@ -974,7 +974,7 @@ const en: Dict = {
         s4: {
           h: 'Soda blasting in Erpeldange, Luxembourg',
           p: [
-            'Our workshop is at the Erpeldange-sur-Sûre roundabout, between Ettelbruck and Diekirch, easy to reach from anywhere in the north of Luxembourg. Whether it is a single part or a complete car, we arrange an appointment at the garage together.',
+            'Our workshop is in Erpeldange-sur-Sûre, between Ettelbruck and Diekirch, easy to reach from anywhere in the north of Luxembourg. Whether it is a single part or a complete car, we arrange an appointment at the garage together.',
           ],
         },
       },
@@ -1003,7 +1003,7 @@ const en: Dict = {
         s1: {
           h: 'Garden and forestry machinery in the Nordstad',
           p: [
-            'To look after your garden, your land or your woodland, you will find machines at Garage Um Rond Point, mainly from Honda and Stihl, plus a workshop to repair them. The garage is at the Erpeldange roundabout, between Ettelbruck and Diekirch.',
+            'To look after your garden, your land or your woodland, you will find machines at Garage Um Rond Point, mainly from Honda and Stihl, plus a workshop to repair them. The garage is in Erpeldange, between Ettelbruck and Diekirch.',
           ],
         },
         s2: {
@@ -1054,7 +1054,7 @@ const en: Dict = {
         },
         q4: {
           q: 'Where is the garage?',
-          a: 'At {address}, at the Erpeldange roundabout, next to the Aral station.',
+          a: 'At {address}, next to the Aral station.',
         },
       },
     },
@@ -1064,7 +1064,7 @@ const en: Dict = {
           h: 'Saris, Humbaur and WM Meyer trailers in Erpeldange',
           p: [
             'We sell Saris, Humbaur and WM Meyer trailers to private and business customers. Tell us what you carry and we will help you find the model that suits your car and your licence.',
-            'The garage is at the Erpeldange-sur-Sûre roundabout, between Ettelbruck and Diekirch.',
+            'Garage Um Rond Point is in Erpeldange-sur-Sûre, between Ettelbruck and Diekirch.',
           ],
         },
         s2: {
@@ -1107,7 +1107,7 @@ const en: Dict = {
         s1: {
           h: 'Buying a car at Garage Um Rond Point',
           p: [
-            'All the cars on this page are in stock with us, at the Erpeldange roundabout. The list is updated every morning from our listings: you can see the price, mileage, year and photos of each car.',
+            'All the cars on this page are in stock with us in Erpeldange. The list is updated every morning from our listings: you can see the price, mileage, year and photos of each car.',
           ],
           items: [
             'Choose a car from the list and open its details page.',
@@ -1136,7 +1136,7 @@ const en: Dict = {
         },
         q2: {
           q: 'Where can I see the cars?',
-          a: 'At the garage, {address}, at the Erpeldange roundabout. {hours}',
+          a: 'At Garage Um Rond Point, {address}. {hours}',
         },
         q3: {
           q: 'Are your cars also on LuxAuto and AutoScout24?',
@@ -1157,7 +1157,7 @@ const en: Dict = {
         s2: {
           h: 'Getting to the garage',
           p: [
-            'The garage is at {address}, at the Erpeldange-sur-Sûre roundabout, next to the Aral station. Coming from Ettelbruck or Diekirch? The roundabout is on your way. For exact directions, open Google Maps from this page.',
+            'Garage Um Rond Point is at {address}, next to the Aral station. Coming from Ettelbruck or Diekirch? The garage is on your way. For exact directions, open Google Maps from this page.',
           ],
         },
       },
@@ -1178,7 +1178,7 @@ const en: Dict = {
         s1: {
           h: 'Trailer hire in the Nordstad',
           p: [
-            'At the Erpeldange roundabout, between Ettelbruck and Diekirch, you can hire a trailer or a van close to home. Our guide above shows you in a few clicks which trailer suits what you are carrying and whether your licence is enough.',
+            'At Um Rond Point in Erpeldange, between Ettelbruck and Diekirch, you can hire a trailer or a van close to home. Our guide above shows you in a few clicks which trailer suits what you are carrying and whether your licence is enough.',
           ],
         },
         s2: {

@@ -482,4 +482,28 @@ const visibleFaq = presentation ? faqKeys.filter((k) => !isUnconfirmed(t.faq.ite
   @media (min-width: 64rem) { .quotes { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
   blockquote { margin: 0; font-size: 1.1875rem; line-height: 1.5; }
   cite { font-style: normal; color: var(--color-asphalt); }
+
+  /* ---------- Handy: kleiner und ruhiger (Feedback Okt. 2026) ---------- */
+  @media (max-width: 47.99rem) {
+    .hero { padding-block: 8px 40px; }
+    .hero-grid { gap: 24px; }
+    .hero-text { gap: 16px; }
+    .hero-h1 { font-size: clamp(1.875rem, 1.2rem + 3.6vw, 2.5rem); }
+    .hero-text .t-lead { font-size: 1rem; line-height: 1.5; }
+    .hero-ctas { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .hero-ctas :global(.btn) { min-height: 48px; padding-inline: 10px; font-size: 0.9375rem; }
+    .hero-media :global(.ph) { aspect-ratio: 16 / 10 !important; }
+    .offer a { min-height: 60px; padding: 10px 10px 12px; gap: 10px; }
+    .offer-s { display: none; }
+    .offer-t { font-size: 0.9375rem; }
+    /* Autos und Leistungen: zwei nebeneinander */
+    .cars3 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 12px; }
+    .svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .svc-body { padding: 14px 12px 16px; gap: 8px; }
+    .svc h3 { font-size: 1rem; font-stretch: 112%; }
+    .svc-points { display: none; }
+    .svc-num { font-size: 1.5rem; left: 12px; bottom: 10px; }
+    .svc-more { font-size: 0.8125rem; gap: 4px; }
+    .svc-more :global(svg) { width: 16px; height: 16px; }
+  }
 </style>

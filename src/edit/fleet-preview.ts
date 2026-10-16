@@ -8,7 +8,9 @@ import { escapeHtml } from '@/i18n';
 import Finder, { type FinderProps } from '@/components/finder/Finder';
 import { bySmallest, cargoOptions, hiddenReason, toFleetItem, type FleetItem, type FleetSource } from '@/lib/fleet';
 import { fleetView, maxDiagramTotal, type FleetView } from '@/lib/fleet-view';
-import { isUpload, rows, type Base, type FleetCtx } from './fleet';
+import { cargoNow, isUpload, rows, type Base, type FleetCtx } from './fleet';
+import { cargoLabels } from '@/lib/cargo';
+import { useT } from '@/i18n';
 import { $, $$ } from './ui';
 
 /** Astro-Island-Props (Format [typ, wert]) lesen */
@@ -62,7 +64,10 @@ export function preview(ctx: FleetCtx, base: Base) {
   // Finder (ohne Autos, wie FinderSection)
   const forFinder = all.filter((i) => i.category !== 'voiture');
   for (const h of hosts) {
-    h.root.render(createElement(Finder, { ...h.props, items: forFinder, cargoOptions: cargoOptions(forFinder), maxTotalM: maxDiagramTotal(forFinder) }));
+    // Ladungsarten wie im Admin-Bereich eingestellt (Reihenfolge, Beschriftung)
+    const cargo = cargoNow(ctx);
+    const strings = { ...h.props.strings, cargo: cargoLabels(cargo, ctx.lang, useT(ctx.lang).finder.cargo as Record<string, string>) };
+    h.root.render(createElement(Finder, { ...h.props, strings, items: forFinder, cargoOptions: cargoOptions(forFinder, cargo.map((c) => c.id)), maxTotalM: maxDiagramTotal(forFinder) }));
   }
 
   // Tabelle (wie FleetTable.astro)

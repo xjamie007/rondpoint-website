@@ -23,6 +23,8 @@
       "migrations_dir": "worker/migrations"
     }
   ],
+  // Übersetzung im Admin-Bereich (Workers AI, im Free-Plan enthalten)
+  "ai": { "binding": "AI" },
   // täglich aufräumen: Anfragen nach 90 Tagen, IP-Hashes und Fehlversuche nach 24 Stunden
   "triggers": { "crons": ["30 3 * * *"] },
   "vars": {

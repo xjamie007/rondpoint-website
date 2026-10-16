@@ -6,7 +6,8 @@ import { assessTrailer, assessVan, fits, LIMITS, type Assessment, type CarData, 
 import type { Lang } from '../i18n/config.ts';
 
 export const CARGO_ORDER = ['voiture', 'moto', 'terre', 'fete', 'meubles', 'materiel'] as const;
-export type Cargo = (typeof CARGO_ORDER)[number];
+/** Kennung einer Ladungsart (src/content/cargo.json); CARGO_ORDER sind die ursprünglichen */
+export type Cargo = string;
 
 export type Category =
   | 'porte-voiture'
@@ -136,8 +137,8 @@ export interface Evaluation {
 }
 
 /** Nur Ladungsarten, für die mindestens ein aktives Fahrzeug passt. */
-export function cargoOptions(items: FleetItem[]): Cargo[] {
-  return CARGO_ORDER.filter((c) => items.some((i) => i.suitableFor.includes(c)));
+export function cargoOptions(items: FleetItem[], order: readonly string[] = CARGO_ORDER): Cargo[] {
+  return order.filter((c) => items.some((i) => i.suitableFor.includes(c)));
 }
 
 export function evaluate(items: FleetItem[], state: FinderState): Evaluation {

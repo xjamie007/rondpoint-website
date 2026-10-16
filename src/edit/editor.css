@@ -148,3 +148,20 @@
 .ed-fact { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
 .ed-fact .ed-btn { min-height: 44px; padding: 0 14px; font-size: 15px; }
 @media (max-width: 600px) { .ed-fitem { grid-template-columns: 64px 1fr; } .ed-fact { grid-column: 1 / -1; justify-content: stretch; } .ed-fact .ed-btn { flex: 1; } }
+
+/* ---------- Übersicht vor dem Speichern ---------- */
+.ed-rvs { display: flex; flex-direction: column; gap: 10px; }
+.ed-rv { padding: 12px 14px; background: #f6f6f6; border-radius: 12px; display: flex; flex-direction: column; gap: 8px; }
+.ed-rv-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.ed-rv-head .ed-mini { margin-left: auto; min-height: 36px; }
+.ed-rv-head .ed-mini + .ed-mini { margin-left: 0; }
+.ed-rv-before { margin: 0; font-size: 14px; color: #555; }
+.ed-rv-before small { font-weight: 700; color: #777; margin-right: 4px; }
+.ed-rv textarea { width: 100%; min-height: 50px; padding: 10px 12px; border: 1.5px solid #ccc; border-radius: 10px; font: 400 16px/1.45 inherit; color: #111; background: #fff; resize: vertical; }
+.ed-rv textarea:focus { border-color: #1863dc; outline: 3px solid rgb(24 99 220 / 0.2); }
+.ed-rv-note { margin: 0; font-style: italic; color: #555; }
+.ed-rv-list { margin: 0; padding-left: 20px; font-size: 15px; }
+.ed-rv-photo img { max-width: 220px; max-height: 140px; border-radius: 8px; display: block; }
+.ed-tag-auto { background: #fff3cd; color: #7a5200; }
+.ed-crow { display: flex; flex-direction: column; gap: 8px; padding: 12px; background: #f6f6f6; border-radius: 12px; }
+.ed-crow .ed-fact { justify-content: flex-start; }

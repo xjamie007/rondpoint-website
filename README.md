@@ -304,6 +304,19 @@ Ohne Schlüssel kann niemand speichern. Die Seite `/admin/` ist für Suchmaschin
   - Die Prüfregeln sind dieselben wie beim Build (`supabase/functions/publish/convert.ts`, z. B. höchstens 3 500 kg). Ein gespeichertes Fahrzeug lässt den Build also nie scheitern.
   - Vorschau sofort auf der Startseite, der Seite „Mieten“ (Finder und Tabelle) und den Kategorieseiten.
 - **Google (unter „Mehr“):** Titel und Beschreibung der Seite mit Zeichenzähler und Vorschau, dazu alle Bildbeschreibungen der Seite.
+- **„Was transportieren Sie?“ (unter „Anhänger“ oder „Mehr“):**
+  - Die Ladungsarten im Finder umbenennen, umsortieren, entfernen und neu anlegen, in fünf Sprachen. Sie stehen in `src/content/cargo.json`.
+  - Beim Anhänger unter „Geeignet für“ ankreuzen.
+- **Übersicht vor dem Speichern:**
+  - „Speichern“ zeigt zuerst alle Änderungen seit dem letzten Speichern.
+  - Texte lassen sich dort noch verbessern, jede Änderung einzeln verwerfen.
+  - Öffnungszeiten, Anhänger und Ladungsarten öffnen ihr Fenster.
+- **Automatisch übersetzen (nur auf Cloudflare):**
+  - Ein geänderter Text wird im Hintergrund in die anderen vier Sprachen übersetzt.
+  - Das macht Workers AI, Modell Gemma 3, über `/api/translate` im Worker (`worker/translate.ts`), im Free-Plan enthalten.
+  - Platzhalter, Link-Ziele und „Um Rond Point“ bleiben. Eine Übersetzung, bei der sie fehlen, wird verworfen.
+  - Übersetzte Texte sind in der Übersicht als „automatisch übersetzt – bitte prüfen“ markiert. Von Hand geänderte Sprachen werden nie überschrieben.
+  - Abschaltbar unter „Mehr“. Für Namen und Beschreibungen der Anhänger und für die Ladungsarten gibt es den Knopf „Leere Sprachen automatisch übersetzen“.
 - **Die Leiste unten:** **Speichern · Rückgängig · Seiten · Anhänger · Zeiten · Mehr**. Nicht gespeicherte Änderungen bleiben beim Seitenwechsel erhalten.
 
 **Nicht hier:** Kontaktdaten und der Fahrzeugbestand (Autos kommen aus MovingCar).

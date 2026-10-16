@@ -58,8 +58,10 @@ export function schemas(today: string) {
         from: notPast,
         to: notPast,
         licence: z.enum(['', 'B', 'B96', 'BE']).optional().transform((v) => v || undefined),
+        // Kennung einer Ladungsart (src/content/cargo.json, im Admin-Bereich erweiterbar)
         cargo: z
-          .enum(['', 'voiture', 'moto', 'terre', 'fete', 'meubles', 'materiel'])
+          .string()
+          .regex(/^([a-z0-9][a-z0-9-]{0,30})?$/)
           .optional()
           .transform((v) => v || undefined),
         message: optText(3000),

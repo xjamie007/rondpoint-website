@@ -118,6 +118,23 @@ describe('Admin-Bereich: Änderungen → Dateien', () => {
   });
 });
 
+describe('Admin-Bereich: Ladungsarten', () => {
+  it('neue Ladungsart mit Beschriftung → cargo.json; Prüfregeln', () => {
+    const cargo = [{ id: 'voiture' }, { id: 'velo', label: { de: 'Ein Fahrrad', fr: ' Un vélo ' } }];
+    const { files, summary } = toFiles(state({ cargo }), repo());
+    expect(files[0].path).toBe('src/content/cargo.json');
+    expect(JSON.parse(files[0].text!).items).toEqual([{ id: 'voiture' }, { id: 'velo', label: { de: 'Ein Fahrrad', fr: 'Un vélo' } }]);
+    expect(summary).toEqual(['Ladungsarten']);
+    expect(() => validate(state({ cargo: [{ id: 'velo' }] }))).toThrow(/Beschriftung fehlt/);
+    expect(() => validate(state({ cargo: [{ id: 'moto' }, { id: 'moto' }] }))).toThrow(/doppelte/);
+    expect(() => validate(state({ cargo: [] }))).toThrow(/1 bis 20/);
+    // unveränderte Standardliste → keine Datei
+    expect(toFiles(state({ cargo: CARGO.map((id) => ({ id })) }), repo()).files).toEqual([]);
+    // Anhänger mit eigener Ladungsart ist gültig
+    expect(fleetErrors({ ...samples[0][1], suitableFor: ['velo', 'moto'] })).toEqual({});
+  });
+});
+
 describe('Build: Listen aus lists.json, Öffnungszeiten an einer Stelle', () => {
   it('applyLists ersetzt nur echte Textlisten', () => {
     const d = applyLists(fr, { 'details.points.workshop': ['Eins', 'Zwei'], 'hero.h1': ['x'], 'nope.list': ['y'] });
