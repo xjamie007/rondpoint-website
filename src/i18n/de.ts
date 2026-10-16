@@ -315,7 +315,7 @@ const de: Dict = {
     },
     trailers: {
       h3: 'Anhänger kaufen',
-      text: 'Wir verkaufen Anhänger von Saris, Humbaur und WM Meyer, für Privat- und Geschäftskunden. Wir helfen Ihnen, einen Anhänger zu wählen, den Ihr Auto ziehen darf und für den Ihr Führerschein reicht.',
+      text: 'Wir verkaufen Anhänger von Saris, Humbaur, WM Meyer und Tohaco, für Privat- und Geschäftskunden. Wir helfen Ihnen, einen Anhänger zu wählen, den Ihr Auto ziehen darf und für den Ihr Führerschein reicht.',
       link: 'Unsere Anhänger zum Kauf',
     },
     photoMissing: '[FEHLT — Foto]',
@@ -414,6 +414,7 @@ const de: Dict = {
     today: 'heute',
     and: 'und',
     holidays: 'Feiertage: [UNBESTÄTIGT — Feiertage vermutlich geschlossen]',
+    holidaysClosed: 'An Feiertagen geschlossen.',
     short: 'Montag bis Freitag {weekday}, Samstag {saturday}',
   },
 
@@ -503,7 +504,7 @@ const de: Dict = {
     },
     trailersForSale: {
       h1: 'Anhänger kaufen in Erpeldange',
-      lead: 'Wir verkaufen Anhänger von Saris, Humbaur und WM Meyer, für Privat- und Geschäftskunden.',
+      lead: 'Als offizieller Händler verkaufen wir Anhänger von Saris, Humbaur, WM Meyer und Tohaco, für Privat- und Geschäftskunden.',
       dealerMissing: '[UNBESTÄTIGT — Händlerstatus Saris, Humbaur, WM Meyer; Logos nur mit Freigabe]',
       adviceH2: 'Welcher Führerschein für welchen Anhänger?',
       advice:
@@ -697,9 +698,9 @@ const de: Dict = {
         'Sodastrahlen entfernt Lack und Schmutz, ohne die Oberfläche zu beschädigen: Oldtimer, Felgen, mechanische Teile. In Erpeldange zwischen Ettelbruck und Diekirch.',
     },
     trailersForSale: {
-      title: 'Anhänger kaufen in Luxemburg: Humbaur, Saris, WM Meyer',
+      title: 'Anhänger kaufen: Humbaur, Saris, WM Meyer und Tohaco',
       description:
-        'Kaufen Sie Ihren Anhänger in Erpeldange: Humbaur, Saris oder WM Meyer. Wir helfen Ihnen, Größe und Gewicht passend zu Ihrem Auto und Führerschein zu wählen.',
+        'Offizieller Händler in Erpeldange: Anhänger von Humbaur, Saris, WM Meyer und Tohaco. Wir beraten Sie zu Größe, Gewicht und dem passenden Führerschein.',
     },
     garden: {
       title: 'Garten- und Forstgeräte von Honda und Stihl in Erpeldange',
@@ -797,7 +798,7 @@ const de: Dict = {
       rental: 'Anhänger und Transporter',
       cars: 'Bestand jeden Morgen aktuell',
       workshop: 'Mechanik und Karosserie',
-      trailers: 'Saris, Humbaur, WM Meyer',
+      trailers: 'Saris, Humbaur, WM Meyer, Tohaco',
       garden: 'Honda und Stihl',
       sodablast: 'Schonendes Entlacken',
     },
@@ -829,7 +830,7 @@ const de: Dict = {
         'Vor allem Honda und Stihl',
       ],
       trailers: [
-        'Anhänger von Saris, Humbaur und WM Meyer',
+        'Anhänger von Saris, Humbaur, WM Meyer und Tohaco',
         'Für Privatleute und Betriebe',
         'Beratung zu Gewicht und Führerschein',
       ],
@@ -1065,9 +1066,9 @@ const de: Dict = {
     trailersForSale: {
       sections: {
         s1: {
-          h: 'Saris, Humbaur und WM Meyer in Erpeldange',
+          h: 'Saris, Humbaur, WM Meyer und Tohaco in Erpeldange',
           p: [
-            'Wir verkaufen Anhänger der Marken Saris, Humbaur und WM Meyer, für Privat- und Geschäftskunden. Sagen Sie uns, was Sie transportieren: Wir helfen Ihnen, das Modell zu finden, das zu Ihrem Auto und Ihrem Führerschein passt.',
+            'Wir verkaufen Anhänger der Marken Saris, Humbaur, WM Meyer und Tohaco, für Privat- und Geschäftskunden. Sagen Sie uns, was Sie transportieren: Wir helfen Ihnen, das Modell zu finden, das zu Ihrem Auto und Ihrem Führerschein passt.',
             'Die Garage Um Rond Point liegt in Erpeldange-sur-Sûre, zwischen Ettelbruck und Diekirch.',
           ],
         },
@@ -1098,7 +1099,7 @@ const de: Dict = {
       faq: {
         q1: {
           q: 'Welche Anhängermarken verkaufen Sie?',
-          a: 'Saris, Humbaur und WM Meyer.',
+          a: 'Saris, Humbaur, WM Meyer und Tohaco.',
         },
         q2: {
           q: 'Verkaufen Sie auch an Geschäftskunden?',

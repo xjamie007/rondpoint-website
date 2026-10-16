@@ -315,7 +315,7 @@ const pt: Dict = {
     },
     trailers: {
       h3: 'Atrelados à venda',
-      text: 'Vendemos atrelados Saris, Humbaur e WM Meyer, para particulares e profissionais. Ajudamos a escolher um atrelado que o seu carro possa rebocar e que a sua carta de condução permita.',
+      text: 'Vendemos atrelados Saris, Humbaur, WM Meyer e Tohaco, para particulares e profissionais. Ajudamos a escolher um atrelado que o seu carro possa rebocar e que a sua carta de condução permita.',
       link: 'Os nossos atrelados à venda',
     },
     photoMissing: '[FEHLT — Foto]',
@@ -414,6 +414,7 @@ const pt: Dict = {
     today: 'hoje',
     and: 'e',
     holidays: 'Feriados: [UNBESTÄTIGT — Feiertage vermutlich geschlossen]',
+    holidaysClosed: 'Encerrado nos feriados.',
     short: 'De segunda a sexta {weekday}, sábado {saturday}',
   },
 
@@ -503,7 +504,7 @@ const pt: Dict = {
     },
     trailersForSale: {
       h1: 'Atrelados à venda em Erpeldange',
-      lead: 'Vendemos atrelados Saris, Humbaur e WM Meyer, para particulares e profissionais.',
+      lead: 'Como revendedor oficial, vendemos atrelados Saris, Humbaur, WM Meyer e Tohaco a particulares e profissionais.',
       dealerMissing: '[UNBESTÄTIGT — Händlerstatus Saris, Humbaur, WM Meyer; Logos nur mit Freigabe]',
       adviceH2: 'Que carta para que atrelado?',
       advice:
@@ -695,9 +696,9 @@ const pt: Dict = {
         'O sodablast remove tinta, gordura e sujidade sem danificar a superfície: carro antigo, jantes, peças mecânicas. Em Erpeldange, entre Ettelbruck e Diekirch.',
     },
     trailersForSale: {
-      title: 'Atrelados à venda: Humbaur, Saris, WM Meyer | Erpeldange',
+      title: 'Atrelados à venda: Humbaur, Saris, WM Meyer, Tohaco',
       description:
-        'Compre o seu atrelado em Erpeldange: Humbaur, Saris ou WM Meyer. Ajudamos a escolher o tamanho e o peso adequados ao seu carro e à sua carta de condução.',
+        'Revendedor oficial em Erpeldange: atrelados Humbaur, Saris, WM Meyer e Tohaco. Ajudamos a escolher o tamanho e o peso certos para o seu carro e a sua carta.',
     },
     garden: {
       title: 'Máquinas de jardim e floresta Honda e Stihl em Erpeldange',
@@ -793,7 +794,7 @@ const pt: Dict = {
       rental: 'Atrelados e carrinhas',
       cars: 'Stock atualizado todas as manhãs',
       workshop: 'Mecânica e chaparia',
-      trailers: 'Saris, Humbaur, WM Meyer',
+      trailers: 'Saris, Humbaur, WM Meyer, Tohaco',
       garden: 'Honda e Stihl',
       sodablast: 'Decapagem suave',
     },
@@ -825,7 +826,7 @@ const pt: Dict = {
         'Sobretudo Honda e Stihl',
       ],
       trailers: [
-        'Atrelados Saris, Humbaur e WM Meyer',
+        'Atrelados Saris, Humbaur, WM Meyer e Tohaco',
         'Para particulares e profissionais',
         'Conselhos sobre peso e carta de condução',
       ],
@@ -1061,9 +1062,9 @@ const pt: Dict = {
     trailersForSale: {
       sections: {
         s1: {
-          h: 'Saris, Humbaur e WM Meyer em Erpeldange',
+          h: 'Saris, Humbaur, WM Meyer e Tohaco em Erpeldange',
           p: [
-            'Vendemos atrelados das marcas Saris, Humbaur e WM Meyer, tanto para particulares como para profissionais. Diga-nos o que transporta: ajudamos a encontrar o modelo adequado ao seu carro e à sua carta de condução.',
+            'Vendemos atrelados das marcas Saris, Humbaur, WM Meyer e Tohaco, tanto para particulares como para profissionais. Diga-nos o que transporta: ajudamos a encontrar o modelo adequado ao seu carro e à sua carta de condução.',
             'A Garage Um Rond Point fica em Erpeldange-sur-Sûre, entre Ettelbruck e Diekirch.',
           ],
         },
@@ -1094,7 +1095,7 @@ const pt: Dict = {
       faq: {
         q1: {
           q: 'Que marcas de atrelados vendem?',
-          a: 'Saris, Humbaur e WM Meyer.',
+          a: 'Saris, Humbaur, WM Meyer e Tohaco.',
         },
         q2: {
           q: 'Também vendem a profissionais?',

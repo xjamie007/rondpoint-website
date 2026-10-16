@@ -315,7 +315,7 @@ const en: Dict = {
     },
     trailers: {
       h3: 'Trailers for sale',
-      text: 'We sell Saris, Humbaur and WM Meyer trailers to private and business customers. We help you choose a trailer that your car can tow and that your licence allows.',
+      text: 'We sell Saris, Humbaur, WM Meyer and Tohaco trailers to private and business customers. We help you choose a trailer that your car can tow and that your licence allows.',
       link: 'Our trailers for sale',
     },
     photoMissing: '[FEHLT — Foto]',
@@ -414,6 +414,7 @@ const en: Dict = {
     today: 'today',
     and: 'and',
     holidays: 'Public holidays: [UNBESTÄTIGT — Feiertage vermutlich geschlossen]',
+    holidaysClosed: 'Closed on public holidays.',
     short: 'Monday to Friday {weekday}, Saturday {saturday}',
   },
 
@@ -503,7 +504,7 @@ const en: Dict = {
     },
     trailersForSale: {
       h1: 'Trailers for sale in Erpeldange',
-      lead: 'We sell Saris, Humbaur and WM Meyer trailers to private and business customers.',
+      lead: 'As an official dealer, we sell Saris, Humbaur, WM Meyer and Tohaco trailers to private and business customers.',
       dealerMissing: '[UNBESTÄTIGT — Händlerstatus Saris, Humbaur, WM Meyer; Logos nur mit Freigabe]',
       adviceH2: 'Which licence for which trailer?',
       advice:
@@ -695,9 +696,9 @@ const en: Dict = {
         'Soda blasting strips paint and dirt without damaging the surface: classic cars, wheel rims, mechanical parts. In Erpeldange, between Ettelbruck and Diekirch.',
     },
     trailersForSale: {
-      title: 'Trailers for sale: Humbaur, Saris, WM Meyer | Erpeldange',
+      title: 'Trailers for sale: Humbaur, Saris, WM Meyer, Tohaco',
       description:
-        'Buy your trailer in Erpeldange: Humbaur, Saris or WM Meyer. We help you choose the right size and the right weight to suit your car and your driving licence.',
+        'Official dealer in Erpeldange: Humbaur, Saris, WM Meyer and Tohaco trailers. We help you choose the right size and weight for your car and your driving licence.',
     },
     garden: {
       title: 'Honda and Stihl garden and forestry machinery in Erpeldange',
@@ -793,7 +794,7 @@ const en: Dict = {
       rental: 'Trailers and vans',
       cars: 'Stock updated every morning',
       workshop: 'Mechanics and bodywork',
-      trailers: 'Saris, Humbaur, WM Meyer',
+      trailers: 'Saris, Humbaur, WM Meyer, Tohaco',
       garden: 'Honda and Stihl',
       sodablast: 'Gentle paint stripping',
     },
@@ -825,7 +826,7 @@ const en: Dict = {
         'Mainly Honda and Stihl',
       ],
       trailers: [
-        'Saris, Humbaur and WM Meyer trailers',
+        'Saris, Humbaur, WM Meyer and Tohaco trailers',
         'For private customers and businesses',
         'Advice on weight and licence',
       ],
@@ -1061,9 +1062,9 @@ const en: Dict = {
     trailersForSale: {
       sections: {
         s1: {
-          h: 'Saris, Humbaur and WM Meyer trailers in Erpeldange',
+          h: 'Saris, Humbaur, WM Meyer and Tohaco trailers in Erpeldange',
           p: [
-            'We sell Saris, Humbaur and WM Meyer trailers to private and business customers. Tell us what you carry and we will help you find the model that suits your car and your licence.',
+            'We sell Saris, Humbaur, WM Meyer and Tohaco trailers to private and business customers. Tell us what you carry and we will help you find the model that suits your car and your licence.',
             'Garage Um Rond Point is in Erpeldange-sur-Sûre, between Ettelbruck and Diekirch.',
           ],
         },
@@ -1094,7 +1095,7 @@ const en: Dict = {
       faq: {
         q1: {
           q: 'Which trailer brands do you sell?',
-          a: 'Saris, Humbaur and WM Meyer.',
+          a: 'Saris, Humbaur, WM Meyer and Tohaco.',
         },
         q2: {
           q: 'Do you also sell to businesses?',

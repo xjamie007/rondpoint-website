@@ -17,8 +17,9 @@
     "confirmed": false
   },
   "shareCapital": {
-    "value": null,
-    "confirmed": false
+    "value": 12000,
+    "confirmed": true,
+    "$comment": "Euro, bestätigt vom Kunden am 16.10.2026"
   },
   "address": {
     "street": "1, rue du Viaduc",
@@ -74,8 +75,10 @@
     "workshopAllBrands": false,
     "workshopExtraKeywords": false,
     "rentalDurations": false,
-    "trailerDealerStatus": false,
+    "trailerDealerStatus": true,
+    "$trailerDealerStatus": "16.10.2026 bestätigt: offizieller Händler Saris, Humbaur, WM Meyer und Tohaco (Logos nicht freigegeben)",
     "gardenDealerStatus": false,
+    "$gardenDealerStatus": "16.10.2026: kein Händlerstatus für Honda/Stihl nennen (Wunsch des Kunden); der Platzhalter entfällt",
     "pricesInclVat": false
   },
   "reviews": [],

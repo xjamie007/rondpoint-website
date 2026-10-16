@@ -6,6 +6,21 @@ Stand: 28.09.2026. Nichts davon ist erfunden. Jede Stelle erscheint auf der Webs
 - Schalter für bestätigte Aussagen: `src/content/site.json` → `confirmations`, `manager.confirmed`, `payment.confirmed` usw.
 - Vor Livegang `showOpenPoints` in `site.json` auf `false` setzen. Dann verschwinden Abschnitte, die ohne Daten keinen Sinn haben, zum Beispiel „Avis Google" oder die Foto-Hinweise. Platzhalter in Sätzen bleiben sichtbar, bis die Daten da sind.
 
+## Stand 16.10.2026: Antworten von David (Kunde)
+
+Eingetragen:
+- **Gesellschaftskapital:** 12.000 € (`site.json` → `shareCapital`). Erscheint im Impressum, je Sprache formatiert.
+- **Offizieller Händler** von Saris, Humbaur, WM Meyer und **Tohaco** (neu). Steht so in allen Sprachen, auch in den SEO-Texten. Logos sind nicht freigegeben und deshalb nicht eingebaut.
+- **Garten & Forst:** kein Händlerstatus nennen (Wunsch des Kunden). Der Platzhalter ist entfernt; „vor allem Honda und Stihl“ bleibt.
+- **Feiertage geschlossen:** Unter den Öffnungszeiten steht „An Feiertagen geschlossen“ (`horaires.json` → `holidaysConfirmed`).
+- **Formular-Empfänger** info@rondpoint.lu ist bestätigt. Beim Einrichten des Mailanbieters `FORM_RECIPIENT=info@rondpoint.lu` setzen (Punkt 6).
+- **Autos:** Variante 1 gewählt, also der Audaris-Showroom als fertiger Block. Es fehlt der Einbau-Code von Audaris.
+
+Noch offen von dieser Runde:
+- **Autorisation d'établissement:** Der Kunde schrieb „R.C. Lux“. Die RCS-Nummer B296148 steht schon im Impressum. Es fehlt die Nummer der Niederlassungsgenehmigung (Punkt 5).
+- **Google-Bewertungen:** Wir sollen die besten 2–3 auswählen (Punkt 20). Die echten Texte mit Vorname, Initiale und Monat/Jahr aus dem Google-Profil übernehmen, nichts umformulieren.
+- Unbeantwortet sind noch: Mietbedingungen (10, 11), Kommissionsverkauf (13), Preise TTC (14), Werkstatt (15–17), Anhänger auf Lager und Logos (18), Antwortzeit (21), Zahlungsmittel (22), TikTok (24), Logo-Vektordatei (30), Domain (7) und WLTP in MovingCar (3).
+
 ## Präsentationsversion (Stand 28.09.2026, abends)
 
 Für den Kundentermin ist `presentation: true` in `src/content/site.json` gesetzt. Dabei gilt:
@@ -78,7 +93,7 @@ Der Abgleich liest den Bestand jetzt über die offizielle MovingCar-API, mit dem
 | 2 | ~~**Nutzungsbedingungen der Portale**~~ **Erledigt 13.10.2026** (MovingCar statt Portale). Alt: Das Einverständnis der Garage deckt ihre Inhalte ab, nicht aber das automatische Lesen von luxauto.lu und autoscout24.lu. Die `robots.txt` erlaubt unserem Bot die nötigen Seiten. AutoScout24 sperrt dort aber ausdrücklich KI-Crawler, und die AGB beider Portale können automatisiertes Auslesen untersagen. **Empfehlung:** Bei LuxAuto (atHome Group) nach einem offiziellen Export oder Feed für die Händler-Website fragen, oder eine schriftliche Erlaubnis einholen. | Klärung Nave, Kunde, Portal | – |
 | 3 | **Neuwagen: WLTP-Verbrauch und CO₂** (Richtlinie 1999/94/EG). Heute sind 5 Neuwagen im Bestand, und keins der Portale liefert Werte. Die Seite zeigt „Consommation et CO₂ (WLTP) : informations au garage". Ob das rechtlich reicht, ist `[UNBESTÄTIGT]`. | Werte je Auto oder rechtliche Klärung | `src/data/vehicle-overrides.json` (`wltpConsumption`, `co2Gkm`); der Sync-Bericht listet die Autos |
 | 4 | **Mietflotte**: Art, zulässiges Gesamtgewicht, Leergewicht, Nutzlast, gebremst, Innenmaße, bei Kühlanhängern Volumen, Temperatur und Strom; Preis pro Tag und Wochenende, Kaution, Stecker 7/13-polig, Fotos. Ohne Flotte zeigt der Finder im Produktions-Build „La liste de nos remorques arrive bientôt". Die Kategorieseiten entstehen erst mit Fahrzeugen. | Liste des Kunden | **Admin-Bereich → „Anhänger“** (oder `src/content/flotte/*.json`) |
-| 5 | **Impressum**: Gewerbegenehmigung (autorisation d'établissement), Gesellschaftskapital, Gérant bestätigen (nur Editus nennt David Moreira) | Nummer, Betrag, Bestätigung | `site.json` → `businessPermit`, `shareCapital`, `manager.confirmed` · Schlüssel `legal.permitMissing`, `legal.capitalMissing`, `legal.managerMissing` |
+| 5 | **Impressum**: Gewerbegenehmigung (autorisation d'établissement). ~~Gesellschaftskapital~~ 12.000 € und ~~Gérant~~ David Moreira sind bestätigt. | Nummer, Betrag, Bestätigung | `site.json` → `businessPermit`, `shareCapital`, `manager.confirmed` · Schlüssel `legal.permitMissing`, `legal.capitalMissing`, `legal.managerMissing` |
 | 6 | **Formular-Versand**: Auf Cloudflare vorbereitet (`/api/inquiry`, siehe README → „Cloudflare einrichten“); es fehlt der Mailanbieter in der EU. Alt: Supabase-Projekt in der EU anlegen, Migration und Function deployen, Mailanbieter in der EU wählen (Brevo oder Scaleway sind vorbereitet), Empfänger bestätigen (info@rondpoint.lu `[UNBESTÄTIGT]`) | Entscheidung Nave, Zugang | README → „Formulare"; GitHub-Variable `PUBLIC_INQUIRY_URL` |
 | 7 | **Domain und DNS**: Wo ist rondpoint.lu registriert, wer hat Zugriff? Die heutige Wix-Seite hängt daran. | Zugang | README → „Livegang" |
 | 8 | **Führerscheinregeln** vor Livegang noch einmal gegen transports.public.lu prüfen. Am 28.09.2026 geprüft: B bis 750 kg; darüber, wenn das Gespann ≤ 3 500 kg wiegt; ≤ 4 250 kg mit Schulung (Code 96). Die Feldcodes F.2, O.1 und O.2 am luxemburgischen Dokument bestätigen. | Prüfung | `src/lib/permis.ts`, Schlüssel `faq.items.permis.a`, `faq.items.carte.a` |
@@ -96,14 +111,14 @@ Der Abgleich liest den Bestand jetzt über die offizielle MovingCar-API, mit dem
 | 15 | Atelier | `pages.workshop.transparencyMissing` (`confirmations.workshopTransparency`) | Kostenvoranschlag vorher und detaillierte Rechnung? Nur dann kommt der Satz auf die Seite. |
 | 16 | Atelier, FAQ | `faq.items.marques.a` (`confirmations.workshopAllBrands`) | Werden alle Marken repariert? |
 | 17 | Atelier | `pages.workshop.extraMissing` (`confirmations.workshopExtraKeywords`) | Richtbank, Smart Repair, Ausbeulen, Turbo, 4x4, Restaurierung: Was davon stimmt? |
-| 18 | Remorques à vendre | `pages.trailersForSale.dealerMissing`, `pages.trailersForSale.stockMissing` | Händlerstatus Saris, Humbaur, WM Meyer; Logos nur mit Freigabe; Anhänger auf Lager |
-| 19 | Jardin & forêt | `pages.garden.dealerMissing` | Händlerstatus Honda, Stihl; Logos nur mit Freigabe |
+| 18 | Remorques à vendre | `pages.trailersForSale.stockMissing` | ~~Händlerstatus~~ bestätigt (mit Tohaco). Offen: Logos nur mit Freigabe; Anhänger auf Lager |
+| 19 | Jardin & forêt | – | ~~Erledigt 16.10.2026:~~ kein Händlerstatus nennen |
 | 20 | Startseite | `reviews.missing` (`site.json` → `reviews`) | 2–3 freigegebene Google-Zitate: Text, Vorname + Initiale, Monat/Jahr. Ohne Freigabe entfällt die Sektion. |
 | 21 | Danke-Seite | `pages.thanks.text` | Antwortzeit, z. B. „le jour ouvrable suivant" |
 | 22 | Kontakt, FAQ | `pages.contact.paymentMissing`, `faq.items.paiement.a` (`site.json` → `payment.confirmed`) | Zahlungsmittel bestätigen. Erst danach kommt `paymentAccepted` ins JSON-LD. |
 | 23 | Datenschutz | `privacy.storage` | EU-Mailanbieter nennen; Löschfrist 90 Tage bestätigen |
 | 24 | Footer | `footer.tiktokMissing` (`site.json` → `social.tiktok`) | Genaue TikTok-URL |
-| 25 | Öffnungszeiten | `hours.holidays` (`horaires.json` → `holidaysConfirmed`) | Feiertage: geschlossen? |
+| 25 | Öffnungszeiten | `hours.holidaysClosed` | ~~Erledigt 16.10.2026:~~ an Feiertagen geschlossen |
 | 26 | Verkauf | – | Was von LuxAuto „Services du garage" stimmt wirklich: Leasing, Finanzierung, Import/Export, Fahrzeugsuche, Detailing, Zulassung, Transport? (steht nirgends auf der Seite) |
 
 ## Fotos und Marke

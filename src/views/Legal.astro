@@ -4,7 +4,7 @@ import Base from '@/layouts/Base.astro';
 import PageIntro from '@/components/PageIntro.astro';
 import { rich, useT } from '@/i18n';
 import { path, type Lang } from '@/i18n/config';
-import { dateLong } from '@/lib/format';
+import { dateLong, eur } from '@/lib/format';
 import { breadcrumbs } from '@/lib/jsonld';
 import { onCloudflare, site } from '@/lib/site';
 import { demoCredits } from '@/lib/photos';
@@ -31,7 +31,7 @@ const rows: [string, string][] = [
   [l.registered, dateLong(lang, `${site.registered}T12:00:00Z`)],
   [l.manager, site.manager.confirmed ? site.manager.value! : l.managerMissing],
   [l.permit, site.businessPermit.value ?? l.permitMissing],
-  [l.capital, site.shareCapital.value ?? l.capitalMissing],
+  [l.capital, site.shareCapital.confirmed && site.shareCapital.value != null ? eur(lang, site.shareCapital.value) : l.capitalMissing],
 ];
 ---
 <Base

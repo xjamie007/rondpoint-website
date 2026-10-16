@@ -47,7 +47,9 @@ const fmtRange = ([a, b]: [string, string]) => `${a}–${b}`;
       }
     </tbody>
   </table>
-  {!horaires.holidaysConfirmed && showOpenPoints && <p class="t-small t-muted holidays" set:html={rich(t.hours.holidays)} />}
+  {horaires.holidaysConfirmed
+    ? <p class="t-small t-muted holidays">{t.hours.holidaysClosed}</p>
+    : showOpenPoints && <p class="t-small t-muted holidays" set:html={rich(t.hours.holidays)} />}
 </div>
 
 <style>

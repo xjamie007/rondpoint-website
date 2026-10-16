@@ -37,7 +37,6 @@ const crumbs = [
   jsonld={[breadcrumbs(crumbs.map((x) => ({ name: x.name, url: x.href }))), ...faqLd]}
 >
   <PageIntro crumbLabel={t.nav.breadcrumb} crumbs={crumbs} h1={p.h1} lead={p.lead} photo={photo('garden-page')} photoAlt={t.photos.gardenPage}>
-    {!site.confirmations.gardenDealerStatus && showOpenPoints && <p set:html={rich(p.dealerMissing)} />}
   </PageIntro>
   <section class="section block tone" aria-labelledby="what-h">
     <div class="wrap">

@@ -318,7 +318,7 @@ const fr = {
     },
     trailers: {
       h3: 'Remorques à vendre',
-      text: 'Nous vendons des remorques Saris, Humbaur et WM Meyer, pour les particuliers et les professionnels. Nous vous aidons à choisir une remorque que votre voiture peut tracter et que votre permis autorise.',
+      text: 'Nous vendons des remorques Saris, Humbaur, WM Meyer et Tohaco, pour les particuliers et les professionnels. Nous vous aidons à choisir une remorque que votre voiture peut tracter et que votre permis autorise.',
       link: 'Nos remorques à vendre',
     },
     photoMissing: '[FEHLT — Foto]',
@@ -417,6 +417,7 @@ const fr = {
     today: 'aujourd’hui',
     and: 'et',
     holidays: 'Jours fériés : [UNBESTÄTIGT — Feiertage vermutlich geschlossen]',
+    holidaysClosed: 'Fermé les jours fériés.',
     short: 'Lundi à vendredi {weekday}, samedi {saturday}',
   },
 
@@ -506,7 +507,7 @@ const fr = {
     },
     trailersForSale: {
       h1: 'Remorques à vendre à Erpeldange',
-      lead: 'Nous vendons des remorques Saris, Humbaur et WM Meyer, pour les particuliers et les professionnels.',
+      lead: 'Concessionnaire officiel Saris, Humbaur, WM Meyer et Tohaco, nous vendons des remorques aux particuliers et aux professionnels.',
       dealerMissing: '[UNBESTÄTIGT — Händlerstatus Saris, Humbaur, WM Meyer; Logos nur mit Freigabe]',
       adviceH2: 'Quel permis pour quelle remorque ?',
       advice:
@@ -698,9 +699,9 @@ const fr = {
         'Le sodablast décape peinture et saleté sans abîmer la surface : voiture ancienne, jantes, pièces mécaniques. À Erpeldange, entre Ettelbruck et Diekirch.',
     },
     trailersForSale: {
-      title: 'Remorques à vendre : Humbaur, Saris, WM Meyer | Erpeldange',
+      title: 'Remorques à vendre : Humbaur, Saris, WM Meyer, Tohaco',
       description:
-        'Achetez votre remorque à Erpeldange : Humbaur, Saris ou WM Meyer. Nous vous aidons à choisir la taille et le poids adaptés à votre voiture et à votre permis.',
+        'Concessionnaire officiel à Erpeldange : remorques Humbaur, Saris, WM Meyer et Tohaco. Nous vous aidons à choisir la taille et le poids adaptés à votre voiture.',
     },
     garden: {
       title: 'Machines de jardin et forêt Honda et Stihl à Erpeldange',
@@ -796,7 +797,7 @@ const fr = {
       rental: 'Remorques et camionnettes',
       cars: 'Stock à jour chaque matin',
       workshop: 'Mécanique et carrosserie',
-      trailers: 'Saris, Humbaur, WM Meyer',
+      trailers: 'Saris, Humbaur, WM Meyer, Tohaco',
       garden: 'Honda et Stihl',
       sodablast: 'Décapage doux',
     },
@@ -828,7 +829,7 @@ const fr = {
         'Principalement Honda et Stihl',
       ],
       trailers: [
-        'Remorques Saris, Humbaur et WM Meyer',
+        'Remorques Saris, Humbaur, WM Meyer et Tohaco',
         'Pour particuliers et professionnels',
         'Conseil sur le poids et le permis',
       ],
@@ -1064,9 +1065,9 @@ const fr = {
     trailersForSale: {
       sections: {
         s1: {
-          h: 'Saris, Humbaur et WM Meyer à Erpeldange',
+          h: 'Saris, Humbaur, WM Meyer et Tohaco à Erpeldange',
           p: [
-            'Nous vendons des remorques des marques Saris, Humbaur et WM Meyer, pour les particuliers comme pour les professionnels. Dites-nous ce que vous transportez : nous vous aidons à trouver le modèle qui convient à votre voiture et à votre permis.',
+            'Nous vendons des remorques des marques Saris, Humbaur, WM Meyer et Tohaco, pour les particuliers comme pour les professionnels. Dites-nous ce que vous transportez : nous vous aidons à trouver le modèle qui convient à votre voiture et à votre permis.',
             'Le Garage Um Rond Point se trouve à Erpeldange-sur-Sûre, entre Ettelbruck et Diekirch.',
           ],
         },
@@ -1097,7 +1098,7 @@ const fr = {
       faq: {
         q1: {
           q: 'Quelles marques de remorques vendez-vous ?',
-          a: 'Saris, Humbaur et WM Meyer.',
+          a: 'Saris, Humbaur, WM Meyer et Tohaco.',
         },
         q2: {
           q: 'Vendez-vous aussi aux professionnels ?',

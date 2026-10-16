@@ -315,7 +315,7 @@ const lb: Dict = {
     },
     trailers: {
       h3: 'Unhänger kafen',
-      text: 'Mir verkafen Unhänger vu Saris, Humbaur a WM Meyer, fir Privatleit a Betriber. Mir hëllefen Iech, en Unhänger ze wielen, deen Ären Auto zéie kann an deen Dir mat Ärem Führerschäin fueren dierft.',
+      text: 'Mir verkafen Unhänger vu Saris, Humbaur, WM Meyer an Tohaco, fir Privatleit a Betriber. Mir hëllefen Iech, en Unhänger ze wielen, deen Ären Auto zéie kann an deen Dir mat Ärem Führerschäin fueren dierft.',
       link: 'Eis Unhänger zum Verkaf',
     },
     photoMissing: '[FEHLT — Foto]',
@@ -414,6 +414,7 @@ const lb: Dict = {
     today: 'haut',
     and: 'an',
     holidays: 'Feierdeeg: [UNBESTÄTIGT — Feiertage vermutlich geschlossen]',
+    holidaysClosed: 'U Feierdeeg zou.',
     short: 'Méindeg bis Freideg {weekday}, Samschdeg {saturday}',
   },
 
@@ -503,7 +504,7 @@ const lb: Dict = {
     },
     trailersForSale: {
       h1: 'Unhänger kafen zu Ierpeldeng',
-      lead: 'Mir verkafen Unhänger vu Saris, Humbaur a WM Meyer, fir Privatleit a Betriber.',
+      lead: 'Mir sinn offiziell Händler vu Saris, Humbaur, WM Meyer an Tohaco a verkafen Unhänger fir Privatleit a Betriber.',
       dealerMissing: '[UNBESTÄTIGT — Händlerstatus Saris, Humbaur, WM Meyer; Logos nur mit Freigabe]',
       adviceH2: 'Wéi en Unhänger mat wéi engem Führerschäin?',
       advice:
@@ -697,9 +698,9 @@ const lb: Dict = {
         'Sodablast mécht Lack an Dreck ewech, ouni d’Uewerfläch ze beschiedegen: al Autoen, Felgen, mechanesch Deeler. Zu Erpeldange, tëscht Ettelbréck an Dikrech.',
     },
     trailersForSale: {
-      title: 'Unhänger kafen: Humbaur, Saris, WM Meyer | Erpeldange',
+      title: 'Unhänger kafen: Humbaur, Saris, WM Meyer an Tohaco',
       description:
-        'Kaaft Ären Unhänger zu Erpeldange: Humbaur, Saris oder WM Meyer. Mir hëllefen Iech, Gréisst a Gewiicht passend zu Ärem Auto an Ärem Führerschäin ze wielen.',
+        'Offiziell Händler zu Erpeldange: Unhänger vun Humbaur, Saris, WM Meyer an Tohaco. Mir beroden Iech gär bei der Gréisst, dem Gewiicht an dem Führerschäin.',
     },
     garden: {
       title: 'Gaart- a Bëschmaschinne vun Honda a Stihl zu Erpeldange',
@@ -797,7 +798,7 @@ const lb: Dict = {
       rental: 'Unhänger a Camionnetten',
       cars: 'All Moien aktualiséiert',
       workshop: 'Mechanik a Karosserie',
-      trailers: 'Saris, Humbaur, WM Meyer',
+      trailers: 'Saris, Humbaur, WM Meyer, Tohaco',
       garden: 'Honda a Stihl',
       sodablast: 'Schounend ofbeizen',
     },
@@ -829,7 +830,7 @@ const lb: Dict = {
         'Virun allem Honda a Stihl',
       ],
       trailers: [
-        'Unhänger vu Saris, Humbaur a WM Meyer',
+        'Unhänger vu Saris, Humbaur, WM Meyer an Tohaco',
         'Fir Privatleit a Betriber',
         'Berodung zu Gewiicht a Führerschäin',
       ],
@@ -1065,9 +1066,9 @@ const lb: Dict = {
     trailersForSale: {
       sections: {
         s1: {
-          h: 'Saris, Humbaur a WM Meyer zu Ierpeldeng',
+          h: 'Saris, Humbaur, WM Meyer an Tohaco zu Ierpeldeng',
           p: [
-            'Mir verkafen Unhänger vu Saris, Humbaur a WM Meyer, fir Privatleit a fir Betriber. Sot eis, wat Dir transportéiert: Mir hëllefen Iech, de Modell ze fannen, deen zu Ärem Auto an zu Ärem Führerschäin passt.',
+            'Mir verkafen Unhänger vu Saris, Humbaur, WM Meyer an Tohaco, fir Privatleit a fir Betriber. Sot eis, wat Dir transportéiert: Mir hëllefen Iech, de Modell ze fannen, deen zu Ärem Auto an zu Ärem Führerschäin passt.',
             'D’Garage Um Rond Point ass zu Ierpeldeng, tëscht Ettelbréck an Dikrech.',
           ],
         },
@@ -1098,7 +1099,7 @@ const lb: Dict = {
       faq: {
         q1: {
           q: 'Vu wéi enge Marke verkaaft Dir Unhänger?',
-          a: 'Saris, Humbaur a WM Meyer.',
+          a: 'Saris, Humbaur, WM Meyer an Tohaco.',
         },
         q2: {
           q: 'Verkaaft Dir och u Betriber?',
