@@ -326,6 +326,14 @@ const pt: Dict = {
     rating: '{rating} em 5 estrelas, {n} avaliações no Google',
     link: 'Ler todas as avaliações no Google',
     missing: '[FEHLT — 2–3 vom Kunden freigegebene Zitate aus dem Google-Profil, mit Vorname + Initiale und Monat/Jahr]',
+    source: 'Avaliação no Google',
+    translated: 'Traduzido pelo Google, original em {lang}',
+    translatedDe: 'Traduzido para alemão pelo Google, original em {lang}',
+    originalIn: 'Original em {lang}',
+    stars: '{n} em 5 estrelas',
+    more: 'Ler mais',
+    less: 'Mostrar menos',
+    langs: { fr: 'francês', de: 'alemão', lb: 'luxemburguês', en: 'inglês', pt: 'português' },
   },
 
   faq: {
@@ -517,7 +525,6 @@ const pt: Dict = {
     },
     garden: {
       h1: 'Máquinas de jardim e floresta em Erpeldange',
-      brandsH: 'As nossas marcas',
       lead: 'Vendemos e reparamos máquinas de jardim e floresta, sobretudo das marcas Honda e Stihl.',
       dealerMissing: '[UNBESTÄTIGT — Händlerstatus Honda und Stihl; Logos nur mit Freigabe]',
       whatH2: 'Venda e reparação',

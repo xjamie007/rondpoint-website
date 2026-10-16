@@ -326,6 +326,14 @@ const de: Dict = {
     rating: '{rating} von 5 Sternen, {n} Bewertungen auf Google',
     link: 'Alle Bewertungen auf Google lesen',
     missing: '[FEHLT — 2–3 vom Kunden freigegebene Zitate aus dem Google-Profil, mit Vorname + Initiale und Monat/Jahr]',
+    source: 'Google-Bewertung',
+    translated: 'Von Google übersetzt, Original auf {lang}',
+    translatedDe: 'Von Google übersetzt, Original auf {lang}',
+    originalIn: 'Original auf {lang}',
+    stars: '{n} von 5 Sternen',
+    more: 'Weiterlesen',
+    less: 'Weniger anzeigen',
+    langs: { fr: 'Französisch', de: 'Deutsch', lb: 'Luxemburgisch', en: 'Englisch', pt: 'Portugiesisch' },
   },
 
   faq: {
@@ -517,7 +525,6 @@ const de: Dict = {
     },
     garden: {
       h1: 'Garten- und Forstgeräte in Erpeldange',
-      brandsH: 'Unsere Marken',
       lead: 'Wir verkaufen und reparieren Garten- und Forstgeräte, vor allem der Marken Honda und Stihl.',
       dealerMissing: '[UNBESTÄTIGT — Händlerstatus Honda und Stihl; Logos nur mit Freigabe]',
       whatH2: 'Verkauf und Reparatur',

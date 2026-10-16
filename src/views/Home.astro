@@ -45,7 +45,24 @@ const services: {
   { key: 'garden', page: 'garden', photo: 'garden', alt: t.photos.garden },
   { key: 'trailers', page: 'trailersForSale', photo: 'trailers-sale', alt: t.photos.trailersSale },
 ];
-const reviews = (site.reviews as { quote: string; name: string; date: string; lang?: Lang }[]).filter((r) => r.quote?.trim());
+// Google-Bewertungen: Originaltext (quote, Sprache lang) oder Übersetzung von Google (translations), gekennzeichnet
+type Review = { quote: string; name: string; date: string; lang?: Lang; stars?: number; translations?: Partial<Record<Lang, string>> };
+const reviews = (site.reviews as Review[])
+  .map((r) => {
+    const orig = r.quote?.trim();
+    const from = r.lang ?? 'fr';
+    const tr = r.translations?.[lang]?.trim();
+    const langName = t.reviews.langs[from];
+    const pick: [string, Lang, string] | null =
+      orig && from === lang ? [orig, from, '']
+      : tr ? [tr, lang, fmt(t.reviews.translated, { lang: langName })]
+      : orig ? [orig, from, fmt(t.reviews.originalIn, { lang: langName })]
+      // ohne Original: die deutsche Übersetzung nur auf Luxemburgisch zeigen (dort liest man Deutsch)
+      : lang === 'lb' && r.translations?.de?.trim() ? [r.translations.de.trim(), 'de', fmt(t.reviews.translatedDe, { lang: langName })]
+      : null;
+    return pick && { name: r.name, stars: r.stars ?? 5, text: pick[0], textLang: pick[1], note: pick[2], initial: r.name.trim().charAt(0).toUpperCase() };
+  })
+  .filter((r) => r !== null);
 // Bewertung im Google-Profil (von Hand nachgeführt, site.json → googleRating)
 const rating = (site as { googleRating?: { value: number; count: number } }).googleRating;
 const ratingNum = rating ? num(lang, rating.value, { minimumFractionDigits: 1, maximumFractionDigits: 1 }) : '';
@@ -222,27 +239,39 @@ const visibleFaq = presentation ? faqKeys.filter((k) => !isUnconfirmed(t.faq.ite
 
   {
     (reviews.length > 0 || !!rating || showOpenPoints) && (
-      <section class="section reviews" aria-labelledby="reviews-h">
-        <div class="wrap">
-          <h2 id="reviews-h">{t.reviews.h2}</h2>
-          {rating && (
-            <p class="rating">
-              <span class="rating-n" aria-hidden="true">{ratingNum}</span>
-              <span class="stars" aria-hidden="true" style={`--fill: ${(rating.value / 5) * 100}%`}><span>★★★★★</span></span>
-              <span class="rating-t">{fmt(t.reviews.rating, { rating: ratingNum, n: rating.count })}</span>
+      <section class="section reviews tone" aria-labelledby="reviews-h" data-more={t.reviews.more} data-less={t.reviews.less}>
+        <div class={`wrap rv-grid${reviews.length ? '' : ' rv-solo'}`}>
+          <div class="rv-side">
+            <h2 id="reviews-h" class="h-bar reveal">{t.reviews.h2}</h2>
+            {rating && (
+              <div class="rv-score reveal-soft">
+                <p class="rating">
+                  <span class="rating-n" aria-hidden="true">{ratingNum}</span>
+                  <span class="stars" aria-hidden="true" style={`--fill: ${(rating.value / 5) * 100}%`}><span>★★★★★</span></span>
+                  <span class="rating-t">{fmt(t.reviews.rating, { rating: ratingNum, n: rating.count })}</span>
+                </p>
+              </div>
+            )}
+            <p class="rv-link reveal">
+              <a class="btn btn-secondary btn-go" href={site.googleProfileUrl} rel="noopener">{t.reviews.link}</a>
             </p>
-          )}
+          </div>
           {reviews.length > 0 ? (
-            <div class="quotes">
-              {reviews.map((r) => (
-                <figure>
-                  <blockquote lang={HTML_LANG[r.lang ?? 'fr']}>
-                    <p>{r.quote}</p>
+            <div class="quotes" data-quotes>
+              {reviews.map((r, i) => (
+                <figure class={`quote reveal${i === 0 ? ' quote-lead' : ''}`}>
+                  <span class="q-mark" aria-hidden="true">“</span>
+                  <span class="q-stars" role="img" aria-label={fmt(t.reviews.stars, { n: r.stars })}>{'★'.repeat(r.stars)}</span>
+                  <blockquote lang={HTML_LANG[r.textLang]}>
+                    <p>{r.text}</p>
                   </blockquote>
+                  <button type="button" class="q-more" aria-expanded="false" hidden>{t.reviews.more}</button>
                   <figcaption>
-                    <cite>
-                      {r.name}, {r.date}
-                    </cite>
+                    <span class="q-avatar" aria-hidden="true">{r.initial}</span>
+                    <span class="q-who">
+                      <cite>{r.name}</cite>
+                      <span class="q-src">{t.reviews.source}{r.note && <span class="q-note"> · {r.note}</span>}</span>
+                    </span>
                   </figcaption>
                 </figure>
               ))}
@@ -250,11 +279,6 @@ const visibleFaq = presentation ? faqKeys.filter((k) => !isUnconfirmed(t.faq.ite
           ) : (
             !rating && <p set:html={rich(t.reviews.missing)} />
           )}
-          <p>
-            <a class="link" href={site.googleProfileUrl} rel="noopener">
-              {t.reviews.link}
-            </a>
-          </p>
         </div>
       </section>
     )
@@ -487,19 +511,62 @@ const visibleFaq = presentation ? faqKeys.filter((k) => !isUnconfirmed(t.faq.ite
     .about-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 80px; align-items: center; }
   }
 
-  .reviews { border-top: 1.5px solid var(--color-black); }
-  .reviews h2 { margin: 0 0 24px; }
-  .rating { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 0 0 28px; }
-  .rating-n { font-family: var(--font-wide); font-stretch: 125%; font-size: clamp(2.5rem, 2rem + 2vw, 3.5rem); font-weight: 800; line-height: 1; }
-  .stars { position: relative; display: inline-block; font-size: 1.75rem; line-height: 1; letter-spacing: 2px; color: var(--color-verzinkt); }
-  .stars > span { position: absolute; inset: 0 auto 0 0; width: var(--fill); overflow: hidden; white-space: nowrap; color: var(--color-orange); }
+  /* ---------- Google-Bewertungen ---------- */
+  .rv-grid { display: grid; gap: 32px; }
+  .rv-side h2 { margin: 0 0 24px; }
+  .rv-score { display: inline-block; padding: 20px 24px; background: var(--color-black); color: var(--color-white); border-radius: 4px; box-shadow: 8px 8px 0 var(--color-orange); }
+  .rating { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; margin: 0; }
+  .rating-n { font-family: var(--font-wide); font-stretch: 125%; font-size: clamp(2.75rem, 2.2rem + 2vw, 3.75rem); font-weight: 800; line-height: 1; }
+  .stars { position: relative; display: inline-block; font-size: 1.75rem; line-height: 1; letter-spacing: 2px; color: rgb(255 255 255 / 0.25); }
   .stars::before { content: '★★★★★'; }
-  .rating-t { flex-basis: 100%; color: var(--color-asphalt); }
-  @media (min-width: 40rem) { .rating-t { flex-basis: auto; } }
-  .quotes { display: grid; gap: 40px; margin-bottom: 24px; }
-  @media (min-width: 64rem) { .quotes { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  blockquote { margin: 0; font-size: 1.1875rem; line-height: 1.5; }
-  cite { font-style: normal; color: var(--color-asphalt); }
+  .stars > span { position: absolute; inset: 0 auto 0 0; width: var(--fill); overflow: hidden; white-space: nowrap; color: var(--color-orange); }
+  .rating-t { flex-basis: 100%; font-size: 0.9375rem; color: rgb(255 255 255 / 0.8); }
+  .rv-link { margin: 28px 0 0; }
+
+  .quotes { display: grid; gap: 28px; }
+  .quote { position: relative; display: flex; flex-direction: column; margin: 0; padding: 30px 26px 22px; background: var(--color-white); border: 1.5px solid var(--color-black); border-radius: 4px; box-shadow: 8px 8px 0 var(--color-orange); transition: transform var(--dur-3) var(--ease-out), box-shadow var(--dur-3) var(--ease-out); }
+  .quote:hover { transform: translate(-3px, -3px); box-shadow: 12px 12px 0 var(--color-orange); }
+  /* großes Anführungszeichen auf der oberen Kante */
+  .q-mark { position: absolute; top: -24px; right: 22px; height: 46px; padding: 0 8px; overflow: hidden; background: var(--color-white); color: var(--color-orange); font-family: var(--font-wide); font-stretch: 125%; font-weight: 800; font-size: 5rem; line-height: 0.95; }
+  .q-stars { color: var(--color-orange); font-size: 1.125rem; letter-spacing: 3px; line-height: 1; }
+  .quote blockquote { flex: 1; margin: 14px 0 18px; }
+  .quote blockquote p { margin: 0; font-size: 1.0625rem; line-height: 1.6; }
+  .quote-lead blockquote p { font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem); line-height: 1.55; }
+  .quote blockquote.is-clamped p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 7; line-clamp: 7; overflow: hidden; }
+  .q-more { align-self: flex-start; margin: -8px 0 16px; padding: 4px 0; border: 0; background: none; color: var(--color-orange-text); font: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+  .q-more:hover { color: var(--color-orange); }
+  .quote figcaption { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid rgb(0 0 0 / 0.12); }
+  .q-avatar { display: grid; flex: none; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: var(--color-black); color: var(--color-white); font-family: var(--font-wide); font-stretch: 125%; font-weight: 800; font-size: 1.0625rem; }
+  .q-who { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .q-who cite { font-style: normal; font-weight: 700; }
+  .q-src { font-size: 0.8125rem; line-height: 1.35; color: var(--color-asphalt); }
+
+  @media (min-width: 48rem) {
+    .quotes { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 32px; }
+    .quote-lead { grid-column: 1 / -1; }
+  }
+  @media (min-width: 64rem) {
+    .rv-grid { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 64px; align-items: start; }
+    .rv-side { position: sticky; top: 120px; }
+    .rv-solo { grid-template-columns: minmax(0, 1fr); }
+    .rv-solo .rv-side { position: static; display: flex; flex-wrap: wrap; align-items: center; gap: 24px 40px; }
+    .rv-solo .rv-side h2 { flex-basis: 100%; }
+    .rv-solo .rv-link { margin: 0; }
+    .quote blockquote.is-clamped p { -webkit-line-clamp: 9; line-clamp: 9; }
+  }
+  /* Handy: Bewertungen zum Wischen statt untereinander */
+  @media (max-width: 47.99rem) {
+    .rv-grid { gap: 24px; }
+    .rv-score { display: block; padding: 16px 18px; box-shadow: 6px 6px 0 var(--color-orange); }
+    .rating-n { font-size: 2.5rem; }
+    .rv-link { margin-top: 22px; }
+    .quotes { grid-auto-flow: column; grid-auto-columns: 86%; gap: 16px; margin-inline: calc(-1 * var(--gutter)); padding: 30px var(--gutter) 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); scrollbar-width: thin; }
+    .quote { scroll-snap-align: start; box-shadow: 6px 6px 0 var(--color-orange); }
+    .quote:hover { transform: none; box-shadow: 6px 6px 0 var(--color-orange); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .quote, .quote:hover { transition: none; transform: none; }
+  }
 
   /* ---------- Handy: kleiner und ruhiger (Feedback Okt. 2026) ---------- */
   @media (max-width: 47.99rem) {
@@ -525,3 +592,24 @@ const visibleFaq = presentation ? faqKeys.filter((k) => !isUnconfirmed(t.faq.ite
     .svc-more :global(svg) { width: 16px; height: 16px; }
   }
 </style>
+
+<script>
+  // Lange Bewertungen kürzen, mit „Weiterlesen“ (ohne JavaScript: voller Text)
+  const sec = document.querySelector<HTMLElement>('section.reviews');
+  for (const q of document.querySelectorAll<HTMLElement>('[data-quotes] .quote')) {
+    const bq = q.querySelector('blockquote')!;
+    const btn = q.querySelector<HTMLButtonElement>('.q-more')!;
+    bq.classList.add('is-clamped');
+    const p = bq.querySelector('p')!;
+    if (p.scrollHeight - p.clientHeight < 4) {
+      bq.classList.remove('is-clamped');
+      continue;
+    }
+    btn.hidden = false;
+    btn.addEventListener('click', () => {
+      const clamped = bq.classList.toggle('is-clamped');
+      btn.textContent = (clamped ? sec?.dataset.more : sec?.dataset.less) ?? '';
+      btn.setAttribute('aria-expanded', String(!clamped));
+    });
+  }
+</script>

@@ -82,7 +82,39 @@
     "$gardenDealerStatus": "16.10.2026: kein Händlerstatus für Honda/Stihl nennen (Wunsch des Kunden); der Platzhalter entfällt",
     "pricesInclVat": false
   },
-  "reviews": [],
+  "$reviews": "Google-Profil, ausgewählt von Nave (Kunde: „die, die euch am besten gefallen“), 16.10.2026. quote = Originaltext (lang = Originalsprache); translations = Übersetzung von Google, wird als solche gekennzeichnet. Kein genaues Datum bei Google, deshalb ohne Datum.",
+  "reviews": [
+    {
+      "name": "Arslan C.",
+      "date": "",
+      "lang": "fr",
+      "stars": 5,
+      "quote": "",
+      "translations": {
+        "de": "Ich hatte wirklich eine sehr gute Erfahrung in dieser Werkstatt. Das Team ist professionell, aufmerksam und sehr freundlich. Sie nehmen sich Zeit, alles zu erklären, und man fühlt sich sofort gut aufgehoben. Ich hatte ein Problem mit meinem Auto, und sie haben die Ursache sofort gefunden und es schnell und effizient repariert. Sie reagieren sehr schnell und vor allem proaktiv und finden Lösungen, ohne Zeit zu verschwenden."
+      }
+    },
+    {
+      "name": "Elvis D.",
+      "date": "",
+      "lang": "fr",
+      "stars": 5,
+      "quote": "",
+      "translations": {
+        "de": "Exzellenter Service! Das Team ist professionell, schnell und absolut ehrlich. Mein Auto wurde schneller als erwartet und zu einem sehr fairen Preis repariert. Ich kann sie uneingeschränkt empfehlen!"
+      }
+    },
+    {
+      "name": "Smybbs",
+      "date": "",
+      "lang": "en",
+      "stars": 5,
+      "quote": "",
+      "translations": {
+        "de": "Ich hatte eine sehr angenehme Erfahrung. Vielen Dank für den freundlichen Service und die ehrliche Beratung zu meinem Auto 🙏🏼 Meine Werkstatt des Vertrauens in Luxemburg."
+      }
+    }
+  ],
   "googleRating": {
     "value": 4.6,
     "count": 10,

@@ -18,7 +18,7 @@ Eingetragen:
 
 Noch offen von dieser Runde:
 - ~~Autorisation d'établissement~~ **erledigt:** Nr. 10179686 laut öffentlichem Register auf guichet.lu (Suche mit RCS B296148), steht im Impressum.
-- **Google-Bewertungen:** Die Startseite zeigt jetzt 4,6 ★ aus 10 Bewertungen (Stand 16.10.2026, `site.json` → `googleRating`, von Hand nachführen). Zitate fehlen noch (Punkt 20). Ausgewählt sind Arslan C., Elvis D. und Smybbs, alle mit 5 ★. Die Originaltexte trägt Nave ein, aus dem Google-Profil kopiert und nicht umformuliert.
+- **Google-Bewertungen:** Die Startseite zeigt 4,6 ★ aus 10 Bewertungen (Stand 16.10.2026, `site.json` → `googleRating`, von Hand nachführen) und drei Zitate: Arslan C., Elvis D. und Smybbs, alle mit 5 ★. Bisher gibt es nur die deutsche Übersetzung von Google, gekennzeichnet; sie steht auf DE und LB. **Offen:** die Originaltexte (Arslan C. und Elvis D. auf Französisch, Smybbs auf Englisch) in `reviews[].quote` eintragen, dann erscheinen die Zitate auch auf FR, EN und PT. Bei Google gibt es kein genaues Datum, deshalb steht keins dabei.
 - Unbeantwortet sind noch: Mietbedingungen (10, 11), Kommissionsverkauf (13), Preise TTC (14), Werkstatt (15–17), Anhänger auf Lager und Logos (18), Antwortzeit (21), Zahlungsmittel (22), TikTok (24), Logo-Vektordatei (30), Domain (7) und WLTP in MovingCar (3).
 
 ## Präsentationsversion (Stand 28.09.2026, abends)

@@ -326,6 +326,14 @@ const lb: Dict = {
     rating: '{rating} vu 5 Stären, {n} Bewäertungen op Google',
     link: 'All Bewäertungen op Google liesen',
     missing: '[FEHLT — 2–3 vom Kunden freigegebene Zitate aus dem Google-Profil, mit Vorname + Initiale und Monat/Jahr]',
+    source: 'Google-Bewäertung',
+    translated: 'Vu Google iwwersat, Original op {lang}',
+    translatedDe: 'Vu Google op Däitsch iwwersat, Original op {lang}',
+    originalIn: 'Original op {lang}',
+    stars: '{n} vu 5 Stären',
+    more: 'Weiderliesen',
+    less: 'Manner weisen',
+    langs: { fr: 'Franséisch', de: 'Däitsch', lb: 'Lëtzebuergesch', en: 'Englesch', pt: 'Portugisesch' },
   },
 
   faq: {
@@ -517,7 +525,6 @@ const lb: Dict = {
     },
     garden: {
       h1: 'Gaart- a Bëschmaschinnen zu Ierpeldeng',
-      brandsH: 'Eis Marken',
       lead: 'Mir verkafen a reparéieren Gaart- a Bëschmaschinnen, virun allem vun de Marken Honda a Stihl.',
       dealerMissing: '[UNBESTÄTIGT — Händlerstatus Honda und Stihl; Logos nur mit Freigabe]',
       whatH2: 'Verkaf a Reparatur',
