@@ -13,8 +13,9 @@
     "confirmed": true
   },
   "businessPermit": {
-    "value": null,
-    "confirmed": false
+    "value": "10179686",
+    "confirmed": true,
+    "$comment": "Öffentliches Register guichet.lu (Recherche autorisation d'établissement, RCS B296148), geprüft am 16.10.2026: 10179686/0 und /1 (Handel, Fahrzeugverkauf), /3 und /4 (Karosserie, Mechatronik)"
   },
   "shareCapital": {
     "value": 12000,
@@ -82,6 +83,11 @@
     "pricesInclVat": false
   },
   "reviews": [],
+  "googleRating": {
+    "value": 4.6,
+    "count": 10,
+    "$comment": "Stand des Google-Profils am 16.10.2026, von Hand nachführen"
+  },
   "notice": {
     "active": false,
     "fr": "",

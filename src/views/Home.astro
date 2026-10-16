@@ -13,9 +13,10 @@ import Photo from '@/components/Photo.astro';
 import Icon from '@/components/Icon.astro';
 import Faq, { type FaqKey } from '@/components/Faq.astro';
 import AccessSection from '@/components/AccessSection.astro';
-import { hasContent, isUnconfirmed, plural, rich, stripOpenPoints, hasOpenPoint, useT } from '@/i18n';
+import { fmt, hasContent, isUnconfirmed, plural, rich, stripOpenPoints, hasOpenPoint, useT } from '@/i18n';
 import { HTML_LANG, path, type Lang, type PageKey } from '@/i18n/config';
 import { activeCars } from '@/lib/stock';
+import { num } from '@/lib/format';
 import { faqPage } from '@/lib/jsonld';
 import { presentation, showOpenPoints, site } from '@/lib/site';
 import { photo, type PhotoKey } from '@/lib/photos';
@@ -45,6 +46,9 @@ const services: {
   { key: 'trailers', page: 'trailersForSale', photo: 'trailers-sale', alt: t.photos.trailersSale },
 ];
 const reviews = (site.reviews as { quote: string; name: string; date: string; lang?: Lang }[]).filter((r) => r.quote?.trim());
+// Bewertung im Google-Profil (von Hand nachgeführt, site.json → googleRating)
+const rating = (site as { googleRating?: { value: number; count: number } }).googleRating;
+const ratingNum = rating ? num(lang, rating.value, { minimumFractionDigits: 1, maximumFractionDigits: 1 }) : '';
 const hero = photo('hero-workshop');
 const aboutPhoto = photo('about');
 /** Leiste im Startbildschirm: jede Leistung mit Symbol, Titel und einer Zeile */
@@ -217,10 +221,17 @@ const visibleFaq = presentation ? faqKeys.filter((k) => !isUnconfirmed(t.faq.ite
   </section>
 
   {
-    (reviews.length > 0 || showOpenPoints) && (
+    (reviews.length > 0 || !!rating || showOpenPoints) && (
       <section class="section reviews" aria-labelledby="reviews-h">
         <div class="wrap">
           <h2 id="reviews-h">{t.reviews.h2}</h2>
+          {rating && (
+            <p class="rating">
+              <span class="rating-n" aria-hidden="true">{ratingNum}</span>
+              <span class="stars" aria-hidden="true" style={`--fill: ${(rating.value / 5) * 100}%`}><span>★★★★★</span></span>
+              <span class="rating-t">{fmt(t.reviews.rating, { rating: ratingNum, n: rating.count })}</span>
+            </p>
+          )}
           {reviews.length > 0 ? (
             <div class="quotes">
               {reviews.map((r) => (
@@ -237,7 +248,7 @@ const visibleFaq = presentation ? faqKeys.filter((k) => !isUnconfirmed(t.faq.ite
               ))}
             </div>
           ) : (
-            <p set:html={rich(t.reviews.missing)} />
+            !rating && <p set:html={rich(t.reviews.missing)} />
           )}
           <p>
             <a class="link" href={site.googleProfileUrl} rel="noopener">
@@ -478,6 +489,13 @@ const visibleFaq = presentation ? faqKeys.filter((k) => !isUnconfirmed(t.faq.ite
 
   .reviews { border-top: 1.5px solid var(--color-black); }
   .reviews h2 { margin: 0 0 24px; }
+  .rating { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 0 0 28px; }
+  .rating-n { font-family: var(--font-wide); font-stretch: 125%; font-size: clamp(2.5rem, 2rem + 2vw, 3.5rem); font-weight: 800; line-height: 1; }
+  .stars { position: relative; display: inline-block; font-size: 1.75rem; line-height: 1; letter-spacing: 2px; color: var(--color-verzinkt); }
+  .stars > span { position: absolute; inset: 0 auto 0 0; width: var(--fill); overflow: hidden; white-space: nowrap; color: var(--color-orange); }
+  .stars::before { content: '★★★★★'; }
+  .rating-t { flex-basis: 100%; color: var(--color-asphalt); }
+  @media (min-width: 40rem) { .rating-t { flex-basis: auto; } }
   .quotes { display: grid; gap: 40px; margin-bottom: 24px; }
   @media (min-width: 64rem) { .quotes { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
   blockquote { margin: 0; font-size: 1.1875rem; line-height: 1.5; }

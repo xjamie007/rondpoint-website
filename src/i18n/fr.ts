@@ -326,6 +326,7 @@ const fr = {
 
   reviews: {
     h2: 'Avis Google',
+    rating: '{rating} sur 5 étoiles, {n} avis sur Google',
     link: 'Lire tous les avis sur Google',
     missing: '[FEHLT — 2–3 vom Kunden freigegebene Zitate aus dem Google-Profil, mit Vorname + Initiale und Monat/Jahr]',
   },
@@ -519,6 +520,7 @@ const fr = {
     },
     garden: {
       h1: 'Machines de jardin et de forêt à Erpeldange',
+      brandsH: 'Nos marques',
       lead: 'Nous vendons et réparons des machines de jardin et de forêt, principalement des marques Honda et Stihl.',
       dealerMissing: '[UNBESTÄTIGT — Händlerstatus Honda und Stihl; Logos nur mit Freigabe]',
       whatH2: 'Vente et réparation',

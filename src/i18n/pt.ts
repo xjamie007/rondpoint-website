@@ -323,6 +323,7 @@ const pt: Dict = {
 
   reviews: {
     h2: 'Avaliações no Google',
+    rating: '{rating} em 5 estrelas, {n} avaliações no Google',
     link: 'Ler todas as avaliações no Google',
     missing: '[FEHLT — 2–3 vom Kunden freigegebene Zitate aus dem Google-Profil, mit Vorname + Initiale und Monat/Jahr]',
   },
@@ -516,6 +517,7 @@ const pt: Dict = {
     },
     garden: {
       h1: 'Máquinas de jardim e floresta em Erpeldange',
+      brandsH: 'As nossas marcas',
       lead: 'Vendemos e reparamos máquinas de jardim e floresta, sobretudo das marcas Honda e Stihl.',
       dealerMissing: '[UNBESTÄTIGT — Händlerstatus Honda und Stihl; Logos nur mit Freigabe]',
       whatH2: 'Venda e reparação',
