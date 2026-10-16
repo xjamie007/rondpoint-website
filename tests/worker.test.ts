@@ -180,10 +180,20 @@ describe('Worker: Übersetzen (Workers AI)', () => {
     const r = await (await call('/api/translate', { method: 'POST', body, cookie: c })).json();
     expect(r.translations).toEqual({ fr: 'Appelez {phone} ou lisez [plus](page:workshop).', en: 'Call {phone} or read [more](page:workshop).' });
     expect(r.skipped).toEqual(['lb']);
-    expect((run.mock.calls[0] as unknown[])[0]).toMatch(/gemma/);
+    expect((run.mock.calls[0] as unknown[])[0]).toMatch(/llama-3\.3/);
     const sys = ((run.mock.calls[0] as unknown[])[1] as { messages: { content: string }[] }).messages[0].content;
     expect(sys).toMatch(/Um Rond Point/);
     expect(sys).toMatch(/Luxembourgish/);
+  });
+
+  it('versteht auch Antworten im OpenAI-Format (choices) mit ```json-Block', async () => {
+    env.AI = {
+      run: async () => ({ choices: [{ message: { content: '```json\n{"en": "We are your garage in Erpeldange."}\n```' } }] }),
+    };
+    const c = cookieOf(await login('chef@garage.lu', 'richtig-langes-passwort'));
+    const body = JSON.stringify({ text: 'Mir sinn Är Garage zu Ierpeldeng.', from: 'lb', to: ['en'] });
+    const r = await (await call('/api/translate', { method: 'POST', body, cookie: c })).json();
+    expect(r).toEqual({ ok: true, translations: { en: 'We are your garage in Erpeldange.' }, skipped: [] });
   });
 });
 

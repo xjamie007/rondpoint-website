@@ -65,6 +65,8 @@ export interface SiteStorage {
   saveContent(c: EditState, payload?: EditState): Promise<void>;
   /** Supabase: seit wie vielen Minuten eine gespeicherte Änderung noch nicht online ist (sonst null) */
   pendingMinutes(): number | null;
+  /** Commit-Zeit (ms) der gespeicherten, noch nicht online sichtbaren Änderung (sonst null) */
+  pendingAt(): number | null;
   resetContent(): Promise<void>;
   uploadImage(blob: Blob, name: string): Promise<string>;
   imageUrl(path: string): string;
@@ -135,6 +137,7 @@ async function pruneImages(json: string) {
 const DemoStorage: SiteStorage = {
   live: false,
   pendingMinutes: () => null,
+  pendingAt: () => null,
   userLabel: 'Benutzername',
   init: loadImages,
   hint: () => flag.get(localStorage, 'rp-edit') || flag.get(sessionStorage, 'rp-admin'),
@@ -269,6 +272,10 @@ const SupabaseStorage: SiteStorage = {
   pendingMinutes() {
     const p = local.get<Pending>(PENDING);
     return p ? Math.round((Date.now() - Date.parse(p.at)) / 60_000) : null;
+  },
+  pendingAt() {
+    const p = local.get<Pending>(PENDING);
+    return p ? Date.parse(p.at) || null : null;
   },
   async resetContent() { /* veröffentlichte Änderungen bleiben; ungespeicherte verwirft der Editor */ },
   async uploadImage(blob) {

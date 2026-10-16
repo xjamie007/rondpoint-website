@@ -21,6 +21,8 @@ export interface FleetCtx {
   state: () => EditState;
   change: (fn: () => void | false) => void;
   storage: SiteStorage;
+  /** Stand beim letzten Speichern (schon gespeichertes Löschen ist kein „Wiederherstellen“-Fall mehr) */
+  lastSaved?: () => EditState;
 }
 
 export interface BaseEntry { id: string; path: string; data: FleetData; thumb: string | null; hidden: string | null }
@@ -78,7 +80,9 @@ export async function fleetSheet(ctx: FleetCtx) {
     return;
   }
   if (!wrap.isConnected) return;
-  const list = rows(base, ctx.state());
+  // schon gespeichert gelöscht: ist weg (die Website wird gerade neu gebaut), nicht mehr anzeigen
+  const savedFleet = ctx.lastSaved?.().fleet ?? {};
+  const list = rows(base, ctx.state()).filter((r) => !(r.status === 'deleted' && savedFleet[r.id] === null));
   const label = (r: Row) => r.data.name?.[ctx.lang] || r.data.name?.fr || 'Neues Fahrzeug';
   const meta = (d: FleetData) =>
     [DE.categories[d.category as keyof typeof DE.categories] ?? d.category, d.mmaKg ? `${d.mmaKg} kg` : '', d.priceDay ? `${d.priceDay} €/Tag` : ''].filter(Boolean).join(' · ');
@@ -101,14 +105,15 @@ export async function fleetSheet(ctx: FleetCtx) {
           : `<button class="ed-btn ed-ghost" data-edit="${r.id}">Bearbeiten</button><button class="ed-btn ed-ghost ed-red" data-del="${r.id}">Löschen</button>`}</div>
       </div>`;
   };
-  // Gelöschte verschwinden sofort aus der Liste (und von der Seite); bis zum Speichern zurückholbar
+  // Gelöschte verschwinden sofort aus der Liste (und von der Seite); bis zum Speichern zurückholbar,
+  // danach sind sie weg
   const shown = list.filter((r) => r.status !== 'deleted');
   const gone = list.filter((r) => r.status === 'deleted');
   $('.ed-sheet-body', wrap)!.innerHTML = `<div class="ed-form">
     <div class="ed-row ed-row-start"><button class="ed-btn ed-primary" data-new>＋ Neues Fahrzeug anlegen</button>
       <button class="ed-btn ed-ghost" data-cargo>🧺 „Was transportieren Sie?“ bearbeiten</button></div>
     <div class="ed-flist">${shown.length ? shown.map(item).join('') : '<p class="ed-hint">Noch keine Fahrzeuge eingetragen.</p>'}</div>
-    ${gone.length ? `<details class="ed-details"><summary>Gelöscht (${gone.length}) – endgültig weg nach dem Speichern</summary><div class="ed-flist">${gone.map(item).join('')}</div></details>` : ''}
+    ${gone.length ? `<details class="ed-details"><summary>Gelöscht, noch nicht gespeichert (${gone.length}) – hier zurückholbar</summary><div class="ed-flist">${gone.map(item).join('')}</div></details>` : ''}
 </div>`;
 
   $('[data-new]', wrap)!.onclick = () => editSheet(ctx, base, null);

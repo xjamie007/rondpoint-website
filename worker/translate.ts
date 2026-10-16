@@ -1,13 +1,14 @@
 /**
  * Übersetzung für den Admin-Bereich (POST /api/translate, nur angemeldet).
- * Workers AI (Gemma 3, über 140 Sprachen) übersetzt einen geänderten Text in die anderen
+ * Workers AI (Llama 3.3 70B) übersetzt einen geänderten Text in die anderen
  * Sprachen der Website. Platzhalter {…}, Link-Ziele (page:…) und der Firmenname bleiben;
  * eine Übersetzung, bei der sie fehlen, wird verworfen. Der Editor markiert die Ergebnisse
  * als „automatisch übersetzt – bitte prüfen“.
  */
 import type { Env } from './types';
 
-export const MODEL = '@cf/google/gemma-3-12b-it';
+// Gemma ist für dieses Konto gesperrt (Fehler 5018); Mistral Small erfand Ortsnamen – Llama 3.3 war im Test am verlässlichsten
+export const MODEL = '@cf/meta/llama-3.3-70b-instruct-fp8-fast';
 const LANGS = ['fr', 'de', 'lb', 'en', 'pt'] as const;
 type Lang = (typeof LANGS)[number];
 const NAME: Record<Lang, string> = {
@@ -15,12 +16,18 @@ const NAME: Record<Lang, string> = {
   de: 'German',
   lb: 'Luxembourgish (Lëtzebuergesch)',
   en: 'English (British)',
-  pt: 'European Portuguese (Portugal)',
+  pt: 'European Portuguese (as in Portugal, never Brazilian Portuguese)',
 };
 
 /** Platzhalter und Link-Ziele: müssen in jeder Übersetzung gleich bleiben */
 export const fixedParts = (s: string) =>
   [...[...s.matchAll(/\{(\w+)\}/g)].map((m) => m[1]).sort(), '|', ...[...s.matchAll(/\]\(([^)\s]+)\)/g)].map((m) => m[1]).sort()].join(',');
+
+/** Text der Antwort: ältere Modelle liefern { response }, neuere das OpenAI-Format { choices } */
+export function answerOf(out: unknown): unknown {
+  const o = out as { response?: unknown; choices?: { message?: { content?: unknown } }[] } | null;
+  return o?.response ?? o?.choices?.[0]?.message?.content ?? null;
+}
 
 /** Erstes JSON-Objekt aus der Antwort des Modells */
 export function parseJson(s: string): Record<string, unknown> | null {
@@ -46,7 +53,8 @@ export async function translate(env: Env, body: { text?: unknown; from?: unknown
     `Translate the user's text from ${NAME[from]} into: ${to.map((l) => `${l} = ${NAME[l]}`).join('; ')}.`,
     'Rules: Never translate the company name "Um Rond Point". Keep every placeholder in curly braces such as {phone} or {hours} exactly as it is.',
     'Keep links written as [word](page:target): translate only the word in square brackets, never the part in round brackets.',
-    'Keep numbers, prices, units, phone numbers, e-mail addresses and brand names. Address the customer formally. Keep the meaning, length and tone; no explanations.',
+    'Keep numbers, prices, units, phone numbers, e-mail addresses and brand names. Address the customer formally. Keep the meaning, length, tone and punctuation (also the final full stop); no explanations.',
+    'Place names: Luxembourgish "Ierpeldeng" is "Erpeldange" and "Ettelbréck" is "Ettelbruck" in all other languages (and the other way round into Luxembourgish). Never replace a place by another one.',
     `Answer with one JSON object only, keys ${to.map((l) => `"${l}"`).join(', ')}, values the translations.`,
   ].join('\n');
   const out = (await env.AI.run(MODEL, {
@@ -56,12 +64,16 @@ export async function translate(env: Env, body: { text?: unknown; from?: unknown
     ],
     max_tokens: Math.min(4000, 400 + text.length * 3),
     temperature: 0.2,
-  })) as { response?: unknown };
-  const raw = typeof out?.response === 'string' ? parseJson(out.response) : out?.response && typeof out.response === 'object' ? (out.response as Record<string, unknown>) : null;
+  }));
+  const answer = answerOf(out);
+  const raw = typeof answer === 'string' ? parseJson(answer) : answer && typeof answer === 'object' ? (answer as Record<string, unknown>) : null;
   const translations: Partial<Record<Lang, string>> = {};
   const skipped: Lang[] = [];
+  const end = /[.!?:]$/.exec(text)?.[0];
   for (const l of to) {
-    const v = typeof raw?.[l] === 'string' ? (raw[l] as string).trim() : '';
+    let v = typeof raw?.[l] === 'string' ? (raw[l] as string).trim() : '';
+    // Schlusspunkt geht beim Modell manchmal verloren
+    if (v && end && !/[.!?:…"»”)]$/.test(v)) v += end;
     if (v && v.length <= text.length * 3 + 80 && fixedParts(v) === fixedParts(text)) translations[l] = v;
     else skipped.push(l);
   }

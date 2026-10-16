@@ -49,7 +49,7 @@ const draft = {
 const dirty = () => !!draft.get();
 // Öffnungszeiten und Anhänger (hours.ts, fleet.ts) arbeiten auf demselben Stand
 const hctx: HoursCtx = { t: nested, lang, state: () => state, change: (fn) => change(fn) };
-const fctx: FleetCtx = { ...hctx, storage: S };
+const fctx: FleetCtx = { ...hctx, storage: S, lastSaved: () => lastSaved };
 /** in diesem Schritt geänderte Texte: danach automatisch in die anderen Sprachen übersetzen */
 let changedTexts: [string, string][] = [];
 const openReview = () => {
@@ -277,9 +277,45 @@ function startAdmin() {
   buildBar();
   loginLabel();
   render();
-  // Veröffentlichung hängt? (Build auf GitHub fehlgeschlagen)
-  const min = S.pendingMinutes();
-  if (min != null && min > 20) toast(`Hinweis: Die letzte Speicherung (vor ${min} Minuten) ist noch nicht online. Bitte Nave Bescheid geben – auf GitHub ist die Veröffentlichung wohl hängen geblieben.`, 9000);
+  watchPublish();
+}
+
+/* ------------------------------------------------------------ Veröffentlichung verfolgen */
+let pubTimer: ReturnType<typeof setTimeout> | undefined;
+let pubEl: HTMLElement | null = null;
+/** Nach dem Speichern: Hinweis „Wird veröffentlicht …“, bis die neu gebaute Seite online ist */
+function watchPublish() {
+  clearTimeout(pubTimer);
+  const at = S.pendingAt();
+  if (!S.live || !admin || at == null) return;
+  if (!pubEl) {
+    pubEl = document.createElement('div');
+    pubEl.className = 'ed-pub ed-ui';
+    pubEl.setAttribute('role', 'status');
+    document.body.append(pubEl);
+  }
+  const show = (html: string, ok = false) => {
+    pubEl!.innerHTML = `<span>${html}</span><button type="button" aria-label="Hinweis schließen">✕</button>`;
+    pubEl!.classList.toggle('ed-pub-ok', ok);
+    $('button', pubEl!)!.onclick = () => { clearTimeout(pubTimer); pubEl?.remove(); pubEl = null; };
+  };
+  const min = Math.round((Date.now() - at) / 60_000);
+  // Veröffentlichung hängt? (Build auf Cloudflare fehlgeschlagen)
+  if (min > 20) show(`Die letzte Speicherung (vor ${min} Minuten) ist noch nicht online. Bitte Nave Bescheid geben – die Veröffentlichung ist wohl hängen geblieben.`);
+  else show('<i class="ed-busy" aria-hidden="true"></i>Wird veröffentlicht … meist 1–3 Minuten. Hier sehen Sie den neuen Stand schon, Besucher gleich danach.');
+  const check = async () => {
+    try {
+      const html = await (await fetch(location.pathname, { cache: 'no-store' })).text();
+      const built = Date.parse(html.match(/<meta[^>]+name="rp-build"[^>]+content="([^"]+)"/)?.[1] ?? '');
+      if (built >= at) {
+        show('✓ Veröffentlicht – jetzt für alle Besucher sichtbar.', true);
+        pubTimer = setTimeout(() => { pubEl?.remove(); pubEl = null; }, 9000);
+        return;
+      }
+    } catch { /* offline: später erneut */ }
+    pubTimer = setTimeout(check, 20_000);
+  };
+  pubTimer = setTimeout(check, min > 20 ? 60_000 : 15_000);
 }
 
 function buildBar() {
@@ -324,7 +360,10 @@ function change(fn: () => void | false, show = true) {
   draft.set(state);
   updateBar();
   if (show) render();
-  for (const [k, v] of changedTexts) queueTranslate({ state: () => state, change: (f) => change(f) }, k, v, lang);
+  // derselbe Text an mehreren Stellen: einmal übersetzen
+  const byText = new Map<string, string[]>();
+  for (const [k, v] of changedTexts) byText.set(v, [...(byText.get(v) ?? []), k]);
+  for (const [v, keys] of byText) queueTranslate({ state: () => state, change: (f) => change(f) }, keys, v, lang);
   changedTexts = [];
 }
 function doUndo() {
@@ -355,6 +394,7 @@ async function save() {
     }
     draft.set(JSON.stringify(state) === snapJson ? null : state);
     toast(S.live ? 'Gespeichert ✓ – in wenigen Minuten für alle Besucher sichtbar.' : 'Gespeichert ✓ (Demo: in diesem Browser gespeichert)', 4200);
+    watchPublish();
   } catch (e) {
     const err = e as Error;
     if (err.name === 'AuthError') {
