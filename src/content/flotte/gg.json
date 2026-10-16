@@ -17,7 +17,7 @@
   "socket": 13,
   "showPallets": false,
   "suitableFor": [],
-  "priceDay": null,
+  "priceDay": 100,
   "priceWeekend": null,
   "deposit": null,
   "notes": null,
