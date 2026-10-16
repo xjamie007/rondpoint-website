@@ -18,6 +18,12 @@
     },
     {
       "id": "materiel"
+    },
+    {
+      "id": "fahrrad",
+      "label": {
+        "lb": "fahrrad"
+      }
     }
   ]
 }
