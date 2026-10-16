@@ -177,3 +177,10 @@
 .ed-pub button { flex: none; min-width: 36px; min-height: 36px; border: 0; border-radius: 8px; background: rgb(255 255 255 / 0.15); color: #fff; font-size: 15px; cursor: pointer; }
 .ed-pub button:hover { background: rgb(255 255 255 / 0.25); }
 .ed-rv-miss .ed-mini { background: #fff; }
+/* „Was transportieren Sie?“ im Finder: antippen öffnet die Ladungsarten */
+.ed-on [data-cargo-q] { position: relative; cursor: pointer; outline: 2px dashed rgb(24 99 220 / 0.45); outline-offset: 6px; border-radius: 6px; }
+.ed-on [data-cargo-q]:hover { outline-color: #1863dc; }
+.ed-on [data-cargo-q] * { cursor: pointer; }
+.ed-on [data-cargo-q] > legend::after { content: 'Ladungsarten bearbeiten'; display: inline-block; margin-left: 12px; vertical-align: 0.25em; padding: 6px 10px; border-radius: 999px; background: #1863dc; color: #fff; font: 600 12px/1 system-ui, sans-serif; letter-spacing: 0; text-transform: none; pointer-events: none; }
+.ed-crow .ed-opts legend { font-size: 14px; }
+.ed-crow .ed-rv-miss { margin: 0; }

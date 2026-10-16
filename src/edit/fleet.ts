@@ -8,10 +8,10 @@
  */
 import { escapeHtml, useT, type Dict } from '@/i18n';
 import type { Lang } from '@/i18n/config';
-import { hiddenReason, toFleetItem, type FleetSource } from '@/lib/fleet';
+import { hiddenReason, isTrailer, toFleetItem, type FleetItem, type FleetSource } from '@/lib/fleet';
 import { CATEGORIES, cargoErrors, cleanFleet, ContentError, fleetErrors, LANGS, slugify, type CargoItem, type EditState, type FleetData } from '../../supabase/functions/publish/convert';
 import { CARGO_ITEMS, cargoLabel } from '@/lib/cargo';
-import { canTranslate, fillLanguages } from './translate';
+import { autoOn, canTranslate, fillLanguages, translateText } from './translate';
 import type { SiteStorage } from './storage';
 import { $, $$, closeSheet, confirmBox, pickers, prepareImage, sheet, toast } from './ui';
 
@@ -111,13 +111,13 @@ export async function fleetSheet(ctx: FleetCtx) {
   const gone = list.filter((r) => r.status === 'deleted');
   $('.ed-sheet-body', wrap)!.innerHTML = `<div class="ed-form">
     <div class="ed-row ed-row-start"><button class="ed-btn ed-primary" data-new>＋ Neues Fahrzeug anlegen</button>
-      <button class="ed-btn ed-ghost" data-cargo>🧺 „Was transportieren Sie?“ bearbeiten</button></div>
+      <button class="ed-btn ed-ghost" data-cargo>„Was transportieren Sie?“ bearbeiten</button></div>
     <div class="ed-flist">${shown.length ? shown.map(item).join('') : '<p class="ed-hint">Noch keine Fahrzeuge eingetragen.</p>'}</div>
     ${gone.length ? `<details class="ed-details"><summary>Gelöscht, noch nicht gespeichert (${gone.length}) – hier zurückholbar</summary><div class="ed-flist">${gone.map(item).join('')}</div></details>` : ''}
 </div>`;
 
   $('[data-new]', wrap)!.onclick = () => editSheet(ctx, base, null);
-  $('[data-cargo]', wrap)!.onclick = () => cargoSheet(ctx);
+  $('[data-cargo]', wrap)!.onclick = () => void cargoSheet(ctx);
   for (const b of $$<HTMLButtonElement>('[data-edit]', wrap)) b.onclick = () => editSheet(ctx, base, list.find((r) => r.id === b.dataset.edit)!);
   for (const b of $$<HTMLButtonElement>('[data-undel]', wrap)) {
     b.onclick = () => {
@@ -387,86 +387,188 @@ function editSheet(ctx: FleetCtx, base: Base, row: Row | null) {
 export const cargoNow = (ctx: FleetCtx): CargoItem[] => ctx.state().cargo ?? CARGO_ITEMS;
 const defaults = (l: Lang) => useT(l).finder.cargo as Record<string, string>;
 
-export function cargoSheet(ctx: FleetCtx) {
-  type RowC = { id: string; label: Partial<Record<Lang, string>> };
-  // Beschriftung je Sprache so, wie sie auf der Seite steht (eigene oder Standard)
-  let rowsC: RowC[] = cargoNow(ctx).map((c) => ({ id: c.id, label: Object.fromEntries(LANGS.map((l) => [l, cargoLabel(c, l, defaults(l))])) }));
-  const other = LANGS.filter((l) => l !== ctx.lang);
-  const wrap = sheet('„Was transportieren Sie?“', '<div class="ed-form ed-cargo"></div>', { wide: true, focus: false });
+/**
+ * Ladungsarten bearbeiten: Beschriftung (alle Sprachen), Reihenfolge, neue hinzufügen, entfernen –
+ * und gleich hier ankreuzen, welche Anhänger dafür passen (im Finder erscheint eine Ladungsart erst,
+ * wenn mindestens ein Anhänger dafür passt).
+ */
+export async function cargoSheet(ctx: FleetCtx, back: () => void = () => fleetSheet(ctx)) {
+  const wrap = sheet('„Was transportieren Sie?“', '<div class="ed-form ed-cargo"><p class="ed-hint">Wird geladen …</p></div>', { wide: true, focus: false });
   const body = $('.ed-cargo', wrap)!;
-  const draw = () => {
-    body.innerHTML = `<p class="ed-hint">Die Auswahl oben im Anhänger-Finder. Beim Anhänger unter „Geeignet für“ ankreuzen, wofür er passt. Angezeigt werden nur Ladungsarten mit mindestens einem passenden Anhänger.</p>
+  let base: Base;
+  try {
+    base = await loadBase();
+  } catch {
+    body.innerHTML = '<p class="ed-err">Die Fahrzeugliste konnte nicht geladen werden. Bitte die Seite neu laden.</p>';
+    return;
+  }
+  if (!wrap.isConnected) return;
+  // Anhänger im Finder (Transporter zählen dort nur bei Möbeln, Autos gar nicht)
+  const trailers = rows(base, ctx.state()).filter((r) => r.status !== 'deleted' && isTrailer(r.data as { category: FleetItem['category'] }));
+  const tName = (r: Row) => r.data.name?.[ctx.lang] || r.data.name?.fr || r.id;
+  type RowC = { id: string; label: Partial<Record<Lang, string>>; fits: Set<string>; open?: boolean };
+  // Beschriftung je Sprache so, wie sie auf der Seite steht (eigene oder Standard)
+  const rowsC: RowC[] = cargoNow(ctx).map((c) => ({
+    id: c.id,
+    label: Object.fromEntries(LANGS.map((l) => [l, cargoLabel(c, l, defaults(l))])),
+    fits: new Set(trailers.filter((t) => (t.data.suitableFor ?? []).includes(c.id)).map((t) => t.id)),
+  }));
+  // Beschriftung beim Öffnen: geänderte Ausgangssprache → die nicht selbst geänderten Sprachen neu übersetzen
+  const orig = new Map(rowsC.map((r) => [r, { ...r.label }]));
+  const other = LANGS.filter((l) => l !== ctx.lang);
+  const warn = (r: RowC) => (r.fits.size ? '' : 'Noch kein Anhänger angekreuzt – erscheint erst dann im Finder.');
+  const draw = (focus?: number) => {
+    body.innerHTML = `<p class="ed-hint">Die Auswahl oben im Anhänger-Finder. Beschriftung ändern, Reihenfolge mit ↑ ↓, neue Ladungsart hinzufügen – und ankreuzen, welche Anhänger dafür passen.</p>
       <div class="ed-flist">${rowsC.map((r, i) => `<div class="ed-crow" data-i="${i}">
         <label>Beschriftung (${ctx.lang.toUpperCase()})<input data-l="${ctx.lang}" value="${escapeHtml(r.label[ctx.lang] ?? '')}" maxlength="60" placeholder="z. B. Ein Fahrrad"></label>
-        <details class="ed-details"><summary>Andere Sprachen</summary><div class="ed-grid">${other.map((l) => `<label>${l.toUpperCase()}<input data-l="${l}" value="${escapeHtml(r.label[l] ?? '')}" maxlength="60"></label>`).join('')}</div></details>
-        <div class="ed-fact"><button type="button" class="ed-mini" data-up aria-label="Nach oben">↑</button><button type="button" class="ed-mini" data-down aria-label="Nach unten">↓</button><button type="button" class="ed-mini ed-red" data-rm>Entfernen</button></div>
+        <details class="ed-details"${r.open ? ' open' : ''}><summary>Andere Sprachen${canTranslate && needs(r).length ? ' (werden beim Übernehmen übersetzt)' : ''}</summary><div class="ed-grid">${other.map((l) => `<label>${l.toUpperCase()}<input data-l="${l}" value="${escapeHtml(r.label[l] ?? '')}" maxlength="60"></label>`).join('')}</div></details>
+        <fieldset class="ed-opts"><legend>Passende Anhänger</legend>${trailers.length
+          ? trailers.map((t) => `<label class="ed-opt"><input type="checkbox" data-fit="${escapeHtml(t.id)}" ${r.fits.has(t.id) ? 'checked' : ''}><span>${escapeHtml(tName(t))}</span></label>`).join('')
+          : '<span class="ed-hint">Noch keine Anhänger eingetragen.</span>'}</fieldset>
+        <p class="ed-rv-miss ed-warn" data-warn${warn(r) ? '' : ' hidden'}>${warn(r)}</p>
+        <div class="ed-fact"><button type="button" class="ed-mini" data-up aria-label="Nach oben"${i ? '' : ' disabled'}>↑</button><button type="button" class="ed-mini" data-down aria-label="Nach unten"${i < rowsC.length - 1 ? '' : ' disabled'}>↓</button><button type="button" class="ed-mini ed-red" data-rm>Entfernen</button></div>
       </div>`).join('')}</div>
       <div class="ed-row ed-row-start"><button type="button" class="ed-btn ed-ghost" data-add>＋ Neue Ladungsart</button>
-        ${canTranslate ? '<button type="button" class="ed-btn ed-ghost" data-tr>Leere Sprachen automatisch übersetzen</button>' : ''}</div>
+        ${canTranslate ? '<button type="button" class="ed-btn ed-ghost" data-tr>Leere Sprachen jetzt übersetzen</button>' : ''}</div>
       <p class="ed-err" data-err hidden></p>
       <div class="ed-row"><button type="button" class="ed-btn ed-ghost" data-back>Zurück</button><button type="button" class="ed-btn ed-primary" data-ok>Übernehmen</button></div>`;
+    if (focus != null) $<HTMLInputElement>(`[data-i="${focus}"] input[data-l]`, body)?.focus();
   };
-  draw();
+  const rowOf = (el: Element) => rowsC[Number(el.closest<HTMLElement>('[data-i]')?.dataset.i)];
   body.addEventListener('input', (e) => {
     const el = e.target as HTMLInputElement;
-    const i = el.closest<HTMLElement>('[data-i]')?.dataset.i;
-    if (i != null && el.dataset.l) rowsC[+i].label[el.dataset.l as Lang] = el.value;
+    if (el.dataset.l) rowOf(el).label[el.dataset.l as Lang] = el.value;
   });
+  body.addEventListener('change', (e) => {
+    const el = e.target as HTMLInputElement;
+    if (!el.dataset.fit) return;
+    const r = rowOf(el);
+    if (el.checked) r.fits.add(el.dataset.fit);
+    else r.fits.delete(el.dataset.fit);
+    const w = $('[data-warn]', el.closest('.ed-crow')!)!;
+    w.textContent = warn(r);
+    w.hidden = !warn(r);
+  });
+  body.addEventListener('toggle', (e) => {
+    const d = e.target as HTMLDetailsElement;
+    if (d.matches?.('details')) rowOf(d).open = d.open;
+  }, true);
+  /** Sprachen, die eine Übersetzung brauchen: leer, oder unverändert, obwohl die Ausgangssprache geändert wurde */
+  const needs = (r: RowC): Lang[] => {
+    const o = orig.get(r);
+    const srcChanged = !o || (r.label[ctx.lang] ?? '').trim() !== (o[ctx.lang] ?? '').trim();
+    return other.filter((l) => !r.label[l]?.trim() || (srcChanged && o && r.label[l] === o[l]));
+  };
+  /** Übersetzen, wo nötig (aus der Sprache der Seite, sonst aus einer ausgefüllten); false = fehlgeschlagen */
+  const translateRows = async (): Promise<boolean> => {
+    try {
+      for (const r of rowsC) {
+        const to = needs(r);
+        const src = r.label[ctx.lang]?.trim();
+        if (!to.length) continue;
+        if (src) Object.assign(r.label, await translateText(src, ctx.lang, to));
+        else if (Object.values(r.label).some((v) => v?.trim())) Object.assign(r.label, await fillLanguages(r.label, ctx.lang));
+        orig.set(r, { ...r.label, [ctx.lang]: r.label[ctx.lang] });
+      }
+      return true;
+    } catch (x) {
+      toast(`Übersetzung nicht möglich: ${(x as Error).message} – bitte die anderen Sprachen selbst ausfüllen.`, 5000);
+      return false;
+    }
+  };
+  draw();
   body.addEventListener('click', async (e) => {
     const b = (e.target as Element).closest<HTMLButtonElement>('button');
     if (!b) return;
     const i = Number(b.closest<HTMLElement>('[data-i]')?.dataset.i);
     if (b.matches('[data-up]') && i > 0) [rowsC[i - 1], rowsC[i]] = [rowsC[i], rowsC[i - 1]];
     else if (b.matches('[data-down]') && i < rowsC.length - 1) [rowsC[i + 1], rowsC[i]] = [rowsC[i], rowsC[i + 1]];
-    else if (b.matches('[data-rm]')) rowsC.splice(i, 1);
-    else if (b.matches('[data-add]')) rowsC.push({ id: '', label: {} });
-    else if (b.matches('[data-back]')) return fleetSheet(ctx);
+    else if (b.matches('[data-rm]')) {
+      const name = rowsC[i].label[ctx.lang]?.trim();
+      if (name) {
+        // confirmBox ersetzt das Fenster: danach mit dem bearbeiteten Stand wieder öffnen
+        const ok = await confirmBox('Ladungsart entfernen', `„${name}“ verschwindet nach dem Speichern aus dem Finder.`, 'Entfernen', true);
+        if (ok) rowsC.splice(i, 1);
+        return reopenWith();
+      }
+      rowsC.splice(i, 1);
+    } else if (b.matches('[data-add]')) {
+      rowsC.push({ id: '', label: {}, fits: new Set() });
+      return draw(rowsC.length - 1);
+    } else if (b.matches('[data-back]')) return back();
     else if (b.matches('[data-tr]')) {
       b.disabled = true;
-      try {
-        for (const r of rowsC) {
-          const res = await fillLanguages(r.label, ctx.lang);
-          Object.assign(r.label, res);
-        }
-        toast('Übersetzt – bitte kurz prüfen');
-      } catch (x) {
-        toast(`Übersetzung nicht möglich: ${(x as Error).message}`, 4500);
-      }
+      b.textContent = 'Übersetze …';
+      if (await translateRows()) toast('Übersetzt – bitte kurz prüfen');
     } else if (b.matches('[data-ok]')) {
-      // Kennung neuer Einträge aus der Beschriftung; Beschriftung nur speichern, wo sie vom Standardtext abweicht
-      const taken = new Set(rowsC.map((r) => r.id).filter(Boolean));
-      const items: CargoItem[] = rowsC
-        .filter((r) => r.id || Object.values(r.label).some((v) => v?.trim()))
-        .map((r) => {
-          let id = r.id;
-          if (!id) {
-            const base = slugify(r.label[ctx.lang] || Object.values(r.label).find((v) => v?.trim()) || 'ladung').slice(0, 30);
-            id = base;
-            for (let n = 2; taken.has(id); n++) id = `${base}-${n}`;
-            taken.add(id);
-          }
-          const label = Object.fromEntries(LANGS.filter((l) => r.label[l]?.trim() && r.label[l]!.trim() !== defaults(l)[id]).map((l) => [l, r.label[l]!.trim()]));
-          return Object.keys(label).length ? { id, label } : { id };
-        });
-      try {
-        cargoErrors(items);
-      } catch (x) {
-        const err = $('[data-err]', body)!;
-        err.hidden = false;
-        err.textContent = x instanceof ContentError ? x.message : String(x);
-        return;
-      }
-      const same = JSON.stringify(items) === JSON.stringify(CARGO_ITEMS);
-      ctx.change(() => {
-        const st = ctx.state();
-        if (same) delete st.cargo;
-        else st.cargo = items;
-      });
-      toast('Übernommen – bitte speichern');
-      return fleetSheet(ctx);
+      return apply(b);
     } else return;
     draw();
   });
+
+  /** nach confirmBox (ersetzt das Fenster) mit dem bearbeiteten Stand weitermachen */
+  function reopenWith() {
+    const w2 = sheet('„Was transportieren Sie?“', '', { wide: true, focus: false });
+    $('.ed-sheet-body', w2)!.append(body);
+    draw();
+  }
+
+  async function apply(b: HTMLButtonElement) {
+    const err = $('[data-err]', body)!;
+    const keep = rowsC.filter((r) => r.id || Object.values(r.label).some((v) => v?.trim()));
+    // neue oder geänderte Beschriftung: die anderen Sprachen übersetzen
+    if (canTranslate && autoOn() && keep.some((r) => needs(r).length)) {
+      b.disabled = true;
+      b.textContent = 'Übersetze …';
+      await translateRows();
+      if (!wrap.isConnected && !body.isConnected) return;
+      b.disabled = false;
+      b.textContent = 'Übernehmen';
+    }
+    // Kennung neuer Einträge aus der Beschriftung; Beschriftung nur speichern, wo sie vom Standardtext abweicht
+    const taken = new Set(keep.map((r) => r.id).filter(Boolean));
+    const ids = keep.map((r) => {
+      if (r.id) return r.id;
+      const slug = slugify(r.label[ctx.lang] || Object.values(r.label).find((v) => v?.trim()) || 'ladung').slice(0, 30) || 'ladung';
+      let id = slug;
+      for (let n = 2; taken.has(id); n++) id = `${slug}-${n}`;
+      taken.add(id);
+      return id;
+    });
+    const items: CargoItem[] = keep.map((r, i) => {
+      const id = ids[i];
+      const label = Object.fromEntries(LANGS.filter((l) => r.label[l]?.trim() && r.label[l]!.trim() !== defaults(l)[id]).map((l) => [l, r.label[l]!.trim()]));
+      return Object.keys(label).length ? { id, label } : { id };
+    });
+    try {
+      cargoErrors(items);
+    } catch (x) {
+      err.hidden = false;
+      err.textContent = x instanceof ContentError ? x.message : String(x);
+      return;
+    }
+    const sameList = JSON.stringify(items) === JSON.stringify(CARGO_ITEMS);
+    ctx.change(() => {
+      const st = ctx.state();
+      if (sameList) delete st.cargo;
+      else st.cargo = items;
+      // „Passende Anhänger“ in die Anhänger übernehmen (nur wo sich etwas geändert hat)
+      for (const t of trailers) {
+        const old = t.data.suitableFor ?? [];
+        const listed = new Set(ids);
+        // entfernte Ladungsarten bleiben beim Anhänger stehen (stören nicht, kein unnötiges Ändern)
+        const next = [...ids.filter((_, i) => keep[i].fits.has(t.id)), ...old.filter((id) => !listed.has(id))];
+        if (same([...old].sort(), [...next].sort())) continue;
+        const data = cleanFleet({ ...structuredClone(t.data), suitableFor: next });
+        st.fleet ??= {};
+        if (t.base && same(cleanFleet(t.base.data), data)) delete st.fleet[t.id];
+        else st.fleet[t.id] = data;
+      }
+      tidy(ctx);
+    });
+    toast('Übernommen – bitte speichern');
+    back();
+  }
 }
 /* ================================================================ Vorschau auf der Seite */
 let previewed = false;

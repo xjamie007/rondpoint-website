@@ -56,7 +56,7 @@ const openReview = () => {
   commitEditing();
   void reviewSheet({
     lang, state: () => state, lastSaved: () => lastSaved, change: (fn) => change(fn), storage: S, save,
-    openHours: () => hoursSheet(hctx), openFleet: (id) => (id ? fleetEdit(fctx, id) : fleetSheet(fctx)), openCargo: () => cargoSheet(fctx),
+    openHours: () => hoursSheet(hctx), openFleet: (id) => (id ? fleetEdit(fctx, id) : fleetSheet(fctx)), openCargo: () => void cargoSheet(fctx, openReview),
   });
 };
 let hoursShown = false;
@@ -450,6 +450,7 @@ document.addEventListener('click', (e) => {
   if (t.closest('.ed-ui, [data-ed-login]')) return;
   if (t.closest('a[href], summary')) e.preventDefault();
   if (t.closest('[data-hours=table], [data-hours=sum]')) { e.preventDefault(); commitEditing(); hoursSheet(hctx); return; }
+  if (t.closest('[data-cargo-q]')) { e.preventDefault(); commitEditing(); void cargoSheet(fctx, closeSheet); return; }
   const card = t.closest<HTMLElement>('[data-fleet]');
   if (card) { e.preventDefault(); commitEditing(); fleetEdit(fctx, card.dataset.fleet!); return; }
   const fig = t.closest<HTMLElement>('[data-eimg]');
@@ -741,7 +742,7 @@ function moreSheet() {
     <button class="ed-li" data-m="seo">G&nbsp; Google – Titel und Beschreibung dieser Seite</button>
     <button class="ed-li" data-m="hours">🕒 Öffnungszeiten</button>
     <button class="ed-li" data-m="fleet">🛻 Mietanhänger & Transporter</button>
-    <button class="ed-li" data-m="cargo">🧺 „Was transportieren Sie?“ (Auswahl im Finder)</button>
+    <button class="ed-li" data-m="cargo">„Was transportieren Sie?“ (Auswahl im Finder)</button>
     ${canTranslate ? `<button class="ed-li" data-m="tr">🌐 Automatisch in die anderen Sprachen übersetzen: <b>${autoOn() ? 'an' : 'aus'}</b></button>` : ''}
     <button class="ed-li" data-m="help">❓ Kurzanleitung</button>
     ${hidden.length ? `<button class="ed-li" data-m="unhide">🖼 Ausgeblendete Bilder wieder anzeigen (${hidden.length})</button>` : ''}
@@ -754,7 +755,7 @@ function moreSheet() {
     b.onclick = () => {
       closeSheet();
       ({
-        seo: seoSheet, hours: () => hoursSheet(hctx), fleet: () => fleetSheet(fctx), cargo: () => cargoSheet(fctx), help: helpSheet,
+        seo: seoSheet, hours: () => hoursSheet(hctx), fleet: () => fleetSheet(fctx), cargo: () => void cargoSheet(fctx, closeSheet), help: helpSheet,
         tr: () => { setAuto(!autoOn()); toast(autoOn() ? 'Geänderte Texte werden automatisch übersetzt' : 'Automatische Übersetzung aus'); }, resetp: resetPage, reset: resetAll, discard, logout,
         unhide: () => { change(() => { for (const k of hidden) state.photos[k] = { hidden: false }; }); toast('Die Bilder erscheinen nach dem Speichern wieder.', 3600); },
       })[b.dataset.m as 'help']();

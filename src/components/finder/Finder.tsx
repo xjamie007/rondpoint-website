@@ -183,7 +183,7 @@ export default function Finder(props: FinderProps) {
     <div className={`finder-ui${hydrated ? ' is-hydrated' : ''}`}>
       {!hydrated && <p className="finder-nojs">{s.noJsRules}</p>}
       <div className="finder-questions" hidden={!hydrated}>
-        <fieldset className="finder-q">
+        <fieldset className="finder-q" data-cargo-q>
           <legend>{s.cargoLegend}</legend>
           <div className="chips">
             {props.cargoOptions.map((c) => (

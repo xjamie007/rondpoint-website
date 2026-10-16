@@ -5,6 +5,7 @@
  */
 import { escapeHtml, useT } from '@/i18n';
 import { HTML_LANG, LANGS, type Lang } from '@/i18n/config';
+import { CARGO_ITEMS, cargoLabel } from '@/lib/cargo';
 import { hoursSummary } from '@/lib/content';
 import type { EditState } from '../../supabase/functions/publish/convert';
 import { getPath } from './match';
@@ -152,10 +153,23 @@ export async function reviewSheet(ctx: ReviewCtx) {
     }
   }
 
-  // Ladungsarten
+  // Ladungsarten: was genau sich geändert hat
   if (!same(prev.cargo, s.cargo)) {
-    items.push(`<div class="ed-rv" data-kind="cargo"><div class="ed-rv-head"><span class="ed-tag">„Was transportieren Sie?“</span><b>Auswahl geändert</b>
-      <button type="button" class="ed-mini" data-open>Bearbeiten</button><button type="button" class="ed-mini" data-drop>Verwerfen</button></div></div>`);
+    const dflt = useT(ctx.lang).finder.cargo as Record<string, string>;
+    const a = prev.cargo ?? CARGO_ITEMS, b = s.cargo ?? CARGO_ITEMS;
+    const name = (c: (typeof a)[number]) => cargoLabel(c, ctx.lang, dflt);
+    const lines: string[] = [];
+    for (const c of b) {
+      const o = a.find((x) => x.id === c.id);
+      if (!o) lines.push(`Neu: <b>${escapeHtml(name(c))}</b>`);
+      else if (!same(o.label ?? {}, c.label ?? {})) lines.push(name(o) === name(c) ? `Andere Sprachen geändert: <b>${escapeHtml(name(c))}</b>` : `Umbenannt: ${escapeHtml(name(o))} → <b>${escapeHtml(name(c))}</b>`);
+    }
+    for (const o of a) if (!b.some((c) => c.id === o.id)) lines.push(`Entfernt: <s>${escapeHtml(name(o))}</s>`);
+    const kept = b.filter((c) => a.some((x) => x.id === c.id)).map((c) => c.id);
+    if (!same(kept, a.filter((x) => kept.includes(x.id)).map((x) => x.id))) lines.push('Reihenfolge geändert');
+    items.push(`<div class="ed-rv" data-kind="cargo"><div class="ed-rv-head"><span class="ed-tag">„Was transportieren Sie?“</span>
+      <button type="button" class="ed-mini" data-open>Bearbeiten</button><button type="button" class="ed-mini" data-drop>Verwerfen</button></div>
+      <ul class="ed-rv-list">${(lines.length ? lines : ['Auswahl geändert']).map((x) => `<li>${x}</li>`).join('')}</ul></div>`);
   }
 
   const nAuto = items.filter((x) => x.includes('ed-tag-auto')).length;
