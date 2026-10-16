@@ -1,11 +1,33 @@
 {
   "$comment": "Ladungsarten im Finder („Was transportieren Sie?“), in dieser Reihenfolge. Beschriftung aus src/i18n/*.ts (finder.cargo), außer ein Eintrag hat eigene „label“ je Sprache. Im Admin-Bereich unter „Anhänger“ → „Ladungsarten“ bearbeitbar.",
   "items": [
-    { "id": "voiture" },
-    { "id": "moto" },
-    { "id": "terre" },
-    { "id": "fete" },
-    { "id": "meubles" },
-    { "id": "materiel" }
+    {
+      "id": "voiture"
+    },
+    {
+      "id": "moto"
+    },
+    {
+      "id": "terre"
+    },
+    {
+      "id": "fete"
+    },
+    {
+      "id": "meubles"
+    },
+    {
+      "id": "materiel"
+    },
+    {
+      "id": "gg",
+      "label": {
+        "fr": "gg",
+        "de": "gg",
+        "lb": "gg",
+        "en": "gg",
+        "pt": "gg"
+      }
+    }
   ]
 }
