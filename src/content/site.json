@@ -82,7 +82,7 @@
     "$gardenDealerStatus": "16.10.2026: kein Händlerstatus für Honda/Stihl nennen (Wunsch des Kunden); der Platzhalter entfällt",
     "pricesInclVat": false
   },
-  "$reviews": "Google-Profil, ausgewählt von Nave (Kunde: „die, die euch am besten gefallen“), 16.10.2026. quote = Originaltext (lang = Originalsprache); translations = Übersetzung von Google, wird als solche gekennzeichnet. Kein genaues Datum bei Google, deshalb ohne Datum.",
+  "$reviews": "Google-Profil, ausgewählt von Nave am 16.10.2026. quote = Originaltext (lang = Originalsprache), auf Luxemburgisch immer im Original. translations: de von Google, fr/en/pt von Nave aus dem Deutschen; mit Original neu übersetzen. Kein genaues Datum bei Google.",
   "reviews": [
     {
       "name": "Arslan C.",
@@ -91,7 +91,10 @@
       "stars": 5,
       "quote": "",
       "translations": {
-        "de": "Ich hatte wirklich eine sehr gute Erfahrung in dieser Werkstatt. Das Team ist professionell, aufmerksam und sehr freundlich. Sie nehmen sich Zeit, alles zu erklären, und man fühlt sich sofort gut aufgehoben. Ich hatte ein Problem mit meinem Auto, und sie haben die Ursache sofort gefunden und es schnell und effizient repariert. Sie reagieren sehr schnell und vor allem proaktiv und finden Lösungen, ohne Zeit zu verschwenden."
+        "de": "Ich hatte wirklich eine sehr gute Erfahrung in dieser Werkstatt. Das Team ist professionell, aufmerksam und sehr freundlich. Sie nehmen sich Zeit, alles zu erklären, und man fühlt sich sofort gut aufgehoben. Ich hatte ein Problem mit meinem Auto, und sie haben die Ursache sofort gefunden und es schnell und effizient repariert. Sie reagieren sehr schnell und vor allem proaktiv und finden Lösungen, ohne Zeit zu verschwenden.",
+        "fr": "J'ai vraiment eu une très bonne expérience dans cet atelier. L'équipe est professionnelle, attentive et très sympathique. Ils prennent le temps de tout expliquer et on se sent tout de suite entre de bonnes mains. J'avais un problème avec ma voiture : ils en ont trouvé la cause tout de suite et l'ont réparée rapidement et efficacement. Ils sont très réactifs et surtout proactifs, et trouvent des solutions sans perdre de temps.",
+        "en": "I had a really great experience at this garage. The team is professional, attentive and very friendly. They take the time to explain everything, and you immediately feel in good hands. I had a problem with my car, and they found the cause straight away and repaired it quickly and efficiently. They respond very quickly and, above all, proactively, and find solutions without wasting time.",
+        "pt": "Tive mesmo uma experiência muito boa nesta oficina. A equipa é profissional, atenta e muito simpática. Dedicam tempo a explicar tudo e sentimo-nos logo em boas mãos. Tinha um problema com o meu carro: encontraram a causa de imediato e repararam-no de forma rápida e eficiente. Reagem muito depressa e, sobretudo, de forma proativa, e encontram soluções sem perder tempo."
       }
     },
     {
@@ -101,7 +104,10 @@
       "stars": 5,
       "quote": "",
       "translations": {
-        "de": "Exzellenter Service! Das Team ist professionell, schnell und absolut ehrlich. Mein Auto wurde schneller als erwartet und zu einem sehr fairen Preis repariert. Ich kann sie uneingeschränkt empfehlen!"
+        "de": "Exzellenter Service! Das Team ist professionell, schnell und absolut ehrlich. Mein Auto wurde schneller als erwartet und zu einem sehr fairen Preis repariert. Ich kann sie uneingeschränkt empfehlen!",
+        "fr": "Service excellent ! L'équipe est professionnelle, rapide et d'une honnêteté totale. Ma voiture a été réparée plus vite que prévu et à un prix très correct. Je la recommande sans réserve !",
+        "en": "Excellent service! The team is professional, fast and completely honest. My car was repaired faster than expected and at a very fair price. I can recommend them without reservation!",
+        "pt": "Serviço excelente! A equipa é profissional, rápida e totalmente honesta. O meu carro foi reparado mais depressa do que o previsto e a um preço muito justo. Recomendo sem reservas!"
       }
     },
     {
@@ -111,7 +117,10 @@
       "stars": 5,
       "quote": "",
       "translations": {
-        "de": "Ich hatte eine sehr angenehme Erfahrung. Vielen Dank für den freundlichen Service und die ehrliche Beratung zu meinem Auto 🙏🏼 Meine Werkstatt des Vertrauens in Luxemburg."
+        "de": "Ich hatte eine sehr angenehme Erfahrung. Vielen Dank für den freundlichen Service und die ehrliche Beratung zu meinem Auto 🙏🏼 Meine Werkstatt des Vertrauens in Luxemburg.",
+        "fr": "J'ai vécu une expérience très agréable. Merci beaucoup pour le service aimable et les conseils honnêtes concernant ma voiture 🙏🏼 Mon garage de confiance au Luxembourg.",
+        "en": "I had a very pleasant experience. Thank you very much for the friendly service and the honest advice about my car 🙏🏼 My trusted garage in Luxembourg.",
+        "pt": "Tive uma experiência muito agradável. Muito obrigado pelo serviço simpático e pelos conselhos honestos sobre o meu carro 🙏🏼 A minha oficina de confiança no Luxemburgo."
       }
     }
   ],
