@@ -83,6 +83,8 @@ Weitere Regeln:
 - [ ] Test-E-Mail von einer fremden Adresse (z. B. Gmail) an info@rondpoint.lu schicken und Antwort zurück. Damit ist bekannt: Heute funktioniert es.
 
 ### Phase 1: Cloudflare vorbereiten (ohne jede Auswirkung, etwa 15 Minuten)
+
+> **Erledigt am 18.10.2026.** Die Cloudflare-Nameserver sind **`bella.ns.cloudflare.com`** und **`chad.ns.cloudflare.com`**. Ich habe bei beiden geprüft: Alle 6 Einträge sind identisch mit Wix, die Proxy-Wolke ist grau. Das .lu-Register zeigt noch auf Wix (richtig so, die Nameserver werden erst in Phase 2 geändert).
 1. Im **Nave-Cloudflare-Konto** (dort liegt der Worker, und dort muss auch die Domain liegen): „Add a domain“ → `rondpoint.lu` → Plan **Free**.
 2. Cloudflare liest die Einträge selbst ein. Prüfen, dass genau diese da sind, und **bei allen die Wolke grau („DNS only“) stellen**:
 
