@@ -6,6 +6,20 @@ Stand: 28.09.2026. Nichts davon ist erfunden. Jede Stelle erscheint auf der Webs
 - Schalter für bestätigte Aussagen: `src/content/site.json` → `confirmations`, `manager.confirmed`, `payment.confirmed` usw.
 - Vor Livegang `showOpenPoints` in `site.json` auf `false` setzen. Dann verschwinden Abschnitte, die ohne Daten keinen Sinn haben, zum Beispiel „Avis Google" oder die Foto-Hinweise. Platzhalter in Sätzen bleiben sichtbar, bis die Daten da sind.
 
+## Stand 20.10.2026: Fahrzeug-Showroom von audaris (Partner-Zentrallager)
+
+Eingebaut auf der Autos-Seite unter dem eigenen Bestand (MovingCar), als Abschnitt „Weitere Fahrzeuge auf Bestellung“:
+- **Konfiguration:** `site.json` → `audaris` (cid 2765, wid …dfa2, `active`).
+- **Laden:** Das Skript von audaris lädt erst, wenn man in die Nähe scrollt. Ein Direktlink auf ein Fahrzeug (`/de/autos/#/…`) öffnet es sofort.
+- **Datenschutz:** Ein Abschnitt dazu steht in allen Sprachen in der Datenschutzerklärung. Der Showroom setzt keine Cookies; er speichert nur die Filter im Browser-Speicher.
+- **Sprache:** Den Showroom gibt es nur auf Deutsch. Auf FR, EN, PT und LB steht ein kurzer Hinweis dazu.
+
+**Bei audaris noch einzustellen** (Mail an Herrn Stollberg Mesquita):
+1. **Empfänger für Anfragen:** `inqireEmailRecipient` ist leer. Er sollte auf info@rondpoint.lu gesetzt werden.
+2. **MwSt.:** Die Preise stehen mit „inkl. 19 % MwSt.“ (deutsch) da. Für Kunden in Luxemburg sind es 17 %. Klären, wie audaris das für Luxemburg anzeigt.
+3. **Andere Sprachen:** Gibt es den Showroom auch auf Französisch oder Englisch?
+4. Optional: `baseUrl` auf `https://www.rondpoint.lu/de/autos/` setzen, damit „Teilen“-Links nach dem Umzug stimmen.
+
 ## Stand 16.10.2026: Antworten von David (Kunde)
 
 Eingetragen:

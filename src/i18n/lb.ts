@@ -192,6 +192,17 @@ const lb: Dict = {
     },
   },
 
+  /** Fahrzeug-Showroom des Partners (audaris) auf der Autos-Seite */
+  showroom: {
+    h2: 'Weider Autoen op Bestellung',
+    text: 'Iwwer eise Partner kënne mir Iech weider Neiwagen a Gebrauchtwagen ubidden. Frot eis, ob se disponibel sinn a wéini se geliwwert kënne ginn.',
+    jump: 'Weider Autoen op Bestellung ukucken',
+    loading: 'D’Offer gëtt gelueden …',
+    error: 'D’Offer kann de Moment net gelueden ginn. Rufft eis un: +352 81 05 41.',
+    noJs: 'Fir d’Offer vun eisem Partner braucht Dir JavaScript. Rufft eis un: +352 81 05 41.',
+    langNote: 'D’Offer vun eisem Partner gëtt op Däitsch ugewisen.',
+  },
+
   enums: {
     fuel: {
       petrol: 'Bensin',
@@ -792,9 +803,12 @@ const lb: Dict = {
       'D’Websäit gëtt vu GitHub Pages (GitHub, Inc., Vereenegt Staaten) gehost. Bei all Besuch veraarbecht GitHub Är IP-Adress an technesch Donnéeën, fir d’Säiten auszeliwweren an d’Sécherheet ze garantéieren. GitHub ass nom EU-US-Dateschutzrumm (EU-US Data Privacy Framework) zertifiéiert. Rechtsgrondlag: eist berechtegt Interessi un enger Websäit, déi sécher an erreechbar ass (Art. 6 Abs. 1 Buchst. f DSGVO).',
     hostingCloudflare:
       'D’Websäit gëtt vu Cloudflare (Cloudflare, Inc., Vereenegt Staaten) gehost. Bei all Besuch veraarbecht Cloudflare Är IP-Adress an technesch Donnéeën, fir d’Säiten auszeliwweren an d’Sécherheet ze garantéieren. Cloudflare ass nom EU-US-Dateschutzrumm (EU-US Data Privacy Framework) zertifiéiert. Rechtsgrondlag: eist berechtegt Interessi un enger Websäit, déi sécher an erreechbar ass (Art. 6 Abs. 1 Buchst. f DSGVO).',
+    showroomH2: 'Autosoffer vun eisem Partner (audaris)',
+    showroom:
+      'Op der Säit „Autoen“ binden mir d’Autosoffer vun eisem Partner iwwer de Service audaris an (audaris GmbH, Traunreuter Straße 16, D-93073 Neutraubling, Däitschland). Et gëtt eréischt gelueden, wann Dir bis bei dësen Deel scrollt. Dobäi veraarbecht audaris Är IP-Adress an technesch Donnéeën, fir d’Offer ze weisen. Är Filteren späichert d’Offer am Späicher vun Ärem Browser, ouni Cookien. Wann Dir iwwer d’Offer eng Ufro schéckt, ginn Är Donnéeën un audaris an un eis. Rechtsgrondlag: eist berechtegt Interessi, Iech eng méi grouss Autosoffer ze weisen (Art. 6 Abs. 1 Buchst. f DSGVO), bei Ufroen virvertraglech Moossnamen (Art. 6 Abs. 1 Buchst. b DSGVO). Dateschutzerklärung vun audaris: audaris.de/datenschutz.',
     linksH2: 'Linken op aner Servicer',
     links:
-      'D’Websäit lued keen externen Inhalt: Schrëften, Fotoen a Plang sinn zesumme mat der Websäit gehost. D’Linken op Google Maps, WhatsApp, Facebook, Instagram, TikTok, LuxAuto an AutoScout24 ginn nëmmen op, wann Dir drop klickt. Dës Servicer veraarbechten Är Donnéeën dann no hiren eegene Reegelen. WhatsApp gehéiert zu Meta Platforms; wann Dir eis op WhatsApp schreift, veraarbecht Meta Är Nummer an Är Messagen.',
+      'Ausser der Autosoffer vun eisem Partner (kuckt uewen) lued d’Websäit keen externen Inhalt: Schrëften, Fotoen a Plang sinn zesumme mat der Websäit gehost. D’Linken op Google Maps, WhatsApp, Facebook, Instagram, TikTok, LuxAuto an AutoScout24 ginn nëmmen op, wann Dir drop klickt. Dës Servicer veraarbechten Är Donnéeën dann no hiren eegene Reegelen. WhatsApp gehéiert zu Meta Platforms; wann Dir eis op WhatsApp schreift, veraarbecht Meta Är Nummer an Är Messagen.',
     rightsH2: 'Är Rechter',
     rights:
       'Dir kënnt Accès op Är Donnéeën, hir Korrektur, hir Läschung, d’Aschränkung vun der Veraarbechtung an d’Portabilitéit vun den Donnéeë verlaangen an der Veraarbechtung widderspriechen. Schreift eis op info@rondpoint.lu. Dir kënnt och eng Reklamatioun bei der Nationaler Kommissioun fir den Dateschutz (CNPD) aginn: 15, boulevard du Jazz, L-4370 Belvaux, cnpd.public.lu.',

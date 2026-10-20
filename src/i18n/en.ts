@@ -192,6 +192,17 @@ const en: Dict = {
     },
   },
 
+  /** Fahrzeug-Showroom des Partners (audaris) auf der Autos-Seite */
+  showroom: {
+    h2: 'More cars to order',
+    text: 'Through our partner we can offer you more new and used cars. Ask us about availability and delivery time.',
+    jump: 'See more cars to order',
+    loading: 'Loading the offer …',
+    error: 'The offer cannot be loaded right now. Call us on +352 81 05 41.',
+    noJs: 'Our partner’s offer needs JavaScript. Call us on +352 81 05 41.',
+    langNote: 'Our partner’s offer is shown in German.',
+  },
+
   enums: {
     fuel: {
       petrol: 'Petrol',
@@ -788,9 +799,12 @@ const en: Dict = {
       'The website is hosted by GitHub Pages (GitHub, Inc., United States). On every visit, GitHub processes your IP address and technical data to deliver the pages and to ensure security. GitHub is certified under the EU-US Data Privacy Framework. Legal basis: our legitimate interest in a secure and available website (Art. 6(1)(f) GDPR).',
     hostingCloudflare:
       'The website is hosted by Cloudflare (Cloudflare, Inc., United States). On every visit, Cloudflare processes your IP address and technical data to deliver the pages and to ensure security. Cloudflare is certified under the EU-US Data Privacy Framework. Legal basis: our legitimate interest in a secure and available website (Art. 6(1)(f) GDPR).',
+    showroomH2: 'Our partner’s vehicle offer (audaris)',
+    showroom:
+      'On the “Cars” page we include our partner’s vehicle offer through the audaris service (audaris GmbH, Traunreuter Straße 16, D-93073 Neutraubling, Germany). It only loads when you scroll to that part of the page. audaris then processes your IP address and technical data to show the offer. The offer stores your filter settings in your browser’s storage, without cookies. If you send an enquiry through the offer, your details go to audaris and to us. Legal basis: our legitimate interest in showing you a wider choice of cars (Art. 6(1)(f) GDPR) and, for enquiries, steps taken at your request prior to entering into a contract (Art. 6(1)(b) GDPR). audaris privacy policy: audaris.de/datenschutz.',
     linksH2: 'Links to other services',
     links:
-      'The website does not load any external content: fonts, photos and the map are hosted with the website. Links to Google Maps, WhatsApp, Facebook, Instagram, TikTok, LuxAuto and AutoScout24 only open if you click them. These services then process your data according to their own rules. WhatsApp belongs to Meta Platforms; if you write to us on WhatsApp, Meta processes your number and your messages.',
+      'Apart from our partner’s vehicle offer (see above), the website does not load any external content: fonts, photos and the map are hosted with the website. Links to Google Maps, WhatsApp, Facebook, Instagram, TikTok, LuxAuto and AutoScout24 only open if you click them. These services then process your data according to their own rules. WhatsApp belongs to Meta Platforms; if you write to us on WhatsApp, Meta processes your number and your messages.',
     rightsH2: 'Your rights',
     rights:
       'You can request access to your data, rectification, erasure, restriction of processing and data portability, and you can object to processing. Write to us at info@rondpoint.lu. You can also lodge a complaint with the National Commission for Data Protection (Commission nationale pour la protection des données, CNPD), 15, boulevard du Jazz, L-4370 Belvaux, cnpd.public.lu.',

@@ -1,0 +1,153 @@
+---
+/**
+ * Fahrzeugangebot des Partners (audaris-Showroom, Zentrallager) unter dem eigenen Bestand.
+ * Das Skript von audaris lädt erst, wenn man in die Nähe scrollt (Ladezeit, Datenschutz), sofort nur
+ * bei einem Direktlink in den Showroom (#/…). audaris zeigt den Showroom in einem Shadow DOM im
+ * Element #audaris-widget und nutzt den Hash der Adresse für seine Unterseiten (Fahrzeug-Details).
+ * Ein- und ausschalten: site.json → audaris.active. Der Showroom ist nur auf Deutsch verfügbar.
+ */
+import type { Dict } from '@/i18n';
+import type { Lang } from '@/i18n/config';
+import { site } from '@/lib/site';
+
+interface Props {
+  t: Dict;
+  lang: Lang;
+}
+const { t, lang } = Astro.props;
+const cfg = (site as { audaris?: { active?: boolean; cid?: number; wid?: string } }).audaris;
+const src = cfg?.active && cfg.cid && cfg.wid ? `https://widget.x.cloud.audaris.icu/widget.js?cid=${cfg.cid}&wid=${cfg.wid}` : null;
+const s = t.showroom;
+---
+{
+  src && (
+    <section class="section partner" id="partner" aria-labelledby="partner-h" data-src={src} data-error={s.error}>
+      <div class="wrap">
+        <header class="partner-head">
+          <h2 id="partner-h" class="h-bar reveal">{s.h2}</h2>
+          <p class="prose-w">{s.text}</p>
+          {lang !== 'de' && <p class="t-small t-muted">{s.langNote}</p>}
+        </header>
+        <div id="audaris-widget" class="partner-widget">
+          <p class="partner-status" role="status">{s.loading}</p>
+        </div>
+        <noscript>
+          <p class="partner-status">{s.noJs}</p>
+        </noscript>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .partner { border-top: 1.5px solid var(--color-black); margin-top: 64px; }
+  .partner-head { display: grid; gap: 12px; margin-bottom: 28px; }
+  .partner-head h2, .partner-head p { margin: 0; }
+  /* Platz freihalten, damit die Seite beim Laden nicht springt */
+  .partner-widget { min-height: 70vh; }
+  .partner-widget.is-ready { min-height: 0; }
+  .partner-status { margin: 0; padding: 32px 0; color: var(--color-asphalt); }
+  .partner-status.is-error { color: var(--color-black); font-weight: 600; }
+</style>
+
+<script>
+  const sec = document.querySelector<HTMLElement>('section.partner[data-src]');
+  const host = document.getElementById('audaris-widget');
+  if (sec && host) {
+    let started = false;
+    const fail = () => {
+      if (host.shadowRoot) return;
+      host.classList.add('is-ready');
+      host.innerHTML = '';
+      const p = document.createElement('p');
+      p.className = 'partner-status is-error';
+      p.textContent = sec.dataset.error ?? '';
+      host.append(p);
+    };
+    const load = () => {
+      if (started) return;
+      started = true;
+      const s = document.createElement('script');
+      s.src = sec.dataset.src!;
+      s.async = true;
+      s.onerror = fail;
+      document.body.append(s);
+      // audaris hängt den Showroom als Shadow DOM an; ohne ihn nach 25 s: Hinweis statt leerer Fläche
+      const t0 = Date.now();
+      const check = setInterval(() => {
+        if (host.shadowRoot) {
+          clearInterval(check);
+          host.classList.add('is-ready');
+          if (location.hash.startsWith('#/') && Date.now() < touched) {
+            setTimeout(toShowroom, 600);
+            setTimeout(toShowroom, 1800);
+          }
+        } else if (Date.now() - t0 > 25_000) {
+          clearInterval(check);
+          fail();
+        }
+      }, 500);
+    };
+    // audaris ruft bei jedem Wechsel seiner Ansicht (Liste ↔ Fahrzeug) scrollTo(0, 0) auf, der
+    // Showroom steht aber weiter unten. Diesen Sprung abfangen: nach einem Klick im Showroom zu ihm
+    // hin scrollen, ohne Bedienung (z. B. beim ersten Laden) gar nicht springen.
+    const nativeScrollTo = window.scrollTo.bind(window);
+    const toShowroom = () => {
+      const y = host.getBoundingClientRect().top + scrollY - 16;
+      if (Math.abs(scrollY - y) > 40) nativeScrollTo({ top: y });
+    };
+    let touched = 0;
+    let routeAt = 0;
+    for (const ev of ['pointerdown', 'keydown']) {
+      addEventListener(ev, (e) => { if (e.composedPath().includes(host)) touched = Date.now(); }, true);
+    }
+    const byUser = () => Date.now() - touched <= 3000;
+    window.scrollTo = ((...args: unknown[]) => {
+      const a = args[0];
+      const top = a && typeof a === 'object' ? (a as ScrollToOptions).top : args[1];
+      if (top === 0 && Date.now() - routeAt < 2000) {
+        if (byUser()) toShowroom();
+        return;
+      }
+      (nativeScrollTo as (...x: unknown[]) => void)(...args);
+    }) as typeof window.scrollTo;
+    let lastHash = location.hash;
+    const onRoute = () => {
+      if (location.hash === lastHash) return;
+      lastHash = location.hash;
+      routeAt = Date.now();
+      if (byUser()) setTimeout(toShowroom, 450); // falls audaris anders scrollt
+    };
+    for (const m of ['pushState', 'replaceState'] as const) {
+      const orig = history[m].bind(history);
+      history[m] = (...args: Parameters<History['pushState']>) => { orig(...args); onRoute(); };
+    }
+    addEventListener('popstate', onRoute);
+    addEventListener('hashchange', onRoute);
+
+    // Direktlink in den Showroom (z. B. ein geteiltes Fahrzeug): sofort laden und hinscrollen
+    const deep = location.hash.startsWith('#/');
+    if (deep) {
+      load();
+      touched = Date.now() + 10_000; // die ersten Ansichtswechsel beim Start gehören zum Direktlink
+      sec.scrollIntoView();
+    } else if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          io.disconnect();
+          load();
+        }
+      }, { rootMargin: '800px 0px' });
+      io.observe(sec);
+    } else load();
+
+    // Sprung-Link oben auf der Seite: scrollen ohne #partner in der Adresse (audaris nutzt den Hash)
+    for (const a of document.querySelectorAll<HTMLAnchorElement>('a[href="#partner"]')) {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        load();
+        sec.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      });
+    }
+  }
+</script>

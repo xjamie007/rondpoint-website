@@ -192,6 +192,17 @@ const de: Dict = {
     },
   },
 
+  /** Fahrzeug-Showroom des Partners (audaris) auf der Autos-Seite */
+  showroom: {
+    h2: 'Weitere Fahrzeuge auf Bestellung',
+    text: 'Über unseren Partner können wir Ihnen weitere Neu- und Gebrauchtwagen anbieten. Fragen Sie uns nach Verfügbarkeit und Lieferzeit.',
+    jump: 'Weitere Fahrzeuge auf Bestellung ansehen',
+    loading: 'Das Fahrzeugangebot wird geladen …',
+    error: 'Das Fahrzeugangebot kann gerade nicht geladen werden. Rufen Sie uns an: +352 81 05 41.',
+    noJs: 'Für das Fahrzeugangebot unseres Partners wird JavaScript benötigt. Rufen Sie uns an: +352 81 05 41.',
+    langNote: 'Das Angebot unseres Partners wird auf Deutsch angezeigt.',
+  },
+
   enums: {
     fuel: {
       petrol: 'Benzin',
@@ -792,9 +803,12 @@ const de: Dict = {
       'Die Website wird von GitHub Pages (GitHub, Inc., Vereinigte Staaten) gehostet. Bei jedem Besuch verarbeitet GitHub Ihre IP-Adresse und technische Daten, um die Seiten auszuliefern und die Sicherheit zu gewährleisten. GitHub ist nach dem EU-US-Datenschutzrahmen (EU-US Data Privacy Framework) zertifiziert. Rechtsgrundlage: unser berechtigtes Interesse an einer sicheren und verfügbaren Website (Art. 6 Abs. 1 lit. f DSGVO).',
     hostingCloudflare:
       'Die Website wird von Cloudflare (Cloudflare, Inc., Vereinigte Staaten) gehostet. Bei jedem Besuch verarbeitet Cloudflare Ihre IP-Adresse und technische Daten, um die Seiten auszuliefern und die Sicherheit zu gewährleisten. Cloudflare ist nach dem EU-US-Datenschutzrahmen (EU-US Data Privacy Framework) zertifiziert. Rechtsgrundlage: unser berechtigtes Interesse an einer sicheren und verfügbaren Website (Art. 6 Abs. 1 lit. f DSGVO).',
+    showroomH2: 'Fahrzeugangebot unseres Partners (audaris)',
+    showroom:
+      'Auf der Seite „Autos“ binden wir das Fahrzeugangebot unseres Partners über den Dienst audaris ein (audaris GmbH, Traunreuter Straße 16, D-93073 Neutraubling, Deutschland). Es wird erst geladen, wenn Sie zu diesem Bereich scrollen. Dabei verarbeitet audaris Ihre IP-Adresse und technische Daten, um das Angebot anzuzeigen. Ihre Filtereinstellungen speichert das Angebot im Speicher Ihres Browsers, ohne Cookies. Wenn Sie über das Angebot eine Anfrage senden, gehen Ihre Angaben an audaris und an uns. Rechtsgrundlage: unser berechtigtes Interesse, Ihnen ein größeres Fahrzeugangebot zu zeigen (Art. 6 Abs. 1 lit. f DSGVO), bei Anfragen vorvertragliche Maßnahmen (Art. 6 Abs. 1 lit. b DSGVO). Datenschutzerklärung von audaris: audaris.de/datenschutz.',
     linksH2: 'Links zu anderen Diensten',
     links:
-      'Die Website lädt keine externen Inhalte: Schriften, Fotos und Plan werden mit der Website gehostet. Links zu Google Maps, WhatsApp, Facebook, Instagram, TikTok, LuxAuto und AutoScout24 öffnen sich nur, wenn Sie darauf klicken. Diese Dienste verarbeiten Ihre Daten dann nach ihren eigenen Regeln. WhatsApp gehört zu Meta Platforms; wenn Sie uns auf WhatsApp schreiben, verarbeitet Meta Ihre Nummer und Ihre Nachrichten.',
+      'Abgesehen vom Fahrzeugangebot unseres Partners (siehe oben) lädt die Website keine externen Inhalte: Schriften, Fotos und Plan werden mit der Website gehostet. Links zu Google Maps, WhatsApp, Facebook, Instagram, TikTok, LuxAuto und AutoScout24 öffnen sich nur, wenn Sie darauf klicken. Diese Dienste verarbeiten Ihre Daten dann nach ihren eigenen Regeln. WhatsApp gehört zu Meta Platforms; wenn Sie uns auf WhatsApp schreiben, verarbeitet Meta Ihre Nummer und Ihre Nachrichten.',
     rightsH2: 'Ihre Rechte',
     rights:
       'Sie können Auskunft über Ihre Daten, ihre Berichtigung, ihre Löschung, die Einschränkung der Verarbeitung und die Datenübertragbarkeit verlangen und der Verarbeitung widersprechen. Schreiben Sie uns an info@rondpoint.lu. Sie können außerdem eine Beschwerde bei der Nationalen Kommission für den Datenschutz (CNPD) einreichen: 15, boulevard du Jazz, L-4370 Belvaux, cnpd.public.lu.',

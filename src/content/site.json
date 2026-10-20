@@ -145,5 +145,11 @@
   },
   "showOpenPoints": true,
   "presentation": true,
-  "$presentation": "Präsentationsversion für den Kunden: Stockfotos aus src/assets/demo (Lizenzen in credits.json), interne Platzhalter [FEHLT]/[UNBESTÄTIGT] ausgeblendet, unbestätigte Aussagen weggelassen. Vor Livegang auf false setzen und echte Fotos eintragen."
+  "$presentation": "Präsentationsversion für den Kunden: Stockfotos aus src/assets/demo (Lizenzen in credits.json), interne Platzhalter [FEHLT]/[UNBESTÄTIGT] ausgeblendet, unbestätigte Aussagen weggelassen. Vor Livegang auf false setzen und echte Fotos eintragen.",
+  "audaris": {
+    "active": true,
+    "cid": 2765,
+    "wid": "6ad5ca4cdf23d0e5e200dfa2",
+    "$comment": "Fahrzeug-Showroom von audaris (Partner-/Zentrallager), Einbindung von audaris am 20.10.2026. active=false blendet ihn aus."
+  }
 }
