@@ -1,0 +1,30 @@
+{
+  "category": "fourgon",
+  "name": {
+    "fr": "Remorque fourgon 1350 kg"
+  },
+  "brand": "Humbaur",
+  "mmaKg": 1350,
+  "emptyKg": 360,
+  "payloadKg": 990,
+  "braked": true,
+  "loadLengthM": 3,
+  "loadWidthM": 1.4,
+  "loadHeightM": 1.8,
+  "volumeM3": 7.56,
+  "tempRange": null,
+  "power": null,
+  "socket": 13,
+  "showPallets": true,
+  "suitableFor": [
+    "fete",
+    "meubles",
+    "materiel"
+  ],
+  "priceDay": 50,
+  "priceWeekend": 80,
+  "deposit": 300,
+  "notes": null,
+  "photo": "remorque-fourgon-1350-kg",
+  "active": true
+}
