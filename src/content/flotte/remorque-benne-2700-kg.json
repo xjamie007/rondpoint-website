@@ -1,0 +1,34 @@
+{
+  "category": "benne",
+  "name": {
+    "fr": "Remorque benne 2700 kg",
+    "de": "Kipper-Anhänger 2700 kg",
+    "lb": "Remorque Benne 2700 kg",
+    "en": "Tipper trailer 2700 kg",
+    "pt": "Reboque basculante 2700 kg"
+  },
+  "brand": "Saris",
+  "mmaKg": 2700,
+  "emptyKg": 770,
+  "payloadKg": 1930,
+  "braked": true,
+  "loadLengthM": 3.1,
+  "loadWidthM": 1.7,
+  "loadHeightM": 0.3,
+  "volumeM3": null,
+  "tempRange": null,
+  "power": null,
+  "socket": 13,
+  "showPallets": true,
+  "suitableFor": [
+    "terre",
+    "meubles",
+    "materiel"
+  ],
+  "priceDay": 100,
+  "priceWeekend": 140,
+  "deposit": 300,
+  "notes": null,
+  "photo": "remorque-benne-2700-kg",
+  "active": true
+}
