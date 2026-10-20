@@ -1,0 +1,32 @@
+{
+  "category": "porte-moto",
+  "name": {
+    "fr": "Remorque porte moto 750 kg",
+    "de": "Motorrad-Transportanhänger 750 kg",
+    "lb": "Remorque fir Motos 750 kg",
+    "en": "Motorbike trailer 750 kg",
+    "pt": "Reboque para motos 750 kg"
+  },
+  "brand": "Humbaur",
+  "mmaKg": 750,
+  "emptyKg": 300,
+  "payloadKg": 450,
+  "braked": false,
+  "loadLengthM": 2.5,
+  "loadWidthM": 1.56,
+  "loadHeightM": null,
+  "volumeM3": null,
+  "tempRange": null,
+  "power": null,
+  "socket": 13,
+  "showPallets": false,
+  "suitableFor": [
+    "moto"
+  ],
+  "priceDay": 80,
+  "priceWeekend": 100,
+  "deposit": 300,
+  "notes": null,
+  "photo": "remorque-porte-moto-750-kg",
+  "active": true
+}
