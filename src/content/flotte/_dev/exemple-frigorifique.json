@@ -2,7 +2,7 @@
   "sample": true,
   "category": "frigorifique",
   "name": {
-    "fr": "Remorque frigorifique 1,3 t (exemple)",
+    "fr": "Remorque frigorifique 1300 kg",
     "de": "Kühlanhänger 1,3 t (Beispiel)",
     "lb": "Killunhänger 1,3 t (Beispill)",
     "en": "Refrigerated trailer 1.3 t (example)",
@@ -10,15 +10,15 @@
   },
   "brand": null,
   "mmaKg": 1300,
-  "emptyKg": 640,
-  "payloadKg": 660,
+  "emptyKg": 780,
+  "payloadKg": 520,
   "braked": true,
-  "loadLengthM": 2.6,
-  "loadWidthM": 1.45,
+  "loadLengthM": 2.5,
+  "loadWidthM": 1.3,
   "loadHeightM": 1.8,
-  "volumeM3": 6.8,
+  "volumeM3": 5.85,
   "tempRange": {
-    "minC": 2,
+    "minC": 0,
     "maxC": 8
   },
   "power": "230 V",
@@ -27,9 +27,9 @@
   "suitableFor": [
     "fete"
   ],
-  "priceDay": null,
-  "priceWeekend": null,
-  "deposit": null,
+  "priceDay": 100,
+  "priceWeekend": 150,
+  "deposit": 300,
   "notes": null,
   "photo": "exemple-frigorifique",
   "active": true
