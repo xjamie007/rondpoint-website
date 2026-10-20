@@ -1,0 +1,32 @@
+{
+  "category": "porte-voiture",
+  "name": {
+    "fr": "Remorque porte voiture 2000 kg",
+    "de": "Pkw-Anhänger 2000 kg",
+    "lb": "Remorque fir Autoen 2000 kg",
+    "en": "Car trailer 2000 kg",
+    "pt": "Reboque para carros 2000 kg"
+  },
+  "brand": "Saris",
+  "mmaKg": 2000,
+  "emptyKg": 640,
+  "payloadKg": 1360,
+  "braked": true,
+  "loadLengthM": 4,
+  "loadWidthM": 1.8,
+  "loadHeightM": null,
+  "volumeM3": null,
+  "tempRange": null,
+  "power": null,
+  "socket": 13,
+  "showPallets": false,
+  "suitableFor": [
+    "voiture"
+  ],
+  "priceDay": 80,
+  "priceWeekend": 100,
+  "deposit": 300,
+  "notes": null,
+  "photo": "remorque-porte-voiture-2000-kg",
+  "active": true
+}
