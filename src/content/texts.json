@@ -1,19 +1,29 @@
 {
   "$comment": "Textänderungen aus dem Admin-Dashboard (und aus dem LB-Import). Schlüssel wie in src/i18n/fr.ts, mit Punkten: \"pages.workshop.lead\". Hat Vorrang vor den Grundtexten in src/i18n/*.ts.",
   "fr": {
-    "hero.sub": "Louez un remorque ou une camionnette, trouvez votre prochaine voiture. Vous nous trouverez au 1, rue du Viaduc, entre Ettelbruck et Angelduerf."
+    "hero.sub": "Louez un remorque ou une camionnette, trouvez votre prochaine voiture. Vous nous trouverez au 1, rue du Viaduc, entre Ettelbruck et Angelduerf.",
+    "photos.heroWorkshop": "Garage Um Rond Point",
+    "photos.garden": "Moissonneuse avec moteur à essence"
   },
   "de": {
-    "hero.sub": "Laden Sie einen Anhänger oder einen Kleinlaster, finden Sie Ihr nächstes Auto. Sie finden uns auf 1, rue du Viaduc, zwischen Ettelbruck und Angelduerf."
+    "hero.sub": "Laden Sie einen Anhänger oder einen Kleinlaster, finden Sie Ihr nächstes Auto. Sie finden uns auf 1, rue du Viaduc, zwischen Ettelbruck und Angelduerf.",
+    "photos.heroWorkshop": "Garage Um Rond Point",
+    "photos.garden": "Mähdrescher mit Benzinmotor"
   },
   "lb": {
     "hero.sub": "Lount en Unhänger oder eng Camionnette, fannt Ären nächsten Auto. Dir fannt eis op 1, rue du Viaduc, tëscht Ettelbréck an Angelduerf.",
-    "finder.intro": "Sot eis, wat Dir transportéiert a wat fir e Führerschäin Dir hutt. Dir gesitt direkt, wéi eng Unhänger passen, wat se kaschten an ob Äre Führerschäin duergeet."
+    "finder.intro": "Sot eis, wat Dir transportéiert a wat fir e Führerschäin Dir hutt. Dir gesitt direkt, wéi eng Unhänger passen, wat se kaschten an ob Äre Führerschäin duergeet.",
+    "photos.heroWorkshop": "Garage Um Rond Point",
+    "photos.garden": "Méimaschinn mat Bensinsmotor"
   },
   "en": {
-    "hero.sub": "Rent a trailer or a van, find your next car. You will find us at 1, rue du Viaduc, between Ettelbruck and Angelduerf."
+    "hero.sub": "Rent a trailer or a van, find your next car. You will find us at 1, rue du Viaduc, between Ettelbruck and Angelduerf.",
+    "photos.heroWorkshop": "Garage Um Rond Point",
+    "photos.garden": "Harvester with petrol engine"
   },
   "pt": {
-    "hero.sub": "Alugue um reboque ou uma carrinha, encontre o seu próximo carro. Encontrará-nos na 1, rue du Viaduc, entre Ettelbruck e Angelduerf."
+    "hero.sub": "Alugue um reboque ou uma carrinha, encontre o seu próximo carro. Encontrará-nos na 1, rue du Viaduc, entre Ettelbruck e Angelduerf.",
+    "photos.heroWorkshop": "Garage Um Rond Point",
+    "photos.garden": "Ceifeira com motor a gasolina"
   }
 }
