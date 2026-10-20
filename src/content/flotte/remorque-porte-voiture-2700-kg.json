@@ -1,0 +1,32 @@
+{
+  "category": "porte-voiture",
+  "name": {
+    "fr": "Remorque porte voiture 2700 kg",
+    "de": "Pkw-Anhänger 2700 kg",
+    "lb": "Remorque fir Autoen 2700 kg",
+    "en": "Car trailer 2700 kg",
+    "pt": "Reboque para carros 2700 kg"
+  },
+  "brand": "WM Meyer",
+  "mmaKg": 2700,
+  "emptyKg": 510,
+  "payloadKg": 2190,
+  "braked": true,
+  "loadLengthM": 4.75,
+  "loadWidthM": 2.03,
+  "loadHeightM": null,
+  "volumeM3": null,
+  "tempRange": null,
+  "power": null,
+  "socket": 13,
+  "showPallets": false,
+  "suitableFor": [
+    "voiture"
+  ],
+  "priceDay": 80,
+  "priceWeekend": 100,
+  "deposit": 300,
+  "notes": null,
+  "photo": "remorque-porte-voiture-2700-kg",
+  "active": true
+}
