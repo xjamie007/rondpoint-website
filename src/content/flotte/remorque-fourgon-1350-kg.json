@@ -1,7 +1,11 @@
 {
   "category": "fourgon",
   "name": {
-    "fr": "Remorque fourgon 1350 kg"
+    "fr": "Remorque fourgon 1350 kg",
+    "de": "Anhänger Kastenwagen 1350 kg",
+    "lb": "Remorque Fourgon 1350 kg",
+    "en": "Trailer van 1350 kg",
+    "pt": "Reboque furgão 1350 kg"
   },
   "brand": "Humbaur",
   "mmaKg": 1350,
