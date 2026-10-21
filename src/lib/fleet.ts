@@ -39,9 +39,16 @@ export interface FleetItem {
   socket: 7 | 13 | null;
   showPallets: boolean;
   suitableFor: Cargo[];
+  priceHalfDay: number | null;
   priceDay: number | null;
   priceWeekend: number | null;
+  priceWeek: number | null;
   deposit: number | null;
+  kmHalfDay: number | null;
+  kmDay: number | null;
+  kmWeekend: number | null;
+  kmWeek: number | null;
+  priceExtraKm: number | null;
   notes: string | null;
   photo: string | null;
   sample: boolean;
@@ -68,9 +75,16 @@ export interface FleetSource {
   socket?: 7 | 13 | null;
   showPallets?: boolean;
   suitableFor?: string[];
+  priceHalfDay?: number | null;
   priceDay?: number | null;
   priceWeekend?: number | null;
+  priceWeek?: number | null;
   deposit?: number | null;
+  kmHalfDay?: number | null;
+  kmDay?: number | null;
+  kmWeekend?: number | null;
+  kmWeek?: number | null;
+  priceExtraKm?: number | null;
   notes?: ({ fr: string } & Partial<Record<Lang, string>>) | null;
   photo?: string | null;
   active?: boolean;
@@ -97,9 +111,16 @@ export function toFleetItem(id: string, d: FleetSource, lang: Lang): FleetItem {
     socket: d.socket ?? null,
     showPallets: d.showPallets ?? false,
     suitableFor: (d.suitableFor ?? []) as Cargo[],
+    priceHalfDay: d.priceHalfDay ?? null,
     priceDay: d.priceDay ?? null,
     priceWeekend: d.priceWeekend ?? null,
+    priceWeek: d.priceWeek ?? null,
     deposit: d.deposit ?? null,
+    kmHalfDay: d.kmHalfDay ?? null,
+    kmDay: d.kmDay ?? null,
+    kmWeekend: d.kmWeekend ?? null,
+    kmWeek: d.kmWeek ?? null,
+    priceExtraKm: d.priceExtraKm ?? null,
     notes: d.notes ? d.notes[lang] || d.notes.fr : null,
     photo: d.photo ?? null,
     sample: d.sample ?? false,
@@ -149,14 +170,13 @@ export function evaluate(items: FleetItem[], state: FinderState): Evaluation {
     .filter((r) => r.assessment.required.kind !== 'exceeds')
     .sort((a, b) => a.assessment.group - b.assessment.group || a.item.payloadKg - b.item.payloadKg);
 
-  const vans =
-    state.cargo === 'meubles'
-      ? items
-          .filter(isVan)
-          .map((item) => ({ item, kind: 'van' as const, assessment: assessVan(item, state.licence) }))
-          .filter((r) => r.assessment.required.kind !== 'exceeds')
-          .sort((a, b) => a.item.payloadKg - b.item.payloadKg)
-      : [];
+  // Transporter wie Anhänger: ohne gewählte Ladung alle, sonst die, die dafür passen
+  const vans = items
+    .filter(isVan)
+    .filter((i) => !state.cargo || i.suitableFor.includes(state.cargo))
+    .map((item) => ({ item, kind: 'van' as const, assessment: assessVan(item, state.licence) }))
+    .filter((r) => r.assessment.required.kind !== 'exceeds')
+    .sort((a, b) => a.item.payloadKg - b.item.payloadKg);
 
   const fitCount = [...trailers, ...vans].filter((r) => fits(r.assessment)).length;
   return { trailers, vans, fitCount };

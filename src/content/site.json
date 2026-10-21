@@ -75,12 +75,13 @@
     "workshopTransparency": false,
     "workshopAllBrands": false,
     "workshopExtraKeywords": false,
-    "rentalDurations": false,
+    "rentalDurations": true,
     "trailerDealerStatus": true,
     "$trailerDealerStatus": "16.10.2026 bestätigt: offizieller Händler Saris, Humbaur, WM Meyer und Tohaco (Logos nicht freigegeben)",
     "gardenDealerStatus": false,
     "$gardenDealerStatus": "16.10.2026: kein Händlerstatus für Honda/Stihl nennen (Wunsch des Kunden); der Platzhalter entfällt",
-    "pricesInclVat": false
+    "pricesInclVat": false,
+    "$rentalDurations": "21.10.2026: Preisliste des Kunden: ½ Tag, Tag, Wochenende, Woche"
   },
   "$reviews": "Google-Profil, ausgewählt von Nave am 16.10.2026. quote = Originaltext (lang = Originalsprache), auf Luxemburgisch immer im Original. translations: de von Google, fr/en/pt von Nave aus dem Deutschen; mit Original neu übersetzen. Kein genaues Datum bei Google.",
   "reviews": [

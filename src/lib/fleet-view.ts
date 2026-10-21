@@ -18,8 +18,14 @@ export interface FleetDisplay {
   height: string | null;
   braked: string;
   price: string | null;
+  priceHalfDay: string | null;
   priceDay: string | null;
   priceWeekend: string | null;
+  priceWeek: string | null;
+  /** Preise je Mietdauer für die Karten (½ Tag, Tag, Wochenende, Woche), bei Transportern mit Kilometern */
+  prices: { label: string; value: string; km: string | null }[];
+  /** Transporter: Preis je weiterem Kilometer */
+  extraKm: string | null;
   deposit: string | null;
   socket: string | null;
   volume: string | null;
@@ -57,6 +63,19 @@ export function fleetView(items: FleetItem[], lang: Lang, t: Dict): FleetView[] 
       req.kind === 'licence' ? fmt(s.verdict.required, { licence: s.licenceShort[req.licence] }) : s.verdict.requiredDepends;
     const priceDay = i.priceDay != null ? eur(lang, i.priceDay) : null;
     const priceWeekend = i.priceWeekend != null ? eur(lang, i.priceWeekend) : null;
+    const priceHalfDay = i.priceHalfDay != null ? eur(lang, i.priceHalfDay) : null;
+    const priceWeek = i.priceWeek != null ? eur(lang, i.priceWeek) : null;
+    const km = (n: number | null) => (n != null ? fmt(s.kmIncl, { km: num(lang, n) }) : null);
+    const prices = [
+      { label: s.priceRows.halfDay, value: priceHalfDay, km: km(i.kmHalfDay) },
+      { label: s.priceRows.day, value: priceDay, km: km(i.kmDay) },
+      { label: s.priceRows.weekend, value: priceWeekend, km: km(i.kmWeekend) },
+      { label: s.priceRows.week, value: priceWeek, km: km(i.kmWeek) },
+    ].filter((p): p is { label: string; value: string; km: string | null } => p.value != null);
+    const extraKm =
+      i.priceExtraKm != null
+        ? fmt(s.extraKm, { price: num(lang, i.priceExtraKm, { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2 }) })
+        : null;
     const price =
       priceDay && priceWeekend
         ? fmt(s.price, { day: priceDay, weekend: priceWeekend })
@@ -80,8 +99,12 @@ export function fleetView(items: FleetItem[], lang: Lang, t: Dict): FleetView[] 
         height: i.loadHeightM != null ? meters(lang, i.loadHeightM) : null,
         braked: i.braked ? s.specs.yes : s.specs.no,
         price,
+        priceHalfDay,
         priceDay,
         priceWeekend,
+        priceWeek,
+        prices,
+        extraKm,
         deposit: i.deposit != null ? eur(lang, i.deposit) : null,
         socket: i.socket != null ? fmt(s.specs.socketValue, { n: i.socket }) : null,
         volume: i.volumeM3 != null ? fmt(s.volumeText, { m3: cubic(lang, i.volumeM3) }) : null,

@@ -6,6 +6,22 @@ Stand: 28.09.2026. Nichts davon ist erfunden. Jede Stelle erscheint auf der Webs
 - Schalter für bestätigte Aussagen: `src/content/site.json` → `confirmations`, `manager.confirmed`, `payment.confirmed` usw.
 - Vor Livegang `showOpenPoints` in `site.json` auf `false` setzen. Dann verschwinden Abschnitte, die ohne Daten keinen Sinn haben, zum Beispiel „Avis Google" oder die Foto-Hinweise. Platzhalter in Sätzen bleiben sichtbar, bis die Daten da sind.
 
+## Stand 21.10.2026: Preisliste der Vermietung
+
+Neu auf der Website und im Admin-Bereich:
+- **Preise:** halber Tag, Tag, Wochenende und Woche. Leere Felder werden nicht angezeigt.
+- **Nur Transporter:** inklusive Kilometer je Mietdauer und Preis je weiterem Kilometer.
+- **Transporter im Finder:** Sie erscheinen jetzt wie die Anhänger, also ohne gewählte Ladung und bei passender Ladung (vorher nur bei „Möbel“).
+
+Aus der Preisliste übernommen (½ Tag / Woche): Kipper 2700 kg (60 € / 250 €), Kastenanhänger 1350 kg (40 € / 180 €), Motorradanhänger 750 kg (50 € / 200 €), Pkw-Anhänger 2000 kg (50 € / 200 €).
+
+**Noch klären bzw. im Admin-Bereich eintragen:**
+- **Nicht auf der Website**, stehen aber auf der Liste: Vertikutierer, Freischneider Honda, Caisse 1300 kg, Plateau 2000 kg, Pferdeanhänger 2000 kg, Kühlanhänger 1300 kg und 2000 kg, Grillanhänger. Für Anhänger fehlen Nutzlast und Leergewicht.
+- **Pkw-Anhänger 2700 kg:** steht nicht auf der Liste, deshalb keine Preise für ½ Tag und Woche.
+- **Motorradanhänger:** Auf der Liste steht 2,20 × 1,30 m, auf der Website 2,50 × 1,56 m. Was stimmt?
+- **Kastenanhänger:** Auf der Liste steht 1300 kg, auf der Website 1350 kg.
+- **Transporter:** Die Liste nennt weder Transporter noch inklusive Kilometer. Beides trägt David im Admin-Bereich ein.
+
 ## Stand 20.10.2026: Fahrzeug-Showroom von audaris (Partner-Zentrallager)
 
 Eingebaut auf der Autos-Seite unter dem eigenen Bestand (MovingCar), als Abschnitt „Weitere Fahrzeuge auf Bestellung“:

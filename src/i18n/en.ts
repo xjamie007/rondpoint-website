@@ -118,6 +118,10 @@ const en: Dict = {
     price: '{day} per day, {weekend} per weekend',
     priceDayOnly: '{day} per day',
     priceWeekendOnly: '{weekend} per weekend',
+    priceRows: { halfDay: '½ day', day: 'Day', weekend: 'Weekend', week: 'Week' },
+    pricesLabel: 'Rental prices',
+    kmIncl: '{km} km included',
+    extraKm: 'Each extra kilometre: {price}',
     priceMissing: '[FEHLT — Preis pro Tag und Wochenende]',
     request: 'Request this trailer',
     requestVan: 'Request this van',
@@ -140,6 +144,8 @@ const en: Dict = {
     licence: 'Licence required',
     day: 'Price per day',
     weekend: 'Price per weekend',
+    halfDay: 'Price ½ day',
+    week: 'Price per week',
     licenceDepends: 'depends on the car',
   },
 
@@ -361,7 +367,7 @@ const en: Dict = {
       },
       prix: {
         q: 'How much does it cost to hire a trailer?',
-        a: 'Our guide shows the price per day and per weekend for each trailer. [FEHLT — Preise der Flotte]',
+        a: 'Our guide shows the price for half a day, a day, a weekend and a week for each trailer. Not every trailer can be hired for half a day.',
       },
       louer: {
         q: 'What do I need to hire a trailer?',
@@ -457,8 +463,8 @@ const en: Dict = {
   pages: {
     rental: {
       h1: 'Trailer and van hire in Erpeldange',
-      lead: 'Car trailers and motorbike trailers, tipper trailers, refrigerated trailers for your parties, and vans. By the day or for the weekend.',
-      durationsMissing: '[UNBESTÄTIGT — Mietdauern Tag / Wochenende]',
+      lead: 'Car trailers and motorbike trailers, tipper trailers, refrigerated trailers for your parties, and vans. For half a day, a day, a weekend or a week.',
+      durationsMissing: '[UNBESTÄTIGT — Mietdauern ½ Tag / Tag / Wochenende / Woche]',
       conditionsH2: 'Hire conditions',
       conditionsMissing:
         '[FEHLT — Mietbedingungen: Ausweis, Führerschein, Kaution, Abhol- und Rückgabezeiten, Reservierung]',

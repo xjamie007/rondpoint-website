@@ -118,6 +118,10 @@ const lb: Dict = {
     price: '{day} pro Dag, {weekend} pro Weekend',
     priceDayOnly: '{day} pro Dag',
     priceWeekendOnly: '{weekend} pro Weekend',
+    priceRows: { halfDay: '½ Dag', day: 'Dag', weekend: 'Weekend', week: 'Woch' },
+    pricesLabel: 'Lounpräisser',
+    kmIncl: '{km} km abegraff',
+    extraKm: 'All weideren Kilometer: {price}',
     priceMissing: '[FEHLT — Preis pro Tag und Wochenende]',
     request: 'Dësen Unhänger ufroen',
     requestVan: 'Dës Camionnette ufroen',
@@ -140,6 +144,8 @@ const lb: Dict = {
     licence: 'Néidege Führerschäin',
     day: 'Präis pro Dag',
     weekend: 'Präis pro Weekend',
+    halfDay: 'Präis ½ Dag',
+    week: 'Präis pro Woch',
     licenceDepends: 'je no Auto',
   },
 
@@ -361,7 +367,7 @@ const lb: Dict = {
       },
       prix: {
         q: 'Wat kascht et, en Unhänger ze lounen?',
-        a: 'De Präis pro Dag a pro Weekend steet bei all Unhänger an eiser Unhängersich. [FEHLT — Preise der Flotte]',
+        a: 'D’Präisser fir en hallween Dag, een Dag, de Weekend an eng Woch stinn bei all Unhänger an eiser Unhängersich. Net all Unhänger kann een en hallween Dag lounen.',
       },
       louer: {
         q: 'Wat brauch ech, fir ze lounen?',
@@ -457,8 +463,8 @@ const lb: Dict = {
   pages: {
     rental: {
       h1: 'Unhänger a Camionnetten zu Ierpeldeng lounen',
-      lead: 'Autos- a Motosunhänger, Kipper, Killunhänger fir Äert Fest, Camionnetten. Fir een Dag oder fir de Weekend.',
-      durationsMissing: '[UNBESTÄTIGT — Mietdauern Tag / Wochenende]',
+      lead: 'Autos- a Motosunhänger, Kipper, Killunhänger fir Äert Fest, Camionnetten. Fir en hallween Dag, een Dag, de Weekend oder eng Woch.',
+      durationsMissing: '[UNBESTÄTIGT — Mietdauern ½ Tag / Tag / Wochenende / Woche]',
       conditionsH2: 'Lounbedéngungen',
       conditionsMissing:
         '[FEHLT — Mietbedingungen: Ausweis, Führerschein, Kaution, Abhol- und Rückgabezeiten, Reservierung]',

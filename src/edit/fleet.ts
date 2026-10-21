@@ -164,12 +164,13 @@ function tidy(ctx: FleetCtx) {
 const EMPTY = (): FleetData => ({
   category: 'benne', name: { fr: '' }, brand: null, mmaKg: 750, emptyKg: null, payloadKg: 500, braked: false,
   loadLengthM: null, loadWidthM: null, loadHeightM: null, volumeM3: null, tempRange: null, power: null, socket: 13,
-  showPallets: false, suitableFor: [], priceDay: null, priceWeekend: null, deposit: null, notes: null, photo: null, active: true,
+  showPallets: false, suitableFor: [], priceHalfDay: null, priceDay: null, priceWeekend: null, priceWeek: null, deposit: null,
+  kmHalfDay: null, kmDay: null, kmWeekend: null, kmWeek: null, priceExtraKm: null, notes: null, photo: null, active: true,
 });
 
 const ERR: Record<string, string> = {
   required: 'Pflichtfeld',
-  int: 'Bitte eine ganze Zahl in kg',
+  int: 'Bitte eine ganze Zahl',
   num: 'Bitte eine Zahl größer 0',
   range: 'Wert außerhalb des Üblichen',
   payload: 'Nutzlast größer als Gesamtgewicht',
@@ -220,8 +221,12 @@ function editSheet(ctx: FleetCtx, base: Base, row: Row | null) {
     </div>
     <label class="ed-check" data-trailer><input type="checkbox" name="showPallets" ${d.showPallets ? 'checked' : ''}> Europaletten auf der Ladefläche anzeigen</label>
 
-    <h3 class="ed-h3">Preise <small>optional – ohne Preis fragen Kunden über das Formular an</small></h3>
-    <div class="ed-grid">${nf('Pro Tag', 'priceDay', '€')}${nf('Wochenende', 'priceWeekend', '€')}${nf('Kaution', 'deposit', '€')}</div>
+    <h3 class="ed-h3">Preise <small>optional – leer lassen, was es nicht gibt (z. B. kein halber Tag)</small></h3>
+    <div class="ed-grid">${nf('Halber Tag', 'priceHalfDay', '€')}${nf('Pro Tag', 'priceDay', '€')}${nf('Wochenende', 'priceWeekend', '€')}${nf('Woche', 'priceWeek', '€')}${nf('Kaution', 'deposit', '€')}</div>
+    <div data-van>
+      <h3 class="ed-h3">Kilometer inklusive <small>nur Transporter, optional</small></h3>
+      <div class="ed-grid">${nf('Halber Tag', 'kmHalfDay', 'km')}${nf('Pro Tag', 'kmDay', 'km')}${nf('Wochenende', 'kmWeekend', 'km')}${nf('Woche', 'kmWeek', 'km')}${nf('Jeder weitere km', 'priceExtraKm', '€', 'z. B. 0,30')}</div>
+    </div>
 
     <h3 class="ed-h3">Ausstattung</h3>
     <fieldset class="ed-opts"><legend>Geeignet für</legend>${cargoNow(ctx).map((c) => `<label class="ed-opt"><input type="checkbox" name="cargo" value="${c.id}" ${(d.suitableFor ?? []).includes(c.id) ? 'checked' : ''}><span>${escapeHtml(cargoLabel(c, 'de', DE.finder.cargo as Record<string, string>))}</span></label>`).join('')}</fieldset>
@@ -257,7 +262,8 @@ function editSheet(ctx: FleetCtx, base: Base, row: Row | null) {
     d.mmaKg = numVal('mmaKg') as number;
     d.emptyKg = numVal('emptyKg');
     d.payloadKg = numVal('payloadKg') as number;
-    for (const k of ['loadLengthM', 'loadWidthM', 'loadHeightM', 'volumeM3', 'priceDay', 'priceWeekend', 'deposit'] as const) d[k] = numVal(k);
+    for (const k of ['loadLengthM', 'loadWidthM', 'loadHeightM', 'volumeM3', 'priceHalfDay', 'priceDay', 'priceWeekend', 'priceWeek', 'deposit'] as const) d[k] = numVal(k);
+    for (const k of ['kmHalfDay', 'kmDay', 'kmWeekend', 'kmWeek', 'priceExtraKm'] as const) d[k] = d.category === 'camionnette' ? numVal(k) : null;
     const trailer = isTrailerCat(d.category);
     d.braked = trailer && (form.elements.namedItem('braked') as HTMLInputElement).checked;
     d.showPallets = trailer && (form.elements.namedItem('showPallets') as HTMLInputElement).checked;
@@ -282,6 +288,7 @@ function editSheet(ctx: FleetCtx, base: Base, row: Row | null) {
     read();
     for (const el of $$('[data-trailer]', form)) el.hidden = !isTrailerCat(d.category);
     for (const el of $$('[data-frigo]', form)) el.hidden = d.category !== 'frigorifique';
+    for (const el of $$('[data-van]', form)) el.hidden = d.category !== 'camionnette';
     const pb = $<HTMLButtonElement>('[data-payload]', form)!;
     const auto = d.emptyKg && d.mmaKg > d.emptyKg ? d.mmaKg - d.emptyKg : null;
     pb.hidden = !auto || auto === d.payloadKg;
@@ -404,7 +411,8 @@ export async function cargoSheet(ctx: FleetCtx, back: () => void = () => fleetSh
   }
   if (!wrap.isConnected) return;
   // Anhänger im Finder (Transporter zählen dort nur bei Möbeln, Autos gar nicht)
-  const trailers = rows(base, ctx.state()).filter((r) => r.status !== 'deleted' && isTrailer(r.data as { category: FleetItem['category'] }));
+  // Anhänger und Transporter im Finder (Autos nicht)
+  const trailers = rows(base, ctx.state()).filter((r) => r.status !== 'deleted' && (isTrailer(r.data as { category: FleetItem['category'] }) || r.data.category === 'camionnette'));
   const tName = (r: Row) => r.data.name?.[ctx.lang] || r.data.name?.fr || r.id;
   type RowC = { id: string; label: Partial<Record<Lang, string>>; fits: Set<string>; open?: boolean };
   // Beschriftung je Sprache so, wie sie auf der Seite steht (eigene oder Standard)
@@ -416,13 +424,13 @@ export async function cargoSheet(ctx: FleetCtx, back: () => void = () => fleetSh
   // Beschriftung beim Öffnen: geänderte Ausgangssprache → die nicht selbst geänderten Sprachen neu übersetzen
   const orig = new Map(rowsC.map((r) => [r, { ...r.label }]));
   const other = LANGS.filter((l) => l !== ctx.lang);
-  const warn = (r: RowC) => (r.fits.size ? '' : 'Noch kein Anhänger angekreuzt – erscheint erst dann im Finder.');
+  const warn = (r: RowC) => (r.fits.size ? '' : 'Noch kein Fahrzeug angekreuzt – erscheint erst dann im Finder.');
   const draw = (focus?: number) => {
     body.innerHTML = `<p class="ed-hint">Die Auswahl oben im Anhänger-Finder. Beschriftung ändern, Reihenfolge mit ↑ ↓, neue Ladungsart hinzufügen – und ankreuzen, welche Anhänger dafür passen.</p>
       <div class="ed-flist">${rowsC.map((r, i) => `<div class="ed-crow" data-i="${i}">
         <label>Beschriftung (${ctx.lang.toUpperCase()})<input data-l="${ctx.lang}" value="${escapeHtml(r.label[ctx.lang] ?? '')}" maxlength="60" placeholder="z. B. Ein Fahrrad"></label>
         <details class="ed-details"${r.open ? ' open' : ''}><summary>Andere Sprachen${canTranslate && needs(r).length ? ' (werden beim Übernehmen übersetzt)' : ''}</summary><div class="ed-grid">${other.map((l) => `<label>${l.toUpperCase()}<input data-l="${l}" value="${escapeHtml(r.label[l] ?? '')}" maxlength="60"></label>`).join('')}</div></details>
-        <fieldset class="ed-opts"><legend>Passende Anhänger</legend>${trailers.length
+        <fieldset class="ed-opts"><legend>Passende Anhänger und Transporter</legend>${trailers.length
           ? trailers.map((t) => `<label class="ed-opt"><input type="checkbox" data-fit="${escapeHtml(t.id)}" ${r.fits.has(t.id) ? 'checked' : ''}><span>${escapeHtml(tName(t))}</span></label>`).join('')
           : '<span class="ed-hint">Noch keine Anhänger eingetragen.</span>'}</fieldset>
         <p class="ed-rv-miss ed-warn" data-warn${warn(r) ? '' : ' hidden'}>${warn(r)}</p>

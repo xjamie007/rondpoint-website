@@ -23,8 +23,10 @@
   "suitableFor": [
     "moto"
   ],
+  "priceHalfDay": 50,
   "priceDay": 80,
   "priceWeekend": 100,
+  "priceWeek": 200,
   "deposit": 300,
   "notes": null,
   "photo": "remorque-porte-moto-750-kg",

@@ -92,15 +92,28 @@ const s = t.finder;
                 {i.display.empty && <div><dt>{s.specs.empty}</dt><dd>{i.display.empty}</dd></div>}
                 {i.display.surface && <div><dt>{s.specs.surface}</dt><dd>{i.display.surface}</dd></div>}
                 {i.display.height && <div><dt>{s.specs.height}</dt><dd>{i.display.height}</dd></div>}
-                <div><dt>{s.specs.braked}</dt><dd>{i.display.braked}</dd></div>
-                {i.display.socket && <div><dt>{s.specs.socket}</dt><dd>{i.display.socket}</dd></div>}
+                {category !== 'camionnette' && <div><dt>{s.specs.braked}</dt><dd>{i.display.braked}</dd></div>}
+                {i.display.socket && category !== 'camionnette' && <div><dt>{s.specs.socket}</dt><dd>{i.display.socket}</dd></div>}
                 {i.display.power && <div><dt>{s.specs.power}</dt><dd>{i.display.power}</dd></div>}
                 {i.display.deposit && <div><dt>{s.specs.deposit}</dt><dd>{i.display.deposit}</dd></div>}
               </dl>
               <p class="verdict"><span>{category === 'camionnette' ? s.vanStatement : i.display.requiredText}</span></p>
               {i.notes && <p>{i.notes}</p>}
-              {(i.display.price || showOpenPoints) && (
-                <p class="result-price" set:html={i.display.price ? rich(i.display.price) : rich(s.priceMissing)} />
+              {i.display.prices.length > 0 ? (
+                <div class="result-prices">
+                  <ul class="price-grid" aria-label={s.pricesLabel}>
+                    {i.display.prices.map((p) => (
+                      <li>
+                        <span class="price-label">{p.label}</span>
+                        <strong class="price-value">{p.value}</strong>
+                        {p.km && <span class="price-km">{p.km}</span>}
+                      </li>
+                    ))}
+                  </ul>
+                  {i.display.extraKm && <p class="price-extra">{i.display.extraKm}</p>}
+                </div>
+              ) : (
+                showOpenPoints && <p class="result-price" set:html={rich(s.priceMissing)} />
               )}
               <p>
                 <a class="btn btn-primary" href={requestHref(path(lang, 'rental'), i.id, null, null)}>

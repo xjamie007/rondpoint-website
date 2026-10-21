@@ -27,8 +27,10 @@ const h = t.fleetTable;
             <th scope="col" role="columnheader">{h.mma}</th>
             <th scope="col" role="columnheader">{h.surface}</th>
             <th scope="col" role="columnheader">{h.licence}</th>
+            <th scope="col" role="columnheader">{h.halfDay}</th>
             <th scope="col" role="columnheader">{h.day}</th>
             <th scope="col" role="columnheader">{h.weekend}</th>
+            <th scope="col" role="columnheader">{h.week}</th>
           </tr>
         </thead>
         <tbody role="rowgroup">
@@ -42,8 +44,10 @@ const h = t.fleetTable;
               <td role="cell" data-label={h.mma} class="tnum">{i.display.mma}</td>
               <td role="cell" data-label={h.surface} class="tnum">{i.display.surface ?? '—'}</td>
               <td role="cell" data-label={h.licence}>{i.display.requiredShort}</td>
+              <td role="cell" data-label={h.halfDay} class="tnum">{i.display.priceHalfDay ?? '—'}</td>
               <td role="cell" data-label={h.day} class="tnum">{i.display.priceDay ?? (showOpenPoints ? <span set:html={rich('[FEHLT]')} /> : '—')}</td>
               <td role="cell" data-label={h.weekend} class="tnum">{i.display.priceWeekend ?? (showOpenPoints ? <span set:html={rich('[FEHLT]')} /> : '—')}</td>
+              <td role="cell" data-label={h.week} class="tnum">{i.display.priceWeek ?? '—'}</td>
             </tr>
           ))}
         </tbody>
@@ -54,7 +58,7 @@ const h = t.fleetTable;
 
 <style>
   .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .fleet-table { width: 100%; min-width: 720px; }
+  .fleet-table { width: 100%; min-width: 880px; }
   th, td { text-align: left; padding: 12px 16px 12px 0; border-bottom: 1px solid var(--color-verzinkt); vertical-align: top; }
   thead th { font-size: 0.9375rem; font-weight: 600; color: var(--color-asphalt); border-bottom: 1.5px solid var(--color-black); }
   tbody th { font-weight: 700; }

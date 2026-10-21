@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync, readdirSync } from 'node:fs';
-import { CARGO, CATEGORIES, ContentError, LINK_CATS, LINK_PAGES, fleetErrors, hoursErrors, toFiles, validate, type EditState, type FileChange, type FleetData, type RepoSnapshot } from '../supabase/functions/publish/convert.ts';
+import { CARGO, CATEGORIES, ContentError, LINK_CATS, LINK_PAGES, cleanFleet, fleetErrors, hoursErrors, toFiles, validate, type EditState, type FileChange, type FleetData, type RepoSnapshot } from '../supabase/functions/publish/convert.ts';
 import { imageKind, makeHandler, type Env } from '../supabase/functions/publish/publish.ts';
 import { applyLists, useT } from '../src/i18n/index.ts';
 import fr from '../src/i18n/fr.ts';
@@ -227,5 +227,21 @@ describe('Edge Function publish (mit simulierter API)', () => {
     const r = await makeHandler(ENV, api.f)(post({ action: 'publish', state: state() }));
     expect(await r.json()).toMatchObject({ ok: true, sha: 'head1', committedAt: '2026-10-14T10:00:00Z' });
     expect(api.calls.some((c) => c.url.endsWith('/git/commits') && c.method === 'POST')).toBe(false);
+  });
+});
+
+describe('Mietpreise und Kilometer (Preisliste Okt. 2026)', () => {
+  const base: FleetData = { category: 'camionnette', name: { fr: 'Camionnette' }, mmaKg: 3500, payloadKg: 1200, braked: false };
+  it('halber Tag, Woche und Kilometer werden geprüft und übernommen', () => {
+    const d = { ...base, priceHalfDay: 40, priceWeek: 300, kmDay: 100, kmWeek: 700, priceExtraKm: 0.3 };
+    expect(fleetErrors(d)).toEqual({});
+    expect(cleanFleet(d)).toMatchObject({ priceHalfDay: 40, priceWeek: 300, kmDay: 100, kmWeek: 700, priceExtraKm: 0.3, kmHalfDay: null });
+    expect(fleetErrors({ ...d, kmDay: 12.5 }).kmDay).toBe('int');
+    expect(fleetErrors({ ...d, priceWeek: -1 }).priceWeek).toBe('num');
+  });
+  it('Kilometer nur bei Transportern', () => {
+    const c = cleanFleet({ ...base, category: 'benne', braked: true, kmDay: 100, priceExtraKm: 0.3 });
+    expect(c.kmDay).toBeNull();
+    expect(c.priceExtraKm).toBeNull();
   });
 });

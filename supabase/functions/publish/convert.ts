@@ -55,9 +55,17 @@ export interface FleetData {
   socket?: 7 | 13 | null;
   showPallets?: boolean;
   suitableFor?: string[];
+  priceHalfDay?: number | null;
   priceDay?: number | null;
   priceWeekend?: number | null;
+  priceWeek?: number | null;
   deposit?: number | null;
+  /** Transporter: inklusive Kilometer je Mietdauer, Preis je weiterem Kilometer */
+  kmHalfDay?: number | null;
+  kmDay?: number | null;
+  kmWeekend?: number | null;
+  kmWeek?: number | null;
+  priceExtraKm?: number | null;
   notes?: I18nText | null;
   photo?: string | null;
   active?: boolean;
@@ -150,7 +158,8 @@ export function fleetErrors(d: FleetData): Record<string, string> {
   if (!posNum(d.loadWidthM) || (d.loadWidthM ?? 0) > 3) e.loadWidthM = 'range';
   if (!posNum(d.loadHeightM) || (d.loadHeightM ?? 0) > 4) e.loadHeightM = 'range';
   if (!posNum(d.volumeM3)) e.volumeM3 = 'num';
-  for (const k of ['priceDay', 'priceWeekend', 'deposit'] as const) if (!posNum(d[k])) e[k] = 'num';
+  for (const k of ['priceHalfDay', 'priceDay', 'priceWeekend', 'priceWeek', 'deposit', 'priceExtraKm'] as const) if (!posNum(d[k])) e[k] = 'num';
+  for (const k of ['kmHalfDay', 'kmDay', 'kmWeekend', 'kmWeek'] as const) if (d[k] != null && !posInt(d[k])) e[k] = 'int';
   if (d.socket != null && d.socket !== 7 && d.socket !== 13) e.socket = 'socket';
   if (d.tempRange && (!Number.isFinite(d.tempRange.minC) || !Number.isFinite(d.tempRange.maxC) || d.tempRange.minC > d.tempRange.maxC)) e.tempRange = 'temp';
   // Ladungsarten: gültige Kennungen; nicht mehr vorhandene ignoriert der Finder
@@ -175,6 +184,7 @@ export function cleanFleet(d: FleetData): FleetData {
   };
   const s = (v: unknown) => (typeof v === 'string' && v.trim() ? v.trim() : null);
   const n = (v: unknown) => (typeof v === 'number' && Number.isFinite(v) ? v : null);
+  const van = d.category === 'camionnette';
   const out: FleetData = {
     ...(d.sample ? { sample: true } : {}),
     category: d.category,
@@ -193,9 +203,17 @@ export function cleanFleet(d: FleetData): FleetData {
     socket: d.socket ?? null,
     showPallets: !!d.showPallets,
     suitableFor: [...new Set((d.suitableFor ?? []).filter((c) => typeof c === 'string' && CARGO_ID.test(c)))],
+    priceHalfDay: n(d.priceHalfDay),
     priceDay: n(d.priceDay),
     priceWeekend: n(d.priceWeekend),
+    priceWeek: n(d.priceWeek),
     deposit: n(d.deposit),
+    // Kilometer nur bei Transportern (Anhänger haben keinen Kilometerzähler)
+    kmHalfDay: van ? n(d.kmHalfDay) : null,
+    kmDay: van ? n(d.kmDay) : null,
+    kmWeekend: van ? n(d.kmWeekend) : null,
+    kmWeek: van ? n(d.kmWeek) : null,
+    priceExtraKm: van ? n(d.priceExtraKm) : null,
     notes: text(d.notes as Record<string, unknown> | null),
     photo: s(d.photo),
     active: d.active !== false,

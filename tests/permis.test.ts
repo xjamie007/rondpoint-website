@@ -121,8 +121,15 @@ const item = (over: Partial<FleetItem>): FleetItem => ({
   socket: null,
   showPallets: false,
   suitableFor: ['voiture'],
+  priceHalfDay: null,
   priceDay: null,
   priceWeekend: null,
+  priceWeek: null,
+  kmHalfDay: null,
+  kmDay: null,
+  kmWeekend: null,
+  kmWeek: null,
+  priceExtraKm: null,
   deposit: null,
   notes: null,
   photo: null,
@@ -164,6 +171,10 @@ describe('Sortierung und Auswahl im Finder', () => {
   it('bei Meubles ou cartons kommen die Transporter dazu', () => {
     expect(evaluate(fleet, { cargo: 'voiture', licence: 'B', car: {} }).vans).toHaveLength(0);
     expect(evaluate(fleet, { cargo: 'meubles', licence: 'B', car: {} }).vans.map((r) => r.item.id)).toEqual(['van']);
+  });
+
+  it('ohne gewählte Ladung erscheinen Transporter wie Anhänger', () => {
+    expect(evaluate(fleet, { cargo: null, licence: null, car: {} }).vans.map((r) => r.item.id)).toEqual(['van']);
   });
 
   it('zeigt nur Ladungsarten, für die ein Fahrzeug passt', () => {

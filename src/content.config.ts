@@ -48,9 +48,17 @@ const flotte = defineCollection({
     showPallets: z.boolean().default(false),
     // Ladungsarten aus src/content/cargo.json (im Admin-Bereich erweiterbar); unbekannte ignoriert der Finder
     suitableFor: z.array(z.string().regex(/^[a-z0-9][a-z0-9-]{0,30}$/)).default([]),
+    priceHalfDay: z.number().positive().nullable().default(null),
     priceDay: z.number().positive().nullable().default(null),
     priceWeekend: z.number().positive().nullable().default(null),
+    priceWeek: z.number().positive().nullable().default(null),
     deposit: z.number().positive().nullable().default(null),
+    // Transporter: inklusive Kilometer je Mietdauer und Preis je weiterem Kilometer
+    kmHalfDay: z.number().int().positive().nullable().default(null),
+    kmDay: z.number().int().positive().nullable().default(null),
+    kmWeekend: z.number().int().positive().nullable().default(null),
+    kmWeek: z.number().int().positive().nullable().default(null),
+    priceExtraKm: z.number().positive().nullable().default(null),
     notes: i18nText.nullable().default(null),
     photo: z.string().nullable().default(null),
     active: z.boolean().default(true),

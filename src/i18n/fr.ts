@@ -121,6 +121,10 @@ const fr = {
     price: '{day} la journée, {weekend} le week-end',
     priceDayOnly: '{day} la journée',
     priceWeekendOnly: '{weekend} le week-end',
+    priceRows: { halfDay: '½ journée', day: 'Journée', weekend: 'Week-end', week: 'Semaine' },
+    pricesLabel: 'Tarifs de location',
+    kmIncl: '{km} km inclus',
+    extraKm: 'Kilomètre supplémentaire : {price}',
     priceMissing: '[FEHLT — Preis pro Tag und Wochenende]',
     request: 'Demander cette remorque',
     requestVan: 'Demander cette camionnette',
@@ -143,6 +147,8 @@ const fr = {
     licence: 'Permis nécessaire',
     day: 'Prix jour',
     weekend: 'Prix week-end',
+    halfDay: 'Prix ½ journée',
+    week: 'Prix par semaine',
     licenceDepends: 'selon la voiture',
   },
 
@@ -364,7 +370,7 @@ const fr = {
       },
       prix: {
         q: 'Combien coûte la location d’une remorque ?',
-        a: 'Le prix à la journée et au week-end est indiqué pour chaque remorque dans notre guide. [FEHLT — Preise der Flotte]',
+        a: 'Les prix à la demi-journée, à la journée, au week-end et à la semaine sont indiqués pour chaque remorque dans notre guide. Toutes les remorques ne se louent pas à la demi-journée.',
       },
       louer: {
         q: 'Que faut-il pour louer ?',
@@ -460,8 +466,8 @@ const fr = {
   pages: {
     rental: {
       h1: 'Location de remorques et camionnettes à Erpeldange',
-      lead: 'Remorques porte-voiture et porte-moto, bennes basculantes, remorques frigorifiques pour vos fêtes, camionnettes. À la journée ou pour le week-end.',
-      durationsMissing: '[UNBESTÄTIGT — Mietdauern Tag / Wochenende]',
+      lead: 'Remorques porte-voiture et porte-moto, bennes basculantes, remorques frigorifiques pour vos fêtes, camionnettes. À la demi-journée, à la journée, pour le week-end ou à la semaine.',
+      durationsMissing: '[UNBESTÄTIGT — Mietdauern ½ Tag / Tag / Wochenende / Woche]',
       conditionsH2: 'Conditions de location',
       conditionsMissing:
         '[FEHLT — Mietbedingungen: Ausweis, Führerschein, Kaution, Abhol- und Rückgabezeiten, Reservierung]',

@@ -77,6 +77,6 @@ export function preview(ctx: FleetCtx, base: Base) {
     const td = (label: string, v: string, num = true) => `<td ${cid} role="cell" data-label="${escapeHtml(label)}"${num ? ' class="tnum"' : ''}>${escapeHtml(v)}</td>`;
     const h = ctx.t.fleetTable;
     tbody.innerHTML = all.map((i) => `<tr ${cid} role="row" data-fleet="${i.id}"><th ${cid} scope="row" role="rowheader">${escapeHtml(i.name)}<span ${cid} class="cat t-small">${escapeHtml(ctx.t.categories[i.category])}</span></th>
-      ${td(h.payload, i.display.payload)}${td(h.mma, i.display.mma)}${td(h.surface, i.display.surface ?? '—')}${td(h.licence, i.display.requiredShort, false)}${td(h.day, i.display.priceDay ?? '—')}${td(h.weekend, i.display.priceWeekend ?? '—')}</tr>`).join('');
+      ${td(h.payload, i.display.payload)}${td(h.mma, i.display.mma)}${td(h.surface, i.display.surface ?? '—')}${td(h.licence, i.display.requiredShort, false)}${td(h.halfDay, i.display.priceHalfDay ?? '—')}${td(h.day, i.display.priceDay ?? '—')}${td(h.weekend, i.display.priceWeekend ?? '—')}${td(h.week, i.display.priceWeek ?? '—')}</tr>`).join('');
   }
 }

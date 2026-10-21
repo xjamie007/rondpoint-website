@@ -118,6 +118,10 @@ const de: Dict = {
     price: '{day} pro Tag, {weekend} pro Wochenende',
     priceDayOnly: '{day} pro Tag',
     priceWeekendOnly: '{weekend} pro Wochenende',
+    priceRows: { halfDay: '½ Tag', day: 'Tag', weekend: 'Wochenende', week: 'Woche' },
+    pricesLabel: 'Mietpreise',
+    kmIncl: '{km} km inklusive',
+    extraKm: 'Jeder weitere Kilometer: {price}',
     priceMissing: '[FEHLT — Preis pro Tag und Wochenende]',
     request: 'Diesen Anhänger anfragen',
     requestVan: 'Diesen Transporter anfragen',
@@ -140,6 +144,8 @@ const de: Dict = {
     licence: 'Benötigter Führerschein',
     day: 'Preis pro Tag',
     weekend: 'Preis pro Wochenende',
+    halfDay: 'Preis ½ Tag',
+    week: 'Preis pro Woche',
     licenceDepends: 'je nach Auto',
   },
 
@@ -361,7 +367,7 @@ const de: Dict = {
       },
       prix: {
         q: 'Was kostet es, einen Anhänger zu mieten?',
-        a: 'Den Preis pro Tag und pro Wochenende finden Sie bei jedem Anhänger in unserer Anhängersuche. [FEHLT — Preise der Flotte]',
+        a: 'Die Preise für einen halben Tag, einen Tag, ein Wochenende oder eine Woche finden Sie bei jedem Anhänger in unserer Anhängersuche. Nicht jeder Anhänger ist für einen halben Tag zu mieten.',
       },
       louer: {
         q: 'Was brauche ich zum Mieten?',
@@ -457,8 +463,8 @@ const de: Dict = {
   pages: {
     rental: {
       h1: 'Anhänger und Transporter mieten in Erpeldange',
-      lead: 'Autotransporter und Motorradanhänger, Kipper, Kühlanhänger für Ihr Fest, Transporter. Für einen Tag oder fürs Wochenende.',
-      durationsMissing: '[UNBESTÄTIGT — Mietdauern Tag / Wochenende]',
+      lead: 'Autotransporter und Motorradanhänger, Kipper, Kühlanhänger für Ihr Fest, Transporter. Für einen halben Tag, einen Tag, ein Wochenende oder eine Woche.',
+      durationsMissing: '[UNBESTÄTIGT — Mietdauern ½ Tag / Tag / Wochenende / Woche]',
       conditionsH2: 'Mietbedingungen',
       conditionsMissing:
         '[FEHLT — Mietbedingungen: Ausweis, Führerschein, Kaution, Abhol- und Rückgabezeiten, Reservierung]',

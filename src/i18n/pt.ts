@@ -118,6 +118,10 @@ const pt: Dict = {
     price: '{day} por dia, {weekend} por fim de semana',
     priceDayOnly: '{day} por dia',
     priceWeekendOnly: '{weekend} por fim de semana',
+    priceRows: { halfDay: '½ dia', day: 'Dia', weekend: 'Fim de semana', week: 'Semana' },
+    pricesLabel: 'Preços de aluguer',
+    kmIncl: '{km} km incluídos',
+    extraKm: 'Cada quilómetro adicional: {price}',
     priceMissing: '[FEHLT — Preis pro Tag und Wochenende]',
     request: 'Pedir este atrelado',
     requestVan: 'Pedir esta carrinha',
@@ -140,6 +144,8 @@ const pt: Dict = {
     licence: 'Carta necessária',
     day: 'Preço por dia',
     weekend: 'Preço por fim de semana',
+    halfDay: 'Preço ½ dia',
+    week: 'Preço por semana',
     licenceDepends: 'conforme o carro',
   },
 
@@ -361,7 +367,7 @@ const pt: Dict = {
       },
       prix: {
         q: 'Quanto custa alugar um atrelado?',
-        a: 'O preço por dia e por fim de semana está indicado para cada atrelado no nosso guia. [FEHLT — Preise der Flotte]',
+        a: 'Os preços por meio dia, por dia, por fim de semana e por semana estão indicados para cada atrelado no nosso guia. Nem todos os atrelados se alugam por meio dia.',
       },
       louer: {
         q: 'O que é preciso para alugar?',
@@ -457,8 +463,8 @@ const pt: Dict = {
   pages: {
     rental: {
       h1: 'Aluguer de atrelados e carrinhas em Erpeldange',
-      lead: 'Atrelados porta-carros e porta-motos, atrelados basculantes, atrelados frigoríficos para as suas festas, carrinhas. Por dia ou para o fim de semana.',
-      durationsMissing: '[UNBESTÄTIGT — Mietdauern Tag / Wochenende]',
+      lead: 'Atrelados porta-carros e porta-motos, atrelados basculantes, atrelados frigoríficos para as suas festas, carrinhas. Por meio dia, por dia, para o fim de semana ou por semana.',
+      durationsMissing: '[UNBESTÄTIGT — Mietdauern ½ Tag / Tag / Wochenende / Woche]',
       conditionsH2: 'Condições de aluguer',
       conditionsMissing:
         '[FEHLT — Mietbedingungen: Ausweis, Führerschein, Kaution, Abhol- und Rückgabezeiten, Reservierung]',

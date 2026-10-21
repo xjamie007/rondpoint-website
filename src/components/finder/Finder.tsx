@@ -41,6 +41,7 @@ export interface FinderStrings {
   };
   licenceShort: Record<'B' | 'B96' | 'BE', string>;
   priceMissing: string;
+  pricesLabel: string;
   request: string;
   requestVan: string;
   seeAll: string;
@@ -409,11 +410,13 @@ function Result(
             <dd>{d.surface}</dd>
           </div>
         )}
-        <div>
-          <dt>{s.specs.braked}</dt>
-          <dd>{d.braked}</dd>
-        </div>
-        {d.socket && (
+        {row.kind !== 'van' && (
+          <div>
+            <dt>{s.specs.braked}</dt>
+            <dd>{d.braked}</dd>
+          </div>
+        )}
+        {d.socket && row.kind !== 'van' && (
           <div>
             <dt>{s.specs.socket}</dt>
             <dd>{d.socket}</dd>
@@ -423,7 +426,22 @@ function Result(
       <div className="verdicts" key={key} data-verdict>
         <Verdict a={row.assessment} row={row} s={s} licence={licence} locale={props.intlLocale} hydrated={hydrated} />
       </div>
-      {(d.price || !props.hideOpenPoints) && <p className="result-price">{d.price ?? <Open text={s.priceMissing} />}</p>}
+      {d.prices.length > 0 ? (
+        <div className="result-prices">
+          <ul className="price-grid" aria-label={s.pricesLabel}>
+            {d.prices.map((p) => (
+              <li key={p.label}>
+                <span className="price-label">{p.label}</span>
+                <strong className="price-value">{p.value}</strong>
+                {p.km && <span className="price-km">{p.km}</span>}
+              </li>
+            ))}
+          </ul>
+          {d.extraKm && <p className="price-extra">{d.extraKm}</p>}
+        </div>
+      ) : (
+        !props.hideOpenPoints && <p className="result-price"><Open text={s.priceMissing} /></p>
+      )}
       <p className="result-cta">
         <a className="btn btn-primary" href={requestHref(props.requestBase, i.id, hydrated ? licence : null, hydrated ? cargo : null)}>
           {row.kind === 'van' ? s.requestVan : s.request}
