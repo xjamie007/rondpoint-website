@@ -54,7 +54,8 @@ export async function translate(env: Env, body: { text?: unknown; from?: unknown
     'Rules: Never translate the company name "Um Rond Point". Keep every placeholder in curly braces such as {phone} or {hours} exactly as it is.',
     'Keep links written as [word](page:target): translate only the word in square brackets, never the part in round brackets.',
     'Keep numbers, prices, units, phone numbers, e-mail addresses and brand names. Address the customer formally. Keep the meaning, length, tone and punctuation (also the final full stop); no explanations.',
-    'Place names: Luxembourgish "Ierpeldeng" is "Erpeldange" and "Ettelbréck" is "Ettelbruck" in all other languages (and the other way round into Luxembourgish). Never replace a place by another one.',
+    'Place names: Luxembourgish "Ierpeldeng" is "Erpeldange", "Ettelbréck" is "Ettelbruck", "Angelduerf" is "Ingeldorf" and "Dikrech" is "Diekirch" in all other languages (and the other way round into Luxembourgish). Never replace a place by another one.',
+    'Terms: Luxembourgish "Unhänger" = trailer (French "remorque", feminine: "une remorque"; German "Anhänger"; Portuguese "atrelado"), "Camionnette" = van (German "Transporter"), "Méimaschinn" = lawn mower (German "Rasenmäher", French "tondeuse à gazon"), "lounen" = to rent/hire (German "mieten"). Keep the vocabulary of a garage and rental business.',
     `Answer with one JSON object only, keys ${to.map((l) => `"${l}"`).join(', ')}, values the translations.`,
   ].join('\n');
   const out = (await env.AI.run(MODEL, {

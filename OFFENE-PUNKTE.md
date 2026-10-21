@@ -6,6 +6,11 @@ Stand: 28.09.2026. Nichts davon ist erfunden. Jede Stelle erscheint auf der Webs
 - Schalter für bestätigte Aussagen: `src/content/site.json` → `confirmations`, `manager.confirmed`, `payment.confirmed` usw.
 - Vor Livegang `showOpenPoints` in `site.json` auf `false` setzen. Dann verschwinden Abschnitte, die ohne Daten keinen Sinn haben, zum Beispiel „Avis Google" oder die Foto-Hinweise. Platzhalter in Sätzen bleiben sichtbar, bis die Daten da sind.
 
+## Stand 21.10.2026: neues Logo, Übersetzungen korrigiert
+
+- **Neues Logo** „Um Rondpoint – Garage - Carrosserie“ aus `umrondpoint-NEW.pdf`: als SVG in Kopf- und Fußzeile, scharf in jeder Größe. Das Kreisel-„O“ dreht sich wie vorher.
+- **Übersetzungen korrigiert:** Davids neuer Startseiten-Text (LB) war automatisch übersetzt worden, mit Fehlern: „Laden Sie einen Anhänger“, „un remorque“, „Angelduerf“ statt Ingeldorf, „Mähdrescher“ statt Rasenmäher. Den Übersetzer habe ich um Ortsnamen und Fachbegriffe ergänzt.
+
 ## Stand 21.10.2026: Preisliste der Vermietung
 
 Neu auf der Website und im Admin-Bereich:
@@ -158,7 +163,7 @@ Der Abgleich liest den Bestand jetzt über die offizielle MovingCar-API, mit dem
 | 27 | Startseite Hero | `Home.astro` (Platzhalter unter der Zeichnung) | Foto des Geländes am Kreisel bei Tageslicht, 16:10. Bis dahin steht die Kreisel-Zeichnung dort. |
 | 28 | Startseite Leistungen | `services.photoMissing` | Fotos Werkstatt, Sodablast, Garten & Forst, Anhänger |
 | 29 | Sodablast | `pages.sodablast.photosMissing` | Vorher-nachher-Fotos |
-| 30 | Logo | `src/components/Logo.astro` | Vektordatei. Das „O" braucht eine eigene SVG-Gruppe `class="logo-o"`, dann läuft die Drehung beim Laden (C7). |
+| 30 | Logo | `src/components/Logo.astro` | ~~Erledigt 21.10.2026:~~ neues Logo „Garage - Carrosserie“ als SVG aus umrondpoint-NEW.pdf, Kreisel-„O“ als Gruppe `logo-o` |
 | 31 | Mietflotte | Admin-Bereich → „Anhänger“ → Foto | Fotos der Anhänger (optional) |
 
 ## Aus dem Abgleich (bitte in MovingCar korrigieren)
