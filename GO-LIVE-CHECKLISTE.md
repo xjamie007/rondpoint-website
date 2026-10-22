@@ -1,6 +1,6 @@
 # Go-Live-Checkliste: Termin mit David (Samstag)
 
-Stand: 22.10.2026. Die Details zum Domain-Umzug stehen in `UMZUG-DOMAIN.md`, alle offenen Inhalte in `OFFENE-PUNKTE.md`.
+Stand: 22.10.2026 (nach der Antwort von Intec). Die Details zum Domain-Umzug stehen in `UMZUG-DOMAIN.md`, alle offenen Inhalte in `OFFENE-PUNKTE.md`.
 
 **Ziel:** Nach dem Termin sind die Zugänge geklärt, die Domain zeigt auf Cloudflare, und alle Inhalte, die noch fehlen, sind bekannt. Danach folgt der Go-Live-Abend (etwa 30 Minuten).
 
@@ -10,43 +10,56 @@ Stand: 22.10.2026. Die Details zum Domain-Umzug stehen in `UMZUG-DOMAIN.md`, all
 
 - [ ] **Laptop mit Logins:** Cloudflare (Nave-Konto, Zone `rondpoint.lu` steht schon), Admin-Bereich der Website und diese Checkliste.
 - [ ] **Kreditkarte**, falls du am Samstag schon zu my.lu umziehst: Transfer 28 € inkl. MwSt.
-- [ ] **David um Zugänge bitten:** EuroDNS und Wix, außerdem Name und Telefon seines Ansprechpartners bei Intecsoft.
+- [ ] **David um Zugänge bitten:** Wix, und EuroDNS, falls er ein eigenes Konto hat.
+- [ ] **Intec vorab fragen**, ob rondpoint.lu in ihrem EuroDNS-Konto liegt (Antwort-Entwurf in Abschnitt 8). Dann weißt du am Samstag schon, wer die Nameserver umstellt.
 - [ ] **Mail an audaris** schicken (Entwurf siehe unten, Abschnitt 7).
 - [ ] **Google-Bewertungen:** die drei Originaltexte kopieren (bei Google „Original ansehen“). Arslan C. und Elvis D. auf Französisch, Smybbs auf Englisch. Dann stehen sie auf Luxemburgisch im Original.
 - [ ] **Diese Liste ausdrucken** oder auf dem Tablet öffnen. Abschnitt 4 sind die Fragen an David.
 
 ## 2. Am Samstag: Zugänge und Domain (zuerst, etwa 30 Minuten)
 
-### EuroDNS (Domain rondpoint.lu)
-- [ ] Einloggen und prüfen, ob `rondpoint.lu` **im EuroDNS-Konto** liegt. Dann wurde sie nicht über Wix gekauft, und wir können die Nameserver direkt ändern.
-- [ ] Notieren, falls nötig per Foto:
-  - **Inhaber:** muss GARAGE UM ROND POINT S.à r.l. sein.
-  - **Kontakt-E-Mail:** an diese Adresse geht beim Umzug zu my.lu die Bestätigung.
-  - **Ablaufdatum und automatische Verlängerung.**
-- [ ] **DNSSEC** muss **aus** bleiben. Laut Register ist es heute aus.
+**Stand 22.10. (Antwort von Intec):**
+- Intec hat **keinen Zugang zu Wix**, und die DNS-Zone wird **nicht** über ihr EuroDNS-Konto verwaltet.
+- Ihr Rat: alle Einstellungen 1:1 von Wix übernehmen. Das ist erledigt; Cloudflare ist identisch mit Wix (geprüft am 18.10.).
+- Andere E-Mail-Einträge wie DKIM gibt es nicht. MX und SPF bleiben unverändert.
+- **Noch unklar ist, wo die Domain selbst verwaltet wird.** Laut .lu-Register ist der Registrar EuroDNS. Möglich sind drei Fälle:
+  - **A:** Davids eigenes EuroDNS-Konto.
+  - **B:** Intecs EuroDNS-Konto. Intecs Antwort deutet darauf hin.
+  - **C:** über Wix gekauft (Wix nutzt einen Partner-Registrar).
+
+### Schritt 1: Herausfinden, wo die Domain liegt (5 Minuten)
+- [ ] Bei **Wix** einloggen → „Domains“ → rondpoint.lu.
+  - Steht dort „Bei Wix gekauft“ → **Fall C**.
+  - Steht dort „Verbunden“ (Connected) → **Fall A oder B**.
+- [ ] Fragen, ob David ein **eigenes EuroDNS-Login** hat und rondpoint.lu darin steht → **Fall A**.
+- [ ] Sonst: **Fall B**. Intec anrufen (+352 978 087) oder vorab mailen (Antwort-Entwurf in Abschnitt 8).
+- [ ] Bei Wix gleich die DNS-Einträge abfotografieren (Domains → rondpoint.lu → DNS-Einträge). Damit lässt sich gegenprüfen, dass Cloudflare 1:1 gleich ist.
+
+### Schritt 2: Nameserver auf Cloudflare umstellen
 - [ ] **Vorher:** von deinem Handy eine Test-Mail an info@rondpoint.lu schicken und David antworten lassen.
-- [ ] **Nameserver ändern:** `ns6.wixdns.net` und `ns7.wixdns.net` ersetzen durch **`bella.ns.cloudflare.com`** und **`chad.ns.cloudflare.com`**, dann speichern.
-  - Das ist ungefährlich: Bei Cloudflare stehen dieselben Einträge wie bei Wix (geprüft am 18.10.).
-  - Die alte Wix-Seite und die E-Mail laufen unverändert weiter.
-- [ ] **Mir Bescheid geben.** Ich prüfe, ob die Umstellung im .lu-Register angekommen ist (bis zu 12 Stunden), ob Cloudflare „Active“ meldet und ob MX und SPF überall stimmen.
+- [ ] **Neue Nameserver**, je nach Fall:
+  - **Fall A:** Im eigenen EuroDNS-Konto die Nameserver `ns6.wixdns.net` und `ns7.wixdns.net` ersetzen durch **`bella.ns.cloudflare.com`** und **`chad.ns.cloudflare.com`**. DNSSEC bleibt aus.
+  - **Fall B:** Intec bitten, genau diese Änderung in ihrem EuroDNS-Konto zu machen.
+  - **Fall C:** Bei Wix lassen sich die Nameserver nicht ändern. Dann gleich den Umzug zu my.lu machen und dabei die Cloudflare-Nameserver angeben (Schritt 3).
+- [ ] **Danach mir Bescheid geben.** Ich prüfe das .lu-Register (bis zu 12 Stunden), ob Cloudflare „Active“ meldet und ob MX und SPF überall stimmen.
 - [ ] **Abends oder am nächsten Tag:** noch eine Test-Mail an info@rondpoint.lu, hin und zurück.
-- [ ] **Umzug zu my.lu:**
-  - Er kann danach in Ruhe passieren; die Nameserver bleiben dabei auf Cloudflare.
-  - Bei my.lu ein Konto anlegen, Inhaber die Garage, technischer Kontakt Nave.
-  - Transfer beantragen und die Bestätigungs-Mail innerhalb von 15 Tagen bestätigen.
-- **Falls die Domain nicht bei EuroDNS liegt, sondern über Wix gekauft wurde:** Bei Wix lassen sich die Nameserver nicht ändern. Dann den Umzug zu my.lu gleich mit den Cloudflare-Nameservern beantragen (`UMZUG-DOMAIN.md`, Phase 2, Weg A).
+- Das ist ungefährlich: Bei Cloudflare stehen dieselben Einträge wie bei Wix. Die alte Wix-Seite und die E-Mail laufen unverändert weiter.
+
+### Schritt 3: Umzug zu my.lu (darf auch nach Samstag sein)
+- [ ] **Inhaber der Domain notieren.** Er muss GARAGE UM ROND POINT S.à r.l. sein. Steht dort Intec oder jemand anderes, ist das ein Inhaberwechsel (trade) und kein einfacher Umzug.
+- [ ] **Kontakt-E-Mail notieren.** An diese Adresse geht die Bestätigung. Bei Fall B ist das wohl eine Adresse von Intec; dann Intec vorwarnen, damit sie bestätigen.
+- [ ] Bei my.lu ein Konto anlegen: Inhaber die Garage, technischer Kontakt Nave. Kreditkarte nötig, 28 €.
+- [ ] Transfer von rondpoint.lu beantragen, Nameserver `bella.ns.cloudflare.com` und `chad.ns.cloudflare.com`. Die Bestätigungs-Mail muss innerhalb von 15 Tagen bestätigt werden.
+- [ ] Bei Fall C (Wix): vorher bei Wix „Domain übertragen“ bzw. „Transfer away“ auslösen, falls Wix das verlangt.
 
 ### Wix
 - [ ] Einloggen. Notieren: welcher Plan und wann er sich verlängert.
 - [ ] **Noch nicht kündigen.** Die alte Seite ist bis eine Woche nach dem Go-Live der Notfall-Plan.
 - [ ] Falls auf der Wix-Seite Formulare oder Kontaktanfragen gespeichert sind: exportieren.
 
-### Intecsoft (E-Mail)
-- [ ] Name und Telefon des Ansprechpartners notieren.
-- [ ] Kurz fragen bzw. ausrichten lassen:
-  - Wir ziehen den DNS zu Cloudflare um und kopieren MX `ihe.intecsoft.com` und SPF 1:1.
-  - Braucht Intecsoft sonst noch einen Eintrag (DKIM, Autodiscover)?
-  - Für Intecsoft ändert sich sonst nichts.
+### Intec (E-Mail)
+- [x] Angefragt am 22.10.: Es braucht keine weiteren Einträge. MX und SPF übernehmen wir unverändert.
+- [ ] Nur bei Fall B: Intec stellt die Nameserver in ihrem EuroDNS-Konto um bzw. bestätigt den Umzug zu my.lu.
 
 ### Google
 - [ ] **Google-Unternehmensprofil:** Wer ist Inhaber oder Verwalter? Nave als Verwalter hinzufügen lassen, damit wir die Website-Adresse und Fotos pflegen können.
@@ -165,3 +178,18 @@ Ablauf wie in `UMZUG-DOMAIN.md`, Phase 3:
 >
 > Mit freundlichen Grüßen
 > Jamie Ley, Nave
+
+## 8. Antwort an Intec (Entwurf)
+
+> Guten Tag,
+>
+> vielen Dank für Ihre schnelle Antwort. Die Einträge haben wir 1:1 von Wix übernommen.
+>
+> Eine Frage noch: Laut .lu-Register ist die Domain rondpoint.lu bei EuroDNS registriert. Liegt die **Registrierung der Domain** (nicht die DNS-Zone) in Ihrem EuroDNS-Konto? Falls ja:
+> 1. Könnten Sie die Nameserver am Samstag, 24.10.2026, auf **bella.ns.cloudflare.com** und **chad.ns.cloudflare.com** ändern? Wir geben Ihnen kurz vorher telefonisch Bescheid.
+> 2. Wir möchten die Domain anschließend zu my.lu (DNS-LU) übertragen, auf die Garage Um Rond Point als Inhaber. Wer ist heute als Inhaber und als Kontakt eingetragen, und würden Sie die Bestätigung des Transfers freigeben?
+>
+> Herr Moreira ist in Kopie.
+>
+> Mit freundlichen Grüßen
+> Jamie Ley, Nave · +352 621 467 821 · info@nave.lu
