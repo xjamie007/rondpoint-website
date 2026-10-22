@@ -20,8 +20,8 @@ Stand: 22.10.2026 (nach der Antwort von Intec). Die Details zum Domain-Umzug ste
 
 **Stand 22.10. (Antwort von Intec):**
 - Intec hat **keinen Zugang zu Wix**, und die DNS-Zone wird **nicht** über ihr EuroDNS-Konto verwaltet.
-- Ihr Rat: alle Einstellungen 1:1 von Wix übernehmen. Das ist erledigt; Cloudflare ist identisch mit Wix (geprüft am 18.10.).
-- Andere E-Mail-Einträge wie DKIM gibt es nicht. MX und SPF bleiben unverändert.
+- Ihr Rat: alle Einstellungen 1:1 von Wix übernehmen. Das ist erledigt; Cloudflare ist identisch mit Wix (zuletzt geprüft am 22.10.). Die Website-Einträge stehen auf „DNS only“, damit die alte Wix-Seite nach dem Umstellen weiterläuft.
+- Andere E-Mail-Einträge wie DKIM gibt es nicht. MX und SPF bleiben unverändert. Neu dazu kommt DMARC (`p=none`, nur beobachten), bereits bei Cloudflare eingetragen.
 - **Noch unklar ist, wo die Domain selbst verwaltet wird.** Laut .lu-Register ist der Registrar EuroDNS. Möglich sind drei Fälle:
   - **A:** Davids eigenes EuroDNS-Konto.
   - **B:** Intecs EuroDNS-Konto. Intecs Antwort deutet darauf hin.
@@ -145,7 +145,7 @@ Bis jetzt sind echt: Startbild, Vermietung, Sodablast, Garten und Anhängerverka
 ## 6. Go-Live-Abend (wenn Abschnitt 4 „Pflicht“ erledigt ist, etwa 30 Minuten)
 
 Ablauf wie in `UMZUG-DOMAIN.md`, Phase 3:
-1. In Cloudflare die Wix-Einträge (3 A-Einträge und www-CNAME) löschen. **MX und SPF bleiben.**
+1. In Cloudflare die Wix-Einträge (3 A-Einträge und www-CNAME) löschen. **MX, SPF und DMARC bleiben.**
 2. Im Worker Custom Domains `www.rondpoint.lu` und `rondpoint.lu` anlegen. Das Zertifikat kommt automatisch.
 3. Redirect Rule `rondpoint.lu` → `https://www.rondpoint.lu` und „Always Use HTTPS“ einschalten.
 4. Das Umschalt-Paket mergen; Cloudflare baut in 1 bis 3 Minuten.

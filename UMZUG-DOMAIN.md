@@ -84,7 +84,9 @@ Weitere Regeln:
 
 ### Phase 1: Cloudflare vorbereiten (ohne jede Auswirkung, etwa 15 Minuten)
 
-> **Erledigt am 18.10.2026.** Die Cloudflare-Nameserver sind **`bella.ns.cloudflare.com`** und **`chad.ns.cloudflare.com`**. Ich habe bei beiden geprüft: Alle 6 Einträge sind identisch mit Wix, die Proxy-Wolke ist grau. Das .lu-Register zeigt noch auf Wix (richtig so, die Nameserver werden erst in Phase 2 geändert).
+> **Erledigt am 18.10.2026.** Die Cloudflare-Nameserver sind **`bella.ns.cloudflare.com`** und **`chad.ns.cloudflare.com`**. Ich habe bei beiden geprüft: Alle 6 Einträge sind identisch mit Wix. Das .lu-Register zeigt noch auf Wix (richtig so, die Nameserver werden erst in Phase 2 geändert).
+>
+> **Nachtrag 22.10.2026:** Im Dashboard standen die drei A-Einträge und der www-CNAME doch auf „Proxied“. Bei einer noch nicht aktiven Zone sieht man das per Abfrage nicht. Alle vier sind jetzt auf „DNS only“ gestellt. Zusätzlich gibt es jetzt den DMARC-Eintrag (siehe Tabelle). Erneut geprüft bei bella und chad: Die Einträge sind identisch mit `ns6.wixdns.net`, dazu kommt DMARC.
 1. Im **Nave-Cloudflare-Konto** (dort liegt der Worker, und dort muss auch die Domain liegen): „Add a domain“ → `rondpoint.lu` → Plan **Free**.
 2. Cloudflare liest die Einträge selbst ein. Prüfen, dass genau diese da sind, und **bei allen die Wolke grau („DNS only“) stellen**:
 
@@ -96,6 +98,7 @@ Weitere Regeln:
    | CNAME | `www` | cdn3.wixdns.net | DNS only |
    | MX | `@` | ihe.intecsoft.com, Priorität 10 | – |
    | TXT | `@` | `v=spf1 a mx include:ihe.intecsoft.com -all` | – |
+   | TXT | `_dmarc` | `v=DMARC1; p=none` (neu, 22.10.2026; bei Wix gibt es ihn nicht) | – |
 
    Fehlende Einträge von Hand ergänzen und zusätzliche löschen. Die Wolke muss grau sein, weil Wix keinen Cloudflare-Proxy verträgt.
 3. Die **zwei Nameserver** von Cloudflare notieren (Muster: `xxx.ns.cloudflare.com`) und mir schicken. **Noch nirgends eintragen.**
@@ -126,7 +129,7 @@ Hinweis: Nach dem Transfer weg von Wix kann die alte Wix-Seite kurz ausfallen, f
 - [ ] Optional, aber empfohlen: Mailanbieter für die Formulare (siehe Phase 4). Bis dahin laufen die Formulare über WhatsApp und E-Mail mit vorbereitetem Text.
 
 **Schritte:**
-1. In Cloudflare → DNS: die **drei A-Einträge** und den **www-CNAME** von Wix **löschen**. **MX und SPF bleiben.**
+1. In Cloudflare → DNS: die **drei A-Einträge** und den **www-CNAME** von Wix **löschen**. **MX, SPF und DMARC bleiben.**
 2. In Cloudflare → Workers → `rondpoint-website` → „Domains & Routes“ → **Custom Domain** hinzufügen: `www.rondpoint.lu` und `rondpoint.lu`. Cloudflare legt die Einträge und das HTTPS-Zertifikat selbst an, das dauert ein paar Minuten.
 3. In Cloudflare → Rules → **Redirect Rule** mit der Vorlage „Redirect from root to WWW“: `rondpoint.lu/*` → `https://www.rondpoint.lu/${1}`, 301, Pfad und Parameter behalten.
 4. In SSL/TLS → Edge Certificates **„Always Use HTTPS“** einschalten.
@@ -155,7 +158,7 @@ Hinweis: Nach dem Transfer weg von Wix kann die alte Wix-Seite kurz ausfallen, f
   - **SPF nur ergänzen, nicht doppelt anlegen.** Es darf nur eine SPF-Zeile geben, z. B. `v=spf1 a mx include:ihe.intecsoft.com include:spf.brevo.com -all`.
   - Danach im Worker `MAIL_PROVIDER`, `MAIL_API_KEY`, `MAIL_FROM` und `FORM_RECIPIENT=info@rondpoint.lu` setzen.
 - [ ] **Wix kündigen:** frühestens eine Woche nach dem Go-Live und erst, wenn der Domain-Transfer abgeschlossen ist. Vorher prüfen, dass bei Wix keine Domain-Verlängerung mehr läuft.
-- [ ] Optional mit Intecsoft: DKIM und DMARC für bessere Zustellbarkeit der E-Mails.
+- [ ] Optional mit Intecsoft: DKIM für bessere Zustellbarkeit der E-Mails. DMARC steht schon auf `p=none` (nur beobachten). Erst wenn DKIM läuft, auf `p=quarantine` verschärfen.
 
 ---
 
