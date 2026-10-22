@@ -181,6 +181,6 @@ Der Abgleich liest den Bestand jetzt über die offizielle MovingCar-API, mit dem
 |---|---|
 | 36 | **OpenStreetMap**: Am Standort steht noch ein Punkt „Remorque Center Leweck" (shop=trailer). Er kommt nicht auf die Website. Nave oder der Kunde sollte ihn in OSM prüfen und entfernen lassen. |
 | 37 | **Google-Unternehmensprofil**: siehe README → „Google-Unternehmensprofil" (G4) |
-| 38 | **MwSt-Nummer** LU36559673 vor Livegang in VIES prüfen |
+| 38 | ~~**MwSt-Nummer**~~ **Erledigt 22.10.2026:** LU36559673 in VIES gültig („GARAGE UM ROND POINT S.A R.L.“) |
 | 39 | **„Nouveau"** steht in der ersten Woche an allen 10 Autos, weil der erste Abgleich alle als neu sieht. Das erledigt sich nach 7 Tagen von selbst. |
 | 40 | **Lighthouse, Tastatur, reduzierte Bewegung, echtes Handy**: siehe README → „Prüfung". Die Messwerte stammen aus der lokalen Vorschau; auf dem echten Handy muss noch getestet werden. |
