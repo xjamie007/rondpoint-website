@@ -1,16 +1,20 @@
 /**
- * Fotos der Website. In der Präsentationsversion (site.json → presentation) kommen
- * Stockfotos aus src/assets/demo/ – freie Lizenzen, Nachweis in credits.json und im Impressum.
+ * Fotos der Website. Wo noch kein eigenes Foto da ist, kommen Stockfotos aus src/assets/demo/
+ * (in der Präsentationsversion oder mit site.json → stockPhotos) – freie Lizenzen, Nachweis in
+ * credits.json und im Impressum.
  * Echte Fotos später in src/assets/photos/ (gleiche Schlüssel) bzw. src/assets/flotte/ ablegen.
  */
 import type { ImageMetadata } from 'astro';
 import credits from '@/assets/demo/credits.json';
 import hiddenJson from '@/content/photos.json';
-import { presentation } from './site.ts';
+import { presentation, site } from './site.ts';
 
 const demo = import.meta.glob<{ default: ImageMetadata }>('/src/assets/demo/*.{jpg,png,webp}', { eager: true });
 const real = import.meta.glob<{ default: ImageMetadata }>('/src/assets/photos/*.{jpg,png,webp}', { eager: true });
 const fleet = import.meta.glob<{ default: ImageMetadata }>('/src/assets/flotte/*.{jpg,png,webp}', { eager: true });
+
+/** Stockfotos als Lückenfüller: in der Präsentation oder live mit site.json → stockPhotos */
+const useDemo = presentation || (site as { stockPhotos?: boolean }).stockPhotos === true;
 
 export const PHOTO_KEYS = ['hero-workshop', 'workshop', 'bodywork', 'paint', 'sodablast', 'garden', 'garden-page', 'rental', 'trailers-sale', 'about'] as const;
 export type PhotoKey = (typeof PHOTO_KEYS)[number];
@@ -36,12 +40,12 @@ function find(map: Record<string, { default: ImageMetadata }>, dir: string, key:
 /** Im Admin-Bereich ausgeblendete Foto-Plätze (src/content/photos.json) */
 export const hiddenPhotos = new Set(Object.entries(hiddenJson as Record<string, { hidden?: boolean }>).filter(([, v]) => v?.hidden).map(([k]) => k));
 
-/** Echtes Foto, sonst in der Präsentation das Demo-Foto, sonst null (Platzhalter). */
+/** Echtes Foto, sonst (siehe useDemo) das Demo-Foto, sonst null (Platzhalter). */
 export function photo(key: PhotoKey): Photo | null {
   if (hiddenPhotos.has(key)) return null;
   const r = find(real, 'photos', key);
   if (r) return { ...r, demo: false };
-  if (!presentation) return null;
+  if (!useDemo) return null;
   const d = find(demo, 'demo', key);
   return d ? { ...d, demo: true } : null;
 }
@@ -66,13 +70,15 @@ export interface Credit {
   page: string;
 }
 
-/** Bildnachweise der Demo-Fotos (für das Impressum), nur in der Präsentation */
+/** Bildnachweise der Demo-Fotos (für das Impressum); live nur die tatsächlich gezeigten */
 export function demoCredits(): Credit[] {
-  if (!presentation) return [];
+  if (!useDemo) return [];
+  const shown = new Set<string>(PHOTO_KEYS.filter((k) => photo(k)?.demo));
   const seen = new Set<string>();
-  return Object.values(credits as Record<string, Credit>).filter((c) => {
+  return Object.entries(credits as Record<string, Credit>).filter(([key, c]) => {
+    if (!presentation && !shown.has(key)) return false;
     if (seen.has(c.page)) return false;
     seen.add(c.page);
     return true;
-  });
+  }).map(([, c]) => c);
 }
