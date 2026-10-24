@@ -1,0 +1,5 @@
+# Weiterleitungen für Cloudflare (Workers Static Assets). GitHub Pages ignoriert diese Datei.
+# Startseite → Luxemburgisch (Standardsprache); alte Adressen der Wix-Seite → passende neue Seite.
+/  /lb/  301
+/privacy-policy  /lb/dateschutz/  301
+/accessibility-statement  /lb/  301

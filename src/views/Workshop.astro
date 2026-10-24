@@ -13,7 +13,7 @@ import ContentSections from '@/components/ContentSections.astro';
 import FaqList from '@/components/FaqList.astro';
 import { contentPlain, faqItems } from '@/lib/content';
 import { breadcrumbs, faqPage } from '@/lib/jsonld';
-import { presentation, showOpenPoints, site } from '@/lib/site';
+import { showOpenPoints, site } from '@/lib/site';
 import { photo } from '@/lib/photos';
 
 interface Props {
@@ -69,7 +69,7 @@ const paint = photo('paint');
   </section>
   <ContentSections t={t} lang={lang} sections={cx.sections} />
   <FaqList t={t} lang={lang} items={faq} heading={cx.faqH} id="faq-page" />
-  {(!presentation || c.workshopAllBrands) && <Faq t={t} keys={['marques']} heading={t.faq.h2} id="faq-atelier" />}
+  {(showOpenPoints || c.workshopAllBrands) && <Faq t={t} keys={['marques']} heading={t.faq.h2} id="faq-atelier" />}
   <section class="section block" aria-labelledby="form-h" id="rendez-vous-section">
     <div class="wrap">
       <h2 id="form-h">{p.formH2}</h2>

@@ -1,4 +1,6 @@
-# Bestand-Abgleich jeden Morgen, danach Build und Deploy auf GitHub Pages (T2.2).
+# Bestand-Abgleich jeden Morgen (T2.2). Seit dem Go-Live (24.10.2026) baut Cloudflare (Workers Builds)
+# bei jedem Commit selbst; dieser Workflow gleicht dann nur ab und committet. Build und Deploy hier
+# nur mit der Variable HOSTING (github-pages oder cloudflare), siehe unten.
 #
 # 04:17 UTC = 06:17 Luxemburger Sommerzeit, 05:17 Winterzeit. Die krumme Minute umgeht
 # die Staus zur vollen Stunde; GitHub kann den Start verzögern, das ist in Ordnung.
@@ -100,7 +102,7 @@ jobs:
           fi
 
       - name: Bild-Cache wiederherstellen
-        if: steps.sync.outcome != 'failure'
+        if: steps.sync.outcome != 'failure' && vars.HOSTING != ''
         uses: actions/cache@v4
         with:
           path: node_modules/.astro
@@ -108,14 +110,15 @@ jobs:
           restore-keys: astro-images-
 
       # Wohin veröffentlicht wird, bestimmt die Variable HOSTING:
-      #  - nicht gesetzt: GitHub Pages (Adresse und Basis-Pfad von configure-pages)
-      #  - cloudflare:    Cloudflare Worker (Adresse aus der Variable SITE_URL), siehe README → „Cloudflare“
+      #  - nicht gesetzt:  nirgends; Cloudflare Workers Builds baut bei jedem Commit (heutiger Weg)
+      #  - github-pages:   GitHub Pages (Adresse und Basis-Pfad von configure-pages)
+      #  - cloudflare:     Cloudflare Worker über GitHub Actions (Adresse aus der Variable SITE_URL), siehe README → „Cloudflare“
       - uses: actions/configure-pages@v5
         id: pages
-        if: steps.sync.outcome != 'failure' && vars.HOSTING != 'cloudflare'
+        if: steps.sync.outcome != 'failure' && vars.HOSTING == 'github-pages'
 
       - name: Build
-        if: steps.sync.outcome != 'failure'
+        if: steps.sync.outcome != 'failure' && vars.HOSTING != ''
         env:
           PUBLIC_HOSTING: ${{ vars.HOSTING }}
           PUBLIC_INQUIRY_URL: ${{ vars.PUBLIC_INQUIRY_URL }}
@@ -127,13 +130,13 @@ jobs:
         run: npm run build
 
       - uses: actions/upload-pages-artifact@v3
-        if: steps.sync.outcome != 'failure' && vars.HOSTING != 'cloudflare'
+        if: steps.sync.outcome != 'failure' && vars.HOSTING == 'github-pages'
         with:
           path: dist
 
       - name: Deploy
         id: deploy
-        if: steps.sync.outcome != 'failure' && vars.HOSTING != 'cloudflare'
+        if: steps.sync.outcome != 'failure' && vars.HOSTING == 'github-pages'
         uses: actions/deploy-pages@v4
 
       # Cloudflare: Datenbank-Tabellen anlegen bzw. ergänzen, Worker mit den Seiten hochladen,

@@ -8,8 +8,8 @@ import siteJson from '../content/site.json';
 import textsJson from '../content/texts.json';
 import listsJson from '../content/lists.json';
 
-/** Präsentationsversion: interne Platzhalter nicht anzeigen (siehe src/lib/site.ts) */
-const PRESENTATION = (siteJson as { presentation?: boolean }).presentation === true;
+/** Präsentationsversion oder Live-Betrieb (showOpenPoints aus): interne Platzhalter nicht anzeigen (siehe src/lib/site.ts) */
+const HIDE_OPEN_POINTS = (siteJson as { presentation?: boolean }).presentation === true || siteJson.showOpenPoints !== true;
 
 export type { Dict };
 
@@ -216,7 +216,7 @@ export function hasContent(s: string): boolean {
  * In der Präsentationsversion werden Platzhalter entfernt, außer keepOpenPoints.
  */
 export function rich(s: string, html: Record<string, string> = {}, opts: { keepOpenPoints?: boolean } = {}): string {
-  const hide = PRESENTATION && !opts.keepOpenPoints;
+  const hide = HIDE_OPEN_POINTS && !opts.keepOpenPoints;
   let out = hide
     ? escapeHtml(s.replace(/\s*\[(FEHLT|UNBESTÄTIGT)(?:\s*[—–-]\s*[^\]]*)?\]/g, '')).trim()
     : escapeHtml(s).replace(OPEN_POINT_RE, (m) => `<mark class="open-point" data-open-point>${m}</mark>`);

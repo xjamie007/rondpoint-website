@@ -19,10 +19,12 @@ const crumbs = [
   { name: p.h1, href: path(lang, 'privacy') },
 ];
 /** Datum der letzten inhaltlichen Änderung dieser Erklärung */
-const UPDATED = '2026-10-20T12:00:00Z';
+const UPDATED = '2026-10-24T12:00:00Z';
+/** Speicherung und IP-Hash gibt es nur, wenn die Formulare an den Server gehen (sonst WhatsApp/E-Mail) */
+const inquiryActive = !!import.meta.env.PUBLIC_INQUIRY_URL;
 const sections: [string, string[]][] = [
   [p.controllerH2, [p.controller]],
-  [p.formsH2, [p.forms, p.legalBasis, onCloudflare ? p.storageCloudflare : p.storage, p.abuse]],
+  [p.formsH2, [p.forms, p.legalBasis, ...(inquiryActive ? [onCloudflare ? p.storageCloudflare : p.storage, p.abuse] : [])]],
   [p.hostingH2, [onCloudflare ? p.hostingCloudflare : p.hosting]],
   ...((site as { audaris?: { active?: boolean } }).audaris?.active ? [[p.showroomH2, [p.showroom]] as [string, string[]]] : []),
   [p.linksH2, [p.links]],

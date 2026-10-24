@@ -144,8 +144,8 @@
     "repo": "xjamie007/rondpoint-website",
     "branch": "main"
   },
-  "showOpenPoints": true,
-  "presentation": true,
+  "showOpenPoints": false,
+  "presentation": false,
   "$presentation": "Präsentationsversion für den Kunden: Stockfotos aus src/assets/demo (Lizenzen in credits.json), interne Platzhalter [FEHLT]/[UNBESTÄTIGT] ausgeblendet, unbestätigte Aussagen weggelassen. Vor Livegang auf false setzen und echte Fotos eintragen.",
   "audaris": {
     "active": true,

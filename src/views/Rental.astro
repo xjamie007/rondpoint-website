@@ -12,7 +12,7 @@ import { getFleet } from '@/lib/fleet.server';
 import { fleetView } from '@/lib/fleet-view';
 import ContentSections from '@/components/ContentSections.astro';
 import { breadcrumbs, faqPage, rentalService } from '@/lib/jsonld';
-import { presentation, showOpenPoints, site } from '@/lib/site';
+import { showOpenPoints, site } from '@/lib/site';
 import { photo } from '@/lib/photos';
 
 interface Props {
@@ -28,7 +28,7 @@ const crumbs = [
   { name: t.nav.rental, href: path(lang, 'rental') },
 ];
 const faqKeys: FaqKey[] = ['permis', 'carte', 'prix', 'louer', 'reserver'];
-const visibleFaq = presentation ? faqKeys.filter((k) => !isUnconfirmed(t.faq.items[k].a) && hasContent(t.faq.items[k].a)) : faqKeys;
+const visibleFaq = !showOpenPoints ? faqKeys.filter((k) => !isUnconfirmed(t.faq.items[k].a) && hasContent(t.faq.items[k].a)) : faqKeys;
 const jsonld = [
   breadcrumbs(crumbs.map((c) => ({ name: c.name, url: c.href }))),
   rentalService({ name: p.h1, serviceType: t.nav.rental, url: path(lang, 'rental'), items: fleet }),

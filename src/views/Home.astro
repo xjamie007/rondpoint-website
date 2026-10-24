@@ -18,7 +18,7 @@ import { HTML_LANG, path, type Lang, type PageKey } from '@/i18n/config';
 import { activeCars } from '@/lib/stock';
 import { num } from '@/lib/format';
 import { faqPage } from '@/lib/jsonld';
-import { presentation, showOpenPoints, site } from '@/lib/site';
+import { showOpenPoints, site } from '@/lib/site';
 import { photo, type PhotoKey } from '@/lib/photos';
 
 interface Props {
@@ -77,7 +77,7 @@ const offer: { page: PageKey; icon: 'trailer' | 'car' | 'wrench' | 'tag' | 'mowe
   { page: 'garden', icon: 'mower', title: t.nav.garden, sub: t.offer.sub.garden },
   { page: 'sodablast', icon: 'spray', title: t.services.sodablast.h3, sub: t.offer.sub.sodablast },
 ];
-const visibleFaq = presentation ? faqKeys.filter((k) => !isUnconfirmed(t.faq.items[k].a) && hasContent(t.faq.items[k].a)) : faqKeys;
+const visibleFaq = !showOpenPoints ? faqKeys.filter((k) => !isUnconfirmed(t.faq.items[k].a) && hasContent(t.faq.items[k].a)) : faqKeys;
 ---
 <Base lang={lang} route={{ page: 'home' }} title={t.seo.home.title} description={t.seo.home.description} jsonld={[faqLd]} isHome>
   <section class="hero" data-hero aria-labelledby="hero-h">
