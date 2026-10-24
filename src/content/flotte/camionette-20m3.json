@@ -20,7 +20,11 @@
   "power": null,
   "socket": null,
   "showPallets": false,
-  "suitableFor": [],
+  "suitableFor": [
+    "fete",
+    "meubles",
+    "materiel"
+  ],
   "priceHalfDay": 130,
   "priceDay": 160,
   "priceWeekend": 300,
@@ -32,6 +36,6 @@
   "kmWeek": 600,
   "priceExtraKm": 0.3,
   "notes": null,
-  "photo": null,
+  "photo": "camionette-20m3",
   "active": true
 }
