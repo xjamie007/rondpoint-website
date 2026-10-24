@@ -53,6 +53,14 @@ export function dayKeyInLuxembourg(date = new Date()): DayKey {
 /** Wo die Website läuft (Impressum, Datenschutz): PUBLIC_HOSTING=cloudflare beim Build, sonst GitHub Pages */
 export const onCloudflare = import.meta.env.PUBLIC_HOSTING === 'cloudflare';
 
+/**
+ * Ziel der Formulare: der eigene Server (/api/inquiry, schickt die Anfrage per Mail) oder leer,
+ * dann WhatsApp/E-Mail mit fertigem Text. Build-Variable PUBLIC_INQUIRY_URL oder auf Cloudflare
+ * site.json → formsDirect.
+ */
+export const inquiryUrl: string =
+  import.meta.env.PUBLIC_INQUIRY_URL || (onCloudflare && (site as { formsDirect?: boolean }).formsDirect === true ? '/api/inquiry' : '');
+
 export const telHref = `tel:${site.phone.tel}`;
 /** Nummern ohne Zeilenumbruch in der Mitte (geschützte Leerzeichen) */
 export const phoneText = site.phone.display.replace(/ /g, '\u00a0');

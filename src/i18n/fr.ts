@@ -800,7 +800,7 @@ const fr = {
     storage:
       'Votre demande est enregistrée dans une base de données chez Supabase (région Union européenne) et nous est transmise par e-mail via [UNBESTÄTIGT — EU-Mailanbieter, mit Nave klären]. Les demandes sont supprimées automatiquement après 90 jours [UNBESTÄTIGT — Frist mit Kunde bestätigen]. Les échanges qui mènent à un contrat sont conservés selon les obligations comptables.',
     storageCloudflare:
-      'Votre demande est enregistrée dans une base de données chez Cloudflare (région Union européenne) et nous est transmise par e-mail via [UNBESTÄTIGT — EU-Mailanbieter, mit Nave klären]. Les demandes sont supprimées automatiquement après 90 jours [UNBESTÄTIGT — Frist mit Kunde bestätigen]. Les échanges qui mènent à un contrat sont conservés selon les obligations comptables.',
+      'Votre demande est enregistrée dans une base de données chez Cloudflare (région Union européenne) et nous est transmise par e-mail via le service d’e-mail de Cloudflare. Les demandes sont supprimées automatiquement après 90 jours [UNBESTÄTIGT — Frist mit Kunde bestätigen]. Les échanges qui mènent à un contrat sont conservés selon les obligations comptables.',
     abuse:
       'Pour limiter les abus, nous enregistrons une empreinte cryptographique (hachage) de votre adresse IP pendant 24 heures. Elle ne permet pas de retrouver votre adresse.',
     hostingH2: 'Hébergement et journaux du serveur',

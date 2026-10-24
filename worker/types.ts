@@ -36,7 +36,9 @@ export interface Env {
   GITHUB_REPO: string;
   GITHUB_BRANCH?: string;
   GITHUB_API?: string;
-  // Formulare (optional, alle per wrangler secret put)
+  /** Cloudflare Email Service (send_email in wrangler.jsonc), für MAIL_PROVIDER=cloudflare */
+  EMAIL?: SendEmail;
+  // Formulare (Anbieter, Absender und Empfänger in wrangler.jsonc; Schlüssel per wrangler secret put)
   FORM_RECIPIENT?: string;
   MAIL_PROVIDER?: string;
   MAIL_API_KEY?: string;
@@ -44,4 +46,16 @@ export interface Env {
   SCALEWAY_PROJECT_ID?: string;
   IP_HASH_SALT?: string;
   RATE_LIMIT?: string;
+}
+
+/** Ausschnitt der Email-Service-Bindung, den die Formulare nutzen */
+export interface SendEmail {
+  send(message: {
+    from: string | { email: string; name?: string };
+    to: string | string[];
+    subject: string;
+    text?: string;
+    html?: string;
+    replyTo?: string | { email: string; name?: string };
+  }): Promise<{ messageId: string }>;
 }

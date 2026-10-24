@@ -5,7 +5,7 @@
  *  2. Prüfung je Typ
  *  3. Rate-Limit über gehashte IP (24 Stunden)
  *  4. Speichern in D1 (inquiries), Löschung nach 90 Tagen (Cron in index.ts)
- *  5. Mail an FORM_RECIPIENT über einen EU-Mailanbieter; scheitert sie, bleibt die Anfrage gespeichert
+ *  5. Mail an FORM_RECIPIENT (Cloudflare Email Service, Brevo oder Scaleway); scheitert sie, bleibt die Anfrage gespeichert
  *  6. Antwort: JSON (Formular mit JavaScript) oder 303 auf die Danke-Seite
  */
 import { errorPage, LANGS, mailText, subjectLine, THANKS_PATH, validate, type Inquiry, type Lang } from '../supabase/functions/inquiry/lib.ts';
@@ -25,6 +25,17 @@ async function sendMail(env: Env, opts: { subject: string; text: string; replyTo
   const m = from.match(/^(.*)<(.+)>$/);
   const fromName = m ? m[1].trim().replace(/^"|"$/g, '') : 'rondpoint.lu';
   const fromEmail = m ? m[2].trim() : from;
+  if (provider === 'cloudflare') {
+    if (!env.EMAIL) throw new Error('Bindung EMAIL fehlt (send_email in wrangler.jsonc)');
+    await env.EMAIL.send({
+      from: { email: fromEmail, name: fromName },
+      to,
+      subject: opts.subject,
+      text: opts.text,
+      ...(opts.replyTo ? { replyTo: opts.replyTo } : {}),
+    });
+    return true;
+  }
   let res: Response;
   if (provider === 'brevo') {
     res = await fetch('https://api.brevo.com/v3/smtp/email', {

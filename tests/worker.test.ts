@@ -148,6 +148,26 @@ describe('Worker: Formulare', () => {
     const rows = db.prepare('SELECT type, lang, name, mail_status FROM inquiries').all();
     expect(rows).toEqual([{ type: 'contact', lang: 'de', name: 'Ana', mail_status: 'pending' }, { type: 'contact', lang: 'de', name: 'Ana', mail_status: 'pending' }]);
   });
+  it('Cloudflare Email Service: Mail an FORM_RECIPIENT, Antworten gehen an den Kunden; Fehler → gespeichert als failed', async () => {
+    const sent: unknown[] = [];
+    Object.assign(env, {
+      MAIL_PROVIDER: 'cloudflare',
+      MAIL_FROM: 'Website Um Rond Point <formulaire@rondpoint.lu>',
+      FORM_RECIPIENT: 'info@rondpoint.lu',
+      EMAIL: { send: async (m: unknown) => (sent.push(m), { messageId: 'm1' }) },
+    });
+    expect((await send(form({ email: 'ana@example.com' }))).status).toBe(200);
+    expect(sent).toHaveLength(1);
+    expect(sent[0]).toMatchObject({ from: { email: 'formulaire@rondpoint.lu', name: 'Website Um Rond Point' }, to: 'info@rondpoint.lu', replyTo: 'ana@example.com' });
+    expect((sent[0] as { subject: string }).subject).toContain('Ana');
+    env.EMAIL = { send: async () => { throw new Error('E_SENDER_NOT_VERIFIED'); } };
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+    expect((await send(form())).status).toBe(200);
+    expect(db.prepare('SELECT mail_status, mail_error FROM inquiries ORDER BY id').all()).toEqual([
+      { mail_status: 'sent', mail_error: null },
+      { mail_status: 'failed', mail_error: 'E_SENDER_NOT_VERIFIED' },
+    ]);
+  });
   it('ungültig → 422 mit Feldern; Honeypot → „ok“, aber nichts gespeichert; Rate-Limit → 429', async () => {
     const bad = await send(form({ phone: '12' }));
     expect(bad.status).toBe(422);

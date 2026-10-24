@@ -6,7 +6,7 @@
  */
 import { rich, type Dict } from '@/i18n';
 import { path, type Lang } from '@/i18n/config';
-import { showOpenPoints, site } from '@/lib/site';
+import { inquiryUrl, showOpenPoints, site } from '@/lib/site';
 import Icon from '@/components/Icon.astro';
 
 interface Props {
@@ -17,7 +17,7 @@ interface Props {
   submit: string;
 }
 const { type, lang, t, id, submit } = Astro.props;
-const action = import.meta.env.PUBLIC_INQUIRY_URL as string | undefined;
+const action = inquiryUrl || undefined;
 const f = t.forms;
 const privacyLink = `<a class="link" href="${path(lang, 'privacy')}">${f.consentLink}</a>`;
 ---
@@ -104,7 +104,7 @@ const privacyLink = `<a class="link" href="${path(lang, 'privacy')}">${f.consent
 
     <div class="submit-row">
       <button class="btn btn-primary" type="submit" data-submit>{submit}</button>
-      {!action && showOpenPoints && <p class="t-small"><mark class="open-point">[FEHLT — PUBLIC_INQUIRY_URL: Adresse der Supabase Edge Function beim Build setzen]</mark></p>}
+      {!action && showOpenPoints && <p class="t-small"><mark class="open-point">[FEHLT — Formular-Versand per Mail: site.json → formsDirect bzw. PUBLIC_INQUIRY_URL]</mark></p>}
     </div>
     <slot name="after" />
   </div>

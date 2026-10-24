@@ -797,7 +797,7 @@ const en: Dict = {
     storage:
       'Your request is stored in a database at Supabase (European Union region) and sent to us by email via [UNBESTÄTIGT — EU-Mailanbieter, mit Nave klären]. Requests are deleted automatically after 90 days [UNBESTÄTIGT — Frist mit Kunde bestätigen]. Correspondence that leads to a contract is kept in accordance with accounting obligations.',
     storageCloudflare:
-      'Your request is stored in a database at Cloudflare (European Union region) and sent to us by email via [UNBESTÄTIGT — EU-Mailanbieter, mit Nave klären]. Requests are deleted automatically after 90 days [UNBESTÄTIGT — Frist mit Kunde bestätigen]. Correspondence that leads to a contract is kept in accordance with accounting obligations.',
+      'Your request is stored in a database at Cloudflare (European Union region) and sent to us by email via Cloudflare’s email service. Requests are deleted automatically after 90 days [UNBESTÄTIGT — Frist mit Kunde bestätigen]. Correspondence that leads to a contract is kept in accordance with accounting obligations.',
     abuse:
       'To limit misuse, we store a cryptographic hash of your IP address for 24 hours. It cannot be used to recover your address.',
     hostingH2: 'Hosting and server logs',

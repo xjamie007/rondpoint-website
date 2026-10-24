@@ -797,7 +797,7 @@ const pt: Dict = {
     storage:
       'O seu pedido é guardado numa base de dados da Supabase (região União Europeia) e é-nos transmitido por e-mail através de [UNBESTÄTIGT — EU-Mailanbieter, mit Nave klären]. Os pedidos são apagados automaticamente após 90 dias [UNBESTÄTIGT — Frist mit Kunde bestätigen]. As comunicações que levem à celebração de um contrato são conservadas de acordo com as obrigações contabilísticas.',
     storageCloudflare:
-      'O seu pedido é guardado numa base de dados da Cloudflare (região União Europeia) e é-nos transmitido por e-mail através de [UNBESTÄTIGT — EU-Mailanbieter, mit Nave klären]. Os pedidos são apagados automaticamente após 90 dias [UNBESTÄTIGT — Frist mit Kunde bestätigen]. As comunicações que levem à celebração de um contrato são conservadas de acordo com as obrigações contabilísticas.',
+      'O seu pedido é guardado numa base de dados da Cloudflare (região União Europeia) e é-nos transmitido por e-mail através do serviço de e-mail da Cloudflare. Os pedidos são apagados automaticamente após 90 dias [UNBESTÄTIGT — Frist mit Kunde bestätigen]. As comunicações que levem à celebração de um contrato são conservadas de acordo com as obrigações contabilísticas.',
     abuse:
       'Para limitar abusos, registamos durante 24 horas um resumo criptográfico (hash) do seu endereço IP. Esse valor não permite descobrir o seu endereço.',
     hostingH2: 'Alojamento e registos do servidor',
