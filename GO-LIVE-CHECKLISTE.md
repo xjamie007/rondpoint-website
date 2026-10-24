@@ -22,7 +22,8 @@ Stand: 22.10.2026 (nach der Antwort von Intec). Die Details zum Domain-Umzug ste
 - Intec hat **keinen Zugang zu Wix**, und die DNS-Zone wird **nicht** über ihr EuroDNS-Konto verwaltet.
 - Ihr Rat: alle Einstellungen 1:1 von Wix übernehmen. Das ist erledigt; Cloudflare ist identisch mit Wix (zuletzt geprüft am 22.10.). Die Website-Einträge stehen auf „DNS only“, damit die alte Wix-Seite nach dem Umstellen weiterläuft.
 - Andere E-Mail-Einträge wie DKIM gibt es nicht. MX und SPF bleiben unverändert. Neu dazu kommt DMARC (`p=none`, nur beobachten), bereits bei Cloudflare eingetragen.
-- **Noch unklar ist, wo die Domain selbst verwaltet wird.** Laut .lu-Register ist der Registrar EuroDNS. Möglich sind drei Fälle:
+- **Stand 24.10.:** Das .lu-Register meldet als Registrar jetzt **Fondation Restena (my.lu)**. Der Umzug zu my.lu ist also durch, die Nameserver zeigen aber noch auf Wix. Es bleibt nur: bei my.lu die Nameserver auf Cloudflare stellen. Die Fälle unten galten bis dahin.
+- **Bis 22.10. unklar war, wo die Domain selbst verwaltet wird.** Laut .lu-Register war der Registrar EuroDNS. Möglich waren drei Fälle:
   - **A:** Davids eigenes EuroDNS-Konto.
   - **B:** Intecs EuroDNS-Konto. Intecs Antwort deutet darauf hin.
   - **C:** über Wix gekauft (Wix nutzt einen Partner-Registrar).

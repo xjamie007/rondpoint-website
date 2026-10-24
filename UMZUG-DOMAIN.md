@@ -15,7 +15,7 @@ Dabei darf keine einzige E-Mail verloren gehen, und die Website soll höchstens 
 
 | Was | Heute | Bedeutung |
 |---|---|---|
-| Registrar (Verwalter der Domain) | **EuroDNS SA**, nicht my.lu | Die Domain muss zu my.lu umziehen (Transfer). |
+| Registrar (Verwalter der Domain) | **Fondation Restena (my.lu)** laut .lu-Register am 24.10.2026; am 18.10. war es noch EuroDNS SA | Der Transfer zu my.lu ist durch. Es fehlen nur noch die Cloudflare-Nameserver. |
 | Nameserver (wo die DNS-Einträge stehen) | **Wix**: `ns6.wixdns.net`, `ns7.wixdns.net` | Alle Einträge stehen heute bei Wix und müssen zu Cloudflare kopiert werden. |
 | E-Mail | **Intecsoft**: MX `ihe.intecsoft.com` (81.246.20.180) | Postfächer, Passwörter und Outlook/Handy bleiben gleich. Nur die DNS-Einträge ziehen mit. |
 | Website heute | Wix, `www.rondpoint.lu` (Hauptadresse), `rondpoint.lu` → 301 auf www | Unsere neue Seite nutzt dieselbe Hauptadresse www.rondpoint.lu. |
