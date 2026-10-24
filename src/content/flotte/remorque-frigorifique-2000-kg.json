@@ -1,0 +1,48 @@
+{
+  "category": "frigorifique",
+  "name": {
+    "fr": "Remorque frigorifique 2000 kg",
+    "de": "Kühlanhänger 2000 kg",
+    "lb": "Kill Unhänger 2000 kg",
+    "en": "Refrigerated trailer 2000 kg",
+    "pt": "Reboque frigorífico 2000 kg"
+  },
+  "brand": "Polcamp",
+  "mmaKg": 2000,
+  "emptyKg": 800,
+  "payloadKg": 1200,
+  "braked": true,
+  "loadLengthM": 2.6,
+  "loadWidthM": 1.7,
+  "loadHeightM": 1.95,
+  "volumeM3": 8.62,
+  "tempRange": {
+    "minC": 5,
+    "maxC": 10
+  },
+  "power": "230V",
+  "socket": 13,
+  "showPallets": false,
+  "suitableFor": [
+    "fete"
+  ],
+  "priceHalfDay": 70,
+  "priceDay": 100,
+  "priceWeekend": 150,
+  "priceWeek": 280,
+  "deposit": 300,
+  "kmHalfDay": null,
+  "kmDay": null,
+  "kmWeekend": null,
+  "kmWeek": null,
+  "priceExtraKm": null,
+  "notes": {
+    "fr": "Avec étagères à l’intérieur.",
+    "de": "Mit Regalen.",
+    "lb": "Mat Regalen bannen.",
+    "en": "With shelves inside.",
+    "pt": "Com prateleiras no interior."
+  },
+  "photo": "remorque-frigorifique-2000-kg",
+  "active": true
+}
