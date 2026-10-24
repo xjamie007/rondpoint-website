@@ -1,0 +1,41 @@
+{
+  "category": "camionnette",
+  "name": {
+    "fr": "Camionette 10m3",
+    "de": "Transporter 10m3",
+    "lb": "Camionnette 10m3",
+    "en": "Van 10m3",
+    "pt": "Camionette 10m3"
+  },
+  "brand": "Renault Master",
+  "mmaKg": 3500,
+  "emptyKg": 2185,
+  "payloadKg": 1315,
+  "braked": false,
+  "loadLengthM": 3.08,
+  "loadWidthM": 1.76,
+  "loadHeightM": 1.9,
+  "volumeM3": 10.8,
+  "tempRange": null,
+  "power": null,
+  "socket": null,
+  "showPallets": false,
+  "suitableFor": [
+    "fete",
+    "meubles",
+    "materiel"
+  ],
+  "priceHalfDay": 90,
+  "priceDay": 130,
+  "priceWeekend": 250,
+  "priceWeek": 550,
+  "deposit": 400,
+  "kmHalfDay": 100,
+  "kmDay": 150,
+  "kmWeekend": 350,
+  "kmWeek": 600,
+  "priceExtraKm": 0.3,
+  "notes": null,
+  "photo": "camionette-10m3",
+  "active": true
+}
