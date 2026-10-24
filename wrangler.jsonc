@@ -1,10 +1,13 @@
 // Cloudflare Worker der Website (Seiten aus dist/, Admin-Bereich und Formulare unter /api).
-// Veröffentlicht wird über GitHub Actions (.github/workflows/stock-sync.yml), siehe README → „Cloudflare“.
+// Veröffentlicht wird von Cloudflare Workers Builds bei jedem Commit auf main, siehe README → „Cloudflare“.
 {
   "name": "rondpoint-website",
   "main": "worker/index.ts",
   "compatibility_date": "2026-10-01",
-  // Adresse rondpoint-website.<konto>.workers.dev bleibt eingeschaltet (bis rondpoint.lu verbunden ist)
+  // Seit 24.10.2026 live unter www.rondpoint.lu. rondpoint.lu ohne www leitet der Worker
+  // rondpoint-redirect weiter (wrangler.redirect.jsonc).
+  "routes": [{ "pattern": "www.rondpoint.lu", "custom_domain": true }],
+  // workers.dev bleibt vorerst als Ausweichadresse an (Seiten verweisen per canonical auf www)
   "workers_dev": true,
   "assets": {
     "directory": "./dist",

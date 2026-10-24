@@ -1,0 +1,9 @@
+// Weiterleitung rondpoint.lu → https://www.rondpoint.lu (worker/redirect.ts).
+// Wird nicht von Workers Builds gebaut; bei Änderungen von Hand: npx wrangler deploy -c wrangler.redirect.jsonc
+{
+  "name": "rondpoint-redirect",
+  "main": "worker/redirect.ts",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": false,
+  "routes": [{ "pattern": "rondpoint.lu", "custom_domain": true }]
+}
