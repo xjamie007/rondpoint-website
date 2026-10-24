@@ -23,9 +23,16 @@
   "suitableFor": [
     "voiture"
   ],
+  "priceHalfDay": 50,
   "priceDay": 80,
   "priceWeekend": 100,
+  "priceWeek": 200,
   "deposit": 300,
+  "kmHalfDay": null,
+  "kmDay": null,
+  "kmWeekend": null,
+  "kmWeek": null,
+  "priceExtraKm": null,
   "notes": null,
   "photo": "remorque-porte-voiture-2700-kg",
   "active": true
