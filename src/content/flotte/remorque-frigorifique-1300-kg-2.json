@@ -1,0 +1,38 @@
+{
+  "category": "frigorifique",
+  "name": {
+    "fr": "Remorque frigorifique 1300 kg"
+  },
+  "brand": "Humbaur",
+  "mmaKg": 1300,
+  "emptyKg": 780,
+  "payloadKg": 520,
+  "braked": true,
+  "loadLengthM": 2.5,
+  "loadWidthM": 1.3,
+  "loadHeightM": 1.95,
+  "volumeM3": null,
+  "tempRange": {
+    "minC": 5,
+    "maxC": 10
+  },
+  "power": "230V",
+  "socket": 13,
+  "showPallets": false,
+  "suitableFor": [
+    "fete"
+  ],
+  "priceHalfDay": 70,
+  "priceDay": 100,
+  "priceWeekend": 150,
+  "priceWeek": 280,
+  "deposit": 300,
+  "kmHalfDay": null,
+  "kmDay": null,
+  "kmWeekend": null,
+  "kmWeek": null,
+  "priceExtraKm": null,
+  "notes": null,
+  "photo": "remorque-frigorifique-1300-kg-2",
+  "active": true
+}
