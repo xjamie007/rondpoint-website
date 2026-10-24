@@ -1,7 +1,11 @@
 {
   "category": "fourgon",
   "name": {
-    "fr": "Food Truck"
+    "fr": "Food Truck",
+    "de": "Food Truck",
+    "lb": "Food Truck",
+    "en": "Food Truck",
+    "pt": "Food Truck"
   },
   "brand": "WM Meyer",
   "mmaKg": 2000,
@@ -29,7 +33,13 @@
   "kmWeekend": null,
   "kmWeek": null,
   "priceExtraKm": null,
-  "notes": null,
+  "notes": {
+    "fr": "2 grill à gaz (grill ou plancha)\n\n2 friteuses professionnelles à gaz\n\n2 réfrigérateurs \n\n1 tireuse à bière pression professionnelle\n\n1 évier avec alimentation en eau\n\nEnsemble complet avec équipements de qualité professionnelle, prêt pour votre activité de restauration.",
+    "de": "2 Gasgrills (Grill oder Plancha) 2 professionelle Gasfritteusen 2 Kühlschränke 1 professionelle Bierzapfanlage 1 Spülbecken mit Wasseranschluss Komplettes Ensemble mit professioneller Ausstattung, bereit für Ihre Gastronomieaktivitäten.",
+    "lb": "2 Gas Grillen (Grill oder Plancha) 2 professionell Gas friteusen 2 Frigoen 1 Bierzapanlag 1 Spullsteen mat Waasserzoufuhr Komplett mat professionellen Equipementer, bereet fir Är Restaurationsaktivitéiten.",
+    "en": "2 gas grills (grill or plancha) 2 professional gas fryers 2 refrigerators 1 professional beer dispenser 1 sink with water supply Complete set with professional equipment, ready for your catering activity.",
+    "pt": "2 grelhas a gás (grelha ou plancha) 2 fritadeiras profissionais a gás 2 frigoríficos 1 tirador de cerveja profissional 1 pia com abastecimento de água Conjunto completo com equipamentos de qualidade profissional, pronto para a sua atividade de restauração."
+  },
   "photo": "food-truck",
   "active": true
 }
