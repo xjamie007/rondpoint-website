@@ -1,0 +1,41 @@
+{
+  "category": "plateau",
+  "name": {
+    "fr": "Remorque grillage 750 kg",
+    "de": "Anhänger mit Gitter 750 kg",
+    "lb": "Unhänger mat Gitter 750 kg",
+    "en": "Trailer grid 750 kg",
+    "pt": "Atrelado com grade 750 kg"
+  },
+  "brand": "Saris",
+  "mmaKg": 750,
+  "emptyKg": 180,
+  "payloadKg": 570,
+  "braked": false,
+  "loadLengthM": 2.55,
+  "loadWidthM": 1.33,
+  "loadHeightM": 0.3,
+  "volumeM3": null,
+  "tempRange": null,
+  "power": null,
+  "socket": 13,
+  "showPallets": true,
+  "suitableFor": [
+    "terre",
+    "meubles",
+    "materiel"
+  ],
+  "priceHalfDay": 30,
+  "priceDay": 40,
+  "priceWeekend": 60,
+  "priceWeek": 180,
+  "deposit": 300,
+  "kmHalfDay": null,
+  "kmDay": null,
+  "kmWeekend": null,
+  "kmWeek": null,
+  "priceExtraKm": null,
+  "notes": null,
+  "photo": "remorque-grillage-750-kg",
+  "active": true
+}
