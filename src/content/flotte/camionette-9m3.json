@@ -1,0 +1,37 @@
+{
+  "category": "camionnette",
+  "name": {
+    "fr": "Camionette 9m3"
+  },
+  "brand": "Vw Crafter",
+  "mmaKg": 3000,
+  "emptyKg": 2124,
+  "payloadKg": 876,
+  "braked": false,
+  "loadLengthM": 2.6,
+  "loadWidthM": 1.78,
+  "loadHeightM": 1.94,
+  "volumeM3": 9,
+  "tempRange": null,
+  "power": null,
+  "socket": null,
+  "showPallets": false,
+  "suitableFor": [
+    "fete",
+    "meubles",
+    "materiel"
+  ],
+  "priceHalfDay": 90,
+  "priceDay": 130,
+  "priceWeekend": 250,
+  "priceWeek": 550,
+  "deposit": 400,
+  "kmHalfDay": 100,
+  "kmDay": 150,
+  "kmWeekend": 350,
+  "kmWeek": 600,
+  "priceExtraKm": 0.3,
+  "notes": null,
+  "photo": "camionette-9m3",
+  "active": true
+}
