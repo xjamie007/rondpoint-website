@@ -145,6 +145,8 @@ Bis jetzt sind echt: Startbild, Vermietung, Sodablast, Garten und Anhängerverka
 
 ## 6. Go-Live-Abend (wenn Abschnitt 4 „Pflicht“ erledigt ist, etwa 30 Minuten)
 
+> **Erledigt am 24.10.2026.** Die neue Website ist unter https://www.rondpoint.lu live (Details in `UMZUG-DOMAIN.md`, Phase 3). Noch offen: Formulare per Brevo, die Antworten aus dem Termin mit David, danach Search Console. David muss sich unter www.rondpoint.lu einmal neu anmelden.
+
 Ablauf wie in `UMZUG-DOMAIN.md`, Phase 3:
 1. In Cloudflare die Wix-Einträge (3 A-Einträge und www-CNAME) löschen. **MX, SPF und DMARC bleiben.**
 2. Im Worker Custom Domains `www.rondpoint.lu` und `rondpoint.lu` anlegen. Das Zertifikat kommt automatisch.

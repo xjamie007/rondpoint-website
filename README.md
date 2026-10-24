@@ -369,9 +369,11 @@ Auf Cloudflare liegt alles an einem Ort, kostenlos:
 Die GitHub-Variable `HOSTING` bleibt leer. Sonst würde zusätzlich GitHub Actions auf Cloudflare veröffentlichen; dieser Weg mit eigenem API-Token ist nur die Alternative zu Workers Builds.
 
 **Eigene Domain (rondpoint.lu):**
-- Die Domain in Cloudflare hinzufügen (**Add a domain**). Beim Registrar die Nameserver auf die zwei von Cloudflare umstellen. E-Mail-Einträge (MX) übernimmt Cloudflare beim Import, bitte trotzdem prüfen.
-- Danach Workers & Pages → `rondpoint-website` → **Settings → Domains & Routes → Add → Custom domain** → `www.rondpoint.lu` und `rondpoint.lu`.
-- Die Variable `SITE_URL` auf `https://www.rondpoint.lu` setzen und den Workflow erneut starten.
+Live seit 24.10.2026. Registrar my.lu (Restena), Nameserver Cloudflare (Zone im Nave-Konto).
+- `www.rondpoint.lu` ist Custom Domain des Workers `rondpoint-website` (`routes` in `wrangler.jsonc`). Ohne Angabe von `SITE_URL` baut Astro schon für `https://www.rondpoint.lu`.
+- `rondpoint.lu` ohne www gehört dem kleinen Worker `rondpoint-redirect` (`worker/redirect.ts`, `wrangler.redirect.jsonc`), der mit 301 auf www weiterleitet. Workers Builds baut ihn nicht mit; nach Änderungen: `npx wrangler deploy -c wrangler.redirect.jsonc`.
+- Zone: „Always Use HTTPS“ ist an. DNS von Hand nur noch MX, SPF und DMARC (E-Mail bei Intecsoft) plus später Brevo und Google; die Einträge für die Website legt Cloudflare über die Custom Domains selbst an.
+- `public/_redirects`: `/` → `/lb/` und die alten Wix-Adressen.
 
 **Formulare direkt verschicken (statt WhatsApp/E-Mail-Knopf):**
 - Mailanbieter ist Brevo (EU). Dort die Domain `rondpoint.lu` bestätigen: einen TXT-Eintrag `brevo-code:…` und zwei DKIM-CNAMEs `brevo1._domainkey` und `brevo2._domainkey`. Die CNAMEs in Cloudflare auf „DNS only“ stellen. DMARC gibt es schon, SPF braucht Brevo nicht.
@@ -381,7 +383,7 @@ Die GitHub-Variable `HOSTING` bleibt leer. Sonst würde zusätzlich GitHub Actio
 
 **Gut zu wissen**
 - **Kosten:** Seiten und Bilder sind auf Cloudflare unbegrenzt kostenlos. Der Worker läuft nur für `/api` (Free: 100 000 Aufrufe pro Tag), D1 im Free-Plan reicht weit.
-- **GitHub Pages abschalten,** sobald alles auf Cloudflare läuft: Settings → Pages → „Unpublish site“. Sonst bleibt der letzte Stand dort sichtbar.
+- **GitHub Pages** ist seit dem Go-Live abgeschaltet; der Workflow gleicht nur noch den Bestand ab (Variable `HOSTING` leer).
 - **Zurück zu GitHub Pages:** die Variable `HOSTING` löschen.
 - **Lokal testen:**
   - Eine `.dev.vars` mit `SESSION_SECRET=…`, `GITHUB_TOKEN=…` und `MAIL_PROVIDER=log` anlegen; sie ist von Git ausgeschlossen.

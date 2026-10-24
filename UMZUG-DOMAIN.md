@@ -122,6 +122,8 @@ Hinweis: Nach dem Transfer weg von Wix kann die alte Wix-Seite kurz ausfallen, f
 
 ### Phase 3: Umschalten auf die neue Website (Go-Live, etwa 30 Minuten, am besten abends)
 
+> **Erledigt am 24.10.2026, etwa 20:05 Uhr.** Nameserver seit dem Nachmittag bei Cloudflare (Zone aktiv 15:15). Präsentationsmodus aus; offene Punkte werden im Live-Betrieb ausgeblendet statt angezeigt. www-CNAME und die drei A-Einträge von Wix gelöscht. `www.rondpoint.lu` ist Custom Domain des Workers, `rondpoint.lu` leitet über den Worker `rondpoint-redirect` auf www weiter (statt Redirect Rule). „Always Use HTTPS“ an. GitHub Pages abgeschaltet. Geprüft: alle 5 Sprachen 200, Weiterleitungen 301, Zertifikate gültig bis Januar 2027, MX/SPF/DMARC unverändert. Offen: Formulare per Brevo (Phase 4).
+
 **Voraussetzungen, bevor die echte Domain die neue Seite zeigt:**
 - [ ] Echte Mietanhänger eingetragen, die Beispiel-Anhänger gelöscht.
 - [ ] Echte Fotos hochgeladen, wo heute Stockfotos sind (ohne Präsentationsmodus verschwinden die Stockfotos).
@@ -147,12 +149,12 @@ Hinweis: Nach dem Transfer weg von Wix kann die alte Wix-Seite kurz ausfallen, f
    - [ ] robots.txt zeigt „Allow“, Sitemap erreichbar.
    - [ ] **Test-E-Mail** an info@rondpoint.lu hin und zurück.
 
-**Notfall-Plan:** Wenn etwas nicht geht, die Custom Domains im Worker entfernen und die drei A-Einträge plus den www-CNAME von Wix (Tabelle oben) wieder anlegen. Nach ein paar Minuten ist die alte Wix-Seite zurück. MX und SPF wurden nie geändert, die E-Mail läuft also ohnehin weiter.
+**Notfall-Plan:** Wenn etwas nicht geht, die Custom Domains entfernen (Worker `rondpoint-website`: `www.rondpoint.lu`, Worker `rondpoint-redirect`: `rondpoint.lu`) und die drei A-Einträge plus den www-CNAME von Wix (Tabelle oben) wieder anlegen. Funktioniert nur, solange das Wix-Abo läuft. Nach ein paar Minuten ist die alte Wix-Seite zurück. MX und SPF wurden nie geändert, die E-Mail läuft also ohnehin weiter.
 
 ### Phase 4: Nacharbeiten (in den Tagen danach)
 - [ ] **Google Search Console:** Domain-Property `rondpoint.lu` anlegen. Den TXT-Eintrag von Google bei Cloudflare zusätzlich eintragen (die SPF-Zeile nicht ändern). Dann die Sitemap `https://www.rondpoint.lu/sitemap.xml` einreichen.
 - [ ] **Google-Unternehmensprofil:** Website-Adresse auf `https://www.rondpoint.lu/` prüfen.
-- [ ] **GitHub Pages abschalten:** den Workflow `stock-sync.yml` auf „nur Bestand abgleichen und committen“ kürzen, denn Cloudflare baut bei jedem Commit selbst. Danach im Repository unter Settings → Pages die Seite abschalten.
+- [x] **GitHub Pages abschalten:** Workflow baut nur noch mit der Variable `HOSTING`, die Pages-Seite ist gelöscht (24.10.2026).
 - [ ] **Formulare per Mail** (Brevo oder Scaleway):
   - Der Anbieter verlangt eigene DNS-Einträge (DKIM, Bestätigung).
   - **SPF nur ergänzen, nicht doppelt anlegen.** Es darf nur eine SPF-Zeile geben, z. B. `v=spf1 a mx include:ihe.intecsoft.com include:spf.brevo.com -all`.
