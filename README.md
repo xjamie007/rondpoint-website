@@ -374,9 +374,9 @@ Die GitHub-Variable `HOSTING` bleibt leer. Sonst würde zusätzlich GitHub Actio
 - Die Variable `SITE_URL` auf `https://www.rondpoint.lu` setzen und den Workflow erneut starten.
 
 **Formulare direkt verschicken (statt WhatsApp/E-Mail-Knopf):**
-- Einen EU-Mailanbieter wählen, z. B. Brevo, und die Absender-Domain dort bestätigen.
-- Die Werte des Workers setzen, jeweils mit `npx wrangler secret put …`: `MAIL_PROVIDER` (`brevo` oder `scaleway`), `MAIL_API_KEY`, `MAIL_FROM` (z. B. `rondpoint.lu <formulaire@rondpoint.lu>`) und `FORM_RECIPIENT`.
-- Danach die GitHub-Variable `PUBLIC_INQUIRY_URL` = `/api/inquiry` setzen.
+- Mailanbieter ist Brevo (EU). Dort die Domain `rondpoint.lu` bestätigen: einen TXT-Eintrag `brevo-code:…` und zwei DKIM-CNAMEs `brevo1._domainkey` und `brevo2._domainkey`. Die CNAMEs in Cloudflare auf „DNS only“ stellen. DMARC gibt es schon, SPF braucht Brevo nicht.
+- `MAIL_PROVIDER`, `MAIL_FROM` und `FORM_RECIPIENT` stehen in `wrangler.jsonc`. Nur den Schlüssel als Secret setzen: Dashboard → Worker → Settings → Variables and Secrets → `MAIL_API_KEY` (Typ *Secret*).
+- Danach die Build-Variable `PUBLIC_INQUIRY_URL` = `/api/inquiry` setzen und neu bauen. Erst dann schicken die Formulare an `/api/inquiry`; vorher laufen sie über WhatsApp/E-Mail.
 - Anfragen bleiben 90 Tage in D1 (Dashboard → D1 → `rondpoint` → `inquiries`). Scheitert eine Mail, steht dort `mail_status = failed`.
 
 **Gut zu wissen**

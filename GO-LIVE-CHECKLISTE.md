@@ -136,10 +136,10 @@ Bis jetzt sind echt: Startbild, Vermietung, Sodablast, Garten und Anhängerverka
   - Präsentationsmodus aus.
   - workers.dev-Adresse aus.
   - GitHub Pages aus.
-- [ ] **Formulare per E-Mail** mit Brevo (EU-Anbieter, kostenlos bis 300 Mails pro Tag), sobald der DNS bei Cloudflare liegt:
-  - Brevo verlangt zwei DNS-Einträge (DKIM und eine Bestätigung). Den SPF-Eintrag **ergänzen**, nicht doppelt anlegen.
-  - Danach setze ich beim Worker den Mailanbieter, den Schlüssel, den Absender und `FORM_RECIPIENT=info@rondpoint.lu`, und beim Build `PUBLIC_INQUIRY_URL=/api/inquiry`.
-  - Anschließend die Datenschutzerklärung anpassen.
+- [ ] **Formulare per E-Mail** mit Brevo (EU-Anbieter, kostenlos bis 300 Mails pro Tag):
+  - [x] Mailanbieter, Absender `formulaire@rondpoint.lu` und Empfänger `info@rondpoint.lu` stehen fest im Worker (`wrangler.jsonc`, 24.10.).
+  - [ ] Du: Brevo-Konto, Domain-Einträge bei Cloudflare (und bei Wix), Schlüssel `MAIL_API_KEY` als Secret. Brevo braucht **keinen SPF-Eintrag**; die SPF-Zeile bleibt unverändert.
+  - [ ] Ich: DNS prüfen, einen Test schicken, dann `PUBLIC_INQUIRY_URL=/api/inquiry` einschalten und Brevo in der Datenschutzerklärung nennen.
 - [x] MwSt-Nummer LU36559673 im EU-Register (VIES) geprüft: **gültig**, „GARAGE UM ROND POINT S.A R.L.“ (22.10.2026).
 
 ## 6. Go-Live-Abend (wenn Abschnitt 4 „Pflicht“ erledigt ist, etwa 30 Minuten)
