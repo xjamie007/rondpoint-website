@@ -1,0 +1,35 @@
+{
+  "category": "fourgon",
+  "name": {
+    "fr": "Food Truck"
+  },
+  "brand": "WM Meyer",
+  "mmaKg": 2000,
+  "emptyKg": 800,
+  "payloadKg": 1200,
+  "braked": true,
+  "loadLengthM": null,
+  "loadWidthM": null,
+  "loadHeightM": null,
+  "volumeM3": null,
+  "tempRange": null,
+  "power": null,
+  "socket": 13,
+  "showPallets": false,
+  "suitableFor": [
+    "fete"
+  ],
+  "priceHalfDay": 350,
+  "priceDay": 400,
+  "priceWeekend": 500,
+  "priceWeek": 100,
+  "deposit": 300,
+  "kmHalfDay": null,
+  "kmDay": null,
+  "kmWeekend": null,
+  "kmWeek": null,
+  "priceExtraKm": null,
+  "notes": null,
+  "photo": "food-truck",
+  "active": true
+}
