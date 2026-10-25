@@ -27,7 +27,8 @@
     "services.workshop.text": "Confiez votre véhicule à notre équipe de professionnels. Nous assurons l'entretien, le diagnostic et la réparation mécanique de voitures et d'utilitaires de toutes marques. Notre atelier propose également les services de pneumatiques, de carrosserie et de peinture automobile, pour les réparations courantes comme pour la remise en état de votre véhicule après un accident.",
     "pages.workshop.lead": "Confiez votre véhicule à notre équipe de professionnels. Nous assurons l'entretien, le diagnostic et la réparation mécanique de voitures et d'utilitaires de toutes marques. Notre atelier propose également les services de pneumatiques, de carrosserie et de peinture automobile, pour les réparations courantes comme pour la remise en état de votre véhicule après un accident.",
     "seo.workshop.title": "Garage mécanique & carrosserie Erpeldange | Garage Um Rond Point",
-    "seo.workshop.description": "Entretien et réparation toutes marques à Erpeldange-sur-Sûre. Diagnostic, pneus, carrosserie et peinture automobile. Contactez Garage Um Rond Point."
+    "seo.workshop.description": "Entretien et réparation toutes marques à Erpeldange-sur-Sûre. Diagnostic, pneus, carrosserie et peinture automobile. Contactez Garage Um Rond Point.",
+    "content.workshop.sections.s1.p.0": "Situé au cœur de la Nordstad, au {address} , le Garage Um Rond Point vous accompagne dans tous vos besoins automobiles.\n\nDe l'entretien aux réparations mécaniques, en passant par la carrosserie, la peinture et la vente de véhicules neufs et d'occasion, notre équipe met son savoir-faire à votre service, quelle que soit la marque de votre véhicule."
   },
   "de": {
     "hero.sub": "Neu- und Gebrauchtwagen aller Marken, Kfz-Werkstatt, Karosserie- und Lackierarbeiten, Anhängerverkauf und -vermietung sowie Auto- und Transportervermietung.",
@@ -53,7 +54,8 @@
     "services.workshop.text": "Vertrauen Sie Ihr Fahrzeug unserem erfahrenen Werkstattteam an. Wir übernehmen Wartung, Diagnose und mechanische Reparaturen an Pkw und Transportern aller Marken.\n\nDarüber hinaus bieten wir Reifenservice, Karosserie- und Lackierarbeiten – von alltäglichen Reparaturen bis zur fachgerechten Instandsetzung nach einem Unfall.",
     "pages.workshop.lead": "Vertrauen Sie Ihr Fahrzeug unserem erfahrenen Werkstattteam an. Wir übernehmen Wartung, Diagnose und mechanische Reparaturen an Pkw und Transportern aller Marken.\n\nDarüber hinaus bieten wir Reifenservice, Karosserie- und Lackierarbeiten – von alltäglichen Reparaturen bis zur fachgerechten Instandsetzung nach einem Unfall.",
     "photos.paint": "Lackierung einer Karosserie mit Spritzpistole",
-    "photos.bodywork": "Roter Sportwagen auf einem Hebebühne in einer Werkstatt"
+    "photos.bodywork": "Roter Sportwagen auf einem Hebebühne in einer Werkstatt",
+    "content.workshop.sections.s1.p.0": "Im Herzen der Nordstad, am {address}, begleitet Sie das Garage Um Rond Point bei all Ihren automobilen Bedürfnissen. Von der Wartung bis hin zu den mechanischen Reparaturen, über den Karosseriebau, die Lackierung und den Verkauf von neuen und gebrauchten Fahrzeugen, stellt unser Team sein Know-how in Ihren Dienst, unabhängig von der Marke Ihres Fahrzeugs."
   },
   "lb": {
     "hero.sub": "Nei- an Occasiounsautoen, Mécanique a Carrosserie, Verkaf a Locatioun vun Unhänger souwéi Locatioun vun Autoen a Camionnetten.",
@@ -81,7 +83,8 @@
     "services.workshop.text": "Vertraut Äert Gefier eiser professioneller Ekipp un. Mir iwwerhuelen den Entretien, d'Diagnos an d'mechanesch Reparatur vun Autoen a Camionnetten vun alle Marken.\n\nEisen Atelier bitt och Pneuenservice, Carrosserie a Lackéieraarbechten un – vun alldeegleche Reparaturen bis zur Instandsetzung vun Ärem Gefier no engem Accident.",
     "pages.workshop.lead": "Vertraut Äert Gefier eiser professioneller Ekipp un. Mir iwwerhuelen den Entretien, d'Diagnos an d'mechanesch Reparatur vun Autoen a Camionnetten vun alle Marken.\n\nEisen Atelier bitt och Pneuenservice, Carrosserie a Lackéieraarbechten un – vun alldeegleche Reparaturen bis zur Instandsetzung vun Ärem Gefier no engem Accident.",
     "photos.paint": "Lackéierung vun der Karosserie mat Pistoul",
-    "photos.bodywork": "Sportwagen rout op enger Héichlift an enger Werkstatt"
+    "photos.bodywork": "Sportwagen rout op enger Héichlift an enger Werkstatt",
+    "content.workshop.sections.s1.p.0": "Matten an der Nordstad, op der {address}, ass de Garage Um Rond Point Ären zouverlässege Partner fir alles ronderëm den Auto.\n\nVum Ënnerhalt a mechanesche Reparaturen iwwer Karosserie- a Lackéieraarbechte bis hin zum Verkaf vun neien a gebrauchten Autoen – eis erfueren Ekipp steet Iech mat Fachwëssen an Engagement zur Säit, onofhängeg vun der Autosmark."
   },
   "en": {
     "hero.sub": "New and used cars of all makes, vehicle servicing and repairs, bodywork and painting, trailer sales and rentals, as well as car and van hire.",
@@ -108,7 +111,8 @@
     "services.workshop.text": "Entrust your vehicle to our professional team. We provide servicing, diagnostics and mechanical repairs for cars and vans of all makes.\n\nOur workshop also offers tyre services, bodywork and vehicle painting, from routine repairs to accident damage restoration.",
     "pages.workshop.lead": "Entrust your vehicle to our professional team. We provide servicing, diagnostics and mechanical repairs for cars and vans of all makes.\n\nOur workshop also offers tyre services, bodywork and vehicle painting, from routine repairs to accident damage restoration.",
     "photos.paint": "Painting a bodywork with a spray gun",
-    "photos.bodywork": "Red sports car on a lift in a workshop"
+    "photos.bodywork": "Red sports car on a lift in a workshop",
+    "content.workshop.sections.s1.p.0": "In the heart of the Nordstad, at {address}, Garage Um Rond Point accompanies you in all your automotive needs. From maintenance to mechanical repairs, including bodywork, painting and the sale of new and used vehicles, our team puts its expertise at your service, regardless of the make of your vehicle."
   },
   "pt": {
     "hero.sub": "Venda de automóveis novos e usados de todas as marcas, serviços de mecânica, chapa e pintura, venda e aluguer de reboques, bem como aluguer de automóveis e carrinhas.",
@@ -135,6 +139,7 @@
     "services.workshop.text": "Confie o seu veículo à nossa equipa de profissionais. Realizamos manutenção, diagnósticos e reparações mecânicas em automóveis e veículos comerciais de todas as marcas.\n\nA nossa oficina disponibiliza também serviços de pneus, chapa e pintura, desde reparações habituais até à recuperação do seu veículo após um acidente.",
     "pages.workshop.lead": "Confie o seu veículo à nossa equipa de profissionais. Realizamos manutenção, diagnósticos e reparações mecânicas em automóveis e veículos comerciais de todas as marcas.\n\nA nossa oficina disponibiliza também serviços de pneus, chapa e pintura, desde reparações habituais até à recuperação do seu veículo após um acidente.",
     "photos.paint": "Pintura de uma carroçaria com pistola de pintar",
-    "photos.bodywork": "Carro desportivo vermelho sobre um elevador em uma oficina"
+    "photos.bodywork": "Carro desportivo vermelho sobre um elevador em uma oficina",
+    "content.workshop.sections.s1.p.0": "No coração da Nordstad, no {address}, o Garage Um Rond Point acompanha-o em todas as suas necessidades automóveis. Desde a manutenção até às reparações mecânicas, passando pela carroçaria, pintura e venda de veículos novos e usados, a nossa equipa coloca o seu savoir-faire ao seu serviço, independentemente da marca do seu veículo."
   }
 }
