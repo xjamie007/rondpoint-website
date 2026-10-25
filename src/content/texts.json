@@ -4,7 +4,7 @@
     "hero.sub": "Vente de voitures neuves et d’occasion toutes marques, mécanique, carrosserie et peinture, vente et location de remorques, location de voitures et d’utilitaires.",
     "photos.heroWorkshop": "Garage Um Rond Point",
     "photos.garden": "Tondeuse à gazon à moteur essence",
-    "content.rental.sections.s1.p.0": "Chez Garage Um Rond Point à Erpeldange, entre Ettelbruck et Diekirch, vous louez une remorque ou une camionnette tout près de chez vous. Notre recherche de remorque vous aide en quelques clics à trouver une remorque qui convient à ce que vous transportez, et si votre permis de conduire suffit.",
+    "content.rental.sections.s1.p.0": "Situé à Erpeldange-sur-Sûre, entre Ettelbruck et Diekirch, le Garage Um Rond Point propose un large choix de remorques et de véhicules utilitaires à la location. Grâce à notre outil de recherche, trouvez facilement la remorque adaptée à votre chargement. Notre équipe vous conseille également sur le choix du modèle, les capacités de remorquage et le permis nécessaire.",
     "hero.h1": "Votre garage automobile à Erpeldange",
     "pages.workshop.items.entretien": "Entretien et révision toutes marques",
     "details.points.workshop.0": "Entretien et révision toutes marques",
@@ -17,13 +17,15 @@
     "details.workshop.reparationH": "Réparations mécaniques et pneumatiques",
     "about.text": "Situé à Erpeldange-sur-Sûre, entre Ettelbruck et Diekirch, le Garage Um Rond Point vous accompagne dans tous vos besoins automobiles. Vente de véhicules neufs et d’occasion toutes marques, entretien mécanique, carrosserie, peinture, vente et location de remorques, location de véhicules et matériel de jardinage : nous réunissons de nombreux services à une seule adresse. Notre priorité : un service professionnel, des conseils personnalisés et une relation de confiance avec chaque client.",
     "pages.rental.h1": "Location de remorques et utilitaires au Luxembourg",
-    "pages.rental.lead": "Louez facilement une remorque ou un véhicule utilitaire adapté à vos besoins. Remorques porte-voiture, porte-moto, bennes basculantes, remorques frigorifiques et camionnettes de différentes tailles. Des solutions de location flexibles, à la demi-journée, à la journée, au week-end ou à la semaine."
+    "pages.rental.lead": "Louez facilement une remorque ou un véhicule utilitaire adapté à vos besoins. Remorques porte-voiture, porte-moto, bennes basculantes, remorques frigorifiques et camionnettes de différentes tailles. Des solutions de location flexibles, à la demi-journée, à la journée, au week-end ou à la semaine.",
+    "seo.rental.title": "Location remorques et utilitaires Luxembourg | Garage Um Rond Point",
+    "seo.rental.description": "Louez une remorque porte-voiture, une benne, une remorque frigorifique ou une camionnette à Erpeldange-sur-Sûre. Location flexible au Garage Um Rond Point."
   },
   "de": {
     "hero.sub": "Neu- und Gebrauchtwagen aller Marken, Kfz-Werkstatt, Karosserie- und Lackierarbeiten, Anhängerverkauf und -vermietung sowie Auto- und Transportervermietung.",
     "photos.heroWorkshop": "Garage Um Rond Point",
     "photos.garden": "Rasenmäher mit Benzinmotor",
-    "content.rental.sections.s1.p.0": "Beim Garage Um Rond Point in Erpeldange, zwischen Ettelbruck und Diekirch, mieten Sie einen Anhänger oder einen Transporter ganz in Ihrer Nähe. Unsere Anhängersuche hilft Ihnen mit ein paar Klicks, einen Anhänger zu finden, der zu dem passt, was Sie transportieren, und ob Ihr Führerschein ausreicht.",
+    "content.rental.sections.s1.p.0": "Garage Um Rond Point in Erpeldange, zwischen Ettelbrück und Diekirch, bietet Ihnen eine große Auswahl an Mietanhängern und Transportern.\n\nMit unserer Anhängersuche finden Sie schnell das passende Modell für Ihre Ladung. Unser Team berät Sie außerdem zu Anhängelasten, Fahrzeugkompatibilität und den erforderlichen Führerscheinklassen.",
     "hero.h1": "Ihr Autohaus und Ihre Werkstatt in Erpeldange",
     "pages.workshop.items.entretien": "Wartung und Inspektion aller Marken",
     "details.points.workshop.0": "Wartung und Inspektion aller Marken",
@@ -36,14 +38,15 @@
     "details.workshop.reparationH": "Mechanische Reparaturen und Reifenservice",
     "about.text": "Garage Um Rond Point in Erpeldange, zwischen Ettelbrück und Diekirch, ist Ihr zuverlässiger Ansprechpartner rund ums Auto.\n\nNeu- und Gebrauchtwagen aller Marken, Kfz-Werkstatt, Karosserie- und Lackierarbeiten, Anhängerverkauf und -vermietung, Fahrzeugvermietung sowie Gartengeräte: Bei uns finden Sie zahlreiche Dienstleistungen unter einem Dach.\n\nUnser Anspruch: professioneller Service, persönliche Beratung und eine vertrauensvolle Zusammenarbeit mit unseren Kunden.",
     "pages.rental.h1": "Anhänger- und Transporter-Vermietung in Luxemburg",
-    "pages.rental.lead": "Mieten Sie den passenden Anhänger oder Transporter für Ihren Bedarf. Autotransportanhänger, Motorradanhänger, Kippanhänger, Kühlanhänger und Transporter in verschiedenen Größen.\n\nFlexible Mietmöglichkeiten für einen halben Tag, einen ganzen Tag, ein Wochenende oder eine Woche."
+    "pages.rental.lead": "Mieten Sie den passenden Anhänger oder Transporter für Ihren Bedarf. Autotransportanhänger, Motorradanhänger, Kippanhänger, Kühlanhänger und Transporter in verschiedenen Größen.\n\nFlexible Mietmöglichkeiten für einen halben Tag, einen ganzen Tag, ein Wochenende oder eine Woche.",
+    "photos.rental": "Weißer Pick-up mit einer Ladung auf einem Anhänger"
   },
   "lb": {
     "hero.sub": "Nei- an Occasiounsautoen, Mécanique a Carrosserie, Verkaf a Locatioun vun Unhänger souwéi Locatioun vun Autoen a Camionnetten.",
     "finder.intro": "Sot eis, wat Dir transportéiert a wat fir e Führerschäin Dir hutt. Dir gesitt direkt, wéi eng Unhänger passen, wat se kaschten an ob Äre Führerschäin duergeet.",
     "photos.heroWorkshop": "Garage Um Rond Point",
     "photos.garden": "Méimaschinn mat Bensinsmotor",
-    "content.rental.sections.s1.p.0": "Beim Garage Um Rond Point zu Ierpeldeng, tëscht Ettelbréck an Dikrech, lount Dir en Unhänger oder eng Camionnette ganz no bei Iech doheem. Eis Unhängersich hei uewe weist Iech mat e puer Klicks, wéi en Unhänger zu deem passt, wat Dir transportéiert, an ob Äre Führerschäin duergeet.",
+    "content.rental.sections.s1.p.0": "Garage Um Rond Point zu Ierpeldeng, tëscht Ettelbréck an Dikrech, bitt Iech eng grouss Auswiel un Unhänger a Camionnetten fir ze lounen.\n\nMat eiser Sichfunktioun fannt Dir einfach de passenden Unhänger fir Är Laascht. Eis Ekipp beréit Iech och bei der Wiel vum Modell, der Unhängerlaascht an dem néidege Führerschäin.",
     "hero.h1": "Är Auto-Garage zu Ierpeldeng",
     "pages.workshop.items.entretien": "Entretien a Revisioun vun alle Marken",
     "details.points.workshop.0": "Entretien a Revisioun vun alle Marken",
@@ -57,13 +60,14 @@
     "details.points.sodablast.0": "Schonend Ofstralen a präzis Botzen",
     "about.text": "De Garage Um Rond Point zu Ierpeldeng, tëscht Ettelbréck an Dikrech, ass Äre Partner fir alles ronderëm den Auto.\n\nNei- an Occasiounsautoen vun alle Marken, Mécanique, Carrosserie, Lackéieraarbechten, Verkaf a Locatioun vun Unhänger, Locatioun vu Gefierer a Gaardemaschinnen: bei eis fannt Dir vill Servicer op enger Plaz.\n\nEis Prioritéit: professionelle Service, perséinlech Berodung an eng vertrauensvoll Relatioun mat eise Clienten.",
     "pages.rental.h1": "Unhänger a Camionnetten zu Lëtzebuerg lounen",
-    "pages.rental.lead": "Lount einfach en Unhänger oder eng Camionnette, déi zu Äre Besoine passt. Autostransport-Unhänger, Motorrad-Unhänger, Kippunhänger, Killunhänger a Camionnetten a verschiddene Gréissten.\n\nFlexibel Locatioun fir en hallwen Dag, e ganzen Dag, e Weekend oder eng Woch."
+    "pages.rental.lead": "Lount einfach en Unhänger oder eng Camionnette, déi zu Äre Besoine passt. Autostransport-Unhänger, Motorrad-Unhänger, Kippunhänger, Killunhänger a Camionnetten a verschiddene Gréissten.\n\nFlexibel Locatioun fir en hallwen Dag, e ganzen Dag, e Weekend oder eng Woch.",
+    "photos.rental": "Wäiss Pick-up mat enger Chargé op enger Plattform"
   },
   "en": {
     "hero.sub": "New and used cars of all makes, vehicle servicing and repairs, bodywork and painting, trailer sales and rentals, as well as car and van hire.",
     "photos.heroWorkshop": "Garage Um Rond Point",
     "photos.garden": "Petrol lawn mower",
-    "content.rental.sections.s1.p.0": "At Garage Um Rond Point in Erpeldange, between Ettelbruck and Diekirch, you can hire a trailer or a van very close to your home. Our trailer search helps you with a few clicks to find a trailer that suits what you are transporting, and whether your driving licence is sufficient.",
+    "content.rental.sections.s1.p.0": "Located in Erpeldange-sur-Sûre, between Ettelbruck and Diekirch, Garage Um Rond Point offers a wide selection of trailers and vans for hire.\n\nOur trailer finder helps you choose the right model for your load. Our team can also advise you on towing capacity, vehicle compatibility and driving licence requirements.",
     "hero.h1": "Your Car Dealership & Garage in Erpeldange",
     "pages.workshop.items.entretien": "Servicing and maintenance for all makes",
     "details.points.workshop.0": "Servicing and maintenance for all makes",
@@ -77,13 +81,14 @@
     "details.points.sodablast.0": "Gentle surface stripping and precision cleaning",
     "about.text": "Located in Erpeldange, between Ettelbruck and Diekirch, Garage Um Rond Point is your local partner for all your automotive needs.\n\nNew and used vehicles of all makes, mechanical servicing, bodywork and painting, trailer sales and rentals, vehicle hire and garden equipment: we offer a wide range of services in one convenient location.\n\nOur priority is to provide professional service, personalised advice and build lasting relationships based on trust.",
     "pages.rental.h1": "Trailer and van rental in Luxembourg",
-    "pages.rental.lead": "Rent the right trailer or van for your needs. We offer car transport trailers, motorcycle trailers, tipping trailers, refrigerated trailers and vans in various sizes.\n\nFlexible rental options for half a day, a full day, a weekend or a week."
+    "pages.rental.lead": "Rent the right trailer or van for your needs. We offer car transport trailers, motorcycle trailers, tipping trailers, refrigerated trailers and vans in various sizes.\n\nFlexible rental options for half a day, a full day, a weekend or a week.",
+    "photos.rental": "White pick-up with a load on a trailer"
   },
   "pt": {
     "hero.sub": "Venda de automóveis novos e usados de todas as marcas, serviços de mecânica, chapa e pintura, venda e aluguer de reboques, bem como aluguer de automóveis e carrinhas.",
     "photos.heroWorkshop": "Garage Um Rond Point",
     "photos.garden": "Corta-relva com motor a gasolina",
-    "content.rental.sections.s1.p.0": "Na Garage Um Rond Point em Erpeldange, entre Ettelbruck e Diekirch, aluga-se um atrelado ou uma camioneta muito perto da sua casa. A nossa pesquisa de atrelados ajuda-o com alguns cliques a encontrar um atrelado que se adapta ao que transporta, e se a sua carta de condução é suficiente.",
+    "content.rental.sections.s1.p.0": "Localizado em Erpeldange-sur-Sûre, entre Ettelbruck e Diekirch, o Garage Um Rond Point disponibiliza uma vasta seleção de reboques e veículos comerciais para aluguer.\n\nCom a nossa ferramenta de pesquisa, encontre facilmente o reboque adequado à sua carga. A nossa equipa aconselha-o também sobre a capacidade de reboque, a compatibilidade com o veículo e a carta de condução necessária.",
     "hero.h1": "A sua garagem e oficina em Erpeldange",
     "pages.workshop.items.entretien": "Manutenção e revisões de todas as marcas",
     "details.points.workshop.0": "Manutenção e revisões de todas as marcas",
@@ -97,6 +102,7 @@
     "details.points.sodablast.0": "Decapagem suave e limpeza de precisão",
     "about.text": "Localizado em Erpeldange-sur-Sûre, entre Ettelbruck e Diekirch, o Garage Um Rond Point é o seu parceiro de confiança para todas as necessidades relacionadas com o automóvel.\n\nVenda de veículos novos e usados de todas as marcas, manutenção e reparação mecânica, chapa e pintura, venda e aluguer de reboques, aluguer de viaturas e equipamentos de jardinagem: reunimos uma vasta gama de serviços num só local.\n\nA nossa prioridade é oferecer um serviço profissional, aconselhamento personalizado e uma relação de confiança com cada cliente.",
     "pages.rental.h1": "Aluguer de reboques e carrinhas no Luxemburgo",
-    "pages.rental.lead": "Alugue facilmente o reboque ou veículo comercial adequado às suas necessidades. Dispomos de reboques porta-carros, porta-motas, basculantes, frigoríficos e carrinhas de diferentes dimensões.\n\nSoluções de aluguer flexíveis, por meio dia, dia inteiro, fim de semana ou semana."
+    "pages.rental.lead": "Alugue facilmente o reboque ou veículo comercial adequado às suas necessidades. Dispomos de reboques porta-carros, porta-motas, basculantes, frigoríficos e carrinhas de diferentes dimensões.\n\nSoluções de aluguer flexíveis, por meio dia, dia inteiro, fim de semana ou semana.",
+    "photos.rental": "Pick-up branco com uma carga num atrelado"
   }
 }
