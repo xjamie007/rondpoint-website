@@ -20,7 +20,10 @@
     "pages.rental.lead": "Louez facilement une remorque ou un véhicule utilitaire adapté à vos besoins. Remorques porte-voiture, porte-moto, bennes basculantes, remorques frigorifiques et camionnettes de différentes tailles. Des solutions de location flexibles, à la demi-journée, à la journée, au week-end ou à la semaine.",
     "seo.rental.title": "Location remorques et utilitaires Luxembourg | Garage Um Rond Point",
     "seo.rental.description": "Louez une remorque porte-voiture, une benne, une remorque frigorifique ou une camionnette à Erpeldange-sur-Sûre. Location flexible au Garage Um Rond Point.",
-    "cars.lead": "Découvrez notre sélection de véhicules neufs, récents et d’occasion toutes marques au Garage Um Rond Point à Erpeldange-sur-Sûre.\n\nVous ne trouvez pas le véhicule recherché ? Grâce à notre réseau de fournisseurs, nous pouvons également rechercher et commander votre prochaine voiture selon vos critères et votre budget.\n\nContactez-nous pour obtenir davantage d’informations ou organiser un essai sur rendez-vous."
+    "cars.lead": "Découvrez notre sélection de véhicules neufs, récents et d’occasion toutes marques au Garage Um Rond Point à Erpeldange-sur-Sûre.\n\nVous ne trouvez pas le véhicule recherché ? Grâce à notre réseau de fournisseurs, nous pouvons également rechercher et commander votre prochaine voiture selon vos critères et votre budget.\n\nContactez-nous pour obtenir davantage d’informations ou organiser un essai sur rendez-vous.",
+    "seo.cars.title": "Voitures neuves et occasion Luxembourg | Garage Um Rond Point",
+    "seo.cars.description": "Découvrez nos voitures neuves et d'occasion toutes marques à Erpeldange-sur-Sûre. Véhicules disponibles, recherche personnalisée et essais sur rendez-vous.",
+    "car.gallery.alt": "DFSK K01 K01H ALU TRI BENNE BASCULANTE GRILLAGE, photo 1 sur 6"
   },
   "de": {
     "hero.sub": "Neu- und Gebrauchtwagen aller Marken, Kfz-Werkstatt, Karosserie- und Lackierarbeiten, Anhängerverkauf und -vermietung sowie Auto- und Transportervermietung.",
@@ -41,7 +44,8 @@
     "pages.rental.h1": "Anhänger- und Transporter-Vermietung in Luxemburg",
     "pages.rental.lead": "Mieten Sie den passenden Anhänger oder Transporter für Ihren Bedarf. Autotransportanhänger, Motorradanhänger, Kippanhänger, Kühlanhänger und Transporter in verschiedenen Größen.\n\nFlexible Mietmöglichkeiten für einen halben Tag, einen ganzen Tag, ein Wochenende oder eine Woche.",
     "photos.rental": "Weißer Pick-up mit einer Ladung auf einem Anhänger",
-    "cars.lead": "Entdecken Sie unsere Auswahl an Neu-, Jahres- und Gebrauchtwagen verschiedener Marken beim Garage Um Rond Point in Erpeldange.\n\nIhr Wunschfahrzeug ist nicht dabei? Dank unseres Lieferantennetzwerks können wir gezielt nach einem Fahrzeug suchen, das Ihren Vorstellungen und Ihrem Budget entspricht, und es für Sie bestellen.\n\nKontaktieren Sie uns für weitere Informationen oder vereinbaren Sie eine Probefahrt."
+    "cars.lead": "Entdecken Sie unsere Auswahl an Neu-, Jahres- und Gebrauchtwagen verschiedener Marken beim Garage Um Rond Point in Erpeldange.\n\nIhr Wunschfahrzeug ist nicht dabei? Dank unseres Lieferantennetzwerks können wir gezielt nach einem Fahrzeug suchen, das Ihren Vorstellungen und Ihrem Budget entspricht, und es für Sie bestellen.\n\nKontaktieren Sie uns für weitere Informationen oder vereinbaren Sie eine Probefahrt.",
+    "car.gallery.alt": "DFSK K01 K01H ALU TRI BENNE BASCULANTE GRILLAGE, Foto 1 von 6"
   },
   "lb": {
     "hero.sub": "Nei- an Occasiounsautoen, Mécanique a Carrosserie, Verkaf a Locatioun vun Unhänger souwéi Locatioun vun Autoen a Camionnetten.",
@@ -64,7 +68,8 @@
     "pages.rental.h1": "Unhänger a Camionnetten zu Lëtzebuerg lounen",
     "pages.rental.lead": "Lount einfach en Unhänger oder eng Camionnette, déi zu Äre Besoine passt. Autostransport-Unhänger, Motorrad-Unhänger, Kippunhänger, Killunhänger a Camionnetten a verschiddene Gréissten.\n\nFlexibel Locatioun fir en hallwen Dag, e ganzen Dag, e Weekend oder eng Woch.",
     "photos.rental": "Wäiss Pick-up mat enger Chargé op enger Plattform",
-    "cars.lead": "Entdeckt eis Auswiel un neien, rezente Gefierer an Occasiounsautoen vun alle Marken beim Garage Um Rond Point zu Ierpeldeng.\n\nDir fannt Ären Dramauto net? Dank eisem Reseau vu Fournisseure kënne mir och no engem Gefier sichen, dat Äre Wënsch an Ärem Budget entsprécht, an et fir Iech bestellen.\n\nKontaktéiert eis fir weider Informatiounen oder fir eng Probefuert op Rendez-vous."
+    "cars.lead": "Entdeckt eis Auswiel un neien, rezente Gefierer an Occasiounsautoen vun alle Marken beim Garage Um Rond Point zu Ierpeldeng.\n\nDir fannt Ären Dramauto net? Dank eisem Reseau vu Fournisseure kënne mir och no engem Gefier sichen, dat Äre Wënsch an Ärem Budget entsprécht, an et fir Iech bestellen.\n\nKontaktéiert eis fir weider Informatiounen oder fir eng Probefuert op Rendez-vous.",
+    "car.gallery.alt": "DFSK K01 K01H ALU TRI BENNE BASCULANTE GRILLAGE, Foto 1 vun 6"
   },
   "en": {
     "hero.sub": "New and used cars of all makes, vehicle servicing and repairs, bodywork and painting, trailer sales and rentals, as well as car and van hire.",
@@ -86,7 +91,8 @@
     "pages.rental.h1": "Trailer and van rental in Luxembourg",
     "pages.rental.lead": "Rent the right trailer or van for your needs. We offer car transport trailers, motorcycle trailers, tipping trailers, refrigerated trailers and vans in various sizes.\n\nFlexible rental options for half a day, a full day, a weekend or a week.",
     "photos.rental": "White pick-up with a load on a trailer",
-    "cars.lead": "Discover our selection of new and recent vehicles and second-hand cars from all brands at Garage Um Rond Point in Erpeldange. \nCan't find your dream car? \nThanks to our network of suppliers, we can also search for a vehicle that meets your wishes and budget, and order it for you. Contact us for further information or to arrange a test drive by appointment."
+    "cars.lead": "Discover our selection of new and recent vehicles and second-hand cars from all brands at Garage Um Rond Point in Erpeldange. \nCan't find your dream car? \nThanks to our network of suppliers, we can also search for a vehicle that meets your wishes and budget, and order it for you. Contact us for further information or to arrange a test drive by appointment.",
+    "car.gallery.alt": "DFSK K01 K01H ALU TRI BENNE BASCULANTE GRILLAGE, photo 1 of 6"
   },
   "pt": {
     "hero.sub": "Venda de automóveis novos e usados de todas as marcas, serviços de mecânica, chapa e pintura, venda e aluguer de reboques, bem como aluguer de automóveis e carrinhas.",
@@ -108,6 +114,7 @@
     "pages.rental.h1": "Aluguer de reboques e carrinhas no Luxemburgo",
     "pages.rental.lead": "Alugue facilmente o reboque ou veículo comercial adequado às suas necessidades. Dispomos de reboques porta-carros, porta-motas, basculantes, frigoríficos e carrinhas de diferentes dimensões.\n\nSoluções de aluguer flexíveis, por meio dia, dia inteiro, fim de semana ou semana.",
     "photos.rental": "Pick-up branco com uma carga num atrelado",
-    "cars.lead": "Descubra a nossa seleção de automóveis novos, seminovos e usados de várias marcas no Garage Um Rond Point, em Erpeldange-sur-Sûre.\n\nNão encontra o automóvel que procura? Graças à nossa rede de fornecedores, podemos procurar e encomendar uma viatura de acordo com as suas preferências e orçamento.\n\nContacte-nos para mais informações ou para agendar um test drive."
+    "cars.lead": "Descubra a nossa seleção de automóveis novos, seminovos e usados de várias marcas no Garage Um Rond Point, em Erpeldange-sur-Sûre.\n\nNão encontra o automóvel que procura? Graças à nossa rede de fornecedores, podemos procurar e encomendar uma viatura de acordo com as suas preferências e orçamento.\n\nContacte-nos para mais informações ou para agendar um test drive.",
+    "car.gallery.alt": "DFSK K01 K01H ALU TRI BENNE BASCULANTE GRILLAGE, foto 1 de 6"
   }
 }
