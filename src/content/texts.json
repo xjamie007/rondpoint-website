@@ -11,7 +11,10 @@
     "details.workshop.entretienH": "Entretien et révision toutes marques",
     "pages.workshop.items.diagnostic": "Diagnostic électronique et recherche de pannes",
     "details.points.workshop.1": "Diagnostic électronique et recherche de pannes",
-    "details.workshop.diagnosticH": "Diagnostic électronique et recherche de pannes"
+    "details.workshop.diagnosticH": "Diagnostic électronique et recherche de pannes",
+    "pages.workshop.items.reparation": "Réparations mécaniques et pneumatiques",
+    "details.points.workshop.2": "Réparations mécaniques et pneumatiques",
+    "details.workshop.reparationH": "Réparations mécaniques et pneumatiques"
   },
   "de": {
     "hero.sub": "Neu- und Gebrauchtwagen aller Marken, Kfz-Werkstatt, Karosserie- und Lackierarbeiten, Anhängerverkauf und -vermietung sowie Auto- und Transportervermietung.",
@@ -24,7 +27,10 @@
     "details.workshop.entretienH": "Wartung und Inspektion aller Marken",
     "pages.workshop.items.diagnostic": "Elektronische Diagnose und Fehlersuche",
     "details.points.workshop.1": "Elektronische Diagnose und Fehlersuche",
-    "details.workshop.diagnosticH": "Elektronische Diagnose und Fehlersuche"
+    "details.workshop.diagnosticH": "Elektronische Diagnose und Fehlersuche",
+    "pages.workshop.items.reparation": "Mechanische Reparaturen und Reifenservice",
+    "details.points.workshop.2": "Mechanische Reparaturen und Reifenservice",
+    "details.workshop.reparationH": "Mechanische Reparaturen und Reifenservice"
   },
   "lb": {
     "hero.sub": "Nei- an Occasiounsautoen, Mécanique a Carrosserie, Verkaf a Locatioun vun Unhänger souwéi Locatioun vun Autoen a Camionnetten.",
@@ -38,7 +44,10 @@
     "details.workshop.entretienH": "Entretien a Revisioun vun alle Marken",
     "pages.workshop.items.diagnostic": "Elektronesch Diagnos a Feelersich",
     "details.points.workshop.1": "Elektronesch Diagnos a Feelersich",
-    "details.workshop.diagnosticH": "Elektronesch Diagnos a Feelersich"
+    "details.workshop.diagnosticH": "Elektronesch Diagnos a Feelersich",
+    "pages.workshop.items.reparation": "Mechanesch Reparaturen a Pneuenservice",
+    "details.points.workshop.2": "Mechanesch Reparaturen a Pneuenservice",
+    "details.workshop.reparationH": "Mechanesch Reparaturen a Pneuenservice"
   },
   "en": {
     "hero.sub": "New and used cars of all makes, vehicle servicing and repairs, bodywork and painting, trailer sales and rentals, as well as car and van hire.",
@@ -51,7 +60,10 @@
     "details.workshop.entretienH": "Servicing and maintenance for all makes",
     "pages.workshop.items.diagnostic": "Electronic diagnostics and fault detection",
     "details.points.workshop.1": "Electronic diagnostics and fault detection",
-    "details.workshop.diagnosticH": "Electronic diagnostics and fault detection"
+    "details.workshop.diagnosticH": "Electronic diagnostics and fault detection",
+    "pages.workshop.items.reparation": "Mechanical repairs and tyre services",
+    "details.points.workshop.2": "Mechanical repairs and tyre services",
+    "details.workshop.reparationH": "Mechanical repairs and tyre services"
   },
   "pt": {
     "hero.sub": "Venda de automóveis novos e usados de todas as marcas, serviços de mecânica, chapa e pintura, venda e aluguer de reboques, bem como aluguer de automóveis e carrinhas.",
@@ -64,6 +76,9 @@
     "details.workshop.entretienH": "Manutenção e revisões de todas as marcas",
     "pages.workshop.items.diagnostic": "Diagnóstico eletrónico e deteção de avarias",
     "details.points.workshop.1": "Diagnóstico eletrónico e deteção de avarias",
-    "details.workshop.diagnosticH": "Diagnóstico eletrónico e deteção de avarias"
+    "details.workshop.diagnosticH": "Diagnóstico eletrónico e deteção de avarias",
+    "pages.workshop.items.reparation": "Reparações mecânicas e serviço de pneus",
+    "details.points.workshop.2": "Reparações mecânicas e serviço de pneus",
+    "details.workshop.reparationH": "Reparações mecânicas e serviço de pneus"
   }
 }
