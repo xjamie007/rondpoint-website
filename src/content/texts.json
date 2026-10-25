@@ -5,14 +5,20 @@
     "photos.heroWorkshop": "Garage Um Rond Point",
     "photos.garden": "Tondeuse à gazon à moteur essence",
     "content.rental.sections.s1.p.0": "Chez Garage Um Rond Point à Erpeldange, entre Ettelbruck et Diekirch, vous louez une remorque ou une camionnette tout près de chez vous. Notre recherche de remorque vous aide en quelques clics à trouver une remorque qui convient à ce que vous transportez, et si votre permis de conduire suffit.",
-    "hero.h1": "Votre garage automobile à Erpeldange"
+    "hero.h1": "Votre garage automobile à Erpeldange",
+    "pages.workshop.items.entretien": "Entretien et révision toutes marques",
+    "details.points.workshop.0": "Entretien et révision toutes marques",
+    "details.workshop.entretienH": "Entretien et révision toutes marques"
   },
   "de": {
     "hero.sub": "Neu- und Gebrauchtwagen aller Marken, Kfz-Werkstatt, Karosserie- und Lackierarbeiten, Anhängerverkauf und -vermietung sowie Auto- und Transportervermietung.",
     "photos.heroWorkshop": "Garage Um Rond Point",
     "photos.garden": "Rasenmäher mit Benzinmotor",
     "content.rental.sections.s1.p.0": "Beim Garage Um Rond Point in Erpeldange, zwischen Ettelbruck und Diekirch, mieten Sie einen Anhänger oder einen Transporter ganz in Ihrer Nähe. Unsere Anhängersuche hilft Ihnen mit ein paar Klicks, einen Anhänger zu finden, der zu dem passt, was Sie transportieren, und ob Ihr Führerschein ausreicht.",
-    "hero.h1": "Ihr Autohaus und Ihre Werkstatt in Erpeldange"
+    "hero.h1": "Ihr Autohaus und Ihre Werkstatt in Erpeldange",
+    "pages.workshop.items.entretien": "Wartung und Inspektion aller Marken",
+    "details.points.workshop.0": "Wartung und Inspektion aller Marken",
+    "details.workshop.entretienH": "Wartung und Inspektion aller Marken"
   },
   "lb": {
     "hero.sub": "Nei- an Occasiounsautoen, Mécanique a Carrosserie, Verkaf a Locatioun vun Unhänger souwéi Locatioun vun Autoen a Camionnetten.",
@@ -20,20 +26,29 @@
     "photos.heroWorkshop": "Garage Um Rond Point",
     "photos.garden": "Méimaschinn mat Bensinsmotor",
     "content.rental.sections.s1.p.0": "Beim Garage Um Rond Point zu Ierpeldeng, tëscht Ettelbréck an Dikrech, lount Dir en Unhänger oder eng Camionnette ganz no bei Iech doheem. Eis Unhängersich hei uewe weist Iech mat e puer Klicks, wéi en Unhänger zu deem passt, wat Dir transportéiert, an ob Äre Führerschäin duergeet.",
-    "hero.h1": "Är Auto-Garage zu Ierpeldeng"
+    "hero.h1": "Är Auto-Garage zu Ierpeldeng",
+    "pages.workshop.items.entretien": "Entretien a Revisioun vun alle Marken",
+    "details.points.workshop.0": "Entretien a Revisioun vun alle Marken",
+    "details.workshop.entretienH": "Entretien a Revisioun vun alle Marken"
   },
   "en": {
     "hero.sub": "New and used cars of all makes, vehicle servicing and repairs, bodywork and painting, trailer sales and rentals, as well as car and van hire.",
     "photos.heroWorkshop": "Garage Um Rond Point",
     "photos.garden": "Petrol lawn mower",
     "content.rental.sections.s1.p.0": "At Garage Um Rond Point in Erpeldange, between Ettelbruck and Diekirch, you can hire a trailer or a van very close to your home. Our trailer search helps you with a few clicks to find a trailer that suits what you are transporting, and whether your driving licence is sufficient.",
-    "hero.h1": "Your Car Dealership & Garage in Erpeldange"
+    "hero.h1": "Your Car Dealership & Garage in Erpeldange",
+    "pages.workshop.items.entretien": "Servicing and maintenance for all makes",
+    "details.points.workshop.0": "Servicing and maintenance for all makes",
+    "details.workshop.entretienH": "Servicing and maintenance for all makes"
   },
   "pt": {
     "hero.sub": "Venda de automóveis novos e usados de todas as marcas, serviços de mecânica, chapa e pintura, venda e aluguer de reboques, bem como aluguer de automóveis e carrinhas.",
     "photos.heroWorkshop": "Garage Um Rond Point",
     "photos.garden": "Corta-relva com motor a gasolina",
     "content.rental.sections.s1.p.0": "Na Garage Um Rond Point em Erpeldange, entre Ettelbruck e Diekirch, aluga-se um atrelado ou uma camioneta muito perto da sua casa. A nossa pesquisa de atrelados ajuda-o com alguns cliques a encontrar um atrelado que se adapta ao que transporta, e se a sua carta de condução é suficiente.",
-    "hero.h1": "A sua garagem e oficina em Erpeldange"
+    "hero.h1": "A sua garagem e oficina em Erpeldange",
+    "pages.workshop.items.entretien": "Manutenção e revisões de todas as marcas",
+    "details.points.workshop.0": "Manutenção e revisões de todas as marcas",
+    "details.workshop.entretienH": "Manutenção e revisões de todas as marcas"
   }
 }
