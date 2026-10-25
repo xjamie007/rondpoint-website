@@ -20,13 +20,14 @@
   "power": null,
   "socket": 13,
   "showPallets": false,
+  "capacity": null,
   "suitableFor": [
     "fete"
   ],
   "priceHalfDay": 350,
   "priceDay": 400,
   "priceWeekend": 500,
-  "priceWeek": 100,
+  "priceWeek": 1000,
   "deposit": 300,
   "kmHalfDay": null,
   "kmDay": null,
