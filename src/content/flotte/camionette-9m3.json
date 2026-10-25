@@ -1,7 +1,11 @@
 {
   "category": "camionnette",
   "name": {
-    "fr": "Camionette 9m3"
+    "fr": "Camionette 9m3",
+    "de": "Transporter 9m3",
+    "lb": "Camionnette 9m3",
+    "en": "Van 9m3",
+    "pt": "Camionette 9m3"
   },
   "brand": "Vw Crafter",
   "mmaKg": 3000,
@@ -16,6 +20,7 @@
   "power": null,
   "socket": null,
   "showPallets": false,
+  "capacity": null,
   "suitableFor": [
     "fete",
     "meubles",

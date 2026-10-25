@@ -11,7 +11,7 @@
   "mmaKg": 1300,
   "emptyKg": 780,
   "payloadKg": 520,
-  "braked": false,
+  "braked": true,
   "loadLengthM": 2.5,
   "loadWidthM": 1.3,
   "loadHeightM": 1.95,
@@ -23,6 +23,7 @@
   "power": "230V",
   "socket": 13,
   "showPallets": false,
+  "capacity": null,
   "suitableFor": [
     "fete"
   ],
