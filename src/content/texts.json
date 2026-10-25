@@ -8,7 +8,10 @@
     "hero.h1": "Votre garage automobile à Erpeldange",
     "pages.workshop.items.entretien": "Entretien et révision toutes marques",
     "details.points.workshop.0": "Entretien et révision toutes marques",
-    "details.workshop.entretienH": "Entretien et révision toutes marques"
+    "details.workshop.entretienH": "Entretien et révision toutes marques",
+    "pages.workshop.items.diagnostic": "Diagnostic électronique et recherche de pannes",
+    "details.points.workshop.1": "Diagnostic électronique et recherche de pannes",
+    "details.workshop.diagnosticH": "Diagnostic électronique et recherche de pannes"
   },
   "de": {
     "hero.sub": "Neu- und Gebrauchtwagen aller Marken, Kfz-Werkstatt, Karosserie- und Lackierarbeiten, Anhängerverkauf und -vermietung sowie Auto- und Transportervermietung.",
@@ -18,7 +21,10 @@
     "hero.h1": "Ihr Autohaus und Ihre Werkstatt in Erpeldange",
     "pages.workshop.items.entretien": "Wartung und Inspektion aller Marken",
     "details.points.workshop.0": "Wartung und Inspektion aller Marken",
-    "details.workshop.entretienH": "Wartung und Inspektion aller Marken"
+    "details.workshop.entretienH": "Wartung und Inspektion aller Marken",
+    "pages.workshop.items.diagnostic": "Elektronische Diagnose und Fehlersuche",
+    "details.points.workshop.1": "Elektronische Diagnose und Fehlersuche",
+    "details.workshop.diagnosticH": "Elektronische Diagnose und Fehlersuche"
   },
   "lb": {
     "hero.sub": "Nei- an Occasiounsautoen, Mécanique a Carrosserie, Verkaf a Locatioun vun Unhänger souwéi Locatioun vun Autoen a Camionnetten.",
@@ -29,7 +35,10 @@
     "hero.h1": "Är Auto-Garage zu Ierpeldeng",
     "pages.workshop.items.entretien": "Entretien a Revisioun vun alle Marken",
     "details.points.workshop.0": "Entretien a Revisioun vun alle Marken",
-    "details.workshop.entretienH": "Entretien a Revisioun vun alle Marken"
+    "details.workshop.entretienH": "Entretien a Revisioun vun alle Marken",
+    "pages.workshop.items.diagnostic": "Elektronesch Diagnos a Feelersich",
+    "details.points.workshop.1": "Elektronesch Diagnos a Feelersich",
+    "details.workshop.diagnosticH": "Elektronesch Diagnos a Feelersich"
   },
   "en": {
     "hero.sub": "New and used cars of all makes, vehicle servicing and repairs, bodywork and painting, trailer sales and rentals, as well as car and van hire.",
@@ -39,7 +48,10 @@
     "hero.h1": "Your Car Dealership & Garage in Erpeldange",
     "pages.workshop.items.entretien": "Servicing and maintenance for all makes",
     "details.points.workshop.0": "Servicing and maintenance for all makes",
-    "details.workshop.entretienH": "Servicing and maintenance for all makes"
+    "details.workshop.entretienH": "Servicing and maintenance for all makes",
+    "pages.workshop.items.diagnostic": "Electronic diagnostics and fault detection",
+    "details.points.workshop.1": "Electronic diagnostics and fault detection",
+    "details.workshop.diagnosticH": "Electronic diagnostics and fault detection"
   },
   "pt": {
     "hero.sub": "Venda de automóveis novos e usados de todas as marcas, serviços de mecânica, chapa e pintura, venda e aluguer de reboques, bem como aluguer de automóveis e carrinhas.",
@@ -49,6 +61,9 @@
     "hero.h1": "A sua garagem e oficina em Erpeldange",
     "pages.workshop.items.entretien": "Manutenção e revisões de todas as marcas",
     "details.points.workshop.0": "Manutenção e revisões de todas as marcas",
-    "details.workshop.entretienH": "Manutenção e revisões de todas as marcas"
+    "details.workshop.entretienH": "Manutenção e revisões de todas as marcas",
+    "pages.workshop.items.diagnostic": "Diagnóstico eletrónico e deteção de avarias",
+    "details.points.workshop.1": "Diagnóstico eletrónico e deteção de avarias",
+    "details.workshop.diagnosticH": "Diagnóstico eletrónico e deteção de avarias"
   }
 }
