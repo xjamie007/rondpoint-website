@@ -33,7 +33,8 @@
     "pages.trailersForSale.h1": "Remorques à vendre au Luxembourg",
     "pages.trailersForSale.lead": "Garage Um Rond Point, revendeur officiel des marques Saris, Humbaur, WM Meyer et Tohaco, vous propose un large choix de remorques neuves pour particuliers et professionnels à Erpeldange-sur-Sûre.",
     "seo.trailersForSale.title": "Remorques à vendre au Luxembourg | Um Rond Point",
-    "seo.trailersForSale.description": "Découvrez nos remorques Saris, Humbaur, WM Meyer et Tohaco au Luxembourg. Vente de remorques pour particuliers et professionnels à Erpeldange."
+    "seo.trailersForSale.description": "Découvrez nos remorques Saris, Humbaur, WM Meyer et Tohaco au Luxembourg. Vente de remorques pour particuliers et professionnels à Erpeldange.",
+    "pages.trailersForSale.brandsH2": "Revendeur officiel de ces marques"
   },
   "de": {
     "hero.sub": "Neu- und Gebrauchtwagen aller Marken, Kfz-Werkstatt, Karosserie- und Lackierarbeiten, Anhängerverkauf und -vermietung sowie Auto- und Transportervermietung.",
@@ -64,7 +65,8 @@
     "content.workshop.sections.s1.p.1": "Wir beraten Sie auf Luxemburgisch, Französisch, Deutsch, Englisch und Portugiesisch und legen großen Wert auf professionellen, persönlichen und kundenorientierten Service.",
     "pages.trailersForSale.h1": "Anhänger kaufen in Luxemburg",
     "pages.trailersForSale.lead": "Garage Um Rond Point ist offizieller Händler der Marken Saris, Humbaur, WM Meyer und Tohaco. Entdecken Sie unsere große Auswahl an neuen Anhängern für Privat- und Gewerbekunden in Erpeldange.",
-    "photos.trailersSale": "Kippanhänger mit Gitterwänden"
+    "photos.trailersSale": "Kippanhänger mit Gitterwänden",
+    "pages.trailersForSale.brandsH2": "Offizieller Händler dieser Marken"
   },
   "lb": {
     "hero.sub": "Nei- an Occasiounsautoen, Mécanique a Carrosserie, Verkaf a Locatioun vun Unhänger souwéi Locatioun vun Autoen a Camionnetten.",
@@ -97,7 +99,8 @@
     "content.workshop.sections.s1.p.1": "Mir beroden Iech op Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch a leeë grousse Wäert op e professionellen, perséinlechen a clientorientéierte Service.",
     "pages.trailersForSale.h1": "Unhänger ze verkafen zu Lëtzebuerg",
     "pages.trailersForSale.lead": "Garage Um Rond Point ass offiziellen Händler vun de Marken Saris, Humbaur, WM Meyer an Tohaco. Entdeckt eis grouss Auswiel un neien Unhänger fir Privatleit a Betriber zu Ierpeldeng.",
-    "photos.trailersSale": "Kipp-Unhänger mat gitterten Nouten"
+    "photos.trailersSale": "Kipp-Unhänger mat gitterten Nouten",
+    "pages.trailersForSale.brandsH2": "Offiziellen Distributeur vun dëse Marken"
   },
   "en": {
     "hero.sub": "New and used cars of all makes, vehicle servicing and repairs, bodywork and painting, trailer sales and rentals, as well as car and van hire.",
@@ -129,7 +132,8 @@
     "content.workshop.sections.s1.p.1": "We welcome customers in Luxembourgish, French, German, English and Portuguese, offering professional, personalised and customer-focused service.",
     "pages.trailersForSale.h1": "Trailers for sale in Luxembourg",
     "pages.trailersForSale.lead": "Garage Um Rond Point is an official dealer of the Saris, Humbaur, WM Meyer and Tohaco brands. Discover our wide range of new trailers for private and business customers in Erpeldange.",
-    "photos.trailersSale": "Tipper trailer with mesh sides"
+    "photos.trailersSale": "Tipper trailer with mesh sides",
+    "pages.trailersForSale.brandsH2": "Official dealer of these brands"
   },
   "pt": {
     "hero.sub": "Venda de automóveis novos e usados de todas as marcas, serviços de mecânica, chapa e pintura, venda e aluguer de reboques, bem como aluguer de automóveis e carrinhas.",
@@ -161,6 +165,7 @@
     "content.workshop.sections.s1.p.1": "Atendemos os nossos clientes em luxemburguês, francês, alemão, inglês e português, oferecendo um serviço profissional, personalizado e de proximidade.",
     "pages.trailersForSale.h1": "Reboques à venda no Luxemburgo",
     "pages.trailersForSale.lead": "A Garage Um Rond Point é revendedora oficial das marcas Saris, Humbaur, WM Meyer e Tohaco. Descubra a nossa vasta gama de reboques novos para particulares e profissionais em Erpeldange-sur-Sûre, Luxemburgo.",
-    "photos.trailersSale": "Atrelado basculante com grades de rede"
+    "photos.trailersSale": "Atrelado basculante com grades de rede",
+    "pages.trailersForSale.brandsH2": "Revendedor oficial destas marcas"
   }
 }
