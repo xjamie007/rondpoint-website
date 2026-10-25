@@ -32,6 +32,8 @@ export function organization() {
     name: site.name,
     legalName: site.legalName,
     url: site.url,
+    logo: `${SITE_ORIGIN}/logo.png`,
+    image: `${SITE_ORIGIN}/og/rondpoint.png`,
     telephone: site.phone.display,
     email: site.email,
     vatID: site.vat,

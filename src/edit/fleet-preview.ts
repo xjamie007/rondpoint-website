@@ -6,10 +6,11 @@ import { createElement } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { escapeHtml } from '@/i18n';
 import Finder, { type FinderProps } from '@/components/finder/Finder';
-import { bySmallest, cargoOptions, hiddenReason, toFleetItem, type FleetItem, type FleetSource } from '@/lib/fleet';
+import { bySmallest, cargoOptions, hiddenReason, isVan, toFleetItem, type FleetItem, type FleetSource } from '@/lib/fleet';
 import { fleetView, maxDiagramTotal, type FleetView } from '@/lib/fleet-view';
-import { cargoNow, isUpload, rows, type Base, type FleetCtx } from './fleet';
+import { cargoNow, categoriesNow, isUpload, rows, type Base, type FleetCtx } from './fleet';
 import { cargoLabels } from '@/lib/cargo';
+import { categoryLabel, setCustomCategories } from '@/lib/categories';
 import { useT } from '@/i18n';
 import { $, $$ } from './ui';
 
@@ -57,6 +58,8 @@ function viewItems(ctx: FleetCtx, base: Base, known: Map<string, FleetView['disp
 export function preview(ctx: FleetCtx, base: Base) {
   const table = $('table.fleet-table');
   if (!hosts.length) takeIslands();
+  // neue Arten aus dem Admin-Bereich gelten in der Vorschau sofort (Anhänger oder Transporter)
+  setCustomCategories(categoriesNow(ctx));
   const known = new Map<string, FleetView['display']['photo']>();
   for (const h of hosts) for (const i of h.props.items) if (i.display.photo) known.set(i.id, i.display.photo);
   const all = viewItems(ctx, base, known);
@@ -76,7 +79,7 @@ export function preview(ctx: FleetCtx, base: Base) {
     const cid = [...tbody.attributes].find((a) => a.name.startsWith('data-astro-cid'))?.name ?? '';
     const td = (label: string, v: string, num = true) => `<td ${cid} role="cell" data-label="${escapeHtml(label)}"${num ? ' class="tnum"' : ''}>${escapeHtml(v)}</td>`;
     const h = ctx.t.fleetTable;
-    tbody.innerHTML = all.map((i) => `<tr ${cid} role="row" data-fleet="${i.id}"><th ${cid} scope="row" role="rowheader">${escapeHtml(i.name)}<span ${cid} class="cat t-small">${escapeHtml(ctx.t.categories[i.category])}</span></th>
+    tbody.innerHTML = all.map((i) => `<tr ${cid} role="row" data-fleet="${i.id}" data-kind="${isVan(i) ? 'van' : 'trailer'}"><th ${cid} scope="row" role="rowheader">${escapeHtml(i.name)}<span ${cid} class="cat t-small">${escapeHtml(categoryLabel(i.category, ctx.lang, ctx.t.categories))}</span></th>
       ${td(h.payload, i.display.payload)}${td(h.mma, i.display.mma)}${td(h.surface, i.display.surface ?? '—')}${td(h.licence, i.display.requiredShort, false)}${td(h.halfDay, i.display.priceHalfDay ?? '—')}${td(h.day, i.display.priceDay ?? '—')}${td(h.weekend, i.display.priceWeekend ?? '—')}${td(h.week, i.display.priceWeek ?? '—')}</tr>`).join('');
   }
 }

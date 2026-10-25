@@ -56,6 +56,8 @@ const fr = {
 
   finder: {
     h2: 'Quelle remorque vous faut-il ?',
+    h2Van: 'Quelle camionnette vous faut-il ?',
+    introVan: 'Dites-nous ce que vous transportez : vous voyez tout de suite quelles camionnettes conviennent et combien elles coûtent. Le permis B suffit pour toutes.',
     intro:
       'Dites-nous ce que vous transportez et quel permis vous avez. Vous voyez tout de suite les remorques qui conviennent, leur prix et si votre permis suffit.',
     cargoLegend: 'Que transportez-vous ?',
@@ -102,6 +104,13 @@ const fr = {
       power: 'Alimentation',
     },
     pallets: { one: '{n} palette Europe', other: '{n} palettes Europe' },
+    vehicles: { moto: { one: 'Place pour {n} moto', other: 'Place pour {n} motos' }, voiture: { one: 'Place pour {n} voiture', other: 'Place pour {n} voitures' } },
+    approx: 'env.',
+    countLegend: { moto: 'Combien de motos ?', voiture: 'Combien de voitures ?' },
+    kindLegend: 'Que souhaitez-vous louer ?',
+    kinds: { trailer: 'Remorques', van: 'Camionnettes' },
+    vanCount: { one: '{n} camionnette dans notre flotte', other: '{n} camionnettes dans notre flotte' },
+    vanMatchCount: { one: '{n} camionnette convient', other: '{n} camionnettes conviennent' },
     volumeText: 'Volume intérieur {m3} m³',
     diagramLabel: 'Surface de chargement {l} × {w} m',
     diagramPallets: '{n} palettes Europe',
@@ -535,6 +544,9 @@ const fr = {
       h1: 'Remorques à vendre à Erpeldange',
       lead: 'Concessionnaire officiel Saris, Humbaur, WM Meyer et Tohaco, nous vendons des remorques aux particuliers et aux professionnels.',
       dealerMissing: '[UNBESTÄTIGT — Händlerstatus Saris, Humbaur, WM Meyer; Logos nur mit Freigabe]',
+      brandsH2: 'Concessionnaire officiel de ces marques',
+      brandsText: 'Cliquez sur un logo pour découvrir les modèles du fabricant. Nous vous conseillons volontiers chez nous, à Erpeldange.',
+      brandLink: '{brand} : voir les modèles sur le site du fabricant (nouvelle fenêtre)',
       adviceH2: 'Quel permis pour quelle remorque ?',
       advice:
         'Nous vous aidons à choisir une remorque que votre voiture peut tracter et que votre permis autorise : taille, masse maximale, freinage. Notre guide de location vous montre les règles du permis avec des exemples.',

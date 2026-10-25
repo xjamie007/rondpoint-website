@@ -65,9 +65,12 @@ const noticeText = notice?.active ? (notice[lang]?.trim() || notice.fr?.trim() |
       )
     }
     <link rel="preload" href={withBase('/fonts/archivo-var.woff2')} as="font" type="font/woff2" crossorigin />
-    <link rel="icon" href={withBase('/favicon-32.png')} type="image/png" sizes="32x32" />
+    {/* Kreisel-„O“ des Logos (scripts/assets/favicons.mjs); Google braucht ein Vielfaches von 48 px */}
     <link rel="icon" href={withBase('/favicon.ico')} sizes="16x16 32x32 48x48" />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
+    <link rel="icon" href={withBase('/favicon-96.png')} type="image/png" sizes="96x96" />
     <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
+    <link rel="manifest" href={withBase('/site.webmanifest')} />
     <meta name="theme-color" content="#ffffff" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={t.meta.siteName} />

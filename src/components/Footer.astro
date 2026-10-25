@@ -68,6 +68,9 @@ const hoursShort = hoursSummary(t, lang);
       <LangSwitch lang={lang} alternates={alternates} label={t.nav.langLabel} tone="dark" uid="footer" />
     </div>
   </div>
+  <div class="wrap credit t-small">
+    <p>Created by <a href="https://nave.lu" rel="noopener">Nave</a></p>
+  </div>
 </footer>
 
 <style>
@@ -133,4 +136,8 @@ const hoursShort = hoursSummary(t, lang);
   .portals :global(a:hover),
   .portals :global(a:focus-visible) { background-size: 100% 2px, 100% 1px; }
   .links a:hover { translate: 4px 0; }
+  /* Agentur-Hinweis ganz unten, dezent unter einer feinen Linie */
+  .credit { margin-top: 48px; padding-top: 20px; border-top: 1px solid rgb(255 255 255 / 0.14); }
+  .credit p { margin: 0; opacity: 0.7; }
+  .credit p:has(a:hover, a:focus-visible) { opacity: 1; }
 </style>

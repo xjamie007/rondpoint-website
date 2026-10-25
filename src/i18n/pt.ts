@@ -53,6 +53,8 @@ const pt: Dict = {
 
   finder: {
     h2: 'De que atrelado precisa?',
+    h2Van: 'De que carrinha precisa?',
+    introVan: 'Diga-nos o que vai transportar e vê logo que carrinhas servem e quanto custam. A carta B chega para todas.',
     intro:
       'Indique o que vai transportar e que carta de condução tem. Fica logo a saber que atrelados servem, quanto custam e se a sua carta é suficiente.',
     cargoLegend: 'O que vai transportar?',
@@ -99,6 +101,13 @@ const pt: Dict = {
       power: 'Alimentação elétrica',
     },
     pallets: { one: '{n} palete europeia', other: '{n} paletes europeias' },
+    vehicles: { moto: { one: 'Espaço para {n} mota', other: 'Espaço para {n} motas' }, voiture: { one: 'Espaço para {n} carro', other: 'Espaço para {n} carros' } },
+    approx: 'cerca de',
+    countLegend: { moto: 'Quantas motas?', voiture: 'Quantos carros?' },
+    kindLegend: 'O que pretende alugar?',
+    kinds: { trailer: 'Atrelados', van: 'Carrinhas' },
+    vanCount: { one: '{n} carrinha na nossa frota', other: '{n} carrinhas na nossa frota' },
+    vanMatchCount: { one: '{n} carrinha serve', other: '{n} carrinhas servem' },
     volumeText: 'Volume interior {m3} m³',
     diagramLabel: 'Superfície de carga {l} × {w} m',
     diagramPallets: '{n} paletes europeias',
@@ -532,6 +541,9 @@ const pt: Dict = {
       h1: 'Atrelados à venda em Erpeldange',
       lead: 'Como revendedor oficial, vendemos atrelados Saris, Humbaur, WM Meyer e Tohaco a particulares e profissionais.',
       dealerMissing: '[UNBESTÄTIGT — Händlerstatus Saris, Humbaur, WM Meyer; Logos nur mit Freigabe]',
+      brandsH2: 'Concessionário oficial destas marcas',
+      brandsText: 'Clique num logótipo para ver os modelos do fabricante. Teremos todo o gosto em aconselhá-lo na nossa garagem em Erpeldange.',
+      brandLink: '{brand}: ver os modelos no site do fabricante (nova janela)',
       adviceH2: 'Que carta para que atrelado?',
       advice:
         'Ajudamos a escolher um atrelado que o seu carro possa rebocar e que a sua carta de condução permita: tamanho, massa máxima autorizada, travões. O nosso guia de aluguer mostra as regras da carta de condução com exemplos.',

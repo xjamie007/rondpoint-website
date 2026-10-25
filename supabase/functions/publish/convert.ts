@@ -11,6 +11,7 @@
  *   Zeiten       → src/content/horaires.json (week)
  *   Anhänger     → src/content/flotte/<id>.json, Foto src/assets/flotte/<id>.<endung>
  *   Ladungsarten → src/content/cargo.json („Was transportieren Sie?“ im Finder)
+ *   Eigene Arten → src/content/categories.json (z. B. Food Truck, zusätzlich zu CATEGORIES)
  *
  * Hochgeladene Bilder liegen schon als Git-Blob bei GitHub; im Inhalt stehen sie als
  * „upload/<blob-sha>.<endung>“.
@@ -32,6 +33,12 @@ export const CARGO_ID = /^[a-z0-9][a-z0-9-]{0,30}$/;
 export interface CargoItem {
   id: string;
   label?: Partial<Record<Lang, string>>;
+}
+/** Eigene Art (Kategorie) eines Fahrzeugs, im Admin-Bereich angelegt; kind steuert die Regeln (Anhänger oder Transporter) */
+export interface CategoryItem {
+  id: string;
+  kind: 'trailer' | 'van';
+  label: Partial<Record<Lang, string>>;
 }
 /** Ziele interner Links in Texten: [Wort](page:…) und [Wort](cat:…), wie src/i18n/config.ts (Test prüft die Gleichheit) */
 export const LINK_PAGES = ['home', 'rental', 'cars', 'workshop', 'sodablast', 'trailersForSale', 'garden', 'contact', 'thanks', 'legal', 'privacy'] as const;
@@ -60,6 +67,8 @@ export interface FleetData {
   priceWeekend?: number | null;
   priceWeek?: number | null;
   deposit?: number | null;
+  /** Anhänger für Motorräder/Autos: wie viele passen (leer = aus der Ladefläche berechnet) */
+  capacity?: number | null;
   /** Transporter: inklusive Kilometer je Mietdauer, Preis je weiterem Kilometer */
   kmHalfDay?: number | null;
   kmDay?: number | null;
@@ -84,6 +93,8 @@ export interface EditState {
   fleet?: Record<string, FleetData | null>;
   /** Ladungsarten im Finder, ganze Liste in Reihenfolge */
   cargo?: CargoItem[];
+  /** eigene Arten (Kategorien), ganze Liste */
+  categories?: CategoryItem[];
   /** nur für den Editor: automatisch übersetzte Texte („sprache:schlüssel“), werden nicht gespeichert */
   auto?: string[];
 }
@@ -96,6 +107,8 @@ export interface RepoSnapshot {
   horaires: Record<string, unknown>;
   /** src/content/cargo.json (fehlt sie: Standardliste) */
   cargo?: Record<string, unknown>;
+  /** src/content/categories.json (eigene Arten) */
+  categories?: Record<string, unknown>;
   /** vorhandene Pfade unter src/assets/photos, src/assets/flotte, src/content/flotte */
   files: string[];
 }
@@ -142,10 +155,11 @@ const posNum = (v: unknown) => v == null || (typeof v === 'number' && Number.isF
 const posInt = (v: unknown) => typeof v === 'number' && Number.isInteger(v) && v > 0;
 const str = (v: unknown, max: number) => v == null || (typeof v === 'string' && v.length <= max);
 
-/** Gleiche Regeln wie src/content.config.ts – ein gespeicherter Anhänger lässt den Build nie scheitern */
-export function fleetErrors(d: FleetData): Record<string, string> {
+/** Gleiche Regeln wie src/content.config.ts – ein gespeicherter Anhänger lässt den Build nie scheitern.
+ *  custom: Kennungen der eigenen Arten (src/content/categories.json bzw. Admin-Bereich) */
+export function fleetErrors(d: FleetData, custom: string[] = []): Record<string, string> {
   const e: Record<string, string> = {};
-  if (!(CATEGORIES as readonly string[]).includes(d.category)) e.category = 'required';
+  if (!(CATEGORIES as readonly string[]).includes(d.category) && !custom.includes(d.category)) e.category = 'required';
   if (!d.name || typeof d.name.fr !== 'string' || !d.name.fr.trim()) e['name.fr'] = 'required';
   for (const l of LANGS) if (d.name && !str(d.name[l], 120)) e[`name.${l}`] = 'long';
   if (!posInt(d.mmaKg)) e.mmaKg = 'int';
@@ -168,11 +182,13 @@ export function fleetErrors(d: FleetData): Record<string, string> {
   for (const l of LANGS) if (d.notes && !str(d.notes[l], 600)) e[`notes.${l}`] = 'long';
   for (const k of ['brand', 'power'] as const) if (!str(d[k], 80)) e[k] = 'long';
   if (d.photo != null && (typeof d.photo !== 'string' || !(UPLOAD.test(d.photo) || SLOT.test(d.photo)))) e.photo = 'photo';
+  if (d.capacity != null && (!posInt(d.capacity) || (d.capacity as number) > 9)) e.capacity = 'int';
   return e;
 }
 
-/** Leere optionale Felder auf null, Texte getrimmt; nur bekannte Felder */
-export function cleanFleet(d: FleetData): FleetData {
+/** Leere optionale Felder auf null, Texte getrimmt; nur bekannte Felder.
+ *  vanCats: eigene Arten, die als Transporter gelten (Kilometer-Felder bleiben) */
+export function cleanFleet(d: FleetData, vanCats: string[] = []): FleetData {
   const text = (o: Record<string, unknown> | null | undefined): I18nText | null => {
     if (!o || typeof o !== 'object') return null;
     const r: Record<string, string> = {};
@@ -184,7 +200,9 @@ export function cleanFleet(d: FleetData): FleetData {
   };
   const s = (v: unknown) => (typeof v === 'string' && v.trim() ? v.trim() : null);
   const n = (v: unknown) => (typeof v === 'number' && Number.isFinite(v) ? v : null);
-  const van = d.category === 'camionnette';
+  const van = d.category === 'camionnette' || vanCats.includes(d.category);
+  // Anzahl Motorräder bzw. Autos nur bei diesen Anhängern (sonst berechnet der Finder nichts)
+  const vehicles = d.category === 'porte-moto' || d.category === 'porte-voiture';
   const out: FleetData = {
     ...(d.sample ? { sample: true } : {}),
     category: d.category,
@@ -202,6 +220,7 @@ export function cleanFleet(d: FleetData): FleetData {
     power: s(d.power),
     socket: d.socket ?? null,
     showPallets: !!d.showPallets,
+    capacity: vehicles ? n(d.capacity) : null,
     suitableFor: [...new Set((d.suitableFor ?? []).filter((c) => typeof c === 'string' && CARGO_ID.test(c)))],
     priceHalfDay: n(d.priceHalfDay),
     priceDay: n(d.priceDay),
@@ -245,8 +264,9 @@ function badLink(v: string): string | null {
 /** Listen in den Texten sind reine Textlisten (Aufzählungen, Absätze, Schritte) */
 const textList = (v: unknown[]) => v.length > 0 && v.length <= 100 && v.every((x) => typeof x === 'string' && x.trim() && x.length <= MAX_TEXT);
 
-/** Gesamten Inhalt prüfen; wirft ContentError mit einer verständlichen Meldung */
-export function validate(s: EditState): void {
+/** Gesamten Inhalt prüfen; wirft ContentError mit einer verständlichen Meldung.
+ *  repoCats: eigene Arten im Repository (gelten, solange der Inhalt keine eigene Liste mitbringt) */
+export function validate(s: EditState, repoCats: CategoryItem[] = []): void {
   if (!s || typeof s !== 'object' || s.v !== 1) throw new ContentError('Unbekanntes Format');
   for (const [l, tx] of Object.entries(s.texts ?? {})) {
     if (!LANGS.includes(l as Lang)) throw new ContentError(`Unbekannte Sprache ${l}`);
@@ -274,10 +294,12 @@ export function validate(s: EditState): void {
     if (Object.keys(e).length) throw new ContentError(`Öffnungszeiten prüfen: ${Object.keys(e).join(', ')}`);
   }
   if (s.cargo != null) cargoErrors(s.cargo);
+  if (s.categories != null) categoryErrors(s.categories);
+  const custom = (s.categories ?? repoCats).map((c) => c.id);
   for (const [id, d] of Object.entries(s.fleet ?? {})) {
     if (!FLEET_ID.test(id)) throw new ContentError(`Ungültige Kennung ${id}`);
     if (d === null) continue;
-    const e = fleetErrors(d);
+    const e = fleetErrors(d, custom);
     if (Object.keys(e).length) throw new ContentError(`Anhänger „${d.name?.fr ?? id}“: ${Object.keys(e).join(', ')} prüfen`);
   }
 }
@@ -303,13 +325,37 @@ export function cleanCargo(list: CargoItem[]): CargoItem[] {
   });
 }
 
+/** Eigene Arten prüfen: höchstens 30, eindeutige neue Kennungen, Anhänger oder Transporter, Name in mindestens einer Sprache */
+export function categoryErrors(list: CategoryItem[]): void {
+  if (!Array.isArray(list) || list.length > 30) throw new ContentError('Arten: höchstens 30 eigene');
+  const seen = new Set<string>(CATEGORIES);
+  for (const c of list) {
+    if (!c || !CARGO_ID.test(c.id) || seen.has(c.id)) throw new ContentError(`Art ${c?.id}: ungültige oder doppelte Kennung`);
+    seen.add(c.id);
+    if (c.kind !== 'trailer' && c.kind !== 'van') throw new ContentError(`Art ${c.id}: Anhänger oder Transporter wählen`);
+    const labels = Object.entries(c.label ?? {});
+    if (labels.some(([l, v]) => !LANGS.includes(l as Lang) || typeof v !== 'string' || v.length > 60)) throw new ContentError(`Art ${c.id}: Name prüfen`);
+    if (!labels.some(([, v]) => v.trim())) throw new ContentError(`Art ${c.id}: Name fehlt`);
+  }
+}
+
+/** Eigene Arten aufräumen: leere Namen weg, nur bekannte Felder */
+export function cleanCategories(list: CategoryItem[]): CategoryItem[] {
+  return list.map((c) => ({
+    id: c.id,
+    kind: c.kind,
+    label: Object.fromEntries(Object.entries(c.label ?? {}).filter(([, v]) => v?.trim()).map(([l, v]) => [l, v!.trim()])),
+  }));
+}
+
 /* ------------------------------------------------------------------ Umwandlung */
 
 const obj = (v: unknown): Record<string, unknown> => (v && typeof v === 'object' && !Array.isArray(v) ? (v as Record<string, unknown>) : {});
 
 /** Inhalt → Dateiänderungen. summary: was sich geändert hat (für die Commit-Nachricht) */
 export function toFiles(s: EditState, repo: RepoSnapshot): { files: FileChange[]; summary: string[] } {
-  validate(s);
+  const repoCats = (Array.isArray(obj(repo.categories).items) ? obj(repo.categories).items : []) as CategoryItem[];
+  validate(s, repoCats);
   const files: FileChange[] = [];
   const summary = new Set<string>();
   const has = new Set(repo.files);
@@ -387,6 +433,14 @@ export function toFiles(s: EditState, repo: RepoSnapshot): { files: FileChange[]
     }
   }
 
+  // Eigene Arten
+  const cats = s.categories ? cleanCategories(s.categories) : repoCats;
+  if (s.categories && JSON.stringify(cats) !== JSON.stringify(repoCats)) {
+    put('src/content/categories.json', json({ ...obj(repo.categories), items: cats }));
+    summary.add('Arten');
+  }
+  const vanCats = cats.filter((c) => c.kind === 'van').map((c) => c.id);
+
   // Anhänger
   const fleetFiles = repo.files.filter((f) => f.startsWith('src/content/flotte/') && f.endsWith('.json'));
   const pathOf = (id: string) => fleetFiles.find((f) => f.split('/').pop() === `${id}.json`) ?? `src/content/flotte/${id}.json`;
@@ -399,7 +453,7 @@ export function toFiles(s: EditState, repo: RepoSnapshot): { files: FileChange[]
       ownPhotos.forEach(del);
       continue;
     }
-    const data = cleanFleet(d);
+    const data = cleanFleet(d, vanCats);
     if (data.photo && UPLOAD.test(data.photo)) {
       const { sha, ext } = blobOf(data.photo);
       files.push({ path: `src/assets/flotte/${id}.${ext}`, blob: sha });

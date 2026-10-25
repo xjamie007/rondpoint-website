@@ -4,7 +4,7 @@
  * sonst bliebe die schon veröffentlichte Änderung im Repository. Rein, ohne DOM (tests/diff.test.ts).
  */
 import { LANGS, type Lang } from '@/i18n/config';
-import type { CargoItem, EditState, FleetData, Week } from '../../supabase/functions/publish/convert';
+import type { CargoItem, CategoryItem, EditState, FleetData, Week } from '../../supabase/functions/publish/convert';
 
 export interface Baked {
   /** Texte einer Sprache, so wie die Seite gebaut wurde */
@@ -13,6 +13,8 @@ export interface Baked {
   list: (l: Lang, path: string) => unknown;
   week: Week;
   cargo: CargoItem[];
+  /** eigene Arten, so wie gebaut */
+  categories: CategoryItem[];
   /** Anhänger, so wie gebaut (undefined = gab es nicht) */
   fleet: (id: string) => FleetData | undefined;
 }
@@ -55,6 +57,7 @@ export function diffForPublish(cur: EditState, prev: EditState, baked: Baked): E
   }
   if (!same(prev.hours, cur.hours)) out.hours = cur.hours ?? baked.week;
   if (!same(prev.cargo, cur.cargo)) out.cargo = cur.cargo ?? baked.cargo;
+  if (!same(prev.categories, cur.categories)) out.categories = cur.categories ?? baked.categories;
   const fb = cur.fleet ?? {};
   const ids = changedFleet(cur, prev);
   // zurückgenommen: wie gebaut; gab es ihn im Build nicht (neu angelegt und wieder verworfen): löschen

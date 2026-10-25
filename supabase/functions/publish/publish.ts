@@ -112,11 +112,11 @@ export function makeGit(env: GitEnv, f: typeof fetch = fetch) {
       const head = ref.object.sha;
       const commit = await gh<{ tree: { sha: string }; committer: { date: string } }>(`/git/commits/${head}`);
       const tree = await gh<{ tree: { path: string; type: string }[]; truncated: boolean }>(`/git/trees/${commit.tree.sha}?recursive=1`);
-      const [texts, lists, photos, horaires, cargo] = await Promise.all(
-        ['texts', 'lists', 'photos', 'horaires', 'cargo'].map((n) => readJson(`src/content/${n}.json`, head)),
+      const [texts, lists, photos, horaires, cargo, categories] = await Promise.all(
+        ['texts', 'lists', 'photos', 'horaires', 'cargo', 'categories'].map((n) => readJson(`src/content/${n}.json`, head)),
       );
       const repo: RepoSnapshot = {
-        texts, lists, photos, horaires, cargo,
+        texts, lists, photos, horaires, cargo, categories,
         files: tree.tree.filter((e) => e.type === 'blob' && WATCH.some((w) => e.path.startsWith(w))).map((e) => e.path),
       };
       const { files, summary } = toFiles(state, repo);

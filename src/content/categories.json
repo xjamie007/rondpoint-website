@@ -1,0 +1,16 @@
+{
+  "$comment": "Eigene Arten (Kategorien) der Mietflotte zusätzlich zu den festen (Autotransporter, Motorradanhänger, Kipper, Kühlanhänger, Plattform, Kastenanhänger, Transporter). kind: trailer = Anhänger (Führerschein-Regeln für Anhänger), van = Transporter. Im Admin-Bereich beim Bearbeiten eines Fahrzeugs unter „Art“ → „Neue Art anlegen“.",
+  "items": [
+    {
+      "id": "food-truck",
+      "kind": "trailer",
+      "label": {
+        "fr": "Food Truck",
+        "de": "Food Truck",
+        "lb": "Food Truck",
+        "en": "Food Truck",
+        "pt": "Food Truck"
+      }
+    }
+  ]
+}

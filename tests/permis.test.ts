@@ -106,6 +106,7 @@ describe('Europaletten', () => {
 const item = (over: Partial<FleetItem>): FleetItem => ({
   id: 'x',
   category: 'porte-voiture',
+  capacity: null,
   name: 'x',
   brand: null,
   mmaKg: 750,

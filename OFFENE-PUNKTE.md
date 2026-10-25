@@ -6,6 +6,20 @@ Stand: 28.09.2026. Nichts davon ist erfunden. Jede Stelle erscheint auf der Webs
 - Schalter für bestätigte Aussagen: `src/content/site.json` → `confirmations`, `manager.confirmed`, `payment.confirmed` usw.
 - Vor Livegang `showOpenPoints` in `site.json` auf `false` setzen. Dann verschwinden Abschnitte, die ohne Daten keinen Sinn haben, zum Beispiel „Avis Google" oder die Foto-Hinweise. Platzhalter in Sätzen bleiben sichtbar, bis die Daten da sind.
 
+## Stand 25.10.2026: Wünsche nach dem Go-Live
+
+Umgesetzt:
+- **Marken mit Logos** auf „Anhänger kaufen“: Saris, Humbaur, WM Meyer, Tohaco (Logos von den Hersteller-Websites, von David freigegeben), Klick öffnet den Hersteller.
+- **Motorräder und Autos auf dem Anhänger:** Bei „Ein Motorrad“ fragt der Finder „Wie viele Motorräder?“ und zeigt die Motorräder von oben auf der Ladefläche (auch auf dem Handy), Autoanhänger zeigen das Auto. Die Anzahl ist ein Richtwert aus Ladefläche und Nutzlast (Motorrad 2,10 × 0,70 m, 200 kg; Auto 3,80 × 1,70 m, 1000 kg); im Admin-Bereich lässt sie sich je Anhänger festlegen („Anzahl Motorräder/Autos“).
+- **Umschalter Anhänger / Transporter** oben im Finder auf „Mieten“; die Tabelle darunter filtert mit.
+- **Neue Arten** im Admin-Bereich: „Art“ → „＋ Neue Art anlegen …“ (Name auf Deutsch, die anderen Sprachen werden übersetzt, gilt als Anhänger oder Transporter). Liste in `src/content/categories.json`. Der Food Truck hat jetzt die Art „Food Truck“ (vorher Kofferanhänger).
+- **Favicon und Logo für Google:** neues Kreisel-„O“ als Favicon (48/96 px, SVG, ICO), Logo in den strukturierten Daten, Vorschaubild mit dem neuen Logo. Google zeigt es erst nach dem nächsten Besuch des Crawlers (Search Console → URL prüfen → „Indexierung beantragen“ beschleunigt das).
+- **„Created by Nave“** ganz unten im Footer, verlinkt auf nave.lu.
+
+**Mit David klären:**
+- **Motorradanhänger:** Wie viele Motorräder passen wirklich? Die Website rechnet mit den Maßen 2,50 × 1,56 m „ca. 2“. Laut Preisliste ist er nur 2,20 × 1,30 m – dann passte rechnerisch nur eines. Zahl im Admin-Bereich unter „Anzahl Motorräder“ eintragen.
+- **Food Truck:** Preis pro Woche steht bei 100 €, also unter dem Wochenende (500 €). Tippfehler?
+
 ## Stand 21.10.2026: neues Logo, Übersetzungen korrigiert
 
 - **Neues Logo** „Um Rondpoint – Garage - Carrosserie“ aus `umrondpoint-NEW.pdf`: als SVG in Kopf- und Fußzeile, scharf in jeder Größe. Das Kreisel-„O“ dreht sich wie vorher.

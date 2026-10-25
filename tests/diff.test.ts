@@ -11,6 +11,7 @@ const baked: Baked = {
   list: () => ['Eins', 'Zwei'],
   week,
   cargo: [{ id: 'voiture' }, { id: 'moto' }],
+  categories: [],
   fleet: (id) => (id === 'exemple-benne' ? benne : undefined),
 };
 const st = (x: Partial<EditState> = {}): EditState => ({ ...emptyEdit(), ...x });

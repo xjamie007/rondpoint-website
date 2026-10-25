@@ -4,12 +4,15 @@
  */
 import { assessTrailer, assessVan, fits, LIMITS, type Assessment, type CarData, type VisitorLicence } from './permis.ts';
 import type { Lang } from '../i18n/config.ts';
+import { BUILTIN_TRAILERS, categoryKind } from './categories.ts';
+import { vehicleCapacity, vehicleKind } from './vehicles.ts';
 
 export const CARGO_ORDER = ['voiture', 'moto', 'terre', 'fete', 'meubles', 'materiel'] as const;
 /** Kennung einer Ladungsart (src/content/cargo.json); CARGO_ORDER sind die ursprünglichen */
 export type Cargo = string;
 
-export type Category =
+/** Feste Arten (eigene Seiten und Texte in src/i18n) */
+export type BuiltinCategory =
   | 'porte-voiture'
   | 'porte-moto'
   | 'benne'
@@ -18,8 +21,10 @@ export type Category =
   | 'fourgon'
   | 'camionnette'
   | 'voiture';
+/** Feste oder eigene Art (src/content/categories.json) */
+export type Category = BuiltinCategory | (string & {});
 
-export const TRAILER_CATEGORIES: Category[] = ['porte-voiture', 'porte-moto', 'benne', 'frigorifique', 'plateau', 'fourgon'];
+export const TRAILER_CATEGORIES: string[] = BUILTIN_TRAILERS;
 
 export interface FleetItem {
   id: string;
@@ -38,6 +43,8 @@ export interface FleetItem {
   power: string | null;
   socket: 7 | 13 | null;
   showPallets: boolean;
+  /** Motorräder bzw. Autos, die passen (im Admin-Bereich festgelegt; sonst aus der Ladefläche berechnet) */
+  capacity: number | null;
   suitableFor: Cargo[];
   priceHalfDay: number | null;
   priceDay: number | null;
@@ -54,8 +61,8 @@ export interface FleetItem {
   sample: boolean;
 }
 
-export const isTrailer = (i: Pick<FleetItem, 'category'>) => TRAILER_CATEGORIES.includes(i.category);
-export const isVan = (i: Pick<FleetItem, 'category'>) => i.category === 'camionnette';
+export const isTrailer = (i: Pick<FleetItem, 'category'>) => categoryKind(i.category) === 'trailer';
+export const isVan = (i: Pick<FleetItem, 'category'>) => categoryKind(i.category) === 'van';
 
 /** Rohdaten eines Fahrzeugs (wie src/content/flotte/*.json, Felder dürfen fehlen) */
 export interface FleetSource {
@@ -74,6 +81,7 @@ export interface FleetSource {
   power?: string | null;
   socket?: 7 | 13 | null;
   showPallets?: boolean;
+  capacity?: number | null;
   suitableFor?: string[];
   priceHalfDay?: number | null;
   priceDay?: number | null;
@@ -110,6 +118,7 @@ export function toFleetItem(id: string, d: FleetSource, lang: Lang): FleetItem {
     power: d.power ?? null,
     socket: d.socket ?? null,
     showPallets: d.showPallets ?? false,
+    capacity: d.capacity ?? null,
     suitableFor: (d.suitableFor ?? []) as Cargo[],
     priceHalfDay: d.priceHalfDay ?? null,
     priceDay: d.priceDay ?? null,
@@ -143,6 +152,14 @@ export interface FinderState {
   cargo: Cargo | null;
   licence: VisitorLicence | null;
   car: CarData;
+  /** gewünschte Anzahl Motorräder bzw. Autos (nur bei Ladung moto/voiture) */
+  count?: number | null;
+}
+
+/** Trägt der Anhänger so viele Motorräder/Autos? Andere Anhänger und ohne Angabe: ja */
+function carriesEnough(i: FleetItem, cargo: Cargo | null, count: number | null | undefined): boolean {
+  if (!count || !cargo || vehicleKind(i.category) !== cargo) return true;
+  return (vehicleCapacity(i)?.n ?? 0) >= count;
 }
 
 export interface ResultRow {
@@ -166,6 +183,7 @@ export function evaluate(items: FleetItem[], state: FinderState): Evaluation {
   const trailers = items
     .filter(isTrailer)
     .filter((i) => !state.cargo || i.suitableFor.includes(state.cargo))
+    .filter((i) => carriesEnough(i, state.cargo, state.count))
     .map((item) => ({ item, kind: 'trailer' as const, assessment: assessTrailer(item, state.licence, state.car) }))
     .filter((r) => r.assessment.required.kind !== 'exceeds')
     .sort((a, b) => a.assessment.group - b.assessment.group || a.item.payloadKg - b.item.payloadKg);

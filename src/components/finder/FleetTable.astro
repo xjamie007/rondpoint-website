@@ -3,16 +3,21 @@
  * Tabelle der ganzen Flotte (D3), immer im HTML.
  * Auf dem Handy wird jede Zeile zur Karte (Beschriftung aus data-label); die
  * expliziten ARIA-Rollen erhalten die Tabellen-Semantik trotz display:block.
+ * Auf „Mieten“ zeigt sie nur Anhänger bzw. Transporter, je nach Umschalter im Finder (Ereignis rp:fleet-kind).
  */
 import { rich, type Dict } from '@/i18n';
+import type { Lang } from '@/i18n/config';
 import type { FleetView } from '@/lib/fleet-view';
+import { isVan } from '@/lib/fleet';
+import { categoryLabel } from '@/lib/categories';
 import { showOpenPoints } from '@/lib/site';
 
 interface Props {
   t: Dict;
+  lang: Lang;
   items: FleetView[];
 }
-const { t, items } = Astro.props;
+const { t, lang, items } = Astro.props;
 const h = t.fleetTable;
 ---
 {
@@ -35,10 +40,10 @@ const h = t.fleetTable;
         </thead>
         <tbody role="rowgroup">
           {items.map((i) => (
-            <tr role="row" data-fleet={i.id}>
+            <tr role="row" data-fleet={i.id} data-kind={isVan(i) ? 'van' : 'trailer'}>
               <th scope="row" role="rowheader">
                 {i.name}
-                <span class="cat t-small">{t.categories[i.category]}</span>
+                <span class="cat t-small">{categoryLabel(i.category, lang, t.categories)}</span>
               </th>
               <td role="cell" data-label={h.payload} class="tnum">{i.display.payload}</td>
               <td role="cell" data-label={h.mma} class="tnum">{i.display.mma}</td>
@@ -56,7 +61,15 @@ const h = t.fleetTable;
   )
 }
 
+<script>
+  addEventListener('rp:fleet-kind', (e) => {
+    const kind = (e as CustomEvent<string>).detail;
+    for (const tr of document.querySelectorAll<HTMLElement>('.fleet-table tbody tr[data-kind]')) tr.hidden = tr.dataset.kind !== kind;
+  });
+</script>
+
 <style>
+  .fleet-table tr[hidden] { display: none; }
   .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .fleet-table { width: 100%; min-width: 880px; }
   th, td { text-align: left; padding: 12px 16px 12px 0; border-bottom: 1px solid var(--color-verzinkt); vertical-align: top; }

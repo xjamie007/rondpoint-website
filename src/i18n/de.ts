@@ -53,6 +53,8 @@ const de: Dict = {
 
   finder: {
     h2: 'Welcher Anhänger passt?',
+    h2Van: 'Welcher Transporter passt?',
+    introVan: 'Sagen Sie uns, was Sie transportieren. Sie sehen sofort, welche Transporter passen und was sie kosten. Für alle reicht der Führerschein B.',
     intro:
       'Sagen Sie uns, was Sie transportieren und welchen Führerschein Sie haben. Sie sehen sofort, welche Anhänger passen, was sie kosten und ob Ihr Führerschein reicht.',
     cargoLegend: 'Was transportieren Sie?',
@@ -99,6 +101,13 @@ const de: Dict = {
       power: 'Stromversorgung',
     },
     pallets: { one: '{n} Europalette', other: '{n} Europaletten' },
+    vehicles: { moto: { one: 'Platz für {n} Motorrad', other: 'Platz für {n} Motorräder' }, voiture: { one: 'Platz für {n} Auto', other: 'Platz für {n} Autos' } },
+    approx: 'ca.',
+    countLegend: { moto: 'Wie viele Motorräder?', voiture: 'Wie viele Autos?' },
+    kindLegend: 'Was möchten Sie mieten?',
+    kinds: { trailer: 'Anhänger', van: 'Transporter' },
+    vanCount: { one: '{n} Transporter in unserer Flotte', other: '{n} Transporter in unserer Flotte' },
+    vanMatchCount: { one: '{n} Transporter passt', other: '{n} Transporter passen' },
     volumeText: 'Innenvolumen {m3} m³',
     diagramLabel: 'Ladefläche {l} × {w} m',
     diagramPallets: '{n} Europaletten',
@@ -532,6 +541,9 @@ const de: Dict = {
       h1: 'Anhänger kaufen in Erpeldange',
       lead: 'Als offizieller Händler verkaufen wir Anhänger von Saris, Humbaur, WM Meyer und Tohaco, für Privat- und Geschäftskunden.',
       dealerMissing: '[UNBESTÄTIGT — Händlerstatus Saris, Humbaur, WM Meyer; Logos nur mit Freigabe]',
+      brandsH2: 'Offizieller Händler dieser Marken',
+      brandsText: 'Klicken Sie auf ein Logo, um die Modelle des Herstellers anzusehen. Wir beraten Sie gerne bei uns in Erpeldange.',
+      brandLink: '{brand}: Modelle auf der Website des Herstellers ansehen (neues Fenster)',
       adviceH2: 'Welcher Führerschein für welchen Anhänger?',
       advice:
         'Wir helfen Ihnen, einen Anhänger zu wählen, den Ihr Auto ziehen darf und für den Ihr Führerschein reicht: Größe, zulässige Gesamtmasse, Bremse. Unsere Anhängersuche für die Miete zeigt Ihnen die Führerscheinregeln mit Beispielen.',

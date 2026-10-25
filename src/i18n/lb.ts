@@ -53,6 +53,8 @@ const lb: Dict = {
 
   finder: {
     h2: 'Wat fir en Unhänger braucht Dir?',
+    h2Van: 'Wat fir eng Camionnette braucht Dir?',
+    introVan: 'Sot eis, wat Dir transportéiert. Dir gesitt direkt, wéi eng Camionnette passt a wat se kascht. De Führerschäin B geet fir all.',
     intro:
       'Sot eis, wat Dir transportéiert a wat fir e Führerschäin Dir hutt. Dir gesitt direkt, wéi eng Unhänger passen, wat se kaschten an ob Äre Führerschäin duergeet.',
     cargoLegend: 'Wat transportéiert Dir?',
@@ -99,6 +101,13 @@ const lb: Dict = {
       power: 'Stroumversuergung',
     },
     pallets: { one: '{n} Europalett', other: '{n} Europaletten' },
+    vehicles: { moto: { one: 'Plaz fir {n} Moto', other: 'Plaz fir {n} Motoen' }, voiture: { one: 'Plaz fir {n} Auto', other: 'Plaz fir {n} Autoen' } },
+    approx: 'ca.',
+    countLegend: { moto: 'Wéi vill Motoen?', voiture: 'Wéi vill Autoen?' },
+    kindLegend: 'Wat wëllt Dir lounen?',
+    kinds: { trailer: 'Unhänger', van: 'Camionnetten' },
+    vanCount: { one: '{n} Camionnette an eiser Flott', other: '{n} Camionnetten an eiser Flott' },
+    vanMatchCount: { one: '{n} Camionnette passt', other: '{n} Camionnetten passen' },
     volumeText: 'Bannevolumen {m3} m³',
     diagramLabel: 'Luedfläch {l} × {w} m',
     diagramPallets: '{n} Europaletten',
@@ -532,6 +541,9 @@ const lb: Dict = {
       h1: 'Unhänger kafen zu Ierpeldeng',
       lead: 'Mir sinn offiziell Händler vu Saris, Humbaur, WM Meyer an Tohaco a verkafen Unhänger fir Privatleit a Betriber.',
       dealerMissing: '[UNBESTÄTIGT — Händlerstatus Saris, Humbaur, WM Meyer; Logos nur mit Freigabe]',
+      brandsH2: 'Offiziellen Händler vun dëse Marken',
+      brandsText: 'Klickt op e Logo, fir d’Modeller vum Hiersteller ze gesinn. Mir beroden Iech gär bei eis zu Ierpeldeng.',
+      brandLink: '{brand}: Modeller op der Websäit vum Hiersteller kucken (nei Fënster)',
       adviceH2: 'Wéi en Unhänger mat wéi engem Führerschäin?',
       advice:
         'Mir hëllefen Iech, en Unhänger ze wielen, deen Ären Auto zéie kann an deen Dir mat Ärem Führerschäin fueren dierft: Gréisst, zoulässegt Gesamtgewiicht, Bremsen. Eis Unhängersich fir d’Lounen weist Iech d’Führerschäinreegele mat Beispiller.',

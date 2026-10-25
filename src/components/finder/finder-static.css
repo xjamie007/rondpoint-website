@@ -62,6 +62,10 @@
   .finder .result-photo { margin: -12px -12px 0; aspect-ratio: 4 / 3; }
   .finder .result-name { font-size: 0.9375rem; line-height: 1.25; overflow-wrap: anywhere; hyphens: auto; }
   .finder .result-notes, .finder .result-diagram { display: none; }
+  /* Motorrad- und Autoanhänger: Zeichnung bleibt, man sieht, wie die Fahrzeuge draufstehen */
+  .finder .result-diagram.with-vehicles { display: block; }
+  .finder .result-diagram.with-vehicles .load-svg { width: 100%; }
+  .finder .result-diagram.with-vehicles figcaption { font-size: 0.75rem; margin-top: 4px; }
   .finder .result-specs { grid-template-columns: 1fr; gap: 4px; }
   .finder .result-specs > div:nth-child(n + 3) { display: none; }
   .finder .result-specs dt { font-size: 0.75rem; line-height: 1.3; }

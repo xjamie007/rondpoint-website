@@ -19,6 +19,7 @@ import { cargoSheet, fleetEdit, fleetSheet, loadBase, renderFleet, type FleetCtx
 import { countChanges, reviewSheet } from './review';
 import { changedFleet, diffForPublish } from './diff';
 import { CARGO_ITEMS } from '@/lib/cargo';
+import { PUBLISHED_CATEGORIES } from '@/lib/categories';
 import { autoOn, canTranslate, queueTranslate, setAuto } from './translate';
 import hiddenPhotos from '@/content/photos.json';
 import css from './editor.css?inline';
@@ -420,6 +421,7 @@ async function publishPayload(cur: EditState, prev: EditState): Promise<EditStat
     list: (l, p) => getPath(useT(l), p),
     week: baseWeek,
     cargo: CARGO_ITEMS,
+    categories: PUBLISHED_CATEGORIES,
     fleet: (id) => base?.entries.find((e) => e.id === id)?.data,
   });
 }

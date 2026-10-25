@@ -1,6 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
+import categoriesJson from './content/categories.json';
 
 /**
  * Mietflotte (C5). Eine JSON-Datei pro Fahrzeug in src/content/flotte/.
@@ -28,10 +29,14 @@ export const CATEGORIES = [
 
 export const CARGO = ['voiture', 'moto', 'terre', 'fete', 'meubles', 'materiel'] as const;
 
+/** feste Arten plus eigene aus src/content/categories.json (Admin-Bereich) */
+const CUSTOM_CATEGORY_IDS = (categoriesJson as { items: { id: string }[] }).items.map((c) => c.id);
+const isCategory = (c: string) => (CATEGORIES as readonly string[]).includes(c) || CUSTOM_CATEGORY_IDS.includes(c);
+
 const flotte = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/flotte' }),
   schema: z.object({
-    category: z.enum(CATEGORIES),
+    category: z.string().refine(isCategory, { message: 'Unbekannte Art (src/content/categories.json)' }),
     name: i18nText,
     brand: z.string().nullable().default(null),
     mmaKg: z.number().int().positive(),
@@ -46,6 +51,8 @@ const flotte = defineCollection({
     power: z.string().nullable().default(null),
     socket: z.union([z.literal(7), z.literal(13)]).nullable().default(null),
     showPallets: z.boolean().default(false),
+    // Motorrad- und Autoanhänger: wie viele Fahrzeuge passen (leer = aus der Ladefläche berechnet)
+    capacity: z.number().int().positive().max(9).nullable().default(null),
     // Ladungsarten aus src/content/cargo.json (im Admin-Bereich erweiterbar); unbekannte ignoriert der Finder
     suitableFor: z.array(z.string().regex(/^[a-z0-9][a-z0-9-]{0,30}$/)).default([]),
     priceHalfDay: z.number().positive().nullable().default(null),

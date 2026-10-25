@@ -74,14 +74,15 @@ const s = t.finder;
                     lengthM={i.loadLengthM}
                     widthM={i.loadWidthM}
                     showPallets={i.showPallets}
+                    vehicles={i.display.vehicles && { kind: i.display.vehicles.kind, count: i.display.vehicles.n, capacity: i.display.vehicles.n }}
                     maxTotalM={maxM}
                     lengthLabel={i.display.lengthLabel!}
                     widthLabel={i.display.widthLabel!}
                     ariaLabel={i.display.diagramAria}
                   />
-                  {(i.display.palletsText || i.display.volume || i.display.temp) && (
+                  {(i.display.palletsText || i.display.vehicles || i.display.volume || i.display.temp) && (
                     <figcaption class="t-small">
-                      {[i.display.palletsText, i.display.volume, i.display.temp].filter(Boolean).join(', ')}
+                      {[i.display.palletsText, i.display.vehicles?.text, i.display.volume, i.display.temp].filter(Boolean).join(', ')}
                     </figcaption>
                   )}
                 </figure>

@@ -1,0 +1,77 @@
+---
+/**
+ * Anhänger-Marken, deren offizieller Händler die Garage ist (Logos von David am 24.10.2026
+ * freigegeben). Logos aus den Websites der Hersteller (src/assets/brands/), Link öffnet den
+ * Hersteller in einem neuen Fenster. Nur mit site.json → confirmations.trailerDealerStatus.
+ */
+import { Image } from 'astro:assets';
+import { fmt, type Dict } from '@/i18n';
+import humbaur from '@/assets/brands/humbaur.svg';
+import saris from '@/assets/brands/saris.png';
+import tohaco from '@/assets/brands/tohaco.svg';
+import wmMeyer from '@/assets/brands/wm-meyer.svg';
+
+interface Props {
+  t: Dict;
+}
+const { t } = Astro.props;
+const p = t.pages.trailersForSale;
+const BRANDS = [
+  { name: 'Saris', url: 'https://www.saris.net', logo: saris },
+  { name: 'Humbaur', url: 'https://www.humbaur.com', logo: humbaur },
+  { name: 'WM Meyer', url: 'https://www.wmmeyer.de', logo: wmMeyer },
+  { name: 'Tohaco', url: 'https://www.tohaco.nl', logo: tohaco },
+];
+---
+<section class="section block brands" aria-labelledby="brands-h">
+  <div class="wrap">
+    <h2 id="brands-h" class="h-bar reveal">{p.brandsH2}</h2>
+    <p class="prose-w">{p.brandsText}</p>
+    <ul class="brand-grid stagger">
+      {
+        BRANDS.map((b) => (
+          <li class="reveal">
+            <a class="brand" href={b.url} target="_blank" rel="noopener" aria-label={fmt(p.brandLink, { brand: b.name })}>
+              <Image src={b.logo} alt={b.name} width={240} loading="lazy" />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .brands p { margin: 0 0 28px; }
+  .brand-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (min-width: 64rem) { .brand-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; } }
+  .brand {
+    position: relative;
+    display: grid;
+    place-items: center;
+    height: 100%;
+    min-height: 120px;
+    padding: 24px 20px;
+    border: 1.5px solid var(--color-black);
+    border-radius: var(--radius-edge);
+    background: var(--color-white);
+    transition: box-shadow var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out);
+  }
+  /* orange Kante oben wie bei den Info-Karten, wächst beim Hover */
+  .brand::before {
+    content: '';
+    position: absolute;
+    top: -1.5px;
+    left: 20px;
+    width: 40px;
+    height: 5px;
+    background: var(--color-orange);
+    transition: width var(--dur-3) var(--ease-out);
+  }
+  .brand :global(img) { display: block; width: 100%; max-width: 200px; height: auto; max-height: 72px; object-fit: contain; }
+  @media (hover: hover) {
+    .brand:hover { transform: translateY(-4px); box-shadow: 0 20px 36px -24px rgb(0 0 0 / 0.5); }
+    .brand:hover::before { width: 80px; }
+  }
+  .brand:focus-visible { outline: 3px solid var(--color-orange); outline-offset: 3px; }
+</style>

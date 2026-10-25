@@ -6,6 +6,7 @@
 import { escapeHtml, useT } from '@/i18n';
 import { HTML_LANG, LANGS, type Lang } from '@/i18n/config';
 import { CARGO_ITEMS, cargoLabel } from '@/lib/cargo';
+import { PUBLISHED_CATEGORIES } from '@/lib/categories';
 import { hoursSummary } from '@/lib/content';
 import type { EditState } from '../../supabase/functions/publish/convert';
 import { getPath } from './match';
@@ -66,6 +67,7 @@ export function countChanges(cur: EditState, prev: EditState): number {
   const fa = prev.fleet ?? {}, fb = cur.fleet ?? {};
   for (const id of new Set([...Object.keys(fa), ...Object.keys(fb)])) if (!same(fa[id], fb[id])) n++;
   if (!same(prev.cargo, cur.cargo)) n++;
+  if (!same(prev.categories, cur.categories)) n++;
   return n;
 }
 
@@ -172,6 +174,22 @@ export async function reviewSheet(ctx: ReviewCtx) {
       <ul class="ed-rv-list">${(lines.length ? lines : ['Auswahl geändert']).map((x) => `<li>${x}</li>`).join('')}</ul></div>`);
   }
 
+  // Eigene Arten (z. B. Food Truck)
+  if (!same(prev.categories, s.categories)) {
+    const a = prev.categories ?? PUBLISHED_CATEGORIES, b = s.categories ?? PUBLISHED_CATEGORIES;
+    const name = (c: (typeof a)[number]) => c.label.de || c.label.fr || c.id;
+    const lines: string[] = [];
+    for (const c of b) {
+      const o = a.find((x) => x.id === c.id);
+      if (!o) lines.push(`Neu: <b>${escapeHtml(name(c))}</b> (${c.kind === 'van' ? 'Transporter' : 'Anhänger'})`);
+      else if (!same(o, c)) lines.push(`Geändert: <b>${escapeHtml(name(c))}</b>`);
+    }
+    for (const o of a) if (!b.some((c) => c.id === o.id)) lines.push(`Entfernt: <s>${escapeHtml(name(o))}</s>`);
+    items.push(`<div class="ed-rv" data-kind="categories"><div class="ed-rv-head"><span class="ed-tag">Arten</span>
+      <button type="button" class="ed-mini" data-drop>Verwerfen</button></div>
+      <ul class="ed-rv-list">${(lines.length ? lines : ['Arten geändert']).map((x) => `<li>${x}</li>`).join('')}</ul></div>`);
+  }
+
   const nAuto = items.filter((x) => x.includes('ed-tag-auto')).length;
   const w = sheet('Änderungen prüfen', `<div class="ed-form">
     ${items.length
@@ -248,6 +266,7 @@ export async function reviewSheet(ctx: ReviewCtx) {
         if (kind === 'hours') { if (prev.hours) st.hours = structuredClone(prev.hours); else delete st.hours; }
         if (kind === 'fleet') { st.fleet ??= {}; restore(prev.fleet, st.fleet, k); if (!Object.keys(st.fleet).length) delete st.fleet; }
         if (kind === 'cargo') { if (prev.cargo) st.cargo = structuredClone(prev.cargo); else delete st.cargo; }
+        if (kind === 'categories') { if (prev.categories) st.categories = structuredClone(prev.categories); else delete st.categories; }
       });
       reopen();
     };

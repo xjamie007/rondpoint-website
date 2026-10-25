@@ -50,12 +50,12 @@ const jsonld = [
     photoAlt={t.photos.rental}
   />
 
-  <FinderSection lang={lang} t={t} id="flotte" />
+  <FinderSection lang={lang} t={t} id="flotte" kindToggle />
 
   <section class="section tone" aria-labelledby="table-h">
     <div class="wrap">
       <h2 id="table-h">{t.fleetTable.h2}</h2>
-      {items.length ? <FleetTable t={t} items={items} /> : <p set:html={rich(t.finder.empty)} />}
+      {items.length ? <FleetTable t={t} lang={lang} items={items} /> : <p set:html={rich(t.finder.empty)} />}
     </div>
   </section>
 

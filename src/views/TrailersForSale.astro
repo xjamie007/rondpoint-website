@@ -1,8 +1,9 @@
 ---
-/** Anhänger kaufen (D3): Marken als Text, Beratung Gewicht/Führerschein mit Link zum Finder, Lager (fehlt), Formular. */
+/** Anhänger kaufen (D3): Marken mit Logos, Beratung Gewicht/Führerschein mit Link zum Finder, Lager (fehlt), Formular. */
 import Base from '@/layouts/Base.astro';
 import PageIntro from '@/components/PageIntro.astro';
 import InfoCards from '@/components/InfoCards.astro';
+import TrailerBrands from '@/components/TrailerBrands.astro';
 import ContactForm from '@/components/forms/ContactForm.astro';
 import { rich, useT } from '@/i18n';
 import { path, type Lang } from '@/i18n/config';
@@ -39,6 +40,7 @@ const crumbs = [
   <PageIntro crumbLabel={t.nav.breadcrumb} crumbs={crumbs} h1={p.h1} lead={p.lead} photo={photo('trailers-sale')} photoAlt={t.photos.trailersSale}>
     {!site.confirmations.trailerDealerStatus && showOpenPoints && <p set:html={rich(p.dealerMissing)} />}
   </PageIntro>
+  {site.confirmations.trailerDealerStatus && <TrailerBrands t={t} />}
   <section class="section block tone" aria-labelledby="choose-h">
     <div class="wrap">
       <h2 id="choose-h" class="h-bar reveal">{d.chooseH2}</h2>

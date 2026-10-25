@@ -26,7 +26,7 @@ const enabled = (site as { admin?: { enabled?: boolean } }).admin?.enabled === t
     <meta name="referrer" content="no-referrer" />
     <meta name="description" content="Verwaltung der Website Garage Um Rond Point" />
     <title>{enabled ? 'Website verwalten' : 'Am Opbau'} | Um Rond Point</title>
-    <link rel="icon" href={withBase('/favicon-32.png')} type="image/png" sizes="32x32" />
+    <link rel="icon" href={withBase('/favicon.ico')} sizes="16x16 32x32 48x48" /><link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
     <meta name="theme-color" content="#000000" />
   </head>
   <body class="a-body">

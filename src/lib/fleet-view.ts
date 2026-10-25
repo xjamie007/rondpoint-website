@@ -6,9 +6,10 @@ import { fmt, plural, type Dict } from '@/i18n';
 import type { Lang } from '@/i18n/config';
 import { cubic, eur, kg, meters, metersBare, num } from './format.ts';
 import { packPallets } from './pallets.ts';
+import { vehicleCapacity, vehicleKind, type VehicleKind } from './vehicles.ts';
 import { requiredLicence } from './permis.ts';
 import { diagramTotalM } from '@/components/finder/LoadDiagram';
-import type { FleetItem } from './fleet.ts';
+import { isVan, type FleetItem } from './fleet.ts';
 
 export interface FleetDisplay {
   payload: string;
@@ -33,6 +34,8 @@ export interface FleetDisplay {
   power: string | null;
   pallets: number;
   palletsText: string | null;
+  /** Motorrad- und Autoanhänger: wie viele passen („ca.“, wenn berechnet) */
+  vehicles: { kind: VehicleKind; n: number; approx: boolean; text: string } | null;
   lengthLabel: string | null;
   widthLabel: string | null;
   diagramAria: string | null;
@@ -55,8 +58,11 @@ export function fleetView(items: FleetItem[], lang: Lang, t: Dict): FleetView[] 
     const hasDims = i.loadLengthM != null && i.loadWidthM != null;
     const pallets = hasDims && i.showPallets ? packPallets(i.loadLengthM!, i.loadWidthM!).count : 0;
     const palletsText = hasDims && i.showPallets ? plural(lang, s.pallets, pallets) : null;
+    const cap = vehicleCapacity(i);
+    const vk = vehicleKind(i.category);
+    const vehicles = cap && vk ? { kind: vk, ...cap, text: plural(lang, s.vehicles[vk], cap.n, { n: cap.approx ? `${s.approx}\u00a0${cap.n}` : cap.n }) } : null;
     const surface = hasDims ? `${metersBare(lang, i.loadLengthM!)} × ${meters(lang, i.loadWidthM!)}` : null;
-    const req = i.category === 'camionnette' ? { kind: 'licence', licence: 'B' as const } : requiredLicence(i.mmaKg);
+    const req = isVan(i) ? { kind: 'licence', licence: 'B' as const } : requiredLicence(i.mmaKg);
     const requiredShort =
       req.kind === 'licence' ? s.licenceShort[req.licence] : t.fleetTable.licenceDepends;
     const requiredText =
@@ -88,6 +94,7 @@ export function fleetView(items: FleetItem[], lang: Lang, t: Dict): FleetView[] 
     if (hasDims) {
       diagramAria = fmt(s.diagramLabel, { l: metersBare(lang, i.loadLengthM!), w: metersBare(lang, i.loadWidthM!) });
       if (palletsText) diagramAria += `, ${palletsText}`;
+      if (vehicles) diagramAria += `, ${vehicles.text}`;
     }
     return {
       ...i,
@@ -112,6 +119,7 @@ export function fleetView(items: FleetItem[], lang: Lang, t: Dict): FleetView[] 
         power: i.power,
         pallets,
         palletsText,
+        vehicles,
         lengthLabel: hasDims ? meters(lang, i.loadLengthM!) : null,
         widthLabel: hasDims ? meters(lang, i.loadWidthM!) : null,
         diagramAria,

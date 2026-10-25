@@ -53,6 +53,8 @@ const en: Dict = {
 
   finder: {
     h2: 'Which trailer do you need?',
+    h2Van: 'Which van do you need?',
+    introVan: 'Tell us what you are moving and you will see straight away which vans fit and what they cost. A category B licence is enough for all of them.',
     intro:
       'Tell us what you are carrying and which licence you have. You will see straight away which trailers fit, what they cost and whether your licence is enough.',
     cargoLegend: 'What are you carrying?',
@@ -99,6 +101,13 @@ const en: Dict = {
       power: 'Power supply',
     },
     pallets: { one: '{n} Euro pallet', other: '{n} Euro pallets' },
+    vehicles: { moto: { one: 'Room for {n} motorbike', other: 'Room for {n} motorbikes' }, voiture: { one: 'Room for {n} car', other: 'Room for {n} cars' } },
+    approx: 'about',
+    countLegend: { moto: 'How many motorbikes?', voiture: 'How many cars?' },
+    kindLegend: 'What would you like to hire?',
+    kinds: { trailer: 'Trailers', van: 'Vans' },
+    vanCount: { one: '{n} van in our fleet', other: '{n} vans in our fleet' },
+    vanMatchCount: { one: '{n} van fits', other: '{n} vans fit' },
     volumeText: 'Internal volume {m3} m³',
     diagramLabel: 'Load area {l} × {w} m',
     diagramPallets: '{n} Euro pallets',
@@ -532,6 +541,9 @@ const en: Dict = {
       h1: 'Trailers for sale in Erpeldange',
       lead: 'As an official dealer, we sell Saris, Humbaur, WM Meyer and Tohaco trailers to private and business customers.',
       dealerMissing: '[UNBESTÄTIGT — Händlerstatus Saris, Humbaur, WM Meyer; Logos nur mit Freigabe]',
+      brandsH2: 'Official dealer for these brands',
+      brandsText: 'Click a logo to see the manufacturer’s models. We are happy to advise you at our garage in Erpeldange.',
+      brandLink: '{brand}: see the models on the manufacturer’s website (new window)',
       adviceH2: 'Which licence for which trailer?',
       advice:
         'We help you choose a trailer that your car can tow and that your licence allows: size, maximum authorised mass, brakes. Our hire guide shows you the licence rules with examples.',

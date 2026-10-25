@@ -20,8 +20,10 @@ interface Props {
   compact?: boolean;
   id?: string;
   headingTag?: 'h1' | 'h2';
+  /** Umschalter Anhänger / Transporter (Seite „Mieten“) */
+  kindToggle?: boolean;
 }
-const { lang, t, compact = false, id = 'quelle-remorque', headingTag = 'h2' } = Astro.props;
+const { lang, t, compact = false, id = 'quelle-remorque', headingTag = 'h2', kindToggle = false } = Astro.props;
 const fleet = (await getFleet(lang)).filter((i) => i.category !== 'voiture');
 const items = await withPhotos(fleetView(fleet, lang, t));
 const s = t.finder;
@@ -54,6 +56,13 @@ const strings: FinderStrings = {
   empty: s.empty,
   noJsRules: s.noJsRules,
   photoAlt: t.photos.fleetAlt,
+  vehicles: s.vehicles,
+  approx: s.approx,
+  countLegend: s.countLegend,
+  kindLegend: s.kindLegend,
+  kinds: s.kinds,
+  vanCount: s.vanCount,
+  vanMatchCount: s.vanMatchCount,
 };
 const H = headingTag;
 /** Nur auf Französisch verfügbar (geprüft 28.09.2026) */
@@ -62,8 +71,8 @@ const sourceUrl = 'https://transports.public.lu/fr/conduire/conducteur-permis/ca
 <section class="finder" id={id} aria-labelledby={`${id}-h`}>
   <div class="wrap">
     <div class="finder-head">
-      <H id={`${id}-h`} class="t-h2">{s.h2}</H>
-      <p class="t-lead finder-intro">{s.intro}</p>
+      <H id={`${id}-h`} class="t-h2" data-kind-text={kindToggle ? JSON.stringify({ trailer: s.h2, van: s.h2Van }) : undefined}>{s.h2}</H>
+      <p class="t-lead finder-intro" data-kind-text={kindToggle ? JSON.stringify({ trailer: s.intro, van: s.introVan }) : undefined}>{s.intro}</p>
     </div>
     {
       items.length === 0 ? (
@@ -82,7 +91,8 @@ const sourceUrl = 'https://transports.public.lu/fr/conduire/conducteur-permis/ca
         maxTotalM={maxDiagramTotal(fleet)}
         uid={id}
         headingLevel={headingTag === 'h1' ? 2 : 3}
-      hideOpenPoints={!showOpenPoints}
+        hideOpenPoints={!showOpenPoints}
+        kindToggle={kindToggle}
       />
       )
     }
@@ -92,6 +102,14 @@ const sourceUrl = 'https://transports.public.lu/fr/conduire/conducteur-permis/ca
     </p>
   </div>
 </section>
+
+<script>
+  // Umschalter Anhänger / Transporter: Überschrift und Einleitung passen sich an
+  addEventListener('rp:fleet-kind', (e) => {
+    const kind = (e as CustomEvent<'trailer' | 'van'>).detail;
+    for (const el of document.querySelectorAll<HTMLElement>('[data-kind-text]')) el.textContent = JSON.parse(el.dataset.kindText!)[kind];
+  });
+</script>
 
 <style is:global>
   .finder {
@@ -124,6 +142,27 @@ const sourceUrl = 'https://transports.public.lu/fr/conduire/conducteur-permis/ca
     padding: 0;
   }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip-num span { min-width: 64px; justify-content: center; }
+  /* Umschalter Anhänger / Transporter: zwei große Felder nebeneinander */
+  .kind-switch { display: inline-grid; grid-template-columns: 1fr 1fr; padding: 4px; gap: 4px; border: 2px solid var(--color-black); border-radius: 999px; background: rgb(255 255 255 / 0.25); }
+  .kind-opt { position: relative; }
+  .kind-opt input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+  .kind-opt span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 28px;
+    border-radius: 999px;
+    font-family: var(--font-wide);
+    font-stretch: 112%;
+    font-weight: 700;
+    font-size: 1.0625rem;
+    transition: background-color var(--dur-2) var(--ease-out), color var(--dur-2) var(--ease-out);
+  }
+  .kind-opt input:checked + span { background: var(--color-white); color: var(--color-black); box-shadow: 0 6px 16px -10px rgb(0 0 0 / 0.6); }
+  .kind-opt input:not(:checked):hover + span { background: rgb(255 255 255 / 0.35); }
+  .kind-opt input:focus-visible + span { outline: 3px solid var(--color-black); outline-offset: 2px; }
   .finder-exact summary {
     display: inline-flex;
     align-items: center;

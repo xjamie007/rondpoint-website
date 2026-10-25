@@ -8,9 +8,15 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { flushSync } from 'react-dom';
 import { LoadDiagram } from './LoadDiagram.tsx';
-import { evaluate, requestHref, type Cargo, type ResultRow } from '../../lib/fleet.ts';
+import { evaluate, isTrailer, isVan, requestHref, type Cargo, type ResultRow } from '../../lib/fleet.ts';
 import type { FleetView } from '../../lib/fleet-view.ts';
-import type { Assessment, CarData, VisitorLicence } from '../../lib/permis.ts';
+import { fits, type Assessment, type CarData, type VisitorLicence } from '../../lib/permis.ts';
+import type { VehicleKind } from '../../lib/vehicles.ts';
+
+type Plural = { one: string; other: string };
+type Kind = 'trailer' | 'van';
+/** Ladungsart, für die man die Anzahl wählt (Motorräder, Autos) */
+const countKind = (c: Cargo | null): VehicleKind | null => (c === 'moto' || c === 'voiture' ? c : null);
 
 export interface FinderStrings {
   cargoLegend: string;
@@ -50,6 +56,13 @@ export interface FinderStrings {
   empty: string;
   noJsRules: string;
   photoAlt: string;
+  vehicles: Record<VehicleKind, Plural>;
+  approx: string;
+  countLegend: Record<VehicleKind, string>;
+  kindLegend: string;
+  kinds: Record<Kind, string>;
+  vanCount: Plural;
+  vanMatchCount: Plural;
 }
 
 export interface FinderProps {
@@ -67,6 +80,8 @@ export interface FinderProps {
   /** Präsentationsversion: fehlende Preise nicht als Platzhalter zeigen */
   /** fehlenden Preis nicht als offenen Punkt zeigen (Präsentation und nach dem Livegang) */
   hideOpenPoints?: boolean;
+  /** Umschalter Anhänger / Transporter oben (Seite „Mieten“); meldet die Wahl als Ereignis rp:fleet-kind */
+  kindToggle?: boolean;
 }
 
 const OPEN_SPLIT = /(\[(?:FEHLT|UNBESTÄTIGT)[^\]]*\])/;
@@ -120,7 +135,9 @@ function pluralize(locale: string, forms: { one: string; other: string }, n: num
 export default function Finder(props: FinderProps) {
   const { strings: s, items, compact, uid } = props;
   const [hydrated, setHydrated] = useState(false);
+  const [kind, setKind] = useState<Kind>('trailer');
   const [cargo, setCargo] = useState<Cargo | null>(null);
+  const [count, setCount] = useState<number | null>(null);
   const [licence, setLicence] = useState<VisitorLicence | null>(null);
   const [f2, setF2] = useState('');
   const [o1, setO1] = useState('');
@@ -130,11 +147,29 @@ export default function Finder(props: FinderProps) {
   const interacted = useRef(false);
 
   useEffect(() => setHydrated(true), []);
+  // Tabelle der Flotte unter dem Finder filtert mit (FinderSection/Rental)
+  useEffect(() => {
+    if (props.kindToggle && hydrated) window.dispatchEvent(new CustomEvent('rp:fleet-kind', { detail: kind }));
+  }, [kind, hydrated, props.kindToggle]);
+
+  const toggle = !!props.kindToggle;
+  const showTrailers = !toggle || kind === 'trailer';
+  const showVans = !toggle || kind === 'van';
+  // Ladungsarten nur, wenn ein Fahrzeug der gewählten Sorte dafür passt
+  const cargoOpts = useMemo(
+    () => (toggle ? props.cargoOptions.filter((c) => items.some((i) => (kind === 'van' ? isVan(i) : isTrailer(i)) && i.suitableFor.includes(c))) : props.cargoOptions),
+    [toggle, kind, items, props.cargoOptions],
+  );
+  // Anzahl Motorräder/Autos nur fragen, wenn ein Anhänger mehr als eines trägt
+  const vk = showTrailers ? countKind(cargo) : null;
+  const maxCount = vk ? Math.min(4, Math.max(0, ...items.map((i) => (i.display.vehicles?.kind === vk ? i.display.vehicles.n : 0)))) : 0;
 
   const car: CarData = useMemo(() => ({ f2: toNum(f2), o1: toNum(o1), o2: toNum(o2) }), [f2, o1, o2]);
-  const ev = useMemo(() => evaluate(items, { cargo, licence, car }), [items, cargo, licence, car]);
-  const trailers = compact ? ev.trailers.slice(0, 3) : ev.trailers;
-  const vans = compact ? ev.vans.slice(0, Math.max(0, 3 - trailers.length)) : ev.vans;
+  const ev = useMemo(() => evaluate(items, { cargo, licence, car, count: maxCount > 1 ? count : null }), [items, cargo, licence, car, count, maxCount]);
+  const allTrailers = showTrailers ? ev.trailers : [];
+  const allVans = showVans ? ev.vans : [];
+  const trailers = compact ? allTrailers.slice(0, 3) : allTrailers;
+  const vans = compact ? allVans.slice(0, Math.max(0, 3 - trailers.length)) : allVans;
 
   // Paletten „beladen" nur beim ersten Erscheinen eines Ergebnisses nach einer Auswahl
   useEffect(() => {
@@ -173,28 +208,61 @@ export default function Finder(props: FinderProps) {
     );
   }
 
+  const shown = toggle && kind === 'van' ? ev.vans : toggle ? ev.trailers : [...ev.trailers, ...ev.vans];
+  const fitCount = shown.filter((r) => fits(r.assessment)).length;
+  const vanView = toggle && kind === 'van';
   const heading = !cargo
-    ? pluralize(props.intlLocale, s.fleetCount, ev.trailers.length)
-    : ev.fitCount === 0
+    ? pluralize(props.intlLocale, vanView ? s.vanCount : s.fleetCount, vanView ? ev.vans.length : ev.trailers.length)
+    : fitCount === 0
       ? s.none
-      : pluralize(props.intlLocale, s.matchCount, ev.fitCount);
+      : pluralize(props.intlLocale, vanView ? s.vanMatchCount : s.matchCount, fitCount);
   const H = props.headingLevel === 2 ? 'h2' : 'h3';
 
   return (
     <div className={`finder-ui${hydrated ? ' is-hydrated' : ''}`}>
       {!hydrated && <p className="finder-nojs">{s.noJsRules}</p>}
       <div className="finder-questions" hidden={!hydrated}>
+        {toggle && (
+          <fieldset className="finder-q finder-kind">
+            <legend>{s.kindLegend}</legend>
+            <div className="kind-switch">
+              {(['trailer', 'van'] as const).map((k) => (
+                <label className="kind-opt" key={k}>
+                  <input
+                    type="radio"
+                    name={`kind-${uid}`}
+                    value={k}
+                    checked={kind === k}
+                    onChange={() =>
+                      change(() => {
+                        setKind(k);
+                        setCount(null);
+                        if (cargo && !items.some((i) => (k === 'van' ? isVan(i) : isTrailer(i)) && i.suitableFor.includes(cargo))) setCargo(null);
+                      })
+                    }
+                  />
+                  <span>{s.kinds[k]}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        )}
         <fieldset className="finder-q" data-cargo-q>
           <legend>{s.cargoLegend}</legend>
           <div className="chips">
-            {props.cargoOptions.map((c) => (
+            {cargoOpts.map((c) => (
               <label className="chip" key={c}>
                 <input
                   type="radio"
                   name={`cargo-${uid}`}
                   value={c}
                   checked={cargo === c}
-                  onChange={() => change(() => setCargo(c))}
+                  onChange={() =>
+                    change(() => {
+                      setCargo(c);
+                      setCount(null);
+                    })
+                  }
                 />
                 <span>
                   <Svg d={ICON.check} />
@@ -204,77 +272,99 @@ export default function Finder(props: FinderProps) {
             ))}
           </div>
         </fieldset>
-        <fieldset className="finder-q">
-          <legend>{s.licenceLegend}</legend>
-          <div className="chips">
-            {(['B', 'B96', 'BE', 'unknown'] as const).map((l) => (
-              <label className="chip" key={l}>
-                <input
-                  type="radio"
-                  name={`licence-${uid}`}
-                  value={l}
-                  checked={licence === l}
-                  onChange={() => change(() => setLicence(l))}
-                />
-                <span>
-                  <Svg d={ICON.check} />
-                  {s.licence[l]}
-                </span>
-              </label>
-            ))}
-          </div>
-        </fieldset>
-        <details className="finder-exact">
-          <summary>{s.exactSummary}</summary>
-          <p className="t-small">{s.exactHint}</p>
-          <div className="exact-grid">
-            {(
-              [
-                ['f2', s.f2, f2, setF2],
-                ['o1', s.o1, o1, setO1],
-                ['o2', s.o2, o2, setO2],
-              ] as const
-            ).map(([key, label, value, set]) => (
-              <div key={key}>
-                <label className="field-label" htmlFor={`${key}-${uid}`}>
-                  {label}
+        {vk && maxCount > 1 && (
+          <fieldset className="finder-q">
+            <legend>{s.countLegend[vk]}</legend>
+            <div className="chips">
+              {Array.from({ length: maxCount }, (_, k) => k + 1).map((n) => (
+                <label className="chip chip-num" key={n}>
+                  <input type="radio" name={`count-${uid}`} value={n} checked={count === n} onChange={() => change(() => setCount(n))} />
+                  <span>
+                    <Svg d={ICON.check} />
+                    {n}
+                  </span>
                 </label>
-                <div className="unit-field">
-                  <input
-                    className="field"
-                    id={`${key}-${uid}`}
-                    type="text"
-                    inputMode="numeric"
-                    autoComplete="off"
-                    value={value}
-                    onChange={(e) => {
-                      const v = e.target.value.replace(/[^\d\s.]/g, '');
-                      change(() => set(v));
-                    }}
-                  />
-                  <span aria-hidden="true">{s.kg}</span>
-                </div>
+              ))}
+            </div>
+          </fieldset>
+        )}
+        {showTrailers && (
+          <>
+            <fieldset className="finder-q">
+              <legend>{s.licenceLegend}</legend>
+              <div className="chips">
+                {(['B', 'B96', 'BE', 'unknown'] as const).map((l) => (
+                  <label className="chip" key={l}>
+                    <input
+                      type="radio"
+                      name={`licence-${uid}`}
+                      value={l}
+                      checked={licence === l}
+                      onChange={() => change(() => setLicence(l))}
+                    />
+                    <span>
+                      <Svg d={ICON.check} />
+                      {s.licence[l]}
+                    </span>
+                  </label>
+                ))}
               </div>
-            ))}
-          </div>
-        </details>
+            </fieldset>
+            <details className="finder-exact">
+              <summary>{s.exactSummary}</summary>
+              <p className="t-small">{s.exactHint}</p>
+              <div className="exact-grid">
+                {(
+                  [
+                    ['f2', s.f2, f2, setF2],
+                    ['o1', s.o1, o1, setO1],
+                    ['o2', s.o2, o2, setO2],
+                  ] as const
+                ).map(([key, label, value, set]) => (
+                  <div key={key}>
+                    <label className="field-label" htmlFor={`${key}-${uid}`}>
+                      {label}
+                    </label>
+                    <div className="unit-field">
+                      <input
+                        className="field"
+                        id={`${key}-${uid}`}
+                        type="text"
+                        inputMode="numeric"
+                        autoComplete="off"
+                        value={value}
+                        onChange={(e) => {
+                          const v = e.target.value.replace(/[^\d\s.]/g, '');
+                          change(() => set(v));
+                        }}
+                      />
+                      <span aria-hidden="true">{s.kg}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </details>
+          </>
+        )}
       </div>
 
       <div className="finder-results">
         <H className="finder-count" aria-live="polite">
           {heading === s.none ? <Open text={s.none} /> : heading}
         </H>
-        <ol className="result-list">
-          {trailers.map((r) => (
-            <Result key={r.item.id} row={r} {...props} licence={licence} cargo={cargo} animate={animateIds.has(r.item.id)} hydrated={hydrated} />
-          ))}
-        </ol>
+        {trailers.length > 0 && (
+          <ol className="result-list">
+            {trailers.map((r) => (
+              <Result key={r.item.id} row={r} {...props} licence={licence} cargo={cargo} count={vk ? count : null} animate={animateIds.has(r.item.id)} hydrated={hydrated} />
+            ))}
+          </ol>
+        )}
         {vans.length > 0 && (
           <>
-            <p className="vans-h">{s.vansHeading}</p>
+            {!vanView && <p className="vans-h">{s.vansHeading}</p>}
             <ol className="result-list">
               {vans.map((r) => (
-                <Result key={r.item.id} row={r} {...props} licence={licence} cargo={cargo} animate={animateIds.has(r.item.id)} hydrated={hydrated} />
+                <Result key={r.item.id} row={r} {...props} licence={licence} cargo={cargo} count={null} animate={animateIds.has(r.item.id)} hydrated={hydrated} />
               ))}
             </ol>
           </>
@@ -352,11 +442,13 @@ function Verdict({ a, row, s, licence, locale, hydrated }: { a: Assessment; row:
 }
 
 function Result(
-  props: FinderProps & { row: ResultRow; licence: VisitorLicence | null; cargo: Cargo | null; animate: boolean; hydrated: boolean },
+  props: FinderProps & { row: ResultRow; licence: VisitorLicence | null; cargo: Cargo | null; count: number | null; animate: boolean; hydrated: boolean },
 ) {
   const { row, strings: s, licence, cargo, hydrated } = props;
   const i = row.item as FleetView;
   const d = i.display;
+  // Motorräder/Autos in der Zeichnung: gewählte Anzahl, sonst so viele wie passen
+  const veh = d.vehicles ? { kind: d.vehicles.kind, capacity: d.vehicles.n, count: props.count && cargo === d.vehicles.kind ? Math.min(props.count, d.vehicles.n) : d.vehicles.n } : null;
   const key = `${hydrated ? row.assessment.verdict : 'static'}${row.assessment.exceedsTowLimit ? '-tow' : ''}`;
   return (
     <li className="result" data-fleet={i.id} style={{ viewTransitionName: `fleet-${props.uid}-${i.id}` }}>
@@ -377,20 +469,21 @@ function Result(
       <h4 className="result-name">{i.name}</h4>
       {i.notes && <p className="result-notes">{i.notes}</p>}
       {i.loadLengthM != null && i.loadWidthM != null && d.lengthLabel && d.widthLabel && d.diagramAria && (
-        <figure className="result-diagram">
+        <figure className={`result-diagram${veh ? ' with-vehicles' : ''}`}>
           <LoadDiagram
             lengthM={i.loadLengthM}
             widthM={i.loadWidthM}
             showPallets={i.showPallets}
+            vehicles={veh}
             maxTotalM={props.maxTotalM}
             lengthLabel={d.lengthLabel}
             widthLabel={d.widthLabel}
             ariaLabel={d.diagramAria}
             animate={props.animate}
           />
-          {(d.palletsText || d.volume || d.temp) && (
+          {(d.palletsText || d.vehicles || d.volume || d.temp) && (
             <figcaption className="t-small">
-              {[d.palletsText, d.volume, d.temp].filter(Boolean).join(', ')}
+              {[d.palletsText, d.vehicles?.text, d.volume, d.temp].filter(Boolean).join(', ')}
             </figcaption>
           )}
         </figure>
