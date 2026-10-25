@@ -36,7 +36,8 @@
     "seo.trailersForSale.description": "Découvrez nos remorques Saris, Humbaur, WM Meyer et Tohaco au Luxembourg. Vente de remorques pour particuliers et professionnels à Erpeldange.",
     "pages.trailersForSale.brandsH2": "Revendeur officiel de ces marques",
     "services.garden.text": "Au Garage Um Rond Point, nous proposons la vente et la réparation de machines de jardinage et d'équipements forestiers, principalement des marques Honda et STIHL. Que vous soyez particulier ou professionnel, notre équipe à Erpeldange vous accompagne dans le choix, l'entretien et la réparation de votre matériel.",
-    "pages.garden.lead": "Au Garage Um Rond Point, nous proposons la vente et la réparation de machines de jardinage et d'équipements forestiers, principalement des marques Honda et STIHL. Que vous soyez particulier ou professionnel, notre équipe à Erpeldange vous accompagne dans le choix, l'entretien et la réparation de votre matériel."
+    "pages.garden.lead": "Au Garage Um Rond Point, nous proposons la vente et la réparation de machines de jardinage et d'équipements forestiers, principalement des marques Honda et STIHL. Que vous soyez particulier ou professionnel, notre équipe à Erpeldange vous accompagne dans le choix, l'entretien et la réparation de votre matériel.",
+    "seo.garden.description": "Vente, entretien et réparation de machines de jardin et matériel forestier Honda et STIHL au Luxembourg. Garage Um Rond Point à Erpeldange."
   },
   "de": {
     "hero.sub": "Neu- und Gebrauchtwagen aller Marken, Kfz-Werkstatt, Karosserie- und Lackierarbeiten, Anhängerverkauf und -vermietung sowie Auto- und Transportervermietung.",
@@ -70,7 +71,8 @@
     "photos.trailersSale": "Kippanhänger mit Gitterwänden",
     "pages.trailersForSale.brandsH2": "Offizieller Händler dieser Marken",
     "services.garden.text": "Bei Garage Um Rond Point bieten wir den Verkauf und die Reparatur von Garten- und Forstgeräten an, insbesondere der Marken Honda und STIHL.\n\nOb Privatkunde oder Gewerbetreibender – unser Team in Erpeldange berät Sie bei der Auswahl, Wartung und Reparatur Ihrer Geräte.",
-    "pages.garden.lead": "Bei Garage Um Rond Point bieten wir den Verkauf und die Reparatur von Garten- und Forstgeräten an, insbesondere der Marken Honda und STIHL.\n\nOb Privatkunde oder Gewerbetreibender – unser Team in Erpeldange berät Sie bei der Auswahl, Wartung und Reparatur Ihrer Geräte."
+    "pages.garden.lead": "Bei Garage Um Rond Point bieten wir den Verkauf und die Reparatur von Garten- und Forstgeräten an, insbesondere der Marken Honda und STIHL.\n\nOb Privatkunde oder Gewerbetreibender – unser Team in Erpeldange berät Sie bei der Auswahl, Wartung und Reparatur Ihrer Geräte.",
+    "photos.gardenPage": "Rasenmähen in der Sonne"
   },
   "lb": {
     "hero.sub": "Nei- an Occasiounsautoen, Mécanique a Carrosserie, Verkaf a Locatioun vun Unhänger souwéi Locatioun vun Autoen a Camionnetten.",
@@ -106,7 +108,8 @@
     "photos.trailersSale": "Kipp-Unhänger mat gitterten Nouten",
     "pages.trailersForSale.brandsH2": "Offiziellen Distributeur vun dëse Marken",
     "services.garden.text": "Beim Garage Um Rond Point bidde mir de Verkaf an d'Reparatur vu Gaart- a Bëschmaschinnen un, haaptsächlech vun de Marken Honda a STIHL.\n\nEgal ob Privatpersoun oder Betrib – eis Ekipp zu Ierpeldeng  beréit Iech beim Choix, Ënnerhalt a bei der Reparatur vun Äre Maschinnen.",
-    "pages.garden.lead": "Beim Garage Um Rond Point bidde mir de Verkaf an d'Reparatur vu Gaart- a Bëschmaschinnen un, haaptsächlech vun de Marken Honda a STIHL.\n\nEgal ob Privatpersoun oder Betrib – eis Ekipp zu Ierpeldeng  beréit Iech beim Choix, Ënnerhalt a bei der Reparatur vun Äre Maschinnen."
+    "pages.garden.lead": "Beim Garage Um Rond Point bidde mir de Verkaf an d'Reparatur vu Gaart- a Bëschmaschinnen un, haaptsächlech vun de Marken Honda a STIHL.\n\nEgal ob Privatpersoun oder Betrib – eis Ekipp zu Ierpeldeng  beréit Iech beim Choix, Ënnerhalt a bei der Reparatur vun Äre Maschinnen.",
+    "photos.gardenPage": "Räselen ënner der Sonn"
   },
   "en": {
     "hero.sub": "New and used cars of all makes, vehicle servicing and repairs, bodywork and painting, trailer sales and rentals, as well as car and van hire.",
@@ -141,7 +144,8 @@
     "photos.trailersSale": "Tipper trailer with mesh sides",
     "pages.trailersForSale.brandsH2": "Official dealer of these brands",
     "services.garden.text": "At Garage Um Rond Point, we offer sales and repairs of garden and forestry equipment, primarily from Honda and STIHL.\n\nWhether you are a private customer or a professional, our team in Erpeldange-sur-Sûre provides expert advice and assistance with choosing, maintaining and repairing your equipment.",
-    "pages.garden.lead": "At Garage Um Rond Point, we offer sales and repairs of garden and forestry equipment, primarily from Honda and STIHL.\n\nWhether you are a private customer or a professional, our team in Erpeldange-sur-Sûre provides expert advice and assistance with choosing, maintaining and repairing your equipment."
+    "pages.garden.lead": "At Garage Um Rond Point, we offer sales and repairs of garden and forestry equipment, primarily from Honda and STIHL.\n\nWhether you are a private customer or a professional, our team in Erpeldange-sur-Sûre provides expert advice and assistance with choosing, maintaining and repairing your equipment.",
+    "photos.gardenPage": "Mowing a lawn in the sun"
   },
   "pt": {
     "hero.sub": "Venda de automóveis novos e usados de todas as marcas, serviços de mecânica, chapa e pintura, venda e aluguer de reboques, bem como aluguer de automóveis e carrinhas.",
@@ -176,6 +180,7 @@
     "photos.trailersSale": "Atrelado basculante com grades de rede",
     "pages.trailersForSale.brandsH2": "Revendedor oficial destas marcas",
     "services.garden.text": "Na Garage Um Rond Point, dedicamo-nos à venda e reparação de máquinas de jardinagem e equipamentos florestais, principalmente das marcas Honda e STIHL.\n\nSeja particular ou profissional, a nossa equipa em Erpeldange-sur-Sûre oferece aconselhamento personalizado na escolha, manutenção e reparação dos seus equipamentos.",
-    "pages.garden.lead": "Na Garage Um Rond Point, dedicamo-nos à venda e reparação de máquinas de jardinagem e equipamentos florestais, principalmente das marcas Honda e STIHL.\n\nSeja particular ou profissional, a nossa equipa em Erpeldange-sur-Sûre oferece aconselhamento personalizado na escolha, manutenção e reparação dos seus equipamentos."
+    "pages.garden.lead": "Na Garage Um Rond Point, dedicamo-nos à venda e reparação de máquinas de jardinagem e equipamentos florestais, principalmente das marcas Honda e STIHL.\n\nSeja particular ou profissional, a nossa equipa em Erpeldange-sur-Sûre oferece aconselhamento personalizado na escolha, manutenção e reparação dos seus equipamentos.",
+    "photos.gardenPage": "Corte de relva ao sol"
   }
 }
