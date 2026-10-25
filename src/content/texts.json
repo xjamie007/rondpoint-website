@@ -29,7 +29,8 @@
     "seo.workshop.title": "Garage mécanique & carrosserie Erpeldange | Garage Um Rond Point",
     "seo.workshop.description": "Entretien et réparation toutes marques à Erpeldange-sur-Sûre. Diagnostic, pneus, carrosserie et peinture automobile. Contactez Garage Um Rond Point.",
     "content.workshop.sections.s1.p.0": "Situé au cœur de la Nordstad, au {address} , le Garage Um Rond Point vous accompagne dans tous vos besoins automobiles.\n\nDe l'entretien aux réparations mécaniques, en passant par la carrosserie, la peinture et la vente de véhicules neufs et d'occasion, notre équipe met son savoir-faire à votre service, quelle que soit la marque de votre véhicule.",
-    "content.workshop.sections.s1.p.1": "Nous vous accueillons en luxembourgeois, français, allemand, anglais et portugais, avec un service professionnel, personnalisé et de proximité."
+    "content.workshop.sections.s1.p.1": "Nous vous accueillons en luxembourgeois, français, allemand, anglais et portugais, avec un service professionnel, personnalisé et de proximité.",
+    "pages.trailersForSale.h1": "Remorques à vendre au Luxembourg"
   },
   "de": {
     "hero.sub": "Neu- und Gebrauchtwagen aller Marken, Kfz-Werkstatt, Karosserie- und Lackierarbeiten, Anhängerverkauf und -vermietung sowie Auto- und Transportervermietung.",
@@ -57,7 +58,8 @@
     "photos.paint": "Lackierung einer Karosserie mit Spritzpistole",
     "photos.bodywork": "Roter Sportwagen auf einem Hebebühne in einer Werkstatt",
     "content.workshop.sections.s1.p.0": "Im Herzen der Nordstad, am {address}, begleitet Sie das Garage Um Rond Point bei all Ihren automobilen Bedürfnissen. Von der Wartung bis hin zu den mechanischen Reparaturen, über den Karosseriebau, die Lackierung und den Verkauf von neuen und gebrauchten Fahrzeugen, stellt unser Team sein Know-how in Ihren Dienst, unabhängig von der Marke Ihres Fahrzeugs.",
-    "content.workshop.sections.s1.p.1": "Wir beraten Sie auf Luxemburgisch, Französisch, Deutsch, Englisch und Portugiesisch und legen großen Wert auf professionellen, persönlichen und kundenorientierten Service."
+    "content.workshop.sections.s1.p.1": "Wir beraten Sie auf Luxemburgisch, Französisch, Deutsch, Englisch und Portugiesisch und legen großen Wert auf professionellen, persönlichen und kundenorientierten Service.",
+    "pages.trailersForSale.h1": "Anhänger kaufen in Luxemburg"
   },
   "lb": {
     "hero.sub": "Nei- an Occasiounsautoen, Mécanique a Carrosserie, Verkaf a Locatioun vun Unhänger souwéi Locatioun vun Autoen a Camionnetten.",
@@ -87,7 +89,8 @@
     "photos.paint": "Lackéierung vun der Karosserie mat Pistoul",
     "photos.bodywork": "Sportwagen rout op enger Héichlift an enger Werkstatt",
     "content.workshop.sections.s1.p.0": "Matten an der Nordstad, op der {address}, ass de Garage Um Rond Point Ären zouverlässege Partner fir alles ronderëm den Auto.\n\nVum Ënnerhalt a mechanesche Reparaturen iwwer Karosserie- a Lackéieraarbechte bis hin zum Verkaf vun neien a gebrauchten Autoen – eis erfueren Ekipp steet Iech mat Fachwëssen an Engagement zur Säit, onofhängeg vun der Autosmark.",
-    "content.workshop.sections.s1.p.1": "Mir beroden Iech op Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch a leeë grousse Wäert op e professionellen, perséinlechen a clientorientéierte Service."
+    "content.workshop.sections.s1.p.1": "Mir beroden Iech op Lëtzebuergesch, Franséisch, Däitsch, Englesch a Portugisesch a leeë grousse Wäert op e professionellen, perséinlechen a clientorientéierte Service.",
+    "pages.trailersForSale.h1": "Unhänger ze verkafen zu Lëtzebuerg"
   },
   "en": {
     "hero.sub": "New and used cars of all makes, vehicle servicing and repairs, bodywork and painting, trailer sales and rentals, as well as car and van hire.",
@@ -116,7 +119,8 @@
     "photos.paint": "Painting a bodywork with a spray gun",
     "photos.bodywork": "Red sports car on a lift in a workshop",
     "content.workshop.sections.s1.p.0": "In the heart of the Nordstad, at {address}, Garage Um Rond Point accompanies you in all your automotive needs. From maintenance to mechanical repairs, including bodywork, painting and the sale of new and used vehicles, our team puts its expertise at your service, regardless of the make of your vehicle.",
-    "content.workshop.sections.s1.p.1": "We welcome customers in Luxembourgish, French, German, English and Portuguese, offering professional, personalised and customer-focused service."
+    "content.workshop.sections.s1.p.1": "We welcome customers in Luxembourgish, French, German, English and Portuguese, offering professional, personalised and customer-focused service.",
+    "pages.trailersForSale.h1": "Trailers for sale in Luxembourg"
   },
   "pt": {
     "hero.sub": "Venda de automóveis novos e usados de todas as marcas, serviços de mecânica, chapa e pintura, venda e aluguer de reboques, bem como aluguer de automóveis e carrinhas.",
@@ -145,6 +149,7 @@
     "photos.paint": "Pintura de uma carroçaria com pistola de pintar",
     "photos.bodywork": "Carro desportivo vermelho sobre um elevador em uma oficina",
     "content.workshop.sections.s1.p.0": "No coração da Nordstad, no {address}, o Garage Um Rond Point acompanha-o em todas as suas necessidades automóveis. Desde a manutenção até às reparações mecânicas, passando pela carroçaria, pintura e venda de veículos novos e usados, a nossa equipa coloca o seu savoir-faire ao seu serviço, independentemente da marca do seu veículo.",
-    "content.workshop.sections.s1.p.1": "Atendemos os nossos clientes em luxemburguês, francês, alemão, inglês e português, oferecendo um serviço profissional, personalizado e de proximidade."
+    "content.workshop.sections.s1.p.1": "Atendemos os nossos clientes em luxemburguês, francês, alemão, inglês e português, oferecendo um serviço profissional, personalizado e de proximidade.",
+    "pages.trailersForSale.h1": "Reboques à venda no Luxemburgo"
   }
 }
