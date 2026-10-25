@@ -14,7 +14,8 @@
     "details.workshop.diagnosticH": "Diagnostic électronique et recherche de pannes",
     "pages.workshop.items.reparation": "Réparations mécaniques et pneumatiques",
     "details.points.workshop.2": "Réparations mécaniques et pneumatiques",
-    "details.workshop.reparationH": "Réparations mécaniques et pneumatiques"
+    "details.workshop.reparationH": "Réparations mécaniques et pneumatiques",
+    "details.points.sodablast.0": "Décapage doux et nettoyage de précision"
   },
   "de": {
     "hero.sub": "Neu- und Gebrauchtwagen aller Marken, Kfz-Werkstatt, Karosserie- und Lackierarbeiten, Anhängerverkauf und -vermietung sowie Auto- und Transportervermietung.",
@@ -47,7 +48,8 @@
     "details.workshop.diagnosticH": "Elektronesch Diagnos a Feelersich",
     "pages.workshop.items.reparation": "Mechanesch Reparaturen a Pneuenservice",
     "details.points.workshop.2": "Mechanesch Reparaturen a Pneuenservice",
-    "details.workshop.reparationH": "Mechanesch Reparaturen a Pneuenservice"
+    "details.workshop.reparationH": "Mechanesch Reparaturen a Pneuenservice",
+    "details.points.sodablast.0": "Schonend Ofstralen a präzis Botzen"
   },
   "en": {
     "hero.sub": "New and used cars of all makes, vehicle servicing and repairs, bodywork and painting, trailer sales and rentals, as well as car and van hire.",
@@ -63,7 +65,8 @@
     "details.workshop.diagnosticH": "Electronic diagnostics and fault detection",
     "pages.workshop.items.reparation": "Mechanical repairs and tyre services",
     "details.points.workshop.2": "Mechanical repairs and tyre services",
-    "details.workshop.reparationH": "Mechanical repairs and tyre services"
+    "details.workshop.reparationH": "Mechanical repairs and tyre services",
+    "details.points.sodablast.0": "Gentle surface stripping and precision cleaning"
   },
   "pt": {
     "hero.sub": "Venda de automóveis novos e usados de todas as marcas, serviços de mecânica, chapa e pintura, venda e aluguer de reboques, bem como aluguer de automóveis e carrinhas.",
@@ -79,6 +82,7 @@
     "details.workshop.diagnosticH": "Diagnóstico eletrónico e deteção de avarias",
     "pages.workshop.items.reparation": "Reparações mecânicas e serviço de pneus",
     "details.points.workshop.2": "Reparações mecânicas e serviço de pneus",
-    "details.workshop.reparationH": "Reparações mecânicas e serviço de pneus"
+    "details.workshop.reparationH": "Reparações mecânicas e serviço de pneus",
+    "details.points.sodablast.0": "Decapagem suave e limpeza de precisão"
   }
 }

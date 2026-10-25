@@ -2,9 +2,13 @@
   "$comment": "Geänderte Listen aus dem Admin-Bereich auf der Seite: Sprache → Pfad (wie in src/i18n/fr.ts) → ganze Liste. Hat Vorrang vor texts.json und den Grundtexten.",
   "de": {
     "details.points.sodablast": [
-      "Schonendes Entlacken mit Natron",
+      "Schonende Oberflächenreinigung und Entlackung",
       "Oldtimer-Karosserien, Felgen, mechanische Teile",
       "Erste Einschätzung per Foto über WhatsApp"
     ]
-  }
+  },
+  "fr": {},
+  "lb": {},
+  "en": {},
+  "pt": {}
 }
