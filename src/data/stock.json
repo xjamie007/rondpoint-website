@@ -134,7 +134,7 @@
       "garageRef": "122845",
       "slug": "dfsk-k01-2026-r122845",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-10-26",
+      "lastSeen": "2026-10-27",
       "lastChanged": "2026-10-13",
       "status": "active",
       "unavailableSince": null
@@ -573,7 +573,7 @@
       "garageRef": "132129",
       "slug": "vw-t-roc-2026-r132129",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-10-26",
+      "lastSeen": "2026-10-27",
       "lastChanged": "2026-10-13",
       "status": "active",
       "unavailableSince": null
@@ -1114,7 +1114,7 @@
       "garageRef": "139035",
       "slug": "cupra-terramar-2026-r139035",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-10-26",
+      "lastSeen": "2026-10-27",
       "lastChanged": "2026-10-13",
       "status": "active",
       "unavailableSince": null
@@ -1648,7 +1648,7 @@
       "garageRef": "139047",
       "slug": "vw-touareg-2026-r139047",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-10-26",
+      "lastSeen": "2026-10-27",
       "lastChanged": "2026-10-13",
       "status": "active",
       "unavailableSince": null
@@ -2367,7 +2367,7 @@
       "garageRef": "141210",
       "slug": "bmw-x7-2025-r141210",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-10-26",
+      "lastSeen": "2026-10-27",
       "lastChanged": "2026-10-13",
       "status": "active",
       "unavailableSince": null
@@ -2663,272 +2663,10 @@
       "garageRef": "141213",
       "slug": "audi-tts-2019-r141213",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-10-26",
+      "lastSeen": "2026-10-27",
       "lastChanged": "2026-10-13",
       "status": "active",
       "unavailableSince": null
-    },
-    {
-      "stableId": "r141215",
-      "source": "luxauto",
-      "sourceId": "1929399",
-      "sourceUrl": "https://www.luxauto.lu/fr/voiture/bmw-118-essence-2019-1929399",
-      "make": "BMW",
-      "model": "118",
-      "version": "118i BUSINESS PACKAGE, TEMPOMAT, SIEGES CHAUFFANT",
-      "condition": "used",
-      "firstRegistration": "2019-11",
-      "modelYear": 2019,
-      "mileageKm": 105480,
-      "fuel": "petrol",
-      "transmission": "automatic",
-      "powerHp": 140,
-      "powerKw": 103,
-      "displacementCc": 1499,
-      "body": "city",
-      "seats": 5,
-      "colorExterior": "Noir",
-      "colorInterior": "Noir",
-      "co2Gkm": null,
-      "wltpConsumption": null,
-      "euroNorm": null,
-      "priceEur": 15900,
-      "vatRecoverable": false,
-      "options": [
-        "ABS",
-        "Accès sans clé",
-        "Accoudoir central avant",
-        "Airbags",
-        "Alarme",
-        "Anti-carjacking",
-        "App Connect",
-        "Assistant de démarrage en côte",
-        "Bluetooth",
-        "Capteur de lumière",
-        "Capteur de pluie",
-        "Capteur de stationnement arrière",
-        "Capteur de stationnement avant",
-        "Capteurs d'angle mort",
-        "Climatisation",
-        "Contrôle de traction",
-        "Direction assistée",
-        "Feux de jour",
-        "Garantie",
-        "ISOFIX",
-        "Jantes alliage",
-        "Kit mains libres",
-        "Navigation",
-        "Ordinateur de bord",
-        "Pare-brise chauffant",
-        "Peinture métallisée",
-        "Phares antibrouillard",
-        "Radio",
-        "Reconnaissance des panneaux routiers",
-        "Régulateur de vitesse",
-        "Régulateur de vitesse adaptatif",
-        "Rétroviseurs électriques",
-        "Sièges chauffants",
-        "Start/Stop",
-        "Tableau de bord numérique",
-        "USB",
-        "Verrouillage centralisé",
-        "Vitres arrière surteintées",
-        "Vitres électriques",
-        "Vitres teintées",
-        "Volant en cuir",
-        "Volant multifonctions",
-        "WiFi"
-      ],
-      "description": [
-        {
-          "kind": "p",
-          "text": "BMW 118i Advantage F40 – 140 ch – Boîte automatique"
-        },
-        {
-          "kind": "p",
-          "text": "BMW Série 1 118i équipée du moteur essence 1.5 de 140 ch et de la boîte automatique Steptronic à double embrayage."
-        },
-        {
-          "kind": "p",
-          "text": "Équipements principaux :"
-        },
-        {
-          "kind": "ul",
-          "items": [
-            "BMW Live Cockpit Plus",
-            "Sièges avant chauffants",
-            "Aide au stationnement PDC",
-            "Régulateur de vitesse avec fonction freinage",
-            "Active Guard Plus",
-            "Volant multifonction en cuir",
-            "Recharge sans fil pour smartphone",
-            "BMW ConnectedDrive",
-            "Hotspot Wi-Fi",
-            "Surveillance de la pression des pneus",
-            "Jantes en alliage BMW",
-            "Intérieur tissu Grid Anthracite",
-            "Pack Business",
-            "Finition Advantage",
-            "5 portes",
-            "Norme antipollution Euro 6"
-          ]
-        },
-        {
-          "kind": "p",
-          "text": "Inclus avec le véhicule :"
-        },
-        {
-          "kind": "ul",
-          "items": [
-            "Garantie de 12 mois",
-            "Un jeu de jantes avec pneus été",
-            "Un jeu de jantes avec pneus hiver"
-          ]
-        },
-        {
-          "kind": "p",
-          "text": "Financement possible directement sur place, avec ou sans apport, sous réserve d'acceptation du dossier."
-        },
-        {
-          "kind": "p",
-          "text": "GARAGE UM ROND POINT SÀRL"
-        },
-        {
-          "kind": "p",
-          "text": "1, rue du Viaduc"
-        },
-        {
-          "kind": "p",
-          "text": "L-9147 Erpeldange-sur-Sûre"
-        },
-        {
-          "kind": "p",
-          "text": "Téléphone : +352 81 05 41"
-        },
-        {
-          "kind": "p",
-          "text": "WhatsApp : +352 621 373 272"
-        },
-        {
-          "kind": "p",
-          "text": "E-mail :info@rondpoint.lu"
-        },
-        {
-          "kind": "p",
-          "text": "Contactez-nous pour obtenir davantage d'informations, recevoir une offre de financement personnalisée ou organiser un essai."
-        },
-        {
-          "kind": "p",
-          "text": "Options complémentaires / Additional options :"
-        },
-        {
-          "kind": "ul",
-          "items": [
-            "Alerte de franchissement involontaire de lignes",
-            "Assistant au freinage d'urgence",
-            "Assistant de vision nocturne",
-            "Assistant feux de route",
-            "Chargeur téléphone sans fil",
-            "Climatisation automatique - 2 zones",
-            "Commande vocale",
-            "Frein de stationnement électronique",
-            "Garantie 12 mois",
-            "Isofix - Siège passager",
-            "Lecteur MP3",
-            "Limiteur de vitesse",
-            "Livré avec pneus hiver",
-            "Livré avec pneus été",
-            "Pack hiver",
-            "Radio numérique (DAB)",
-            "Streaming audio intégré",
-            "Système d'appel d'urgence",
-            "Système d'avertissement de distance",
-            "Système de contrôle de la pression pneus",
-            "Système de détection de la somnolence",
-            "Verrouillage centralisé avec télécommande",
-            "Écran tactile"
-          ]
-        }
-      ],
-      "photos": [
-        {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165248_Ugow3SqPfqG99GdF.jpg",
-          "width": 2048,
-          "height": 1536
-        },
-        {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165248_RuZObJZ8rX6UbvES.jpg",
-          "width": 2048,
-          "height": 1536
-        },
-        {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165249_ACyYgtB8JN8CAHvf.jpg",
-          "width": 2048,
-          "height": 1536
-        },
-        {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165249_pUZc1jkyfBkTVJMn.jpg",
-          "width": 2048,
-          "height": 1536
-        },
-        {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165249_YQFm0G09kGMGXU6E.jpg",
-          "width": 2048,
-          "height": 1536
-        },
-        {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165250_bjGg8G3ANjWeq51B.jpg",
-          "width": 2048,
-          "height": 1536
-        },
-        {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165250_bifD8E4WTDjL8Ybd.jpg",
-          "width": 2048,
-          "height": 1536
-        },
-        {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165250_okjhTPZkUtl24d6w.jpg",
-          "width": 2048,
-          "height": 1536
-        },
-        {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165251_QJVfLLEYEdMn4LqB.jpg",
-          "width": 2048,
-          "height": 1536
-        },
-        {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165251_RGlZkok8L4H1g7MF.jpg",
-          "width": 2048,
-          "height": 1536
-        },
-        {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165251_mKAwqM305n2lcBs9.jpg",
-          "width": 2048,
-          "height": 1536
-        },
-        {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165252_RlCwcPWyBoMPqi6I.jpg",
-          "width": 2048,
-          "height": 1536
-        },
-        {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165252_nwib7OJhQb4a03a0.jpg",
-          "width": 2048,
-          "height": 1536
-        },
-        {
-          "url": "https://static.prd.luxauto.lu/pictures/occasions/x/1790165252_c62LeSIUSTlBNvhV.jpg",
-          "width": 2048,
-          "height": 1536
-        }
-      ],
-      "garageRef": "141215",
-      "slug": "bmw-118-2019-r141215",
-      "firstSeen": "2026-09-28",
-      "lastSeen": "2026-10-12",
-      "lastChanged": "2026-10-13",
-      "status": "unavailable",
-      "unavailableSince": "2026-10-13"
     },
     {
       "stableId": "r141306",
@@ -3234,7 +2972,7 @@
       "garageRef": "141306",
       "slug": "audi-a4-2024-r141306",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-10-26",
+      "lastSeen": "2026-10-27",
       "lastChanged": "2026-10-13",
       "status": "active",
       "unavailableSince": null
@@ -3549,7 +3287,7 @@
       "garageRef": "141314",
       "slug": "audi-a1-2026-r141314",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-10-26",
+      "lastSeen": "2026-10-27",
       "lastChanged": "2026-10-13",
       "status": "active",
       "unavailableSince": null
@@ -3652,7 +3390,7 @@
       "garageRef": "141522",
       "slug": "austin-healey-3000-1966-r141522",
       "firstSeen": "2026-09-28",
-      "lastSeen": "2026-10-26",
+      "lastSeen": "2026-10-27",
       "lastChanged": "2026-10-13",
       "status": "active",
       "unavailableSince": null
