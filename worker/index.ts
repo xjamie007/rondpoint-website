@@ -21,7 +21,7 @@
 import { ContentError, type EditState } from '../supabase/functions/publish/convert.ts';
 import { HttpError, makeGit } from '../supabase/functions/publish/publish.ts';
 import { clearCookie, COOKIE, getCookie, makeSession, readSession, sessionCookie, sha256Hex, verifyPassword } from './auth';
-import { handleInquiry } from './inquiry';
+import { handleInquiry, keepMailKeyAlive } from './inquiry';
 import { SCHEMA } from './schema';
 import { translate } from './translate';
 import type { Ctx, Env } from './types';
@@ -155,6 +155,6 @@ export default {
     return out;
   },
   async scheduled(_event: unknown, env: Env, ctx: Ctx): Promise<void> {
-    ctx.waitUntil(ensureSchema(env).then(() => cleanup(env)));
+    ctx.waitUntil(Promise.all([ensureSchema(env).then(() => cleanup(env)), keepMailKeyAlive(env)]));
   },
 };

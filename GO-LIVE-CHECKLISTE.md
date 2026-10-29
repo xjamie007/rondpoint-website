@@ -137,7 +137,7 @@ Bis jetzt sind echt: Startbild, Vermietung, Sodablast, Garten und Anhängerverka
   - Präsentationsmodus aus.
   - workers.dev-Adresse aus.
   - GitHub Pages aus.
-- [ ] **Formulare per E-Mail** mit Brevo (EU-Anbieter, kostenlos bis 300 Mails pro Tag):
+- [x] **Formulare per E-Mail** mit Brevo (EU-Anbieter, kostenlos bis 300 Mails pro Tag), live seit 29.10.2026:
   - [x] Mailanbieter, Absender `formulaire@rondpoint.lu` und Empfänger `info@rondpoint.lu` stehen fest im Worker (`wrangler.jsonc`, 24.10.).
   - [ ] Du: Brevo-Konto, Domain-Einträge bei Cloudflare (und bei Wix), Schlüssel `MAIL_API_KEY` als Secret. Brevo braucht **keinen SPF-Eintrag**; die SPF-Zeile bleibt unverändert.
   - [ ] Ich: DNS prüfen, einen Test schicken, dann `PUBLIC_INQUIRY_URL=/api/inquiry` einschalten und Brevo in der Datenschutzerklärung nennen.

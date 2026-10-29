@@ -378,7 +378,8 @@ Live seit 24.10.2026. Registrar my.lu (Restena), Nameserver Cloudflare (Zone im 
 **Formulare direkt verschicken (statt WhatsApp/E-Mail-Knopf):**
 - Mailanbieter ist Brevo (EU). Dort die Domain `rondpoint.lu` bestätigen: einen TXT-Eintrag `brevo-code:…` und zwei DKIM-CNAMEs `brevo1._domainkey` und `brevo2._domainkey`. Die CNAMEs in Cloudflare auf „DNS only“ stellen. DMARC gibt es schon, SPF braucht Brevo nicht.
 - `MAIL_PROVIDER`, `MAIL_FROM` und `FORM_RECIPIENT` stehen in `wrangler.jsonc`. Nur den Schlüssel als Secret setzen: Dashboard → Worker → Settings → Variables and Secrets → `MAIL_API_KEY` (Typ *Secret*).
-- Danach die Build-Variable `PUBLIC_INQUIRY_URL` = `/api/inquiry` setzen und neu bauen. Erst dann schicken die Formulare an `/api/inquiry`; vorher laufen sie über WhatsApp/E-Mail.
+- Eingeschaltet über `src/content/site.json` → `formsDirect: true` (seit 29.10.2026; alternativ Build-Variable `PUBLIC_INQUIRY_URL`). Mit `false` laufen die Formulare wieder über WhatsApp/E-Mail.
+- Brevo: Schlüssel nur mit „Transaktions-E-Mails: Alle“; die Sperre „Autorisierte IP-Adressen“ muss aus bleiben. Der Schlüssel läuft am 29.10.2027 ab (neuen erzeugen, Secret ersetzen); den Ablauf nach 90 Tagen ohne Nutzung verhindert eine tägliche Abfrage im Cron (`keepMailKeyAlive`).
 - Anfragen bleiben 90 Tage in D1 (Dashboard → D1 → `rondpoint` → `inquiries`). Scheitert eine Mail, steht dort `mail_status = failed`.
 
 **Gut zu wissen**

@@ -813,7 +813,7 @@ const lb: Dict = {
     storage:
       'Är Ufro gëtt an enger Datebank bei Supabase (Regioun Europäesch Unioun) gespäichert an eis per E-Mail iwwer [UNBESTÄTIGT — EU-Mailanbieter, mit Nave klären] zougestallt. D’Ufroe ginn no 90 Deeg automatesch geläscht [UNBESTÄTIGT — Frist mit Kunde bestätigen]. Korrespondenz, déi zu engem Kontrakt féiert, bewahre mir no de Buchhaltungsflichten op.',
     storageCloudflare:
-      'Är Ufro gëtt an enger Datebank bei Cloudflare (Regioun Europäesch Unioun) gespäichert an eis per E-Mail iwwer den E-Mail-Service vu Cloudflare zougestallt. D’Ufroe ginn no 90 Deeg automatesch geläscht [UNBESTÄTIGT — Frist mit Kunde bestätigen]. Korrespondenz, déi zu engem Kontrakt féiert, bewahre mir no de Buchhaltungsflichten op.',
+      'Är Ufro gëtt an enger Datebank bei Cloudflare (Regioun Europäesch Unioun) gespäichert an eis per E-Mail iwwer den E-Mail-Service Brevo (Paräis, Frankräich) zougestallt. D’Ufroe ginn no 90 Deeg automatesch geläscht. Korrespondenz, déi zu engem Kontrakt féiert, bewahre mir no de Buchhaltungsflichten op.',
     abuse:
       'Fir Mëssbrauch ze begrenzen, späichere mir 24 Stonnen laang e kryptografeschen Hashwäert vun Ärer IP-Adress. Doraus kann een Är Adress net erëmfannen.',
     hostingH2: 'Hosting a Server-Protokoller',

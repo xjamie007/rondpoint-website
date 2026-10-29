@@ -69,6 +69,22 @@ async function sendMail(env: Env, opts: { subject: string; text: string; replyTo
   return true;
 }
 
+/**
+ * Brevo sperrt API-Schlüssel nach 90 Tagen ohne Verwendung. Kommen so lange keine Anfragen,
+ * hält eine tägliche Leseabfrage (Cron in index.ts) den Schlüssel gültig. Fehler nur ins Log.
+ */
+export async function keepMailKeyAlive(env: Env): Promise<void> {
+  if (env.MAIL_PROVIDER !== 'brevo' || !env.MAIL_API_KEY) return;
+  try {
+    const r = await fetch('https://api.brevo.com/v3/smtp/statistics/aggregatedReport?days=1', {
+      headers: { 'api-key': env.MAIL_API_KEY, accept: 'application/json' },
+    });
+    if (!r.ok) console.error(`Brevo-Schlüssel: HTTP ${r.status} ${(await r.text()).slice(0, 200)}`);
+  } catch (e) {
+    console.error('Brevo nicht erreichbar', e);
+  }
+}
+
 function respond(req: Request, lang: Lang, kind: 'ok' | 'invalid' | 'rate' | 'error', fields: string[] = []): Response {
   const origin = new URL(req.url).origin;
   const status = kind === 'ok' ? 200 : kind === 'invalid' ? 422 : kind === 'rate' ? 429 : 500;

@@ -147,8 +147,8 @@
   "showOpenPoints": false,
   "presentation": false,
   "stockPhotos": true,
-  "formsDirect": false,
-  "$formsDirect": "true: Formulare gehen an /api/inquiry und kommen per Cloudflare Email Service als Mail an FORM_RECIPIENT (wrangler.jsonc). false: WhatsApp/E-Mail mit fertigem Text.",
+  "formsDirect": true,
+  "$formsDirect": "true (seit 29.10.2026): Formulare gehen an /api/inquiry und kommen über Brevo (MAIL_PROVIDER in wrangler.jsonc, Schlüssel MAIL_API_KEY als Secret) als Mail an FORM_RECIPIENT. false: WhatsApp/E-Mail mit fertigem Text.",
   "$stockPhotos": "Live (24.10.2026): Stockfotos aus src/assets/demo füllen nur die Plätze ohne eigenes Foto (Bildnachweis im Impressum). Sobald alle eigenen Fotos da sind, auf false setzen.",
   "$presentation": "Präsentationsversion für den Kunden: Stockfotos aus src/assets/demo (Lizenzen in credits.json), interne Platzhalter [FEHLT]/[UNBESTÄTIGT] ausgeblendet, unbestätigte Aussagen weggelassen. Vor Livegang auf false setzen und echte Fotos eintragen.",
   "audaris": {

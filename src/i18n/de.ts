@@ -813,7 +813,7 @@ const de: Dict = {
     storage:
       'Ihre Anfrage wird in einer Datenbank bei Supabase (Region Europäische Union) gespeichert und uns per E-Mail über [UNBESTÄTIGT — EU-Mailanbieter, mit Nave klären] zugestellt. Die Anfragen werden nach 90 Tagen automatisch gelöscht [UNBESTÄTIGT — Frist mit Kunde bestätigen]. Korrespondenz, die zu einem Vertrag führt, bewahren wir entsprechend den buchhalterischen Aufbewahrungspflichten auf.',
     storageCloudflare:
-      'Ihre Anfrage wird in einer Datenbank bei Cloudflare (Region Europäische Union) gespeichert und uns per E-Mail über den E-Mail-Dienst von Cloudflare zugestellt. Die Anfragen werden nach 90 Tagen automatisch gelöscht [UNBESTÄTIGT — Frist mit Kunde bestätigen]. Korrespondenz, die zu einem Vertrag führt, bewahren wir entsprechend den buchhalterischen Aufbewahrungspflichten auf.',
+      'Ihre Anfrage wird in einer Datenbank bei Cloudflare (Region Europäische Union) gespeichert und uns per E-Mail über den E-Mail-Dienst Brevo (Paris, Frankreich) zugestellt. Die Anfragen werden nach 90 Tagen automatisch gelöscht. Korrespondenz, die zu einem Vertrag führt, bewahren wir entsprechend den buchhalterischen Aufbewahrungspflichten auf.',
     abuse:
       'Um Missbrauch zu begrenzen, speichern wir 24 Stunden lang einen kryptografischen Hashwert Ihrer IP-Adresse. Daraus lässt sich Ihre Adresse nicht ermitteln.',
     hostingH2: 'Hosting und Server-Logdateien',

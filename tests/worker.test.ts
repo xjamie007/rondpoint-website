@@ -168,6 +168,17 @@ describe('Worker: Formulare', () => {
       { mail_status: 'failed', mail_error: 'E_SENDER_NOT_VERIFIED' },
     ]);
   });
+  it('Brevo-Schlüssel wird täglich einmal benutzt (läuft sonst nach 90 Tagen ab)', async () => {
+    const { keepMailKeyAlive } = await import('../worker/inquiry.ts');
+    const f = vi.spyOn(globalThis, 'fetch').mockResolvedValue(new Response('{}'));
+    await keepMailKeyAlive(env);
+    expect(f).not.toHaveBeenCalled();
+    Object.assign(env, { MAIL_PROVIDER: 'brevo', MAIL_API_KEY: 'k' });
+    await keepMailKeyAlive(env);
+    expect(f).toHaveBeenCalledOnce();
+    expect(String(f.mock.calls[0][0])).toContain('api.brevo.com');
+    expect((f.mock.calls[0][1]!.headers as Record<string, string>)['api-key']).toBe('k');
+  });
   it('ungültig → 422 mit Feldern; Honeypot → „ok“, aber nichts gespeichert; Rate-Limit → 429', async () => {
     const bad = await send(form({ phone: '12' }));
     expect(bad.status).toBe(422);

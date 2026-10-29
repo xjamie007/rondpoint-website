@@ -6,6 +6,16 @@ Stand: 28.09.2026. Nichts davon ist erfunden. Jede Stelle erscheint auf der Webs
 - Schalter für bestätigte Aussagen: `src/content/site.json` → `confirmations`, `manager.confirmed`, `payment.confirmed` usw.
 - Vor Livegang `showOpenPoints` in `site.json` auf `false` setzen. Dann verschwinden Abschnitte, die ohne Daten keinen Sinn haben, zum Beispiel „Avis Google" oder die Foto-Hinweise. Platzhalter in Sätzen bleiben sichtbar, bis die Daten da sind.
 
+## Stand 29.10.2026: Formulare schicken direkt Mails (Brevo)
+
+- Alle Formulare (Mieten, Autos, Werkstatt, Kontakt, Anhänger kaufen) gehen an `/api/inquiry`, werden in D1 gespeichert (90 Tage) und über **Brevo** als Mail an info@rondpoint.lu geschickt, Absender `formulaire@rondpoint.lu`, „Antworten“ geht an den Kunden. Test am 29.10. um 13:25: Brevo hat angenommen (`mail_status = sent`).
+- Brevo-Konto: Nave. DNS (per Brevo-Autorisierung bei Cloudflare): `brevo-code` (TXT), DKIM `brevo1/brevo2._domainkey`, DMARC jetzt `p=none; rua=mailto:rua@dmarc.brevo.com`, dazu `formulaire`, `r.formulaire`, `img.formulaire` (nur Brevo-Tracking, beim Löschen des Kontos mit entfernen). MX und SPF von Intec unverändert.
+- API-Schlüssel nur mit „Transaktions-E-Mails: Alle“, als Secret `MAIL_API_KEY` beim Worker. **Läuft am 29.10.2027 ab** → vorher neuen Schlüssel erzeugen und das Secret ersetzen. Gegen das Ablaufen nach 90 Tagen ohne Nutzung fragt der Cron täglich einmal bei Brevo nach.
+- In Brevo muss die Sperre „Autorisierte IP-Adressen“ aus bleiben (Cloudflare verschickt von wechselnden Adressen).
+- Scheitert eine Mail, bleibt die Anfrage in D1 (`mail_status = failed`, Dashboard → D1 → `rondpoint` → `inquiries`).
+
+**Mit David klären:** Ist die automatische Löschung der Anfragen nach 90 Tagen in Ordnung? (So steht es in der Datenschutzerklärung und so macht es der Worker.)
+
 ## Stand 25.10.2026: Wünsche nach dem Go-Live
 
 Umgesetzt:
