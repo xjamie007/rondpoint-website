@@ -1,6 +1,6 @@
-// Favicons aus dem Kreisel-„O“ des Logos (src/assets/brand/logo.svg, Gruppe .logo-o), Okt. 2026.
-// Weißer runder Hintergrund, damit das schwarze Zentrum auch auf dunklen Tabs und in der
-// Google-Suche sichtbar bleibt. Google verlangt ein Vielfaches von 48 px (favicon-48/-96).
+// Favicons aus dem Rad im „O“ von POINT (src/assets/brand/logo.svg): schwarzer Reifen, orange
+// Bremsscheibe und Bremssattel. Weißer runder Hintergrund, damit es auch auf dunklen Tabs und in
+// der Google-Suche gut aussieht. Google verlangt ein Vielfaches von 48 px (favicon-48/-96).
 //
 //   node scripts/assets/favicons.mjs
 import sharp from 'sharp';
@@ -9,12 +9,22 @@ import { fileURLToPath } from 'node:url';
 
 const root = new URL('../../', import.meta.url);
 const logo = readFileSync(new URL('src/assets/brand/logo.svg', root), 'utf8');
-const start = logo.indexOf('<g class="logo-o">');
-const group = logo.slice(start, logo.indexOf('</g>', start) + 4).replace(' class="logo-o"', '');
 
-// Ausdehnung des „O“ im Logo: x 38.6–93.6, y 46.1–97.3 → Mitte (66.1, 71.7)
-const side = 70;
-const [cx, cy] = [66.1, 71.7];
+// Pfade des Rads: alle Formen im Bereich des zweiten „O“ (x 240–305, oberhalb von „GARAGE - CARROSSERIE“)
+const box = (d) => {
+  const n = d.match(/-?\d+(\.\d+)?/g).map(Number);
+  const xs = n.filter((_, k) => k % 2 === 0);
+  const ys = n.filter((_, k) => k % 2 === 1);
+  return [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)];
+};
+const group = [...logo.matchAll(/<path fill="[^"]+" d="([^"]+)"\/>/g)]
+  .filter((m) => { const [x0, , x1, y1] = box(m[1]); return x0 > 240 && x1 < 305 && y1 < 105; })
+  .map((m) => m[0])
+  .join('');
+
+// Mitte von Reifen und Bremssattel zusammen (x 242.9–301.9, y 39.3–98.3), etwas Rand rundherum
+const side = 68;
+const [cx, cy] = [272.4, 68.8];
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${cx - side / 2} ${cy - side / 2} ${side} ${side}">`
   + `<circle cx="${cx}" cy="${cy}" r="${side / 2}" fill="#fff"/>${group}</svg>\n`;
 // Apple: volle Fläche ohne Transparenz (iOS rundet selbst ab)
